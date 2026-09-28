@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LabKitPro · ISO/IEC 17025 Lab Toolkit</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hd">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="row">
+      <div>
+        <h1 id="appTitle" role="button" tabindex="0" title="Back to module overview">LabKitPro · ISO/IEC 17025 Lab Toolkit</h1>
+        <div class="sub" id="appSub">Four core modules — Diagnose · Generate · Review · Uncertainty</div>
+      </div>
+      <div class="ctrl">
+        <div id="profileChip" class="profile"></div>
+        <button class="langbtn" id="langBtn">中文 · 即将上线</button>
+      </div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="statusbar" id="statusBar"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="loading">Loading content base…</div>
+
+  <!-- 0 · Home — the four core modules (everything else serves these) -->
+  <section class="pane" id="pane-home">
+    <div id="homeHero"></div>
+    <div class="modgrid" id="modGrid"></div>
+    <p class="note" id="homeNote"></p>
+  </section>
+
+  <!-- 1 · Diagnose -->
+  <section class="pane" id="pane-diag">
+    <div id="diagIntro"></div>
+    <div class="regionbox" id="diagRegionBox"></div>
+    <div id="diagHeat"></div>
+    <div id="diagRegionAdd"></div>
+    <div class="card" id="diagMap"></div>
+  </section>
+
+  <!-- 2 · Generate -->
+  <section class="pane" id="pane-gen">
+    <div class="hero">
+      <div>
+        <b>Start here:</b> set your lab profile once, then generate any of the 87 best-practice documents.
+        Your work auto-saves on this device — switch modules any time and pick up where you left off.
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <input id="treeSearch" class="tree-search" placeholder="Search documents (e.g. uncertainty, calibration, audit)…">
+        <div class="tree" id="tree"></div>
+        <div id="treeHint" class="note"></div>
+      </div>
+      <div>
+        <div id="genFocus" class="card" style="display:none"></div>
+        <div id="genMeta"></div>
+        <div id="genGuide" class="card" style="display:none"></div>
+        <div class="card" id="labForm"></div>
+        <div class="btnbar" id="genBtns"></div>
+        <div class="preview" id="preview"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Review -->
+  <section class="pane" id="pane-audit">
+    <div id="auditIntro"></div>
+    <div class="btnbar" id="auditBtns"></div>
+    <div id="auditSummary" class="card" style="display:none"></div>
+    <div class="regionbox" id="auditRegionBox"></div>
+    <div id="auditBody"></div>
+    <div id="auditRegionAdd"></div>
+  </section>
+
+  <!-- 3 · Uncertainty -->
+  <section class="pane" id="pane-unc">
+    <div id="uncIntro"></div>
+    <div class="ucmp">
+      <div class="card" id="gumCard"></div>
+      <div class="card" id="mcmCard"></div>
+    </div>
+    <div class="card" id="uncOut"></div>
+  </section>
+
+  <!-- 4 · Diagnose removed (moved up to position 1) -->
+
+  <div class="cta" id="ctaBar">
+    <div class="cta-in">
+      <div>
+        <b>Need a management system built for your lab?</b><br>
+        <span class="muted">LabKitPro gives you the global baseline. For a laboratory-specific QMS, accreditation-body addenda, or implementation support, talk to us.</span>
+      </div>
+      <a class="btn" id="ctaContact" href="#">Contact LabKitPro →</a>
+    </div>
+  </div>
+  <div class="foot" id="foot">
+    <span>Based on ISO/IEC 17025:2017 · Global best-practice baseline for laboratory management</span>
+    <nav class="footlinks" aria-label="Legal">
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refund.html">Refund</a>
+      <a href="cookie.html">Cookies</a>
+      <a href="disclaimer.html">AI Disclaimer</a>
+      <a href="mailto:support@labkitpro.com">Contact</a>
+    </nav>
+  </div>
+</main>
+
+  <!-- Cookie consent banner (GDPR) -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
+    <div class="cookie-in">
+      <p class="cookie-txt">We use essential cookies to run LabKitPro and optional analytics to improve it. See our <a href="cookie.html">Cookie Policy</a>. You can accept or reject non-essential cookies.</p>
+      <div class="cookie-btns">
+        <button class="btn ghost" id="cookieReject" type="button">Reject non-essential</button>
+        <button class="btn" id="cookieAccept" type="button">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body></html>
