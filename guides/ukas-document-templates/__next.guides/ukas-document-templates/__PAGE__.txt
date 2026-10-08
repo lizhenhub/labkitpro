@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+2:Te56,<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"What UKAS documents are needed for ISO/IEC 17025?","acceptedAnswer":{"@type":"Answer","text":"UKAS assesses against ISO/IEC 17025:2017 and requires a Quality Manual, document/record control, internal audit, management review, method/calibration procedures, and measurement uncertainty evaluation covering clauses 4–8."}},
+ {"@type":"Question","name":"Can UK labs generate UKAS-ready documents quickly?","acceptedAnswer":{"@type":"Answer","text":"Yes. On LabKitPro set accreditation body to UKAS and generate context-aware drafts in minutes. Forms/records are free; full downloads from $1.99."}}
+]}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
+<h1 style="font-size:27px;margin:14px 0 6px;">UKAS ISO/IEC 17025 Document Templates</h1>
+<p style="color:#5b6675;">Context-aware documents mapped to UKAS assessment expectations — built in minutes.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">UKAS and 17025</h2>
+<p>UKAS (United Kingdom Accreditation Service) is the national accreditation body and an ILAC signatory. UK labs seeking accreditation must demonstrate a management system satisfying <strong>ISO/IEC 17025:2017</strong> clauses §4–§8, with documentation that an assessor can audit clause-by-clause.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Document backbone</h2>
+<ul>
+  <li><strong>Quality Manual</strong> — policy and system structure.</li>
+  <li><strong>Document &amp; Record Control</strong> — approval, issue, retention.</li>
+  <li><strong>Internal Audit &amp; Management Review</strong> — self-assurance loop.</li>
+  <li><strong>Method / Calibration Procedures</strong> — validated, scope-specific.</li>
+  <li><strong>Uncertainty of Measurement</strong> — GUM or Monte Carlo per measurand.</li>
+</ul>
+
+<h2 style="font-size:19px;margin-top:24px;">How LabKitPro helps</h2>
+<p>Set <strong>Country: United Kingdom, Accreditation body: UKAS</strong> and every document carries that framing. Begin with a <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">free 60-second diagnosis</a> to see your clause heat-map.</p>
+<p>
+  <a href="https://pancake.waffo.ai/store/labkitpro-5d7o20va/product/PROD_33vwlkppe6CAM1s3BMxl1A?type=onetime&currency=USD" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">Quality Manual — $9.99</a>
+  &nbsp;
+  <a href="https://pancake.waffo.ai/store/labkitpro-5d7o20va/product/PROD_5iEBpYJMYjA8boifoWD4YT?type=onetime&currency=USD" style="display:inline-block;background:#1e8e5a;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">Uncertainty Evaluation — $4.99</a>
+</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Frequently asked</h2>
+<p><strong>Are these UKAS-approved?</strong> No template is "pre-approved"; UKAS assesses technical competence on site. Context-aware documents give assessors clear, clause-mapped evidence you finalize with your assessor.</p>
+<p><strong>Start free?</strong> Yes — Forms and Records are free forever. <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See pricing</a>.</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;">
+  Aligned to ISO/IEC 17025:2017 across UKAS, A2LA, NABL, NVLAP, NATA &amp; SINGLAS.
+</p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"RBv9v_7oZmdJ_Frgyk9v-","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
+11:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+14:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"ViewportBoundary"]
+15:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"MetadataBoundary"]
+16:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"IconMark"]
+17:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+18:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+19:I[7761,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"LangProvider"]
+1a:I[92510,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"LabContextProvider"]
+1b:I[42364,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+1c:I[93807,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+:HL["/_next/static/chunks/0174ucrb-ube9.css","style"]
+3:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+6:["$","$1","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L15",null,{"children":["$","$12",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"UKAS ISO/IEC 17025 Document Templates (Generate in Minutes)"}],["$","meta","1",{"name":"description","content":"UKAS-aligned ISO/IEC 17025:2017 document templates. Quality Manual, procedures, and uncertainty budgets for UK laboratories. Free diagnosis, pay only to download."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/ukas-document-templates/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro"}],["$","meta","4",{"property":"og:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","meta","5",{"property":"og:type","content":"website"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"LabKitPro"}],["$","meta","8",{"name":"twitter:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","link","9",{"rel":"icon","href":"/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L16","10",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+d:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0174ucrb-ube9.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/11avi75vjgvql.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/2eodrf2nebsnb.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0qehabj2mah8w.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L19",null,{"children":["$","$L1a",null,{"children":[["$","$L1b",null,{"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L1c",null,{}]]}]}]}]}]]}]
+13:null
+10:true
+5:300
+5:C
+f:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+e:"$undefined"
+4:"$undefined"

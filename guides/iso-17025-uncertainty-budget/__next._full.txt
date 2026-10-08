@@ -1,0 +1,55 @@
+1:"$Sreact.fragment"
+2:I[7761,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"LangProvider"]
+3:I[92510,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"LabContextProvider"]
+4:I[42364,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+5:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+6:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+7:I[93807,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default"]
+c:I[68027,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"default",1]
+:HL["/_next/static/chunks/0174ucrb-ube9.css","style"]
+8:Te49,<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"What is a measurement uncertainty budget in ISO/IEC 17025?","acceptedAnswer":{"@type":"Answer","text":"It is a documented quantification of all input quantities contributing to a measurement result, typically using the GUM bottom-up method (combined standard uncertainty from individual components) or Monte Carlo simulation."}},
+ {"@type":"Question","name":"How do I create an uncertainty budget quickly?","acceptedAnswer":{"@type":"Answer","text":"Use LabKitPro's Uncertainty tool: enter your measurement model and input sources, and it produces a context-aware GUM or Monte Carlo budget in minutes. A free preview is available; the full download is $4.99."}}
+]}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
+<h1 style="font-size:27px;margin:14px 0 6px;">ISO/IEC 17025 Measurement Uncertainty Budget</h1>
+<p style="color:#5b6675;">GUM bottom-up and Monte Carlo — generate a clause-ready uncertainty evaluation in minutes.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Why it matters</h2>
+<p>Clause 7.6 of <strong>ISO/IEC 17025:2017</strong> requires every lab to identify the contributions to uncertainty and to use a valid procedure for estimation. Assessors routinely flag missing or superficial budgets as a major nonconformity.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Two accepted methods</h2>
+<ul>
+  <li><strong>GUM (bottom-up):</strong> list input quantities, assign standard uncertainties, combine via the law of propagation of uncertainty, expand by a coverage factor <em>k</em>.</li>
+  <li><strong>Monte Carlo:</strong> propagate a defined probability distribution through the measurement model to approximate the output distribution — useful for non-linear or correlated models.</li>
+</ul>
+
+<h2 style="font-size:19px;margin-top:24px;">How LabKitPro helps</h2>
+<p>The <a href="https://labkitpro.com/uncertainty/" style="color:#2563eb;">Uncertainty tool</a> lets you build the measurement model, enter input sources and their distributions, and outputs a context-aware budget citing your accreditation body's framing.</p>
+<p>
+  <a href="https://pancake.waffo.ai/store/labkitpro-5d7o20va/product/PROD_5iEBpYJMYjA8boifoWD4YT?type=onetime&currency=USD" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">Uncertainty Evaluation — $4.99</a>
+  &nbsp;
+  <a href="https://pancake.waffo.ai/store/labkitpro-5d7o20va/product/PROD_78NRHCEVkF5wwd15tO9lx8?type=subscription&currency=USD" style="display:inline-block;background:#1e8e5a;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">Unlimited with Pro — $29.99/mo</a>
+</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Frequently asked</h2>
+<p><strong>Do I need both methods?</strong> Pick the method that fits your model. GUM suffices for most linear cases; Monte Carlo helps with complex, correlated inputs.</p>
+<p><strong>Free to try?</strong> Yes — run a free preview; pay $4.99 only to export the full, watermark-free budget.</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;">
+  <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See all plans</a> · Aligned to ISO/IEC 17025:2017 across NABL, A2LA, UKAS, NVLAP, NATA &amp; SINGLAS.
+</p>
+</div>a:X
+0:{"P":null,"c":["","guides","iso-17025-uncertainty-budget",""],"q":"","i":false,"f":[[["",{"children":["guides",{"children":["iso-17025-uncertainty-budget",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0174ucrb-ube9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/11avi75vjgvql.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/2eodrf2nebsnb.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/0qehabj2mah8w.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"children":[["$","$L4",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L7",null,{}]]}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$8"}}],null,"$L9"]}],{},null,false,null]},null,false,"$a"]},null,false,"$a"]},null,false,null],"$Lb",false]],"m":"$undefined","G":["$c",["$Ld"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"RBv9v_7oZmdJ_Frgyk9v-"}
+e:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+11:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"MetadataBoundary"]
+9:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+b:["$","$1","h",{"children":[null,["$","$L11",null,{"children":"$L12"}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$f",null,{"name":"Next.Metadata","children":"$L14"}]}]}],null]}]
+d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0174ucrb-ube9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+a:C
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/11avi75vjgvql.js","/_next/static/chunks/2eodrf2nebsnb.js","/_next/static/chunks/0qehabj2mah8w.js"],"IconMark"]
+10:null
+14:[["$","title","0",{"children":"ISO/IEC 17025 Measurement Uncertainty Budget (GUM & Monte Carlo)"}],["$","meta","1",{"name":"description","content":"Build a measurement uncertainty budget for ISO/IEC 17025:2017 — GUM bottom-up and Monte Carlo methods. Generate context-aware uncertainty evaluations in minutes, pay only to download."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/iso-17025-uncertainty-budget/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro"}],["$","meta","4",{"property":"og:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","meta","5",{"property":"og:type","content":"website"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"LabKitPro"}],["$","meta","8",{"name":"twitter:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","link","9",{"rel":"icon","href":"/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L15","10",{}]]
