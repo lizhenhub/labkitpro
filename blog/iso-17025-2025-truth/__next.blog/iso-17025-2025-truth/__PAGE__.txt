@@ -1,0 +1,89 @@
+1:"$Sreact.fragment"
+2:T21a9,<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ISO 17025:2025 doesn't exist — here's the truth","description":"There is no ISO/IEC 17025:2025. The current edition is 17025:2017, confirmed by ISO after its 2023 systematic review. How to verify in 30 seconds and what labs should actually do.","datePublished":"2026-10-10","author":{"@type":"Organization","name":"LabKitPro"},"publisher":{"@type":"Organization","name":"LabKitPro"}}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
+<div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <span style="font-weight:700;font-size:15px;">Check your lab against the real standard — free readiness check, no signup.</span>
+  <a href="https://labkitpro.com/diagnosis/" style="background:#fff;color:#0f9d58;padding:8px 14px;border-radius:7px;text-decoration:none;font-weight:700;white-space:nowrap;">Run the check</a>
+</div>
+
+<p style="color:#5b6675;font-size:13px;margin:0 0 4px;">Lab Journal · October 10, 2026 · 6 min read</p>
+<h1 style="font-size:27px;margin:6px 0 6px;">ISO 17025:2025 doesn't exist — here's the truth</h1>
+<p style="color:#5b6675;font-size:16px;margin-top:0;"><em>And why that matters if someone is selling you a "transition" right now.</em></p>
+
+<p>If you work in a testing or calibration laboratory, you've probably seen the posts. A "complete guide to the new ISO/IEC 17025:2025." A webinar about preparing for the "2025 edition." A consultancy offering a migration package — deadline looming, act now.</p>
+
+<p>Here's the uncomfortable truth, and it takes thirty seconds to verify: <strong>there is no ISO/IEC 17025:2025. Go to iso.org, find standard 66912, and look at the status line.</strong></p>
+
+<h2 style="font-size:19px;margin-top:24px;">What the official source actually says</h2>
+<p>ISO publishes the status of every standard on its own catalogue. For ISO/IEC 17025, the page states:</p>
+<ul>
+<li><strong>Current edition: ISO/IEC 17025:2017</strong> (Edition 3), published November 2017 (with a corrected version in March 2018)</li>
+<li><strong>Stage: 90.93 — "International Standard confirmed"</strong> following its systematic review, which closed in 2023</li>
+<li>In other words: the world's standards body formally reviewed 17025 and <strong>decided it remains current</strong>. No new edition has been published. No transition period is running. No "2025 requirements" exist to comply with.</li>
+</ul>
+<p>That's the whole fact-check. One webpage, thirty seconds.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">So where does the "2025 edition" rumor come from?</h2>
+<p>Two places, and understanding them is genuinely useful — because this pattern will happen again with other standards.</p>
+<p><strong>1. AI-generated content farms.</strong> Search for "ISO 17025:2025" and you'll find polished, confident, <em>detailed</em> articles — complete with a specific publication date, a list of "key changes" (digital calibration certificates! sustainability! software validation!), and a three-year transition timeline. We checked several of these while researching this post. Every one of them contradicts the official ISO catalogue. They read beautifully. They are fiction. Large language models generate plausible-sounding standard updates all the time, and low-effort sites publish them without checking. When several such sites agree with each other, that's not corroboration — they're copying the same mistake.</p>
+<p><strong>2. Fear-based marketing.</strong> "The standard changed, you must upgrade" has always been the most reliable sales pitch in the compliance world. A fake new edition is even better for that pitch than a real one, because nothing constrains the details. If someone offers to sell you a course, a migration audit, or a documentation package for "ISO 17025:2025" — ask them one question: <em>which clause numbers changed?</em> A real transition has an official document behind it. A fake one has urgency.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Hasn't a new version been "due" for a while?</h2>
+<p>It's reasonable to expect a revision eventually — ISO standards go through systematic review every five years, and 17025's review concluded in 2023 with the decision to confirm the current edition. A future project may well update the standard again one day; when it does, it will move through ISO's public stages (proposal, committee draft, enquiry, approval) on the same catalogue page, and every accreditation body will talk about it loudly.</p>
+<p>None of that has happened for 17025. Until you can see a new edition listed for sale on ISO's own site, any "next edition" is speculation — and any consultancy claiming its specifics is making them up.</p>
+<p>(One nuance worth knowing: national adoptions like CNAS-CL01 in China or EN versions in Europe track the international standard. They can carry their own document numbers and implementation dates. None of them creates an "ISO 17025:2025" — there is no such ISO publication to adopt.)</p>
+
+<h2 style="font-size:19px;margin-top:24px;">What labs should actually do right now</h2>
+<p>The boring, reassuring answer: <strong>keep strengthening your compliance with ISO/IEC 17025:2017</strong> — the edition your certificate is issued against today. Concretely:</p>
+<ol>
+<li><strong>Treat the 2017 gap list as the work.</strong> Most labs' findings cluster in the same clauses: measurement traceability and uncertainty, document control, competence records, decision rules. Fixing those is never wasted — they'll be in any future revision too.</li>
+<li><strong>Get your rumor filter right.</strong> The only sources worth trusting for edition status: the ISO catalogue page, your accreditation body's announcements, and your national standards body. Nothing else.</li>
+<li><strong>Budget for audits, not for panic.</strong> No credible accreditation body has announced a 17025 transition deadline, because there is nothing to transition to.</li>
+<li><strong>When a real revision comes, it will be loud.</strong> Accreditation bodies run multi-year transition programs with published policies — you will not miss it by learning about it from a blog post.</li>
+</ol>
+
+<h2 style="font-size:19px;margin-top:24px;">The meta-lesson for lab people</h2>
+<p>This episode is a small case study in something ISO 17025 itself trains us to do: <strong>verify against the source</strong>. You wouldn't accept a calibration result because "three websites said so" — you check the certificate and its traceability chain. Standards status deserves the same discipline. The next fake edition (of this or another standard) is already being drafted somewhere by a content farm. The thirty-second habit of checking the official catalogue is the vaccine.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Check your lab against the real standard — free</h2>
+<p>If you want something more useful than rumors: we built a <strong>free readiness checker</strong> that maps your lab against ISO/IEC 17025:2017 — the current edition — clause by clause, and shows you a gap heat-map before your assessor does. No signup, and it runs entirely in your browser: nothing you enter is uploaded anywhere.</p>
+<p><strong>→ Run the free check at <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">labkitpro.com</a></strong></p>
+<p>While you're there, the same engine drafts quality manuals, procedures and work instructions aligned to your accreditation body (A2LA, NVLAP, UKAS, NATA, SINGLAS, NABL and the ILAC general layer), and reviews your documents for conformity.</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:13px;">
+  <em>Fact-check appendix (verified 2026-10-10 against iso.org, standard 66912): status "Published"; Edition 3; publication 2017-11; corrected version 2018-03; stage 90.93 "International Standard confirmed", review closed 2023, confirmation dated 2023-08-18. No later edition exists in the ISO catalogue as of this date.</em>
+</p>
+<p style="color:#5b6675;">
+  <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See all plans</a> · Aligned to ISO/IEC 17025:2017 across NABL, A2LA, UKAS, NVLAP, NATA &amp; SINGLAS.
+</p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"6L1StYtXfm2TWV0BZTKjW","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
+11:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+14:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"ViewportBoundary"]
+15:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"MetadataBoundary"]
+16:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"IconMark"]
+17:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"default"]
+18:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"default"]
+19:I[7761,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"LangProvider"]
+1a:I[92510,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"LabContextProvider"]
+1b:I[42364,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"default"]
+1c:I[93807,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/088hhj90d2muq.js","/_next/static/chunks/0wukb4j5sxkue.js","/_next/static/chunks/3ll-mwgizq47j.js"],"default"]
+:HL["/_next/static/chunks/1ixsq529-dghz.css","style"]
+3:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+6:["$","$1","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L15",null,{"children":["$","$12",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ISO 17025:2025 doesn't exist — here's the truth | LabKitPro"}],["$","meta","1",{"name":"description","content":"There is no ISO/IEC 17025:2025. The current edition is 17025:2017 — confirmed by ISO in 2023. How to verify in 30 seconds, where the rumor comes from, and what labs should actually do."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/blog/iso-17025-2025-truth/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro"}],["$","meta","4",{"property":"og:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","meta","5",{"property":"og:type","content":"website"}],["$","meta","6",{"name":"twitter:card","content":"summary"}],["$","meta","7",{"name":"twitter:title","content":"LabKitPro"}],["$","meta","8",{"name":"twitter:description","content":"Lab documents, reality diagnosis & uncertainty in minutes — aligned to ISO/IEC 17025."}],["$","link","9",{"rel":"icon","href":"/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L16","10",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+d:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1ixsq529-dghz.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/088hhj90d2muq.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0wukb4j5sxkue.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/3ll-mwgizq47j.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L19",null,{"children":["$","$L1a",null,{"children":[["$","$L1b",null,{"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L1c",null,{}]]}]}]}]}]]}]
+13:null
+10:true
+5:300
+5:C
+f:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+e:"$undefined"
+4:"$undefined"

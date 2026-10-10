@@ -100,4 +100,14 @@
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>https://labkitpro.com/blog/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://labkitpro.com/blog/iso-17025-2025-truth/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
