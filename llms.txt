@@ -1,0 +1,22 @@
+# LabKitPro
+> LabKitPro generates ISO/IEC 17025 (2017, 3rd edition) laboratory documents — Quality Manual, procedures, work instructions, forms, compliance self-review, and measurement uncertainty budgets. Context-aware generation aligned to major accreditation bodies (NABL, CNAS, UKAS, A2LA, NATA, SINGLAS). Free 60-second diagnosis and free Forms/Records, forever.
+
+## Guides & docs
+- [NABL Document Templates](https://labkitpro.com/guides/nabl-document-templates/): ISO/IEC 17025 documents mapped to NABL (India) criteria.
+- [A2LA Document Templates](https://labkitpro.com/guides/a2la-document-templates/): ISO/IEC 17025 documents mapped to A2LA (United States) criteria.
+- [UKAS Document Templates](https://labkitpro.com/guides/ukas-document-templates/): ISO/IEC 17025 documents mapped to UKAS (United Kingdom) criteria.
+- [CNAS Document Templates](https://labkitpro.com/guides/cnas-document-templates/): ISO/IEC 17025 documents mapped to CNAS (China) criteria.
+- [NATA Document Templates](https://labkitpro.com/guides/nata-document-templates/): ISO/IEC 17025 documents mapped to NATA (Australia & New Zealand) criteria.
+- [Good Laboratory Practice (GLP)](https://labkitpro.com/guides/glp-compliance-guide/): OECD GLP principles vs ISO/IEC 17025 for non-clinical study conduct.
+- [Accreditation bodies compared](https://labkitpro.com/guides/accreditation-bodies-guide/): NABL / CNAS / UKAS / A2LA / NATA / GLP side by side.
+- [ISO/IEC 17025 vs ISO 9001](https://labkitpro.com/guides/iso-17025-vs-iso-9001/): scope and overlap of the two standards.
+- [Internal audit checklist](https://labkitpro.com/guides/iso-17025-internal-audit-checklist/): clause-by-clause self-audit checklist.
+- [Uncertainty budget guide](https://labkitpro.com/guides/iso-17025-uncertainty-budget/): GUM / Monte Carlo measurement uncertainty budgeting.
+- [ISO 17025:2025 doesn't exist](https://labkitpro.com/blog/iso-17025-2025-truth/): why "2025 edition" claims are false; the current edition is 2017.
+
+## Tools
+- [Reality diagnosis](https://labkitpro.com/diagnosis/): 60-second gap heat-map against ISO/IEC 17025.
+- [Compliance self-review](https://labkitpro.com/compliance-review/): upload documents, get clause-by-clause findings.
+- [Uncertainty calculator](https://labkitpro.com/uncertainty/): build a GUM / Monte Carlo uncertainty budget.
+- [Document templates](https://labkitpro.com/templates/): browse the full document library.
+- [Pricing](https://labkitpro.com/pricing/): per-delivery and Pro plans.
