@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO/IEC 17025:2017 四级文件模板骨架 | LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%230f2f4a'/%3E%3Cpath d='M6 16l4-6 3 4 2-3 3 5H6z' fill='%2334d0b5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#10202e; --ink-2:#38505f; --muted:#5d7180;
+  --bg:#f6f8fa; --card:#ffffff; --line:#dde5eb;
+  --brand:#0f2f4a; --accent:#0e8f7d; --accent-2:#1b6ea8;
+  --warn:#a35b1a; --chip:#e7f4f1; --chip2:#e8f1f8;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; font-size:15px;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 80px;}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%); color:#fff; padding:52px 24px 40px; margin-bottom:36px;}
+.hero-inner{max-width:1080px; margin:0 auto;}
+.kicker{font-size:13px; letter-spacing:2px; color:#8fd8cb; text-transform:uppercase; margin-bottom:10px;}
+h1{font-size:30px; font-weight:800; line-height:1.35; margin-bottom:12px;}
+.sub{font-size:15px; color:#cfe0ec; max-width:820px;}
+.badge-row{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;}
+.badge{font-size:12px; padding:4px 12px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#e8f2fa;}
+h2{font-size:22px; font-weight:800; color:var(--brand); margin:48px 0 6px; padding-top:8px;}
+h2 .no{display:inline-block; color:var(--accent); margin-right:10px;}
+h3{font-size:17px; font-weight:700; color:var(--ink-2); margin:28px 0 10px;}
+.lead{color:var(--muted); font-size:14px; margin-bottom:20px;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:14px 0;}
+table{width:100%; border-collapse:collapse; margin:12px 0 6px; font-size:13.5px; table-layout:fixed;}
+.table-scroll{overflow-x:auto;}
+th{background:#eef3f7; color:var(--ink-2); font-weight:700; text-align:left; padding:9px 10px; border:1px solid var(--line);}
+td{padding:9px 10px; border:1px solid var(--line); vertical-align:top;}
+tbody tr:nth-child(even){background:#fafcfd;}
+td .tag{display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; margin:1px 3px 1px 0;}
+.t-A{background:#fdeaea; color:#a23; } .t-B{background:var(--chip2); color:#1b6ea8;}
+.t-C{background:var(--chip); color:#0e8f7d;} .t-D{background:#f4f1e8; color:#8a6d1a;}
+.clause{font-family:ui-monospace,"Consolas",monospace; font-size:12px; color:var(--accent-2); font-weight:600; white-space:nowrap;}
+.pyramid{display:flex; flex-direction:column; align-items:center; gap:0; margin:22px auto 8px; max-width:640px;}
+.pyr{width:100%; text-align:center; color:#fff; padding:16px 12px; font-weight:700; border-radius:8px;}
+.pyr small{display:block; font-weight:400; font-size:12px; opacity:.9; margin-top:2px;}
+.p1{background:#2d5f8a; } .p2{background:#1b6ea8;} .p3{background:#0e8f7d;} .p4{background:#34b39c;}
+.pyr-arrow{color:var(--muted); font-size:11px; padding:2px 0; letter-spacing:1px;}
+ul.clean{list-style:none; margin:8px 0;}
+ul.clean li{padding:5px 0 5px 26px; position:relative;}
+ul.clean li::before{content:""; position:absolute; left:8px; top:14px; width:7px; height:7px; border-radius:2px; background:var(--accent);}
+ul.clean li b{color:var(--ink-2);}
+.flow{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0;}
+.step{flex:1 1 150px; background:#f0f7fb; border:1px solid #cfe0ec; border-radius:10px; padding:12px 14px; font-size:13px;}
+.step b{display:block; color:var(--accent-2); font-size:13px; margin-bottom:4px;}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.grid2 .card{margin:0;}
+.note{background:#fff8ec; border:1px solid #f0d9b8; border-radius:10px; padding:14px 18px; font-size:13px; color:#6b5320; margin:14px 0;}
+.note b{color:#a35b1a;}
+.foot{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; text-align:center;}
+details{border:1px solid var(--line); border-radius:10px; margin:10px 0; background:#fff;}
+summary{cursor:pointer; padding:12px 18px; font-weight:700; color:var(--ink-2); font-size:14px;}
+summary .clause{margin-left:8px;}
+details[open] summary{border-bottom:1px solid var(--line);}
+.detail-body{padding:6px 18px 16px;}
+@media(max-width:760px){
+  .grid2{grid-template-columns:1fr;}
+  h1{font-size:24px;}
+  table{font-size:12.5px;}
+  th,td{padding:7px 6px;}
+  .wrap{padding:0 14px 60px;}
+  .card{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .card table{min-width:600px;}
+  .card .note, .card h3, .card .lead{min-width:0;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · 模板骨架</div>
+    <h1>ISO/IEC 17025:2017<br>四级文件模板骨架</h1>
+    <div class="sub">质量手册（A 级）、程序文件（B 级）、作业指导书（C 级）、表单与记录（D 级）的章节结构与要素清单——依据 ISO/IEC 17025:2017 编制。可作为实验室管理体系文件规划与编写的脚手架指南。</div>
+    <div class="badge-row">
+      <span class="badge">A 级 · 质量手册 QM</span>
+      <span class="badge">B 级 · 程序文件 LP</span>
+      <span class="badge">C 级 · 作业指导书 WI</span>
+      <span class="badge">D 级 · 表单记录 FR</span>
+      <span class="badge">基准：ISO/IEC 17025:2017</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===================== 0 总览 ===================== -->
+<h2><span class="no">0</span>四级文件体系总览</h2>
+<p class="lead">管理体系文件按标准金字塔模型分四级：A 级（质量手册）为顶层纲领文件；B 级（程序文件）描述跨岗位流程；C 级（作业指导书）提供岗位级操作细节；D 级（表单与记录）承载执行证据。各级之间必须相互交叉引用。</p>
+
+<div class="pyramid">
+  <div class="pyr p1">A 级 · 质量手册（Quality Manual）<small>方针、目标、要素声明、文件总索引</small></div>
+  <div class="pyr-arrow">▼ 引用并展开</div>
+  <div class="pyr p2">B 级 · 程序文件（Procedures / LP）<small>跨职能流程：职责、步骤、记录（如设备管理、合同评审）</small></div>
+  <div class="pyr-arrow">▼ 细化到岗位</div>
+  <div class="pyr p3">C 级 · 作业指导书（Work Instructions / SOP）<small>岗位级操作：逐步指令、参数、判定准则（如天平校准）</small></div>
+  <div class="pyr-arrow">▼ 产生证据</div>
+  <div class="pyr p4">D 级 · 表单与记录（Forms &amp; Records / FR）<small>执行证据：原始记录、台账、报告、审批表</small></div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">四个层级的定位与编写粒度</h3>
+  <table>
+    <colgroup><col style="width:14%"><col style="width:24%"><col style="width:34%"><col style="width:28%"></colgroup>
+    <thead><tr><th>层级</th><th>回答的问题</th><th>典型章节结构</th><th>审核关注点</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag t-A">A 质量手册</span></td><td>实验室承诺什么？（方针 / 目标 / 体系范围）</td><td>封面 · 授权 · 修订记录 · 范围 · 方针目标 · 要素声明 · 文件清单</td><td>是否覆盖全部适用条款；方针目标是否实际落实</td></tr>
+      <tr><td><span class="tag t-B">B 程序文件</span></td><td>如何做？（流程、职责、控制点）</td><td>目的 · 范围 · 职责 · 程序 · 记录 · 引用</td><td>步骤是否闭环；职责是否清晰；记录是否匹配</td></tr>
+      <tr><td><span class="tag t-C">C 作业指导书</span></td><td>具体怎么做？（岗位级、可照做）</td><td>目的 · 范围 · 前提 · 设备 · 步骤 · 计算 · 记录</td><td>细节是否可复现；参数是否量化；新人能否照做</td></tr>
+      <tr><td><span class="tag t-D">D 表单记录</span></td><td>做了什么？（证据）</td><td>表头（编号/版本）· 数据字段 · 签名日期 · 归档</td><td>可追溯；修改留痕；保存期合规</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="note"><b>编写总原则：</b>所有层级使用统一的标准结构；写简短句子、常用词、主动语态，不写成文章；技术术语用脚注或文内解释；文件必须与实际做法一致（先核对现状再编写）；每个要素描述拆分为逻辑子段：方针 → 目标 → 负责岗位 → 引用的程序文件 → 相关记录。</div>
+
+<!-- ===================== 1 A级 ===================== -->
+<h2><span class="no">1</span>A 级 · 质量手册（QM）章节结构</h2>
+<p class="lead">质量手册是体系顶层文件。ISO/IEC 17025:2017 不强制固定格式，但手册必须准确传达质量方针、目标、下级文件引用与体系管理职责。推荐的章节顺序按标准条款顺序展开要素描述。</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.1 前言与通用章节（顺序即章节号）</h3>
+  <table>
+    <colgroup><col style="width:20%"><col style="width:52%"><col style="width:28%"></colgroup>
+    <thead><tr><th>章节</th><th>必须包含的要素</th><th>对应 17025 条款</th></tr></thead>
+    <tbody>
+      <tr><td>封面 Title</td><td>实验室名称与地点、手册名称、文件编号、版本号/Issue No.、生效日期、持有人姓名、受控副本号</td><td>8.3 文件标识</td></tr>
+      <tr><td>发布授权 Release Authorization</td><td>手册发布的授权依据、授权人（通常为实验室主任）签署声明；每份受控副本附发布证据</td><td>8.2 / 8.3.2 a)</td></tr>
+      <tr><td>修订记录 Amendment Record</td><td>序号、修订号、页码、条款号、修订日期、修订内容、原因、质量团队与主管签字</td><td>8.3.2 c)</td></tr>
+      <tr><td>分发清单 Distribution List</td><td>受控副本编号、持有人姓名/职务；确保所有使用者可访问</td><td>8.3.2 d)</td></tr>
+      <tr><td>目录 Contents</td><td>章节标题与页码；编号体系清晰逻辑</td><td>—</td></tr>
+      <tr><td>1 范围与适用领域 Scope</td><td>适用的标准/认可文件声明；适用的领域/专业/部门；不适用免责声明</td><td>5.3 / 5.4</td></tr>
+      <tr><td>2 引用文件 References</td><td>引用的标准/法规/认可机构文件（避免正文冗余）</td><td>8.2</td></tr>
+      <tr><td>3 术语与定义 Definitions</td><td>手册内特有/专用术语（标准术语可引用 VIM / ISO 指南）</td><td>8.2</td></tr>
+      <tr><td>4 缩略语 Abbreviations</td><td>缩写与全称对照表</td><td>8.2</td></tr>
+      <tr><td>5 实验室简介 Introduction</td><td>名称、位置、联系方式；业务性质、背景、规模；管理体系文件信息（版本、修订维护机制、批准证据）</td><td>5.1 / 5.2</td></tr>
+      <tr><td>6 质量方针与目标 Policy &amp; Objectives</td><td>质量方针声明、质量目标、方针传达与落实方式；方针须与 17025 一致，覆盖能力、公正性、一致运作</td><td>8.2.1 / 8.2.2</td></tr>
+      <tr><td>7 管理体系要素 Elements</td><td>按 17025 条款 4→8 顺序逐要素描述（见 1.2）</td><td>4 ~ 8</td></tr>
+      <tr><td>8 文件、记录与表单清单 List</td><td>实验室维持的全部文件、记录、表单清单，并反向引用到正文</td><td>8.4</td></tr>
+      <tr><td>附录 Annexures</td><td>支持性资料（组织架构图、量值溯源图、流程图等）</td><td>—</td></tr>
+      <tr><td>页脚 Page Footer</td><td>每页：实验室名称、手册名称、版本状态、修订状态、页码</td><td>8.3</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.2 管理体系要素章节（第 7 章）——按 17025 条款映射</h3>
+  <p class="lead">每个要素统一按「方针/目标 → 负责岗位 → 引用的程序文件 → 相关记录」四段式描述，并交叉引用 B/C/D 级文件。要素清单与条款映射如下：</p>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:44%"><col style="width:34%"></colgroup>
+    <thead><tr><th>手册要素章节</th><th>要素声明要点</th><th>关联条款 / 下级文件</th></tr></thead>
+    <tbody>
+      <tr><td>7.1 公正性 Impartiality</td><td>组织架构与管理方式确保公正；行为准则全员签署；公正性风险评估与委员会定期复评；禁止商业、财务或其他压力损害公正性</td><td><span class="clause">4.1</span> → B-公正性与风险管理程序、D-风险登记表</td></tr>
+      <tr><td>7.2 保密性 Confidentiality</td><td>对客户信息保密总责；保密协议约束全员（含承包商）；法律要求披露时通知客户；第三方来源信息保密</td><td><span class="clause">4.2</span> → B-保密管理程序、D-保密协议</td></tr>
+      <tr><td>7.3 结构要求 Structural</td><td>法律实体与注册；活动范围界定文件；组织架构图（含在母体组织中的位置）；岗位职责权限；质量/技术负责人权责；内部沟通与体系完整性</td><td><span class="clause">5.1–5.7</span> → A 附录组织图、D-岗位说明书</td></tr>
+      <tr><td>7.4 资源要求总则</td><td>人员、设施、设备、系统、支持服务满足活动范围需要</td><td><span class="clause">6.1</span> → 引用 B/C 级</td></tr>
+      <tr><td>7.5 人员 Personnel</td><td>能力要求（教育/资格/培训/技能/经验）文件化；选择、培训、监督、授权、能力监控程序与记录；授权活动表（方法开发/结果分析/报告授权）</td><td><span class="clause">6.2</span> → B-人员管理程序、D-培训/授权/监督记录</td></tr>
+      <tr><td>7.6 设施与环境 Facilities &amp; Environment</td><td>设施环境适宜性文件化；影响结果的环境条件监控记录；区域准入控制、防交叉污染、不相容活动有效隔离；现场/外部设施要求</td><td><span class="clause">6.3</span> → B-设施环境控制程序、D-温湿度记录</td></tr>
+      <tr><td>7.7 设备 Equipment</td><td>设备获取与验证；校准条件与计划；校准状态标识（含标签替代方案）；异常设备停用与影响评估；期间核查；参考值/修正因子更新；防误调；设备记录（a–h 八项）</td><td><span class="clause">6.4.1–6.4.13</span> → B-设备管理程序、D-设备台账/校准/期间核查/异常记录</td></tr>
+      <tr><td>7.8 计量溯源性 Metrological Traceability</td><td>建立并保持不间断校准链；SI 溯源途径（认可实验室/认可标准物质/国家计量院直接复现）；无法溯源至 SI 时的替代参考</td><td><span class="clause">6.5</span> → B-量值溯源程序、A 附录溯源图</td></tr>
+      <tr><td>7.9 外部提供的产品和服务 External Provision</td><td>外供产品/服务适用性判定；需求定义、供应商评价选择监控再评价程序；使用前符合性确认；与供应商沟通要求</td><td><span class="clause">6.6</span> → B-供应商管理程序、D-供应商评价表/合格名录</td></tr>
+      <tr><td>7.10 要求、标书与合同评审 Review</td><td>需求充分定义理解；能力资源满足；外部提供告知与客户批准；方法适用；客户要求过时方法时告知；符合性声明决策规则；合同分歧先解决；偏离预先告知；保留评审记录</td><td><span class="clause">7.1</span> → B-合同评审程序、D-合同评审记录</td></tr>
+      <tr><td>7.11 方法选择、验证与确认 Methods</td><td>方法选择与确认验证；最新有效版本；客户未指定时选择并告知；引入前验证；方法开发计划与授权；偏离须文件化+技术论证+授权+客户同意；非标/自研/超范围标准方法须确认（六种技术之一）；变更后再验证；验证确认记录</td><td><span class="clause">7.2.1 / 7.2.2</span> → B-方法管理程序、D-方法验证/确认记录</td></tr>
+      <tr><td>7.12 抽样 Sampling</td><td>抽样计划与方法文件化并现场可得；抽样方法组成（选点/计划/制备）；抽样数据记录（方法、时间、样品标识、人员、设备、环境、图示、偏离）</td><td><span class="clause">7.3</span>（不适用可声明）→ B-抽样程序、C-抽样作业指导书、D-抽样记录</td></tr>
+      <tr><td>7.13 样品处置 Item Handling</td><td>运输/接收/处理/保护/存储/保留/处置或退回程序；防变质污染丢失；遵循客户处理说明；唯一标识系统；偏离记录与客户确认；特定存储环境监控</td><td><span class="clause">7.4</span> → B-样品管理程序、D-样品接收/登记/拒收/处置记录</td></tr>
+      <tr><td>7.14 技术记录 Technical Records</td><td>每项活动的记录含结果/报告/日期/人员；原始观察与数据即时记录；修改可追溯（保留原数据、修改日期、修改内容、修改人）</td><td><span class="clause">7.5</span> → B-技术记录控制程序、D-原始记录表</td></tr>
+      <tr><td>7.15 测量不确定度 Uncertainty</td><td>识别并考虑所有显著贡献（含抽样）；校准实验室须评定全部校准不确定度；测试实验室按方法规定或基于原理/经验评定；报告以同单位或相对形式给出</td><td><span class="clause">7.6</span> → B-不确定度评定程序、C-分项评定指导书、D-评定记录</td></tr>
+      <tr><td>7.16 结果有效性监控 Validity of Results</td><td>监控计划（参考物质/质控样、替代仪器、功能检查、控制图、期间核查、复测、留样再测、特性相关性、报告复核、室内比对、盲样）；能力验证/实验室间比对计划覆盖全范围；数据超限即时处置</td><td><span class="clause">7.7</span> → B-质量控制程序、D-质控图/PT 计划与结果</td></tr>
+      <tr><td>7.17 结果报告 Reporting</td><td>结果发布前复核授权；报告通用要素 a–p；测试/校准/抽样报告特定要求；符合性声明含决策规则与风险；意见解释授权与依据记录；报告修改只以新报告形式并含声明</td><td><span class="clause">7.8</span> → B-报告控制程序、C-报告编制指导书、D-报告模板</td></tr>
+      <tr><td>7.18 投诉 Complaints</td><td>投诉接收/确认/调查/决策的成文流程；跟踪记录；告知进展与结果；结果由非涉案人员审批；正式结束通知</td><td><span class="clause">7.9</span> → B-投诉处理程序、D-投诉登记与处理记录</td></tr>
+      <tr><td>7.19 不符合工作 Nonconforming Work</td><td>不符合识别与责任权限；按风险级别采取措施（暂停/重复/扣留报告）；影响评估含既往结果；可接受性判定；通知客户与召回；恢复工作授权；记录保留</td><td><span class="clause">7.10</span> → B-不符合工作管理程序、D-不符合工作记录</td></tr>
+      <tr><td>7.20 数据与信息管理 Data &amp; Information</td><td>数据可获取；LIMS 使用前验证、变更授权后重新验证；防未授权访问、防篡改丢失；运行环境合规；系统故障记录与纠正；外部托管合规；计算与传输复核</td><td><span class="clause">7.11</span> → B-数据信息管理程序、D-系统权限/备份/故障记录</td></tr>
+      <tr><td>7.21 管理体系要求 Management System</td><td>声明 Option A（按 8.2–8.9 建立）或 Option B（按 ISO 9001 建立并满足第 4–7 章与 8.2–8.9 意图）；体系文件化、方针目标全员知悉</td><td><span class="clause">8.1 / 8.2</span> → 选项声明</td></tr>
+      <tr><td>7.22 文件控制 Document Control</td><td>内外文件受控；发布前充分性批准；定期评审更新；变更与现行版本识别；使用点可得且分发受控；唯一标识；防止误用作废文件</td><td><span class="clause">8.3</span> → B-文件控制程序、D-文件发放/回收/作废记录</td></tr>
+      <tr><td>7.23 记录控制 Record Control</td><td>清晰可读记录；标识/存储/保护/备份/归档/检索/保存期/处置控制；保存期考虑法规合同义务；保密性</td><td><span class="clause">8.4</span> → B-记录控制程序、D-记录归档/销毁记录</td></tr>
+      <tr><td>7.24 风险与机遇 Risk &amp; Opportunities</td><td>考虑风险机遇以达成体系预期、增强机会、预防失败、实现改进；策划应对行动并评估有效性</td><td><span class="clause">8.5</span> → B-风险管理程序、D-风险登记册</td></tr>
+      <tr><td>7.25 改进 Improvement</td><td>识别并选择改进机会；收集分析客户正负反馈用于改进</td><td><span class="clause">8.6</span> → B-改进与客户反馈程序、D-客户满意度调查表</td></tr>
+      <tr><td>7.26 纠正措施 Corrective Action</td><td>对不符合做出反应（控制纠正+处理后果）；评价消除原因的措施（评审/分析/判定相似不符合）；实施并评审有效性；更新风险机遇；体系变更；记录保留</td><td><span class="clause">8.7</span> → B-纠正措施程序、D-纠正措施记录</td></tr>
+      <tr><td>7.27 内部审核 Internal Audit</td><td>按计划频次内审；审核方案（频率/方法/职责/策划要求/报告）；审核准则与范围界定；结果报管理层；及时纠正与纠正措施；实施与结果证据记录</td><td><span class="clause">8.8</span> → B-内部审核程序、D-内审计划/检查表/报告</td></tr>
+      <tr><td>7.28 管理评审 Management Review</td><td>定期评审体系适宜充分有效；评审输入 15 项（内外变化/目标/方针程序适宜性/上次评审行动/内审结果/纠正/外部评审/工作量变化/客户与人员反馈/投诉/改进有效性/资源/风险/结果有效性/其他）；记录输出</td><td><span class="clause">8.9</span> → B-管理评审程序、D-管理评审输入/报告</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.3 要素描述四段式模板（可直接套用）</h3>
+  <table>
+    <colgroup><col style="width:24%"><col style="width:76%"></colgroup>
+    <tbody>
+      <tr><td><b>方针 Policy</b></td><td>本实验室承诺……（与对应 ISO/IEC 17025 条款一致的一句话声明）</td></tr>
+      <tr><td><b>目标 Objectives</b></td><td>本要素拟达成的可衡量目标（如：设备校准及时率 ≥ 98%）</td></tr>
+      <tr><td><b>负责岗位 Responsibility</b></td><td>负责执行/监督本要素的岗位或职能（如：技术负责人、设备管理员）</td></tr>
+      <tr><td><b>引用程序 Referenced procedures</b></td><td>《XX 管理程序》编号：LP-XXX（详细流程在 B 级文件，此处仅概述）</td></tr>
+      <tr><td><b>相关记录 Related records</b></td><td>FR-XXX《XX 记录表》等（证据在此产生）</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>示例（4.1 公正性）：</b><b>方针</b>——实验室对实验室活动的公正性负责，不允许任何商业、财务或其他压力损害公正性。<b>目标</b>——年度公正性风险评估覆盖率 100%。<b>负责岗位</b>——质量负责人、公正性委员会。<b>程序</b>——LP-001《公正性与风险管理程序》。<b>记录</b>——FR-001《公正性风险识别与评价表》、行为准则签署记录。</div>
+</div>
+
+<!-- ===================== 2 B级 ===================== -->
+<h2><span class="no">2</span>B 级 · 程序文件（LP）章节结构</h2>
+<p class="lead">程序文件描述跨岗位流程——谁、何时、何地、做什么、如何做。基于管理体系程序文件的通行编写惯例，推荐统一八段式骨架加支撑章节：</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">2.1 程序文件统一章节骨架</h3>
+  <table>
+    <colgroup><col style="width:20%"><col style="width:56%"><col style="width:24%"></colgroup>
+    <thead><tr><th>章节</th><th>必须包含的要素</th><th>写法要点</th></tr></thead>
+    <tbody>
+      <tr><td>文件头 Document header</td><td>文件编号（LP-XXX）、版本号、生效日期、编制/审核/批准人签署栏</td><td>与手册/表单编号体系统一</td></tr>
+      <tr><td>1 目的 Purpose</td><td>本程序的意图；满足的 ISO/IEC 17025 条款引用</td><td>一句话到一段话，可含符合性评估说明</td></tr>
+      <tr><td>2 适用范围 Scope</td><td>适用部门、活动类型；明确不适用的例外</td><td>含精度/准确度/适用边界说明</td></tr>
+      <tr><td>3 职责 Responsibilities</td><td>各岗位在本流程中的职责与权限分配</td><td>岗位而非人名</td></tr>
+      <tr><td>4 定义与缩略语 Definitions</td><td>流程内特有术语、缩写全称</td><td>可引用 VIM / 标准定义</td></tr>
+      <tr><td>5 程序 Procedure</td><td>逐步流程（步骤、判定点、控制点、关键参数、异常处理）；可用流程图辅助</td><td>核心章节，须闭环、可审计</td></tr>
+      <tr><td>6 记录 Records</td><td>本程序产生的记录/表单编号清单、保存期限</td><td>与 D 级表单一一对应</td></tr>
+      <tr><td>7 相关文件 References</td><td>引用的手册章节、其他程序、作业指导书、外部标准</td><td>交叉引用完整</td></tr>
+      <tr><td>8 附录 Appendices</td><td>流程图、工作表、模板、计算说明</td><td>支持性资料</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>技术文件中一种成熟的程序结构：</b>1 引言（1.1 目的 / 1.2 定义 / 1.3 溯源链定义 / 1.5 前提条件 / 1.6 责任 / 1.7 安全）→ 2 方法（2.1 概述 / 2.2 程序）→ 3 计算 → 4 不确定度分配 → 引用 → 附录。其中高价值章节——前提条件（Prerequisites）、责任（Responsibility）和安全（Safety）——已并入上表骨架的第 4 / 3 / 5 章。</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">2.2 建议建立的程序文件清单（对照 17025 条款）</h3>
+  <table>
+    <colgroup><col style="width:30%"><col style="width:34%"><col style="width:36%"></colgroup>
+    <thead><tr><th>程序文件</th><th>覆盖条款</th><th>必须包含的控制点</th></tr></thead>
+    <tbody>
+      <tr><td>LP-001 公正性与风险管理程序</td><td><span class="clause">4.1 / 8.5</span></td><td>行为准则、风险识别、评价、复评、应对措施与有效性评估</td></tr>
+      <tr><td>LP-002 保密管理程序</td><td><span class="clause">4.2</span></td><td>保密协议、信息访问权限、披露流程、第三方信息</td></tr>
+      <tr><td>LP-003 人员管理程序</td><td><span class="clause">6.2</span></td><td>能力要求确定、选择、培训、监督、授权、能力监控（a–f）</td></tr>
+      <tr><td>LP-004 设施与环境控制程序</td><td><span class="clause">6.3</span></td><td>环境要求、监控、记录、区域准入、防交叉污染、有效隔离</td></tr>
+      <tr><td>LP-005 设备管理程序</td><td><span class="clause">6.4</span></td><td>获取验证、校准计划、期间核查、停用与影响评估、防误调、设备记录（a–h）</td></tr>
+      <tr><td>LP-006 量值溯源程序</td><td><span class="clause">6.5</span></td><td>溯源链、SI 溯源途径、非 SI 参考、溯源图维护</td></tr>
+      <tr><td>LP-007 外部供应商管理程序</td><td><span class="clause">6.6</span></td><td>需求定义、评价准则、选择、绩效监控、再评价、沟通</td></tr>
+      <tr><td>LP-008 合同评审程序</td><td><span class="clause">7.1</span></td><td>需求确认、能力资源评估、外部提供告知、决策规则、偏离处理、评审记录</td></tr>
+      <tr><td>LP-009 方法选择验证与确认程序</td><td><span class="clause">7.2</span></td><td>方法选择、验证、开发授权、偏离控制、确认技术、记录（a–e）</td></tr>
+      <tr><td>LP-010 抽样程序</td><td><span class="clause">7.3</span>（如适用）</td><td>抽样计划、方法组成、抽样数据记录（a–h）</td></tr>
+      <tr><td>LP-011 样品管理程序</td><td><span class="clause">7.4</span></td><td>全流程保护、唯一标识、偏离与客户确认、存储条件监控</td></tr>
+      <tr><td>LP-012 技术记录控制程序</td><td><span class="clause">7.5</span></td><td>原始记录即时性、修改留痕、可追溯</td></tr>
+      <tr><td>LP-013 测量不确定度评定程序</td><td><span class="clause">7.6</span></td><td>显著贡献识别、评定方法、报告要求</td></tr>
+      <tr><td>LP-014 质量控制程序（结果有效性）</td><td><span class="clause">7.7</span></td><td>监控技术选择、计划、PT/ILC 覆盖、数据超限处置</td></tr>
+      <tr><td>LP-015 报告控制程序</td><td><span class="clause">7.8</span></td><td>报告要素、授权、符合性声明决策规则、修改/重发流程</td></tr>
+      <tr><td>LP-016 投诉处理程序</td><td><span class="clause">7.9</span></td><td>接收、确认、调查、决策、跟踪、结果审批、通知</td></tr>
+      <tr><td>LP-017 不符合工作管理程序</td><td><span class="clause">7.10</span></td><td>责任权限、风险分级措施、影响评估、通知召回、恢复授权（a–f）</td></tr>
+      <tr><td>LP-018 数据与信息管理程序</td><td><span class="clause">7.11</span></td><td>LIMS 验证、访问控制、防篡改、备份、故障处理、计算复核</td></tr>
+      <tr><td>LP-019 文件控制程序</td><td><span class="clause">8.3</span></td><td>批准、评审更新、变更识别、分发控制、唯一标识、作废防止（a–f）</td></tr>
+      <tr><td>LP-020 记录控制程序</td><td><span class="clause">8.4</span></td><td>标识、存储、保护、备份、归档、检索、保存期、处置</td></tr>
+      <tr><td>LP-021 纠正措施程序</td><td><span class="clause">8.7</span></td><td>反应控制、原因评价、措施实施、有效性评审、体系更新、记录</td></tr>
+      <tr><td>LP-022 改进与客户反馈程序</td><td><span class="clause">8.6</span></td><td>改进机会识别、反馈收集分析、措施落实</td></tr>
+      <tr><td>LP-023 内部审核程序</td><td><span class="clause">8.8</span></td><td>审核方案、准则范围、执行、报告、整改验证、记录</td></tr>
+      <tr><td>LP-024 管理评审程序</td><td><span class="clause">8.9</span></td><td>频次、15 项输入、输出决议、资源保障</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>裁剪说明：</b>清单为「管理+技术」完整基线，小型实验室可按适用性合并（如 LP-016/017/021 可并为《不符合、纠正与投诉控制程序》），但合并后须保留各条款要素；不适用条款在手册中声明「Not Applicable」并说明理由。</div>
+</div>
+
+<!-- ===================== 3 C级 ===================== -->
+<h2><span class="no">3</span>C 级 · 作业指导书（WI）章节结构</h2>
+<p class="lead">作业指导书把程序文件细化为岗位级「照做即可」的逐步指令。广泛使用的 SOP 结构如下：</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">3.1 作业指导书统一章节骨架</h3>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:54%"><col style="width:24%"></colgroup>
+    <thead><tr><th>章节</th><th>必须包含的要素</th><th>写法要点</th></tr></thead>
+    <tbody>
+      <tr><td>文件头 Document header</td><td>编号（WI-XXX / SOP-XXX）、版本、生效日期、审批签署</td><td>与程序文件交叉引用</td></tr>
+      <tr><td>1 试验目的 Purpose of test</td><td>本操作的目标与适用对象；测量原理概述</td><td>含符合性评估说明（如适用）</td></tr>
+      <tr><td>2 适用范围、精度与准确度 Scope, precision &amp; accuracy</td><td>适用样品/器具范围、量程、预期精度与准确度边界</td><td>量化（如 1 mL–20 L）</td></tr>
+      <tr><td>3 前提条件 Prerequisites</td><td>标准/设备校准证书有效性、标准不确定度、设备状态（控制图）、人员培训、试剂水质、环境条件</td><td>逐条可核查（编号 3.1、3.2…）</td></tr>
+      <tr><td>4 依据与设备 Standards &amp; equipment</td><td>引用标准、设备清单及技术指标（分辨率、不确定度要求）</td><td>设备指标量化</td></tr>
+      <tr><td>5 操作步骤 Procedure</td><td>逐步指令（编号 5.1、5.2…），关键读数/停留时间/判定点；异常处理；重复测定次数</td><td>核心章节，新人照做可复现</td></tr>
+      <tr><td>6 数据处理与计算 Calculations</td><td>公式、符号定义、单位、有效位数、舍入规则</td><td>附计算示例</td></tr>
+      <tr><td>7 记录与报告 Records &amp; reporting</td><td>应填写的原始记录/报告格式、结果表达方式、符合性结论规则</td><td>指向 D 级表单</td></tr>
+      <tr><td>8 不确定度考虑 Uncertainty</td><td>本操作的主要不确定度来源与分配（如适用）</td><td>与不确定度评定程序对齐</td></tr>
+      <tr><td>9 安全注意事项 Safety</td><td>防护、禁忌（如禁用自来水）、废弃物处理</td><td>逐条明确</td></tr>
+      <tr><td>10 相关文件与附录 References / appendices</td><td>引用的程序/其他 WI/外部标准；数据表、图解、示例</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">3.2 作业指导书类型清单（按用途分类）</h3>
+  <div class="grid2">
+    <div class="card">
+      <b>方法操作类（每项检测/校准项目 1 份）</b>
+      <ul class="clean">
+        <li>检测方法操作指导书（化学/物理/生物等）</li>
+        <li>校准操作指导书（含不确定度预算表）</li>
+        <li>现场/移动/客户现场检测操作指导书</li>
+        <li>非标与自研方法操作指导书</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>设备操作与维护类</b>
+      <ul class="clean">
+        <li>大型/精密设备操作规程</li>
+        <li>设备日常维护与清洁指导书</li>
+        <li>期间核查操作指导书</li>
+        <li>标准物质/参考物质使用指导书</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>样品与数据类</b>
+      <ul class="clean">
+        <li>样品接收/制备/前处理指导书</li>
+        <li>抽样作业指导书</li>
+        <li>样品保存与处置指导书</li>
+        <li>数据计算与统计分析指导书</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>支持与安全类</b>
+      <ul class="clean">
+        <li>试剂/耗材验收与贮存指导书</li>
+        <li>实验室安全操作规程</li>
+        <li>废弃物管理指导书</li>
+        <li>软件/LIMS 操作指导书</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 4 D级 ===================== -->
+<h2><span class="no">4</span>D 级 · 表单与记录（FR）结构与清单</h2>
+<p class="lead">表单是记录的唯一载体，也是审核最直接抓取的证据。遵循通行的记录管理实践，表单必须满足「唯一标识、字段完整、可追溯、修改留痕、保存期明确」。</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">4.1 表单统一结构</h3>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+    <tbody>
+      <tr><td><b>表头区 Header zone</b></td><td>表单名称、编号（FR-XXX）、版本号、生效日期、页码（第 X 页 / 共 Y 页）</td></tr>
+      <tr><td><b>信息区 Information zone</b></td><td>对象标识（设备编号/样品编号/人员姓名）、日期时间、地点/条件、依据文件编号</td></tr>
+      <tr><td><b>数据区 Data zone</b></td><td>字段名、单位、读数/结果栏、判定栏；必填字段显式标注</td></tr>
+      <tr><td><b>控制区 Control zone</b></td><td>记录人签字与日期、复核人签字与日期、异常备注区</td></tr>
+      <tr><td><b>归档区 Archive zone</b></td><td>保存期限、归档位置、密级标识</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>记录修改规则（对应 ISO/IEC 17025:2017 第 7.5.2 条）：</b>原始数据不得覆盖或涂改——划线保留原值、旁注更正值、注明修改人签字与日期；电子记录须系统留痕（审计追踪）。</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">4.2 记录/表单清单（按管理对象分类）</h3>
+  <table>
+    <colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+    <thead><tr><th>类别</th><th>表单清单</th></tr></thead>
+    <tbody>
+      <tr><td>设备类</td><td>设备台账、设备使用记录、设备维护/保养记录、设备校准计划与记录、校准证书归档表、期间核查记录、设备异常/维修/停用记录、设备验收/安装确认表</td></tr>
+      <tr><td>环境类</td><td>温湿度日常监控记录、冰箱温度记录、培养箱温度记录、环境条件异常处理记录</td></tr>
+      <tr><td>样品类</td><td>样品接收/登记表、样品拒收记录、样品标识卡、样品制备/前处理记录、样品存储与处置记录、留样登记表</td></tr>
+      <tr><td>人员类</td><td>培训计划与培训记录、能力考核/评价记录、人员授权表、监督记录、岗位能力要求表、行为准则签署记录</td></tr>
+      <tr><td>检测/校准类</td><td>检测原始记录表（各项目）、校准原始记录表、方法验证/确认记录、不确定度评定记录表、质量控制图、能力验证/实验室间比对计划与结果记录</td></tr>
+      <tr><td>质量体系类</td><td>内部审核计划/检查表/不符合项报告/内审报告、管理评审输入/输出报告、不符合工作记录、纠正措施记录、投诉登记与处理记录、风险识别与评价表、改进建议表</td></tr>
+      <tr><td>采购供应类</td><td>供应商评价与再评价表、合格供应商名录、试剂/耗材/标准物质验收记录、库存卡、采购申请单</td></tr>
+      <tr><td>报告合同类</td><td>合同评审记录、客户要求变更记录、报告发放登记、报告修改/重发申请单、客户反馈/满意度调查表</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===================== 5 条款映射 ===================== -->
+<h2><span class="no">5</span>ISO/IEC 17025:2017 条款 → 四级文件映射总表</h2>
+<p class="lead">本表为「精准、周全」的核心交付：逐条款给出应输出的文件层级与名称，可直接用于体系搭建清单与审核准备核对。</p>
+
+<div class="card">
+  <table>
+    <colgroup><col style="width:16%"><col style="width:44%"><col style="width:40%"></colgroup>
+    <thead><tr><th>17025 条款</th><th>要求要点</th><th>应输出的文件（层级）</th></tr></thead>
+    <tbody>
+      <tr><td class="clause">4.1</td><td>公正性：组织、管理、风险评估、承诺</td><td>A 手册声明 · <span class="tag t-B">B</span> 公正性风险管理程序 · <span class="tag t-D">D</span> 风险识别评价表</td></tr>
+      <tr><td class="clause">4.2</td><td>保密性：客户信息保护、法律披露、第三方</td><td>A 手册声明 · <span class="tag t-B">B</span> 保密管理程序 · <span class="tag t-D">D</span> 保密协议</td></tr>
+      <tr><td class="clause">5.1–5.7</td><td>结构：法律实体、负责人、范围、组织、职责、沟通</td><td>A 手册（含组织图附录）· <span class="tag t-D">D</span> 岗位说明书 · 注册/资质证明</td></tr>
+      <tr><td class="clause">6.1</td><td>资源总则</td><td>A 资源声明 · 引用 B/C</td></tr>
+      <tr><td class="clause">6.2</td><td>人员：能力要求、选择、培训、监督、授权、监控</td><td><span class="tag t-B">B</span> 人员管理程序 · <span class="tag t-D">D</span> 培训/考核/授权/监督记录</td></tr>
+      <tr><td class="clause">6.3</td><td>设施与环境：适宜性、监控、隔离、现场</td><td><span class="tag t-B">B</span> 设施环境控制程序 · <span class="tag t-D">D</span> 温湿度/异常记录</td></tr>
+      <tr><td class="clause">6.4</td><td>设备：验证、校准、期间核查、标识、异常、记录</td><td><span class="tag t-B">B</span> 设备管理程序 · <span class="tag t-D">D</span> 台账/使用/维护/校准/期间核查记录</td></tr>
+      <tr><td class="clause">6.5</td><td>计量溯源性：校准链、SI、非 SI 参考</td><td><span class="tag t-B">B</span> 量值溯源程序 · A 附录溯源图 · <span class="tag t-D">D</span> 校准证书归档</td></tr>
+      <tr><td class="clause">6.6</td><td>外部产品与服务：评价、选择、监控、再评价</td><td><span class="tag t-B">B</span> 供应商管理程序 · <span class="tag t-D">D</span> 评价表/合格名录/验收记录</td></tr>
+      <tr><td class="clause">7.1</td><td>要求、标书、合同评审</td><td><span class="tag t-B">B</span> 合同评审程序 · <span class="tag t-D">D</span> 合同评审记录/变更记录</td></tr>
+      <tr><td class="clause">7.2</td><td>方法选择、验证、确认</td><td><span class="tag t-B">B</span> 方法管理程序 · <span class="tag t-C">C</span> 方法操作指导书 · <span class="tag t-D">D</span> 验证/确认记录</td></tr>
+      <tr><td class="clause">7.3</td><td>抽样（如适用）</td><td><span class="tag t-B">B</span> 抽样程序 · <span class="tag t-C">C</span> 抽样指导书 · <span class="tag t-D">D</span> 抽样记录</td></tr>
+      <tr><td class="clause">7.4</td><td>样品处置：全流程保护、标识、偏离</td><td><span class="tag t-B">B</span> 样品管理程序 · <span class="tag t-D">D</span> 接收/拒收/制备/处置记录</td></tr>
+      <tr><td class="clause">7.5</td><td>技术记录：即时、修改留痕</td><td><span class="tag t-B">B</span> 技术记录控制程序 · <span class="tag t-D">D</span> 原始记录表</td></tr>
+      <tr><td class="clause">7.6</td><td>测量不确定度评定</td><td><span class="tag t-B">B</span> 不确定度评定程序 · <span class="tag t-C">C</span> 分项评定指导书 · <span class="tag t-D">D</span> 评定记录</td></tr>
+      <tr><td class="clause">7.7</td><td>结果有效性监控、PT/ILC</td><td><span class="tag t-B">B</span> 质量控制程序 · <span class="tag t-D">D</span> 质控图/PT 计划结果</td></tr>
+      <tr><td class="clause">7.8</td><td>报告：通用要素、特定要求、符合性、修改</td><td><span class="tag t-B">B</span> 报告控制程序 · <span class="tag t-C">C</span> 报告编制指导书 · <span class="tag t-D">D</span> 报告模板/发放记录</td></tr>
+      <tr><td class="clause">7.9</td><td>投诉处理</td><td><span class="tag t-B">B</span> 投诉处理程序 · <span class="tag t-D">D</span> 投诉登记/处理/结案记录</td></tr>
+      <tr><td class="clause">7.10</td><td>不符合工作管理</td><td><span class="tag t-B">B</span> 不符合工作程序 · <span class="tag t-D">D</span> 不符合工作记录</td></tr>
+      <tr><td class="clause">7.11</td><td>数据与信息管理（LIMS）</td><td><span class="tag t-B">B</span> 数据信息管理程序 · <span class="tag t-D">D</span> 权限/备份/故障记录</td></tr>
+      <tr><td class="clause">8.1–8.2</td><td>体系选项（A/B）、体系文件化</td><td>A 手册 · 方针目标声明 · 文件清单</td></tr>
+      <tr><td class="clause">8.3</td><td>文件控制</td><td><span class="tag t-B">B</span> 文件控制程序 · <span class="tag t-D">D</span> 发放/回收/作废记录</td></tr>
+      <tr><td class="clause">8.4</td><td>记录控制</td><td><span class="tag t-B">B</span> 记录控制程序 · <span class="tag t-D">D</span> 归档/销毁记录</td></tr>
+      <tr><td class="clause">8.5</td><td>风险与机遇</td><td><span class="tag t-B">B</span> 风险管理程序 · <span class="tag t-D">D</span> 风险登记册</td></tr>
+      <tr><td class="clause">8.6</td><td>改进、客户反馈</td><td><span class="tag t-B">B</span> 改进程序 · <span class="tag t-D">D</span> 满意度调查/改进记录</td></tr>
+      <tr><td class="clause">8.7</td><td>纠正措施</td><td><span class="tag t-B">B</span> 纠正措施程序 · <span class="tag t-D">D</span> 纠正措施记录</td></tr>
+      <tr><td class="clause">8.8</td><td>内部审核</td><td><span class="tag t-B">B</span> 内部审核程序 · <span class="tag t-D">D</span> 计划/检查表/不符合报告/内审报告</td></tr>
+      <tr><td class="clause">8.9</td><td>管理评审</td><td><span class="tag t-B">B</span> 管理评审程序 · <span class="tag t-D">D</span> 评审输入/输出报告</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===================== 6 规则 ===================== -->
+<h2><span class="no">6</span>编写通用规则与十步流程</h2>
+<div class="card">
+  <h3 style="margin-top:0;">6.1 编写规则</h3>
+  <ul class="clean">
+    <li>写<b>简短句子</b>，使用常用词；使用<b>主动语态</b>，不用被动语态。</li>
+    <li>技术术语用<b>脚注或文内解释</b>，方便不同技术水平的读者理解。</li>
+    <li><b>不写成文章</b>——用条目化、流程化表达。</li>
+    <li>文件内容与<b>当前实际做法匹配</b>——先核对现状，再写文件。</li>
+    <li>面向文件使用者（执行者/审核员）编写，结构统一、可快速定位。</li>
+    <li>每个要素拆分为逻辑子段：方针 / 目标 / 负责岗位 / 程序引用 / 记录引用（见 1.3）。</li>
+    <li>不适用条款在手册中显式声明并说明理由。</li>
+  </ul>
+</div>
+<div class="card">
+  <h3 style="margin-top:0;">6.2 手册/程序编写十步流程</h3>
+  <div class="flow">
+    <div class="step"><b>1 收集</b>收集实验室在用全部文件并编制清单</div>
+    <div class="step"><b>2 归类</b>按 ISO/IEC 17025 结构将文件分入对应条款文件夹</div>
+    <div class="step"><b>3 梳理</b>列出各流程及其相互关联与应用场景</div>
+    <div class="step"><b>4 核对</b>分析实际工作是否按文件执行</div>
+    <div class="step"><b>5 修订</b>文件与实做不符的，修订文件或改进实做</div>
+    <div class="step"><b>6 起草</b>起草手册/程序，核对标准要求全覆盖</div>
+    <div class="step"><b>7 传阅</b>全员传阅、收集意见</div>
+    <div class="step"><b>8 编辑</b>吸纳意见、按标准对齐修订</div>
+    <div class="step"><b>9 通读</b>全文通读确认清晰无歧义</div>
+    <div class="step"><b>10 发布</b>授权发布使用，后续修订走受控流程</div>
+  </div>
+</div>
+
+</div>
+<footer class="foot">LabKitPro · ISO/IEC 17025:2017 四级文件模板骨架 · 依据 ISO/IEC 17025:2017 编制，对齐 ILAC 指南</footer>
+</body>
+</html>
