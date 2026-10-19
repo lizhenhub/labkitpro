@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>测量不确定度入门指南——GUM 与蒙特卡洛法 | LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%230f2f4a'/%3E%3Cpath d='M6 16l4-6 3 4 2-3 3 5H6z' fill='%2334d0b5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#10202e; --ink-2:#38505f; --muted:#5d7180;
+  --bg:#f6f8fa; --card:#ffffff; --line:#dde5eb;
+  --brand:#0f2f4a; --accent:#0e8f7d; --accent-2:#1b6ea8;
+  --warn:#a35b1a; --chip:#e7f4f1; --chip2:#e8f1f8;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:"Noto Sans SC","Microsoft YaHei","Segoe UI",-apple-system,sans-serif; background:var(--bg); color:var(--ink); line-height:1.8; font-size:15px;}
+.wrap{max-width:1040px; margin:0 auto; padding:0 24px 80px;}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%); color:#fff; padding:52px 24px 44px; margin-bottom:36px;}
+.hero-inner{max-width:1040px; margin:0 auto;}
+.kicker{font-size:13px; letter-spacing:2px; color:#8fd8cb; text-transform:uppercase; margin-bottom:10px;}
+h1{font-size:30px; font-weight:800; line-height:1.4; margin-bottom:12px;}
+.sub{font-size:15px; color:#cfe0ec; max-width:840px;}
+.badge-row{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;}
+.badge{font-size:12px; padding:4px 12px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#e8f2fa;}
+h2{font-size:22px; font-weight:800; color:var(--brand); margin:48px 0 6px; padding-top:8px;}
+h2 .no{display:inline-block; color:var(--accent); margin-right:10px;}
+h3{font-size:17px; font-weight:700; color:var(--ink-2); margin:26px 0 10px;}
+.lead{color:var(--muted); font-size:14px; margin-bottom:18px;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:14px 0;}
+table{width:100%; border-collapse:collapse; margin:12px 0 6px; font-size:13.5px; table-layout:fixed;}
+th{background:#eef3f7; color:var(--ink-2); font-weight:700; text-align:left; padding:9px 10px; border:1px solid var(--line);}
+td{padding:9px 10px; border:1px solid var(--line); vertical-align:top;}
+tbody tr:nth-child(even){background:#fafcfd;}
+.clause{font-family:ui-monospace,"Consolas",monospace; font-size:12px; color:var(--accent-2); font-weight:600; white-space:nowrap;}
+.formula{font-family:ui-monospace,"Consolas",monospace; background:#eef3f7; border-radius:8px; padding:10px 16px; margin:10px 0; font-size:13.5px; color:var(--ink-2);}
+.formula b{color:var(--accent-2);}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.grid2 .card{margin:0;}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+.grid3 .card{margin:0;}
+.flow{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0;}
+.step{flex:1 1 150px; background:#f0f7fb; border:1px solid #cfe0ec; border-radius:10px; padding:12px 14px; font-size:13px;}
+.step b{display:block; color:var(--accent-2); font-size:13px; margin-bottom:4px;}
+.note{background:#fff8ec; border:1px solid #f0d9b8; border-radius:10px; padding:14px 18px; font-size:13px; color:#6b5320; margin:14px 0;}
+.note b{color:#a35b1a;}
+.ok{background:#eef7f1; border:1px solid #bcd9c4; border-radius:10px; padding:14px 18px; font-size:13px; color:#2d5a3c; margin:14px 0;}
+.ok b{color:#1f7a3d;}
+.foot{margin-top:56px; padding:20px 24px 0; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; text-align:center;}
+.big{font-size:44px; font-weight:800; color:var(--accent); line-height:1.1;}
+.big small{display:block; font-size:13px; color:var(--muted); font-weight:600; margin-top:4px;}
+ul.clean{list-style:none; margin:8px 0;}
+ul.clean li{padding:5px 0 5px 26px; position:relative;}
+ul.clean li::before{content:""; position:absolute; left:8px; top:15px; width:7px; height:7px; border-radius:2px; background:var(--accent);}
+ul.clean li b{color:var(--ink-2);}
+@media(max-width:760px){
+  .grid2,.grid3{grid-template-columns:1fr;}
+  h1{font-size:24px;}
+  table{font-size:12.5px;}
+  th,td{padding:7px 6px;}
+  .wrap{padding:0 14px 60px;}
+  .card{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .card table{min-width:560px;}
+  .big{font-size:34px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro Academy · 免费指南</div>
+    <h1>测量不确定度，<br>从概念到报告，一次讲清楚</h1>
+    <div class="sub">以通俗而严谨的方式讲解国际上公认的两种测量不确定度评定方法——GUM 分析法和蒙特卡洛法——带真实数字、不碰微积分。依据 ISO/IEC 17025:2017 编制，与 GUM（JCGM 100:2008）和蒙特卡洛（JCGM 101:2008）指南对齐。</div>
+    <div class="badge-row">
+      <span class="badge">入门友好</span>
+      <span class="badge">GUM 法</span>
+      <span class="badge">蒙特卡洛法</span>
+      <span class="badge">真实算例</span>
+      <span class="badge">对齐 ISO/IEC 17025 §7.6</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===================== 0 核心概念 ===================== -->
+<h2><span class="no">0</span>核心思想</h2>
+<p class="lead">测量结果从来不是一个孤零零的数字。它是「最佳估计值 + 一段不确定带」——这段不确定带，就是测量不确定度。</p>
+
+<div class="card">
+  <div class="grid3">
+    <div>
+      <div class="big">0.1023<small>你报出的数字</small></div>
+    </div>
+    <div>
+      <div class="big">± 0.0007<small>数字周围的不确定区间（扩展，k=2）</small></div>
+    </div>
+    <div>
+      <div class="big">95%<small>真值落进区间的把握</small></div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px; margin-bottom:0;"><b>为什么重要：</b>客户拿你的结果去判定产品合格还是不合格。不确定区间太宽，合格品可能被误判拒收；太窄，不合格品可能漏判放行。不确定度是测量结果的<b>质量标签</b>——ISO/IEC 17025:2017 <span class="clause">§7.6</span> 要求：校准实验室必须报告不确定度，测试实验室只要报告数值型结果就必须评定。</div>
+</div>
+
+<!-- ===================== 1 术语 ===================== -->
+<h2><span class="no">1</span>四个核心术语</h2>
+<div class="grid2">
+  <div class="card">
+    <h3 style="margin-top:0;">标准不确定度 u(x)</h3>
+    <p>某一个不确定度来源的分散程度，用标准差表示。它是后续所有计算的<b>基础单元</b>。</p>
+    <p style="margin-top:8px;">例：天平漂移 ±0.05 g → u = 0.05/√3 ≈ <b>0.029 g</b>。</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">合成标准不确定度 u<sub>c</sub>(y)</h3>
+    <p>将各分量合成一个总值（先平方求和、再开方）。整个结果只有一个不确定度。</p>
+    <p style="margin-top:8px;">例：u<sub>c</sub> = √(0.029² + 0.015² + …) ≈ <b>0.036 g</b>。</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">扩展不确定度 U</h3>
+    <p>合成不确定度乘以一个<b>包含因子 k</b>，把区间加宽到能罩住绝大多数可能值。</p>
+    <p style="margin-top:8px;">例：U = k × u<sub>c</sub> = 2 × 0.036 ≈ <b>0.072 g</b>（约 95%）。</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">包含概率 p</h3>
+    <p>真值落在区间内的把握。95% 是国际默认值。</p>
+    <p style="margin-top:8px;">「我们约 95% 确信真值在 y−U 到 y+U 之间。」</p>
+  </div>
+</div>
+
+<!-- ===================== 2 方法一 GUM ===================== -->
+<h2><span class="no">2</span>方法一 · GUM 分析法</h2>
+<p class="lead">GUM =《测量不确定度表示指南》（JCGM 100:2008）。它是<b>「自下而上」</b>的方法：把测量拆开，找出每个怀疑来源，逐个折算成标准不确定度，再数学相加。</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">五个步骤</h3>
+  <div class="flow">
+    <div class="step"><b>1 · 建模</b>写出结果公式 y = f(x₁, x₂, …)，所有修正项都算进去。</div>
+    <div class="step"><b>2 · 列来源</b>校准、分辨力、温度、操作者、抽样、漂移……</div>
+    <div class="step"><b>3 · 逐项评定</b>把每个来源折算成标准不确定度 u(xᵢ)——A 类或 B 类。</div>
+    <div class="step"><b>4 · 合成</b>先平方求和、再开根号：u<sub>c</sub>(y)。</div>
+    <div class="step"><b>5 · 加宽</b>乘以 k（通常 2）得 U，报告「y ± U」。</div>
+  </div>
+</div>
+
+<h3>第 3 步 a · A 类评定——数离散度</h3>
+<div class="card">
+  <p>能重复测，就用<b>统计数据说话</b>。同一对象测 n 次，读数的分散程度就反映了这项随机效应。</p>
+  <div class="formula">A 类评定——平均值的标准不确定度：<br><b>u(x) = s / √n</b><br>其中 s 为 n 次读数的标准差。</div>
+  <div class="grid3">
+    <div><div class="big">5<small>同一份样品的重复读数</small></div></div>
+    <div><div class="big">s = 0.22<small>读数标准差</small></div></div>
+    <div><div class="big">u = 0.098<small>0.22 / √5 —— 你的 A 类分量</small></div></div>
+  </div>
+  <div class="note" style="margin-bottom:0;"><b>记住：</b>读数太少，估计就不可靠——这正是「自由度」（n−1）的含义。读数越多，u 越小也越可靠。</div>
+</div>
+
+<h3>第 3 步 b · B 类评定——从文件里找依据</h3>
+<div class="card">
+  <p>没法重复的来源（校准证书、厂家规格书、分辨力），就<b>读信息、做换算</b>。三种最常见的换算：</p>
+  <table>
+    <colgroup><col style="width:28%"><col style="width:36%"><col style="width:36%"></colgroup>
+    <thead><tr><th>信息来自哪里</th><th>怎么换算</th><th>算例</th></tr></thead>
+    <tbody>
+      <tr><td>校准证书给出 U 和 k</td><td>除以同一个 k</td><td>U = 0.002 mm、k=2 → u = 0.002/2 = <b>0.001 mm</b></td></tr>
+      <tr><td>厂家规格「± a」（没给置信水平）</td><td>按矩形（均匀）分布</td><td>±0.05 °C → u = 0.05/√3 ≈ <b>0.029 °C</b></td></tr>
+      <tr><td>规格「± a」，中间值更常见</td><td>按三角分布</td><td>±3 °C → u = 3/√6 ≈ <b>1.22 °C</b></td></tr>
+      <tr><td>证书没给置信水平</td><td>矩形分布，半宽 /√3</td><td>±0.1 % → u = 0.1/√3 ≈ <b>0.058 %</b></td></tr>
+    </tbody>
+  </table>
+  <div class="ok" style="margin-bottom:0;"><b>关键原则：避免重复计算。</b>如果重复读数里已经包含了温度带来的离散，就别再把温度单独当成 B 类项加一次。</div>
+</div>
+
+<h3>第 4 步 · 合成——平方、相加、开方</h3>
+<div class="card">
+  <p>结果 y 通常是输入量的和或积。两个实用捷径：</p>
+  <div class="formula">和或差（y = p + q + …）：<br><b>u<sub>c</sub>(y) = √(u(p)² + u(q)² + …)</b></div>
+  <div class="formula">积或商（y = p × q / r）：<br><b>u<sub>c</sub>(y)/y = √( (u(p)/p)² + (u(q)/q)² + (u(r)/r)² )</b></div>
+  <p style="margin-top:6px;">遇到「和里面套积」（如 (o+p)/(q+r)）？先用规则一合成 (o+p)，再用规则二与中间结果合成。</p>
+  <div class="note" style="margin-bottom:0;"><b>灵敏度系数在哪里：</b>当输入量单位不同（温度 °C vs 长度 mm）时，把它的 u 乘以<b>灵敏度系数</b> cᵢ = ∂f/∂xᵢ——也就是「这个输入每变化 1 个单位，结果跟着变多少」。上面和/积的捷径里，系数其实已经内建好了。</div>
+</div>
+
+<h3>第 5 步 · 扩展并报告</h3>
+<div class="card">
+  <div class="formula">扩展不确定度：<br><b>U = k × u<sub>c</sub>(y)</b>，k = 2 对应约 95%（k = 2.58 ≈ 99%）</div>
+  <table>
+    <colgroup><col style="width:34%"><col style="width:66%"></colgroup>
+    <thead><tr><th>报告形式（校准证书）</th><th>示例</th></tr></thead>
+    <tbody>
+      <tr><td>结果 + 扩展不确定度</td><td>长度 = <b>25.0034 mm ± 0.0012 mm</b></td></tr>
+      <tr><td>必附的解释性说明</td><td>「报告的扩展不确定度是合成标准不确定度乘以包含因子 k = 2 得到，对应于正态分布下约 95% 的包含概率。」</td></tr>
+      <tr><td>修约规则</td><td>不确定度最多两位有效数字（写 0.0012，不写 0.001234）；结果修约到与之对齐。</td></tr>
+    </tbody>
+  </table>
+  <div class="ok" style="margin-bottom:0;"><b>什么时候 k ≠ 2：</b>读数很少时，「正态假设」站不住。要用 <b>t 分布</b>（Welch–Satterthwaite 公式）根据有效自由度求正确的 k——精确方法见 JCGM 100:2008 附录 G。</div>
+</div>
+
+<!-- ===================== 3 方法二 蒙特卡洛 ===================== -->
+<h2><span class="no">3</span>方法二 · 蒙特卡洛法（MCM）</h2>
+<p class="lead">蒙特卡洛（JCGM 101:2008）以<b>随机抽样</b>为核心的方法。不用公式去传播不确定度，而是把整个测量模拟成千上万次，直接看模拟结果的离散范围。</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">流程总览</h3>
+  <div class="flow">
+    <div class="step"><b>1 · 给每个输入定分布</b>每个来源给一条概率曲线：正态、矩形、三角……</div>
+    <div class="step"><b>2 · 随机抽样 N 轮</b>跑（比如）100 万轮，每轮从每个分布里抽一个随机值。</div>
+    <div class="step"><b>3 · 每轮算一次结果</b>把抽样值喂进模型 y = f(…)。</div>
+    <div class="step"><b>4 · 收集直方图</b>你有了 100 万个模拟结果——它们的离散就是你的不确定度。</div>
+    <div class="step"><b>5 · 读出区间</b>直方图的 2.5% 和 97.5% 分位点，就是你的 95% 包含区间。</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">为什么电脑模拟有时更胜一筹</h3>
+  <table>
+    <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+    <thead><tr><th>场景</th><th>为什么蒙特卡洛更好</th></tr></thead>
+    <tbody>
+      <tr><td>模型高度非线性</td><td>GUM 的捷径（一阶公式）可能漏掉真实离散；模拟不靠近似。</td></tr>
+      <tr><td>分布不对称或特殊</td><td>矩形、三角、U 型——蒙特卡洛任何形状直接处理。</td></tr>
+      <tr><td>输入量量级差异悬殊</td><td>无需繁琐的灵敏度系数推导；每轮直接把模型算一遍。</td></tr>
+      <tr><td>输入量相关</td><td>可以显式建模相关性，按依赖关系抽样。</td></tr>
+      <tr><td>想要完整分布而非一个区间</td><td>直方图给出整个分布，不止是「均值 ± k·u」。</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>需要说明：</b>蒙特卡洛需要能跑上百万次的模型和一台电脑（或表格软件）。对简单、规规矩矩的测量，手算 GUM 更快也完全够格。两种方法都有效时，结果应在修约范围内一致。</div>
+</div>
+
+<!-- ===================== 4 怎么选 ===================== -->
+<h2><span class="no">4</span>该用哪种方法？</h2>
+<div class="grid2">
+  <div class="card">
+    <h3 style="margin-top:0;">用 GUM（分析法）当…</h3>
+    <ul class="clean">
+      <li>模型<b>简单、近似线性</b>（和、积、标准公式）。</li>
+      <li>输入量<b>没有强相关</b>。</li>
+      <li>需要一份<b>快速、可审计</b>的纸质证据给评审员。</li>
+      <li>你是校准实验室，日常出证书——最经典的场景。</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">用蒙特卡洛当…</h3>
+    <ul class="clean">
+      <li>模型<b>非线性</b>、复杂、不好求导。</li>
+      <li>分布<b>不对称、U 型或混合</b>。</li>
+      <li>输入量<b>相关</b>，且你能建模联合行为。</li>
+      <li>结果本来就靠软件算——加一段模拟循环很轻松。</li>
+    </ul>
+  </div>
+</div>
+<div class="ok"><b>结论：</b>拿不准就先上 GUM——它是国际公认的默认方法，也是多数评审员期待看到的。如果算起来很别扭（分布奇怪、公式非线性），就换蒙特卡洛。两种方法都科学有效；ISO/IEC 17025 并不指定用哪一种。</div>
+
+<!-- ===================== 5 预算表 ===================== -->
+<h2><span class="no">5</span>不确定度预算表——你的一页纸证明</h2>
+<p class="lead">评审员想在一张表里看到所有来源。这样建（示例：量块校准）：</p>
+<div class="card">
+  <table>
+    <colgroup><col style="width:18%"><col style="width:14%"><col style="width:16%"><col style="width:14%"><col style="width:18%"><col style="width:20%"></colgroup>
+    <thead><tr><th>来源 Xᵢ</th><th>值 xᵢ</th><th>u(xᵢ)</th><th>类别</th><th>灵敏度系数 cᵢ</th><th>贡献 uᵢ(y)</th></tr></thead>
+    <tbody>
+      <tr><td>参考标准</td><td>25.0000 mm</td><td>0.0004 mm</td><td>B</td><td>1</td><td>0.0004 mm</td></tr>
+      <tr><td>温度（三角分布）</td><td>±3 °C</td><td>1.22 °C</td><td>B</td><td>0.0002 mm/°C</td><td>0.00024 mm</td></tr>
+      <tr><td>重复性（n=5）</td><td>均值</td><td>0.0009 mm</td><td>A</td><td>1</td><td>0.0009 mm</td></tr>
+      <tr><td>分辨力</td><td>±0.0005 mm</td><td>0.00029 mm</td><td>B</td><td>1</td><td>0.00029 mm</td></tr>
+      <tr><td><b>合成 u<sub>c</sub></b></td><td colspan="3"></td><td>√Σ</td><td><b>0.00105 mm</b></td></tr>
+      <tr><td><b>扩展 U（k=2）</b></td><td colspan="3"></td><td></td><td><b>0.0021 mm</b></td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>一页纸一个故事：</b>这张表就是整个方法的压缩包——每个来源明确、每个分量清晰、合成过程透明、最终扩展不确定度直接上报告。养成这个习惯，评审沟通将更加顺畅。</div>
+</div>
+
+<!-- ===================== 6 常见错误 ===================== -->
+<h2><span class="no">6</span>六个常见的评审不符合项</h2>
+<div class="card">
+  <ul class="clean">
+    <li><b>重复计算</b>——把重复读数里已经含有的来源，又单独加了一个 B 类项。</li>
+    <li><b>忘了修正</b>——明知有系统偏差却不修正，还声称不确定度很小。</li>
+    <li><b>盲目使用 k=2</b>——读数太少时覆盖根本不是 95%；要用 t 分布。</li>
+    <li><b>位数太多</b>——报 0.001234567 mm 而不是 0.0012 mm。最多两位有效数字。</li>
+    <li><b>没有解释性说明</b>——只报「y ± U」，不说 k、分布和包含概率。</li>
+    <li><b>无视抽样</b>——你抽样并代表整批报告时，抽样误差是真实的不确定度来源。</li>
+  </ul>
+</div>
+
+<div class="ok" style="margin-top:22px;"><b>想省去手工计算？</b>LabKitPro 免费的<b>不确定度工具</b>能替你在几分钟内建好 GUM 和蒙特卡洛预算表——逻辑和本指南一模一样，只是数学全自动。<a href="https://labkitpro.com/" style="font-weight:700; color:var(--accent);">打开工具 →</a></div>
+
+</div>
+<footer class="foot">LabKitPro Academy · 免费指南 · 依据 ISO/IEC 17025:2017 §7.6 编制，与 GUM（JCGM 100:2008）和蒙特卡洛（JCGM 101:2008）指南对齐。本资源取材自公开官方文件，仅供内部学习与准备之用，不构成认可机构的裁定或法律意见。ISO/IEC 17025 为 ISO/IEC 商标；此处仅引用标准编号。</footer>
+</body>
+</html>

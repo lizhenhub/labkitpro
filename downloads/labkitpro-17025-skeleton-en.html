@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO/IEC 17025:2017 Four-Tier Document Skeleton | LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%230f2f4a'/%3E%3Cpath d='M6 16l4-6 3 4 2-3 3 5H6z' fill='%2334d0b5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#10202e; --ink-2:#38505f; --muted:#5d7180;
+  --bg:#f6f8fa; --card:#ffffff; --line:#dde5eb;
+  --brand:#0f2f4a; --accent:#0e8f7d; --accent-2:#1b6ea8;
+  --warn:#a35b1a; --chip:#e7f4f1; --chip2:#e8f1f8;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:"Noto Sans SC","Segoe UI",-apple-system,sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; font-size:15px;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 80px;}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%); color:#fff; padding:52px 24px 40px; margin-bottom:36px;}
+.hero-inner{max-width:1080px; margin:0 auto;}
+.kicker{font-size:13px; letter-spacing:2px; color:#8fd8cb; text-transform:uppercase; margin-bottom:10px;}
+h1{font-size:30px; font-weight:800; line-height:1.35; margin-bottom:12px;}
+.sub{font-size:15px; color:#cfe0ec; max-width:820px;}
+.badge-row{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;}
+.badge{font-size:12px; padding:4px 12px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#e8f2fa;}
+h2{font-size:22px; font-weight:800; color:var(--brand); margin:48px 0 6px; padding-top:8px;}
+h2 .no{display:inline-block; color:var(--accent); margin-right:10px;}
+h3{font-size:17px; font-weight:700; color:var(--ink-2); margin:28px 0 10px;}
+.lead{color:var(--muted); font-size:14px; margin-bottom:20px;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:14px 0;}
+table{width:100%; border-collapse:collapse; margin:12px 0 6px; font-size:13.5px; table-layout:fixed;}
+.table-scroll{overflow-x:auto;}
+th{background:#eef3f7; color:var(--ink-2); font-weight:700; text-align:left; padding:9px 10px; border:1px solid var(--line);}
+td{padding:9px 10px; border:1px solid var(--line); vertical-align:top;}
+tbody tr:nth-child(even){background:#fafcfd;}
+td .tag{display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; margin:1px 3px 1px 0;}
+.t-A{background:#fdeaea; color:#a23; } .t-B{background:var(--chip2); color:#1b6ea8;}
+.t-C{background:var(--chip); color:#0e8f7d;} .t-D{background:#f4f1e8; color:#8a6d1a;}
+.clause{font-family:ui-monospace,"Consolas",monospace; font-size:12px; color:var(--accent-2); font-weight:600; white-space:nowrap;}
+.pyramid{display:flex; flex-direction:column; align-items:center; gap:0; margin:22px auto 8px; max-width:640px;}
+.pyr{width:100%; text-align:center; color:#fff; padding:16px 12px; font-weight:700; border-radius:8px;}
+.pyr small{display:block; font-weight:400; font-size:12px; opacity:.9; margin-top:2px;}
+.p1{background:#2d5f8a; } .p2{background:#1b6ea8;} .p3{background:#0e8f7d;} .p4{background:#34b39c;}
+.pyr-arrow{color:var(--muted); font-size:11px; padding:2px 0; letter-spacing:1px;}
+ul.clean{list-style:none; margin:8px 0;}
+ul.clean li{padding:5px 0 5px 26px; position:relative;}
+ul.clean li::before{content:""; position:absolute; left:8px; top:14px; width:7px; height:7px; border-radius:2px; background:var(--accent);}
+ul.clean li b{color:var(--ink-2);}
+.flow{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0;}
+.step{flex:1 1 150px; background:#f0f7fb; border:1px solid #cfe0ec; border-radius:10px; padding:12px 14px; font-size:13px;}
+.step b{display:block; color:var(--accent-2); font-size:13px; margin-bottom:4px;}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.grid2 .card{margin:0;}
+.note{background:#fff8ec; border:1px solid #f0d9b8; border-radius:10px; padding:14px 18px; font-size:13px; color:#6b5320; margin:14px 0;}
+.note b{color:#a35b1a;}
+.foot{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; text-align:center;}
+details{border:1px solid var(--line); border-radius:10px; margin:10px 0; background:#fff;}
+summary{cursor:pointer; padding:12px 18px; font-weight:700; color:var(--ink-2); font-size:14px;}
+summary .clause{margin-left:8px;}
+details[open] summary{border-bottom:1px solid var(--line);}
+.detail-body{padding:6px 18px 16px;}
+@media(max-width:760px){
+  .grid2{grid-template-columns:1fr;}
+  h1{font-size:24px;}
+  table{font-size:12.5px;}
+  th,td{padding:7px 6px;}
+  .wrap{padding:0 14px 60px;}
+  .card{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .card table{min-width:600px;}
+  .card .note, .card h3, .card .lead{min-width:0;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · Template Skeleton</div>
+    <h1>ISO/IEC 17025:2017<br>Four-Tier Document Skeleton</h1>
+    <div class="sub">Chapter structures and element checklists for the Quality Manual (A), Procedures (B), Work Instructions (C) and Forms &amp; Records (D) — built on ISO/IEC 17025:2017. Use it as the scaffolding guide to plan and write your laboratory management system documents.</div>
+    <div class="badge-row">
+      <span class="badge">A · Quality Manual (QM)</span>
+      <span class="badge">B · Procedures (LP)</span>
+      <span class="badge">C · Work Instructions (WI)</span>
+      <span class="badge">D · Forms &amp; Records (FR)</span>
+      <span class="badge">Baseline: ISO/IEC 17025:2017</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===================== 0 Overview ===================== -->
+<h2><span class="no">0</span>Four-Tier Document System Overview</h2>
+<p class="lead">Management system documents are organized in four tiers following the standard pyramid model: Level A (Quality Manual) is the top-level policy document; Level B (Procedures) describes cross-functional processes; Level C (Work Instructions) provides position-level operational detail; Level D (Forms &amp; Records) carries the evidence of execution. Tiers must cross-reference each other.</p>
+
+<div class="pyramid">
+  <div class="pyr p1">A · Quality Manual<small>Policy, objectives, element statements, master file index</small></div>
+  <div class="pyr-arrow">▼ references &amp; expands</div>
+  <div class="pyr p2">B · Procedures (LP)<small>Cross-functional workflows: responsibilities, steps, records (e.g. equipment management, contract review)</small></div>
+  <div class="pyr-arrow">▼ detailed to position level</div>
+  <div class="pyr p3">C · Work Instructions / SOP<small>Position-level operations: step-by-step instructions, parameters, acceptance criteria (e.g. balance calibration)</small></div>
+  <div class="pyr-arrow">▼ produces evidence</div>
+  <div class="pyr p4">D · Forms &amp; Records (FR)<small>Execution evidence: raw records, ledgers, reports, approval forms</small></div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">Role and writing granularity of the four tiers</h3>
+  <table>
+    <colgroup><col style="width:14%"><col style="width:24%"><col style="width:34%"><col style="width:28%"></colgroup>
+    <thead><tr><th>Tier</th><th>Question it answers</th><th>Typical chapter structure</th><th>Audit focus</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag t-A">A Quality Manual</span></td><td>What does the lab commit to? (policy / objectives / system scope)</td><td>Cover · Authorization · Amendment record · Scope · Policy &amp; objectives · Element statements · File list</td><td>Covers all applicable clauses; policy and objectives actually deployed</td></tr>
+      <tr><td><span class="tag t-B">B Procedures</span></td><td>How is it done? (process, responsibilities, control points)</td><td>Purpose · Scope · Responsibilities · Procedure · Records · References</td><td>Steps are closed-loop; responsibilities clear; records match</td></tr>
+      <tr><td><span class="tag t-C">C Work Instructions</span></td><td>Exactly how, step by step? (position-level, followable)</td><td>Purpose · Scope · Prerequisites · Equipment · Steps · Calculations · Records</td><td>Reproducible detail; quantified parameters; a new staff member can follow it</td></tr>
+      <tr><td><span class="tag t-D">D Forms &amp; Records</span></td><td>What was done? (evidence)</td><td>Header (number/version) · data fields · signature &amp; date · archiving</td><td>Traceable; amendments traceable; retention compliant</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="note"><b>General writing principles:</b> use one unified standard structure across all tiers; write short simple sentences, common words and active voice — never write essays; explain technical terms in footnotes or inline; documents must match actual practice (verify the current reality before writing); describe each element as a logical segment: Policy → Objectives → Responsible role → Referenced procedure → Related records.</div>
+
+<!-- ===================== 1 Level A ===================== -->
+<h2><span class="no">1</span>Level A · Quality Manual (QM) Chapter Structure</h2>
+<p class="lead">The Quality Manual is the top-level system document. ISO/IEC 17025:2017 does not mandate a fixed format, but the manual must accurately convey the quality policy, objectives, references to lower-tier documents and system management responsibilities. The recommended chapter sequence below follows the standard's clause order for element descriptions.</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.1 Front matter and general chapters (order = chapter number)</h3>
+  <table>
+    <colgroup><col style="width:20%"><col style="width:52%"><col style="width:28%"></colgroup>
+    <thead><tr><th>Chapter</th><th>Elements it must contain</th><th>Related ISO/IEC 17025 clause</th></tr></thead>
+    <tbody>
+      <tr><td>Title page</td><td>Lab name and location, manual title, document number, version/Issue No., effective date, holder name, controlled copy number</td><td>8.3 document identification</td></tr>
+      <tr><td>Release authorization</td><td>Authority for release, signatory (usually the lab director) statement; release evidence for each controlled copy</td><td>8.2 / 8.3.2 a)</td></tr>
+      <tr><td>Amendment record</td><td>Sequence, amendment no., page, clause, date, content of change, reason, QA team and supervisor signatures</td><td>8.3.2 c)</td></tr>
+      <tr><td>Distribution list</td><td>Controlled copy number, holder name/title; ensures all users have access</td><td>8.3.2 d)</td></tr>
+      <tr><td>Contents</td><td>Chapter titles and page numbers; clear, logical numbering scheme</td><td>—</td></tr>
+      <tr><td>1 Scope and applicability</td><td>Statement of applicable standard/accreditation documents; lab fields/professions/departments covered; non-applicability disclaimers</td><td>5.3 / 5.4</td></tr>
+      <tr><td>2 References</td><td>Identified standards/regulations/accreditation body documents (avoid redundant body text)</td><td>8.2</td></tr>
+      <tr><td>3 Terms and definitions</td><td>Terms specific to this manual (standard terms may reference VIM / ISO Guides)</td><td>8.2</td></tr>
+      <tr><td>4 Abbreviations</td><td>Abbreviation-to-full-name table</td><td>8.2</td></tr>
+      <tr><td>5 Laboratory introduction</td><td>Name, location, contacts; business nature, background, size; management system document information (version, amendment mechanism, approval evidence)</td><td>5.1 / 5.2</td></tr>
+      <tr><td>6 Quality policy &amp; objectives</td><td>Quality policy statement, quality objectives, how the policy reaches and is implemented by all staff; policy consistent with ISO/IEC 17025, covering competence, impartiality, consistent operation</td><td>8.2.1 / 8.2.2</td></tr>
+      <tr><td>7 Management system elements</td><td>One element description per clause, in clause order 4→8 (see 1.2)</td><td>4 ~ 8</td></tr>
+      <tr><td>8 Document, record &amp; form list</td><td>Complete list of all documents, records and forms the lab maintains, back-referenced to the body text</td><td>8.4</td></tr>
+      <tr><td>Annexures</td><td>Supporting material (organization chart, traceability diagram, flowcharts, etc.)</td><td>—</td></tr>
+      <tr><td>Page footer</td><td>Each page: lab name, manual name, version status, revision status, page number</td><td>8.3</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.2 Management system element chapters (Chapter 7) — mapped to ISO/IEC 17025 clauses</h3>
+  <p class="lead">Each element follows a uniform four-part description — Policy / Objectives → Responsible role → Referenced procedures → Related records — with cross-references to B/C/D tier files. Element list and clause mapping:</p>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:44%"><col style="width:34%"></colgroup>
+    <thead><tr><th>Manual element chapter</th><th>Element statement essentials</th><th>Related clause / lower-tier documents</th></tr></thead>
+    <tbody>
+      <tr><td>7.1 Impartiality</td><td>Organizational structure and management ensure impartiality; code of conduct signed by all; impartiality risk assessment and committee review; no commercial, financial or other pressure may compromise impartiality</td><td><span class="clause">4.1</span> → B-Impartiality &amp; risk procedure, D-Risk register</td></tr>
+      <tr><td>7.2 Confidentiality</td><td>Overall responsibility for client information; NDA binding all staff (incl. contractors); notify client when law requires disclosure; third-party information kept confidential</td><td><span class="clause">4.2</span> → B-Confidentiality procedure, D-NDA</td></tr>
+      <tr><td>7.3 Structural requirements</td><td>Legal entity and registration; activity scope document; organization chart (incl. position within parent body); roles, responsibilities and authorities; quality/technical manager authority; internal communication and system integrity</td><td><span class="clause">5.1–5.7</span> → A annexure org chart, D-Job descriptions</td></tr>
+      <tr><td>7.4 Resource requirements — general</td><td>Personnel, facilities, equipment, systems and supporting services meet the needs of the activity scope</td><td><span class="clause">6.1</span> → reference B/C tier</td></tr>
+      <tr><td>7.5 Personnel</td><td>Competence requirements (education/qualification/training/skills/experience) documented; selection, training, supervision, authorization and competence monitoring procedures and records; authorized activities list (method development / result review / report authorization)</td><td><span class="clause">6.2</span> → B-Personnel procedure, D-Training/authorization/supervision records</td></tr>
+      <tr><td>7.6 Facilities &amp; environment</td><td>Suitability of facilities and environment documented; monitoring records for environmental conditions affecting results; access control, cross-contamination prevention, effective separation of incompatible activities; on-site/external facility requirements</td><td><span class="clause">6.3</span> → B-Facility &amp; environment procedure, D-Temperature/humidity records</td></tr>
+      <tr><td>7.7 Equipment</td><td>Equipment acquisition and verification; calibration conditions and schedule; calibration status labeling (incl. label alternatives); quarantine of abnormal equipment and impact assessment; in-service checks; updating reference values/correction factors; protection against adjustment; equipment records (items a–h)</td><td><span class="clause">6.4.1–6.4.13</span> → B-Equipment procedure, D-Equipment register/calibration/in-service check/incident records</td></tr>
+      <tr><td>7.8 Metrological traceability</td><td>Establish and maintain an unbroken calibration chain; SI traceability routes (accredited lab / accredited CRM / direct realization by national metrology institute); alternative references where SI not possible</td><td><span class="clause">6.5</span> → B-Metrological traceability procedure, A annexure traceability diagram</td></tr>
+      <tr><td>7.9 Externally provided products and services</td><td>Determine suitability of external products/services; define requirements, evaluate, select, monitor and re-evaluate suppliers; verify conformity before use; communicate requirements to suppliers</td><td><span class="clause">6.6</span> → B-External provider procedure, D-Supplier evaluation/approved list</td></tr>
+      <tr><td>7.10 Review of requests, tenders and contracts</td><td>Requirements fully defined and understood; capability and resources available; inform client of external provision and obtain approval; method suitability; inform client when an outdated method is requested; decision rules for conformity statements; resolve contract differences first; inform client of deviations; retain review records</td><td><span class="clause">7.1</span> → B-Contract review procedure, D-Contract review records</td></tr>
+      <tr><td>7.11 Method selection, verification and validation</td><td>Method selection, verification and validation; latest valid version; inform client when no method specified; verify before introduction; method development plan and authorization; deviations documented + technical justification + authorization + client consent; non-standard/in-house/out-of-scope standard methods validated (one of six techniques); re-verification after change; verification/validation records</td><td><span class="clause">7.2.1 / 7.2.2</span> → B-Method management procedure, D-Method verification/validation records</td></tr>
+      <tr><td>7.12 Sampling</td><td>Sampling plan and method documented and available on site; sampling method composition (selection/plan/preparation); sampling data records (method, time, item identification, personnel, equipment, environment, diagram, deviations)</td><td><span class="clause">7.3</span> (may be declared not applicable) → B-Sampling procedure, C-Sampling WI, D-Sampling records</td></tr>
+      <tr><td>7.13 Handling of test items</td><td>Procedures for transport/receipt/handling/protection/storage/retention/disposal or return; prevent deterioration, contamination, loss; follow client handling instructions; unique identification system; record deviations and confirm with client; monitor specific storage conditions</td><td><span class="clause">7.4</span> → B-Item management procedure, D-Item receipt/register/rejection/disposal records</td></tr>
+      <tr><td>7.14 Technical records</td><td>Records of each activity incl. results/reports/dates/personnel; original observations and data recorded at the time; amendments traceable (keep original data, amendment date, content, person)</td><td><span class="clause">7.5</span> → B-Technical records procedure, D-Raw data sheets</td></tr>
+      <tr><td>7.15 Measurement uncertainty</td><td>Identify and consider all significant contributions (incl. sampling); calibration labs shall evaluate uncertainty of all calibrations; testing labs evaluate per method or based on principles/experience; report uncertainty in the same unit or as a relative form</td><td><span class="clause">7.6</span> → B-Uncertainty evaluation procedure, C-Element evaluation WIs, D-Evaluation records</td></tr>
+      <tr><td>7.16 Ensuring validity of results</td><td>Monitoring plan (reference materials/QC samples, alternative instruments, functional checks, control charts, in-service checks, repeat testing, retesting retained items, correlation of characteristics, report review, intra-laboratory comparisons, blind samples); PT/ILC plan covers the full scope; immediate action when data exceed limits</td><td><span class="clause">7.7</span> → B-Quality control procedure, D-Control charts/PT plan &amp; results</td></tr>
+      <tr><td>7.17 Reporting of results</td><td>Review and authorize results before release; common report elements a–p; specific requirements for testing/calibration/sampling reports; conformity statements include decision rules and risk; opinions and interpretations authorized with basis recorded; report amendments only as new reports with a statement</td><td><span class="clause">7.8</span> → B-Report control procedure, C-Report writing WI, D-Report templates</td></tr>
+      <tr><td>7.18 Complaints</td><td>Documented process for receipt/acknowledgement/investigation/decision on complaints; track and record; inform progress and outcome; outcome approved by non-involved personnel; formal closure notice</td><td><span class="clause">7.9</span> → B-Complaints procedure, D-Complaint register &amp; handling records</td></tr>
+      <tr><td>7.19 Nonconforming work</td><td>Identify nonconforming work and define responsibilities/authorities; act according to risk level (stop/repeat/withhold report); impact assessment incl. past results; acceptability decision; notify client and recall; authorize resumption; retain records</td><td><span class="clause">7.10</span> → B-Nonconforming work procedure, D-Nonconforming work records</td></tr>
+      <tr><td>7.20 Data &amp; information management</td><td>Data accessible; LIMS verified before use, changes authorized and re-verified; prevent unauthorized access, tampering and loss; operating environment compliant; system failures recorded and corrected; external hosting compliant; calculations and transfers checked</td><td><span class="clause">7.11</span> → B-Data &amp; information procedure, D-System permissions/backup/failure records</td></tr>
+      <tr><td>7.21 Management system requirements</td><td>Declare Option A (system per 8.2–8.9) or Option B (system per ISO 9001 that also satisfies clauses 4–7 and intent of 8.2–8.9); system documented, policy and objectives known to all staff</td><td><span class="clause">8.1 / 8.2</span> → Option declaration</td></tr>
+      <tr><td>7.22 Document control</td><td>Internal and external documents controlled; adequate approval before issue; periodic review and update; changes and current revision status identified; available at points of use with controlled distribution; unique identification; prevent unintended use of obsolete documents</td><td><span class="clause">8.3</span> → B-Document control procedure, D-Issue/recall/obsolete records</td></tr>
+      <tr><td>7.23 Record control</td><td>Clear, legible records; control of identification/storage/protection/backup/archiving/retrieval/retention/disposal; retention considers legal and contractual obligations; confidentiality</td><td><span class="clause">8.4</span> → B-Record control procedure, D-Archive/disposal records</td></tr>
+      <tr><td>7.24 Risks and opportunities</td><td>Consider risks and opportunities to achieve system outcomes, enhance opportunities, prevent failures and realize improvement; plan actions to address them and evaluate effectiveness</td><td><span class="clause">8.5</span> → B-Risk management procedure, D-Risk register</td></tr>
+      <tr><td>7.25 Improvement</td><td>Identify and select improvement opportunities; collect and analyze positive and negative client feedback and use it for improvement</td><td><span class="clause">8.6</span> → B-Improvement &amp; client feedback procedure, D-Client satisfaction survey</td></tr>
+      <tr><td>7.26 Corrective action</td><td>React to nonconformities (control and correct + address consequences); evaluate the need for actions to eliminate causes (review/analyze/determine similar nonconformities); implement and review effectiveness; update risks and opportunities; system changes; retain records</td><td><span class="clause">8.7</span> → B-Corrective action procedure, D-Corrective action records</td></tr>
+      <tr><td>7.27 Internal audits</td><td>Audit at planned intervals; audit program (frequency/methods/responsibilities/planning requirements/reporting); audit criteria and scope defined; results reported to management; timely correction and corrective actions; evidence of implementation and results recorded</td><td><span class="clause">8.8</span> → B-Internal audit procedure, D-Audit plan/checklist/report</td></tr>
+      <tr><td>7.28 Management review</td><td>Periodic review of suitability, adequacy and effectiveness; 15 review inputs (internal/external changes, objectives, policy/procedure suitability, previous review actions, internal audit results, corrective actions, external reviews, workload changes, client and personnel feedback, complaints, effectiveness of improvements, resources, risks, validity of results, other); record outputs</td><td><span class="clause">8.9</span> → B-Management review procedure, D-Review inputs/report</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">1.3 Four-part element description template (directly reusable)</h3>
+  <table>
+    <colgroup><col style="width:24%"><col style="width:76%"></colgroup>
+    <tbody>
+      <tr><td><b>Policy</b></td><td>This laboratory commits to … (one-sentence statement consistent with the corresponding ISO/IEC 17025 clause)</td></tr>
+      <tr><td><b>Objectives</b></td><td>Measurable objective(s) for this element (e.g. equipment calibration timeliness ≥ 98%)</td></tr>
+      <tr><td><b>Responsibility</b></td><td>Role/function responsible for executing or supervising this element (e.g. technical manager, equipment coordinator)</td></tr>
+      <tr><td><b>Referenced procedures</b></td><td>Procedure "…" No. LP-XXX (detail lives in the Level B document; overview only here)</td></tr>
+      <tr><td><b>Related records</b></td><td>FR-XXX "… record" and others (evidence is produced here)</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>Example (4.1 Impartiality):</b> <b>Policy</b> — The laboratory is responsible for the impartiality of its activities and allows no commercial, financial or other pressures to compromise it. <b>Objective</b> — 100% coverage of the annual impartiality risk assessment. <b>Responsibility</b> — Quality manager, impartiality committee. <b>Procedure</b> — LP-001 Impartiality &amp; Risk Management Procedure. <b>Records</b> — FR-001 Impartiality risk identification &amp; evaluation form, signed codes of conduct.</div>
+</div>
+
+<!-- ===================== 2 Level B ===================== -->
+<h2><span class="no">2</span>Level B · Procedures (LP) Chapter Structure</h2>
+<p class="lead">Procedures describe cross-functional flows — who, when, where, what and how. Based on widely used technical writing conventions for management system procedures, a recommended unified eight-section skeleton plus supporting sections:</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">2.1 Unified procedure chapter skeleton</h3>
+  <table>
+    <colgroup><col style="width:20%"><col style="width:56%"><col style="width:24%"></colgroup>
+    <thead><tr><th>Chapter</th><th>Elements it must contain</th><th>Writing essentials</th></tr></thead>
+    <tbody>
+      <tr><td>Document header</td><td>Document No. (LP-XXX), version, effective date, prepared/reviewed/approved signatures</td><td>Consistent with manual/form numbering scheme</td></tr>
+      <tr><td>1 Purpose</td><td>Intent of this procedure; the ISO/IEC 17025 clause it satisfies</td><td>One sentence to one paragraph; may include conformity evaluation statement</td></tr>
+      <tr><td>2 Scope</td><td>Applicable departments and activity types; explicit exceptions</td><td>Include precision/accuracy/applicability boundaries</td></tr>
+      <tr><td>3 Responsibilities</td><td>Roles and authorities within this process</td><td>Roles, not names</td></tr>
+      <tr><td>4 Definitions &amp; abbreviations</td><td>Terms and abbreviations specific to this process</td><td>May reference VIM / standard definitions</td></tr>
+      <tr><td>5 Procedure</td><td>Step-by-step flow (steps, decision points, control points, key parameters, abnormal handling); flowchart optional</td><td>Core chapter; must be closed-loop and auditable</td></tr>
+      <tr><td>6 Records</td><td>List of record/form numbers generated by this procedure and retention periods</td><td>One-to-one with Level D forms</td></tr>
+      <tr><td>7 References</td><td>Manual chapters, other procedures, work instructions, external standards referenced</td><td>Complete cross-references</td></tr>
+      <tr><td>8 Appendices</td><td>Flowcharts, worksheets, templates, calculation notes</td><td>Supporting material</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>A proven procedure structure used in technical documentation:</b> 1 Introduction (1.1 Purpose / 1.2 Definitions / 1.3 Traceability chain definition / 1.5 Prerequisites / 1.6 Responsibility / 1.7 Safety) → 2 Methodology (2.1 Summary / 2.2 Procedure) → 3 Calculations → 4 Assignment of Uncertainty → References → Appendices. The high-value sections — Prerequisites, Responsibility and Safety — are folded into chapters 4 / 3 / 5 of the skeleton above.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">2.2 Recommended procedure list (mapped to ISO/IEC 17025 clauses)</h3>
+  <table>
+    <colgroup><col style="width:30%"><col style="width:34%"><col style="width:36%"></colgroup>
+    <thead><tr><th>Procedure</th><th>Clauses covered</th><th>Control points that must be included</th></tr></thead>
+    <tbody>
+      <tr><td>LP-001 Impartiality &amp; Risk Management</td><td><span class="clause">4.1 / 8.5</span></td><td>Code of conduct, risk identification, evaluation, review, actions and effectiveness assessment</td></tr>
+      <tr><td>LP-002 Confidentiality</td><td><span class="clause">4.2</span></td><td>NDA, information access rights, disclosure flow, third-party information</td></tr>
+      <tr><td>LP-003 Personnel Management</td><td><span class="clause">6.2</span></td><td>Competence determination, selection, training, supervision, authorization, competence monitoring (a–f)</td></tr>
+      <tr><td>LP-004 Facilities &amp; Environment Control</td><td><span class="clause">6.3</span></td><td>Environmental requirements, monitoring, records, access control, cross-contamination prevention, effective separation</td></tr>
+      <tr><td>LP-005 Equipment Management</td><td><span class="clause">6.4</span></td><td>Acquisition verification, calibration schedule, in-service checks, quarantine and impact assessment, protection against adjustment, equipment records (a–h)</td></tr>
+      <tr><td>LP-006 Metrological Traceability</td><td><span class="clause">6.5</span></td><td>Traceability chain, SI traceability routes, non-SI references, traceability diagram maintenance</td></tr>
+      <tr><td>LP-007 External Provider Management</td><td><span class="clause">6.6</span></td><td>Requirements definition, evaluation criteria, selection, performance monitoring, re-evaluation, communication</td></tr>
+      <tr><td>LP-008 Contract Review</td><td><span class="clause">7.1</span></td><td>Requirement confirmation, capability/resource assessment, external provision notification, decision rules, deviation handling, review records</td></tr>
+      <tr><td>LP-009 Method Selection, Verification &amp; Validation</td><td><span class="clause">7.2</span></td><td>Method selection, verification, development authorization, deviation control, validation techniques, records (a–e)</td></tr>
+      <tr><td>LP-010 Sampling</td><td><span class="clause">7.3</span> (if applicable)</td><td>Sampling plan, method composition, sampling data records (a–h)</td></tr>
+      <tr><td>LP-011 Test Item Management</td><td><span class="clause">7.4</span></td><td>Full-process protection, unique identification, deviations and client confirmation, storage condition monitoring</td></tr>
+      <tr><td>LP-012 Technical Records Control</td><td><span class="clause">7.5</span></td><td>Timely raw records, amendment traceability, retrievability</td></tr>
+      <tr><td>LP-013 Measurement Uncertainty Evaluation</td><td><span class="clause">7.6</span></td><td>Significant contribution identification, evaluation method, reporting requirements</td></tr>
+      <tr><td>LP-014 Quality Control (Validity of Results)</td><td><span class="clause">7.7</span></td><td>Monitoring technique selection, plan, PT/ILC coverage, out-of-limit data handling</td></tr>
+      <tr><td>LP-015 Report Control</td><td><span class="clause">7.8</span></td><td>Report elements, authorization, conformity statement decision rules, amendment/re-issue flow</td></tr>
+      <tr><td>LP-016 Complaints Handling</td><td><span class="clause">7.9</span></td><td>Receipt, acknowledgement, investigation, decision, tracking, outcome approval, notification</td></tr>
+      <tr><td>LP-017 Nonconforming Work Management</td><td><span class="clause">7.10</span></td><td>Responsibilities/authorities, risk-based actions, impact assessment, notification and recall, resumption authorization (a–f)</td></tr>
+      <tr><td>LP-018 Data &amp; Information Management</td><td><span class="clause">7.11</span></td><td>LIMS verification, access control, tamper prevention, backup, failure handling, calculation checks</td></tr>
+      <tr><td>LP-019 Document Control</td><td><span class="clause">8.3</span></td><td>Approval, review/update, change identification, distribution control, unique identification, obsolete prevention (a–f)</td></tr>
+      <tr><td>LP-020 Record Control</td><td><span class="clause">8.4</span></td><td>Identification, storage, protection, backup, archiving, retrieval, retention, disposal</td></tr>
+      <tr><td>LP-021 Corrective Action</td><td><span class="clause">8.7</span></td><td>Reaction control, cause evaluation, action implementation, effectiveness review, system update, records</td></tr>
+      <tr><td>LP-022 Improvement &amp; Client Feedback</td><td><span class="clause">8.6</span></td><td>Improvement opportunity identification, feedback collection/analysis, action implementation</td></tr>
+      <tr><td>LP-023 Internal Audit</td><td><span class="clause">8.8</span></td><td>Audit program, criteria/scope, execution, reporting, corrective verification, records</td></tr>
+      <tr><td>LP-024 Management Review</td><td><span class="clause">8.9</span></td><td>Frequency, 15 inputs, output decisions, resource assurance</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>Sizing note:</b> The list is a full management + technical baseline. Small labs may merge where applicable (e.g. LP-016/017/021 into one Nonconformity, Corrective Action &amp; Complaints procedure), but the merged document must retain every clause element; non-applicable clauses are declared "Not Applicable" in the manual with the reason stated.</div>
+</div>
+
+<!-- ===================== 3 Level C ===================== -->
+<h2><span class="no">3</span>Level C · Work Instructions (WI) Chapter Structure</h2>
+<p class="lead">Work instructions refine procedures into position-level "follow exactly" step-by-step instructions. A widely used SOP structure:</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">3.1 Unified work instruction chapter skeleton</h3>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:54%"><col style="width:24%"></colgroup>
+    <thead><tr><th>Chapter</th><th>Elements it must contain</th><th>Writing essentials</th></tr></thead>
+    <tbody>
+      <tr><td>Document header</td><td>No. (WI-XXX / SOP-XXX), version, effective date, approval signatures</td><td>Cross-referenced with the procedure</td></tr>
+      <tr><td>1 Purpose of test</td><td>Objective and applicable object; measurement principle overview</td><td>Include conformity evaluation statement where applicable</td></tr>
+      <tr><td>2 Scope, precision &amp; accuracy</td><td>Applicable sample/instrument range, measuring range, expected precision and accuracy boundaries</td><td>Quantified (e.g. 1 mL–20 L)</td></tr>
+      <tr><td>3 Prerequisites</td><td>Validity of standards/equipment calibration certificates, standard uncertainty, equipment status (control chart), personnel training, reagents/water quality, environmental conditions</td><td>Item-by-item checkable (numbered 3.1, 3.2 …)</td></tr>
+      <tr><td>4 Standards &amp; equipment</td><td>Referenced standards, equipment list with technical specifications (resolution, uncertainty requirement)</td><td>Equipment specifications quantified</td></tr>
+      <tr><td>5 Procedure</td><td>Step-by-step instructions (numbered 5.1, 5.2 …), key readings/dwell times/decision points; abnormal handling; number of repeats</td><td>Core chapter; a new staff member can follow and reproduce</td></tr>
+      <tr><td>6 Data processing &amp; calculations</td><td>Formulas, symbol definitions, units, significant figures, rounding rules</td><td>Include a worked example</td></tr>
+      <tr><td>7 Records &amp; reporting</td><td>Raw record/report formats to fill, result expression, conformity conclusion rules</td><td>Point to Level D forms</td></tr>
+      <tr><td>8 Uncertainty considerations</td><td>Main uncertainty sources and allocations for this operation (where applicable)</td><td>Aligned with the uncertainty evaluation procedure</td></tr>
+      <tr><td>9 Safety precautions</td><td>Protection, prohibitions (e.g. no tap water), waste handling</td><td>Explicit item by item</td></tr>
+      <tr><td>10 References &amp; appendices</td><td>Referenced procedures/other WIs/external standards; data tables, diagrams, examples</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">3.2 Work instruction types (classified by use)</h3>
+  <div class="grid2">
+    <div class="card">
+      <b>Method operation (one per test/calibration item)</b>
+      <ul class="clean">
+        <li>Testing method WI (chemical / physical / biological, etc.)</li>
+        <li>Calibration WI (incl. uncertainty budget table)</li>
+        <li>On-site / mobile / client-site testing WI</li>
+        <li>Non-standard and in-house method WI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Equipment operation &amp; maintenance</b>
+      <ul class="clean">
+        <li>Large / precision equipment operating instructions</li>
+        <li>Daily maintenance and cleaning WI</li>
+        <li>In-service check WI</li>
+        <li>Reference material / CRM usage WI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Items &amp; data</b>
+      <ul class="clean">
+        <li>Item receipt / preparation / pre-treatment WI</li>
+        <li>Sampling WI</li>
+        <li>Item storage and disposal WI</li>
+        <li>Data calculation &amp; statistical analysis WI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Support &amp; safety</b>
+      <ul class="clean">
+        <li>Reagent / consumable acceptance &amp; storage WI</li>
+        <li>Laboratory safety operating procedures</li>
+        <li>Waste management WI</li>
+        <li>Software / LIMS operation WI</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 4 Level D ===================== -->
+<h2><span class="no">4</span>Level D · Forms &amp; Records (FR) Structure and List</h2>
+<p class="lead">Forms are the sole carrier of records and the most direct evidence auditors examine. Following recognized record-keeping practice, a form must satisfy: unique identification, complete fields, traceability, auditable amendments, and a defined retention period.</p>
+
+<div class="card">
+  <h3 style="margin-top:0;">4.1 Unified form structure</h3>
+  <table>
+    <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+    <tbody>
+      <tr><td><b>Header zone</b></td><td>Form name, number (FR-XXX), version, effective date, page number (Page X of Y)</td></tr>
+      <tr><td><b>Information zone</b></td><td>Object identification (equipment no. / item no. / personnel name), date &amp; time, location/conditions, referenced document number</td></tr>
+      <tr><td><b>Data zone</b></td><td>Field names, units, reading/result columns, judgment column; mandatory fields explicitly marked</td></tr>
+      <tr><td><b>Control zone</b></td><td>Recorded-by signature &amp; date, reviewed-by signature &amp; date, remark area for exceptions</td></tr>
+      <tr><td><b>Archive zone</b></td><td>Retention period, archive location, confidentiality level</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0;"><b>Record amendment rule (ISO/IEC 17025:2017 §7.5.2):</b> original data must never be overwritten or erased — strike through to keep the original value, note the correction beside it, and record the amender's signature and date; electronic records must leave a system audit trail.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0;">4.2 Record / form list (classified by managed object)</h3>
+  <table>
+    <colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+    <thead><tr><th>Category</th><th>Forms</th></tr></thead>
+    <tbody>
+      <tr><td>Equipment</td><td>Equipment register, equipment use log, maintenance log, calibration schedule &amp; records, calibration certificate archive, in-service check records, equipment incident/repair/quarantine records, equipment acceptance/installation confirmation</td></tr>
+      <tr><td>Environment</td><td>Daily temperature/humidity monitoring, refrigerator temperature records, incubator temperature records, environmental exception handling records</td></tr>
+      <tr><td>Items</td><td>Item receipt/registration, item rejection records, item identification labels, preparation/pre-treatment records, storage &amp; disposal records, retained item register</td></tr>
+      <tr><td>Personnel</td><td>Training plan &amp; records, competence assessment/evaluation records, personnel authorization list, supervision records, position competence requirements, signed codes of conduct</td></tr>
+      <tr><td>Testing / calibration</td><td>Testing raw data sheets (per item), calibration raw data sheets, method verification/validation records, uncertainty evaluation sheets, quality control charts, PT/ILC plan &amp; result records</td></tr>
+      <tr><td>Management system</td><td>Internal audit plan/checklist/nonconformity report/audit report, management review inputs/outputs, nonconforming work records, corrective action records, complaint register &amp; handling records, risk identification &amp; evaluation forms, improvement suggestion forms</td></tr>
+      <tr><td>Procurement &amp; supply</td><td>Supplier evaluation &amp; re-evaluation forms, approved supplier list, reagent/consumable/CRM acceptance records, stock cards, purchase requisitions</td></tr>
+      <tr><td>Reports &amp; contracts</td><td>Contract review records, client requirement change records, report release register, report amendment/re-issue requests, client feedback / satisfaction surveys</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===================== 5 Clause mapping ===================== -->
+<h2><span class="no">5</span>ISO/IEC 17025:2017 Clause → Document Mapping Table</h2>
+<p class="lead">The core "precise and complete" deliverable: for every clause, the document tier and name it should produce. Use it directly as your system build checklist and audit preparation reference.</p>
+
+<div class="card">
+  <table>
+    <colgroup><col style="width:16%"><col style="width:44%"><col style="width:40%"></colgroup>
+    <thead><tr><th>Clause</th><th>Requirement essentials</th><th>Documents to produce (tier)</th></tr></thead>
+    <tbody>
+      <tr><td class="clause">4.1</td><td>Impartiality: organization, management, risk assessment, commitment</td><td>A manual statement · <span class="tag t-B">B</span> Impartiality &amp; risk procedure · <span class="tag t-D">D</span> Risk identification &amp; evaluation form</td></tr>
+      <tr><td class="clause">4.2</td><td>Confidentiality: client information protection, legal disclosure, third-party</td><td>A manual statement · <span class="tag t-B">B</span> Confidentiality procedure · <span class="tag t-D">D</span> NDA</td></tr>
+      <tr><td class="clause">5.1–5.7</td><td>Structure: legal entity, responsible personnel, scope, organization, responsibilities, communication</td><td>A manual (incl. org chart annexure) · <span class="tag t-D">D</span> Job descriptions · registration/license evidence</td></tr>
+      <tr><td class="clause">6.1</td><td>Resource requirements — general</td><td>A resource statement · reference B/C</td></tr>
+      <tr><td class="clause">6.2</td><td>Personnel: competence, selection, training, supervision, authorization, monitoring</td><td><span class="tag t-B">B</span> Personnel procedure · <span class="tag t-D">D</span> Training/assessment/authorization/supervision records</td></tr>
+      <tr><td class="clause">6.3</td><td>Facilities &amp; environment: suitability, monitoring, separation, on-site</td><td><span class="tag t-B">B</span> Facility &amp; environment procedure · <span class="tag t-D">D</span> Temperature/humidity/exception records</td></tr>
+      <tr><td class="clause">6.4</td><td>Equipment: verification, calibration, in-service checks, labeling, incidents, records</td><td><span class="tag t-B">B</span> Equipment procedure · <span class="tag t-D">D</span> Register/use/maintenance/calibration/in-service check records</td></tr>
+      <tr><td class="clause">6.5</td><td>Metrological traceability: calibration chain, SI, non-SI references</td><td><span class="tag t-B">B</span> Traceability procedure · A annexure traceability diagram · <span class="tag t-D">D</span> Calibration certificate archive</td></tr>
+      <tr><td class="clause">6.6</td><td>External products &amp; services: evaluation, selection, monitoring, re-evaluation</td><td><span class="tag t-B">B</span> External provider procedure · <span class="tag t-D">D</span> Evaluation/approved list/acceptance records</td></tr>
+      <tr><td class="clause">7.1</td><td>Review of requests, tenders &amp; contracts</td><td><span class="tag t-B">B</span> Contract review procedure · <span class="tag t-D">D</span> Contract review/change records</td></tr>
+      <tr><td class="clause">7.2</td><td>Method selection, verification &amp; validation</td><td><span class="tag t-B">B</span> Method management procedure · <span class="tag t-C">C</span> Method WIs · <span class="tag t-D">D</span> Verification/validation records</td></tr>
+      <tr><td class="clause">7.3</td><td>Sampling (if applicable)</td><td><span class="tag t-B">B</span> Sampling procedure · <span class="tag t-C">C</span> Sampling WI · <span class="tag t-D">D</span> Sampling records</td></tr>
+      <tr><td class="clause">7.4</td><td>Handling of test items: full-process protection, identification, deviations</td><td><span class="tag t-B">B</span> Item management procedure · <span class="tag t-D">D</span> Receipt/rejection/preparation/disposal records</td></tr>
+      <tr><td class="clause">7.5</td><td>Technical records: timely recording, amendment traceability</td><td><span class="tag t-B">B</span> Technical records procedure · <span class="tag t-D">D</span> Raw data sheets</td></tr>
+      <tr><td class="clause">7.6</td><td>Measurement uncertainty evaluation</td><td><span class="tag t-B">B</span> Uncertainty evaluation procedure · <span class="tag t-C">C</span> Element evaluation WIs · <span class="tag t-D">D</span> Evaluation records</td></tr>
+      <tr><td class="clause">7.7</td><td>Ensuring validity of results, PT/ILC</td><td><span class="tag t-B">B</span> Quality control procedure · <span class="tag t-D">D</span> Control charts / PT plan &amp; results</td></tr>
+      <tr><td class="clause">7.8</td><td>Reporting: common elements, specific requirements, conformity, amendments</td><td><span class="tag t-B">B</span> Report control procedure · <span class="tag t-C">C</span> Report writing WI · <span class="tag t-D">D</span> Report templates / release records</td></tr>
+      <tr><td class="clause">7.9</td><td>Complaints handling</td><td><span class="tag t-B">B</span> Complaints procedure · <span class="tag t-D">D</span> Complaint register/handling/closure records</td></tr>
+      <tr><td class="clause">7.10</td><td>Nonconforming work management</td><td><span class="tag t-B">B</span> Nonconforming work procedure · <span class="tag t-D">D</span> Nonconforming work records</td></tr>
+      <tr><td class="clause">7.11</td><td>Data &amp; information management (LIMS)</td><td><span class="tag t-B">B</span> Data &amp; information procedure · <span class="tag t-D">D</span> Permissions/backup/failure records</td></tr>
+      <tr><td class="clause">8.1–8.2</td><td>System options (A/B), documented system</td><td>A manual · policy &amp; objectives statement · file list</td></tr>
+      <tr><td class="clause">8.3</td><td>Document control</td><td><span class="tag t-B">B</span> Document control procedure · <span class="tag t-D">D</span> Issue/recall/obsolete records</td></tr>
+      <tr><td class="clause">8.4</td><td>Record control</td><td><span class="tag t-B">B</span> Record control procedure · <span class="tag t-D">D</span> Archive/disposal records</td></tr>
+      <tr><td class="clause">8.5</td><td>Risks and opportunities</td><td><span class="tag t-B">B</span> Risk management procedure · <span class="tag t-D">D</span> Risk register</td></tr>
+      <tr><td class="clause">8.6</td><td>Improvement, client feedback</td><td><span class="tag t-B">B</span> Improvement procedure · <span class="tag t-D">D</span> Satisfaction survey / improvement records</td></tr>
+      <tr><td class="clause">8.7</td><td>Corrective action</td><td><span class="tag t-B">B</span> Corrective action procedure · <span class="tag t-D">D</span> Corrective action records</td></tr>
+      <tr><td class="clause">8.8</td><td>Internal audits</td><td><span class="tag t-B">B</span> Internal audit procedure · <span class="tag t-D">D</span> Plan/checklist/nonconformity report/audit report</td></tr>
+      <tr><td class="clause">8.9</td><td>Management review</td><td><span class="tag t-B">B</span> Management review procedure · <span class="tag t-D">D</span> Review inputs/outputs report</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===================== 6 Rules ===================== -->
+<h2><span class="no">6</span>General Writing Rules &amp; Ten-Step Process</h2>
+<div class="card">
+  <h3 style="margin-top:0;">6.1 Writing rules</h3>
+  <ul class="clean">
+    <li>Write <b>short simple sentences</b> with common words; use <b>active voice</b>, not passive.</li>
+    <li>Explain technical terms with <b>footnotes or inline notes</b> so readers of different levels understand.</li>
+    <li><b>Do not write essays</b> — use itemized, process-style expression.</li>
+    <li>Documents must match <b>current actual practice</b> — verify the current reality first, then write.</li>
+    <li>Write for the document's users (executors / auditors); keep a unified structure for quick navigation.</li>
+    <li>Break each element into logical segments: Policy / Objectives / Responsibility / Procedure reference / Record reference (see 1.3).</li>
+    <li>Declare non-applicable clauses explicitly in the manual and state the reason.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3 style="margin-top:0;">6.2 Ten-step writing process for the manual / procedures</h3>
+  <div class="flow">
+    <div class="step"><b>1 Collect</b>Collect all documents currently in use in the lab and compile a list</div>
+    <div class="step"><b>2 Classify</b>Sort documents into clause folders per ISO/IEC 17025 structure</div>
+    <div class="step"><b>3 Map</b>List each process and its interrelations and application scenarios</div>
+    <div class="step"><b>4 Verify</b>Analyze whether actual work follows the documents</div>
+    <div class="step"><b>5 Revise</b>Where documents disagree with practice, revise the document or improve the practice</div>
+    <div class="step"><b>6 Draft</b>Draft the manual/procedures; check full coverage of standard requirements</div>
+    <div class="step"><b>7 Circulate</b>Route for review by all staff; collect comments</div>
+    <div class="step"><b>8 Edit</b>Incorporate comments; align with the standard</div>
+    <div class="step"><b>9 Read through</b>Read the full text to confirm clarity and unambiguity</div>
+    <div class="step"><b>10 Release</b>Authorize release and use; later changes follow the controlled process</div>
+  </div>
+</div>
+
+</div>
+<footer class="foot">LabKitPro · ISO/IEC 17025:2017 Four-Tier Document Skeleton · Built on ISO/IEC 17025:2017, aligned with ILAC guidance</footer>
+</body>
+</html>
