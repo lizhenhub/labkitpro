@@ -131,6 +131,41 @@ td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:brea
 td a.dl:hover{text-decoration:underline;}
 footer a{color:#d7e3fb;}
 </style>
+<style id="lkp-theme">
+/* ===== LabKitPro site theme override (auto-injected) ===== */
+:root{
+  --primary:#0f2a4a;--primary-dark:#0a1f38;--primary-light:#e7eef6;
+  --accent:#f5a623;--accent-700:#c9851a;
+  --bg:#f5f7fa;--text:#14202e;--text-sub:#5b6b7d;--border:#dde5ee;
+  --ok:#1f9d6b;--warn:#c9851a;
+}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1140px;}
+header.hero{background:linear-gradient(135deg,#0a1f38 0%,#0f2a4a 55%,#143a63 100%);}
+.hero .kicker{color:#ffd48a;border-color:rgba(245,166,35,.55);}
+.stat .num{color:#ffd48a;}
+nav.toc{box-shadow:0 6px 18px rgba(10,31,56,.07);}
+nav.toc a:hover{color:#1a1205;background:var(--accent);border-color:var(--accent);}
+.section-head .no{background:var(--accent);color:#1a1205;}
+.section-head h2{color:var(--primary-dark);}
+.section-head .tag{color:var(--accent-700);background:#fff8ec;border-color:#f2d9a4;}
+thead th{background:#eef2f8;color:var(--primary-dark);}
+td .code{color:#1e4d8b;}
+.badge.core{background:#e6f7ec;color:#0a7d34;border-color:#bfe6cf;}
+.badge.new{background:#fff8ec;color:var(--accent-700);border-color:#f2d9a4;}
+.badge.dom{background:var(--primary-light);color:#1e4d8b;border-color:#c9d8ec;}
+td a.dl{color:#1e4d8b;}
+footer{background:#0a1f38;color:#b9c9e8;}
+footer a{color:#ffd48a;}
+.lkp-disc{border-top:1px solid rgba(255,255,255,.15);margin-top:16px;padding-top:14px;font-size:12.5px;color:#8fa3c2;line-height:1.8;max-width:none !important;}
+.lkp-brand{margin-top:10px;font-size:12.5px;color:#8fa3c2;}
+.lkp-brand a{color:#ffd48a;text-decoration:none;}
+.toc-sel{display:none;width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:#fff;color:var(--text);margin-top:6px;-webkit-appearance:auto;}
+@media (max-width:860px){
+  nav.toc .links{display:none;}
+  .toc-sel{display:block;}
+}
+</style>
 </head>
 <body>
 
@@ -379,8 +414,24 @@ footer a{color:#d7e3fb;}
       <h3>使用提示</h3>
       <p>R 系列为认可强制要求，P 系列为通用政策，G 系列为技术指南，F/A308 系列为申请填报表格。F210a、F229 两份文件当前门户提示权限受限，需登录客户/合作方门户查看；F337、F338 为在线 Microsoft Forms 表单。所有文件以 A2LA 官网现行版本为准。</p>
     </div>
-  </div>
+  <p class="lkp-disc">本页资源整理自各认可机构公开发布的文件（仅引用编号、标题与意译要点，不复制原文），仅用于内部准备与学习参考，不构成认可机构的决定或法律意见。ISO/IEC 17025 为 ISO/IEC 商标。</p>
+<p class="lkp-brand">© 2026 LabKitPro · <a href="/">labkitpro.com</a> · <a href="/academy">返回官网首页</a></p>
+</div>
 </footer>
 
+
+<script>(function(){
+  var t=document.querySelector('nav.toc');if(!t)return;
+  var as=t.querySelectorAll('.links a');if(!as.length)return;
+  var sel=document.createElement('select');sel.className='toc-sel';
+  sel.setAttribute('aria-label','Jump to section');
+  var h=t.querySelector('h2');
+  var o0=document.createElement('option');
+  o0.textContent=h?h.textContent.replace(/\s+/g,' '):'Contents';
+  o0.value='';sel.appendChild(o0);
+  as.forEach(function(a){var op=document.createElement('option');op.value=a.getAttribute('href')||'';op.textContent=a.textContent;sel.appendChild(op);});
+  sel.addEventListener('change',function(){if(sel.value){location.hash=sel.value;}});
+  t.appendChild(sel);
+})();</script>
 </body>
 </html>
