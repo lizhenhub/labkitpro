@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNAS Accreditation Documents by Industry (Chinese mainland, beyond the general criteria)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero .kicker{display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:840px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;box-shadow:0 6px 18px rgba(11,61,145,.07);}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{font-size:13px;color:var(--text-sub);text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:7px 13px;transition:.2s;}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.section-head .no{flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;padding:2px;}
+.section-head h2{font-size:19px;color:var(--primary-dark);}
+.section-head .tag{font-size:12px;color:var(--primary);background:var(--primary-light);padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:18%;}
+colgroup col.c-name{width:50%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-series{width:15%;}
+thead th{background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);}
+tbody td{padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.series-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:.5px;margin:2px 0;}
+.s-A{background:#e6f4ec;color:#1d7a46;border:1px solid #b9dfca;}
+.s-GL{background:#eef0f5;color:#3a4459;border:1px solid #d8dde8;}
+.s-TRL{background:#fdf1dc;color:#b26a00;border:1px solid #efd9a7;}
+.s-EL{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.s-S{background:#f3e8f7;color:#7a3f9e;border:1px solid #e0c8ee;}
+.s-CL{background:#e9eefc;color:#274b8f;border:1px solid #c5d3f2;}
+.s-RL{background:#f2eefb;color:#6b3fa0;border:1px solid #dfd2f0;}
+.badge-new{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-left:6px;background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+.callout{background:#fff8ec;border:1px solid #efd9a7;border-radius:10px;padding:14px 18px;margin:0 0 24px;color:#7a5212;font-size:13.5px;}
+.callout b{color:#5a3d05;}
+footer{background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:22px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:17px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">CNAS laboratory accreditation · industry-classified document list</span>
+    <h1>CNAS Accreditation Documents by Industry (Chinese mainland)</h1>
+    <p>Beyond the general criteria, this list re-groups all industry-specific documents by testing field / industry (A-series field application documents + specific-type laboratory criteria RL / CL + related GL / TRL / EL / S documents), covering manufacturing, energy, construction, building materials, healthcare, forensics, quarantine, food, environment, IT, new energy, biology and every other industry suited to CNAS accreditation — so each laboratory can quickly lock onto the documents it needs. Document titles without an official English edition are shown in Chinese.</p>
+    <div class="meta"><span>Excluded: <b>R-series general rules / RL01–RL04 / CL01 / G series (general criteria)</b></span><span>Data basis: <b>CNAS website, Sept 2026 latest list and release notices</b></span><span>Grouping: <b>40 fields + general management + specialised schemes</b></span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">40</div><div class="lbl">Industry / testing-field groups</div></div>
+      <div class="stat"><div class="num">146</div><div class="lbl">Industry-specific documents (RL/CL/A/GL/TRL/EL/S)</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">Cross-industry management</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Specialised schemes</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="callout">Note: the general criteria (R-series rules, RL01–RL04 laboratory rules, CNAS-CL01 core criteria, G-series general criteria) are the essential foundation for all testing / calibration labs and are not repeated here. The documents below are grouped by industry / testing field around the field application documents (A series) and their companion documents, and include the specific rules (RL) and criteria (CL) with their application documents for specific body types (medical, forensics, quarantine, PTP, RMP, research, biobanks). Documents marked 2026 / 2025 new or latest are recent CNAS issues or re-issues — always verify the current edition on the CNAS website.</div>
+
+<nav class="toc">
+  <h2>Contents (by industry / testing field)</h2>
+  <div class="links">
+    <a href="#i01">Electrical / electronics</a>
+    <a href="#i02">Telecom</a>
+    <a href="#i03">EMC</a>
+    <a href="#i04">Chemicals</a>
+    <a href="#i05">Petroleum &amp; petrochemicals</a>
+    <a href="#i06">Coal</a>
+    <a href="#i07">Metals &amp; materials</a>
+    <a href="#i08">Automotive / motorcycles</a>
+    <a href="#i09">Non-destructive testing</a>
+    <a href="#i10">Toys / children's products</a>
+    <a href="#i11">Textiles</a>
+    <a href="#i12">Light industry / furniture / wood</a>
+    <a href="#i13">Construction works</a>
+    <a href="#i14">Building materials</a>
+    <a href="#i15">PV / new energy</a>
+    <a href="#i16">Medical devices</a>
+    <a href="#i17">Gems / precious metals</a>
+    <a href="#i18">Software</a>
+    <a href="#i19">Info security</a>
+    <a href="#i20">Sensory analysis</a>
+    <a href="#i21">Microbiology</a>
+    <a href="#i22">Molecular</a>
+    <a href="#i23">Calibration</a>
+    <a href="#i24">Drug bioanalysis</a>
+    <a href="#i25">Medical laboratories</a>
+    <a href="#i26">Medical reference measurement</a>
+    <a href="#i27">Lab animals</a>
+    <a href="#i28">Biosafety</a>
+    <a href="#i29">Biobanks</a>
+    <a href="#i30">Forensics</a>
+    <a href="#i31">Quarantine testing</a>
+    <a href="#i32">Food</a>
+    <a href="#i33">Environmental testing</a>
+    <a href="#i34">Natural resources</a>
+    <a href="#i35">Doping control</a>
+    <a href="#i36">PTP</a>
+    <a href="#i37">RMP</a>
+    <a href="#i38">Research laboratories</a>
+    <a href="#i39">Advanced manufacturing</a>
+    <a href="#i40">Corporate / group labs</a>
+    <a href="#gen">General management</a>
+    <a href="#spec">Specialised schemes</a>
+  </div>
+</nav>
+
+<!-- ===== 01 Electrical / electronics ===== -->
+<section class="block" id="i01">
+  <div class="section-head"><div class="no">01</div><h2>Electrical / electronics</h2><span class="tag">Core equipment-manufacturing field</span></div>
+  <p class="section-desc">The most common field for labs of mechanical / electrical / electronics manufacturers: electrical safety, performance, electronic measurement and more.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A003:2019</td><td>《检测和校准实验室能力认可准则在电气检测领域的应用说明》</td><td class="date">2019-12-30</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL007:2020</td><td>《电器领域测量不确定度的评估指南》</td><td class="date">2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-008:2025</td><td>《电气检测领域实验室内部质量控制方法与实例》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-009:2025</td><td>《电气检测领域技术记录的编制与管理》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 02 Telecom ===== -->
+<section class="block" id="i02">
+  <div class="section-head"><div class="no">02</div><h2>Telecommunications</h2><span class="tag">Electronics / information field</span></div>
+  <p class="section-desc">For testing labs covering telecom equipment, terminals and network performance.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A007:2021</td><td>《检测和校准实验室能力认可准则在通信检测领域的应用说明》</td><td class="date">2021-2-10 / 2021-5-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL026:2018</td><td>《无线电领域测量不确定度评估指南及实例》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-18:2021</td><td>《通信检测领域认可能力范围表述说明》</td><td class="date">2021-2-10</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-TRL-016:2021</td><td>《通信检测实验室校准方案制定和实施指南》</td><td class="date">2021-2-10</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-023:2024</td><td>《通信领域检测实验室外部质量控制方法与实例》</td><td class="date">2024-9-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 03 EMC ===== -->
+<section class="block" id="i03">
+  <div class="section-head"><div class="no">03</div><h2>Electromagnetic compatibility (EMC)</h2><span class="tag">Electronics / electrical field</span></div>
+  <p class="section-desc">For EMC (emission / immunity) testing labs for electrical and electronic products, incl. site confirmation and equipment traceability requirements.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A008:2023</td><td>《检测和校准实验室能力认可准则在电磁兼容检测领域的应用说明》</td><td class="date">2023-4-1 / 2023-4-10</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL052:2022</td><td>《电磁兼容检测领域设备期间核查指南》</td><td class="date">2022-11-15</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL053:2022</td><td>《电磁兼容实验室场地确认技术指南》</td><td class="date">2022-11-15</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-019:2022</td><td>《电磁兼容检测领域关键设备量值溯源指南》</td><td class="date">2022-12-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-020:2022</td><td>《电磁兼容检测领域质量控制方法》</td><td class="date">2022-12-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-021:2022</td><td>《电磁兼容检测相关人员能力模型》</td><td class="date">2022-12-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 04 Chemicals ===== -->
+<section class="block" id="i04">
+  <div class="section-head"><div class="no">04</div><h2>Chemicals</h2><span class="tag">Materials / chemicals field</span></div>
+  <p class="section-desc">For labs testing material composition, chemical products and physico-chemical properties of chemicals.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A002:2020</td><td>《检测和校准实验室能力认可准则在化学检测领域的应用说明》</td><td class="date">2020-12-18 / 2021-1-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL006:2019</td><td>《化学分析中不确定度的评估指南》</td><td class="date">2019-3-15</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL027:2023</td><td>《化学分析实验室内部质量控制指南——控制图的应用》</td><td class="date">2023-2-10</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL046:2020</td><td>《化学检测仪器核查指南》</td><td class="date">2020-12-24</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL051:2022</td><td>《化工产品热安全检测领域实验室认可技术指南》</td><td class="date">2022-10-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 05 Petroleum &amp; petrochemicals ===== -->
+<section class="block" id="i05">
+  <div class="section-head"><div class="no">05</div><h2>Petroleum &amp; petrochemicals</h2><span class="tag">Energy / chemicals extension</span></div>
+  <p class="section-desc">For physico-chemical testing of petroleum and petrochemical products (overlaps with chemicals testing; listed separately for retrieval).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-GL016:2020</td><td>《石油石化领域理化检测测量不确定度评估指南及实例》</td><td class="date">2020-2-18</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL034:2018</td><td>《石油石化检测领域实验室认可技术指南》</td><td class="date">2018-11-20</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-12:2018</td><td>《石油石化检测领域实验室认可能力范围表述说明》</td><td class="date">2018-2-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 06 Coal ===== -->
+<section class="block" id="i06">
+  <div class="section-head"><div class="no">06</div><h2>Coal</h2><span class="tag">Energy field</span></div>
+  <p class="section-desc">For coal and power-plant fuel testing labs, incl. technical reports newly added in 2026.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-TRL-017:2021</td><td>《电煤检测领域实验室认可技术指南》</td><td class="date">2021-7-10</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-026:2026</td><td>《煤炭检测领域实验室内部质量控制方法》<span class="badge-new">2026 新增</span></td><td class="date">2026-8-28</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-027:2026</td><td>《煤炭检测实验室测量设备的计量溯源及核查指南》<span class="badge-new">2026 新增</span></td><td class="date">2026-8-28</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-08:2018</td><td>《电煤检测领域认可能力范围表述说明》</td><td class="date">2018-3-31</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 07 Metals &amp; materials ===== -->
+<section class="block" id="i07">
+  <div class="section-head"><div class="no">07</div><h2>Metals &amp; materials</h2><span class="tag">Materials field</span></div>
+  <p class="section-desc">For labs testing mechanical properties and chemical composition of metals and alloys.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A011:2018</td><td>《检测和校准实验室能力认可准则在金属材料检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL009:2018</td><td>《材料理化检验测量不确定度评估指南及实例》</td><td class="date">2018-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 08 Automotive / motorcycles ===== -->
+<section class="block" id="i08">
+  <div class="section-head"><div class="no">08</div><h2>Automotive &amp; motorcycles (incl. EV)</h2><span class="tag">Core components field</span></div>
+  <p class="section-desc">For labs testing automobiles, motorcycles, parts and electric-vehicle safety.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A005:2020</td><td>《检测和校准实验室能力认可准则在汽车和摩托车检测领域的应用说明》</td><td class="date">2020-11-30</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL023:2018</td><td>《汽车和摩托车检测领域典型参数的测量不确定度评估指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-015:2021</td><td>《电动汽车检测安全风险识别与控制》</td><td class="date">2021-3-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-10:2014</td><td>《机动车检测领域认可能力范围表述说明》（2015-6-1 修订）</td><td class="date">2014-11-2</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 09 Non-destructive testing ===== -->
+<section class="block" id="i09">
+  <div class="section-head"><div class="no">09</div><h2>Non-destructive testing</h2><span class="tag">Equipment manufacturing field</span></div>
+  <p class="section-desc">For NDT labs: ultrasonic, radiographic, magnetic-particle, penetrant and more.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A006:2021</td><td>《检测和校准实验室能力认可准则在无损检测领域的应用说明》</td><td class="date">2021-12-31 / 2022-6-30</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 10 Toys / children's products ===== -->
+<section class="block" id="i10">
+  <div class="section-head"><div class="no">10</div><h2>Toys &amp; children's products</h2><span class="tag">Light-industry extension</span></div>
+  <p class="section-desc">For labs testing the safety and physico-chemical properties of toys and children's products.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A009:2018</td><td>《检测和校准实验室能力认可准则在玩具检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-EL-02:2020</td><td>《玩具和儿童用品检测领域认可能力范围表述说明》</td><td class="date">2020-12-30</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 11 Textiles ===== -->
+<section class="block" id="i11">
+  <div class="section-head"><div class="no">11</div><h2>Textiles</h2><span class="tag">Textiles &amp; light industry field</span></div>
+  <p class="section-desc">For physical and chemical testing of textiles and apparel.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A010:2023</td><td>《检测和校准实验室能力认可准则在纺织检测领域的应用说明》</td><td class="date">2023-2-20 / 2023-3-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-TRL-002:2020</td><td>《纺织品检测测量不确定度的评估及实例》</td><td class="date">2020-3-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-07:2020</td><td>《纺织检测领域认可能力范围表述说明》</td><td class="date">2020-3-31</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 12 Light industry / furniture / wood ===== -->
+<section class="block" id="i12">
+  <div class="section-head"><div class="no">12</div><h2>Light industry / furniture / wood &amp; bamboo products</h2><span class="tag">Light-industry field</span></div>
+  <p class="section-desc">For light-industry products, furniture, wood-based panels and wood / bamboo products (no dedicated A series; mainly TRL / EL).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-TRL-005:2018</td><td>《轻纺检测领域质量控制方法》</td><td class="date">2018-1-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-006:2018</td><td>《轻纺实验室测量设备的计量溯源或核查工作指南》</td><td class="date">2018-1-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-011:2020</td><td>《轻工产品化学分析方法确认和验证指南》</td><td class="date">2020-4-20</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-012:2020</td><td>《家具、人造板及木竹相关制品检测领域认可申请指南》</td><td class="date">2020-12-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-013:2020</td><td>《家具、人造板及木竹相关制品检测领域认可评审技术指南》</td><td class="date">2020-12-31</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-17:2020</td><td>《家具、人造板及木竹相关制品检测领域认可能力范围表述说明》</td><td class="date">2020-12-31</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 13 Construction works ===== -->
+<section class="block" id="i13">
+  <div class="section-head"><div class="no">13</div><h2>Construction works</h2><span class="tag">Engineering field · re-issued 2026</span></div>
+  <p class="section-desc">For construction-works quality testing labs. A018 was re-issued as the 2026 edition on 2026-9-23, effective 2027-1-1; the 2021 edition applies during the transition.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A018:2026</td><td>《检测和校准实验室能力认可准则在建设工程检测领域的应用说明》<span class="badge-new">2026 最新版</span></td><td class="date">2026-9-23 / 2027-1-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL033:2018</td><td>《建设领域典型检验检测设备计量溯源指南》</td><td class="date">2018-9-15 / 2019-1-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-007:2018</td><td>《建设领域典型检验检测设备计量溯源在检测结果不确定度评定中的应用》</td><td class="date">2018-9-15</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 14 Building materials ===== -->
+<section class="block" id="i14">
+  <div class="section-head"><div class="no">14</div><h2>Construction materials</h2><span class="tag">Engineering / materials field</span></div>
+  <p class="section-desc">For testing of building materials (cement, steel, concrete and more).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A022:2021</td><td>《检测和校准实验室能力认可准则在建材检测领域的应用说明》</td><td class="date">2021-1-1 / 2021-5-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-EL-09:2021</td><td>《建材领域实验室认可能力范围表述说明》</td><td class="date">2021-1-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 15 PV / new energy ===== -->
+<section class="block" id="i15">
+  <div class="section-head"><div class="no">15</div><h2>Photovoltaic products</h2><span class="tag">New-energy field</span></div>
+  <p class="section-desc">For performance and reliability testing of PV modules and devices.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A021:2019</td><td>《检测和校准实验室能力认可准则在光伏产品检测领域的应用说明》</td><td class="date">2019-12-30</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 16 Medical devices ===== -->
+<section class="block" id="i16">
+  <div class="section-head"><div class="no">16</div><h2>Medical devices</h2><span class="tag">Healthcare field · re-issued 2026</span></div>
+  <p class="section-desc">For medical-device product testing labs (2026 edition in force; the 2018 edition is withdrawn on 2026-10-31).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A004:2026</td><td>《检测和校准实验室能力认可准则在医疗器械检测领域的应用说明》<span class="badge-new">2026 最新版</span></td><td class="date">2026-4-15 / 2026-5-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 17 Gems / precious metals ===== -->
+<section class="block" id="i17">
+  <div class="section-head"><div class="no">17</div><h2>Gems &amp; precious metals</h2><span class="tag">Consumer / materials field</span></div>
+  <p class="section-desc">For testing of gems, jade, precious-metal jewellery and materials.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A015:2018</td><td>《检测和校准实验室能力认可准则在珠宝玉石、贵金属检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 18 Software ===== -->
+<section class="block" id="i18">
+  <div class="section-head"><div class="no">18</div><h2>Software</h2><span class="tag">Information technology field</span></div>
+  <p class="section-desc">For software product quality and performance testing labs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A019:2018</td><td>《检测和校准实验室能力认可准则在软件检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 19 Info security ===== -->
+<section class="block" id="i19">
+  <div class="section-head"><div class="no">19</div><h2>Information security</h2><span class="tag">Information technology field</span></div>
+  <p class="section-desc">For information-security product and system testing labs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A020:2018</td><td>《检测和校准实验室能力认可准则在信息安全检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 20 Sensory analysis ===== -->
+<section class="block" id="i20">
+  <div class="section-head"><div class="no">20</div><h2>Sensory analysis</h2><span class="tag">General testing capability</span></div>
+  <p class="section-desc">For sensory evaluation labs (food, daily chemicals, materials); re-issued in 2025.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A016:2025</td><td>《检测和校准实验室能力认可准则在感官检验领域的应用说明》<span class="badge-new">2025 最新版</span></td><td class="date">2025-1-15 / 2025-1-31</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL014:2025</td><td>《感官检验领域实验室认可技术指南》<span class="badge-new">2025 最新版</span></td><td class="date">2025-1-15 / 2025-1-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 21 Microbiology ===== -->
+<section class="block" id="i21">
+  <div class="section-head"><div class="no">21</div><h2>Microbiology</h2><span class="tag">Cross-industry</span></div>
+  <p class="section-desc">For microbiology testing of environmental, product and medical samples (microbiology requirements for medical / PTP fields: see the corresponding groups).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A001:2022</td><td>《检测和校准实验室能力认可准则在微生物检测领域的应用说明》</td><td class="date">2022-12-24 / 2023-1-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 22 Molecular ===== -->
+<section class="block" id="i22">
+  <div class="section-head"><div class="no">22</div><h2>Molecular (gene amplification) testing</h2><span class="tag">Molecular testing field</span></div>
+  <p class="section-desc">For PCR / gene-amplification testing labs — common in medical testing, inspection &amp; quarantine and forensic biology.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A024:2018</td><td>《检测和校准实验室能力认可准则在基因扩增检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL029:2018</td><td>《基因扩增领域检测实验室认可指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-05:2013</td><td>《基因扩增检测领域认可能力范围表述说明》（2015-6-1 修订）</td><td class="date">2013-12-25</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 23 Calibration ===== -->
+<section class="block" id="i23">
+  <div class="section-head"><div class="no">23</div><h2>Calibration</h2><span class="tag">Core for calibration labs</span></div>
+  <p class="section-desc">For calibration laboratories (incl. in-house corporate calibration): CMC statements, calibration intervals, risk management and more.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A025:2022</td><td>《检测和校准实验室能力认可准则在校准领域的应用说明》</td><td class="date">2022-1-20</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL025:2023</td><td>《校准和测量能力（CMC）表示指南》</td><td class="date">2023-12-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL054:2023</td><td>《测量设备校准周期的确定和调整方法指南》（替代 TRL-004）</td><td class="date">2023-12-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL055:2024</td><td>《基于认可评审不符合项的校准实验室风险管理指南》</td><td class="date">2024-7-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-003:2015</td><td>《校准和测量能力（CMC）的评定与实例》</td><td class="date">2015-9-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-11:2016</td><td>《校准方法的认可管理说明》</td><td class="date">2016-7-6</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 24 Drug bioanalysis ===== -->
+<section class="block" id="i24">
+  <div class="section-head"><div class="no">24</div><h2>Bioanalysis of drugs</h2><span class="tag">Pharma field</span></div>
+  <p class="section-desc">For bioanalysis testing labs supporting clinical trials of drugs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A026:2023</td><td>《检测和校准实验室能力认可准则在药物生物样本分析检测领域的应用说明》</td><td class="date">2023-11-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 25 Medical laboratories ===== -->
+<section class="block" id="i25">
+  <div class="section-head"><div class="no">25</div><h2>Medical laboratories</h2><span class="tag">Core healthcare field</span></div>
+  <p class="section-desc">For medical laboratories — clinical laboratory, pathology, molecular diagnostics — under CNAS-CL02 (identical to ISO 15189:2022).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL02:2023</td><td>《医学实验室质量和能力认可准则》（ISO 15189:2022）</td><td class="date">2023-6-1 / 2023-12-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL02-A001:2023</td><td>《医学实验室质量和能力认可准则的应用要求》</td><td class="date">2023-8-1 / 2023-12-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL021:2018</td><td>《医学领域定性检测能力验证实施指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL037:2019</td><td>《临床化学定量检验程序性能验证指南》</td><td class="date">2019-2-15</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL038:2019</td><td>《免疫定性检验程序性能验证指南》（2020-9-1 修订）</td><td class="date">2019-2-15 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL039:2019</td><td>《分子诊断检验程序性能验证指南》</td><td class="date">2019-2-15</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL047:2021</td><td>《医学实验室定量检验程序结果可比性验证指南》</td><td class="date">2021-4-25</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL048:2025</td><td>《医学实验室组织病理学检查领域认可指南》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL049:2025</td><td>《医学实验室细胞病理学检查领域认可指南》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL050:2025</td><td>《医学实验室分子诊断领域认可指南》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-018:2022</td><td>《医学实验室核酸检测质量和安全指南》</td><td class="date">2022-3-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-14:2023</td><td>《医学实验室认可受理要求的说明》</td><td class="date">2023-8-1 / 2023-12-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 26 Medical reference measurement ===== -->
+<section class="block" id="i26">
+  <div class="section-head"><div class="no">26</div><h2>Medical reference measurement laboratories</h2><span class="tag">Healthcare extension</span></div>
+  <p class="section-desc">For medical reference measurement laboratories providing reference measurement services to medical laboratories.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL07:2021</td><td>《医学参考测量实验室能力认可准则》（ISO 15195:2018）</td><td class="date">2021-5-25 / 2021-11-25</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL07-A001:2021</td><td>《医学参考测量实验室能力认可准则的应用要求》</td><td class="date">2021-5-25 / 2021-11-25</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-EL-26:2023</td><td>《医学参考测量实验室认可受理要求的说明》</td><td class="date">2023-2-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 27 Lab animals ===== -->
+<section class="block" id="i27">
+  <div class="section-head"><div class="no">27</div><h2>Laboratory animal facilities</h2><span class="tag">Life sciences · new application documents in 2026</span></div>
+  <p class="section-desc">For accreditation of lab-animal breeding / use facilities and lab-animal testing labs; CNAS-CL06-A001:2026 is a newly issued application document.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL08:2017</td><td>《实验动物饲养和使用机构认可规则》（2020-9-1 第一次修订）</td><td class="date">2017-6-1 / 2020-9-1</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL06:2018</td><td>《实验动物饲养和使用机构质量和能力认可准则》（GB/T 27416-2014）</td><td class="date">2018-3-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL06-A001:2026</td><td>《实验动物饲养和使用机构质量和能力认可准则的应用说明》<span class="badge-new">2026 新增</span></td><td class="date">2026-3-9 / 2026-3-31</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL01-A023:2018</td><td>《检测和校准实验室能力认可准则在实验动物检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-EL-22:2022</td><td>《实验动物饲养和使用机构认可受理要求的说明》</td><td class="date">2022-10-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 28 Biosafety ===== -->
+<section class="block" id="i28">
+  <div class="section-head"><div class="no">28</div><h2>Biosafety laboratories</h2><span class="tag">Life sciences field</span></div>
+  <p class="section-desc">For biosafety laboratories (BSL-1 to BSL-4) handling pathogenic microorganisms; criteria per GB 19489-2008, fourth revision completed 2025-1.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL05:2016</td><td>《实验室生物安全认可规则》（2019-12-15 第一次修订）</td><td class="date">2016-2-1 / 2019-12-15</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL05:2009</td><td>《实验室生物安全认可准则》（2025-1-15 第四次修订）</td><td class="date">2009-6-30 / 2025-1-20</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL05-A001:2018</td><td>《实验室生物安全认可准则对移动式实验室评价的应用说明》</td><td class="date">2018-3-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL05-A002:2020</td><td>《实验室生物安全认可准则对关键防护设备评价的应用说明》</td><td class="date">2020-12-31</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL045:2020</td><td>《病原微生物实验室生物安全管理指南》</td><td class="date">2020-12-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 29 Biobanks ===== -->
+<section class="block" id="i29">
+  <div class="section-head"><div class="no">29</div><h2>Biobanks</h2><span class="tag">Life sciences · rules re-issued 2026</span></div>
+  <p class="section-desc">For human / animal / plant biobanks; criteria identical to ISO 20387:2018; RL10 re-issued on 2026-1-1.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL10:2026</td><td>《生物样本库认可规则》<span class="badge-new">2026 最新版</span></td><td class="date">2026-1-1</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL10:2020</td><td>《生物样本库质量和能力认可准则》（ISO 20387:2018）</td><td class="date">2020-12-30 / 2021-1-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-EL-30:2026</td><td>《生物样本库认可受理要求的说明》<span class="badge-new">2026 新增</span></td><td class="date">2026-1-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 30 Forensics ===== -->
+<section class="block" id="i30">
+  <div class="section-head"><div class="no">30</div><h2>Forensics</h2><span class="tag">Public-safety field</span></div>
+  <p class="section-desc">For forensic bodies, with application documents for 8 specialities: electronic data, forensic biology DNA, trace evidence, forensic medicine, documents, marks, forensic toxicology and audio-visual materials.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL08:2018</td><td>《司法鉴定/法庭科学机构能力认可准则》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A001:2018</td><td>《…在电子数据鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A002:2018</td><td>《…在法医物证 DNA 鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A003:2018</td><td>《…在微量物证鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A004:2024</td><td>《…在法医学鉴定领域的应用说明》<span class="badge-new">2024 最新版</span></td><td class="date">2024-7-31 / 2024-8-31</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A005:2018</td><td>《…在文书鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A006:2018</td><td>《…在痕迹鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A007:2018</td><td>《…在法医毒物分析和毒品鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL08-A008:2018</td><td>《…在声像资料鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL020:2018</td><td>《司法鉴定/法庭科学领域检验鉴定能力验证实施指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL024:2018</td><td>《司法鉴定/法庭科学鉴定过程的质量控制指南》</td><td class="date">2018-4-18 / 2018-5-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-01:2023</td><td>《司法鉴定/法庭科学机构认可受理要求的说明》</td><td class="date">2023-12-31</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-16:2020</td><td>《司法鉴定/法庭科学领域认可能力范围表述说明》</td><td class="date">2020-9-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 31 Quarantine testing ===== -->
+<section class="block" id="i31">
+  <div class="section-head"><div class="no">31</div><h2>Quarantine testing (health / animal / plant / veterinary)</h2><span class="tag">Inspection &amp; quarantine field</span></div>
+  <p class="section-desc">For customs, animal / plant inspection &amp; quarantine and veterinary testing labs, covering health, animal and plant quarantine and veterinary testing.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A012:2018</td><td>《…在卫生检疫领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL01-A013:2018</td><td>《…在动物检疫领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL01-A014:2024</td><td>《…在植物检疫领域的应用说明》<span class="badge-new">2024 最新版</span></td><td class="date">2024-6-20 / 2024-7-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL031:2018</td><td>《动物检疫二级生物安全实验室认可指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL041:2019</td><td>《植物检疫领域有害生物检疫鉴定非标准方法确认指南》</td><td class="date">2019-10-8</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL043:2020</td><td>《兽医检测实验室 ELISA 试验测量不确定度评估指南》</td><td class="date">2020-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL056:2024</td><td>《植物检疫领域检测鉴定过程可追溯性指南》</td><td class="date">2024-7-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-23:2022</td><td>《兽医学检测领域认可能力范围表述说明》</td><td class="date">2022-12-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-24:2022</td><td>《植物检疫领域认可能力范围表述说明》</td><td class="date">2022-12-30</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 32 Food ===== -->
+<section class="block" id="i32">
+  <div class="section-head"><div class="no">32</div><h2>Food</h2><span class="tag">Consumer services field</span></div>
+  <p class="section-desc">For testing of food, agricultural products and food-contact materials (sensory / microbiology application documents: see the corresponding groups).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-EL-06:2013</td><td>《食品检测领域认可能力范围表述说明》（2015-6-1 修订）</td><td class="date">2013-12-23</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 33 Environmental testing ===== -->
+<section class="block" id="i33">
+  <div class="section-head"><div class="no">33</div><h2>Environmental testing / monitoring</h2><span class="tag">Ecology &amp; environment field</span></div>
+  <p class="section-desc">For environmental sample testing and automatic environmental monitoring labs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-GL022:2018</td><td>《基于质控数据环境检测测量不确定度评定指南》</td><td class="date">2018-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL036:2018</td><td>《环境领域有机检测实验室认可技术指南》</td><td class="date">2018-12-19</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL044:2020</td><td>《环境空气连续自动监测认可技术指南》</td><td class="date">2020-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 34 Natural resources ===== -->
+<section class="block" id="i34">
+  <div class="section-head"><div class="no">34</div><h2>Natural resources</h2><span class="tag">Geology &amp; mining field</span></div>
+  <p class="section-desc">For testing of rocks, ores, minerals, geochemical samples, water and rock / mineral identification.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-EL-27:2024</td><td>《自然资源（岩石、矿石、矿物、地球化学样品、水、岩矿鉴定）检测领域认可能力范围表述说明》</td><td class="date">2024-9-10</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 35 Doping control ===== -->
+<section class="block" id="i35">
+  <div class="section-head"><div class="no">35</div><h2>Doping control in competitive sport</h2><span class="tag">Sport / food-safety crossover</span></div>
+  <p class="section-desc">For doping-control testing labs in competitive sport; whole-body accreditation of anti-doping labs: see specialised scheme S03.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A027:2023</td><td>《检测和校准实验室能力认可准则在竞技体育食源性兴奋剂检测领域的应用说明》</td><td class="date">2023-12-1 / 2024-1-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 36 PTP ===== -->
+<section class="block" id="i36">
+  <div class="section-head"><div class="no">36</div><h2>Proficiency testing providers (PTP)</h2><span class="tag">Conformity-assessment infrastructure</span></div>
+  <p class="section-desc">For proficiency testing providers; criteria identical to ISO/IEC 17043:2023.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL06:2018</td><td>《能力验证提供者认可规则》</td><td class="date">2018-3-1</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL03:2024</td><td>《能力验证提供者认可准则》（ISO/IEC 17043:2023）<span class="badge-new">2024 最新版</span></td><td class="date">2024-6-1 / 2024-9-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL03-A001:2025</td><td>《能力验证提供者认可准则在微生物领域的应用说明》<span class="badge-new">2025</span></td><td class="date">2025-1-15</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL03-A002:2024</td><td>《能力验证提供者认可准则在校准领域的应用说明》</td><td class="date">2024-12-31</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL019:2018</td><td>《能力验证提供者认可指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-29:2024</td><td>《能力验证提供者认可受理要求的说明》</td><td class="date">2024-12-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 37 RMP ===== -->
+<section class="block" id="i37">
+  <div class="section-head"><div class="no">37</div><h2>Reference material producers (RMP)</h2><span class="tag">Conformity-assessment infrastructure</span></div>
+  <p class="section-desc">For reference material producers; criteria identical to ISO 17034:2016, with application documents for IVD reagents and gases.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL07:2018</td><td>《标准物质/标准样品生产者认可规则》</td><td class="date">2018-3-1</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL04:2017</td><td>《标准物质/标准样品生产者能力认可准则》（ISO 17034:2016）</td><td class="date">2017-5-1 / 2017-7-1</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-CL04-A001:2023</td><td>《标准物质/标准样品生产者能力认可准则在体外诊断试剂领域的应用说明》</td><td class="date">2023-8-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-CL04-A002:2023</td><td>《标准物质/标准样品生产者能力认可准则在气体领域的应用说明》</td><td class="date">2023-8-1</td><td><span class="series-badge s-A">A application document</span></td></tr>
+        <tr><td class="code">CNAS-GL018:2018</td><td>《标准物质/标准样品生产者能力认可指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL035:2018</td><td>《检测和校准实验室标准物质/标准样品验收和期间核查指南》</td><td class="date">2018-12-19</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL057:2024</td><td>《标准物质/标准样品选择指南》</td><td class="date">2024-7-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-19:2021</td><td>《标准物质/标准样品生产者认可中对原材料为纯度物质的特定要求》</td><td class="date">2021-5-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-25:2023</td><td>《标准物质/标准样品生产者认可能力范围填写与表述说明》</td><td class="date">2023-1-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 38 Research laboratories ===== -->
+<section class="block" id="i38">
+  <div class="section-head"><div class="no">38</div><h2>Research laboratories</h2><span class="tag">Research-institute field</span></div>
+  <p class="section-desc">For research laboratories; criteria per GB/T 27425-2020 Good Practice for Research Laboratories.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL09:2019</td><td>《科研实验室认可规则》</td><td class="date">2019-3-12</td><td><span class="series-badge s-RL">RL specific rules</span></td></tr>
+        <tr><td class="code">CNAS-CL09:2019</td><td>《科研实验室认可准则》（2021-3-1 第一次修订）</td><td class="date">2019-3-12</td><td><span class="series-badge s-CL">CL criteria</span></td></tr>
+        <tr><td class="code">CNAS-TRL-014:2021</td><td>《科研数据特征划分及其分类体系表》</td><td class="date">2021-1-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 39 Advanced manufacturing ===== -->
+<section class="block" id="i39">
+  <div class="section-head"><div class="no">39</div><h2>Advanced manufacturing (laser / additive)</h2><span class="tag">New in 2026</span></div>
+  <p class="section-desc">For labs testing laser-processing and additive-manufacturing (3D-printing) equipment; technical report newly issued in 2026.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-TRL-024:2026</td><td>《激光加工设备检测领域实验室认可技术指南》<span class="badge-new">2026 新增</span></td><td class="date">2026-2-4</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-025:2026</td><td>《增材制造设备检测领域实验室认可技术指南》<span class="badge-new">2026 新增</span></td><td class="date">2026-2-4</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 40 Corporate / group labs ===== -->
+<section class="block" id="i40">
+  <div class="section-head"><div class="no">40</div><h2>Corporate / group in-house labs (cross-industry)</h2><span class="tag">Key for manufacturing</span></div>
+  <p class="section-desc">General accreditation guidance for corporate first-party laboratories and group multi-lab organisations, applicable across industries.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-GL030:2018</td><td>《企业内部检测实验室认可指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-EL-21:2022</td><td>《集团化企业内部实验室认可说明（试行）》</td><td class="date">2022-1-10</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== General management ===== -->
+<section class="block" id="gen">
+  <div class="section-head"><div class="no">＋</div><h2>Cross-industry general management (not industry-specific)</h2><span class="tag">All labs</span></div>
+  <p class="section-desc">These documents are not tied to a specific testing field: general guidance on management systems, internal audit / management review, proficiency testing, reports &amp; certificates and metrological traceability for all testing / calibration laboratories — included for completeness (not counted as industry-specific).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-GL001:2018</td><td>《实验室认可指南》</td><td class="date">2018-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL002:2018</td><td>《能力验证结果的统计处理和能力评价指南》（2020-9-1 修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL003:2018</td><td>《能力验证样品均匀性和稳定性评价指南》</td><td class="date">2018-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL008:2018</td><td>《实验室认可评审不符合项分级指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL011:2025</td><td>《实验室和检验机构内部审核指南》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL012:2025</td><td>《实验室和检验机构管理评审指南》<span class="badge-new">2025</span></td><td class="date">2025-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL015:2022</td><td>《判定规则和符合性声明指南》</td><td class="date">2022-1-20</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL032:2018</td><td>《能力验证的选择核查与利用指南》</td><td class="date">2018-3-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL035:2018</td><td>《检测和校准实验室标准物质/标准样品验收和期间核查指南》</td><td class="date">2018-12-19</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL040:2019</td><td>《仪器验证实施指南》</td><td class="date">2019-8-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL042:2019</td><td>《测量设备期间核查的方法指南》</td><td class="date">2019-12-1</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-GL054:2023</td><td>《测量设备校准周期的确定和调整方法指南》（替代 TRL-004）</td><td class="date">2023-12-31</td><td><span class="series-badge s-GL">GL guidance</span></td></tr>
+        <tr><td class="code">CNAS-TRL-010:2019</td><td>《测量不确定度在符合性判定中的应用》</td><td class="date">2019-4-1</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-TRL-022:2023</td><td>《实验室风险管理指南》</td><td class="date">2023-3-20</td><td><span class="series-badge s-TRL">TRL report</span></td></tr>
+        <tr><td class="code">CNAS-EL-03:2023</td><td>《检测和校准实验室认可能力范围表述说明》</td><td class="date">2023-8-1 / 2023-9-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-04:2020</td><td>《对大型综合实验室的认可评审管理说明》</td><td class="date">2020-1-22</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-13:2019</td><td>《检测报告和校准证书相关要求的认可说明》</td><td class="date">2019-12-25</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-15:2020</td><td>《检测和校准实验室认可受理要求的说明》（2021-7-1 修订）</td><td class="date">2020-10-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-20:2021</td><td>《实验室和检验机构认可远程评审的应用说明》</td><td class="date">2021-6-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+        <tr><td class="code">CNAS-EL-28:2024</td><td>《实验室、检验机构等英文名称与地址的申报说明》</td><td class="date">2024-10-25 / 2024-11-1</td><td><span class="series-badge s-EL">EL notes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== Specialised schemes ===== -->
+<section class="block" id="spec">
+  <div class="section-head"><div class="no">※</div><h2>Specialised accreditation schemes (international / export)</h2><span class="tag">Select per business needs</span></div>
+  <p class="section-desc">Accreditation schemes under specific international MRA, export or specialised systems, selected per laboratory business needs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Issued / effective</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-S01:2023</td><td>《中国计量科学研究院认可方案》</td><td class="date">2023-1-1</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+        <tr><td class="code">CNAS-CL01-S02:2022</td><td>《“能源之星”实验室认可方案》</td><td class="date">2022-10-1</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+        <tr><td class="code">CNAS-CL01-S03:2020</td><td>《反兴奋剂实验室认可方案》</td><td class="date">2020-8-8</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+        <tr><td class="code">CNAS-CL01-S04:2018</td><td>《EPA 复合木制品检测实验室认可方案》（2018 年第一次修订）</td><td class="date">2018-8-14 / 2018-9-1</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+        <tr><td class="code">CNAS-CL01-S05:2020</td><td>《蓝牙检测实验室认可方案》</td><td class="date">2020-6-1</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+        <tr><td class="code">CNAS-CL01-S06:2024</td><td>《国际法制计量组织证书互认制度实验室认可方案》</td><td class="date">2024-6-20 / 2024-7-1</td><td><span class="series-badge s-S">S scheme</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Scope</h3>
+      <p>This list contains only industry-specific documents outside the general criteria (R / RL01–RL04 / CL01 / G series), grouped by testing field / industry. Grouping is anchored on the CNAS-CL01-A series field application documents, and also includes specific rules (RL05–RL10) and criteria (CL02–CL10) for specific laboratory / body types (medical, forensics, quarantine, PTP, RMP, research, biobanks) with their application documents, plus related GL / TRL / EL / S documents. Version information follows live CNAS releases.</p>
+    </div>
+    <div>
+      <h3>How to use</h3>
+      <p>1) First locate your industry group by the testing / calibration field or body type you apply for; 2) in each group the A-series application documents (or specific criteria / rules) are the essential core, with GL / TRL / EL as guidance and competence statements; 3) for documents marked 2026 / 2025 latest or new, always verify the current edition on the CNAS website.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

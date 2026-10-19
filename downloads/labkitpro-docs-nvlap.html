@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国 NVLAP 实验室认可文件清单（最新版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ENV%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+
+.badge.na{background:#f6f6f8;color:#8a94a6;border:1px solid #e0e2e8;}
+td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:break-all;}
+td a.dl:hover{text-decoration:underline;}
+footer a{color:#d7e3fb;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">NVLAP · NIST 管理 · 美国国家自愿实验室认可计划</span>
+    <h1>美国 NVLAP 实验室认可文件清单</h1>
+    <p>NVLAP（National Voluntary Laboratory Accreditation Program，美国国家自愿实验室认可计划）由美国国家标准与技术研究院（NIST）依据 15 CFR Part 285 管理，对检测与校准实验室实施第三方认可，评审准则等同采用 ISO/IEC 17025:2017。本清单依据 NIST 官网 Publications and Forms 栏目实时整理，完整收录现行有效的核心准则手册（NIST Handbook 150）、各认可项目专用手册（150-x 系列）、实验室公告（Lab Bulletin）、政策指南（Policy Guide）、现场评审检查表（On-Site Assessment Checklist）及其他相关出版物，标注版本年份、状态与官网 PDF 链接。</p>
+    <div class="meta">
+      <span>清单核对日期：<b>2026-10-19（官网实时抓取）</b></span>
+      <span>官方依据页：<b>nist.gov/nvlap/publications-and-forms</b></span>
+      <span>国际互认背景：<b>ILAC/IAF 已过渡为 Global Accreditation Cooperation（2026 年起）</b></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">96</div><div class="lbl">现行文件总数（条）</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">分区（类）</div></div>
+      <div class="stat"><div class="num">21</div><div class="lbl">现行手册（HB 150 ＋ 150-x 系列）</div></div>
+      <div class="stat"><div class="num">46</div><div class="lbl">现行实验室公告 Lab Bulletin</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#sec-150">一、核心准则手册（NIST Handbook 150）</a>
+    <a href="#sec-150x">二、项目专用手册（NIST Handbook 150-x 系列）</a>
+    <a href="#sec-lb">三、实验室公告（Lab Bulletin 系列）</a>
+    <a href="#sec-pg">四、政策指南（Policy Guide 系列）</a>
+    <a href="#sec-cl">五、现场评审检查表（On-Site Checklist）</a>
+    <a href="#sec-other">六、其他相关出版物</a>
+  </div>
+</nav>
+
+<!-- ============ 一、核心准则手册 ============ -->
+<section class="block" id="sec-150">
+  <div class="section-head">
+    <div class="no">一</div>
+    <h2>核心准则手册（NIST Handbook 150）</h2>
+    <span class="tag">核心 · 全部认可项目适用</span>
+  </div>
+  <p class="section-desc">NVLAP 运行的通用程序与总体要求，包含 15 CFR Part 285（美国联邦法规）及 NVLAP 对检测/校准实验室认可的解释性规定；所有认可项目实验室均须遵守。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">NIST HB 150</td><td>《NVLAP 程序与通用要求》<span class="en">NVLAP Procedures and General Requirements（2020 版，Update 1）</span></td><td class="date">2020 版 / Update 1</td><td><span class="badge core">现行核心</span>全部项目通用；<a class="dl" href="https://nvlpubs.nist.gov/nistpubs/hb/2020/NIST.HB.150-2020-upd1.pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：HB 150 现行版为 2020 版（Update 1）；两则现行实验室公告（LB-156-2024、LB-132-2020）须插入手册使用，见第三分区。旧版（如 1999/2006 版）已废止，不再列示。</div>
+  </div>
+</section>
+
+<!-- ============ 二、项目专用手册 150-x 系列 ============ -->
+<section class="block" id="sec-150x">
+  <div class="section-head">
+    <div class="no">二</div>
+    <h2>项目专用手册（NIST Handbook 150-x 系列）</h2>
+    <span class="tag">领域 · 按认可项目选用</span>
+  </div>
+  <p class="section-desc">各认可实验室项目（LAP）的专用技术要求与指南，与 HB 150 配合使用；对应项目实验室须遵守该项目手册及其插入的 Lab Bulletin。以下为官网现行全部 20 份项目手册（编号空档对应已终止/退役项目，不再列示）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">NIST HB 150-1</td><td>《节能照明产品》<span class="en">Energy Efficient Lighting Products</span></td><td class="date">2021 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://doi.org/10.6028/NIST.HB.150-1-2021" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-2</td><td>《校准实验室》<span class="en">Calibration Laboratories</span></td><td class="date">2024 版</td><td><span class="badge dom">领域现行</span><span class="badge new">2024 最新版</span><a class="dl" href="https://doi.org/10.6028/NIST.HB.150-2e2024" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-3</td><td>《散装石棉分析》<span class="en">Bulk Asbestos Analysis（PLM）</span></td><td class="date">2025 版</td><td><span class="badge dom">领域现行</span><span class="badge new">2025 最新版</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-nist-hb-150-3-2025" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-4</td><td>《电离辐射剂量学》<span class="en">Ionizing Radiation Dosimetry</span></td><td class="date">2019 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-42019-nvlap-ionizing-radiation-dosimetry" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-5</td><td>《建筑材料检测》<span class="en">Construction Materials Testing</span></td><td class="date">2020 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-52020-nvlap-construction-materials-testing" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-6</td><td>《地毯与地毯衬垫》<span class="en">Carpet and Carpet Cushion（含人造草坪测试）</span></td><td class="date">2020 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-62020-nvlap-carpet-and-cushion" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-8</td><td>《声学检测服务》<span class="en">Acoustical Testing Services</span></td><td class="date">2018 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://doi.org/10.6028/NIST.HB.150-8-2018" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-10</td><td>《电动机效率》<span class="en">Efficiency of Electric Motors</span></td><td class="date">2020 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-102020-nvlap-efficiency-electric-motors" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-11</td><td>《电磁兼容与通信》<span class="en">Electromagnetic Compatibility &amp; Telecommunications（ECT，含 FCC/ISED/ASCA 子项目）</span></td><td class="date">2013 版</td><td><span class="badge dom">领域现行</span>子项目要求见 LB-155/157/159-2024/2025；<a class="dl" href="https://www.nist.gov/document/nist-hb-150-11-2013pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-13</td><td>《空气中石棉分析》<span class="en">Airborne Asbestos Analysis（TEM）</span></td><td class="date">2006 版</td><td><span class="badge dom">领域现行</span>配合 LB-166-2026 适用；<a class="dl" href="https://www.nist.gov/document/nist-hb-150-13-2006-1pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-15</td><td>《隔热保温材料》<span class="en">Thermal Insulation Materials</span></td><td class="date">2020 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-152020-nvlap-thermal-insulation-materials" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-17</td><td>《密码与安全测试》<span class="en">Cryptographic and Security Testing（CST）</span></td><td class="date">2022 版</td><td><span class="badge dom">领域现行</span>注意 LB-163-2026 暂停接受新申请；<a class="dl" href="https://doi.org/10.6028/NIST.HB.150-17e2022" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-18e</td><td>《紧固件与金属材料》<span class="en">Fasteners and Metals</span></td><td class="date">2024 版</td><td><span class="badge dom">领域现行</span><span class="badge new">2024 最新版</span><a class="dl" href="https://doi.org/10.6028/NIST.HB.150-18e2024" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-20</td><td>《通用准则测试》<span class="en">Common Criteria Testing（CCTL）</span></td><td class="date">2014 版</td><td><span class="badge dom">领域现行</span>配合 LB-82-2014 / LB-104-2017 / LB-107-2018；<a class="dl" href="https://www.nist.gov/document/nist-hb-150-20-2014pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-22</td><td>《投票系统测试》<span class="en">Voting System Testing</span></td><td class="date">2021 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://doi.org/10.6028/NIST.HB.150-22-2021" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-23</td><td>《辐射探测仪器》<span class="en">Radiation Detection Instruments（国土安全应用）</span></td><td class="date">2022 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-232022-nvlap-radiation-detection-instruments" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-24</td><td>《执法与惩教设备》<span class="en">Law Enforcement and Corrections Equipment</span></td><td class="date">2021 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-handbook-150-242021" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-25</td><td>《生物识别测试》<span class="en">Biometrics Testing</span></td><td class="date">2009 版</td><td><span class="badge dom">领域现行</span><a class="dl" href="https://www.nist.gov/document/nist-hb150-25-2009-1pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-31</td><td>《医疗信息技术测试》<span class="en">Healthcare Information Technology Testing（HIT）</span></td><td class="date">2021 版</td><td><span class="badge dom">领域现行</span>配合 LB-165-2026（健康数据最终规则）；<a class="dl" href="https://www.nist.gov/document/nist-handbook-150-31-nvlap-health-information-technology-testing" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">NIST HB 150-872</td><td>《联邦作战系统》<span class="en">Federal Warfare System(s)</span></td><td class="date">2021 版</td><td><span class="badge dom">领域现行</span>保密项目；<a class="dl" href="https://doi.org/10.6028/NIST.HB.150-872-2021" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：编号空档（150-7、150-9、150-12、150-14、150-16、150-19、150-21、150-26~150-30 等）对应已终止/退役的认可项目，官网现行清单不再列示；DOI 链接（doi.org/10.6028/…）为 NIST 官方永久链接，自动跳转 nvlpubs.nist.gov 对应 PDF。</div>
+  </div>
+</section>
+
+<!-- ============ 三、实验室公告 Lab Bulletin ============ -->
+<section class="block" id="sec-lb">
+  <div class="section-head">
+    <div class="no">三</div>
+    <h2>实验室公告（Lab Bulletin 系列）</h2>
+    <span class="tag">辅助 · 插入对应手册使用</span>
+  </div>
+  <p class="section-desc">Lab Bulletin 用于在手册两次正式修订之间通知项目增补与变更、澄清项目专用要求；应插入相应项目手册，待手册修订后并入。以下为官网手册页现行列示的全部 46 则公告（按编号排序）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布年份</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LB-23-2007</td><td>《HB 150-13 2006 版发布》<span class="en">Release of NIST Handbook 150-13:2006 Edition（Airborne Asbestos）</span></td><td class="date">2007</td><td><span class="badge opt">现行插入件</span>配 HB 150-13；<a class="dl" href="https://www.nist.gov/document/lb2307pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-43-2009</td><td>《HB 150-25 2009 版发布》<span class="en">Release of NIST Handbook 150-25, 2009 Edition（Biometrics）</span></td><td class="date">2009</td><td><span class="badge opt">现行插入件</span>配 HB 150-25；<a class="dl" href="https://www.nist.gov/document/lb432009-1pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-69-2012</td><td>《TEM 检测报告须加免责声明》<span class="en">Disclaimer to Be Added to TEM Test Reports（Airborne Asbestos）</span></td><td class="date">2012</td><td><span class="badge opt">现行插入件</span>配 HB 150-13；<a class="dl" href="https://www.nist.gov/document/lb692012pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-73-2013</td><td>《HB 150-11 2013 版发布》<span class="en">Release of NIST Handbook 150-11, 2013 Edition（ECT）</span></td><td class="date">2013</td><td><span class="badge opt">现行插入件</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lb-73-2013-hb150-11-revison" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-81-2014</td><td>《核密度-湿度测量仪》<span class="en">Nuclear Density-Moisture Gauges（Construction Materials）</span></td><td class="date">2014</td><td><span class="badge opt">现行插入件</span>配 HB 150-5；<a class="dl" href="https://www.nist.gov/document/lb812014pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-82-2014</td><td>《CCTL 认可项目手册修订》<span class="en">Revision of the NVLAP Common Criteria Testing Laboratory Accreditation Program Handbook（HB 150-20）</span></td><td class="date">2014</td><td><span class="badge opt">现行插入件</span>配 HB 150-20；<a class="dl" href="https://www.nist.gov/document/lb822014pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-104-2017</td><td>《HB 150-20 附录 B 更新》<span class="en">NIST HB 150-20: Annex B, B.3.a — Program-specific procedures UPDATE（CCTL）</span></td><td class="date">2017</td><td><span class="badge opt">现行插入件</span>配 HB 150-20；<a class="dl" href="https://www.nist.gov/document/lb-104-2017ccannexbupdatepdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-107-2018</td><td>《CCTL 商业评估频次与积分监控制》<span class="en">Supplement to HB 150-20:2014 §3.3.3（commercial evaluation frequency）and §3.3.4（CCTL point system）</span></td><td class="date">2018</td><td><span class="badge opt">现行插入件</span>配 HB 150-20；<a class="dl" href="https://www.nist.gov/document/lb-107-2018niapcctlpointsystemscclappdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-111-2018</td><td>《HB 150-8 2018 版发布》<span class="en">Release of NIST Handbook 150-8, 2018 Edition（Acoustical Testing）</span></td><td class="date">2018</td><td><span class="badge opt">现行插入件</span>配 HB 150-8；<a class="dl" href="https://www.nist.gov/document/lb1112018acousticshb150-8revisionpdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-114-2019</td><td>《HB 150-4 2019 版发布》<span class="en">Release of NIST Handbook 150-4, 2019 Edition（Ionizing Radiation Dosimetry）</span></td><td class="date">2019</td><td><span class="badge opt">现行插入件</span>配 HB 150-4；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-114-2019-release-nist-handbook-150-4-2019-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-115-2019</td><td>《核密度测量仪校准要求澄清》<span class="en">Clarification of Calibration Requirements for Nuclear Density Gauges（Construction Materials）</span></td><td class="date">2019</td><td><span class="badge opt">现行插入件</span>配 HB 150-5；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-115-2019-clarification-calibration-requirements-nuclear-density-gauges" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-116-2020</td><td>《ILAC MRA 下 ISO/IEC 17025:2017 认可文件更新》<span class="en">Update to NVLAP accreditation documents for laboratories accredited to ISO/IEC 17025:2017 under the ILAC MRA</span></td><td class="date">2020</td><td><span class="badge core">通用现行</span>配 HB 150-1/5/6/10/11/13/15/17/18/20/25/31；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-116-2020" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-117-2020</td><td>《ILAC MRA 下 ISO/IEC 17025:2017 认可文件更新》<span class="en">Update to NVLAP accreditation documents for laboratories accredited to ISO/IEC 17025:2017 under the ILAC MRA</span></td><td class="date">2020</td><td><span class="badge core">通用现行</span>配 HB 150-2/4/8；<a class="dl" href="https://www.nist.gov/document/lb-117-2020-update-nvlap-accreditation-documents-laboratories-accredited-isoiec-170252017" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-12-2020</td><td>《HB 150-5 2020 版发布》<span class="en">Release of NIST Handbook 150-5, 2020 Edition（Construction Materials）</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-5；<a class="dl" href="https://www.nist.gov/document/lb-122-2020-release-nist-handbook-150-5-2020-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-120-2020</td><td>《HB 150-10 2020 版发布》<span class="en">Release of NIST Handbook 150-10, 2020 Edition（Efficiency of Electric Motors）</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-10；<a class="dl" href="https://www.nist.gov/document/lb-120-2020-release-nist-handbook-150-10-2020-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-123-2020</td><td>《HB 150-15 2020 版发布》<span class="en">Release of NIST Handbook 150-15, 2020 Edition（Thermal Insulation Materials）</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-15；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-123-2020-release-nist-handbook-150-15-2020-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-130-2020</td><td>《HB 150-6 2020 版发布》<span class="en">Release of NIST Handbook 150-6, 2020 Edition（Carpet and Carpet Cushion）</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-6；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-130-2020-release-nist-handbook-150-6-2020-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-131-2020</td><td>《21 世纪治愈法案最终规则纳入 HIT 项目》<span class="en">Addition of the 21st Century Cures Act: Interoperability, Information Blocking and ONC Health IT Certification Program final rule to the HIT LAP</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-31；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-131-2020-addition-21st-century-cures-act" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-132-2020</td><td>《通过 NIWS 提交不符合项响应的原因分析》<span class="en">Implementing Cause Analysis for the Non-Conformity Response Submission through the NVLAP Interactive Web System（NIWS）</span></td><td class="date">2020</td><td><span class="badge core">通用现行</span>配 HB 150；<a class="dl" href="https://www.nist.gov/document/lb-132-2020-implementing-cause-analysis-non-conformity-response-submission-through-nvlap" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-133-2020</td><td>《地毯项目新增人造草坪测试》<span class="en">Addition of Synthetic Turf Testing to Carpet and Carpet Cushion LAP</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-6；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-133-2020-addition-synthetic-turf-testing-carpet-and-cushion-lap" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-134-2020</td><td>《ASCA 认可及 HB 150-11C 检查表发布》<span class="en">ASCA Recognition and Release of NIST Handbook 150-11C Checklist: ECT — ASCA Pilot Program（医疗电气设备基本安全与基本性能）</span></td><td class="date">2020</td><td><span class="badge opt">现行插入件</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lb-134-2020-asca-recognition-and-release-nist-handbook-150-11c-checklist" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-139-2021</td><td>《HB 150-1 2021 版发布》<span class="en">Release of NIST Handbook 150-1, 2021 Edition（Energy Efficient Lighting）</span></td><td class="date">2021</td><td><span class="badge opt">现行插入件</span>配 HB 150-1；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-139-2021-release-nist-handbook-150-1-2021-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-141-2021</td><td>《HB 150-22 2021 版发布》<span class="en">Release of NIST Handbook 150-22, 2021 Edition（Voting System Testing）</span></td><td class="date">2021</td><td><span class="badge opt">现行插入件</span>配 HB 150-22；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-141-2021-release-nist-handbook-150-22-2021-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-142-2021</td><td>《HB 150-31 2021 版发布》<span class="en">Release of NIST Handbook 150-31, 2021 Edition（Healthcare IT Testing）</span></td><td class="date">2021</td><td><span class="badge opt">现行插入件</span>配 HB 150-31；<a class="dl" href="https://www.nist.gov/document/nvlap-lab-bulletin-lb-142-2021-release-nist-handbook-150-31-2021-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-143-2021</td><td>《HB 150-24 2021 版发布》<span class="en">Release of NIST Handbook 150-24, 2021 Edition（Law Enforcement and Corrections Equipment）</span></td><td class="date">2021</td><td><span class="badge opt">现行插入件</span>配 HB 150-24；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-143-2021-release-nist-handbook-150-24-2021-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-145-2022</td><td>《HB 150-23 2022 版发布》<span class="en">Release of NIST Handbook 150-23, 2022 Edition（Radiation Detection Instruments）</span></td><td class="date">2022</td><td><span class="badge opt">现行插入件</span>配 HB 150-23；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-145-2022-release-nist-handbook-150-23-2022-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-147-2022</td><td>《HB 150-17 2022 版发布》<span class="en">Release of NIST Handbook 150-17, 2022 Edition（Cryptographic and Security Testing）</span></td><td class="date">2022</td><td><span class="badge opt">现行插入件</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-147-2022-release-nist-handbook-150-17-2022-edition" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-148-2023</td><td>《电机项目新增 IEC 60034-2-3:2020 与 IEC 61800-9-2:2017》<span class="en">Addition of IEC 60034-2-3:2020 and IEC 61800-9-2:2017 to the Efficiency of Electric Motors LAP</span></td><td class="date">2023</td><td><span class="badge opt">现行插入件</span>配 HB 150-10；<a class="dl" href="https://www.nist.gov/document/lb-148-2023-addition-methods-motors-lap" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-149-2023</td><td>《HB 150-17:2022 附录 B.3.5.2 适用变更》<span class="en">Change in application of the requirement in NIST Handbook 150-17:2022 Annex B.3.5.2（CST）</span></td><td class="date">2023</td><td><span class="badge opt">现行插入件</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/document/lb-149-2023-application-change-hb150-17-annex-b352" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-150-2023</td><td>《功率计相位校准》<span class="en">Calibration of Phase in Power Meters（Energy Efficient Lighting LAP）</span></td><td class="date">2023</td><td><span class="badge opt">现行插入件</span>配 HB 150-1；<a class="dl" href="https://www.nist.gov/document/lb-150-2023-calibration-phase-power-meters-eel-lap" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-151-2023</td><td>《ECT 认可能域扩项申请流程变更》<span class="en">Change in process to request expansion to ECT Scope of Accreditation</span></td><td class="date">2023</td><td><span class="badge opt">现行插入件</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-151-2023-change-process-request-expansion-ect-scope-accreditation" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-152-2023</td><td>《功率计相位校准》<span class="en">Calibration of Phase in Power Meters（Efficiency of Electric Motors LAP）</span></td><td class="date">2023</td><td><span class="badge opt">现行插入件</span>配 HB 150-10；<a class="dl" href="https://www.nist.gov/document/lab-bulletin-lb-152-2023-calibration-phase-power-meters" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-153-2024r1</td><td>《CST 实验室持续能力最低产品报告提交数量调整》<span class="en">Change to the minimum number of vendor product test report submissions as a measure of the laboratory's ongoing proficiency（CST，修订版 r1）</span></td><td class="date">2024</td><td><span class="badge opt">现行插入件（r1）</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/document/lb-153-2024r1-cst-frequency-report-submission-cst-lap" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-154-2024</td><td>《HB 150-18 2024 版发布》<span class="en">Release of NIST Handbook 150-18, 2024 Edition（Fasteners and Metals）</span></td><td class="date">2024</td><td><span class="badge opt">现行插入件</span>配 HB 150-18；<a class="dl" href="https://www.nist.gov/document/lb-154-2024-hb-150-18-revision" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-155-2024</td><td>《HB 150-11A 检查表修订（FCC 设备授权认可要求）》<span class="en">Revision of Handbook 150-11A Checklist, ECT: FCC Equipment Authorization Requirements for Recognition</span></td><td class="date">2024</td><td><span class="badge opt">现行插入件</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lb-155-2024-ect-hb-150-11a-checklist-revision" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-156-2024</td><td>《150-xx 项目检查表迁至 NIWS 实验室门户》<span class="en">Relocation of the NIST Handbook 150-xx program-specific checklists to the NVLAP Interactive Web System（NIWS）Lab Portal</span></td><td class="date">2024</td><td><span class="badge core">通用现行</span>配 HB 150；检查表分发方式变更；<a class="dl" href="https://www.nist.gov/document/lb-156-2024-relocation-nist-handbook-150-xx-checklists" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-157-2024</td><td>《HB 150-11B 检查表修订（加拿大 ISED 项目）》<span class="en">Revision of the ISED Canada Program Specific NIST Handbook 150-11B Checklist: ECT — ISED Telecommunications Terminal Equipment, Radio Apparatus and Broadcasting Equipment</span></td><td class="date">2024</td><td><span class="badge opt">现行插入件</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lb-157-2024-ect-hb-150-11b-checklist-revision" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-158-2024</td><td>《HB 150-2 2024 版发布》<span class="en">Release of NIST Handbook 150-2, 2024 Edition（Calibration Laboratories）</span></td><td class="date">2024</td><td><span class="badge opt">现行插入件</span>配 HB 150-2；<a class="dl" href="https://www.nist.gov/document/lb-158-2024-hb-150-2-revision" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-159-2025</td><td>《支持加拿大 ISED 认可的新增申请文件要求》<span class="en">Additional NVLAP application requirements in support of Innovation, Science and Economic Development（ISED）recognition</span></td><td class="date">2025</td><td><span class="badge opt">现行插入件</span><span class="badge new">2025 最新</span>配 HB 150-11；<a class="dl" href="https://www.nist.gov/document/lb-159-2025-nvlap-ised-application-documents-revision" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-160-2025</td><td>《终止 SCAP 测试认可》<span class="en">Termination of Security Content Automation Protocol（SCAP）Testing accreditation（CST 项目内）</span></td><td class="date">2025</td><td><span class="badge opt">现行插入件</span><span class="badge new">2025 最新</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/document/lb-160-2025" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+        <tr><td class="code">LB-161-2025</td><td>《HB 150-3 2025 版发布》<span class="en">Release of NIST Handbook 150-3, 2025 Edition（Bulk Asbestos Analysis）</span></td><td class="date">2025</td><td><span class="badge opt">现行插入件</span><span class="badge new">2025 最新</span>配 HB 150-3；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-161-2025" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">LB-162-2025</td><td>《CST 测试"第一方实验室"定义澄清》<span class="en">Clarification for definition of first-party laboratory for CST testing</span></td><td class="date">2025</td><td><span class="badge opt">现行插入件</span><span class="badge new">2025 最新</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-162-2025" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">LB-163-2026</td><td>《暂停接受 CST 认可新项目申请》<span class="en">Pause in Acceptance of Accreditation Applications for NVLAP CST LAP</span></td><td class="date">2026</td><td><span class="badge opt">现行插入件</span><span class="badge new">2026 最新</span>配 HB 150-17；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-163-2026" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">LB-164-2026</td><td>《OWM 认可与 NVLAP 认可协作》<span class="en">OWM Recognition and NVLAP Accreditation Collaboration（校准项目）</span></td><td class="date">2026</td><td><span class="badge opt">现行插入件</span><span class="badge new">2026 最新</span>配 HB 150-2；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-164-2026" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">LB-165-2026</td><td>《健康数据、技术与互操作性最终规则纳入 HIT 项目》<span class="en">Addition of the Health Data, Technology, and Interoperability Final Rules to the HIT LAP</span></td><td class="date">2026</td><td><span class="badge opt">现行插入件</span><span class="badge new">2026 最新</span>配 HB 150-31；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-165-2026" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">LB-166-2026</td><td>《石棉项目续证申请变更——能力验证（PT）资料要求》<span class="en">Asbestos Renewal Application Change for an Accredited Laboratory — Required Proficiency Testing（PT）Documentation</span></td><td class="date">2026</td><td><span class="badge opt">现行插入件</span><span class="badge new">2026 最新</span>配 HB 150-3 与 HB 150-13；<a class="dl" href="https://www.nist.gov/nvlap/nvlap-lab-bulletin-lb-166-2026" target="_blank">官方页面 ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：LB-116-2020 与 LB-117-2020 内容相同（ISO/IEC 17025:2017 转版文件更新），按官网手册页分别挂接于不同项目手册；公告编号按官网列示原样收录，未作合并。</div>
+  </div>
+</section>
+
+<!-- ============ 四、政策指南 ============ -->
+<section class="block" id="sec-pg">
+  <div class="section-head">
+    <div class="no">四</div>
+    <h2>政策指南（Policy Guide 系列）</h2>
+    <span class="tag">通用 · HB 150 修订间政策更新</span>
+  </div>
+  <p class="section-desc">Policy Guide（PG）用于在 NIST Handbook 150 两次正式修订之间传达项目政策更新。官网现行仅列示 1 则。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">PG-17-2024</td><td>《将"认可到期"界定为"自愿终止认可"的一种类型》<span class="en">Identifying Expiration of Accreditation as Type of Voluntary Termination of Accreditation</span></td><td class="date">2024-10-17</td><td><span class="badge core">现行政策指南</span>配 HB 150；<a class="dl" href="https://www.nist.gov/document/pg-17-2024-clarification-voluntary-termination-accreditation" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：早期 PG 编号（PG-1~PG-16）均已并入 HB 150 正式版或失效，官网现行清单不再列示。</div>
+  </div>
+</section>
+
+<!-- ============ 五、现场评审检查表 ============ -->
+<section class="block" id="sec-cl">
+  <div class="section-head">
+    <div class="no">五</div>
+    <h2>现场评审检查表（On-Site Assessment Checklists）</h2>
+    <span class="tag">需登录 · 经 NIWS 门户分发</span>
+  </div>
+  <p class="section-desc">与各项目手册对应的现场评审检查表。依 LB-156-2024，自 2024 年起检查表迁至 NVLAP 交互网站系统（NIWS）实验室门户/评审员门户分发，公开网页不提供直接 PDF 下载；带星号（*）项目须配合 Test Method Review Summary 使用。以下为官网现行全部 26 份检查表（清单页 2026-10-16 更新）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>修订日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">General Criteria Checklist</td><td>《NVLAP 通用准则检查表（ISO/IEC 17025:2017）》<span class="en">NVLAP General Criteria Checklist（ISO/IEC 17025:2017）</span></td><td class="date">2026-09-10</td><td><span class="badge na">需联系 NVLAP 获取</span></td></tr>
+        <tr><td class="code">HB 150-1 Checklist*</td><td>《节能照明项目检查表》<span class="en">Energy Efficient Lighting Products</span></td><td class="date">2021-07-12</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-2 Checklist</td><td>《校准实验室检查表（ISO/IEC 17025:2017）》<span class="en">Calibration Laboratories</span></td><td class="date">2024-10-30</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-3 Checklist</td><td>《散装石棉（PLM）检查表》<span class="en">Asbestos, Bulk（PLM）</span></td><td class="date">2025-08-04</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-4 Checklist</td><td>《电离辐射剂量学检查表（ISO/IEC 17025:2017）》<span class="en">Ionizing Radiation Dosimetry</span></td><td class="date">2019-11-13</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-5 Checklist*</td><td>《建筑材料检测检查表（ISO/IEC 17025:2017）》<span class="en">Construction Materials Testing</span></td><td class="date">2020-07-13</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-6 Checklist*</td><td>《地毯与地毯衬垫检查表（ISO/IEC 17025:2017）》<span class="en">Carpet and Carpet Cushion</span></td><td class="date">2020-06-16</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-8 Checklist*</td><td>《声学检测服务检查表（ISO/IEC 17025:2017）》<span class="en">Acoustical Testing Services</span></td><td class="date">2018-12-06</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-10 Checklist*</td><td>《电动机效率检查表（ISO/IEC 17025:2017）》<span class="en">Efficiency of Electric Motors</span></td><td class="date">2020-06-25</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-11 Checklist*</td><td>《电磁兼容与通信检查表》<span class="en">Electromagnetic Compatibility and Telecommunications（ECT）</span></td><td class="date">2013-04-24</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-11 Checklist</td><td>《电磁兼容与通信检查表（ISO/IEC 17025:2017）》<span class="en">ECT（ISO/IEC 17025:2017 版）</span></td><td class="date">2018-06-12</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-11A Checklist*</td><td>《FCC 设备授权认可要求检查表》<span class="en">FCC Equipment Authorization Requirements for Recognition</span></td><td class="date">2024-03-14</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-11B Checklist*</td><td>《加拿大 ISED 电信终端设备/无线电/广播设备检查表》<span class="en">ISED Telecommunications Terminal Equipment, Radio Apparatus and Broadcasting Equipment（ECT）</span></td><td class="date">2024-10-18</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-11C Checklist*</td><td>《FDA ASCA 试点项目检查表》<span class="en">FDA ASCA Pilot Program</span></td><td class="date">2020-12-10</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-13 Checklist</td><td>《空气中石棉（TEM）检查表》<span class="en">Asbestos, Airborne（TEM）</span></td><td class="date">2007-09-26</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-15 Checklist*</td><td>《隔热保温材料检查表》<span class="en">Thermal Insulation Materials</span></td><td class="date">2020-05-19</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-17 Checklist</td><td>《密码与安全测试检查表（ISO/IEC 17025:2017）》<span class="en">Cryptographic &amp; Security Testing</span></td><td class="date">2022-11-16</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">CST Oral Quizzing Template</td><td>《CST 口头提问考核模板》<span class="en">CST Template for Oral Quizzing</span></td><td class="date">2009-09-28</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-18 Checklist*</td><td>《紧固件与金属材料检查表》<span class="en">Fasteners and Metals</span></td><td class="date">2024-03-08</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-20 Checklist</td><td>《通用准则测试（CCTL）检查表》<span class="en">Common Criteria Testing</span></td><td class="date">2014-06-25</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-22 Checklist</td><td>《投票系统测试检查表》<span class="en">Voting System Testing</span></td><td class="date">2021-10-26</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-23 Checklist</td><td>《辐射探测仪器检查表》<span class="en">Radiation Detection Instruments</span></td><td class="date">2022-05-04</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-24 Checklist</td><td>《执法与惩教设备检查表》<span class="en">Law Enforcement and Corrections Equipment</span></td><td class="date">2021-12-16</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-25 Checklist</td><td>《生物识别测试检查表》<span class="en">Biometrics Testing</span></td><td class="date">2010-10-15</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-31 Checklist</td><td>《医疗 IT 测试检查表》<span class="en">Healthcare IT Testing</span></td><td class="date">2021-12-09</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+        <tr><td class="code">HB 150-872 Checklist</td><td>《联邦作战系统检查表》<span class="en">Federal Warfare System(s)</span></td><td class="date">2021-07-21</td><td><span class="badge na">NIWS 门户获取</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：检查表为评审工作文件，公开网页仅列编号、对应项目与修订日期；下载须登录 NIWS Lab Portal / Assessor Portal（经 NVLAP 授权账户）。通用准则检查表（2026-09-10 修订）官网注明须直接联系 NVLAP 索取。官网清单页：nist.gov/nvlap/publications-and-forms/site-assessment-checklists。</div>
+  </div>
+</section>
+
+<!-- ============ 六、其他相关出版物 ============ -->
+<section class="block" id="sec-other">
+  <div class="section-head">
+    <div class="no">六</div>
+    <h2>其他相关出版物</h2>
+    <span class="tag">参考 · 概念说明与宣传资料</span>
+  </div>
+  <p class="section-desc">NVLAP 官网列示的其他配套公开资料，用于解释认可概念与宣传认可价值。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">—</td><td>《认可与认证辨析》<span class="en">Accreditation vs. Certification: An Explanation of These Terms</span></td><td class="date">现行页面</td><td><span class="badge opt">参考资料</span><a class="dl" href="https://www.nist.gov/national-voluntary-laboratory-accreditation-program-nvlap/accreditation-vs-certification" target="_blank">官方页面 ↗</a></td></tr>
+        <tr><td class="code">—</td><td>《为何使用获认可的实验室？》<span class="en">Why Use an Accredited Laboratory?（© ILAC 2015，PDF）</span></td><td class="date">2015</td><td><span class="badge opt">参考资料</span><a class="dl" href="https://www.nist.gov/document/ilacwhyuseanal2015pdf" target="_blank">官网 PDF 下载 ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：本分区文件无 NIST 文件编号，按官网"Other Related Publications"页面原样列示（该页 2023-05-31 更新）。</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>本清单依据 NIST 官网 NVLAP Publications and Forms 栏目实时整理：① NVLAP Handbooks and Lab Bulletins（2026-07-17 更新）；② NVLAP Policy Guides（2024-10-18 更新）；③ On-Site Assessment Checklists（2026-10-16 更新）；④ Other Related Publications（2023-05-31 更新）。官方入口：<a href="https://www.nist.gov/nvlap" target="_blank">nist.gov/nvlap</a>；PDF 原文多托管于 nvlpubs.nist.gov，DOI 链接 doi.org/10.6028/… 为 NIST 官方永久链接。</p>
+    </div>
+    <div>
+      <h3>使用提示</h3>
+      <p>清单核对日期：2026-10-19（官网实时抓取）。HB 150 为通用核心准则；150-x 系列按实验室实际认可项目选用；Lab Bulletin 须插入对应手册一并使用；检查表经 NIWS 门户分发。版本、状态与链接均以官网现行版本为准。</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

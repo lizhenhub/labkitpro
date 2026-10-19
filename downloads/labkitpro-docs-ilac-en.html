@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILAC Mutual Recognition Common-Layer Document List (current · full archive-site edition)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EIL%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+
+.badge.na{background:#f6f6f8;color:#8a94a6;border:1px solid #e0e2e8;}
+td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:break-all;}
+td a.dl:hover{text-decoration:underline;}
+footer a{color:#d7e3fb;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">ILAC · International Laboratory Accreditation Cooperation · MRA document system</span>
+    <h1>ILAC Common-Layer Document List (P / G / R / joint IAF-ILAC A series, full edition)</h1>
+    <p>This list covers the current public ILAC document system: MRA policy documents (P series), accreditation guidance (G series), organisational rules (R series), joint IAF/ILAC assessment documents (A series), proposed documents and B-series public promotional material. <b style="color:#fff;">Important transition: ILAC ceased operations on 2026-01-01 and began dissolution; ilac.org is now an archival/legacy site, and its functions have been taken over by Global ACI (Global Accreditation Cooperation Incorporated).</b> Under Global ACI resolutions 2025-25 and 2025-29, designated ILAC P-series, applicable A-series and R6/R7/P8/G21 documents remain valid until the corresponding Global ACI documents are published; individual documents have already been superseded — each row is annotated accordingly.</p>
+    <div class="meta"><span>Check date: <b>2026-10-19 (live fetch)</b></span><span>Archive site: <b>ilac.org (archival/reference only)</b></span><span>Current successor: <b>global-aci.org (Global ACI)</b></span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">63</div><div class="lbl">Total entries listed</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Sections (P / G / R / A / proposed / B series)</div></div>
+      <div class="stat"><div class="num">31</div><div class="lbl">Normative entries (P+G+R+A formal)</div></div>
+      <div class="stat"><div class="num">32</div><div class="lbl">Promotional · supplementary · interim · in development</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="links">
+    <a href="#sec-p">1. MRA policy documents (P series)</a>
+    <a href="#sec-g">2. Accreditation guidance (G series)</a>
+    <a href="#sec-r">3. Organisational rules (R series)</a>
+    <a href="#sec-a">4. Joint IAF/ILAC documents (A series)</a>
+    <a href="#sec-wip">5. Proposed documents</a>
+    <a href="#sec-b">6. Public promotional material (B series / MRA reports)</a>
+  </div>
+</nav>
+
+<!-- ============ 1. P 系列 ============ -->
+<section class="block" id="sec-p">
+  <div class="section-head">
+    <div class="no">1</div>
+    <h2>MRA policy documents (P series)</h2>
+    <span class="tag">MRA core · part of the peer-review criteria</span>
+  </div>
+  <p class="section-desc">ILAC policy and procedure documents that operate the ILAC Mutual Recognition Arrangement (MRA) and form part of the ILAC MRA peer-review criteria. Under Global ACI resolution 2025-25, ILAC P-series documents remain valid until the corresponding Global ACI documents are published.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (PDF)</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC P4:06/2022</td><td><span class="en">ILAC Mutual Recognition Arrangement: Policy and Management</span></td><td class="date">Published 2022-06</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=124569" target="_blank">PDF download</a> MRA objectives, foundations, management and decision framework</td></tr>
+        <tr><td class="code">ILAC P5:11/2023</td><td><span class="en">ILAC Mutual Recognition Arrangement: Scope and Obligations</span></td><td class="date">Published 2023-11</td><td><span class="badge core">Current</span><span class="badge new">Latest revision</span><a class="dl" href="https://ilac.org/?ddownload=125462" target="_blank">PDF download</a> Accreditation scope covered by the MRA and member obligations</td></tr>
+        <tr><td class="code">ILAC P8:11/2023</td><td><span class="en">ILAC Mutual Recognition Arrangement (Arrangement): Supplementary Requirements for the Use of Accreditation Symbols and for Claims of Accreditation Status by Accredited Conformity Assessment Bodies</span></td><td class="date">Published 2023-11</td><td><span class="badge core">Current</span><span class="badge new">Latest revision</span><a class="dl" href="https://ilac.org/?ddownload=125463" target="_blank">PDF download</a> Uniform mark usage and accreditation-status statement requirements</td></tr>
+        <tr><td class="code">ILAC P9:01/2024</td><td><span class="en">ILAC Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">Published 2024-01</td><td><span class="badge core">Current</span><span class="badge new">Latest revision</span><a class="dl" href="https://ilac.org/?ddownload=3259" target="_blank">PDF download</a> Policy on PT use in the accreditation process</td></tr>
+        <tr><td class="code">ILAC P10:07/2020</td><td><span class="en">ILAC Policy on Metrological Traceability of Measurement Results</span></td><td class="date">Published 2020-07 / 2021-07 implementation</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=123220" target="_blank">PDF download</a> Policy on metrological traceability of measurement results</td></tr>
+        <tr><td class="code">ILAC P12:04/2009</td><td><span class="en">Harmonisation of ILAC Work with the Regions</span></td><td class="date">Published 2009-04</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=842" target="_blank">PDF download</a> Criteria for coordination with regional accreditation cooperatives and adoption of new work items</td></tr>
+        <tr><td class="code">ILAC P14:09/2020</td><td><span class="en">ILAC Policy for Measurement Uncertainty in Calibration</span></td><td class="date">Published 2020-09 / 2021-03 implementation</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=123348" target="_blank">PDF download</a> Calibration uncertainty evaluation and expression requirements (based on the GUM)</td></tr>
+        <tr><td class="code">ILAC P15:05/2020</td><td><span class="en">Application of ISO/IEC 17020:2012 for the Accreditation of Inspection Bodies</span></td><td class="date">Published 2020-05 / 2021-11 implementation</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=123115" target="_blank">PDF download</a> 17020 application guidance for accreditation bodies and inspection bodies; Former IAF/ILAC A4:2004 content merged into this document</td></tr>
+        <tr><td class="code">ILAC P15 修订说明</td><td><span class="en">ILAC P15 Revision Presentation</span></td><td class="date">2020Supplementary material</td><td><span class="badge opt">Supplementary material</span><a class="dl" href="https://ilac.org/?ddownload=123693" target="_blank">PDF download</a> Non-normative; P15:2020 revision-note presentation listed on the P-series page</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: P1–P3, P6 and P7 were never published as current editions; P11:09/2009 (assessor performance monitoring) was withdrawn with its content merged into IAF/ILAC A1 and A2; P13:10/2010 (PTP accreditation application of ISO/IEC 17011) was withdrawn per ILAC resolution GA 21.18. Spanish, Russian and Turkish editions: see the IAAC, AAC Analytica and TURKAK websites.</div>
+  </div>
+</section>
+
+<!-- ============ 2. G 系列 ============ -->
+<section class="block" id="sec-g">
+  <div class="section-head">
+    <div class="no">2</div>
+    <h2>Accreditation guidance (G series)</h2>
+    <span class="tag">Interpretive guidance · for ABs and accredited bodies</span>
+  </div>
+  <p class="section-desc">Interpretive guidance on applying the accreditation criteria in specific contexts. Below are all current G-series documents on the archive site (12 in total).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (PDF)</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G3:08/2020</td><td><span class="en">Guidelines for Training Courses for Assessors Used by Accreditation Bodies</span></td><td class="date">Published 2020-08</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=123277" target="_blank">PDF download</a> Guidance on assessor and technical expert training course design</td></tr>
+        <tr><td class="code">ILAC G7:04/2021</td><td><span class="en">Accreditation Requirements and Operating Criteria for Horseracing Laboratories</span></td><td class="date">Published 2021-04</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=123697" target="_blank">PDF download</a> Field-specific: horse racing / anti-doping</td></tr>
+        <tr><td class="code">ILAC G8:09/2019</td><td><span class="en">Guidelines on Decision Rules and Statements of Conformity</span></td><td class="date">Published 2019-09</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=122722" target="_blank">PDF download</a> Decision rules for statements of conformity by testing labs; in frequent use</td></tr>
+        <tr><td class="code">ILAC G17:01/2021</td><td><span class="en">ILAC Guidelines for Measurement Uncertainty in Testing</span></td><td class="date">Published 2021-01</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=123528" target="_blank">PDF download</a> Guidance on uncertainty evaluation and reporting in testing</td></tr>
+        <tr><td class="code">ILAC G18:01/2024</td><td><span class="en">Guideline for describing Scopes of Accreditation</span></td><td class="date">Published 2024-01</td><td><span class="badge core">Current</span><span class="badge new">Latest revision</span><a class="dl" href="https://ilac.org/?ddownload=124300" target="_blank">PDF download</a> Guidance on uniform description of accredited scopes</td></tr>
+        <tr><td class="code">ILAC G19:06/2022</td><td><span class="en">Modules in a Forensic Science Process</span></td><td class="date">Published 2022-06</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=124605" target="_blank">PDF download</a> ISO/IEC 17025 and 17020 application guidance for forensics</td></tr>
+        <tr><td class="code">ILAC G21:09/2012</td><td><span class="en">Cross Frontier Accreditation - Principles for Cooperation</span></td><td class="date">Published 2012-09</td><td><span class="badge core">Current</span><span class="badge new">Under revision</span><a class="dl" href="https://ilac.org/?ddownload=817" target="_blank">PDF download</a> Official site marks it as under revision，the revision may move into the P series</td></tr>
+        <tr><td class="code">ILAC G24:2022</td><td><span class="en">Guidelines for the determination of recalibration intervals of measuring equipment</span></td><td class="date">Published 2022</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=124891" target="_blank">PDF download</a> Guidance on recalibration intervals and assessment methods for equipment</td></tr>
+        <tr><td class="code">ILAC G26:11/2018</td><td><span class="en">Guidance for the Implementation of a Medical Accreditation Scheme</span></td><td class="date">Published 2018-11</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=819" target="_blank">PDF download</a> Guidance on building a medical-lab (ISO 15189) accreditation system</td></tr>
+        <tr><td class="code">ILAC G27:07/2019</td><td><span class="en">Guidance on measurements performed as part of an inspection process</span></td><td class="date">Published 2019-07</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=122667" target="_blank">PDF download</a> Guidance on validity of measurement activities in inspection</td></tr>
+        <tr><td class="code">ILAC G28:07/2018</td><td><span class="en">Guideline for the Formulation of Scopes of Accreditation for Inspection Bodies</span></td><td class="date">Published 2018-07</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=121961" target="_blank">PDF download</a> Guidance on consistent drafting of inspection scopes</td></tr>
+        <tr><td class="code">ILAC G29:06/2020</td><td><span class="en">Guidelines for harmonization of scopes of ISO/IEC 17025 accreditation of WADA anti-doping laboratories</span></td><td class="date">Published 2020-06（2021-04 编辑性修订）</td><td><span class="badge dom">Field-specific</span><a class="dl" href="https://ilac.org/?ddownload=123190" target="_blank">PDF download</a> Guidance on drafting anti-doping lab scopes, citing the WADA ISL</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: withdrawn documents are annotated only — ILAC G9:2005 (selection and use of reference materials) was replaced by ISO Guide 33:2015; the content of ILAC G11:07/2006 (assessor and technical expert competence) is now in ISO/IEC 17011:2017. Spanish edition: IAAC website; Russian edition: AAC Analytica website; Turkish edition: TURKAK website.</div>
+  </div>
+</section>
+
+<!-- ============ 3. R 系列 ============ -->
+<section class="block" id="sec-r">
+  <div class="section-head">
+    <div class="no">3</div>
+    <h2>Organisational rules (R series)</h2>
+    <span class="tag">ILAC governance and operating rules</span>
+  </div>
+  <p class="section-desc">ILAC's constitutional documents as an association: charter, bylaws and operating rules. After ILAC's dissolution on 2026-01-01, governance documents have been taken over by Global ACI governance documents (GOV / MS series); R6 and R7 remain valid per Global ACI resolution 2025-29.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (PDF)</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC R1:12/2021</td><td><span class="en">Management of ILAC Documents</span></td><td class="date">Published 2021-12</td><td><span class="badge core">currentedition</span><a class="dl" href="https://ilac.org/?ddownload=124272" target="_blank">PDF download</a> Rules for drafting, approving and maintaining ILAC documents</td></tr>
+        <tr><td class="code">ILAC R2A:11/2019</td><td><span class="en">ILAC Rules: Articles of Association</span></td><td class="date">2019-11 registered release</td><td><span class="badge core">currentedition</span><a class="dl" href="https://ilac.org/?ddownload=122791" target="_blank">PDF download</a> Association charter text (revised 2019-10-30, registered 2019-11-11)</td></tr>
+        <tr><td class="code">ILAC R2B:11/2019</td><td><span class="en">ILAC Rules: Bylaws</span></td><td class="date">2019-11 registered release</td><td><span class="badge core">currentedition</span><a class="dl" href="https://ilac.org/?ddownload=122792" target="_blank">PDF download</a> Association internal bylaws text</td></tr>
+        <tr><td class="code">ILAC R3:12/2014</td><td><span class="en">ILAC Strategic Plan 2015-2020（extended December 2020）</span></td><td class="date">Published 2014-12 / 2020-12 extension</td><td><span class="badge opt">Historical archive</span><a class="dl" href="https://ilac.org/?ddownload=51012" target="_blank">PDF download</a> Strategic planning term ended，Still listed on the archive site，No longer updated</td></tr>
+        <tr><td class="code">Supplement 1 to R3</td><td><span class="en">Supplement 1 to ILAC R3:12/2014</span></td><td class="date">随 R3 配套</td><td><span class="badge na">See official site</span> Listed in the archive-site master list，No separate download link on the rules page; see  <a class="dl" href="https://ilac.org/publications-and-resources/publications-list/" target="_blank">official documentmaster list</a></td></tr>
+        <tr><td class="code">ILAC R4:10/2016</td><td><span class="en">Use of the ILAC Logo and Tagline</span></td><td class="date">Published 2016-10</td><td><span class="badge core">currentedition</span><a class="dl" href="https://ilac.org/?ddownload=120392" target="_blank">PDF download</a> ILAC mark and slogan usage rules</td></tr>
+        <tr><td class="code">ILAC R5:04/2016</td><td><span class="en">ILAC Procedure for Handling Complaints</span></td><td class="date">Published 2016-04</td><td><span class="badge core">currentedition</span><a class="dl" href="https://ilac.org/?ddownload=119300" target="_blank">PDF download</a> ILAC complaints handling procedure</td></tr>
+        <tr><td class="code">ILAC R6:11/2023</td><td><span class="en">Structure of the ILAC Mutual Recognition Arrangement and Procedure for Expansion of the Scope of the ILAC Arrangement</span></td><td class="date">Published 2023-11</td><td><span class="badge core">Current</span><span class="badge new">Latest revision</span><a class="dl" href="https://ilac.org/?ddownload=125464" target="_blank">PDF download</a> MRA structure and scope extension procedure</td></tr>
+        <tr><td class="code">ILAC R7:05/2015</td><td><span class="en">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">Published 2015-05</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=833" target="_blank">PDF download</a> Joint ILAC MRA mark usage rules</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the original ILAC R2:09/2009 (combined charter and bylaws) was revised on 2019-10-30 and split into R2A / R2B.</div>
+  </div>
+</section>
+
+<!-- ============ 4. IAF/ILAC 联合 A 系列 ============ -->
+<section class="block" id="sec-a">
+  <div class="section-head">
+    <div class="no">4</div>
+    <h2>Joint IAF/ILAC documents (A series)</h2>
+    <span class="tag">Peer review · jointly issued</span>
+  </div>
+  <p class="section-desc">Joint IAF/ILAC peer-review requirements documents for the multilateral recognition arrangement. Under Global ACI resolution 2025-25, applicable A-series documents remain valid until the corresponding Global ACI documents are published.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (PDF)</th></tr></thead>
+      <tbody>
+        <tr><td class="code">IAF/ILAC A1:06/2023</td><td><span class="en">IAF/ILAC Multi-Lateral Mutual Recognition Arrangements (Arrangements): Requirements and Procedures for Evaluation of a Regional Group</span></td><td class="date">Published 2023-06</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=847" target="_blank">PDF download</a> Procedure for recognition and assessment requirements of regional cooperatives</td></tr>
+        <tr><td class="code">IAF/ILAC A2:09/2025</td><td><span class="en">IAF-ILAC Multilateral Mutual Recognition Arrangements (Arrangements): Requirements for Evaluation of an Accreditation Body</span></td><td class="date">Published 2025-09</td><td><span class="badge core">Current</span><span class="badge new">2025 latest</span><a class="dl" href="https://ilac.org/?ddownload=126651" target="_blank">PDF download</a> Assessment requirements and procedure for a single AB signing the MRA; the earlier A2:06/2023 is replaced by this edition (the master list page does not yet show the new number)</td></tr>
+        <tr><td class="code">IAF/ILAC A3:06/2023</td><td><span class="en">IAF/ILAC Multi-Lateral Mutual Recognition Arrangements (Arrangements): Template report for the peer evaluation of an Accreditation Body based on ISO/IEC 17011:2017</span></td><td class="date">Published 2023-06</td><td><span class="badge core">Current</span><a class="dl" href="https://ilac.org/?ddownload=849" target="_blank">PDF download</a> Peer-review report template tool</td></tr>
+        <tr><td class="code">IAF/ILAC 联合声明</td><td><span class="en">IAF-ILAC Statement on Replacement of Assessments During the COVID-19 Pandemic</span></td><td class="date">Published 2021-03</td><td><span class="badge na">Interim document</span><a class="dl" href="https://ilac.org/?ddownload=123619" target="_blank">PDF download</a> Temporary pandemic-specific statement, still listed on the A-series page — archive reference only</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: withdrawn A-series documents are annotated only — IAF/ILAC A4:2004 (application of ISO/IEC 17020) merged into ILAC P15; A5:11/2013 was withdrawn upon publication of ISO/IEC 17011:2017; A6:01/2018 (A-series approval workflow) was withdrawn; the 01/2021 remote-assessment annexes to A1/A2 ended with the pandemic. Russian edition: AAC Analytica website.</div>
+  </div>
+</section>
+
+<!-- ============ 5. Proposed documents ============ -->
+<section class="block" id="sec-wip">
+  <div class="section-head">
+    <div class="no">5</div>
+    <h2>Proposed documents (in development)</h2>
+    <span class="tag">In development at ILAC committees</span>
+  </div>
+  <p class="section-desc">Documents in development listed under the archive site's “Proposed Documents” section; the corresponding Global ACI documents are already in the publication pipeline.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / status date</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G（拟议）</td><td><span class="en">Management of extraordinary events（Guidance on assessments impacted by natural disasters, disease outbreaks, security concerns）</span></td><td class="date">In development（Drafting）</td><td><span class="badge new">In development</span> Drafted by the ILAC Arrangement Committee; guidance on assessment management under natural disasters, pandemics and security events。see  <a class="dl" href="https://ilac.org/publications-and-resources/proposed-documents/" target="_blank">official Proposed-documents page</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: as of 2026-10-19 the archive site lists this single proposed document; after the ILAC–IAF merger follow ilac.org news and the Global ACI document library for its successor.</div>
+  </div>
+</section>
+
+<!-- ============ 6. B 系列 ============ -->
+<section class="block" id="sec-b">
+  <div class="section-head">
+    <div class="no">6</div>
+    <h2>Public promotional material (B series / MRA reports)</h2>
+    <span class="tag">Non-normative · outreach</span>
+  </div>
+  <p class="section-desc">Promotional brochures, fact sheets, MRA annual reports and infographics published by ILAC and jointly by IAF/ILAC, for regulators, laboratories and the public; they do not constitute accreditation requirements. Listed in full from the archive site's current promotional page.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (PDF)</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC B1:10/2015</td><td><span class="en">Why Use an Accredited Laboratory?</span></td><td class="date">Published 2015-10</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=902" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B3:10/2015</td><td><span class="en">How Does Using an Accredited Laboratory Benefit Government &amp; Regulators?</span></td><td class="date">Published 2015-10</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=887" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B4:11/2015</td><td><span class="en">The Advantages of Being an Accredited Laboratory</span></td><td class="date">Published 2015-11</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=898" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B5:01/2018</td><td><span class="en">Securing testing, measurement or calibration services – The difference between accreditation and certification</span></td><td class="date">Published 2018-01</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=885" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B6:06/2019</td><td><span class="en">Benefits for Laboratories Participating in Proficiency Testing Programs</span></td><td class="date">Published 2019-06</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122715" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B7:10/2015</td><td><span class="en">The ILAC Mutual Recognition Arrangement</span></td><td class="date">Published 2015-10</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=891" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B9:02/2017</td><td><span class="en">ISO 15189 Medical Laboratory Accreditation</span></td><td class="date">Published 2017-02</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=120819" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B10:11/2012</td><td><span class="en">Why use an accredited inspection body</span></td><td class="date">Published 2012-11</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=901" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B11:02/2017</td><td><span class="en">Why become an accredited inspection body</span></td><td class="date">Published 2017-02</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=120820" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B12:02/2017</td><td><span class="en">How does accredited inspection benefit Government and Regulators</span></td><td class="date">Published 2017-02</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=120817" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B13:03/2020</td><td><span class="en">Why become an Accredited Reference Material Producer</span></td><td class="date">Published 2020-03</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=123021" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B14:01/2021</td><td><span class="en">Accreditation for Biobanking Facilities (ISO 20387)</span></td><td class="date">Published 2021-01</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=123507" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC B15:03/2021</td><td><span class="en">Specifying Accreditation for COVID-19 Testing</span></td><td class="date">Published 2021-03</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=123615" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC Factsheet 05/2023</td><td><span class="en">Specifying Accreditation in Regulation (Factsheet)</span></td><td class="date">Published 2023-05</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=896" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">ILAC MRA 年报</td><td><span class="en">ILAC MRA Annual Report 2024</span></td><td class="date">2024度</td><td><span class="badge opt">Public material</span><a class="dl" href="https://ilac.org/?ddownload=126636" target="_blank">PDF download</a> Current edition on the promotional page (the master list page still shows the 2022 edition)</td></tr>
+        <tr><td class="code">ILAC MRA 信息图</td><td><span class="en">ILAC MRA 2024 Infographic</span></td><td class="date">Published 2024</td><td><span class="badge opt">Public material</span><a class="dl" href="https://ilac.org/?ddownload=126622" target="_blank">PDF download</a> Current edition on the promotional page (the master list still shows the 2022 edition)</td></tr>
+        <tr><td class="code">IAF/ILAC B1:02/2019</td><td><span class="en">The route to signing the IAF or ILAC Arrangement</span></td><td class="date">Published 2019-02</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122297" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B2:09/2023</td><td><span class="en">How do I gain confidence in an Inspection Body? ISO 9001 Certification or ISO/IEC 17020 Accreditation?</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125329" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B3:09/2023</td><td><span class="en">Accreditation: Supporting safe food and clean drinking water</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125330" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B4:01/2018</td><td><span class="en">Recommended guide for engaging with Government &amp; Regulators</span></td><td class="date">Published 2018-01</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=893" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B5:09/2023</td><td><span class="en">Accreditation: Facilitating world trade</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125331" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B6:09/2023</td><td><span class="en">Accreditation: Delivering confidence in the provision of energy</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125332" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B7:03/2020</td><td><span class="en">Accreditation: Supporting the Delivery of Health and Social Care</span></td><td class="date">Published 2020-03</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122948" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B8:09/2023</td><td><span class="en">Accreditation: Delivering confidence in construction and the built environment</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125333" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B9:09/2023</td><td><span class="en">Accreditation: A global tool to support Public Policy</span></td><td class="date">Published 2023-09</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=125334" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B10:03/2020</td><td><span class="en">Accreditation: Delivering a safer world</span></td><td class="date">Published 2020-03</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122949" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">IAF/ILAC B11:03/2020</td><td><span class="en">Accreditation: Adding value to supply chains</span></td><td class="date">Published 2020-03</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122950" target="_blank">PDF download</a></td></tr>
+        <tr><td class="code">宣传资料（总入口）</td><td><span class="en">Accredited Conformity Assessment</span></td><td class="date">持续更新</td><td><span class="badge opt">Promotional material</span><a class="dl" href="https://ilac.org/?ddownload=122772" target="_blank">PDF download</a> Listed in the archive-site master list</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the B series is non-normative outreach material and does not constitute accreditation criteria. ILAC General Assembly resolutions (GA Resolutions) and members-area documents (login required) are not part of this public list — see the GA Resolutions and Members Area sections of the website.</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Sources &amp; notes</h3>
+      <p>Compiled live from the public sections of the ILAC archive site (ilac.org, archival/reference since 2026-01-01): the Publications List master list; the Policy (P), Guidance (G), Rules (R), Joint ILAC/IAF (A), Promotional Brochures (B), Proposed and Withdrawn Documents sections (fetched 2026-10-19); current status follows the Global ACI (global-aci.org) Global ACI–IAF and ILAC Document Cross-Reference Table v14.0 (2026-09-14) and resolutions 2025-25 / 2025-29.</p>
+    </div>
+    <div>
+      <h3>How to use</h3>
+      <p>ILAC and IAF merged into Global ACI on 2026-01-01; the ILAC document system is in transition. Designated documents remain valid per resolution, some have been superseded by Global ACI-GOV / MS / MRA / TECH numbered documents, and a few are still in development or migration. The current official edition always governs.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

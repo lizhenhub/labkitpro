@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2LA Public Accreditation Document List (latest)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+
+.badge.na{background:#f6f6f8;color:#8a94a6;border:1px solid #e0e2e8;}
+td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:break-all;}
+td a.dl:hover{text-decoration:underline;}
+footer a{color:#d7e3fb;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">A2LA · American Association for Laboratory Accreditation · public document system</span>
+    <h1>A2LA Laboratory Accreditation Document List</h1>
+    <p>A2LA (American Association for Laboratory Accreditation) is a non-profit, non-governmental third-party accreditation body recognised to ISO/IEC 17011 and a signatory to the ILAC/APAC mutual recognition arrangements. This list covers every public document currently offered on the A2LA documents portal (portal.a2la.org/documents), organised into six categories — organisational (A), information (I), policy (P), accreditation requirements (R), guidance (G) and forms (F/A308) — with official numbers, original English titles, publication dates and availability.</p>
+    <div class="meta"><span>Official source: <b>portal.a2la.org/documents (A2LA Public Documents)</b></span><span>Check date: <b>2026-10-19 (live fetch)</b></span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">99</div><div class="lbl">Public documents</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Official site sections</div></div>
+      <div class="stat"><div class="num">97</div><div class="lbl">Freely accessible</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Login / permission required</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="links">
+<a href="#sec-org">1. Organisational documents (A)</a>
+<a href="#sec-info">2. Information documents (I)</a>
+<a href="#sec-policy">3. Policy documents (P)</a>
+<a href="#sec-req">4. Accreditation requirements (R)</a>
+<a href="#sec-guide">5. Guidance documents (G)</a>
+<a href="#sec-form">6. Forms and application documents (F/A308)</a>
+  </div>
+</nav>
+
+<section class="block" id="sec-org">
+  <div class="section-head">
+    <div class="no">1</div>
+    <h2>Organisational documents (A series)</h2>
+    <span class="tag">Governance · all stakeholders</span>
+  </div>
+  <p class="section-desc">A2LA's own governance documents: the association charter, technical advisory committee charters and the code of conduct.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">A101</span></td><td><span class="en">Bylaws of the American Association for Laboratory Accreditation</span></td><td class="date">Published 2020-07-16</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=1" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">A105</span></td><td><span class="en">Bylaws of the A2LA Technical Advisory Committees</span></td><td class="date">Published 2026-09-03</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=2" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">A132</span></td><td><span class="en">A2LA Code of Conduct and Business Ethics</span></td><td class="date">Published 2025-09-15</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=125" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. Files come from the A2LA electronic document management system (current controlled versions). No withdrawn / superseded editions are listed in this section.</div>
+  </div>
+</section>
+<section class="block" id="sec-info">
+  <div class="section-head">
+    <div class="no">2</div>
+    <h2>Information documents (I series)</h2>
+    <span class="tag">Getting started · application reference</span>
+  </div>
+  <p class="section-desc">Orientation material for applicants: the accreditation process, customer rights, the calibration manual and other introductory information.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">I105</span></td><td><span class="en">Typical Steps in Preparing for the Accreditation Process</span></td><td class="date">Published 2026-09-01</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=3" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">I111</span></td><td><span class="en">A2LA Customer Bill of Rights</span></td><td class="date">Published 2022-03-15</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=4" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">I112</span></td><td><span class="en">Calibration Handbook</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">Handbook / guide</span>the portal home page does not state a publication date; the current official edition governs<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=109" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. Files come from the A2LA electronic document management system (current controlled versions). No withdrawn / superseded editions are listed in this section.</div>
+  </div>
+</section>
+<section class="block" id="sec-policy">
+  <div class="section-head">
+    <div class="no">3</div>
+    <h2>Policy documents (P series)</h2>
+    <span class="tag">Policy · general rules</span>
+  </div>
+  <p class="section-desc">A2LA's general accreditation policies: metrological traceability, measurement uncertainty, relocation / branches / transfers, flexible scope, remote assessments, satellite labs, anti-fraud and more; includes the P103-series field-split uncertainty annexes.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">P102</span></td><td><span class="en">Policy on Metrological Traceability</span></td><td class="date">Published 2024-10-31</td><td><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=7" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103</span></td><td><span class="en">Policy on Estimating Measurement Uncertainty for Testing Laboratories</span></td><td class="date">Published 2025-08-01</td><td><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=8" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103a</span></td><td><span class="en">Annex Policy on Estimating Measurement Uncertainty for Automotive &amp; Materials Testing Labs</span></td><td class="date">Published 2025-10-09</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=9" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103b</span></td><td><span class="en">Annex-Policy on Estimating Measurement Uncertainty for Life Sciences Testing Labs</span></td><td class="date">Published 2026-09-29</td><td><span class="badge new">New in 2026</span><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=10" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103c</span></td><td><span class="en">Annex-Policy on Estimating Measurement Uncertainty for Electromagnetic Testing Labs</span></td><td class="date">Published 2024-04-01</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=11" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103d</span></td><td><span class="en">Annex-Policy on Estimating Measurement Uncertainty for Construction Materials &amp; Geotechnical Testings Labs</span></td><td class="date">Published 2026-10-05</td><td><span class="badge new">New in 2026</span><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=100" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P103e</span></td><td><span class="en">Annex-Policy on Estimating Measurement Uncertainty for Forensic Conformity Assessment Bodies</span></td><td class="date">Published 2020-11-12</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=13" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P105</span></td><td><span class="en">Policy on Organization Relocation</span></td><td class="date">Published 2026-05-04</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=15" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P106</span></td><td><span class="en">Policy on Branch Systems</span></td><td class="date">Published 2019-11-07</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=16" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P107</span></td><td><span class="en">Policy on Transferring Accreditation</span></td><td class="date">Published 2023-04-25</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=17" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P108</span></td><td><span class="en">Technical Consensus Decisions fromthe Materials Testing Advisory Committee</span></td><td class="date">Published 2026-02-09</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=18" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P111</span></td><td><span class="en">Technical Consensus Decisions from the Electromagnetic Advisory Committee</span></td><td class="date">Published 2023-03-28</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=19" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P112</span></td><td><span class="en">Policy on Flexible Scopes</span></td><td class="date">Published 2026-03-06</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=20" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P115</span></td><td><span class="en">Technical Consensus Decisions from the Forensic Examination Advisory Committee</span></td><td class="date">Published 2021-02-01</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=23" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P116</span></td><td><span class="en">Consensus Decisions from the Construction Materials Advisory Committee</span></td><td class="date">Published 2025-09-10</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=24" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P117</span></td><td><span class="en">Policy on Foreign Travel</span></td><td class="date">Published 2023-09-25</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=25" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P119</span></td><td><span class="en">Policy on Remote Assessment</span></td><td class="date">Published 2025-02-24</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=26" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P120</span></td><td><span class="en">Policy on Satellite Laboratories</span></td><td class="date">Published 2026-08-25</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=102" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P121</span></td><td><span class="en">Anti-Fraud Policy</span></td><td class="date">Published 2026-08-21</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=126" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">P903</span></td><td><span class="en">Policy on Estimating Uncertainty of Measurement for ISO 15189 Testing Labs</span></td><td class="date">Published 2024-12-13</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=27" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. No withdrawn / superseded editions are listed in this section of the public portal.</div>
+  </div>
+</section>
+<section class="block" id="sec-req">
+  <div class="section-head">
+    <div class="no">4</div>
+    <h2>Accreditation requirements (R series)</h2>
+    <span class="tag">Core · mandatory requirements</span>
+  </div>
+  <p class="section-desc">Mandatory requirements for A2LA accreditation. R101/R102/R103/R105 are general requirements; the R200/R300 series are program-specific; R602/R603 apply to medical testing laboratories conforming to ISO 15189 and CLIA.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R101</span></td><td><span class="en">General Requirements: Accreditation of Conformity Assessment Bodies</span></td><td class="date">Published 2026-09-01</td><td><span class="badge new">New in 2026</span><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=32" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R102</span></td><td><span class="en">Conditions for Accreditation</span></td><td class="date">Published 2026-02-20</td><td><span class="badge new">New in 2026</span><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=33" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R103</span></td><td><span class="en">General Requirements - Proficiency Testing for ISO-IEC 17025 Laboratories</span></td><td class="date">Published 2026-04-01</td><td><span class="badge new">New in 2026</span><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=34" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R105</span></td><td><span class="en">Requirements When Making Reference to A2LA Accredited Status</span></td><td class="date">Published 2025-02-24</td><td><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=38" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R208</span></td><td><span class="en">Specific Requirements - Construction Materials Testing Laboratory Accreditation Program</span></td><td class="date">Published 2026-01-20</td><td><span class="badge new">New in 2026</span><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=111" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R209</span></td><td><span class="en">Specific Requirements - Harris County-City of Houston-Port Authority Geotechnical Engineering Testing Laboratory Accreditation Program</span></td><td class="date">Published 2026-01-20</td><td><span class="badge new">New in 2026</span><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=112" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R212</span></td><td><span class="en">Specific Requirements - Nondestructive Testing Laboratory Accreditation Program</span></td><td class="date">Published 2025-09-10</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=113" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R213</span></td><td><span class="en">Specific Requirements - Putting Green Materials Testing Laboratory Accreditation Program</span></td><td class="date">Published 2025-09-10</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=114" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R221</span></td><td><span class="en">Specific Requirements - Forensic Examination Accreditation Program-Testing and Calibration</span></td><td class="date">Published 2025-12-02</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=116" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R221a</span></td><td><span class="en">Annex A – Specific Requirements for Forensic Facilities Licensed in Maryland</span></td><td class="date">Published 2025-05-21</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=117" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R221b</span></td><td><span class="en">Annex B - Specific Requirements - A2LA Texas Forensic Science Commission Crime Laboratory Accreditation Program</span></td><td class="date">Published 2025-10-08</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=118" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R255</span></td><td><span class="en">Specific Requirements - Electrical Testing Laboratory Accreditation Program</span></td><td class="date">Published 2025-10-28</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=110" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R262</span></td><td><span class="en">Specific Requirements - State Legal Metrology Recognition Program</span></td><td class="date">Published 2025-10-28</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=122" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R310</span></td><td><span class="en">Specific Requirements - Special Inspection Agencies Inspection Body Accreditation Program</span></td><td class="date">Published 2026-07-30</td><td><span class="badge new">New in 2026</span><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=115" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R311</span></td><td><span class="en">Specific Requirements - Federal Risk and Authorization Management Program</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=45" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R602</span></td><td><span class="en">Conditions for Accreditation for Medical Testing Laboratories Meeting ISO 15189 and CLIA Requirements</span></td><td class="date">Published 2025-10-30</td><td><span class="badge core">Core requirement</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=97" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">R603</span></td><td><span class="en">General Requirements: Proficiency Testing for Medical Testing Laboratories Meeting the ISO 15189 and CLIA Requirements</span></td><td class="date">Published 2025-10-24</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=98" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. No withdrawn / superseded editions are listed in this section of the public portal. Also: R261 (program-specific requirements for the environmental microbiology accreditation program EMLAP) is not listed on the public documents portal; the A2LA site says to contact A2LA for access — it is a controlled / on-request document and is therefore excluded from this public list.</div>
+  </div>
+</section>
+<section class="block" id="sec-guide">
+  <div class="section-head">
+    <div class="no">5</div>
+    <h2>Guidance documents (G series)</h2>
+    <span class="tag">Guidance · technical reference</span>
+  </div>
+  <p class="section-desc">Technical guidance supporting implementation — not mandatory: mainly measurement uncertainty evaluation, scope definition and specialised technical guides.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">G104</span></td><td><span class="en">A2LA Guide for Estimation of Measurement Uncertainty in Testing</span></td><td class="date">Published 2026-08-26</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=50" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G106</span></td><td><span class="en">Guidance on Scopes of Accreditation for Telecommunication Certification Bodies</span></td><td class="date">Published 2025-04-21</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=51" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G108</span></td><td><span class="en">Guidelines for Estimating Uncertainty for Microbiological Counting Methods</span></td><td class="date">Published 2019-07-23</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=52" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G110</span></td><td><span class="en">Guidance on Uncertainty Budgets for Electrical Parameters</span></td><td class="date">Published 2025-09-10</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=53" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G111</span></td><td><span class="en">Guidance on Pitch Diameter and Simple Pitch Diameter</span></td><td class="date">Published 2019-09-24</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=54" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G112</span></td><td><span class="en">Guidance on 5700A-5720A-3458A Artifact Calibration</span></td><td class="date">Published 2019-10-02</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=55" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G115</span></td><td><span class="en">Guidance on Scopes of Accreditation for Electrical Testing Laboratories</span></td><td class="date">Published 2025-02-19</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=56" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G117</span></td><td><span class="en">Guidance on Scopes of Accreditation for Testing Laboratories Registered with the US Consumer Product Safety Commission</span></td><td class="date">Published 2025-03-31</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=57" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G118</span></td><td><span class="en">Guidance for Defining the Scope of Accreditation for Calibration Laboratories</span></td><td class="date">Published 2026-10-05</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=58" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G122</span></td><td><span class="en">Guidance on Method Modifications for Life Sciences Testing Laboratories</span></td><td class="date">Published 2025-10-28</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=59" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G123</span></td><td><span class="en">Guidance for Accreditation of Cannabis and Hemp Testing Laboratories</span></td><td class="date">Published 2025-02-19</td><td><span class="badge dom">Field-specific</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=60" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G125</span></td><td><span class="en">A2LA Promotion of Accreditation Information</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">Handbook / guide</span>the portal home page does not state a publication date; the current official edition governs<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=105" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G126</span></td><td><span class="en">Guidance on Uncertainty Budgets for Force Measuring Devices</span></td><td class="date">Published 2026-08-26</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=61" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G127</span></td><td><span class="en">Guidance for Reporting Uncertainty - Thunder Scientific</span></td><td class="date">Published 2025-12-15</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=62" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G128</span></td><td><span class="en">Guidance for DC/AC Power Scope Presentation</span></td><td class="date">Published 2023-05-16</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=95" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G129</span></td><td><span class="en">Measurement Uncertainty Budget Template</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=96" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G130</span></td><td><span class="en">Low Frequency S-Parameter Measurement of VNA Calibration Kits</span></td><td class="date">Published 2020-09-29</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=104" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G132</span></td><td><span class="en">Technical Guidance from the Measurement Advisory Committee (MAC)</span></td><td class="date">Published 2020-04-14</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=99" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G133</span></td><td><span class="en">A2LA Guide for Establishing Proficiency Testing Plans</span></td><td class="date">Published 2025-06-18</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=101" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G135</span></td><td><span class="en">Guidance for Application of P102</span></td><td class="date">Published 2025-10-09</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=103" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G136</span></td><td><span class="en">Guidance on Decision Rules in Calibration</span></td><td class="date">Published 2022-10-10</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=108" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G145</span></td><td><span class="en">Measurement Uncertainty in Dimensional Metrology References</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=119" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G148</span></td><td><span class="en">Mass to Force Guidance</span></td><td class="date">Published 2025-11-04</td><td><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=121" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G149</span></td><td><span class="en">Guidance for Application of P102 In-House Calibrations</span></td><td class="date">Published 2026-03-31</td><td><span class="badge new">New in 2026</span><span class="badge core">Current</span>Current edition<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=123" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">G150</span></td><td><span class="en">Guidance on Scopes of Accreditation for Inspection Bodies</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=128" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. No withdrawn / superseded editions are listed in this section of the public portal.</div>
+  </div>
+</section>
+<section class="block" id="sec-form">
+  <div class="section-head">
+    <div class="no">6</div>
+    <h2>Forms and application documents (F/A308 series)</h2>
+    <span class="tag">Forms · application</span>
+  </div>
+  <p class="section-desc">Forms for accreditation applications and scope declarations, mostly fillable Excel/Word templates; the F2xx series are field scope selection sheets.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Version / published</th><th>Status &amp; notes (official link)</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">A308</span></td><td><span class="en">Assessor Application and Information Questionnaire</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=63" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F117</span></td><td><span class="en">Technical Staff Matrix for Accreditation</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=64" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F201</span></td><td><span class="en">Scope of Accreditation Selection List - Acoustics Vibration Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=65" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F202</span></td><td><span class="en">Scope of Accreditation Selection List - Competition Animal Drug Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=67" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F203</span></td><td><span class="en">Scope of Accreditation Selection List - Biological Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=66" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F204</span></td><td><span class="en">Scope of Accreditation Selection List - Calibration Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=68" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F205</span></td><td><span class="en">Scope of Accreditation Selection List - Chemistry Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=69" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F208</span></td><td><span class="en">Scope of Accreditation Selection List - Construction Materials Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=70" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F209</span></td><td><span class="en">Scope of Accreditation Selection List - Electrical Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=71" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F210</span></td><td><span class="en">Scope of Accreditation Selection List - Environmental Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=72" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F210a</span></td><td><span class="en">Scope of Accreditation Selection List - Kentucky Underground Storage Tank Testing Laboratories</span></td><td class="date">Not published on the official list</td><td><span class="badge na">Login / permission required</span>Portal notice: 「You do not have permission to view this document」，A2LA client / partner login required<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=73" target="_blank" rel="noopener">official page</a></td></tr>
+<tr><td><span class="code">F210b</span></td><td><span class="en">Scope of Accreditation Selection List - Wyoming Storage Tank Remediation Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=74" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F211</span></td><td><span class="en">Scope of Accreditation Selection List - Geotechnical Engineering Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=75" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F212</span></td><td><span class="en">Scope of Accreditation Selection List - Thermal Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=76" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F213</span></td><td><span class="en">Scope of Accreditation Selection List - Environmental Lead Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=77" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F214</span></td><td><span class="en">Scope of Accreditation Selection List - Mechanical Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=78" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F215</span></td><td><span class="en">Scope of Accreditation Selection List - Nondestructive Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=79" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F219</span></td><td><span class="en">Scope of Accreditation Selection List - Putting Green Materials Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=80" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F226</span></td><td><span class="en">Scope of Accreditation Selection List - Forensic Testing and Calibration Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=81" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F229</span></td><td><span class="en">Scope of Accreditation Selection List - Sustainable Energy Testing Laboratories</span></td><td class="date">Not published on the official list</td><td><span class="badge na">Login / permission required</span>Portal notice: 「You do not have permission to view this document」，A2LA client / partner login required<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=82" target="_blank" rel="noopener">official page</a></td></tr>
+<tr><td><span class="code">F232</span></td><td><span class="en">Scope of Accreditation Selection List - Field Sampling and Measurement Organizations</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=83" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F240</span></td><td><span class="en">ASTM D7036 Technical Staff Matrix for Accreditation</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=84" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F262</span></td><td><span class="en">Scope of Accreditation Selection List – A2LA DoD Advanced Geophysical Classification</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=127" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F327</span></td><td><span class="en">Scope of Accreditation Selection List - ISO-IEC 17043 Proficiency Testing Providers</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=86" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F336</span></td><td><span class="en">Reference Material Producer Accreditation Program - ISO 17034 - Scope of Accreditation Selection List</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=106" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F337</span></td><td><span class="en">FedRAMP After Action Report Form</span></td><td class="date">Online form（no edition date)</td><td><span class="badge opt">Online form</span>Online Microsoft Forms form，Fill in online via the link<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=92" target="_blank" rel="noopener">Online form</a></td></tr>
+<tr><td><span class="code">F338</span></td><td><span class="en">Program CSP Evaluation Form</span></td><td class="date">Online form（no edition date)</td><td><span class="badge opt">Online form</span>Online Microsoft Forms form，Fill in online via the link<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=93" target="_blank" rel="noopener">Online form</a></td></tr>
+<tr><td><span class="code">F344</span></td><td><span class="en">Scope of Accreditation Selection List - Cannabis and Hemp Testing Laboratories</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=87" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F349</span></td><td><span class="en">Subcontractor Competency Confirmation Form</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=107" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F352</span></td><td><span class="en">Scope of Accreditation List - Biobank - ISO 20387</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=94" target="_blank" rel="noopener">PDF download</a></td></tr>
+<tr><td><span class="code">F918</span></td><td><span class="en">ISO 15189 Program Key Staff Matrix</span></td><td class="date">Not dated on the official list</td><td><span class="badge opt">template</span>Excel/Word fillabletemplate，the portal does not state an edition date<br><a class="dl" href="https://portal.a2la.org/documents/serveDoc.cfm?id=89" target="_blank" rel="noopener">PDF download</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: dates come from the Publication Date printed on each PDF; for form / template documents the portal does not state an edition date. No withdrawn / superseded editions are listed in this section of the public portal.</div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Source</h3>
+      <p>Compiled live (2026-10-19) from the A2LA public documents portal (https://portal.a2la.org/documents/); publication dates are taken from each PDF's stated Publication Date. A2LA also maintains copyright-controlled documents (including checklists for ISO and other standards) available only via the client/partner portal or on request; those are not part of this public list.</p>
+    </div>
+    <div>
+      <h3>How to use</h3>
+      <p>R-series documents are mandatory accreditation requirements, P-series are general policies, G-series are technical guidance, and F/A308 are application forms. F210a and F229 are currently flagged as permission-restricted on the portal (client/partner login required); F337 and F338 are online Microsoft Forms. The current edition on the A2LA website always governs.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

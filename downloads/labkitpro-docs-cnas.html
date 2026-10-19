@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国大陆全行业实验室 CNAS 认可规范文件清单（最新版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ECN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">CNAS 实验室认可 · 规范文件体系（全行业）</span>
+    <h1>中国大陆全行业实验室 CNAS 认可规范文件清单</h1>
+    <p>面向中国大陆所有适配 CNAS 实验室认可的行业与领域——涵盖机械、电气、电子、材料、化工、轻工、汽车零部件等制造业，以及能源、建设工程、建材、医疗健康、司法鉴定、检疫、食品、环境、信息技术、新能源、生物等全部检测 / 校准领域，系统梳理现行有效的认可规则、认可准则、认可指南、认可方案、认可说明与技术报告，标注最新版本、标准号及发布实施日期。</p>
+    <div class="meta">
+      <span>清单依据：<b>CNAS 实验室认可规范文件清单（2026-4-15）＋官网 2026-9 最新发布通知</b></span>
+      <span>认可说明：<b>CNAS 实验室认可说明文件清单（2026-1-1）</b></span>
+      <span>技术报告：<b>CNAS 实验室技术报告文件清单（2026-8-28）</b></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">13</div><div class="lbl">认可规则（R＋RL 系列）</div></div>
+      <div class="stat"><div class="num">58</div><div class="lbl">认可准则（CL＋G＋A 系列）</div></div>
+      <div class="stat"><div class="num">51</div><div class="lbl">认可指南（GL 系列）</div></div>
+      <div class="stat"><div class="num">61</div><div class="lbl">方案 / 说明 / 技术报告</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#sec-r">一、认可规则（R 系列）</a>
+    <a href="#sec-rl">二、实验室认可专用规则（RL）</a>
+    <a href="#sec-cl">三、认可基本准则（CL01~CL10）</a>
+    <a href="#sec-g">四、通用专用准则（G 系列）</a>
+    <a href="#sec-a">五、领域应用说明（CL01-A 系列）</a>
+    <a href="#sec-a2">六、专用准则应用说明（CL02~CL08-A）</a>
+    <a href="#sec-gl">七、认可指南（GL 系列）</a>
+    <a href="#sec-s">八、认可方案（S 系列）</a>
+    <a href="#sec-el">九、认可说明（EL 系列）</a>
+    <a href="#sec-trl">十、技术报告（TRL 系列）</a>
+  </div>
+</nav>
+
+<!-- ============ 一、认可规则 ============ -->
+<section class="block" id="sec-r">
+  <div class="section-head">
+    <div class="no">一</div>
+    <h2>认可规则（通用规则 R 系列）</h2>
+    <span class="tag">必备 · 所有申请机构适用</span>
+  </div>
+  <p class="section-desc">CNAS 实施认可活动的通用政策与程序，申请 CNAS 认可的实验室必须遵守。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-R01:2023</td><td>《认可标识使用和认可状态声明规则》<span class="en">Rule for the Use of Accreditation Mark and Statement of Accreditation Status</span></td><td class="date">2023-5-1 / 2023-5-31</td><td><span class="badge core">必备</span>换版修订+实质性修订</td></tr>
+        <tr><td class="code">CNAS-R02:2023</td><td>《公正性和保密规则》<span class="en">Rules for Impartiality and Confidentiality</span></td><td class="date">2023-5-1 / 2023-5-31</td><td><span class="badge core">必备</span>换版修订+实质性修订</td></tr>
+        <tr><td class="code">CNAS-R03:2026</td><td>《申诉、投诉和争议处理规则》<span class="en">Rules for Dealing with Appeals, Complaints and Disputes</span></td><td class="date">2026-9-22 / 2026-9-22</td><td><span class="badge core">必备</span><span class="badge new">2026 最新版</span>换版修订，替代 CNAS-R03:2019</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：CNAS-R03:2026 已于 2026-9-22 发布并实施，原 CNAS-R03:2019 同时废止（官网 2026-9-28 更新）。</div>
+  </div>
+</section>
+
+<!-- ============ 二、实验室认可专用规则 ============ -->
+<section class="block" id="sec-rl">
+  <div class="section-head">
+    <div class="no">二</div>
+    <h2>实验室认可专用规则（RL 系列）</h2>
+    <span class="tag">必备 · 按机构类型适用</span>
+  </div>
+  <p class="section-desc">针对实验室认可活动的专项规则；检测 / 校准实验室重点关注 RL01–RL04，生物安全、能力验证提供者、标准物质生产者、实验动物、科研、生物样本库等特定类型机构分别适用 RL05–RL10。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-RL01:2025</td><td>《实验室认可规则》<span class="en">Rules for Accreditation of Laboratories</span></td><td class="date">2025-6-30 / 2025-6-30</td><td><span class="badge core">必备</span><span class="badge new">2025 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-RL02:2023</td><td>《能力验证规则》<span class="en">Rules for Proficiency Testing</span></td><td class="date">2023-9-30 / 2023-9-30</td><td><span class="badge core">必备</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-RL03:2025</td><td>《实验室和检验机构认可收费管理规则》<span class="en">Rules for Management of Accreditation Fees</span></td><td class="date">2025-4-30 / 2025-7-30</td><td><span class="badge core">必备</span><span class="badge new">2025 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-RL04:2022</td><td>《境外实验室和检验机构受理规则》<span class="en">Rules for Acceptance of Overseas Laboratories and Inspection Bodies</span></td><td class="date">2022-7-20 / 2022-7-20</td><td><span class="badge opt">按需</span>境外机构申请时适用</td></tr>
+        <tr><td class="code">CNAS-RL05:2016</td><td>《实验室生物安全认可规则》（2019-12-15 第一次修订）<span class="en">Rules for Accreditation of Biosafety Laboratories</span></td><td class="date">2016-2-1 / 2019-12-15</td><td><span class="badge dom">领域</span>生物安全实验室适用</td></tr>
+        <tr><td class="code">CNAS-RL06:2018</td><td>《能力验证提供者认可规则》<span class="en">Rules for Accreditation of Proficiency Testing Providers</span></td><td class="date">2018-3-1 / 2018-3-1</td><td><span class="badge dom">领域</span>能力验证提供者适用</td></tr>
+        <tr><td class="code">CNAS-RL07:2018</td><td>《标准物质/标准样品生产者认可规则》<span class="en">Rules for Accreditation of Reference Material Producers</span></td><td class="date">2018-3-1 / 2018-3-1</td><td><span class="badge dom">领域</span>标准物质生产者适用</td></tr>
+        <tr><td class="code">CNAS-RL08:2017</td><td>《实验动物饲养和使用机构认可规则》（2020-9-1 第一次修订）</td><td class="date">2017-6-1 / 2020-9-1</td><td><span class="badge dom">领域</span>实验动物机构适用</td></tr>
+        <tr><td class="code">CNAS-RL09:2019</td><td>《科研实验室认可规则》</td><td class="date">2019-3-12 / 2019-3-12</td><td><span class="badge dom">领域</span>科研实验室适用</td></tr>
+        <tr><td class="code">CNAS-RL10:2026</td><td>《生物样本库认可规则》<span class="en">Rules for Accreditation of Biobanks</span></td><td class="date">2026-1-1 / 2026-1-1</td><td><span class="badge dom">领域</span><span class="badge new">2026 最新版</span>换版+实质性修订，替代 2020 版</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：RL05–RL10 按机构类型适用；一般检测 / 校准实验室以 RL01–RL04 为主。CNAS-RL10:2026 与 CNAS-EL-30:2026 于 2026-1-1 同步发布实施。</div>
+  </div>
+</section>
+
+<!-- ============ 三、基本准则 ============ -->
+<section class="block" id="sec-cl">
+  <div class="section-head">
+    <div class="no">三</div>
+    <h2>实验室认可基本准则（CL01~CL10）</h2>
+    <span class="tag">核心 · 按实验室类型选用</span>
+  </div>
+  <p class="section-desc">各类实验室认可的基础准则。检测 / 校准实验室以 CL01 为核心；医学、PTP、RMP、生物安全、实验动物、医学参考测量、司法鉴定、科研、生物样本库等分别适用 CL02–CL10。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="code">CNAS-CL01:2018</td>
+          <td>《检测和校准实验室能力认可准则》（2019-2-20 第一次修订）<span class="en">Accreditation Criteria for the Competence of Testing and Calibration Laboratories — ISO/IEC 17025:2017（等同采用）</span></td>
+          <td class="date">2018-3-1 / 2018-9-1</td>
+          <td><span class="badge core">核心</span>检测/校准实验室；2019-2-20 第一次修订（非实质性）</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL02:2023</td>
+          <td>《医学实验室质量和能力认可准则》<span class="en">Medical Laboratories — ISO 15189:2022（等同采用）</span></td>
+          <td class="date">2023-6-1 / 2023-12-1</td>
+          <td><span class="badge dom">领域</span>医学实验室适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL03:2024</td>
+          <td>《能力验证提供者认可准则》<span class="en">Conformity Assessment — ISO/IEC 17043:2023</span></td>
+          <td class="date">2024-6-1 / 2024-9-1</td>
+          <td><span class="badge dom">领域</span><span class="badge new">2024 最新版</span>能力验证提供者适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL04:2017</td>
+          <td>《标准物质/标准样品生产者能力认可准则》（2019 年第一次修订）<span class="en">RMP — ISO 17034:2016（等同采用）</span></td>
+          <td class="date">2017-5-1 / 2017-7-1</td>
+          <td><span class="badge dom">领域</span>标准物质生产者适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL05:2009</td>
+          <td>《实验室生物安全认可准则》（2025-1-15 第四次修订）<span class="en">Laboratories — Biosafety — GB 19489-2008</span></td>
+          <td class="date">2009-6-30 / 2025-1-20</td>
+          <td><span class="badge dom">领域</span><span class="badge new">2025 最新修订</span>生物安全实验室适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL06:2018</td>
+          <td>《实验动物饲养和使用机构质量和能力认可准则》（2019 年第一次修订）<span class="en">Laboratory Animal Institutions — GB/T 27416-2014</span></td>
+          <td class="date">2018-3-1 / 2018-3-1</td>
+          <td><span class="badge dom">领域</span>实验动物机构适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL07:2021</td>
+          <td>《医学参考测量实验室能力认可准则》<span class="en">Reference Measurement Laboratories — ISO 15195:2018</span></td>
+          <td class="date">2021-5-25 / 2021-11-25</td>
+          <td><span class="badge dom">领域</span>医学参考测量实验室适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL08:2018</td>
+          <td>《司法鉴定/法庭科学机构能力认可准则》<span class="en">Forensic Units — Competence</span></td>
+          <td class="date">2018-3-1 / 2018-9-1</td>
+          <td><span class="badge dom">领域</span>司法鉴定机构适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL09:2019</td>
+          <td>《科研实验室认可准则》（2021-3-1 第一次修订）<span class="en">Research Laboratories — GB/T 27425-2020</span></td>
+          <td class="date">2019-3-12 / 2019-3-12</td>
+          <td><span class="badge dom">领域</span>科研实验室适用</td>
+        </tr>
+        <tr>
+          <td class="code">CNAS-CL10:2020</td>
+          <td>《生物样本库质量和能力认可准则》<span class="en">Biobanks — ISO 20387:2018（等同采用）</span></td>
+          <td class="date">2020-12-30 / 2021-1-1</td>
+          <td><span class="badge dom">领域</span>生物样本库适用</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：CL01 等同采用 ISO/IEC 17025:2017；CL02~CL10 分别对应医学、PTP、RMP、生物安全、实验动物、医学参考测量、司法鉴定、科研、生物样本库等特定类型实验室。</div>
+  </div>
+</section>
+
+<!-- ============ 四、通用专用准则 ============ -->
+<section class="block" id="sec-g">
+  <div class="section-head">
+    <div class="no">四</div>
+    <h2>通用专用准则（G 系列）</h2>
+    <span class="tag">必备 · CL01 配套通用要求</span>
+  </div>
+  <p class="section-desc">与 CNAS-CL01 配套的通用应用要求与技术要求，检测 / 校准实验室全部适用。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-G001:2024</td><td>《检测和校准实验室能力认可准则的应用要求》<span class="en">Application Requirements for CNAS-CL01</span></td><td class="date">2024-7-1 / 2024-7-1</td><td><span class="badge core">必备</span><span class="badge new">2024 最新版</span>第二次换版+实质性修订，替代 2018 版</td></tr>
+        <tr><td class="code">CNAS-CL01-G002:2021</td><td>《测量结果的计量溯源性要求》<span class="en">Requirements for Metrological Traceability of Measurement Results</span></td><td class="date">2021-7-31 / 2021-7-31</td><td><span class="badge core">必备</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-G003:2021</td><td>《测量不确定度的要求》（2023-1-1 第一次修订）<span class="en">Requirements for Measurement Uncertainty</span></td><td class="date">2023-1-1 / 2023-1-1</td><td><span class="badge core">必备</span>2023 年非实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-G004:2023</td><td>《内部校准要求》<span class="en">Requirements for Internal Calibration</span></td><td class="date">2023-1-20 / 2023-1-20</td><td><span class="badge core">必备</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-G005:2018</td><td>《检测和校准实验室能力认可准则在非固定场所外检测活动中的应用说明》<span class="en">Application Note for Testing Activities Outside Permanent Premises</span></td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge opt">按需</span>存在现场/临时场所检测时适用</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 五、领域应用说明（CL01-A系列） ============ -->
+<section class="block" id="sec-a">
+  <div class="section-head">
+    <div class="no">五</div>
+    <h2>领域应用说明（CL01-A 系列）</h2>
+    <span class="tag">按检测领域选用</span>
+  </div>
+  <p class="section-desc">按实验室实际申请的检测 / 校准领域选用对应的应用说明（A 系列），与 CNAS-CL01 一并使用。本清单收录全部现行 CL01-A 系列文件（含 2026 年换版更新）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-A001:2022</td><td>《检测和校准实验室能力认可准则在微生物检测领域的应用说明》</td><td class="date">2022-12-24 / 2023-1-1</td><td><span class="badge dom">领域</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-A002:2020</td><td>《检测和校准实验室能力认可准则在化学检测领域的应用说明》</td><td class="date">2020-12-18 / 2021-1-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A003:2019</td><td>《检测和校准实验室能力认可准则在电气检测领域的应用说明》</td><td class="date">2019-12-30 / 2019-12-30</td><td><span class="badge dom">领域</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-A004:2026</td><td>《检测和校准实验室能力认可准则在医疗器械检测领域的应用说明》</td><td class="date">2026-4-15 / 2026-5-1</td><td><span class="badge dom">领域</span><span class="badge new">2026 最新版</span>换版+实质性修订，2018 版 2026-10-31 废止</td></tr>
+        <tr><td class="code">CNAS-CL01-A005:2020</td><td>《检测和校准实验室能力认可准则在汽车和摩托车检测领域的应用说明》</td><td class="date">2020-11-30 / 2020-11-30</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A006:2021</td><td>《检测和校准实验室能力认可准则在无损检测领域的应用说明》</td><td class="date">2021-12-31 / 2022-6-30</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A007:2021</td><td>《检测和校准实验室能力认可准则在通信检测领域的应用说明》</td><td class="date">2021-2-10 / 2021-5-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A008:2023</td><td>《检测和校准实验室能力认可准则在电磁兼容检测领域的应用说明》</td><td class="date">2023-4-1 / 2023-4-10</td><td><span class="badge dom">领域</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-A009:2018</td><td>《检测和校准实验室能力认可准则在玩具检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A010:2023</td><td>《检测和校准实验室能力认可准则在纺织检测领域的应用说明》</td><td class="date">2023-2-20 / 2023-3-1</td><td><span class="badge dom">领域</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-A011:2018</td><td>《检测和校准实验室能力认可准则在金属材料检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A012:2018</td><td>《检测和校准实验室能力认可准则在卫生检疫领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>卫生检疫适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A013:2018</td><td>《检测和校准实验室能力认可准则在动物检疫领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>动物检疫适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A014:2024</td><td>《检测和校准实验室能力认可准则在植物检疫领域的应用说明》</td><td class="date">2024-6-20 / 2024-7-1</td><td><span class="badge dom">领域</span><span class="badge new">2024 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL01-A015:2018</td><td>《检测和校准实验室能力认可准则在珠宝玉石、贵金属检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A016:2025</td><td>《检测和校准实验室能力认可准则在感官检验领域的应用说明》</td><td class="date">2025-1-15 / 2025-1-31</td><td><span class="badge dom">领域</span><span class="badge new">2025 最新版</span>换版，实质性变化</td></tr>
+        <tr><td class="code">CNAS-CL01-A018:2026</td><td>《检测和校准实验室能力认可准则在建设工程检测领域的应用说明》</td><td class="date">2026-9-23 / 2027-1-1</td><td><span class="badge dom">领域</span><span class="badge new">2026 最新版</span>换版+实质性修订；过渡期内 2021 版沿用至 2027-1-1</td></tr>
+        <tr><td class="code">CNAS-CL01-A019:2018</td><td>《检测和校准实验室能力认可准则在软件检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A020:2018</td><td>《检测和校准实验室能力认可准则在信息安全检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A021:2019</td><td>《检测和校准实验室能力认可准则在光伏产品检测领域的应用说明》</td><td class="date">2019-12-30 / 2019-12-30</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A022:2021</td><td>《检测和校准实验室能力认可准则在建材检测领域的应用说明》</td><td class="date">2021-1-1 / 2021-5-1</td><td><span class="badge dom">领域</span>现行有效</td></tr>
+        <tr><td class="code">CNAS-CL01-A023:2018</td><td>《检测和校准实验室能力认可准则在实验动物检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>实验动物检测适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A024:2018</td><td>《检测和校准实验室能力认可准则在基因扩增检测领域的应用说明》</td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge dom">领域</span>基因扩增检测适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A025:2022</td><td>《检测和校准实验室能力认可准则在校准领域的应用说明》</td><td class="date">2022-1-20 / 2022-1-20</td><td><span class="badge dom">领域</span>校准实验室适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A026:2023</td><td>《检测和校准实验室能力认可准则在药物生物样本分析检测领域的应用说明》</td><td class="date">2023-11-1 / 2023-11-1</td><td><span class="badge dom">领域</span>制药相关适用</td></tr>
+        <tr><td class="code">CNAS-CL01-A027:2023</td><td>《检测和校准实验室能力认可准则在竞技体育食源性兴奋剂检测领域的应用说明》</td><td class="date">2023-12-1 / 2024-1-1</td><td><span class="badge dom">领域</span>兴奋剂检测适用</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：CNAS-CL01-A017 无现行文件；A012/A013/A014（卫生检疫、动物检疫、植物检疫）、A023/A024（实验动物、基因扩增）、A027（竞技体育食源性兴奋剂）等为特定领域应用说明，全行业清单一并列出。</div>
+  </div>
+</section>
+
+<!-- ============ 六、专用准则应用说明 ============ -->
+<section class="block" id="sec-a2">
+  <div class="section-head">
+    <div class="no">六</div>
+    <h2>专用准则应用说明（CL02~CL08 等 A 系列）</h2>
+    <span class="tag">按机构类型选用</span>
+  </div>
+  <p class="section-desc">医学、能力验证提供者、标准物质生产者、生物安全、实验动物、医学参考测量、司法鉴定等特定类型实验室/机构准则的配套应用说明，与对应 CL 准则一并使用。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL02-A001:2023</td><td>《医学实验室质量和能力认可准则的应用要求》</td><td class="date">2023-8-1 / 2023-12-1</td><td><span class="badge dom">领域</span>换版+实质性修订，替代 2021 版</td></tr>
+        <tr><td class="code">CNAS-CL03-A001:2025</td><td>《能力验证提供者认可准则在微生物领域的应用说明》</td><td class="date">2025-1-15 / 2025-1-15</td><td><span class="badge dom">领域</span><span class="badge new">2025 最新版</span>替代 2019 版</td></tr>
+        <tr><td class="code">CNAS-CL03-A002:2024</td><td>《能力验证提供者认可准则在校准领域的应用说明》</td><td class="date">2024-12-31 / 2024-12-31</td><td><span class="badge dom">领域</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL04-A001:2023</td><td>《标准物质/标准样品生产者能力认可准则在体外诊断试剂领域的应用说明》</td><td class="date">2023-8-1 / 2023-8-1</td><td><span class="badge dom">领域</span>体外诊断试剂 RMP 适用</td></tr>
+        <tr><td class="code">CNAS-CL04-A002:2023</td><td>《标准物质/标准样品生产者能力认可准则在气体领域的应用说明》</td><td class="date">2023-8-1 / 2023-8-1</td><td><span class="badge dom">领域</span>气体标准物质生产者适用</td></tr>
+        <tr><td class="code">CNAS-CL05-A001:2018</td><td>《实验室生物安全认可准则对移动式实验室评价的应用说明》（2019-2-20 第一次修订）</td><td class="date">2018-3-1 / 2018-3-1</td><td><span class="badge dom">领域</span>移动式实验室适用</td></tr>
+        <tr><td class="code">CNAS-CL05-A002:2020</td><td>《实验室生物安全认可准则对关键防护设备评价的应用说明》</td><td class="date">2020-12-31 / 2020-12-31</td><td><span class="badge dom">领域</span>关键防护设备适用</td></tr>
+        <tr><td class="code">CNAS-CL06-A001:2026</td><td>《实验动物饲养和使用机构质量和能力认可准则的应用说明》</td><td class="date">2026-3-9 / 2026-3-31</td><td><span class="badge dom">领域</span><span class="badge new">2026 新增</span>首次发布</td></tr>
+        <tr><td class="code">CNAS-CL07-A001:2021</td><td>《医学参考测量实验室能力认可准则的应用要求》</td><td class="date">2021-5-25 / 2021-11-25</td><td><span class="badge dom">领域</span>替代 2018 版 CL07-A001~A003</td></tr>
+        <tr><td class="code">CNAS-CL08-A001:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在电子数据鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>电子数据鉴定适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A002:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在法医物证 DNA 鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>法医物证 DNA 适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A003:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在微量物证鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>微量物证适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A004:2024</td><td>《司法鉴定/法庭科学机构能力认可准则在法医学鉴定领域的应用说明》</td><td class="date">2024-7-31 / 2024-8-31</td><td><span class="badge dom">领域</span><span class="badge new">2024 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-CL08-A005:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在文书鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>文书鉴定适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A006:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在痕迹鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>痕迹鉴定适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A007:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在法医毒物分析和毒品鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>法医毒物/毒品适用</td></tr>
+        <tr><td class="code">CNAS-CL08-A008:2018</td><td>《司法鉴定/法庭科学机构能力认可准则在声像资料鉴定领域的应用说明》</td><td class="date">2018-4-18 / 2018-9-1</td><td><span class="badge dom">领域</span>声像资料适用</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 七、认可指南 ============ -->
+<section class="block" id="sec-gl">
+  <div class="section-head">
+    <div class="no">七</div>
+    <h2>认可指南（GL 系列）</h2>
+    <span class="tag">参考 · 全行业适用</span>
+  </div>
+  <p class="section-desc">认可指南为实施认可提供技术指导，不构成强制要求，但为实验室体系建立与认可申请提供重要参考。以下为全部现行有效 GL 文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-GL001:2018</td><td>《实验室认可指南》<span class="en">Guidance on Accreditation of Laboratories</span></td><td class="date">2018-3-1 / 2018-3-1</td><td><span class="badge core">必备参考</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-GL002:2018</td><td>《能力验证结果的统计处理和能力评价指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL003:2018</td><td>《能力验证样品均匀性和稳定性评价指南》</td><td class="date">2018-3-1 / 2018-3-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL006:2019</td><td>《化学分析中不确定度的评估指南》</td><td class="date">2019-3-15 / 2019-3-15</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL007:2020</td><td>《电器领域测量不确定度的评估指南》</td><td class="date">2020-9-1 / 2020-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL008:2018</td><td>《实验室认可评审不符合项分级指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL009:2018</td><td>《材料理化检验测量不确定度评估指南及实例》</td><td class="date">2018-3-1 / 2018-3-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL011:2025</td><td>《实验室和检验机构内部审核指南》<span class="en">Guidance on Internal Audit</span></td><td class="date">2025-12-1 / 2025-12-1</td><td><span class="badge new">2025 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-GL012:2025</td><td>《实验室和检验机构管理评审指南》<span class="en">Guidance on Management Review</span></td><td class="date">2025-12-1 / 2025-12-1</td><td><span class="badge new">2025 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-GL014:2025</td><td>《感官检验领域实验室认可技术指南》</td><td class="date">2025-1-15 / 2025-1-31</td><td><span class="badge new">2025 最新版</span>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-GL015:2022</td><td>《判定规则和符合性声明指南》</td><td class="date">2022-1-20 / 2022-1-20</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL016:2020</td><td>《石油石化领域理化检测测量不确定度评估指南及实例》</td><td class="date">2020-2-18 / 2020-2-18</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL018:2018</td><td>《标准物质/标准样品生产者能力认可指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>RMP 适用</td></tr>
+        <tr><td class="code">CNAS-GL019:2018</td><td>《能力验证提供者认可指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>PTP 适用</td></tr>
+        <tr><td class="code">CNAS-GL020:2018</td><td>《司法鉴定/法庭科学领域检验鉴定能力验证实施指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>司法鉴定适用</td></tr>
+        <tr><td class="code">CNAS-GL021:2018</td><td>《医学领域定性检测能力验证实施指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL022:2018</td><td>《基于质控数据环境检测测量不确定度评定指南》</td><td class="date">2018-3-1 / 2018-3-1</td><td>环境检测适用</td></tr>
+        <tr><td class="code">CNAS-GL023:2018</td><td>《汽车和摩托车检测领域典型参数的测量不确定度评估指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL024:2018</td><td>《司法鉴定/法庭科学鉴定过程的质量控制指南》</td><td class="date">2018-4-18 / 2018-5-1</td><td>司法鉴定适用</td></tr>
+        <tr><td class="code">CNAS-GL025:2023</td><td>《校准和测量能力（CMC）表示指南》</td><td class="date">2023-12-31 / 2023-12-31</td><td>换版+实质性修订</td></tr>
+        <tr><td class="code">CNAS-GL026:2018</td><td>《无线电领域测量不确定度评估指南及实例》</td><td class="date">2018-3-1 / 2018-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL027:2023</td><td>《化学分析实验室内部质量控制指南——控制图的应用》</td><td class="date">2023-2-10 / 2023-2-10</td><td>换版修订（无实质变化）</td></tr>
+        <tr><td class="code">CNAS-GL029:2018</td><td>《基因扩增领域检测实验室认可指南》</td><td class="date">2018-3-1 / 2018-9-1</td><td>基因扩增适用</td></tr>
+        <tr><td class="code">CNAS-GL030:2018</td><td>《企业内部检测实验室认可指南》<span class="en">Guidance on Accreditation of In-house Testing Laboratories</span></td><td class="date">2018-3-1 / 2018-9-1</td><td><span class="badge core">企业实验室重点参考</span></td></tr>
+        <tr><td class="code">CNAS-GL031:2018</td><td>《动物检疫二级生物安全实验室认可指南》（2020-9-1 第一次修订）</td><td class="date">2018-3-1 / 2020-9-1</td><td>动物检疫适用</td></tr>
+        <tr><td class="code">CNAS-GL032:2018</td><td>《能力验证的选择核查与利用指南》</td><td class="date">2018-3-1 / 2018-3-1</td><td>与 RL02 保持一致</td></tr>
+        <tr><td class="code">CNAS-GL033:2018</td><td>《建设领域典型检验检测设备计量溯源指南》</td><td class="date">2018-9-15 / 2019-1-1</td><td>建设工程适用</td></tr>
+        <tr><td class="code">CNAS-GL034:2018</td><td>《石油石化检测领域实验室认可技术指南》</td><td class="date">2018-11-20 / 2018-11-20</td><td>石油石化适用</td></tr>
+        <tr><td class="code">CNAS-GL035:2018</td><td>《检测和校准实验室标准物质/标准样品验收和期间核查指南》</td><td class="date">2018-12-19 / 2018-12-19</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL036:2018</td><td>《环境领域有机检测实验室认可技术指南》</td><td class="date">2018-12-19 / 2018-12-19</td><td>环境检测适用</td></tr>
+        <tr><td class="code">CNAS-GL037:2019</td><td>《临床化学定量检验程序性能验证指南》</td><td class="date">2019-2-15 / 2019-2-15</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL038:2019</td><td>《免疫定性检验程序性能验证指南》（2020-9-1 第一次修订）</td><td class="date">2019-2-15 / 2020-9-1</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL039:2019</td><td>《分子诊断检验程序性能验证指南》</td><td class="date">2019-2-15 / 2019-2-15</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL040:2019</td><td>《仪器验证实施指南》</td><td class="date">2019-8-31 / 2019-8-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL041:2019</td><td>《植物检疫领域有害生物检疫鉴定非标准方法确认指南》</td><td class="date">2019-10-8 / 2019-10-8</td><td>植物检疫适用</td></tr>
+        <tr><td class="code">CNAS-GL042:2019</td><td>《测量设备期间核查的方法指南》</td><td class="date">2019-12-1 / 2019-12-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL043:2020</td><td>《兽医检测实验室 ELISA 试验测量不确定度评估指南》</td><td class="date">2020-3-1 / 2020-3-1</td><td>兽医/动物检疫适用</td></tr>
+        <tr><td class="code">CNAS-GL044:2020</td><td>《环境空气连续自动监测认可技术指南》</td><td class="date">2020-3-1 / 2020-3-1</td><td>环境监测适用</td></tr>
+        <tr><td class="code">CNAS-GL045:2020</td><td>《病原微生物实验室生物安全管理指南》</td><td class="date">2020-12-31 / 2020-12-31</td><td>生物安全适用</td></tr>
+        <tr><td class="code">CNAS-GL046:2020</td><td>《化学检测仪器核查指南》</td><td class="date">2020-12-24 / 2020-12-24</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-GL047:2021</td><td>《医学实验室定量检验程序结果可比性验证指南》</td><td class="date">2021-4-25 / 2021-4-25</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL048:2025</td><td>《医学实验室组织病理学检查领域认可指南》</td><td class="date">2025-12-1 / 2025-12-1</td><td><span class="badge new">2025 最新版</span>医学病理适用</td></tr>
+        <tr><td class="code">CNAS-GL049:2025</td><td>《医学实验室细胞病理学检查领域认可指南》</td><td class="date">2025-12-1 / 2025-12-1</td><td><span class="badge new">2025 最新版</span>医学病理适用</td></tr>
+        <tr><td class="code">CNAS-GL050:2025</td><td>《医学实验室分子诊断领域认可指南》</td><td class="date">2025-12-1 / 2025-12-1</td><td><span class="badge new">2025 最新版</span>医学分子诊断适用</td></tr>
+        <tr><td class="code">CNAS-GL051:2022</td><td>《化工产品热安全检测领域实验室认可技术指南》</td><td class="date">2022-10-1 / 2022-10-1</td><td>化工适用</td></tr>
+        <tr><td class="code">CNAS-GL052:2022</td><td>《电磁兼容检测领域设备期间核查指南》</td><td class="date">2022-11-15 / 2022-11-15</td><td>EMC 适用</td></tr>
+        <tr><td class="code">CNAS-GL053:2022</td><td>《电磁兼容实验室场地确认技术指南》</td><td class="date">2022-11-15 / 2022-11-15</td><td>EMC 适用</td></tr>
+        <tr><td class="code">CNAS-GL054:2023</td><td>《测量设备校准周期的确定和调整方法指南》</td><td class="date">2023-12-31 / 2023-12-31</td><td>替代 CNAS-TRL-004:2017</td></tr>
+        <tr><td class="code">CNAS-GL055:2024</td><td>《基于认可评审不符合项的校准实验室风险管理指南》</td><td class="date">2024-7-1 / 2024-7-1</td><td>校准实验室适用</td></tr>
+        <tr><td class="code">CNAS-GL056:2024</td><td>《植物检疫领域检测鉴定过程可追溯性指南》</td><td class="date">2024-7-1 / 2024-7-1</td><td>植物检疫适用</td></tr>
+        <tr><td class="code">CNAS-GL057:2024</td><td>《标准物质/标准样品选择指南》</td><td class="date">2024-7-1 / 2024-7-1</td><td>现行有效</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：GL004、GL005、GL010、GL013、GL017、GL028 等旧版/已撤销文件无现行版本（GL004 等 4 份已于 2025-9-4 撤销）；GL054 替代原 TRL-004。</div>
+  </div>
+</section>
+
+<!-- ============ 八、认可方案 ============ -->
+<section class="block" id="sec-s">
+  <div class="section-head">
+    <div class="no">八</div>
+    <h2>认可方案（S 系列）</h2>
+    <span class="tag">按需 · 特定制度</span>
+  </div>
+  <p class="section-desc">特定国际互认或专项制度下的实验室认可方案，按实验室实际业务需求选用。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布 / 实施日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-CL01-S01:2023</td><td>《中国计量科学研究院认可方案》<span class="en">Accreditation Scheme for NIM</span></td><td class="date">2023-1-1 / 2023-1-1</td><td>中国计量科学研究院适用</td></tr>
+        <tr><td class="code">CNAS-CL01-S02:2022</td><td>《“能源之星”实验室认可方案》<span class="en">Accreditation Scheme for ENERGY STAR Laboratories</span></td><td class="date">2022-10-1 / 2022-10-1</td><td><span class="badge opt">按需</span>能效检测出口业务适用</td></tr>
+        <tr><td class="code">CNAS-CL01-S03:2020</td><td>《反兴奋剂实验室认可方案》<span class="en">Accreditation Scheme for Anti-doping Laboratories</span></td><td class="date">2020-8-8 / 2020-8-8</td><td>反兴奋剂实验室适用</td></tr>
+        <tr><td class="code">CNAS-CL01-S04:2018</td><td>《EPA 复合木制品检测实验室认可方案》（2018 年第一次修订）<span class="en">EPA Composite Wood Products Scheme</span></td><td class="date">2018-8-14 / 2018-9-1</td><td>出口美国复合木制品适用</td></tr>
+        <tr><td class="code">CNAS-CL01-S05:2020</td><td>《蓝牙检测实验室认可方案》<span class="en">Accreditation Scheme for Bluetooth Laboratories</span></td><td class="date">2020-6-1 / 2020-6-1</td><td>蓝牙产品检测适用</td></tr>
+        <tr><td class="code">CNAS-CL01-S06:2024</td><td>《国际法制计量组织证书互认制度实验室认可方案》<span class="en">Accreditation Scheme for OIML Certificate Mutual Acceptance Arrangement</span></td><td class="date">2024-6-20 / 2024-7-1</td><td><span class="badge opt">按需</span>计量器具型式评价实验室适用</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 九、认可说明 ============ -->
+<section class="block" id="sec-el">
+  <div class="section-head">
+    <div class="no">九</div>
+    <h2>认可说明（EL 系列）</h2>
+    <span class="tag">按需 · 申请与能力表述</span>
+  </div>
+  <p class="section-desc">对认可受理、能力范围表述、报告证书等事项的补充说明，申请与获证后管理均可能涉及。以下为全部现行有效 EL 文件（含 2026 年新增）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-EL-01:2023</td><td>《司法鉴定/法庭科学机构认可受理要求的说明》</td><td class="date">2023-12-31</td><td>司法鉴定适用</td></tr>
+        <tr><td class="code">CNAS-EL-02:2020</td><td>《玩具和儿童用品检测领域认可能力范围表述说明》</td><td class="date">2020-12-30</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-03:2023</td><td>《检测和校准实验室认可能力范围表述说明》</td><td class="date">2023-8-1（2023-9-1 实施）</td><td><span class="badge core">申请必备参考</span>能力范围填报规范</td></tr>
+        <tr><td class="code">CNAS-EL-04:2020</td><td>《对大型综合实验室的认可评审管理说明》</td><td class="date">2020-1-22</td><td>大型综合实验室适用</td></tr>
+        <tr><td class="code">CNAS-EL-05:2013</td><td>《基因扩增检测领域认可能力范围表述说明》</td><td class="date">2013-12-25（2015-6-1 修订）</td><td>基因扩增适用</td></tr>
+        <tr><td class="code">CNAS-EL-06:2013</td><td>《食品检测领域认可能力范围表述说明》</td><td class="date">2013-12-23（2015-6-1 修订）</td><td>食品检测适用</td></tr>
+        <tr><td class="code">CNAS-EL-07:2020</td><td>《纺织检测领域认可能力范围表述说明》</td><td class="date">2020-3-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-08:2018</td><td>《电煤检测领域认可能力范围表述说明》</td><td class="date">2018-3-31</td><td>电煤检测适用</td></tr>
+        <tr><td class="code">CNAS-EL-09:2021</td><td>《建材领域实验室认可能力范围表述说明》</td><td class="date">2021-1-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-10:2014</td><td>《机动车检测领域认可能力范围表述说明》</td><td class="date">2014-11-2（2015-6-1 修订）</td><td>机动车检测适用</td></tr>
+        <tr><td class="code">CNAS-EL-11:2016</td><td>《校准方法的认可管理说明》</td><td class="date">2016-7-6</td><td>校准实验室适用</td></tr>
+        <tr><td class="code">CNAS-EL-12:2018</td><td>《石油石化检测领域实验室认可能力范围表述说明》</td><td class="date">2018-2-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-13:2019</td><td>《检测报告和校准证书相关要求的认可说明》</td><td class="date">2019-12-25</td><td><span class="badge core">报告/证书规范</span></td></tr>
+        <tr><td class="code">CNAS-EL-14:2023</td><td>《医学实验室认可受理要求的说明》</td><td class="date">2023-8-1（2023-12-1 实施）</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-EL-15:2020</td><td>《检测和校准实验室认可受理要求的说明》</td><td class="date">2020-10-1（2021-7-1 修订）</td><td><span class="badge core">申请必备参考</span>受理条件与材料要求</td></tr>
+        <tr><td class="code">CNAS-EL-16:2020</td><td>《司法鉴定/法庭科学领域认可能力范围表述说明》</td><td class="date">2020-9-1</td><td>司法鉴定适用</td></tr>
+        <tr><td class="code">CNAS-EL-17:2020</td><td>《家具、人造板及木竹相关制品检测领域认可能力范围表述说明》</td><td class="date">2020-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-18:2021</td><td>《通信检测领域认可能力范围表述说明》</td><td class="date">2021-2-10</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-EL-19:2021</td><td>《标准物质/标准样品生产者认可中对原材料为纯度物质的特定要求》</td><td class="date">2021-5-1</td><td>RMP 适用</td></tr>
+        <tr><td class="code">CNAS-EL-20:2021</td><td>《实验室和检验机构认可远程评审的应用说明》</td><td class="date">2021-6-1</td><td>远程评审适用</td></tr>
+        <tr><td class="code">CNAS-EL-21:2022</td><td>《集团化企业内部实验室认可说明（试行）》</td><td class="date">2022-1-10</td><td><span class="badge core">集团企业多实验室适用</span></td></tr>
+        <tr><td class="code">CNAS-EL-22:2022</td><td>《实验动物饲养和使用机构认可受理要求的说明》</td><td class="date">2022-10-1</td><td>实验动物机构适用</td></tr>
+        <tr><td class="code">CNAS-EL-23:2022</td><td>《兽医学检测领域认可能力范围表述说明》</td><td class="date">2022-12-1</td><td>兽医学检测适用</td></tr>
+        <tr><td class="code">CNAS-EL-24:2022</td><td>《植物检疫领域认可能力范围表述说明》</td><td class="date">2022-12-30</td><td>植物检疫适用</td></tr>
+        <tr><td class="code">CNAS-EL-25:2023</td><td>《标准物质/标准样品生产者认可能力范围填写与表述说明》</td><td class="date">2023-1-1</td><td>RMP 适用</td></tr>
+        <tr><td class="code">CNAS-EL-26:2023</td><td>《医学参考测量实验室认可受理要求的说明》</td><td class="date">2023-2-1</td><td>医学参考测量适用</td></tr>
+        <tr><td class="code">CNAS-EL-27:2024</td><td>《自然资源（岩石、矿石、矿物、地球化学样品、水、岩矿鉴定）检测领域认可能力范围表述说明》</td><td class="date">2024-9-10</td><td>自然资源检测适用</td></tr>
+        <tr><td class="code">CNAS-EL-28:2024</td><td>《实验室、检验机构等英文名称与地址的申报说明》</td><td class="date">2024-10-25（2024-11-1 实施）</td><td>英文名称与地址申报规范</td></tr>
+        <tr><td class="code">CNAS-EL-29:2024</td><td>《能力验证提供者认可受理要求的说明》</td><td class="date">2024-12-1</td><td>PTP 适用</td></tr>
+        <tr><td class="code">CNAS-EL-30:2026</td><td>《生物样本库认可受理要求的说明》</td><td class="date">2026-1-1</td><td><span class="badge new">2026 新增</span>生物样本库适用</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：2015-6-1 曾配合徽标调整对认可说明进行集中编辑修订；EL 系列已覆盖司法鉴定、基因扩增、食品、医学、兽医学、植物检疫、自然资源、生物样本库、PTP、RMP 等全部领域。</div>
+  </div>
+</section>
+
+<!-- ============ 十、技术报告 ============ -->
+<section class="block" id="sec-trl">
+  <div class="section-head">
+    <div class="no">十</div>
+    <h2>技术报告（TRL 系列）</h2>
+    <span class="tag">参考 · 2026 年新增多项</span>
+  </div>
+  <p class="section-desc">CNAS 发布的技术性参考资料，为特定检测领域实验室提供质量控制、不确定度评估、计量溯源等实践指导。以下为全部现行有效 TRL 文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>发布日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CNAS-TRL-002:2020</td><td>《纺织品检测测量不确定度的评估及实例》</td><td class="date">2020-3-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-003:2015</td><td>《校准和测量能力（CMC）的评定与实例》</td><td class="date">2015-9-1</td><td>校准实验室适用</td></tr>
+        <tr><td class="code">CNAS-TRL-005:2018</td><td>《轻纺检测领域质量控制方法》</td><td class="date">2018-1-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-006:2018</td><td>《轻纺实验室测量设备的计量溯源或核查工作指南》</td><td class="date">2018-1-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-007:2018</td><td>《建设领域典型检验检测设备计量溯源在检测结果不确定度评定中的应用》</td><td class="date">2018-9-15</td><td>建设工程适用</td></tr>
+        <tr><td class="code">CNAS-TRL-008:2025</td><td>《电气检测领域实验室内部质量控制方法与实例》</td><td class="date">2025-12-1</td><td><span class="badge new">2025 最新版</span>修订发布</td></tr>
+        <tr><td class="code">CNAS-TRL-009:2025</td><td>《电气检测领域技术记录的编制与管理》</td><td class="date">2025-12-1</td><td><span class="badge new">2025 最新版</span>修订发布</td></tr>
+        <tr><td class="code">CNAS-TRL-010:2019</td><td>《测量不确定度在符合性判定中的应用》</td><td class="date">2019-4-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-011:2020</td><td>《轻工产品化学分析方法确认和验证指南》</td><td class="date">2020-4-20</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-012:2020</td><td>《家具、人造板及木竹相关制品检测领域认可申请指南》</td><td class="date">2020-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-013:2020</td><td>《家具、人造板及木竹相关制品检测领域认可评审技术指南》</td><td class="date">2020-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-014:2021</td><td>《科研数据特征划分及其分类体系表》</td><td class="date">2021-1-1</td><td>科研实验室适用</td></tr>
+        <tr><td class="code">CNAS-TRL-015:2021</td><td>《电动汽车检测安全风险识别与控制》</td><td class="date">2021-3-31</td><td>新能源车相关适用</td></tr>
+        <tr><td class="code">CNAS-TRL-016:2021</td><td>《通信检测实验室校准方案制定和实施指南》</td><td class="date">2021-2-10</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-017:2021</td><td>《电煤检测领域实验室认可技术指南》</td><td class="date">2021-7-10</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-018:2022</td><td>《医学实验室核酸检测质量和安全指南》</td><td class="date">2022-3-1</td><td>医学实验室适用</td></tr>
+        <tr><td class="code">CNAS-TRL-019:2022</td><td>《电磁兼容检测领域关键设备量值溯源指南》</td><td class="date">2022-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-020:2022</td><td>《电磁兼容检测领域质量控制方法》</td><td class="date">2022-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-021:2022</td><td>《电磁兼容检测相关人员能力模型》</td><td class="date">2022-12-31</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-022:2023</td><td>《实验室风险管理指南》</td><td class="date">2023-3-20</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-023:2024</td><td>《通信领域检测实验室外部质量控制方法与实例》</td><td class="date">2024-9-1</td><td>现行有效</td></tr>
+        <tr><td class="code">CNAS-TRL-024:2026</td><td>《激光加工设备检测领域实验室认可技术指南》</td><td class="date">2026-2-4</td><td><span class="badge new">2026 新增</span>先进制造重点参考</td></tr>
+        <tr><td class="code">CNAS-TRL-025:2026</td><td>《增材制造设备检测领域实验室认可技术指南》</td><td class="date">2026-2-4</td><td><span class="badge new">2026 新增</span>先进制造重点参考</td></tr>
+        <tr><td class="code">CNAS-TRL-026:2026</td><td>《煤炭检测领域实验室内部质量控制方法》</td><td class="date">2026-8-28</td><td><span class="badge new">2026 新增</span></td></tr>
+        <tr><td class="code">CNAS-TRL-027:2026</td><td>《煤炭检测实验室测量设备的计量溯源及核查指南》</td><td class="date">2026-8-28</td><td><span class="badge new">2026 新增</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：TRL-001（医学实验室测量不确定度）已失效；TRL-004 已被 GL054 替代。</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>本清单依据中国合格评定国家认可委员会（CNAS）官网公开文件整理：①《CNAS 实验室认可规范文件清单》2026-4-15 版，并按官网 2026-9 最新发布通知补充更新（CNAS-R03:2026、CNAS-CL01-A018:2026、CNAS-CL06-A001:2026 等）；②《CNAS 实验室认可说明文件清单》2026-1-1 版；③《CNAS 实验室技术报告文件清单》2026-8-28 版；并结合 CNAS 官网「认可规范 → 实验室」栏目逐项核实。文件原文可在 CNAS 官网相应栏目下载。</p>
+    </div>
+    <div>
+      <h3>使用提示</h3>
+      <p>标注「必备」的文件为申请认可的通用要件；「领域 / 按需」类按实验室实际类型及检测 / 校准领域选用。版本信息以 CNAS 官网实时发布为准。</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

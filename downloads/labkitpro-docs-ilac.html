@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILAC 互认通用层文件清单（现行有效 · 归档站点全量版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EIL%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+
+.badge.na{background:#f6f6f8;color:#8a94a6;border:1px solid #e0e2e8;}
+td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:break-all;}
+td a.dl:hover{text-decoration:underline;}
+footer a{color:#d7e3fb;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">ILAC · International Laboratory Accreditation Cooperation · 互认安排（MRA）文件体系</span>
+    <h1>ILAC 互认通用层文件清单（P / G / R / IAF-ILAC 联合 A 系列全量）</h1>
+    <p>本清单完整收录国际实验室认可合作组织（ILAC）现行公开文件体系：MRA 政策文件（P 系列）、认可指南（G 系列）、组织规则（R 系列）、IAF/ILAC 联合同行评审文件（A 系列）、制定中文件及 B 系列公开宣传资料。<b style="color:#fff;">重要过渡背景：ILAC 与 IAF 已合并为 Global ACI（Global Accreditation Cooperation Incorporated，全球认可合作组织），新组织自 2026-01-01 起以完整实体运行；ilac.org 现为归档/查阅站点，原 ILAC 公开文件继续在该站现行发布与下载。</b>指定的 ILAC P 系列、适用的 A 系列及 R6/R7/P8/G21 等文件在 Global ACI 对应文件完成发布前继续有效；个别文件已被 Global ACI 对应编号文件承接，清单中逐行如实标注。</p>
+    <div class="meta">
+      <span>清单依据：<b>ilac.org 官方出版物各栏目（总清单 + P/G/R/A/B/拟议/废止专页逐条核对）</b></span>
+      <span>核对日期：<b>2026-10-19（官网实时抓取）</b></span>
+      <span>官方依据页：<b>ilac.org/publications-and-resources/</b></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">63</div><div class="lbl">收录文件条目总数</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">分区（P / G / R / A / 制定中 / B 系列）</div></div>
+      <div class="stat"><div class="num">31</div><div class="lbl">规范性文件（P+G+R+A 正式文件）</div></div>
+      <div class="stat"><div class="num">32</div><div class="lbl">宣传·配套·临时·在研材料</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#sec-p">一、MRA 政策文件（P 系列）</a>
+    <a href="#sec-g">二、认可指南（G 系列）</a>
+    <a href="#sec-r">三、组织规则（R 系列）</a>
+    <a href="#sec-a">四、IAF/ILAC 联合文件（A 系列）</a>
+    <a href="#sec-wip">五、制定中文件</a>
+    <a href="#sec-b">六、公开宣传资料（B 系列 / MRA 报告）</a>
+  </div>
+</nav>
+
+<!-- ============ 一、P 系列 ============ -->
+<section class="block" id="sec-p">
+  <div class="section-head">
+    <div class="no">一</div>
+    <h2>MRA 政策文件（P 系列）</h2>
+    <span class="tag">MRA 运行核心 · 同行评审准则组成部分</span>
+  </div>
+  <p class="section-desc">ILAC 政策与程序性文件，用于 ILAC 互认安排（MRA）的运行，并构成 ILAC MRA 同行评审准则的一部分。归档站 P 系列专页现行全部 8 份正式文件及 1 份配套演示材料。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 发布日期</th><th>状态与说明（含 PDF）</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC P4:06/2022</td><td>《ILAC 互认安排：政策与管理》<span class="en">ILAC Mutual Recognition Arrangement: Policy and Management</span></td><td class="date">2022-06 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=124569" target="_blank">PDF 下载</a> MRA 目标、基础、管理与决策框架</td></tr>
+        <tr><td class="code">ILAC P5:11/2023</td><td>《ILAC 互认安排：范围与义务》<span class="en">ILAC Mutual Recognition Arrangement: Scope and Obligations</span></td><td class="date">2023-11 发布</td><td><span class="badge core">现行有效</span><span class="badge new">最新修订版</span><a class="dl" href="https://ilac.org/?ddownload=125462" target="_blank">PDF 下载</a> MRA 覆盖的合格评定认可范围与成员义务</td></tr>
+        <tr><td class="code">ILAC P8:11/2023</td><td>《认可标志使用与获认可机构认可状态声明的补充要求》<span class="en">ILAC Mutual Recognition Arrangement (Arrangement): Supplementary Requirements for the Use of Accreditation Symbols and for Claims of Accreditation Status by Accredited Conformity Assessment Bodies</span></td><td class="date">2023-11 发布</td><td><span class="badge core">现行有效</span><span class="badge new">最新修订版</span><a class="dl" href="https://ilac.org/?ddownload=125463" target="_blank">PDF 下载</a> 统一认可标志使用与认可状态声明要求</td></tr>
+        <tr><td class="code">ILAC P9:01/2024</td><td>《能力验证及其他实验室间比对政策》<span class="en">ILAC Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">2024-01 发布</td><td><span class="badge core">现行有效</span><span class="badge new">最新修订版</span><a class="dl" href="https://ilac.org/?ddownload=3259" target="_blank">PDF 下载</a> 认可过程中能力验证活动使用政策</td></tr>
+        <tr><td class="code">ILAC P10:07/2020</td><td>《测量结果计量溯源性政策》<span class="en">ILAC Policy on Metrological Traceability of Measurement Results</span></td><td class="date">2020-07 发布 / 2021-07 实施</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=123220" target="_blank">PDF 下载</a> 测量结果计量溯源性政策</td></tr>
+        <tr><td class="code">ILAC P12:04/2009</td><td>《ILAC 工作与各区域合作组织的协调》<span class="en">Harmonisation of ILAC Work with the Regions</span></td><td class="date">2009-04 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=842" target="_blank">PDF 下载</a> ILAC 与区域认可合作组织工作协调及新工作项采纳准则</td></tr>
+        <tr><td class="code">ILAC P14:09/2020</td><td>《校准中测量不确定度政策》<span class="en">ILAC Policy for Measurement Uncertainty in Calibration</span></td><td class="date">2020-09 发布 / 2021-03 实施</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=123348" target="_blank">PDF 下载</a> 校准不确定度评定与表述要求（基于 GUM）</td></tr>
+        <tr><td class="code">ILAC P15:05/2020</td><td>《检验机构认可中 ISO/IEC 17020:2012 的应用》<span class="en">Application of ISO/IEC 17020:2012 for the Accreditation of Inspection Bodies</span></td><td class="date">2020-05 发布 / 2021-11 实施</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=123115" target="_blank">PDF 下载</a> 供认可机构与检验机构使用的 17020 应用指南；原 IAF/ILAC A4:2004 内容并入本文件</td></tr>
+        <tr><td class="code">ILAC P15 修订说明</td><td>《ILAC P15 修订介绍（演示材料）》<span class="en">ILAC P15 Revision Presentation</span></td><td class="date">2020 年配套材料</td><td><span class="badge opt">配套材料</span><a class="dl" href="https://ilac.org/?ddownload=123693" target="_blank">PDF 下载</a> 非规范性文件，P 系列专页列示的 P15:2020 修订说明演示</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：P1–P3、P6、P7 未发布现行版本；P11:09/2009（评审员绩效监控）已撤销，其内容并入 IAF/ILAC A1 与 A2；P13:10/2010（PTP 认可应用 ISO/IEC 17011）已按 ILAC 决议 GA 21.18 撤销。西班牙语、俄语、土耳其语译本分别见 IAAC、AAC Analytica、TURKAK 网站。</div>
+  </div>
+</section>
+
+<!-- ============ 二、G 系列 ============ -->
+<section class="block" id="sec-g">
+  <div class="section-head">
+    <div class="no">二</div>
+    <h2>认可指南（G 系列）</h2>
+    <span class="tag">解释性指南 · 认可机构与获认可机构使用</span>
+  </div>
+  <p class="section-desc">为认可机构及获认可组织提供特定应用场景下认可准则的解释指导。以下为归档站 G 系列专页现行全部文件（共 12 份）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 发布日期</th><th>状态与说明（含 PDF）</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G3:08/2020</td><td>《认可机构评审员培训课程指南》<span class="en">Guidelines for Training Courses for Assessors Used by Accreditation Bodies</span></td><td class="date">2020-08 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=123277" target="_blank">PDF 下载</a> 评审员与技术专家培训课程设置指南</td></tr>
+        <tr><td class="code">ILAC G7:04/2021</td><td>《赛马实验室认可要求与运行准则》<span class="en">Accreditation Requirements and Operating Criteria for Horseracing Laboratories</span></td><td class="date">2021-04 发布</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=123697" target="_blank">PDF 下载</a> 赛马/反兴奋剂检测领域专用</td></tr>
+        <tr><td class="code">ILAC G8:09/2019</td><td>《判定规则与符合性声明指南》<span class="en">Guidelines on Decision Rules and Statements of Conformity</span></td><td class="date">2019-09 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=122722" target="_blank">PDF 下载</a> 检测实验室出具符合性声明的判定规则，高频使用</td></tr>
+        <tr><td class="code">ILAC G17:01/2021</td><td>《检测中测量不确定度指南》<span class="en">ILAC Guidelines for Measurement Uncertainty in Testing</span></td><td class="date">2021-01 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=123528" target="_blank">PDF 下载</a> 检测领域测量不确定度评定与报告指南</td></tr>
+        <tr><td class="code">ILAC G18:01/2024</td><td>《认可能力范围描述指南》<span class="en">Guideline for describing Scopes of Accreditation</span></td><td class="date">2024-01 发布</td><td><span class="badge core">现行有效</span><span class="badge new">最新修订版</span><a class="dl" href="https://ilac.org/?ddownload=124300" target="_blank">PDF 下载</a> 认可能力范围（scope）统一描述指南</td></tr>
+        <tr><td class="code">ILAC G19:06/2022</td><td>《法庭科学过程模块》<span class="en">Modules in a Forensic Science Process</span></td><td class="date">2022-06 发布</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=124605" target="_blank">PDF 下载</a> 司法鉴定/法庭科学领域 ISO/IEC 17025 与 17020 应用指南</td></tr>
+        <tr><td class="code">ILAC G21:09/2012</td><td>《跨境认可——合作原则》<span class="en">Cross Frontier Accreditation - Principles for Cooperation</span></td><td class="date">2012-09 发布</td><td><span class="badge core">现行有效</span><span class="badge new">修订中</span><a class="dl" href="https://ilac.org/?ddownload=817" target="_blank">PDF 下载</a> 官网标注 under revision，修订稿可能转入 P 系列</td></tr>
+        <tr><td class="code">ILAC G24:2022</td><td>《测量设备再校准间隔确定指南》<span class="en">Guidelines for the determination of recalibration intervals of measuring equipment</span></td><td class="date">2022 年发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=124891" target="_blank">PDF 下载</a> 测量设备再校准间隔确定与评审方法指南</td></tr>
+        <tr><td class="code">ILAC G26:11/2018</td><td>《医学实验室认可制度实施指南》<span class="en">Guidance for the Implementation of a Medical Accreditation Scheme</span></td><td class="date">2018-11 发布</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=819" target="_blank">PDF 下载</a> 医学实验室（ISO 15189）认可制度建立指南</td></tr>
+        <tr><td class="code">ILAC G27:07/2019</td><td>《检验过程中测量活动指南》<span class="en">Guidance on measurements performed as part of an inspection process</span></td><td class="date">2019-07 发布</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=122667" target="_blank">PDF 下载</a> 检验机构检验过程中测量活动的有效性指南</td></tr>
+        <tr><td class="code">ILAC G28:07/2018</td><td>《检验机构认可能力范围编制指南》<span class="en">Guideline for the Formulation of Scopes of Accreditation for Inspection Bodies</span></td><td class="date">2018-07 发布</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=121961" target="_blank">PDF 下载</a> 检验机构认可范围一致性编制指南</td></tr>
+        <tr><td class="code">ILAC G29:06/2020</td><td>《WADA 反兴奋剂实验室 ISO/IEC 17025 认可范围协调指南》<span class="en">Guidelines for harmonization of scopes of ISO/IEC 17025 accreditation of WADA anti-doping laboratories</span></td><td class="date">2020-06 发布（2021-04 编辑性修订）</td><td><span class="badge dom">领域专用</span><a class="dl" href="https://ilac.org/?ddownload=123190" target="_blank">PDF 下载</a> 反兴奋剂实验室认可范围编制指南，WADA ISL 引用</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：已撤销文件仅作附注——ILAC G9:2005（标准物质选择使用指南）由 ISO Guide 33:2015 替代；ILAC G11:07/2006（评审员与技术专家能力指南）内容已纳入 ISO/IEC 17011:2017。西班牙语译本见 IAAC 网站，俄语译本见 AAC Analytica 网站，土耳其语译本见 TURKAK 网站。</div>
+  </div>
+</section>
+
+<!-- ============ 三、R 系列 ============ -->
+<section class="block" id="sec-r">
+  <div class="section-head">
+    <div class="no">三</div>
+    <h2>组织规则（R 系列）</h2>
+    <span class="tag">ILAC 治理与运行规则</span>
+  </div>
+  <p class="section-desc">ILAC 作为协会组织的章程、细则与运行规则。ILAC 解散后治理职能已由 Global ACI 承接；归档站 R 系列专页现行全部文件继续列示。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 发布日期</th><th>状态与说明（含 PDF）</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC R1:12/2021</td><td>《ILAC 文件管理》<span class="en">Management of ILAC Documents</span></td><td class="date">2021-12 发布</td><td><span class="badge core">现行版本</span><a class="dl" href="https://ilac.org/?ddownload=124272" target="_blank">PDF 下载</a> ILAC 文件制定、批准与维护规则</td></tr>
+        <tr><td class="code">ILAC R2A:11/2019</td><td>《ILAC 规则：协会章程》<span class="en">ILAC Rules: Articles of Association</span></td><td class="date">2019-11 注册发布</td><td><span class="badge core">现行版本</span><a class="dl" href="https://ilac.org/?ddownload=122791" target="_blank">PDF 下载</a> 协会章程文本（2019-10-30 修订，2019-11-11 注册）</td></tr>
+        <tr><td class="code">ILAC R2B:11/2019</td><td>《ILAC 规则：内部细则》<span class="en">ILAC Rules: Bylaws</span></td><td class="date">2019-11 注册发布</td><td><span class="badge core">现行版本</span><a class="dl" href="https://ilac.org/?ddownload=122792" target="_blank">PDF 下载</a> 协会内部细则文本</td></tr>
+        <tr><td class="code">ILAC R3:12/2014</td><td>《ILAC 战略规划 2015–2020》<span class="en">ILAC Strategic Plan 2015-2020（extended December 2020）</span></td><td class="date">2014-12 发布 / 2020-12 延期</td><td><span class="badge opt">历史存档</span><a class="dl" href="https://ilac.org/?ddownload=51012" target="_blank">PDF 下载</a> 战略规划期已满，归档站仍列示，不再更新</td></tr>
+        <tr><td class="code">Supplement 1 to R3</td><td>《ILAC R3:12/2014 补充 1》<span class="en">Supplement 1 to ILAC R3:12/2014</span></td><td class="date">随 R3 配套</td><td><span class="badge na">见官网</span> 归档站文件总清单列示，规则页无单独下载链接；见 <a class="dl" href="https://ilac.org/publications-and-resources/publications-list/" target="_blank">官网文件总清单</a></td></tr>
+        <tr><td class="code">ILAC R4:10/2016</td><td>《ILAC 标志与口号使用规则》<span class="en">Use of the ILAC Logo and Tagline</span></td><td class="date">2016-10 发布</td><td><span class="badge core">现行版本</span><a class="dl" href="https://ilac.org/?ddownload=120392" target="_blank">PDF 下载</a> ILAC 标志与口号使用规范</td></tr>
+        <tr><td class="code">ILAC R5:04/2016</td><td>《ILAC 投诉处理程序》<span class="en">ILAC Procedure for Handling Complaints</span></td><td class="date">2016-04 发布</td><td><span class="badge core">现行版本</span><a class="dl" href="https://ilac.org/?ddownload=119300" target="_blank">PDF 下载</a> ILAC 投诉受理与处理程序</td></tr>
+        <tr><td class="code">ILAC R6:11/2023</td><td>《ILAC 互认安排结构与安排范围扩展程序》<span class="en">Structure of the ILAC Mutual Recognition Arrangement and Procedure for Expansion of the Scope of the ILAC Arrangement</span></td><td class="date">2023-11 发布</td><td><span class="badge core">现行有效</span><span class="badge new">最新修订版</span><a class="dl" href="https://ilac.org/?ddownload=125464" target="_blank">PDF 下载</a> MRA 结构与范围扩展程序</td></tr>
+        <tr><td class="code">ILAC R7:05/2015</td><td>《ILAC MRA 标志使用规则》<span class="en">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">2015-05 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=833" target="_blank">PDF 下载</a> ILAC MRA 联合标志使用规则</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：原 ILAC R2:09/2009（章程与细则合一）已于 2019-10-30 修订并拆分为 R2A / R2B。</div>
+  </div>
+</section>
+
+<!-- ============ 四、IAF/ILAC 联合 A 系列 ============ -->
+<section class="block" id="sec-a">
+  <div class="section-head">
+    <div class="no">四</div>
+    <h2>IAF/ILAC 联合文件（A 系列）</h2>
+    <span class="tag">同行评审 · 两组织联合发布</span>
+  </div>
+  <p class="section-desc">IAF 与 ILAC 联合制定的多边互认安排同行评审要求文件。以下为归档站 Joint ILAC/IAF (A Series) 专页现行全部文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 发布日期</th><th>状态与说明（含 PDF）</th></tr></thead>
+      <tbody>
+        <tr><td class="code">IAF/ILAC A1:06/2023</td><td>《区域组织同行评审要求与程序》<span class="en">IAF/ILAC Multi-Lateral Mutual Recognition Arrangements (Arrangements): Requirements and Procedures for Evaluation of a Regional Group</span></td><td class="date">2023-06 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=847" target="_blank">PDF 下载</a> 区域认可组织的识别与评审要求程序</td></tr>
+        <tr><td class="code">IAF/ILAC A2:09/2025</td><td>《认可机构同行评审要求》<span class="en">IAF-ILAC Multilateral Mutual Recognition Arrangements (Arrangements): Requirements for Evaluation of an Accreditation Body</span></td><td class="date">2025-09 发布</td><td><span class="badge core">现行有效</span><span class="badge new">2025 最新版</span><a class="dl" href="https://ilac.org/?ddownload=126651" target="_blank">PDF 下载</a> 单一认可机构签署多边互认安排的评审要求与程序；旧版 A2:06/2023 已被本版替代（总清单页暂未同步更新版本号）</td></tr>
+        <tr><td class="code">IAF/ILAC A3:06/2023</td><td>《基于 ISO/IEC 17011:2017 的认可机构同行评审报告模板》<span class="en">IAF/ILAC Multi-Lateral Mutual Recognition Arrangements (Arrangements): Template report for the peer evaluation of an Accreditation Body based on ISO/IEC 17011:2017</span></td><td class="date">2023-06 发布</td><td><span class="badge core">现行有效</span><a class="dl" href="https://ilac.org/?ddownload=849" target="_blank">PDF 下载</a> 同行评审报告模板工具</td></tr>
+        <tr><td class="code">IAF/ILAC 联合声明</td><td>《新冠疫情期间替代评审安排声明》<span class="en">IAF-ILAC Statement on Replacement of Assessments During the COVID-19 Pandemic</span></td><td class="date">2021-03 发布</td><td><span class="badge na">临时文件</span><a class="dl" href="https://ilac.org/?ddownload=123619" target="_blank">PDF 下载</a> 疫情专项临时声明，官网 A 系列页仍列示，仅存档参考</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：已撤销 A 系列仅作附注——IAF/ILAC A4:2004（ISO/IEC 17020 应用指南）内容并入 ILAC P15；A5:11/2013 因 ISO/IEC 17011:2017 发布而撤销；A6:01/2018（A 系列文件审批流程）撤销；A1/A2 的 01/2021 远程评审附件随疫情结束终止。俄语译本见 AAC Analytica 网站。</div>
+  </div>
+</section>
+
+<!-- ============ 五、制定中文件 ============ -->
+<section class="block" id="sec-wip">
+  <div class="section-head">
+    <div class="no">五</div>
+    <h2>制定中（拟议）文件</h2>
+    <span class="tag">ILAC 委员会在研</span>
+  </div>
+  <p class="section-desc">归档站「Proposed Documents」栏目列示的在研文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 状态日期</th><th>状态与说明</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G（拟议）</td><td>《特殊事件管理指南》<span class="en">Management of extraordinary events（Guidance on assessments impacted by natural disasters, disease outbreaks, security concerns）</span></td><td class="date">制定中（Drafting）</td><td><span class="badge new">制定中</span> 由 ILAC 安排委员会起草，指导自然灾害、疫情、安全事件影响下的评审管理。见 <a class="dl" href="https://ilac.org/publications-and-resources/proposed-documents/" target="_blank">官网拟议文件页</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：截至 2026-10-19，归档站「Proposed Documents」栏目仅此 1 份在研文件；ILAC 与 IAF 合并后其后续发布动态见 ilac.org 新闻与 Global ACI 文件库。</div>
+  </div>
+</section>
+
+<!-- ============ 六、B 系列 ============ -->
+<section class="block" id="sec-b">
+  <div class="section-head">
+    <div class="no">六</div>
+    <h2>公开宣传资料（B 系列 / MRA 报告）</h2>
+    <span class="tag">非规范性 · 对外宣传与科普</span>
+  </div>
+  <p class="section-desc">ILAC 及 IAF/ILAC 联合发布的宣传手册、情况说明、MRA 年度报告与信息图，供监管机构、实验室与公众使用；不构成认可准则要求。以下按归档站宣传资料页与文件总清单现行全量收录。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 发布日期</th><th>状态与说明（含 PDF）</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC B1:10/2015</td><td>《为何使用获认可的实验室？》<span class="en">Why Use an Accredited Laboratory?</span></td><td class="date">2015-10 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=902" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B3:10/2015</td><td>《使用获认可实验室如何惠及政府与监管机构？》<span class="en">How Does Using an Accredited Laboratory Benefit Government &amp; Regulators?</span></td><td class="date">2015-10 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=887" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B4:11/2015</td><td>《成为获认可实验室的优势》<span class="en">The Advantages of Being an Accredited Laboratory</span></td><td class="date">2015-11 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=898" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B5:01/2018</td><td>《采购检测/测量/校准服务——认可与认证的区别》<span class="en">Securing testing, measurement or calibration services – The difference between accreditation and certification</span></td><td class="date">2018-01 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=885" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B6:06/2019</td><td>《参加能力验证计划对实验室的益处》<span class="en">Benefits for Laboratories Participating in Proficiency Testing Programs</span></td><td class="date">2019-06 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122715" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B7:10/2015</td><td>《ILAC 互认安排》<span class="en">The ILAC Mutual Recognition Arrangement</span></td><td class="date">2015-10 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=891" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B9:02/2017</td><td>《ISO 15189 医学实验室认可》<span class="en">ISO 15189 Medical Laboratory Accreditation</span></td><td class="date">2017-02 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=120819" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B10:11/2012</td><td>《为何使用获认可的检验机构？》<span class="en">Why use an accredited inspection body</span></td><td class="date">2012-11 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=901" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B11:02/2017</td><td>《为何成为获认可的检验机构？》<span class="en">Why become an accredited inspection body</span></td><td class="date">2017-02 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=120820" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B12:02/2017</td><td>《获认可检验机构如何惠及政府与监管机构》<span class="en">How does accredited inspection benefit Government and Regulators</span></td><td class="date">2017-02 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=120817" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B13:03/2020</td><td>《为何成为获认可的标准物质生产者？》<span class="en">Why become an Accredited Reference Material Producer</span></td><td class="date">2020-03 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=123021" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B14:01/2021</td><td>《生物样本库设施认可（ISO 20387）》<span class="en">Accreditation for Biobanking Facilities (ISO 20387)</span></td><td class="date">2021-01 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=123507" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC B15:03/2021</td><td>《在新冠检测中明确认可要求》<span class="en">Specifying Accreditation for COVID-19 Testing</span></td><td class="date">2021-03 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=123615" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC Factsheet 05/2023</td><td>《在法规中明确认可要求（情况说明）》<span class="en">Specifying Accreditation in Regulation (Factsheet)</span></td><td class="date">2023-05 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=896" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">ILAC MRA 年报</td><td>《ILAC MRA 年度报告 2024》<span class="en">ILAC MRA Annual Report 2024</span></td><td class="date">2024 年度</td><td><span class="badge opt">公开资料</span><a class="dl" href="https://ilac.org/?ddownload=126636" target="_blank">PDF 下载</a> 宣传资料页现行版本（文件总清单页暂仍列示 2022 版，未同步更新）</td></tr>
+        <tr><td class="code">ILAC MRA 信息图</td><td>《ILAC MRA 2024 信息图》<span class="en">ILAC MRA 2024 Infographic</span></td><td class="date">2024 年发布</td><td><span class="badge opt">公开资料</span><a class="dl" href="https://ilac.org/?ddownload=126622" target="_blank">PDF 下载</a> 宣传资料页现行版本（总清单页暂仍列示 2022 版）</td></tr>
+        <tr><td class="code">IAF/ILAC B1:02/2019</td><td>《签署 IAF 或 ILAC 互认安排的路径》<span class="en">The route to signing the IAF or ILAC Arrangement</span></td><td class="date">2019-02 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122297" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B2:09/2023</td><td>《如何信任检验机构：需要 ISO 9001 认证还是 ISO/IEC 17020 认可？》<span class="en">How do I gain confidence in an Inspection Body? ISO 9001 Certification or ISO/IEC 17020 Accreditation?</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125329" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B3:09/2023</td><td>《认可：支撑食品安全与清洁饮用水》<span class="en">Accreditation: Supporting safe food and clean drinking water</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125330" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B4:01/2018</td><td>《与政府及监管机构沟通指南》<span class="en">Recommended guide for engaging with Government &amp; Regulators</span></td><td class="date">2018-01 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=893" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B5:09/2023</td><td>《认可：促进世界贸易》<span class="en">Accreditation: Facilitating world trade</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125331" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B6:09/2023</td><td>《认可：为能源供给提供信心》<span class="en">Accreditation: Delivering confidence in the provision of energy</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125332" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B7:03/2020</td><td>《认可：支持健康与社会照护服务交付》<span class="en">Accreditation: Supporting the Delivery of Health and Social Care</span></td><td class="date">2020-03 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122948" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B8:09/2023</td><td>《认可：为建筑与建成环境提供信心》<span class="en">Accreditation: Delivering confidence in construction and the built environment</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125333" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B9:09/2023</td><td>《认可：支持公共政策的全球工具》<span class="en">Accreditation: A global tool to support Public Policy</span></td><td class="date">2023-09 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=125334" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B10:03/2020</td><td>《认可：交付更安全的世界》<span class="en">Accreditation: Delivering a safer world</span></td><td class="date">2020-03 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122949" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">IAF/ILAC B11:03/2020</td><td>《认可：为供应链增值》<span class="en">Accreditation: Adding value to supply chains</span></td><td class="date">2020-03 发布</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122950" target="_blank">PDF 下载</a></td></tr>
+        <tr><td class="code">宣传资料（总入口）</td><td>《获认可的合格评定（宣传资料包）》<span class="en">Accredited Conformity Assessment</span></td><td class="date">持续更新</td><td><span class="badge opt">宣传资料</span><a class="dl" href="https://ilac.org/?ddownload=122772" target="_blank">PDF 下载</a> 归档站文件总清单列示</td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：B 系列为非规范性对外宣传材料，不构成认可准则；ILAC 大会决议（GA Resolutions）、成员专区文件（Members' Area，需登录）不在本公开文件清单内，分别见官网「GA Resolutions」与「Members Area」栏目。</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源与说明</h3>
+      <p>本清单依据 ILAC 归档站点（ilac.org）公开栏目实时整理（核对日期 2026-10-19）：① <a href="https://ilac.org/publications-and-resources/publications-list/" target="_blank">《Publications List》文件总清单</a>；② <a href="https://ilac.org/publications-and-resources/ilac-policy-series/" target="_blank">Policy Documents (P Series)</a>、<a href="https://ilac.org/publications-and-resources/ilac-guidance-series/" target="_blank">Guidance Documents (G Series)</a>、<a href="https://ilac.org/publications-and-resources/joint-ilac-iaf-series/" target="_blank">Joint ILAC/IAF Series (A)</a>、<a href="https://ilac.org/publications-and-resources/ilac-promotional-brochures/" target="_blank">Promotional Brochures (B)</a>、<a href="https://ilac.org/publications-and-resources/proposed-documents/" target="_blank">Proposed Documents</a>、<a href="https://ilac.org/publications-and-resources/withdrawn-documents/" target="_blank">Withdrawn Documents</a> 各栏目。个别条目（IAF/ILAC A2、ILAC MRA 年报/信息图）文件总清单页版本滞后于系列专页，已按系列专页现行版本标注。</p>
+    </div>
+    <div>
+      <h3>使用提示</h3>
+      <p>ILAC 与 IAF 已合并为 Global Accreditation Cooperation Incorporated（Global ACI），新组织自 2026-01-01 起以完整实体运行；原 ILAC 公开文件继续在 ilac.org 归档站点现行发布与下载。具体版本与有效性以官网现行版本为准。</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

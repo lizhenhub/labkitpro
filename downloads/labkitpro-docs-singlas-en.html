@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SINGLAS (Singapore) Current Document List (latest)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ESG%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0B3D91;
+  --primary-dark:#082d6b;
+  --primary-light:#eaf0fb;
+  --accent:#c9a227;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1c2333;
+  --text-sub:#5a6478;
+  --border:#dde3ee;
+  --ok:#1d7a46;
+  --warn:#b26a00;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#0B3D91 0%,#14499f 55%,#1b5bb5 100%);
+  color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+header.hero::before{
+  content:"";position:absolute;right:80px;bottom:-90px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,.05);
+}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:2px;color:#cfe0ff;
+  border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:12px;}
+.hero p{font-size:15px;color:#d7e3fb;max-width:800px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px;color:#bcd0f5;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:10px;padding:14px 16px;backdrop-filter:blur(2px);
+}
+.stat .num{font-size:26px;font-weight:700;color:#fff;}
+.stat .lbl{font-size:12.5px;color:#c9d9f7;margin-top:2px;}
+nav.toc{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin:-26px auto 30px;padding:18px 22px;position:relative;z-index:5;
+  box-shadow:0 6px 18px rgba(11,61,145,.07);
+}
+nav.toc h2{font-size:14px;color:var(--primary);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:13px;color:var(--text-sub);text-decoration:none;
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--primary);border-color:var(--primary);}
+section.block{margin:34px 0;}
+.section-head{
+  display:flex;align-items:center;gap:14px;margin-bottom:8px;
+}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--primary);
+  color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:21px;color:var(--primary-dark);}
+.section-head .tag{
+  font-size:12px;color:var(--primary);background:var(--primary-light);
+  padding:3px 10px;border-radius:999px;border:1px solid #c7d7f5;
+}
+.section-desc{color:var(--text-sub);font-size:13.5px;margin:0 0 16px 56px;}
+.table-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(11,61,145,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:15%;}
+colgroup col.c-name{width:46%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:22%;}
+thead th{
+  background:#f0f4fb;color:var(--primary-dark);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--border);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid #edf0f6;vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:#f2f6fd;}
+td .code{font-weight:700;color:var(--primary);font-size:13.5px;}
+td .en{display:block;color:var(--text-sub);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--text-sub);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;margin:2px 4px 2px 0;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--warn);border:1px solid #efd9a7;}
+.badge.opt{background:#eef0f5;color:var(--text-sub);border:1px solid #d8dde8;}
+.badge.dom{background:#e8f0fb;color:#1b5bb5;border:1px solid #c7d7f5;}
+.badge.na{background:#f6f6f8;color:#8a94a6;border:1px solid #e0e2e8;}
+td a.dl{color:var(--primary);font-size:12px;text-decoration:none;word-break:break-all;}
+td a.dl:hover{text-decoration:underline;}
+.note-line{color:var(--text-sub);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid #edf0f6;}
+footer{
+  background:#0c2c5e;color:#b9c9e8;margin-top:50px;padding:30px 0 34px;font-size:13px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;}
+footer a{color:#d7e3fb;}
+@media (max-width:860px){
+  header.hero{padding:38px 0 34px;}
+  header.hero h1{font-size:23px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">SAC / SINGLAS · Singapore Laboratory Accreditation Scheme (full current list)</span>
+    <h1>SINGLAS — Current Documents of the Singapore Laboratory Accreditation Scheme</h1>
+    <p>SINGLAS (Singapore Laboratory Accreditation Scheme), administered by the Singapore Accreditation Council (SAC), covers testing / calibration laboratories (ISO/IEC 17025:2017) and medical testing laboratories (ISO 15189:2022). Compiled from the SAC website (SAC Documents → Laboratory Accreditation), this list includes all-field publications, core documents on accreditation workflow and traceability, and field-specific requirements, guides and checklists (calibration &amp; measurement, chemical / biological / environmental, civil, electrical, functional food, IT, mechanical, NDT, medical), with current editions and dates. Note: from 2026-01-01 the former ILAC and IAF merged into the Global Accreditation Cooperation Incorporated (Global ACI); the former ILAC MRA continues in force. Document titles without an official English edition are shown in Chinese.</p>
+    <div class="meta"><span>Source: <b>SAC Laboratory Accreditation documents page (live fetch)</b></span><span>Check date: <b>2026-10-19</b></span><span>Official site: <b>sac-accreditation.gov.sg</b></span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">49</div><div class="lbl">Current document rows (incl. mirrored listings &amp; forms)</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">By official site sections</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">New / re-issued 2025–2026</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Login-required / unpublished entries</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="links">
+    <a href="#sec-common">1. Publications for all fields</a>
+    <a href="#sec-17025">2. Testing / calibration accreditation framework (17025)</a>
+    <a href="#sec-met">3. Calibration and measurement (MET)</a>
+    <a href="#sec-cbenv">4. Chemical / biological / environmental testing</a>
+    <a href="#sec-ce">5. Civil engineering testing (CE)</a>
+    <a href="#sec-el">6. Electrical testing (EL)</a>
+    <a href="#sec-fft">7. Functional food testing (FFT)</a>
+    <a href="#sec-it">8. IT testing (IT)</a>
+    <a href="#sec-mech">9. Mechanical testing (MECH)</a>
+    <a href="#sec-ndt">10. NDT (NDT series)</a>
+    <a href="#sec-med">101. Medical testing (15189 / MED)</a>
+  </div>
+</nav>
+
+<!-- ============ 1. Publications for all fields ============ -->
+<section class="block" id="sec-common">
+  <div class="section-head">
+    <div class="no">1</div>
+    <h2>Publications for all fields</h2>
+    <span class="tag">Essential · labs in all fields</span>
+  </div>
+  <p class="section-desc">SAC's general accreditation terms, mark usage rules, code of conduct, fee schedules, PT policy and international MRA documents — applicable to all SINGLAS fields.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">SAC 01</td><td><span class="en">Terms and Conditions for Accreditation</span></td><td class="date">2026-01-01</td><td><span class="badge core">core</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://go.gov.sg/sac01-1jan2026-rev" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">SAC 02</td><td><span class="en">Rules for Use of SAC Accreditation Marks and MRA Marks</span></td><td class="date">2026-01-01</td><td><span class="badge core">core</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://go.gov.sg/sac02-1jan2026-rev2" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">SAC Guidance 01</td><td><span class="en">Guidelines on Code of Ethics</span></td><td class="date">2018-04-02</td><td><span class="badge opt">supplementary</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/2460bc4d-7fca-4950-be2f-703e300c16bc/sac-guidance-01-guidelines-on-code-of-ethics-(02-april-2018).pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">SAC-SINGLAS 003</td><td><span class="en">Laboratory Fee Schedule（wef 1 Dec 2024）</span></td><td class="date">2024-11-04</td><td><span class="badge opt">supplementary</span>Effective from 2024-12-01 <a class="dl" href="https://go.gov.sg/lab-fees-schedule-04nov2024-rev" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">SAC-SINGLAS 004</td><td><span class="en">Classification of Tests</span></td><td class="date">2026-03-09</td><td><span class="badge core">core</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/d8180d43-5ebf-4797-96a9-0f83db67d7f3/SAC_SINGLAS_004_09_March_26.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">PROF 001</td><td><span class="en">Policies on Proficiency Testing</span></td><td class="date">2026-04-16</td><td><span class="badge core">core</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://go.gov.sg/prof001-16apr2026-policies-on-proficiency-testing" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">ILAC R7（SAC 转发）</td><td><span class="en">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">2015-05（ILAC R7:05/2015）</td><td><span class="badge opt">supplementary</span>ILAC MRA mark usage rules <a class="dl" href="https://isomer-user-content.by.gov.sg/305/14a94282-e165-4a12-82c1-f263a772496c/ILAC_R7_05_2015-Rules-for-the-Use-of-the-ILAC-MRA-Mark1.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">SACFM10</td><td><span class="en">Accreditation Feedback Form</span></td><td class="date">2019-07-15</td><td><span class="badge opt">supplementary</span>Feedback form (.doc) <a class="dl" href="https://isomer-user-content.by.gov.sg/305/67e3d5ea-5287-4c5d-966c-034308e4acb6/SACFM10-AC-feedback-form-15-Jul-19.doc" target="_blank">form ↗</a></td></tr>
+        <tr><td class="code">Joint Communique</td><td><span class="en">Joint ISO-ILAC-IAF Communique on the Management Systems Requirements of ISO/IEC 17025</span></td><td class="date">2017-04</td><td><span class="badge opt">supplementary</span>Explanatory document <a class="dl" href="https://isomer-user-content.by.gov.sg/305/8eff060c-bdd0-46f7-ba5b-081da25d9865/Joint_ISO_IEC_17025_communique_2017finalsigned.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the current SAC site lists only SAC-SINGLAS 001/003/004/006; SINGLAS 002 and 005 are no longer listed (withdrawn / no longer current). SAC 01 and SAC 02 were re-issued on 2026-01-01.</div>
+  </div>
+</section>
+
+<!-- ============ 2. testing/calibrationaccreditation框架 ============ -->
+<section class="block" id="sec-17025">
+  <div class="section-head">
+    <div class="no">2</div>
+    <h2>Testing / calibration laboratory accreditation framework (ISO/IEC 17025:2017)</h2>
+    <span class="tag">Core · all testing / calibration labs</span>
+  </div>
+  <p class="section-desc">SINGLAS accreditation workflow, measurement traceability requirements and assessment checklists based on ISO/IEC 17025:2017, for all non-medical testing / calibration fields.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">SAC-SINGLAS 001</td><td><span class="en">Accreditation Process（ISO/IEC 17025:2017）</span></td><td class="date">2026-03-09</td><td><span class="badge core">core</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/0310f4de-4b40-468d-844e-2d969c0f58ec/SAC_SINGLAS_001_09_March_2026.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">SAC-SINGLAS 006</td><td><span class="en">Traceability of Measurement</span></td><td class="date">2021-05（1 May 2021）</td><td><span class="badge core">core</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/a30b21e6-bd03-43af-99df-4331d2ec7510/SAC_SINGLAS006_1May2021_pdf_safe.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">LAFM 03</td><td><span class="en">ISO 17025:2017 Checklist</span></td><td class="date">2026-03-27</td><td><span class="badge opt">supplementary</span><span class="badge new">2026 latest</span>Assessment checklist (.docx) <a class="dl" href="https://file.go.gov.sg/lafm03iso170252017chklist27mar2026.docx" target="_blank">document ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 3. calibration与测量field ============ -->
+<section class="block" id="sec-met">
+  <div class="section-head">
+    <div class="no">3</div>
+    <h2>Calibration and measurement (MET series)</h2>
+    <span class="tag">Field-specific · calibration labs</span>
+  </div>
+  <p class="section-desc">Specific requirements for calibration and measurement laboratories, CMC expression criteria and measurement uncertainty evaluation guides.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">MET 001</td><td><span class="en">Specific Requirements for Calibration and Measurement Laboratories</span></td><td class="date">2021-05（1 May 2021）</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/0495ae5a-12fa-45f4-8fad-93b71ca21e3d/MET-001-1May2021.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MET 002</td><td><span class="en">Criteria for Documenting the Calibration and Measurement Capability</span></td><td class="date">2022-08-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/c0a84b12-bc92-4ff5-8d67-4456a9de0c65/MET002-01Aug2022.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Technical Guide 1</td><td><span class="en">Guidelines on the Evaluation and Expression of MU</span></td><td class="date">2026-03-18</td><td><span class="badge dom">field</span><span class="badge new">2026 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/483a3d94-916c-4831-a360-8b4b307fe465/Technical_Guide_1_18_Mar_26.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 4. 化学、生物与Environmental testing ============ -->
+<section class="block" id="sec-cbenv">
+  <div class="section-head">
+    <div class="no">4</div>
+    <h2>Chemical, biological and environmental testing (C&amp;B and ENV series)</h2>
+    <span class="tag">Field-specific · chemical / biological / environmental labs</span>
+  </div>
+  <p class="section-desc">The chemical &amp; biological (C&amp;B) and environmental (ENV) testing fields share one document set (named “C&amp;B and ENV”): specific requirements, equipment quality assurance, uncertainty guides and three method-confirmation / microorganism-identification guides.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">C&amp;B and ENV 001</td><td><span class="en">Specific Requirements for C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-16</td><td><span class="badge dom">field</span><span class="badge new">2026 latest</span>Shared between C&amp;B and ENV <a class="dl" href="https://isomer-user-content.by.gov.sg/305/333ecc55-730d-4c83-a04a-cb2151e78152/CB_ENV_Tech_Notes_001_16_Mar_2026.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">C&amp;B and ENV 002</td><td><span class="en">Quality Assurance of Equipment Commonly Used in C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-24</td><td><span class="badge dom">field</span><span class="badge new">2026 latest</span>Shared between C&amp;B and ENV <a class="dl" href="https://isomer-user-content.by.gov.sg/305/5957fd1e-e6b6-4711-846b-3ad855afc679/CB_ENV_Tech_Notes_002_24Mar26v3.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Technical Guide 2</td><td><span class="en">Guide on MU in Chemical &amp; Microbiological Analysis</span></td><td class="date">2023-06（27 Jun 2023）</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/2ef01799-48d4-41b2-83ef-c866d18adec3/technical_guide_2_27jun2023.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note C&amp;B/ENV 001</td><td><span class="en">Elements of Method Validation for Chemical Testing</span></td><td class="date">2019-02-08</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/31ada7b2-bfc3-407e-905b-372f3921eae1/Guidance-Note-CnB-ENV-001-8-Feb-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note C&amp;B/ENV 002</td><td><span class="en">Method Validation of Microbiological Methods</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/0251c713-5180-4818-b26f-27913964ab0c/Guidance-Note-CB-and-ENV-002-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note C&amp;B/ENV 003</td><td><span class="en">Identification and Confirmation of Microorganisms</span></td><td class="date">2019-07-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/53139348-146d-43c5-8b97-d4eba94579ab/CB-and-ENV-Guidance-Notes-003_(1-Jul-2019).pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the 6 documents under the SAC “Environmental Testing Field” section are identical to the C&amp;B and ENV series here (same PDFs), so they are merged and not double-counted.</div>
+  </div>
+</section>
+
+<!-- ============ 5. 土木工程testing ============ -->
+<section class="block" id="sec-ce">
+  <div class="section-head">
+    <div class="no">5</div>
+    <h2>Civil engineering testing (CE series)</h2>
+    <span class="tag">Field-specific · civil / concrete testing</span>
+  </div>
+  <p class="section-desc">Specific requirements for civil engineering testing laboratories, dedicated concrete NDT requirements, and an uncertainty guide shared with mechanical testing.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">CE 001</td><td><span class="en">Specific Requirements for Civil Engineering Testing Laboratories</span></td><td class="date">2021-05（1 May 2021）</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/8d14d1b5-580e-4138-8101-c0ed6d79d672/CE-001-1May2021.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">CE 002</td><td><span class="en">Specific Requirements for Non-Destructive Testing for Concrete</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/91eca6fd-adc6-4f69-b94d-912aab45f4ca/CE-002-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Technical Guide 3</td><td><span class="en">Guidance on MU for Civil Engrg and Mech Testing Laboratories</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Shared with mechanical testing <a class="dl" href="https://isomer-user-content.by.gov.sg/305/1ce0818c-833e-426c-a027-14f990a34758/Technical-Guide-3-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 6. 电气testing ============ -->
+<section class="block" id="sec-el">
+  <div class="section-head">
+    <div class="no">6</div>
+    <h2>Electrical testing (EL series)</h2>
+    <span class="tag">Field-specific · electrical labs</span>
+  </div>
+  <p class="section-desc">General requirements for electrical testing laboratories, a dedicated uncertainty policy and uncertainty evaluation guides.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">EL 001</td><td><span class="en">General Requirements for Electrical Testing Laboratories</span></td><td class="date">2022-08-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/3e55d156-5b7c-4a1f-bb51-4a54a40b7a59/el001-01aug2022.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">EL 002</td><td><span class="en">Specific Policy for Uncertainty of MU for Accreditation of Elc Testing</span></td><td class="date">2022-08-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/c95ded8b-39a7-456d-a5e0-7ab54af9b7c6/el002-01aug2022.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note EL 001</td><td><span class="en">Guidelines on the Evaluation and Expression of MU for EL Field</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/60f40191-133b-497c-828f-310f42fb66f9/Gudiance-Note-EL-001-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 7. 功能性Food ============ -->
+<section class="block" id="sec-fft">
+  <div class="section-head">
+    <div class="no">7</div>
+    <h2>Functional food testing (FFT series)</h2>
+    <span class="tag">Field-specific · functional food testing</span>
+  </div>
+  <p class="section-desc">General criteria for testing the health-related performance of functional foods.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">FFT 01</td><td><span class="en">General Criteria for Testing of Health-Related Properties of Foods</span></td><td class="date">2024-10-25</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://go.gov.sg/fft-01-25oct2024" target="_blank">official download ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 8. 信息技术testing ============ -->
+<section class="block" id="sec-it">
+  <div class="section-head">
+    <div class="no">8</div>
+    <h2>IT testing (IT series)</h2>
+    <span class="tag">Field-specific · IT security / gaming</span>
+  </div>
+  <p class="section-desc">General accreditation requirements for IT-security and gaming testing laboratories.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">IT 001</td><td><span class="en">General Requirements for the Accreditation of IT Security Testing Labs</span></td><td class="date">2026-08-08</td><td><span class="badge dom">field</span><span class="badge new">2026 latest</span>Current (replaces the 2018-04-02 edition) <a class="dl" href="https://go.gov.sg/it-001-08aug2026" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">IT 002</td><td><span class="en">General Requirements for the IT Laboratories for Gaming Testing</span></td><td class="date">2020-11-20</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/e512000c-7042-4f98-b79b-080150024e8c/IT-002-20-Nov-2020.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: IT 001 was re-issued on 2026-08-08 (the PDF cover states “IT 001, 08 August 2026”); the text label in the SAC section still lags as “IT001 - 2 April 2018”, but the actual download link points to the 2026-08-08 edition — this list follows the actual PDF version.</div>
+  </div>
+</section>
+
+<!-- ============ 9. 机械testing ============ -->
+<section class="block" id="sec-mech">
+  <div class="section-head">
+    <div class="no">9</div>
+    <h2>Mechanical testing (MECH series)</h2>
+    <span class="tag">Field-specific · mechanical testing</span>
+  </div>
+  <p class="section-desc">Specific requirements for mechanical testing laboratories, plus an uncertainty guide shared with civil engineering.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">MECH 001</td><td><span class="en">Specific Requirements for Mechanical Testing Laboratories</span></td><td class="date">2021-05（1 May 2021）</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/ca882cac-c80e-436f-bd21-6e869582d0ea/mech-001-1may2021.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Technical Guide 3</td><td><span class="en">Guidance on MU for Civil Engrg and Mech Testing Laboratories</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Shares one PDF with civil engineering <a class="dl" href="https://isomer-user-content.by.gov.sg/305/a0c8dd2d-bea5-4da2-aec8-04fcdb1a787a/Technical-Guide-3-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: Technical Guide 3 appears under both the civil and mechanical sections on the SAC site; the content is identical (the site provides two mirror links).</div>
+  </div>
+</section>
+
+<!-- ============ 10. Non-destructive testing ============ -->
+<section class="block" id="sec-ndt">
+  <div class="section-head">
+    <div class="no">10</div>
+    <h2>Non-destructive testing (NDT series)</h2>
+    <span class="tag">Field-specific · NDT labs</span>
+  </div>
+  <p class="section-desc">Specific requirements for NDT laboratories, personnel certification, equipment quality assurance and uncertainty evaluation guidance.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">NDT 001</td><td><span class="en">Specific Requirements for Accreditation of NDT Laboratories</span></td><td class="date">2021-05-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/a26db093-42a7-4777-a47b-90d3358ee0a0/ndt-001-1may2021.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">NDT 002</td><td><span class="en">Guidelines for the Recognition of NDT Personnel Certification for Assessment</span></td><td class="date">2019-07-01</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/d420b322-2a96-4bde-b272-5f273196122c/NDT-002_1-July-19.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">NDT 003</td><td><span class="en">Quality Assurance of Equipment Commonly Used in NDT Testing Laboratories</span></td><td class="date">2018-05-15</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/14a011fb-1e58-4b60-b770-0b7b4a1d2db9/NDT-003-15-May-18.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note NDT 001</td><td><span class="en">Guidance Document for Estimation of MU Uncertainty in NDT</span></td><td class="date">2019-03-29</td><td><span class="badge dom">field</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/f625bd07-3558-4610-9ec6-325a4ae1ef8e/Guidance-Note-NDT-001,-290319.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 101. medicaltesting ============ -->
+<section class="block" id="sec-med">
+  <div class="section-head">
+    <div class="no">101</div>
+    <h2>Medical testing (ISO 15189:2022 / MED series)</h2>
+    <span class="tag">Field-specific · medical labs</span>
+  </div>
+  <p class="section-desc">Medical testing accreditation based on ISO 15189:2022: workflow, assessment checklists, general criteria, specific requirements for 8 sub-disciplines, and sampling and uncertainty guides. The MED 002 series was uniformly re-issued on 2025-11-03.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Document title</th><th>Published</th><th>Status &amp; notes</th></tr></thead>
+      <tbody>
+        <tr><td class="code">SAC-SINGLAS 001</td><td><span class="en">Accreditation Process（ISO 15189:2022）</span></td><td class="date">2024-09-06</td><td><span class="badge core">core</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/9b5d425c-54fa-421f-ae78-045b3a095e3c/SAC_SINGLAS_001_6_September_2024.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">LAFM 03-MED</td><td><span class="en">LAFM03-MED（ISO 15189 Checklist）</span></td><td class="date">2024-08-21</td><td><span class="badge opt">supplementary</span>Assessment checklist <a class="dl" href="https://go.gov.sg/lafm03-med-iso15189-chklist-21aug24" target="_blank">official download ↗</a></td></tr>
+        <tr><td class="code">MED 001</td><td><span class="en">MED 001 – General Criteria</span></td><td class="date">2025-06-30</td><td><span class="badge core">core</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/3815e660-19f9-47f2-bf38-094e8c9b9398/MED_001_GenCriteria_30Jun25vs2.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Clinical Chemistry</td><td><span class="en">Specific Requirements – Clinical Chemistry</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/63818177-7ddd-4bea-9f42-9dec4db7d5d3/MED_002_Clinical_Chemistry_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Cytogenetics</td><td><span class="en">Specific Requirements – Cytogenetics</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/5b75a139-46b3-4207-a560-2ceacf82e340/MED_002_Cytogenetics_3_Nov_2025_v3.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Cytopathology</td><td><span class="en">Specific Requirements – Cytopathology</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/43b5c8a7-403c-47be-89f7-c28f16413d48/MED_002_Cytopathology_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Haematology</td><td><span class="en">Specific Requirements – Haematology</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/d2a4824e-2ebd-4875-9e1b-0a984e5ed207/MED_002_Haematology_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Histopathology</td><td><span class="en">Specific Requirements – Histopathology</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/47517476-8980-4079-b191-c46b8da2800c/MED_002_Histopathology_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Genetics &amp; Genomics</td><td><span class="en">Specific Requirements – Genetics and Genomics Testing</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/f063bbb0-d25d-412c-bdfd-8bd70b1b09b4/MED_002_Genetics_and_Genomics_Testing_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Microbiology</td><td><span class="en">Specific Requirements – Microbiology</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/d82d17a5-87ca-4103-84e0-741cfac897c2/MED_002_Microbiology_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">MED 002 – Molecular Pathology</td><td><span class="en">Specific Requirements – Molecular Pathology</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/dec951b5-52cd-49f7-9cce-525d1fcb5e74/MED_002_Molecular_Pathology_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Guidance Note MED 001</td><td><span class="en">Sample Collection for Medical Testing</span></td><td class="date">2019-03-29</td><td><span class="badge opt">supplementary</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/ba2a11fa-14c5-4f24-8408-0f53560bcc06/Guidance-Note-MED-001-29-Mar-2019.pdf" target="_blank">PDF ↗</a></td></tr>
+        <tr><td class="code">Technical Guide 4</td><td><span class="en">A Guide on Measurement Uncertainty in Medical Testing</span></td><td class="date">2025-11-03</td><td><span class="badge dom">field</span><span class="badge new">2025 latest</span>Current <a class="dl" href="https://isomer-user-content.by.gov.sg/305/6fc323c5-3c1c-4d51-a24b-ca2e19beece7/Technical_Guide_4_MU_on_medical_testing_3_Nov_2025.pdf" target="_blank">PDF ↗</a></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the medical and the testing / calibration systems use different editions of SAC-SINGLAS 001 (Accreditation Process) — medical edition 2024-09-06, 17025 edition 2026-03-09. The 8 MED 002 sub-discipline documents were uniformly re-issued on 2025-11-03.</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Source</h3>
+      <p>Compiled live from the SAC Documents → Laboratory Accreditation section (checked 2026-10-19). All PDF / DOC / DOCX links point to real download addresses on the official site; go.gov.sg links are Singapore government short links to the corresponding official documents. Criteria basis: ISO/IEC 17025:2017 for testing / calibration, ISO 15189:2022 for medical testing.</p>
+    </div>
+    <div>
+      <h3>How to use</h3>
+      <p>Documents marked core are general accreditation essentials; field documents are selected per accredited field; supplementary covers forms, guides and explanatory documents. From 2026-01-01 the former ILAC and IAF merged into Global ACI and the MRA continues. Version information follows the official site.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
