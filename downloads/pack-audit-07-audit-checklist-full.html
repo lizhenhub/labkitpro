@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA-04 内部审核检查表（全要素细项版 §4.1–§8.9） | LabKitPro 内审资料包</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a;--bad:#b23b3b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:26px}
+.hero-inner{max-width:1180px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:27px;font-weight:800;margin-bottom:10px}
+.sub{font-size:14px;color:#cfe0ec;max-width:980px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:19px;font-weight:800;color:var(--brand);margin:34px 0 6px;padding-top:8px;border-top:2px solid #e3ecf2;display:flex;align-items:baseline;gap:10px}
+h2 .no{color:var(--accent)}
+h2 .tt{font-size:13px;font-weight:600;color:var(--muted)}
+.lead{color:var(--muted);font-size:13.5px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:8px 0 6px;font-size:12.5px}
+th{background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:7px 8px;border:1px solid var(--line)}
+td{padding:7px 8px;border:1px solid var(--line);vertical-align:top;background:#fff}
+tbody tr:nth-child(even) td{background:#fafcfd}
+.subno{font-family:Consolas,monospace;font-size:11.5px;color:var(--accent2);font-weight:700;white-space:nowrap;width:64px}
+.point{font-weight:600;color:var(--ink)}
+.method{color:var(--ink2)}
+.judge{color:#1d5a50}
+.judge .red{color:var(--bad);font-weight:600}
+.evi{width:13%}
+.ver{width:7%;text-align:center;font-weight:700;white-space:nowrap}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.tip{background:#e7f4f1;border:1px solid #bfe3da;border-radius:10px;padding:12px 16px;font-size:13px;color:#1d5a50;margin:14px 0}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.legend b{color:var(--ink)}
+@media(max-width:900px){h1{font-size:21px}table{font-size:11.5px;min-width:760px}th,td{padding:5px}.wrap{padding:0 12px 60px}body{overflow-x:hidden}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · 现场审核核心工具 · 细项实操版</div>
+    <h1>内部审核检查表（全要素细项版）</h1>
+    <div class="sub">覆盖 ISO/IEC 17025:2017 §4.1–§8.9 全部条款，每个条款拆解为可现场执行的<b>审核细项</b>：每细项明确「查什么 / 怎么查 / 符合判定要点（好样子与红线）/ 证据记录 / 判定」。配套 IA-WI-01 方法使用。</div>
+    <div class="badge-row">
+      <span class="badge">文件编号 IA-04</span>
+      <span class="badge">版本 V2.0（细项升级）</span>
+      <span class="badge">§4 通用 · §5 结构 · §6 资源 · §7 过程 · §8 管理</span>
+      <span class="badge">对应官网库 FR-40 内审检查表</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="tip"><b>使用说明：</b>① 每次审核只启用本次范围条款，避免「一张表走天下」；② 每个审核细项是一独立的现场动作，审核员须实际完成查证并填证据与判定，禁止整行打勾；③ 抽样量建议每细项不少于 3 份记录或 1 个现场观察；④ 判定：<b>√</b>＝符合　<b>×</b>＝不符合（须开 FR-24，写明条款与事实）　<b>○</b>＝观察项/改进机会；⑤ 证据栏记录具体文件号/记录编号/抽查数量，保持可追溯，是 FR-25 报告的素材。</div>
+
+<div class="legend"><span><b>√</b> 符合</span><span><b>×</b> 不符合（开 FR-24）</span><span><b>○</b> 观察项</span><span>证据栏示例：<b>记录FR-24-2026-003 / 校准证 No.AB-2207 / 面谈张工</b></span></div>
+
+<!-- ============ §4 ============ -->
+<h2><span class="no">§4</span>通用要求<span class="tt">公正性 · 保密性</span></h2>
+<div class="lead">本条款关注实验室是否真正独立于利益干扰、是否守住客户信息边界。审核重点是「可展示的承诺」与「落到岗位的动作」，而非墙上标语。</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>细项</th><th>审核细项（查什么）</th><th>查证方法（怎么查）</th><th>符合判定要点（好样子 / 红线）</th><th>证据记录</th><th>判定</th></tr>
+
+  <tr><td class="subno">4.1.1-①</td><td class="point">公正性承诺签署</td><td class="method">查最高管理者及关键岗位（技术/质量/业务负责人）是否签署书面公正性承诺，承诺覆盖检测、校准、意见与解释全部活动</td><td class="judge">好：承诺有签名日期、覆盖全员关键岗。<span class="red">红线：仅管理层签、一线检测员未签；承诺未含意见解释</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.1-②</td><td class="point">免受不当压力</td><td class="method">面谈 2–3 名员工，验证其知晓「不得因商业/财务利益改变结果判断」；查有无来自销售/客户的结果施压记录</td><td class="judge">好：员工能准确表述独立性要求。<span class="red">红线：员工表示「客户要求改结果会协调」</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.1-③</td><td class="point">利益冲突隔离</td><td class="method">查是否存在同领域「既生产又检测」的组织安排；若有，查母体授权中业务与检测的隔离措施与汇报线</td><td class="judge">好：检测线向质量负责人独立汇报，不隶属销售。<span class="red">红线：检测业绩与销售提成挂钩</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.2-①</td><td class="point">方针可展示承诺</td><td class="method">查质量手册中公正性方针条款；查宣贯记录（培训签到/内网公告）是否将方针传达至岗位</td><td class="judge">好：方针成文+宣贯有迹。<span class="red">红线：方针只存电脑未传达</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.2-②</td><td class="point">组织隔离落地</td><td class="method">比对组织机构图与任命文件，确认质量负责人不兼任业务/市场负责人，且对结果有叫停权</td><td class="judge">好：职责分离、质量负责人权限独立。<span class="red">红线：质量负责人同时管销售且考核含营收</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.3-①</td><td class="point">风险识别覆盖</td><td class="method">查公正性风险识别清单，确认覆盖四类：自身活动、与母体/股东关系、人员关系（亲属/兼职/返聘）、外部服务方</td><td class="judge">好：清单分四类、有来源说明。<span class="red">红线：仅写「无风险」无分析</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.3-②</td><td class="point">触发识别机制</td><td class="method">抽查 1 例新合作方引入 / 1 例新员工入职，查是否在节点触发公正性风险再识别</td><td class="judge">好：有触发节点与记录。<span class="red">红线：常年不更新、仅年初一次性识别</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.4-①</td><td class="point">风险措施落实</td><td class="method">对照风险清单逐项查消除/降至最低的措施与执行证据（如回避、披露、隔离、监控）</td><td class="judge">好：每项风险有对应措施+证据。<span class="red">红线：识别了但无措施</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.5-①</td><td class="point">定期评审记录</td><td class="method">查最近两次年度公正性评审记录，确认评审了风险变化与措施有效性</td><td class="judge">好：每年评审、有结论。<span class="red">红线：无评审或两年未评</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.2.1-①</td><td class="point">保密约束签署</td><td class="method">抽查客户合同保密条款、员工保密协议、外部人员（校准/维护）协议各≥2 份，确认有法律约束力</td><td class="judge">好：三类协议齐全且在有效期。<span class="red">红线：外部人员无保密约定</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.2-①</td><td class="point">信息范围界定</td><td class="method">查保密程序是否界定须保护的信息范围；抽 1 例法定披露/客户同意披露，查有无决策与审批记录</td><td class="judge">好：范围明确+披露有审批。<span class="red">红线：披露随意无记录</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.3-①</td><td class="point">告知到位</td><td class="method">查告知方式证据（合同附件/培训/官网声明）；面谈 1 名客户对接人验证其知保密义务</td><td class="judge">好：合同条款+培训双通道。<span class="red">红线：员工不知保密范围</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.4-①</td><td class="point">来源匿名化</td><td class="method">抽 2 份分包/委托来源样品的报告与台账，核对来源方信息是否匿名或脱敏处理</td><td class="judge">好：来源信息不泄露给无关方。<span class="red">红线：报告直接显示委托方上游客户名</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §5 ============ -->
+<h2><span class="no">§5</span>结构要求<span class="tt">法律实体 · 职责权限 · 管理</span></h2>
+<div class="lead">关注实验室是否具备法定责任主体、管理层是否明确、职责接口是否清晰、关键岗位是否真正有权有责。</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>细项</th><th>审核细项（查什么）</th><th>查证方法（怎么查）</th><th>符合判定要点（好样子 / 红线）</th><th>证据记录</th><th>判定</th></tr>
+
+  <tr><td class="subno">5.1-①</td><td class="point">法律主体责任</td><td class="method">查营业执照/法人证书/母体授权文件，确认实验室能承担法律责任</td><td class="judge">好：授权清晰、责任主体明确。<span class="red">红线：部门无授权即对外出报告</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.2-①</td><td class="point">管理层任命</td><td class="method">查管理层任命文件，比对姓名/岗位与实际；面谈核实其实际履职而非挂名</td><td class="judge">好：任命+实际履职一致。<span class="red">红线：任命人与实际负责人不符</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.3-①</td><td class="point">活动范围成文</td><td class="method">查活动范围文件；抽宣传材料/报告中的符合性声明用语，查是否超范围宣称</td><td class="judge">好：范围清晰、宣传无夸大。<span class="red">红线：宣传含未认可参数</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.4-①</td><td class="point">多场所一致</td><td class="method">现场查固定设施外（现场/移动/客户设施）活动场所的控制文件与记录，确认同准则运行</td><td class="judge">好：外场有作业文件+记录。<span class="red">红线：现场检测无受控文件</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.5-①</td><td class="point">职责接口清晰</td><td class="method">查组织机构图与岗位说明书；抽 2–3 个接口过程（样品流转/报告签发）验证职责不重叠不真空</td><td class="judge">好：接口有责任人。<span class="red">红线：样品卡在环节间无人负责</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.6-①</td><td class="point">关键岗授权</td><td class="method">查质量/技术负责人任命与授权书；面谈核实「发现问题→有权停→停过吗→报告了吗」实际案例</td><td class="judge">好：有叫停实例+报告。<span class="red">红线：授权书无实权、从未叫停</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.7-①</td><td class="point">有效性沟通</td><td class="method">查沟通记录（会议/宣贯），确认管理层传达体系有效性及满足客户要求的重要性</td><td class="judge">好：有定期沟通证据。<span class="red">红线：无沟通记录</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.7-②</td><td class="point">变更保完整</td><td class="method">抽 1 次近期组织/流程变更，查是否策划并实施且保持体系完整性（评审+过渡+培训）</td><td class="judge">好：变更有评审+过渡。<span class="red">红线：突变致职责断档</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §6 ============ -->
+<h2><span class="no">§6</span>资源要求<span class="tt">人员 · 设施 · 设备 · 溯源 · 供应品</span></h2>
+<div class="lead">资源条款是结果有效性的根基。审核重点是「能力是否有证据」「设备是否受控可追溯」「溯源是否不间断」。</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>细项</th><th>审核细项（查什么）</th><th>查证方法（怎么查）</th><th>符合判定要点（好样子 / 红线）</th><th>证据记录</th><th>判定</th></tr>
+
+  <tr><td class="subno">6.1-①</td><td class="point">资源充分性</td><td class="method">对照近 12 个月工作量与认可范围，评估人员/设施/设备/支持服务数量能力是否匹配</td><td class="judge">好：有资源-负荷对照。<span class="red">红线：高峰期设备排不上、无对策</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-①</td><td class="point">能力要求成文</td><td class="method">查岗位能力要求文件；抽 3 人能力档案对照岗位要求是否齐全（教育/资格/培训/经验）</td><td class="judge">好：人岗匹配有证据。<span class="red">红线：无能力要求文件</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-②</td><td class="point">正式授权</td><td class="method">查抽样、方法操作、结果评价签署、意见解释等关键活动的授权矩阵；抽在岗操作与授权范围一致性</td><td class="judge">好：授权到具体活动+人。<span class="red">红线：无授权即签发报告</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-③</td><td class="point">能力持续监控</td><td class="method">查能力监控计划（盲样/比对/监督）及记录；面谈 1 名新员工验证其掌握操作要求</td><td class="judge">好：定期监督+记录。<span class="red">红线：授权后不再考核</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-④</td><td class="point">外部人员管控</td><td class="method">查借调/劳务人员是否纳入能力确认与监督，而非直接上岗</td><td class="judge">好：外部人员同等管理。<span class="red">红线：临时工无确认即操作</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.3-①</td><td class="point">环境受控</td><td class="method">现场查温湿度/洁净度记录连续性与真实性；查不相容活动（如天平间与振源）隔离措施</td><td class="judge">好：记录连续+隔离有效。<span class="red">红线：记录明显后补/造假</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.3-②</td><td class="point">失控处置</td><td class="method">抽 1 次环境失控记录，追踪是否停止活动、评估既往结果、有纠正</td><td class="judge">好：失控有评估闭环。<span class="red">红线：超标仍继续出数</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.4-①</td><td class="point">设备全档案链</td><td class="method">抽 3 台关键设备全链：台账→校准证→结果确认→期间核查→使用记录→状态标识</td><td class="judge">好：全链闭合可追溯。<span class="red">红线：缺校准证或确认记录</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-②</td><td class="point">校准结果确认</td><td class="method">查校准证书回司后是否由技术负责人确认（量程/准确度满足方法），确认记录是否签署</td><td class="judge">好：确认有签字结论。<span class="red">红线：证书入库未确认即使用</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-③</td><td class="point">期间核查</td><td class="method">查期间核查计划（对象/方法/频次/判据）及执行记录；抽 1 台超期未核查</td><td class="judge">好：计划+执行+判据。<span class="red">红线：计划无判据或漏查</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-④</td><td class="point">缺陷设备追溯</td><td class="method">查缺陷/停用设备的标识与处置；评估其对既往结果的影响是否追溯</td><td class="judge">好：停用标识+影响评估。<span class="red">红线：带病设备未隔离</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.5-①</td><td class="point">溯源不间断</td><td class="method">抽 2 参数溯源链（设备→校准证→上游标准），确认不间断至 SI 或公认标准</td><td class="judge">好：链完整有证书。<span class="red">红线：断链或证书过期</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.5-②</td><td class="point">非 SI 溯源</td><td class="method">查无法溯源 SI 的参数是否用标物/公认方法等技术手段并保留证据</td><td class="judge">好：有替代证据。<span class="red">红线：声称溯源但无证据</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.5-③</td><td class="point">标准物质</td><td class="method">抽 2 批标准物质查证书、有效期、验收与领用记录</td><td class="judge">好：在期+验收。<span class="red">红线：过期标物仍使用</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.6-①</td><td class="point">供应商评审</td><td class="method">查合格供应商名录、选择准则、评价与批准记录；抽 2 家绩效监控（校准/耗材）</td><td class="judge">好：名录+定期评价。<span class="red">红线：无评价即用</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.6-②</td><td class="point">分包管控</td><td class="method">抽 1 分包项目全链：客户同意→分包方能力证据→结果责任归属</td><td class="judge">好：同意+能力+责任清。<span class="red">红线：未获同意即分包</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §7 ============ -->
+<h2><span class="no">§7</span>过程要求<span class="tt">合同 · 方法 · 抽样 · 记录 · 报告 · 投诉 · 不符合</span></h2>
+<div class="lead">过程条款直接决定结果质量。审核重点是「每个动作是否有客观记录」「偏离是否受控」「已发结果有问题时能否追溯召回」。</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>细项</th><th>审核细项（查什么）</th><th>查证方法（怎么查）</th><th>符合判定要点（好样子 / 红线）</th><th>证据记录</th><th>判定</th></tr>
+
+  <tr><td class="subno">7.1-①</td><td class="point">合同评审</td><td class="method">抽 3 份合同/委托单全评审链；重点查含判定规则与偏离的合同是否签约前评审</td><td class="judge">好：评审有签名+覆盖能力。<span class="red">红线：口头接单无记录</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.1-②</td><td class="point">偏离与变更</td><td class="method">查偏离合同是否书面记录并通知客户；工作开始后变更是否重新评审</td><td class="judge">好：偏离有客户确认。<span class="red">红线：擅自变更未通知</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.2-①</td><td class="point">标准现行有效</td><td class="method">对照方法清单查标准查新记录；抽 2 个方法确认版本现行</td><td class="judge">好：查新有痕+现行。<span class="red">红线：用作废标准</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.2-②</td><td class="point">方法证实/验证</td><td class="method">抽 2 方法查证实/验证记录（目的/范围/程序/结果/结论）；查 1 次偏离的审批链</td><td class="judge">好：验证完整+偏离授权。<span class="red">红线：未证实即用新方法</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.3-①</td><td class="point">抽样可复核</td><td class="method">抽 2 次抽样记录对照抽样计划；查方法/日期时间/抽样人/环境/图示是否齐全</td><td class="judge">好：信息全+可复核。<span class="red">红线：抽样无计划无记录</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.4-①</td><td class="point">唯一性标识</td><td class="method">抽 3 样品从接收到报告全流转链，核对编号一致不断链；现场查存储标识</td><td class="judge">好：全链同号+状态清。<span class="red">红线：编号混淆/丢失</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.4-②</td><td class="point">异常与存储</td><td class="method">查接收时状态异常是否记录；存储条件是否受控、避免混淆损坏；备样管理</td><td class="judge">好：异常有记+存储受控。<span class="red">红线：异常不记录照测</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.5-①</td><td class="point">记录可复现</td><td class="method">抽 5 份原始记录对照「可复现」标准（观察/数据/计算/人/设备/环境/日期）逐要素查</td><td class="judge">好：信息足可复现。<span class="red">红线：只记结果无过程</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.5-②</td><td class="point">修改规范</td><td class="method">专查修改是否杠改可辨、有签名日期；抽 1 份电子记录验证权限与修改留痕</td><td class="judge">好：杠改+留痕。<span class="red">红线：涂改不可辨/覆盖</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.6-①</td><td class="point">不确定度评定</td><td class="method">抽 2 参数不确定度评定文件；对照最近 PT 结果判断合理性；查带不确定度报告的引用</td><td class="judge">好：覆盖关键分量+印证。<span class="red">红线：该评不评/与PT矛盾</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.7-①</td><td class="point">质控覆盖</td><td class="method">查质控计划与认可范围覆盖矩阵；确认全部项目与人员被覆盖</td><td class="judge">好：矩阵全覆盖。<span class="red">红线：部分项目无质控</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.7-②</td><td class="point">失控与PT</td><td class="method">抽 3 份质控含 1 份失控处理链；查最近 PT 不满意结果是否按不符合工作处理</td><td class="judge">好：失控有分析纠正。<span class="red">红线：失控不处置</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.8-①</td><td class="point">报告要素</td><td class="method">抽 5 份报告逐要素核对模板（标题/实验室/客户/方法/结果/签发/日期）；含分包是否标注</td><td class="judge">好：要素全+分包清。<span class="red">红线：缺要素/分包不标</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.8-②</td><td class="point">意见与更正</td><td class="method">查含意见解释报告是否授权；抽 1 份更正版报告查全版本留存与更正规则</td><td class="judge">好：意见授权+版本全。<span class="red">红线：无授权加意见/改不留痕</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.9-①</td><td class="point">投诉闭环</td><td class="method">抽 1–2 投诉案例全流程（受理→评估→决定→回复）；查台账与年度分析</td><td class="judge">好：闭环+回溯改进。<span class="red">红线：投诉无回复无台账</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.10-①</td><td class="point">不符合管理</td><td class="method">抽 2 份不符合工作全链；查「发现→评价→处置→验证」四步齐备与授权</td><td class="judge">好：四步齐+已发结果影响评估。<span class="red">红线：只纠正不评影响</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.11-①</td><td class="point">数据系统受控</td><td class="method">抽 1 系统确认/验证与变更记录；现场演示权限分级；查最近备份恢复演练</td><td class="judge">好：确认+变更+备份。<span class="red">红线：系统未确认即用</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §8 ============ -->
+<h2><span class="no">§8</span>管理要求（方式 A）<span class="tt">文件 · 记录 · 风险 · 改进 · 内审 · 管审</span></h2>
+<div class="lead">管理条款关注体系的自我驱动能力。审核重点是「文件是否现行」「纠正措施是否打中根因」「内审/管审是否真正闭环」。</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>细项</th><th>审核细项（查什么）</th><th>查证方法（怎么查）</th><th>符合判定要点（好样子 / 红线）</th><th>证据记录</th><th>判定</th></tr>
+
+  <tr><td class="subno">8.2-①</td><td class="point">方针目标可测</td><td class="method">查方针目标是否成文传达；抽 2 岗位面谈知晓度；查目标数据来源与统计</td><td class="judge">好：目标可测量+有统计。<span class="red">红线：口号式不可测</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.3-①</td><td class="point">文件现行</td><td class="method">抽 3 份文件版本链；现场随机查 2 处在用文件现行性；查标准查新</td><td class="judge">好：版本清+在用现行。<span class="red">红线：现场用旧版</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">8.3-②</td><td class="point">作废收回</td><td class="method">查作废文件是否收回或留档标识，防止误用</td><td class="judge">好：作废有标识/收回。<span class="red">红线：旧版散落现场</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.4-①</td><td class="point">记录全生命周期</td><td class="method">抽 2 类记录按标识/存取/存储/备份/归档/检索/期限/处置核查；现场查借阅</td><td class="judge">好：期限明确+备份。<span class="red">红线：无保存期限规定</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.5-①</td><td class="point">风险机遇整合</td><td class="method">查风险清单更新史；抽 2 措施有效性评价；查客户反馈渠道与分析运用</td><td class="judge">好：风险入体系+有评价。<span class="red">红线：识别不更新</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.6-①</td><td class="point">改进有成效</td><td class="method">查改进台账，抽 1 改进案例验证实际成效（非仅计划）</td><td class="judge">好：有案例+见成效。<span class="red">红线：只列计划无落地</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.7-①</td><td class="point">纠正措施六步</td><td class="method">抽 3 份纠正措施对照 a)反应 b)根因 c)措施 d)有效性 e)风险更新 f)体系变更 逐项查</td><td class="judge">好：根因分析+有效。<span class="red">红线：只再培训不查根因</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.8-①</td><td class="point">内审策划执行</td><td class="method">对照 LP-02 与 IA-01 查全年执行；抽最近一次审核全档案（IA-01～IA-06）；验证独立性确认</td><td class="judge">好：按计划+独立+闭环。<span class="red">红线：内审员审自己部门</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.9-①</td><td class="point">管审输入完整</td><td class="method">查最近一次管评记录（MR 系列），逐项核对 15 项输入证据齐全</td><td class="judge">好：15 项全有证据。<span class="red">红线：输入空洞无数据</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">8.9-②</td><td class="point">管审输出落实</td><td class="method">查 4 项输出（有效性/改进/资源/变更）决议是否有责任人+时限，并在 MR-06 跟踪</td><td class="judge">好：决议可跟踪。<span class="red">红线：报告写完无跟踪</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<div class="note"><b>判定与统计：</b>本表完成后，将全部 <b>×</b> 不符合项按细项条款登记至 IA-05《不符合项分布与趋势分析表》，识别体系薄弱环节；<b>○</b> 观察项单独列表在审核报告（FR-25）中呈现。本表连同证据栏内容按 §8.4 记录控制归档，保存期不少于 6 年。V2.0 相对 V1.0 的变化：每个条款由「一行要点」升级为「多细项 + 查证动作 + 判定要点（含红线）」，可直接现场执行。</div>
+
+<div class="foot">IA-04 内部审核检查表（全要素细项版 V2.0）· LabKitPro 内部审核整套资料包（中文版）<br>与官网模板库 FR-40 同源 · 依据 ISO/IEC 17025:2017 编制 · 付费模板，仅限购买方实验室内部使用</div>
+
+</div>
+</body>
+</html>

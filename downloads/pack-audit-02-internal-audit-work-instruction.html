@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA-WI-01 内部审核作业指导书 | LabKitPro 内审资料包</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:28px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:28px;font-weight:800;line-height:1.35;margin-bottom:10px}
+.sub{font-size:14.5px;color:#cfe0ec;max-width:820px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:20px;font-weight:800;color:var(--brand);margin:36px 0 8px;padding-top:8px;border-top:2px solid #e3ecf2}
+h3{font-size:16px;font-weight:700;color:var(--ink2);margin:22px 0 8px}
+.lead{color:var(--muted);font-size:14px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:13.5px;table-layout:fixed}
+th{background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:8px 10px;border:1px solid var(--line)}
+td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#fafcfd}
+.clause{font-family:Consolas,monospace;font-size:12px;color:var(--accent2);font-weight:600;white-space:nowrap}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.tip{background:#e7f4f1;border:1px solid #bfe3da;border-radius:10px;padding:12px 16px;font-size:13px;color:#1d5a50;margin:14px 0}
+.bad{background:#fdeaea;border:1px solid #ecc8c8;border-radius:8px;padding:10px 14px;font-size:13px;color:#7a2830;margin:8px 0}
+.good{background:#e7f4f1;border:1px solid #bfe3da;border-radius:8px;padding:10px 14px;font-size:13px;color:#1d5a50;margin:8px 0}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+.meta{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 22px;margin:0 0 24px}
+.mrow{display:flex;flex-wrap:wrap;gap:4px 30px;font-size:13.5px}
+.mrow div{padding:2px 0}
+.mrow span{color:var(--muted)}
+p{margin:8px 0}
+@media(max-width:760px){h1{font-size:22px}table{font-size:12.5px;min-width:520px}th,td{padding:6px}.wrap{padding:0 14px 60px}.meta{overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · C 级作业指导书（WI）</div>
+    <h1>内部审核作业指导书</h1>
+    <div class="sub">Internal Audit Work Instruction —— 面向内审员的实操手册：检查表怎么编、现场怎么查、证据怎么取、发现怎么定级，并附各条款典型不符合项案例库。</div>
+    <div class="badge-row">
+      <span class="badge">文件编号 IA-WI-01</span>
+      <span class="badge">版本 V1.0</span>
+      <span class="badge">支撑 LP-02 §5.3–§5.5</span>
+      <span class="badge">配合 IA-04 检查表使用</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="meta">
+  <div class="mrow">
+    <div><span>文件编号：</span><b>IA-WI-01</b></div>
+    <div><span>版本号：</span><b>V1.0</b></div>
+    <div><span>生效日期：</span><b>[YYYY-MM-DD]</b></div>
+    <div><span>编制/批准：</span><b>[质量负责人]</b> / <b>[实验室主任]</b></div>
+  </div>
+</div>
+
+<h2>1　目的与适用范围</h2>
+<p>本指导书细化 LP-02《内部审核程序》中审核准备、现场实施与审核发现判定的操作方法，供内审员在编制检查表、实施现场审核、形成审核发现时遵照执行。内审员初次培训、见习审核与年度持续培训均以本指导书为教材。</p>
+
+<h2>2　检查表编制方法</h2>
+<h3>2.1　三栏转化法</h3>
+<p>检查表不是标准条文的抄写。每个条款按「三栏转化」编制：把<b>标准要求</b>转化为<b>审核要点</b>（实验室应展示什么证据），再转化为<b>查证方法</b>（用什么手段取到证据）：</p>
+<table>
+  <colgroup><col style="width:18%"><col style="width:41%"><col style="width:41%"></colgroup>
+  <tr><th>标准要求</th><th>审核要点（转化为问题）</th><th>查证方法（转化为动作）</th></tr>
+  <tr><td><span class="clause">§6.4</span> 设备校准后需对校准结果进行确认</td><td>设备校准证书回来后有没有人确认？确认了什么？谁有权确认？</td><td>抽 3 份校准证书，找对应的《设备校准结果确认记录》；面谈设备管理员「确认看哪些指标、不符合怎么处理」</td></tr>
+  <tr><td><span class="clause">§7.7.1</span> 实施质控以监控结果有效性</td><td>质控计划覆盖认可范围所有项目吗？质控数据超限后怎么处理？</td><td>对照认可范围表查质控计划覆盖矩阵；抽 1 份失控记录，追踪其纠正处理链</td></tr>
+</table>
+<h3>2.2　个性化定制四问</h3>
+<p>从全要素检查表（IA-04）选取条款后，结合受审核区域回答四个问题，把通用要点变成专属问题：① 这个区域<b>最可能出什么错</b>？（结合既往不符合、投诉、PT 结果）② 上次审核<b>这里查出了什么</b>？整改落实了吗？③ 这个条款在实验室的<b>责任岗位是谁</b>？直接查他的记录。④ 有没有<b>近期变化</b>（新设备、新人员、新方法、新标准版本）？变化处风险最高。</p>
+<h3>2.3　检查表的质量自查</h3>
+<p>检查表编好后自问：每个要点的查证方法是否<b>可执行</b>（能落到具体动作）？证据栏是否留了<b>记录空间</b>（记录什么文件号/记录号/数量）？覆盖是否<b>完整</b>（本次范围条款一个不漏）？抽样量是否<b>明确</b>（写数字，不写「若干」）？</p>
+
+<h2>3　现场审核技巧</h2>
+<h3>3.1　抽样方法</h3>
+<p>a) <b>随机抽样</b>：记录按时间段均匀抽取（如从 1–6 月台账随机选 3 个月各抽 1 份），避免集中抽某月；b) <b>分层抽样</b>：覆盖不同人员（新老员工各查）、不同设备（主力与边缘设备各查）、不同项目类型；c) <b>定向抽样</b>：针对高风险点定向取证据——新员工做的第一批记录、维修后设备的首次使用记录、加班时段的报告。</p>
+<h3>3.2　面谈提问技巧</h3>
+<table>
+  <colgroup><col style="width:30%"><col style="width:35%"><col style="width:35%"></colgroup>
+  <tr><th>原则</th><th>推荐问法（开放式）</th><th>避免问法（封闭/诱导）</th></tr>
+  <tr><td>问「做什么」不问「是不是」</td><td>「这份记录是哪个环节填的？填完后谁检查？」</td><td>「这个记录是按要求填的吧？」</td></tr>
+  <tr><td>用场景替代条文</td><td>「如果这台设备今天校准过期了，你会怎么处理手头的样品？」</td><td>「你知道 6.4.6 条的要求吗？」</td></tr>
+  <tr><td>顺着证据追问</td><td>「这份报告的不确定度评定是谁做的？依据哪份作业指导书？」</td><td>连续多问让受审人感到被审问</td></tr>
+  <tr><td>给纠正机会</td><td>「你提到上次培训没参加，后来补了吗？有记录吗？」</td><td>听到解释就打断定性</td></tr>
+</table>
+<h3>3.3　取证规范</h3>
+<p>审核证据记录做到「四有」：<b>有出处</b>（文件号/记录编号/版本号）、<b>有数量</b>（抽查了几份、合格几份）、<b>有细节</b>（具体到设备编号、样品号、日期）、<b>有印证</b>（口头陈述经什么印证）。需要拍照取证的（如现场状态），事先告知受审核方并遵守保密要求。</p>
+
+<h2>4　审核发现的判定</h2>
+<h3>4.1　不符合判定的三重检验</h3>
+<p>判定为「不符合」前过三关：① <b>准则明确</b>——违反的要求写得出来源与条款号吗？（「我觉得不合理」不构成准则）② <b>证据确凿</b>——证据能否经得起受审核方复核？是否只是个例？③ <b>性质清晰</b>——是「未做」（体系缺失）还是「做了但不规范」（执行偏离）还是「做了但没记录」（证据缺失）？三种情况整改方向完全不同。</p>
+<h3>4.2　三条常见误区</h3>
+<p class="bad"><b>误区一：把个人建议写成不符合。</b>「建议把温湿度记录改成电子化」是改进机会（OFI），不是不符合——现行做法只要满足要求就不构成违反。</p>
+<p class="bad"><b>误区二：把个例上升为系统。</b>一份记录漏签字，如属偶发且经提醒即改，一般不符合即可；写「记录控制失控」需有多份同类证据支撑。</p>
+<p class="bad"><b>误区三：条款引用张冠李戴。</b>如把「设备校准结果确认」引到 §7.7（应为 §6.4）。开报告前逐条核对条款号——这是审核报告专业性的底线。</p>
+<h3>4.3　好/差表述对照</h3>
+<p class="bad"><b>差：</b>「仪器管理不到位，人员意识不强，需要加强培训。」——无证据、无条款、无整改方向。</p>
+<p class="good"><b>好：</b>「查 2026 年 3–5 月《设备使用记录》共 12 份，其中 3 份（编号 EQ-2026-041/047/053）使用后未填写设备状态标识，不符合《设备管理程序》§5.3 及 ISO/IEC 17025:2017 §6.4 要求。」——证据、条款、范围齐全。</p>
+
+<h2>5　典型不符合项案例库</h2>
+<p class="lead">以下案例按标准章节归类，来自实验室评审中的高频场景。培训时逐条讨论「证据是什么、条款是什么、整改怎么做」。</p>
+<table>
+  <colgroup><col style="width:12%"><col style="width:52%"><col style="width:36%"></colgroup>
+  <tr><th>条款</th><th>典型场景</th><th>整改方向提示</th></tr>
+  <tr><td><span class="clause">§4.1.4</span></td><td>实验室能出具公正性承诺，但未识别和分析公正性风险，也无定期风险评审记录</td><td>建立公正性风险识别清单（活动、关系、人员），按年度评审并留记录</td></tr>
+  <tr><td><span class="clause">§4.2</span></td><td>保密承诺仅对客户签订，未覆盖到外部合作方与借调人员</td><td>保密协议主体排查，补充外部人员承诺</td></tr>
+  <tr><td><span class="clause">§5.6</span></td><td>质量负责人有职责规定但实际无权叫停不符合工作（访谈证实）</td><td>最高管理者书面授权 + 执行案例留痕</td></tr>
+  <tr><td><span class="clause">§6.2</span></td><td>授权范围与实际操作不符：人员被授权操作 A 方法却长期操作 B 方法</td><td>授权矩阵与实际岗位职责比对，变更授权或调整岗位</td></tr>
+  <tr><td><span class="clause">§6.3.2</span></td><td>对结果有效性有影响的环境条件未监测（如某检测区温湿度无记录）</td><td>识别需监控区域清单，补装监控与记录</td></tr>
+  <tr><td><span class="clause">§6.4</span></td><td>设备期间核查无计划：什么时候核、核什么指标、判据是什么均未规定</td><td>制定期间核查计划（对象、方法、频次、判据）</td></tr>
+  <tr><td><span class="clause">§6.5.2</span></td><td>校准证书未带不确定度/未溯源至 SI，实验室未做等效性评价</td><td>供应商证书要素核查；无法溯源项的替代技术路线评审</td></tr>
+  <tr><td><span class="clause">§6.6.2</span></td><td>标准物质供应商未评价就采购使用，无合格供应商名录</td><td>建立评价准则与名录，补做既有供应商评价</td></tr>
+  <tr><td><span class="clause">§7.2.1</span></td><td>方法变更后未做证实即投用（新版本标准直接替换旧版使用）</td><td>建立标准查新与变更证实流程，追溯已用新版的报告</td></tr>
+  <tr><td><span class="clause">§7.4.1</span></td><td>样品唯一性标识流转断链：接收编号与检测记录编号对不上</td><td>唯一性编号规则核查，追溯混样风险</td></tr>
+  <tr><td><span class="clause">§7.5.1</span></td><td>原始记录信息不全：无法复现检测过程（缺环境条件、缺仪器编号、修改无杠改签注）</td><td>按「可复现」标准修订记录模板并培训</td></tr>
+  <tr><td><span class="clause">§7.6.1</span></td><td>评定不确定度时未识别主要分量（如忽略样品前处理引入的分量）</td><td>不确定度预算评审，分量识别与 PT 结果比对校验</td></tr>
+  <tr><td><span class="clause">§7.7.2</span></td><td>PT 结果不满意后未分析原因、未评估对既往报告的影响</td><td>按 §7.10 触发不符合工作流程并完整留痕</td></tr>
+  <tr><td><span class="clause">§7.8.2</span></td><td>报告缺客户要求的信息（如委托方要求的判定依据未注明）</td><td>报告模板与合同要求对照审查</td></tr>
+  <tr><td><span class="clause">§7.10.1</span></td><td>发现报告错误后仅口头告知客户，未启动不符合工作程序、无评估记录</td><td>建立不符合工作登记与评估闭环</td></tr>
+  <tr><td><span class="clause">§7.11.2</span></td><td>LIMS 系统变更（升级）未做验证即上线，无变更验证记录</td><td>系统变更验证规程 + 回溯验证已用功能</td></tr>
+  <tr><td><span class="clause">§8.3.3</span></td><td>作废文件仍出现在检测现场（现场版本与受控清单不一致）</td><td>现场文件清查，建立发放回收台账</td></tr>
+  <tr><td><span class="clause">§8.5.1</span></td><td>风险清单两年来零更新，未反映新增项目与人员变化</td><td>风险清单年度评审机制 + 更新留痕</td></tr>
+  <tr><td><span class="clause">§8.7.1</span></td><td>纠正措施仅「对当事人再培训」，无原因分析、无有效性验证</td><td>按 8.7.1 a)–f) 全链条重做，培训只是措施之一</td></tr>
+</table>
+
+<h2>6　远程审核要点</h2>
+<p>采用视频会议、远程调阅电子记录等方式审核时：a) 审前测试网络与共享屏幕工具，确认受审核方所在地网络条件；b) 电子记录调阅应能展示<b>审计追踪</b>能力，防止「只看截图」；c) 现场观察类证据无法远程获取的，可要求受审核方以第一视角录像补充；d) 远程审核的限制应在审核报告（FR-25）中如实说明。</p>
+
+<h2>7　困难局面应对</h2>
+<table>
+  <colgroup><col style="width:28%"><col style="width:72%"></colgroup>
+  <tr><th>局面</th><th>应对</th></tr>
+  <tr><td>受审核方不提供记录</td><td>说明审核依据与配合义务（LP-02 §3.5），仍拒绝的记录在案并在报告注明；不与当事人争执，升级给审核组长协调</td></tr>
+  <tr><td>对不符合判定有异议</td><td>回到证据与准则重新核对；证据确凿且准则明确的维持判定；受审核方仍不服的，告知申诉渠道（末次会议前向质量负责人书面申诉）</td></tr>
+  <tr><td>发现疑似重大问题</td><td>先固定证据（拍照/复印/记录编号），评估影响范围，当日向审核组长与质量负责人通报，必要时扩大抽样</td></tr>
+  <tr><td>审核时间不够</td><td>按风险优先级砍低风险条款的抽样量，保证高风险条款查深查透；未覆盖区域在报告中如实说明</td></tr>
+</table>
+
+<div class="tip"><b>一句话心法：</b>审核员的价值不在于找出多少问题，而在于<b>让每个结论都经得起评审员的复核</b>——证据可追溯、条款引用准确、整改方向可行。做到这三点，审核报告本身就是实验室管理水平的展示。</div>
+
+<h2>七　审核员现场自查清单（进场前 5 分钟）</h2>
+<p>① 是否带齐：IA-04 检查表、FR-24 空白表、抽样方案、以往不符合台账（IA-06）、相关体系文件现行版；② 是否明确本次审核范围与重点（高风险条款、上次不符合部门）；③ 是否与被审核方约定时间、地点、陪同人；④ 记录工具（相机/录音）是否可用且已获同意；⑤ 是否清楚不符合分级标准（重大/一般），避免现场误判。逐项确认后再进场，可显著减少漏审与返工。另建议每半天结束前花 10 分钟整理当日发现，防止记忆偏差导致证据描述失真。审核员应始终保持客观中立，既不刻意挑刺也不回避问题，让受审核方感受到审核是为了共同改进而非追责。良好的审核氛围有助于受审核方主动暴露薄弱环节，从而获得更真实的体系运行画像，这比单纯罗列问题更有价值。</p>
+
+<div class="foot">IA-WI-01 内部审核作业指导书 · LabKitPro 内部审核整套资料包（中文版 v1.0）<br>依据 ISO/IEC 17025:2017 编制 · 付费模板，仅限购买方实验室内部使用</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR-24 内审不符合项报告（完善版） | LabKitPro 内审资料包</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:28px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:28px;font-weight:800;margin-bottom:10px}
+.sub{font-size:14.5px;color:#cfe0ec;max-width:820px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:20px;font-weight:800;color:var(--brand);margin:36px 0 8px;padding-top:8px;border-top:2px solid #e3ecf2}
+h3{font-size:15.5px;font-weight:700;color:var(--ink2);margin:20px 0 8px}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:13px;table-layout:fixed}
+th{background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:8px;border:1px solid var(--line)}
+td{padding:8px;border:1px solid var(--line);vertical-align:top}
+.fill tbody td{background:#fff}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.bad{background:#fdeaea;border:1px solid #ecc8c8;border-radius:8px;padding:10px 14px;font-size:13px;color:#7a2830;margin:8px 0}
+.good{background:#e7f4f1;border:1px solid #bfe3da;border-radius:8px;padding:10px 14px;font-size:13px;color:#1d5a50;margin:8px 0}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+@media(max-width:760px){h1{font-size:22px}table{font-size:12px;min-width:520px}th,td{padding:5px}.wrap{padding:0 14px 60px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · D 级记录表单（FR）· 对应官网库 FR-24</div>
+    <h1>内审不符合项报告</h1>
+    <div class="sub">Audit Nonconformity Report —— 承载 §8.7 纠正措施全链条：不符合事实 → 原因分析 → 纠正与纠正措施 → 有效性验证。含分级标准与好/差描述对照。</div>
+    <div class="badge-row">
+      <span class="badge">文件编号 FR-24</span>
+      <span class="badge">版本 V1.0（完善版）</span>
+      <span class="badge">对应 §8.8.2 d) · §8.7.1 a)–f)</span>
+      <span class="badge">整改时限：15 个工作日</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<h2>第一部分　表单正页</h2>
+<table class="fill">
+  <colgroup><col style="width:18%"><col style="width:32%"><col style="width:18%"><col style="width:32%"></colgroup>
+  <tr><th>报告编号</th><td>NC-[20XX]-[XXX]</td><th>所属审核批次</th><td><span style="color:#98a8b6">[20XX 年第 X 批]</span></td></tr>
+  <tr><th>开具日期</th><td><span style="color:#98a8b6">[YYYY-MM-DD]</span></td><th>开具人（审核员）</th><td>　</td></tr>
+  <tr><th>责任部门</th><td>　</td><th>责任部门负责人</th><td>　</td></tr>
+  <tr><th>对应条款（ISO/IEC 17025:2017）</th><td colspan="3"><span style="color:#98a8b6">[条款号，如 §6.4.7]</span></td></tr>
+  <tr><th>对应体系文件及条款</th><td colspan="3"><span style="color:#98a8b6">[文件号 + 版本 + 条款，如《设备管理程序》V2.1 §5.3]</span></td></tr>
+  <tr><th>不符合级别</th><td colspan="3">□ 重大不符合　□ 一般不符合（判定标准见本文件第二部分）</td></tr>
+</table>
+
+<h3>1　不符合事实描述（客观证据）</h3>
+<table class="fill">
+  <colgroup><col style="width:100%"></colgroup>
+  <tr><th style="height:130px">何时、何地、何人、抽查了什么（记录编号/数量）、发现了什么。<br>要求：可验证——第三方拿同样证据能得出同样结论。<span style="color:#98a8b6">[填写]</span></th></tr>
+  <tr><td style="height:110px"></td></tr>
+</table>
+
+<h3>2　受审核方事实确认</h3>
+<table class="fill">
+  <colgroup><col style="width:70%"><col style="width:30%"></colgroup>
+  <tr><td>□ 事实确认无误<br>□ 有异议，异议内容：<span style="color:#98a8b6">[填写]</span>（处理意见见末次会议记录）</td><td>受审核方代表签字 / 日期</td></tr>
+</table>
+
+<h3>3　原因分析（责任部门填写，可采用 5Why / 鱼刺图）</h3>
+<table class="fill">
+  <colgroup><col style="width:100%"></colgroup>
+  <tr><th style="height:40px">原因类别（可多选）：□ 制度/文件缺陷　□ 培训不足　□ 资源不足　□ 沟通不畅　□ 执行偏差　□ 监督缺失　□ 其他：＿＿＿</th></tr>
+  <tr><td style="height:100px"><span style="color:#98a8b6">[根本原因分析：追问到管理层面的可改进原因，止步于「人员疏忽」视为分析不到位]</span></td></tr>
+</table>
+
+<h3>4　纠正（消除本次不符合）与纠正措施（消除原因、防止再发生）</h3>
+<table class="fill">
+  <colgroup><col style="width:10%"><col style="width:44%"><col style="width:18%"><col style="width:28%"></colgroup>
+  <tr><th>序号</th><th>措施内容（纠正 / 纠正措施分别列明）</th><th>责任人 / 完成时限</th><th>完成标志（什么算做完）</th></tr>
+  <tr><td>1</td><td style="height:34px">　</td><td>　</td><td>　</td></tr>
+  <tr><td>2</td><td style="height:34px">　</td><td>　</td><td>　</td></tr>
+  <tr><td>3</td><td style="height:34px">　</td><td>　</td><td>　</td></tr>
+</table>
+<table class="fill">
+  <colgroup><col style="width:100%"></colgroup>
+  <tr><th>重大不符合项附加确认（重大不符合必填）</th></tr>
+  <tr><td style="height:70px">□ 已评估对既往已出具报告/结果的影响：□ 无影响　□ 有影响，处理方式：<span style="color:#98a8b6">[追回/更正/通知客户，按 §7.10 执行并记录]</span><br>□ 已排查类似问题在其他区域/过程是否存在：<span style="color:#98a8b6">[排查范围与结论]</span>　□ 已按需更新风险与机遇清单（§8.5.1 e）</td></tr>
+</table>
+
+<h3>5　整改证据提交</h3>
+<table class="fill">
+  <colgroup><col style="width:16%"><col style="width:48%"><col style="width:18%"><col style="width:18%"></colgroup>
+  <tr><th>对应措施序号</th><th>证据名称（文件/记录/照片编号）</th><th>提交人</th><th>提交日期</th></tr>
+  <tr><td>　</td><td style="height:32px">　</td><td>　</td><td>　</td></tr>
+  <tr><td>　</td><td style="height:32px">　</td><td>　</td><td>　</td></tr>
+</table>
+
+<h3>6　有效性验证与关闭（审核员填写）</h3>
+<table class="fill">
+  <colgroup><col style="width:100%"></colgroup>
+  <tr><th style="height:36px">验证方式：□ 复核修订后文件　□ 抽查整改后运行记录（数量：＿＿）　□ 现场复验　□ 面谈确认</th></tr>
+  <tr><td style="height:90px">验证结论（关注有效性而非完成度：措施是否针对根本原因、同类问题是否可能再发生）：<span style="color:#98a8b6">[填写]</span><br>□ 验证通过，予以关闭　□ 验证不通过，退回重新整改（第 __ 次）</td></tr>
+  <tr><td>验证人（审核员）签字 / 日期：＿＿＿＿＿＿　　质量负责人确认 / 日期：＿＿＿＿＿＿</td></tr>
+</table>
+
+<h2>第二部分　填写指引</h2>
+<h3>不符合分级判定标准</h3>
+<table>
+  <colgroup><col style="width:16%"><col style="width:84%"></colgroup>
+  <tr><th>级别</th><th>判定标准（满足其一即判重大不符合）</th></tr>
+  <tr><td>重大不符合</td><td>① 体系要素缺失或整体失效（如某强制过程从未开展）；② 结果有效性受到实际影响（报告结果可疑、追溯链断裂）；③ 同一条款问题在多部门重复发生或多次审核重复出现；④ 明知不符合仍继续运行</td></tr>
+  <tr><td>一般不符合</td><td>个别执行偏离要求、孤立发生、经查未影响结果有效性</td></tr>
+</table>
+
+<h3>事实描述：好 / 差对照</h3>
+<p class="bad"><b>差：</b>「仪器管理混乱，人员责任心不强，记录填写不规范。」——无证据、无编号、无条款，无法整改也无法验证。</p>
+<p class="good"><b>好：</b>「2026-05-12 查设备使用记录 12 份（2026 年 3–5 月），编号 EQ-2026-041、047、053 共 3 份使用后未填写设备状态标识；查《设备管理程序》V2.1 §5.3 规定『每次使用后须确认并填写状态标识』，不符合 ISO/IEC 17025:2017 §6.4 要求。」</p>
+
+<h3>原因分析深度对照</h3>
+<p class="bad"><b>不到位：</b>「原因是人员疏忽，措施：加强培训、提高意识。」</p>
+<p class="good"><b>到位：</b>「为什么 3 份记录漏填状态标识？→ 3 份均为夜班时段；为什么夜班漏填？→ 夜班交接清单未包含状态标识确认项；为什么交接清单缺失该项？→ 编制交接清单时未对照程序文件逐条核对。根因：交接清单编制缺少对照程序文件的机制。措施：修订交接清单模板（加入状态标识项），并将清单纳入受控文件，由质量负责人每季度对照程序文件核查一次。」</p>
+
+<div class="note"><b>时限要求（LP-02 约定）：</b>整改证据提交不超过开具后 15 个工作日；两次整改仍不通过或超 60 日未闭环的，升级报告实验室主任处置（LP-02 §5.8）。跟踪台账使用 IA-06。</div>
+
+<div class="foot">FR-24 内审不符合项报告 · LabKitPro 内部审核整套资料包（中文版 v1.0）<br>与官网模板库 FR-24 同编号 · 依据 ISO/IEC 17025:2017 §8.7 / §8.8 编制 · 付费模板，仅限购买方实验室内部使用</div>
+
+</div>
+</body>
+</html>

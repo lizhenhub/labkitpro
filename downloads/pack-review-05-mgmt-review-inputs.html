@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR-03 管理评审输入信息表（15 项结构化采集卡） | LabKitPro 管审资料包</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a;--bad:#b23b3b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:28px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:28px;font-weight:800;margin-bottom:10px}
+.sub{font-size:14.5px;color:#cfe0ec;max-width:860px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:20px;font-weight:800;color:var(--brand);margin:36px 0 8px;padding-top:8px;border-top:2px solid #e3ecf2}
+.tip{background:#e7f4f1;border:1px solid #bfe3da;border-radius:10px;padding:12px 16px;font-size:13px;color:#1d5a50;margin:14px 0}
+.tip b{color:#0e8f7d}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.card{border:1px solid var(--line);border-radius:12px;background:#fff;margin:14px 0;overflow:hidden;box-shadow:0 1px 3px rgba(16,32,46,.04)}
+.ch{background:linear-gradient(90deg,#0f2f4a,#1b6ea8);color:#fff;padding:10px 16px;font-weight:800;font-size:15px;display:flex;align-items:center;gap:10px}
+.ch .tag{font-size:12px;background:rgba(255,255,255,.16);padding:2px 10px;border-radius:999px;font-weight:600}
+.ct{width:100%;border-collapse:collapse;font-size:13px}
+.ct th{width:21%;background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:9px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+.ct td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+.dim{background:#fafcfd}
+.dim .d{display:flex;align-items:baseline;gap:8px;margin:3px 0}
+.dim .d b{color:var(--accent2);min-width:fit-content;font-size:12.5px}
+.dim .d .box{border-bottom:1px dashed #b9c6d0;flex:1;min-height:18px;color:#8aa0ad;font-size:12.5px;padding:0 4px}
+.good{color:#1d5a50}.bad{color:var(--bad);font-weight:600}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+@media(max-width:760px){h1{font-size:22px}.wrap{padding:0 14px 60px}.ct th{width:30%}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · 管理评审记录 · 配套 LP-09 §5.2 / §8.9.2</div>
+    <h1>管理评审输入信息表（结构化采集卡）</h1>
+    <div class="sub">Management Review Inputs —— 逐项收集 §8.9.2 a)–o) 共 15 项输入。每项拆解为<b>关注目的 / 多维数据 / 数据来源 / 结论写法 / 红线</b>，确保信息充分齐全，是管理评审报告的唯一证据底座。</div>
+    <div class="badge-row">
+      <span class="badge">文件编号 MR-03</span>
+      <span class="badge">版本 V2.0（采集卡升级）</span>
+      <span class="badge">覆盖 §8.9.2 a–o（15 项）</span>
+      <span class="badge">牵头：质量负责人</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="tip"><b>填写铁律：</b>① 每项必须「有数据、有证据编号、有结论」，禁止只写"正常/良好/无变化"；② 结论写法见各卡「好示例 vs 敷衍示例」，质量负责人会前 5 工作日按此退回补正；③ 证据编号指向原始记录（如 FR-25、投诉台账、质控汇总），保证可追溯；④ 信息不充分 = 管理评审结论无依据 = 评审无效。</div>
+
+<!-- a -->
+<div class="card">
+  <div class="ch">a　与实验室相关的内外部因素的变化 <span class="tag">§8.9.2 a</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>识别外部（法规/市场/客户行业/认可要求）与内部（战略/组织/资源）变化对体系<b>适宜性</b>的冲击，决定是否需修订体系。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>法规/标准变化</b><span class="box">[ 共 __ 项，已应对 __ 项，未应对 __ 项 ]</span></div>
+      <div class="d"><b>市场/客户行业变化</b><span class="box">[ 描述： ]</span></div>
+      <div class="d"><b>母体/股东战略变化</b><span class="box">[ 描述： ]</span></div>
+      <div class="d"><b>触发体系待修订点</b><span class="box">[ __ 份文件需修订 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>法规跟踪记录、市场分析、管理层输入 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「新资质认定评审准则过渡，已启动 3 份程序修订，预计 Q2 完成，对现行体系无重大影响。」<br><span class="bad">敷衍：</span>「无变化。」（红线：将已发生的法规更新归为无变化）</td></tr>
+  </table>
+</div>
+
+<!-- b -->
+<div class="card">
+  <div class="ch">b　目标实现 <span class="tag">§8.9.2 b</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>评价年度质量目标达成度，判断是否需调整目标值或追加资源。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>目标/达成</b><span class="box">[ 年度 N=__ 项，达成 __ 项，未达成 __ 项 ]</span></div>
+      <div class="d"><b>未达成项及差距</b><span class="box">[ 列出： ]</span></div>
+      <div class="d"><b>趋势（同比/环比）</b><span class="box">[ 如报告及时率 96.5% vs 去年 95% ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>目标统计表 ／ 各目标责任人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「报告及时率目标 98%，实际 96.5%，差距源于扩项期人员紧张，已列入资源输入 l。」<br><span class="bad">敷衍：</span>「基本达成。」（红线：只写达成无数据）</td></tr>
+  </table>
+</div>
+
+<!-- c -->
+<div class="card">
+  <div class="ch">c　政策和程序的适宜性 <span class="tag">§8.9.2 c</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>判定现行文件是否仍适用，是否存在"有文件不执行"或"执行无文件"。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>文件修订</b><span class="box">[ 现行 __ 份，年内修订 __ 份，作废 __ 份 ]</span></div>
+      <div class="d"><b>执行与文件不符</b><span class="box">[ 内审/自查发现 __ 处 ]</span></div>
+      <div class="d"><b>员工反馈难用</b><span class="box">[ __ 条，典型： ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>文件台账、内审发现 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「抽样发现设备期间核查记录与程序要求不一致 2 处，已启动程序修订。」<br><span class="bad">敷衍：</span>「适宜。」（红线：全年无修订却声称完全适宜）</td></tr>
+  </table>
+</div>
+
+<!-- d -->
+<div class="card">
+  <div class="ch">d　以往管理评审所采取措施的状况 <span class="tag">§8.9.2 d</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>验证上年决议是否落地，剖析未完成的真实原因，避免"决议写完即归档"。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>决议完成</b><span class="box">[ 上年 N=__ 项，完成 __，进行中 __，逾期 __ ]</span></div>
+      <div class="d"><b>逾期/未完成原因</b><span class="box">[ 说明： ]</span></div>
+      <div class="d"><b>成效证据</b><span class="box">[ 如：LIMS上线后周期缩短 __ ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>上年 MR-06 决议跟踪表 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「7 项完成，2 项（LIMS升级）延期因预算，已调整排期并说明，下年重点跟踪。」<br><span class="bad">敷衍：</span>「已完成。」（红线：隐瞒逾期项）</td></tr>
+  </table>
+</div>
+
+<!-- e -->
+<div class="card">
+  <div class="ch">e　近期内部审核的结果 <span class="tag">§8.9.2 e</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>提供体系运行<b>符合性与有效性</b>的客观结论，定位薄弱环节。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>审核概况</b><span class="box">[ 日期 __，范围 __，审核员 __ ]</span></div>
+      <div class="d"><b>不符合分布</b><span class="box">[ NC __ 项（重大 __/一般 __），观察 __ 项 ]</span></div>
+      <div class="d"><b>符合/有效性结论</b><span class="box">[ 符合性：__；有效性：__ ]</span></div>
+      <div class="d"><b>重复发生条款</b><span class="box">[ 如 §6.4 连续 2 年出现 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>FR-25 内部审核报告、IA-05 分布分析 ／ 内审组长</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「全要素审核开 NC 6 项，集中在 §6.4 设备管控，体系总体有效但设备为短板。」<br><span class="bad">敷衍：</span>「无问题。」（红线：内审开了 NC 却写无问题）</td></tr>
+  </table>
+</div>
+
+<!-- f -->
+<div class="card">
+  <div class="ch">f　纠正措施 <span class="tag">§8.9.2 f</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>评价不符合工作整改闭环与根因治理成效，识别系统性问题。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>关闭情况</b><span class="box">[ 本年开 NC __ 项，关闭 __，关闭率 __% ]</span></div>
+      <div class="d"><b>平均关闭周期</b><span class="box">[ __ 天 ]</span></div>
+      <div class="d"><b>根因分类</b><span class="box">[ 人员__/设备__/方法__/环境__/体系__ ]</span></div>
+      <div class="d"><b>复发 NC</b><span class="box">[ __ 项 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>FR-24 不符合项报告、IA-06 跟踪验证 ／ 责任部门</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「关闭率 92%，复发 1 项已升级根因分析并修订程序。」<br><span class="bad">敷衍：</span>「已整改。」（红线：只写整改无关闭率）</td></tr>
+  </table>
+</div>
+
+<!-- g -->
+<div class="card">
+  <div class="ch">g　外部机构进行的评审 <span class="tag">§8.9.2 g</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>汇总认可/监管评审发现与整改，承接外部压力。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>评审发现</b><span class="box">[ CNAS/监管评审 __ 次，观察项 __，不符合 __ ]</span></div>
+      <div class="d"><b>整改验证</b><span class="box">[ 完成 __ 项，验证 __ 项 ]</span></div>
+      <div class="d"><b>下次关注点</b><span class="box">[ 如：方法验证、报告要素 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>评审报告、整改验证记录 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「现场评审开 2 不符合已关闭验证，建议项 3 条已纳入改进。」<br><span class="bad">敷衍：</span>「通过。」（红线：忽略观察项/建议项）</td></tr>
+  </table>
+</div>
+
+<!-- h -->
+<div class="card">
+  <div class="ch">h　工作量 / 类型 / 活动范围变化 <span class="tag">§8.9.2 h</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>判断业务变化是否超出当前资源与能力边界，触发资源申请。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>业务量</b><span class="box">[ 检测/校准量同比 __%（增/减） ]</span></div>
+      <div class="d"><b>范围变化</b><span class="box">[ 扩项 __ 参数，缩减 __ 个 ]</span></div>
+      <div class="d"><b>新领域/新客户</b><span class="box">[ 描述： ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>业务报表 ／ 业务负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「量增 23%，新增环境类 5 参数，需补设备 2 台（见资源输入 l）。」<br><span class="bad">敷衍：</span>「平稳。」（红线：量增但不评估资源）</td></tr>
+  </table>
+</div>
+
+<!-- i -->
+<div class="card">
+  <div class="ch">i　顾客与人员的反馈 <span class="tag">§8.9.2 i</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>外部满意度与内部参与改进双视角，发现隐性问题。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>客户满意度</b><span class="box">[ __ 分（样本 __），同比 __ ]</span></div>
+      <div class="d"><b>负面反馈主题</b><span class="box">[ 如：报告延迟、沟通 ]</span></div>
+      <div class="d"><b>员工建议</b><span class="box">[ 提 __ 条，采纳 __ 条 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>满意度调查、员工建议箱 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「满意度 4.3/5，主要诉求报告提速，已入改进 k。」<br><span class="bad">敷衍：</span>「满意。」（红线：只写满意无分值）</td></tr>
+  </table>
+</div>
+
+<!-- j -->
+<div class="card">
+  <div class="ch">j　投诉 <span class="tag">§8.9.2 j</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>评价投诉处理闭环与体系回溯改进。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>投诉处理</b><span class="box">[ N=__ 起，按期闭环 __，超时 __ ]</span></div>
+      <div class="d"><b>重复投诉</b><span class="box">[ 同主题 __ 起 ]</span></div>
+      <div class="d"><b>引发体系改进</b><span class="box">[ __ 项 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>投诉台账 §7.9 ／ 客服/质量</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「投诉 3 起均闭环，1 起重复（报告延迟）已入管审改进。」<br><span class="bad">敷衍：</span>「无投诉。」（红线：有投诉却写无）</td></tr>
+  </table>
+</div>
+
+<!-- k -->
+<div class="card">
+  <div class="ch">k　已实施改进的有效性 <span class="tag">§8.9.2 k</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>验证改进是否真见效，而非停留在"已开展"。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>改进成效</b><span class="box">[ 措施 __ 项，量化见效 __ 项 ]</span></div>
+      <div class="d"><b>典型成效数据</b><span class="box">[ 如：电子签批后周期 3.2→1.8 天 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>改进评估 §8.6 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「电子签批上线后报告周期 3.2→1.8 天，客户满意度+0.3。」<br><span class="bad">敷衍：</span>「已改进。」（红线：只列措施无成效数据）</td></tr>
+  </table>
+</div>
+
+<!-- l -->
+<div class="card">
+  <div class="ch">l　资源的充分性 <span class="tag">§8.9.2 l</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>对"人/机/料/法/环"缺口做量化盘点，形成资源决议。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>人力缺口</b><span class="box">[ __ 岗，具体： ]</span></div>
+      <div class="d"><b>设备缺口/老化</b><span class="box">[ 如：2 台到寿、1 台精度不足 ]</span></div>
+      <div class="d"><b>场地/技术缺口</b><span class="box">[ 描述： ]</span></div>
+      <div class="d"><b>拟申请资源</b><span class="box">[ 招聘__/采购__/场地__ ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>资源评估 ／ 各部门负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「高级检测员缺 1，设备 2 台到寿，申请 Q 招聘+采购（预算见输出）。」<br><span class="bad">敷衍：</span>「充足。」（红线：写充足但与 h 项量增矛盾）</td></tr>
+  </table>
+</div>
+
+<!-- m -->
+<div class="card">
+  <div class="ch">m　风险识别的结果 <span class="tag">§8.9.2 m</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>呈现风险态势与应对有效性，承接体系韧性判断。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>风险分布</b><span class="box">[ 识别 N=__ 项（高__/中__/低__） ]</span></div>
+      <div class="d"><b>动态</b><span class="box">[ 本年新增 __，关闭 __ ]</span></div>
+      <div class="d"><b>应对落实率</b><span class="box">[ __% ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>风险清单 §8.5 ／ 质量负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「高风险客户施压识别 2 项已建隔离，中风险 5 项在控。」<br><span class="bad">敷衍：</span>「风险可控。」（红线：无量化分布）</td></tr>
+  </table>
+</div>
+
+<!-- n -->
+<div class="card">
+  <div class="ch">n　保证结果有效性的输出 <span class="tag">§8.9.2 n</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>用技术证据说明结果质量，是有效性结论的核心支撑。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>能力验证/比对</b><span class="box">[ 参加 __ 项，满意 __，满意率 __% ]</span></div>
+      <div class="d"><b>质控在控率</b><span class="box">[ __% ]</span></div>
+      <div class="d"><b>期间核查执行率</b><span class="box">[ __% ]</span></div>
+      <div class="d"><b>不满意结果处置</b><span class="box">[ 如：1 项已按不符合处理 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>质控汇总 §7.7 ／ 技术负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「PT 满意率 100%，质控在控 96%，1 失控已纠正关闭。」<br><span class="bad">敷衍：</span>「正常。」（红线：PT 不满意却写正常）</td></tr>
+  </table>
+</div>
+
+<!-- o -->
+<div class="card">
+  <div class="ch">o　其他相关因素（监控 / 培训） <span class="tag">§8.9.2 o</span></div>
+  <table class="ct">
+    <tr><th>关注目的</th><td>覆盖运行监控与人员能力保持，补漏前 14 项未含要素。</td></tr>
+    <tr><th>采集维度</th><td class="dim">
+      <div class="d"><b>监控预警处置</b><span class="box">[ 预警 __ 次，处置 __ 次 ]</span></div>
+      <div class="d"><b>培训完成率</b><span class="box">[ __%（计划 __，实际 __） ]</span></div>
+      <div class="d"><b>关键岗再培训</b><span class="box">[ 如：新标准方法培训 __ 人 ]</span></div>
+    </td></tr>
+    <tr><th>数据来源 / 责任人</th><td>监控记录、培训记录 ／ 质量+技术负责人</td></tr>
+    <tr><th>结论写法</th><td><span class="good">好：</span>「预警 4 次均处置，培训完成 95%，差 1 岗下季补训。」<br><span class="bad">敷衍：</span>「无。」（红线：只写无）</td></tr>
+  </table>
+</div>
+
+<h2>完整性自查与提交</h2>
+<table class="ct">
+  <tr><th>15 项完整性</th><td>□ 全填　□ 缺 __ 项（须说明原因：__________）</td></tr>
+  <tr><th>退回红线</th><td>任一项只写"正常/良好/无变化/无"且无数据或证据编号 → 质量负责人会前 5 工作日退回补正。</td></tr>
+  <tr><th>签字</th><td>填报人：__________　汇总人（质量负责人）：__________　日期：__________</td></tr>
+</table>
+
+<div class="note"><b>铁律：</b>本表是 MR-05《管理评审报告》的唯一证据底座。任何一项无数据/无证据编号，管理评审结论即失去依据，评审视为无效。V2.0 相对 V1.0 的变化：由「15 行三栏填空」升级为「15 张结构化采集卡」，每项含关注目的、多维数据格、数据来源、结论写法（好/敷衍对照）与红线，信息充分齐全方可支撑高质量评审。</div>
+
+<div class="foot">MR-03 管理评审输入信息表（结构化采集卡 V2.0）· LabKitPro 管理评审整套资料包（中文版）<br>配套 LP-09 · 依据 ISO/IEC 17025:2017 §8.9.2 a)–o) 编制 · 付费模板，仅限购买方实验室内部使用</div>
+
+</div>
+</body>
+</html>
