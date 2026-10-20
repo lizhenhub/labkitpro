@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NATA · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="NATA_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">NATA · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>NATA · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>NATA（National Association of Testing Authorities，澳大利亚国家检测机构协会）是澳大利亚国家认可机构。核心机制：以 SAD 17025《ISO/IEC 17025:2017 标准应用文件》把国际标准转为 NATA 应用要求，再按领域用 SAC 领域附录（校准/生命科学/动物健康/基础设施/法律法医/制造品/材料）叠加澳大利亚专属要求——「SAD 应用文件＋SAC 领域附录＋GAC 通用准则」是 NATA 相对 17025 附加要求的全部形态。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《NATA实验室认可文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="NATA实验室认可文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">46</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">16</div><div class="lbl">SAC 领域附录组＋专项方案数</div></div>
+            <div class="stat"><div class="num">48</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">必备核心文件数（Rules/Procedures/SAD17025/PT/溯源/标志/工作表）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求（SAC 附录）</a>
+    <a href="#req-scheme">四、专项认可方案（15189/17020/GLP/PTP/RMP）</a>
+    <a href="#req-tech">五、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">六、申请与评审</a>
+    <a href="#req-maintain">七、获证后维护与近期换版</a>
+    <a href="#tips">八、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>五区提炼的 <b>46 份</b>文件中，实验室最先要落实的最小核心组合是 <b>NATA Rules</b>（2026-09-11 换版）＋ <b>NATA Procedures</b>（2026-08-25）总纲、<b>SAD 17025</b> 应用文件、本领域 <b>SAC 附录</b>，以及 <b>GAC 溯源/设备/标志通用准则</b>、<b>PT 政策</b>与 <b>17025 评审工作表</b>——即 stat 所列 7 份必备核心文件，其余为支撑或按需文件。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">SAD 应用文件 · SAC 领域附录</span></div>
+  <p class="section-desc">NATA 不逐条改写 17025，而是发布 SAD（Standard Application Document）说明澳大利亚的附加应用要求；再按领域发布 SAC 附录细化执行；GAC 通用准则管多场所、标志、设备、溯源等横向要求。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 国际基准</span><span class="d">ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）、ISO/IEC 17020:2026（检验）、17043/17034、ISO 20387（生物样本库）</span></div>
+      <div class="layer"><span class="t">第 2 层 · 机构规则</span><span class="d">NATA Rules（2026-09-11 换版）＋ NATA Procedures for Accreditation（2026-08-25）——认可管理总纲</span></div>
+      <div class="layer"><span class="t">第 3 层 · 标准应用文件（SAD）</span><span class="d">SAD 17025（检测/校准核心应用文件）＋ SAD 15189/SAD 17020/SAD GLP/SAD 17043/SAD 17034</span></div>
+      <div class="layer"><span class="t">第 4 层 · 领域附录（SAC）与通用准则（GAC）</span><span class="d">校准/生命科学/动物健康/IAI 基础设施/法律法医/制造品/材料各领域附录 ＋ 多场所/标志/设备/溯源等通用准则</span></div>
+      <div class="layer"><span class="t">第 5 层 · 指南/范围/工作表（GAG/SAG/SoA）</span><span class="d">技术指南、认可范围服务描述（SoA）、评审工作表（申请评审接口）</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">Rules/Procedures/GAC</span></div>
+  <p class="section-desc">NATA 的通用附加要求覆盖认可管理、多场所、标志使用与授权代表——17025 只管实验室能力，NATA 用 Rules/Procedures/GAC 管「认可这件事」在澳大利亚怎么做。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NATA Rules</span></td><td><span class="cn">NATA 认可规则（＋修订页）</span><span class="en">NATA Rules / Rules Amendment Sheet</span></td><td class="date">2026-09-11 换版</td><td><span class="when">认可全流程的规则总纲；2026 换版——所有 NATA 实验室的第一文件</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">NATA Procedures</span></td><td><span class="cn">NATA 认可程序</span><span class="en">NATA Procedures for Accreditation</span></td><td class="date">2026-08-25 换版</td><td><span class="when">申请/评审/监督/续证的程序要求；2026 换版——程序合规依据</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">NATA 标志、背书及认可声明的使用</span><span class="en">Use of the NATA Emblem, NATA Endorsement and References to Accreditation</span></td><td class="date">2025-06-24</td><td><span class="when">NATA 标志与认可声明的使用规则——报告背书与宣传引用时适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">多场所机构认可</span><span class="en">Accreditation of multi-site facilities</span></td><td class="date">2024-12-10</td><td><span class="when">多场所认可的通用准则——多地点实验室适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">新分支机构场所认可</span><span class="en">Accreditation of New Branch Sites</span></td><td class="date">2026-09-01 换版</td><td><span class="when">新增分支机构场所的认可要求；2026 换版——设新场所时适用</span><br><span class="badge opt">按需</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">授权代表职责</span><span class="en">Responsibilities of Authorised Representatives</span></td><td class="date">2024-09-23</td><td><span class="when">授权代表（签署人）的职责界定——签字权人管理适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">General</span></td><td><span class="cn">认可服务承诺</span><span class="en">Accreditation Service Commitment</span></td><td class="date">2025-10-10</td><td><span class="when">NATA 对获认可机构与申请人的服务承诺——程序预期管理</span><br><span class="badge opt">参考</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 NATA 隐私政策、关于 NATA 与认可等参考文件按需阅读。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求（SAC 领域附录）</h2><span class="tag">按领域选附录</span></div>
+  <p class="section-desc">NATA 把领域附加要求固化为 SAC（Specific Accreditation Criteria/Annex）附录：每个领域组有「附录总则＋分领域附录」，把 17025 通用条款落到澳大利亚的执行细节——申请前先锁定本领域附录。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC 校准</span></td><td><span class="cn">校准 ISO/IEC 17025 附录总则＋分领域附录</span><span class="en">Calibration ISO/IEC 17025 Annex（声超声振动/几何量/电学/质量/光学/温度/电离辐射等）</span></td><td class="date">总则 2026-06-18 换版</td><td><span class="when">校准领域附加要求（溯源链/CMC/测量方法），分领域附录按专业选——校准实验室适用</span><br><span class="badge dom">校准</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC 07</span></td><td><span class="cn">生命科学 ISO/IEC 17025 附录总则＋分领域附录</span><span class="en">Life Sciences ISO/IEC 17025 Annex（含 07.11 石棉、07.8 植物健康、07.9 种子等）</span></td><td class="date">总则 2026-02-17（2026-05 生效）</td><td><span class="when">生命科学领域附加要求——食品/医药/环境等生命科学实验室适用</span><br><span class="badge dom">生命科学</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC 动物健康</span></td><td><span class="cn">动物健康 ISO/IEC 17025 附录总则</span><span class="en">Animal Health ISO/IEC 17025 Appendix</span></td><td class="date">2025-11-18（2026-02 生效）</td><td><span class="when">动物健康检测领域附加要求；2025 换版——兽医/动物健康实验室适用</span><br><span class="badge dom">动物健康</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">SAC IAI</span></td><td><span class="cn">基础设施与资产完整性 ISO/IEC 17025 附录</span><span class="en">Infrastructure and Asset Integrity Annex（岩土/NDT/压力试验/空气控制/起重等）</span></td><td class="date">2025–2026 多版本</td><td><span class="when">基础设施领域附加要求（岩土 2025-10、NDT 2026-05、压力试验 2026-04 等）——建设工程/检测机构适用</span><br><span class="badge dom">基础设施</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC Legal</span></td><td><span class="cn">法律-法医 ISO/IEC 17025 附录总则＋分领域</span><span class="en">Legal – Forensic Science Annex（多场所犯罪现场/亲子鉴定/现场药物筛查）</span></td><td class="date">总则 2023-11-22；亲子 2025-07-17</td><td><span class="when">法医领域附加要求（含 AS/NZS 4308/4760 现场药物筛查）——法医实验室适用</span><br><span class="badge dom">法律法医</span></td></tr>
+        <tr><td><span class="code">SAC MG</span></td><td><span class="cn">制造品 ISO/IEC 17025 附录</span><span class="en">Manufactured Goods Annex（EMC/电工/物理性能/软件/橡胶塑料/纺织品/热性能/车辆安全/纸等）</span></td><td class="date">2025–2026 密集换版</td><td><span class="when">制造品检测领域附加要求（EMC 2025-12、物理性能总则 2026-06 等）——消费品/工业品检测实验室适用</span><br><span class="badge dom">制造品</span><span class="badge new">2026 密集换版</span></td></tr>
+        <tr><td><span class="code">SAC Mat</span></td><td><span class="cn">材料 ISO/IEC 17025 附录</span><span class="en">Materials Annex（水泥/工业材料表征/XRF/LIBS/AES/金相）</span></td><td class="date">XRF 2025-06-18；金相 2026-05-20</td><td><span class="when">材料检测领域附加要求（XRF/LIBS/AES 新附录替代旧 SAG）——材料实验室适用</span><br><span class="badge dom">材料</span></td></tr>
+        <tr><td><span class="code">SAC</span></td><td><span class="cn">研发支持性检测附录</span><span class="en">ISO/IEC 17025 Annex – Testing in support of research and development</span></td><td class="date">2022-06-24</td><td><span class="when">研发支持性检测的领域附加——科研型实验室适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">法医作业模块</span><span class="en">Forensic Operations Module</span></td><td class="date">2025-03-25</td><td><span class="when">法医实验室的作业模块要求——法医领域适用</span><br><span class="badge dom">法医</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">微生物参考培养物保藏 / 培养基制备与质量控制</span><span class="en">MRCC / Media Preparation and Quality Control</span></td><td class="date">2021-08-13</td><td><span class="when">生命科学/食品/医药领域的菌种保藏与培养基质控要求——微生物实验室适用</span><br><span class="badge dom">微生物</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：SAC 07.11 石棉采样与检测为 2026-07 新版；IAI 起重设备为 17020 与 17025 双准则附录；分领域附录按专业组合使用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-scheme">
+  <div class="section-head"><div class="no">四</div><h2>专项认可方案（15189/17020/GLP/PTP/RMP）</h2><span class="tag">按业务选专项</span></div>
+  <p class="section-desc">NATA 对非 17025 类型机构发布专项 SAD：医学、检验、GLP、能力验证提供者、标准物质生产者、生物样本库、医学影像、睡眠障碍服务——各按业务对应一套「SAD＋核查表/工作表＋范围描述」。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAD 15189</span></td><td><span class="cn">ISO 15189:2022 应用文件——医学检测补充认可要求</span><span class="en">ISO 15189:2022 Application Document – Supplementary Requirements for Accreditation</span></td><td class="date">2025-12-17（2026-02 生效）</td><td><span class="when">医学实验室按 15189:2022 认可的 NATA 应用文件；2026-02 生效，替代 2023-08/2012 旧版——医学实验室适用</span><br><span class="badge dom">医学</span><span class="badge new">2026 生效</span></td></tr>
+        <tr><td><span class="code">GAC 12</span></td><td><span class="cn">ISO/IEC 17020:2026 标准应用文件（SAD）</span><span class="en">ISO/IEC 17020:2026 Standard Application Document – effective October 2026</span></td><td class="date">2026-08-26（2026-10 生效）</td><td><span class="when">检验机构按 17020:2026 认可的 NATA 应用文件，配套过渡政策/核查表/工作表——检验机构适用</span><br><span class="badge dom">检验</span><span class="badge new">2026 生效</span></td></tr>
+        <tr><td><span class="code">SAD GLP</span></td><td><span class="cn">OECD GLP 认可原则应用文件</span><span class="en">OECD Principles of GLP Recognition Application Document</span></td><td class="date">2024-04-16</td><td><span class="when">GLP 项目的核心应用文件——GLP 研究机构适用</span><br><span class="badge dom">GLP</span></td></tr>
+        <tr><td><span class="code">SAD 17043</span></td><td><span class="cn">ISO/IEC 17043:2023 能力验证提供者标准应用文件</span><span class="en">ISO/IEC 17043:2023 PT Providers – Standard Application Document</span></td><td class="date">2023-12-06</td><td><span class="when">PTP 机构认可的 NATA 应用文件——能力验证提供者适用</span><br><span class="badge dom">PTP</span></td></tr>
+        <tr><td><span class="code">SAD 17034</span></td><td><span class="cn">ISO 17034 标准应用文件</span><span class="en">ISO 17034 Standard Application Document（RMP）</span></td><td class="date">2024-03-18</td><td><span class="when">标准物质生产者认可的 NATA 应用文件——RMP 机构适用（另配套 SAC 标准气体生产者附录）</span><br><span class="badge dom">RMP</span></td></tr>
+        <tr><td><span class="code">RANZCR/SDS/呼吸</span></td><td><span class="cn">医学影像（RANZCR）／睡眠障碍服务（SDS）／呼吸功能实验室专项</span><span class="en">RANZCR Clinical Radiology SAD / ASA-NATA SDS Program / Respiratory Function Laboratories</span></td><td class="date">2021–2026 多版本</td><td><span class="when">医疗专项认可方案——医学影像、睡眠、呼吸功能服务机构适用</span><br><span class="badge dom">医疗专项</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：专项方案均配套核查表/评审工作表/范围描述（SoA）；生物样本库按 ISO 20387 评审工作表。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">五</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">GAC 通用准则</span></div>
+  <p class="section-desc">NATA 的溯源与设备管理走 GAC 通用准则，PT 走专项政策——均为评审必查的横向要求。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">计量溯源性</span><span class="en">Metrological Traceability</span></td><td class="date">2020-12-20</td><td><span class="when">溯源链的 NATA 通用准则——17025 6.5 的澳大利亚执行口径</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="cn">设备保证、内部校准与设备验证</span><span class="en">Equipment Assurance, in-house Calibration and Equipment Verification</span></td><td class="date">2019-05-02</td><td><span class="when">设备管理、内校与验证的通用准则——设备控制计划制定依据</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="cn">能力验证政策</span><span class="en">Proficiency Testing Policy</span></td><td class="date">2021-12-03</td><td><span class="when">PT 参与的领域/频次/记录要求——年度 PT 合规依据</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="cn">作为参考标准的电子测量设备</span><span class="en">Electronic Measuring Equipment as Reference Standards</span></td><td class="date">2018-06-07</td><td><span class="when">电子测量设备作为参考标准的准则——校准/RMP 领域参考</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="cn">通用设备表</span><span class="en">General Equipment Table</span></td><td class="date">2024-09-20</td><td><span class="when">设备要求的通用对照表——设备管理自查参考</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="cn">实验室天平的用户核查与维护</span><span class="en">User Checks and Maintenance of Laboratory Balances</span></td><td class="date">2018-01-14</td><td><span class="when">天平的日常核查与维护指南——称量实验室适用</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">SAC 校准</span></td><td><span class="cn">校准附录——温度计量 / 质量及相关量</span><span class="en">Calibration Annex – Temperature Metrology / Mass and Related Quantities</span></td><td class="date">2022-05-09 / 2024-08-23</td><td><span class="when">温度/质量校准的领域溯源细节——对应专业校准实验室适用</span><br><span class="badge dom">校准</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：不确定度评定建议参考 JCGM GUM 及 Eurachem/NordTest（NATA 已废止其旧不确定度指南，见第七部分）。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">六</div><h2>申请与评审环节的特殊要求</h2><span class="tag">工作表 + SoA 范围描述</span></div>
+  <p class="section-desc">NATA 的申请评审接口是「评审工作表＋范围服务描述（SoA）＋变更表单」：自评用工作表，范围填报按 SoA 服务描述，变更走专用表单。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">Worksheet</span></td><td><span class="cn">ISO/IEC 17025 评审工作表</span><span class="en">ISO/IEC 17025 Assessment Worksheet</span></td><td class="date">2025-09-09</td><td><span class="when">17025 评审逐条款自评/评审依据表——申请前按此自评</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">Worksheet</span></td><td><span class="cn">带 GCLP 叠加的 ISO/IEC 17025 评审工作表</span><span class="en">ISO/IEC 17025 Assessment Worksheet with GCLP overlay</span></td><td class="date">2024-04-16</td><td><span class="when">GLP 叠加项目的工作表——同时申请 GLP 时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="cn">认可范围变更申请</span><span class="en">Application for Scope Changes</span></td><td class="date">2026-09-07 换版</td><td><span class="when">范围扩展/缩减的申请表单——范围变更走此通道</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="cn">机构详情更新表（FDU）</span><span class="en">Facility Details Update Form</span></td><td class="date">2026-09-07 换版</td><td><span class="when">机构信息变更的更新表单——地址/法人/联系人变更时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="cn">附属场所设立通知 / 现场场所设立通知</span><span class="en">Notification of Establishment of an Annex Facility / Field Site</span></td><td class="date">2022-12-09 / 2026-06-18</td><td><span class="when">新设附属场所/现场场所的通知要求（石棉现场场所适用新版）——场所变更必办</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="cn">无损检测工地咨询表</span><span class="en">NDT Work Site Advice Form</span></td><td class="date">2026-10-15 最新</td><td><span class="when">NDT 现场工地的咨询/通知表——NDT 现场检测适用</span><br><span class="badge dom">无损检测</span></td></tr>
+        <tr><td><span class="code">SoA</span></td><td><span class="cn">认可范围——服务描述系列</span><span class="en">Scope of Accreditation – Activity and Service Descriptors（校准/环境/食品/制造品/材料/法律/IAI 等）</span></td><td class="date">2022–2026 多版本</td><td><span class="when">范围填报的规范描述口径——按领域选对应 SoA 填范围</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="cn">远程评审政策</span><span class="en">Remote Assessment Policy</span></td><td class="date">2022-12-04</td><td><span class="when">远程评审的适用规则——被安排远程评审时适用</span><br><span class="badge opt">按需</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：各专项方案另有对应评审工作表（15189/17020/GLP/17043/17034/20387/影像/SDS/呼吸）按业务选用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">七</div><h2>获证后维护与近期换版要点</h2><span class="tag">2026 密集换版 · 废止清单</span></div>
+  <p class="section-desc">NATA 2026 年换版密度极高（Rules/Procedures、SAD 15189、17020:2026、制造品系列），并同步维护「已废止文件」清单——引用前先查废止区是维护纪律。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NATA Rules</span></td><td><span class="cn">NATA 认可规则（换版）</span><span class="en">NATA Rules</span></td><td class="date">2026-09-11</td><td><span class="when">规则总纲换版——全体实验室按新版规则维护</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">NATA Procedures</span></td><td><span class="cn">NATA 认可程序（换版）</span><span class="en">NATA Procedures for Accreditation</span></td><td class="date">2026-08-25</td><td><span class="when">程序要求换版——监督/续证按新程序执行</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAD 15189</span></td><td><span class="cn">ISO 15189:2022 应用文件（2026-02 生效）</span><span class="en">ISO 15189:2022 Application Document – Effective February 2026</span></td><td class="date">2026-02 生效</td><td><span class="when">旧版（2023-08 版/2012 版）已废止——医学实验室必须在 2026-02 前完成切换</span><br><span class="badge new">2026 生效</span></td></tr>
+        <tr><td><span class="code">GAC 12</span></td><td><span class="cn">ISO/IEC 17020:2026 SAD（2026-10 生效）</span><span class="en">ISO/IEC 17020:2026 SAD – effective October 2026</span></td><td class="date">2026-10 生效</td><td><span class="when">替代 2021 版 SAD（旧版已废止）——检验机构按新标准换版</span><br><span class="badge new">2026 生效</span></td></tr>
+        <tr><td><span class="code">SAC 07.11</span></td><td><span class="cn">石棉采样与检测附录（2026-07 新版）</span><span class="en">Life Sciences Annex – Asbestos sampling and testing</span></td><td class="date">2026-07-16</td><td><span class="when">石棉领域附录换版——石棉实验室立即核对</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC MG 系列</span></td><td><span class="cn">制造品领域附录密集换版</span><span class="en">Manufactured Goods Annex（物理性能/橡胶塑料/纺织品/热性能/车辆安全/纸等）</span></td><td class="date">2026-05~06</td><td><span class="when">制造品检测实验室逐项核对新版附录生效时间</span><br><span class="badge new">2026 密集换版</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="cn">法医药物检测认可向 AS/NZS 4308:2023 过渡</span><span class="en">Transition policy for medico legal drug testing accreditation to AS/NZS 4308:2023</span></td><td class="date">2023-12-05</td><td><span class="when">法医药物筛查按新标准过渡——相关实验室跟踪过渡安排</span><br><span class="badge opt">过渡</span></td></tr>
+        <tr><td><span class="code">已废止区</span></td><td><span class="cn">废止文件警示（引用前查废止）</span><span class="en">Superseded publications（消防检测/NDT 不确定度/岩土不确定度/15189 旧 SAD 等）</span></td><td class="date">2025–2026 废止</td><td><span class="when">旧版指南废止后由新附录/现行准则覆盖——引用技术文件前先查废止清单</span><br><span class="badge opt">维护纪律</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：NATA 官网单列「已废止/被替代文件」区；监督评审按 Rules/Procedures 现行版执行，PT 持续满足能力验证政策。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">八</div><h2>实操要点与常见坑</h2><span class="tag">5 条</span></div>
+  <p class="section-desc">NATA 体系「SAD＋SAC＋专项方案」三轨，最容易漏的是领域附录与废止清单。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>SAD 17025 是核心应用文件</div><p><b>SAD 17025</b> 是 17025 的 NATA 应用文件（2024-10-15）——评审对照 SAD＋领域 SAC 附录，不只看 ISO 原文。<span class="why">SAD 才是 NATA 的附加要求载体</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>领域按 SAC 附录选</div><p>校准/生命科学/动物健康/<b>IAI 基础设施</b>/法律法医/制造品/材料各自「附录总则＋分领域附录」——先锁领域组再选分领域。<span class="why">附录选错＝评审口径错</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>专项方案按业务对应</div><p>医学走 <b>SAD 15189（2026-02 生效）</b>、检验走 <b>17020:2026 SAD（2026-10 生效）</b>，另有 GLP/PTP/RMP/生物样本库/影像/SDS/呼吸。<span class="why">机构类型不同，SAD 与准则都不同</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>申请用工作表＋SoA</div><p>用 <b>17025 评审工作表</b>逐条款自评，范围按对应 <b>SoA 服务描述</b>填报；范围变更走《认可范围变更申请》。<span class="why">范围表格式以 SoA 口径为准</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2026 换版密集＋废止清单，引用前先查</div><p><b>Rules/Procedures、SAD 15189、17020:2026、制造品系列</b>均 2026 换版；官网「已废止」区持续更新——引用技术文件前先查废止。<span class="why">用废止指南应对评审是维护期高发错误</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《NATA实验室认可文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与生效日期以 NATA 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 NATA 的官方意见；正式申请前请按官网现行版本核对（NATA：<a href="https://www.nata.com.au" target="_blank" rel="noopener">nata.com.au</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

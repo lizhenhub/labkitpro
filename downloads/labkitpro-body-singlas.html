@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SINGLAS · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="SINGLAS_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">SINGLAS · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>SINGLAS · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>SINGLAS（Singapore Accreditation Council 新加坡认可理事会下属实验室认可计划）是新加坡国家实验室认可体系，由新加坡企业发展局（Enterprise Singapore）框架下的 SAC 管理。机制特色：SAC-SINGLAS 001《认可流程》（17025 版/15189 版分别发布）＋领域特定要求（MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT/MED）＋Technical Guide 不确定度指南四本＋LAFM 评审核查表——医学领域按 MED 002 亚学科（8 个）选文件。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《SINGLAS实验室认可文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="SINGLAS实验室认可文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">41</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">9</div><div class="lbl">覆盖领域组数（＋医学 8 亚学科）</div></div>
+            <div class="stat"><div class="num">20</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">必备核心文件数（SAC01/02＋SINGLAS 001/004/006＋PROF001＋LAFM03）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求（检测/校准）</a>
+    <a href="#req-med">四、医学领域专属要求（MED 系列）</a>
+    <a href="#req-tech">五、测量不确定度与溯源</a>
+    <a href="#req-apply">六、申请与评审</a>
+    <a href="#req-maintain">七、获证后维护与近期换版</a>
+    <a href="#tips">八、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>五区提炼的 <b>41 份</b>文件中，SINGLAS 体系实验室最先要落实的是 <b>7 份核心文件</b>：<b>SAC 01</b>（条款与条件）、<b>SAC 02</b>（标志与 MRA 标志规则）、<b>SAC-SINGLAS 001</b>（认可流程）、<b>SAC-SINGLAS 004</b>（检测项目分类）、<b>SAC-SINGLAS 006</b>（测量溯源性）、<b>PROF 001</b>（能力验证政策）与 <b>LAFM 03</b>（17025 评审核查表）；领域系列、Technical Guide 与 MED 系列按本领域业务选用。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">认可流程＋领域特定要求</span></div>
+  <p class="section-desc">SINGLAS 用 SAC-SINGLAS 001《认可流程》执行 ISO/IEC 17025:2017，检测/校准实验室叠加 MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT 领域特定要求，医学实验室走独立的 15189 版流程与 MED 系列——领域文件是 SINGLAS 附加要求的核心载体。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 国际基准</span><span class="d">ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）；ISO-ILAC-IAF 17025 管理体系联合公报作说明</span></div>
+      <div class="layer"><span class="t">第 2 层 · SAC 通用规则</span><span class="d">SAC 01 条款与条件、SAC 02 标志与 MRA 标志规则、SAC-SINGLAS 004 检测项目分类、PROF 001 能力验证政策</span></div>
+      <div class="layer"><span class="t">第 3 层 · 认可流程</span><span class="d">SAC-SINGLAS 001《认可流程》（ISO/IEC 17025:2017 版 2026-03-09；ISO 15189:2022 版 2024-09-06）</span></div>
+      <div class="layer"><span class="t">第 4 层 · 领域特定要求</span><span class="d">MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT 系列＋医学 MED 001 通用准则与 MED 002 亚学科 8 份</span></div>
+      <div class="layer"><span class="t">第 5 层 · 技术指南与核查表</span><span class="d">Technical Guide 1–4 不确定度指南、LAFM 03/03-MED 评审核查表、Guidance Note 系列</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">SAC 01/02 · PROF 001</span></div>
+  <p class="section-desc">SINGLAS 的通用附加要求集中在 SAC 层：条款与条件、标志与 MRA 标志使用、检测项目分类、能力验证政策——全部为 2026 更新后的现行版。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC 01</span></td><td><span class="cn">认可通用条款与条件</span><span class="en">Terms and Conditions for Accreditation</span></td><td class="date">2026-01-01</td><td><span class="when">认可资格的前提条款；2026 最新版——全体机构第一文件</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC 02</span></td><td><span class="cn">SAC 认可标志与 MRA 标志使用规则</span><span class="en">Rules for Use of SAC Accreditation Marks and MRA Marks</span></td><td class="date">2026-01-01</td><td><span class="when">SAC 标志与 MRA 联合标志的使用规则；2026 最新版——报告背书依据</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">SAC-SINGLAS 004</span></td><td><span class="cn">检测项目分类</span><span class="en">Classification of Tests</span></td><td class="date">2026-03-09</td><td><span class="when">检测项目的分类体系；2026 最新版——范围填报的分类口径</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">PROF 001</span></td><td><span class="cn">能力验证政策</span><span class="en">Policies on Proficiency Testing</span></td><td class="date">2026-04-16</td><td><span class="when">PT 参与要求；2026 最新版——年度 PT 合规依据</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">ILAC R7（SAC 转发）</span></td><td><span class="cn">ILAC MRA 标志使用规则</span><span class="en">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">2015-05（ILAC R7:05/2015）</td><td><span class="when">ILAC 互认标志的使用规范——国际互认声明适用（经 SAC 转发）</span><br><span class="badge opt">互认标志</span></td></tr>
+        <tr><td><span class="code">Joint Communique</span></td><td><span class="cn">ISO-ILAC-IAF 关于 ISO/IEC 17025 管理体系要求的联合公报</span><span class="en">Joint ISO-ILAC-IAF Communique on the Management Systems Requirements of ISO/IEC 17025</span></td><td class="date">2017-04</td><td><span class="when">管理体系条款（8.2–8.9）的应用说明——解释性参考</span><br><span class="badge opt">说明</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 SAC Guidance 01 道德准则指南、SAC-SINGLAS 003 实验室收费表（2024-12-01 生效）按需适用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求（检测 / 校准）</h2><span class="tag">按领域选系列</span></div>
+  <p class="section-desc">SINGLAS 的领域附加要求按系列发布：校准（MET）、化学生物环境（C&amp;B-ENV）、土木（CE）、电气（EL）、机械（MECH）、无损（NDT）、信息安全（IT）、功能性食品（FFT）——申请前先锁定本领域系列。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 001</span></td><td><span class="cn">认可流程（ISO/IEC 17025:2017）</span><span class="en">Accreditation Process（ISO/IEC 17025:2017）</span></td><td class="date">2026-03-09</td><td><span class="when">17025 实验室的认可流程文件；2026 最新版——检测/校准实验室核心流程</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">MET 001</span></td><td><span class="cn">校准与测量实验室特定要求</span><span class="en">Specific Requirements for Calibration and Measurement Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">校准/测量实验室的领域附加要求——校准实验室适用</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">MET 002</span></td><td><span class="cn">校准与测量能力（CMC）记录准则</span><span class="en">Criteria for Documenting the Calibration and Measurement Capability</span></td><td class="date">2022-08-01</td><td><span class="when">CMC 记录与表达的准则——校准范围与报告填报核心</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 001</span></td><td><span class="cn">化学、生物与环境检测实验室特定要求</span><span class="en">Specific Requirements for C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-16</td><td><span class="when">化学/生物/环境检测的领域附加；2026 最新版——C&amp;B/ENV 实验室共用</span><br><span class="badge dom">化学/生物/环境</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 002</span></td><td><span class="cn">化学、生物与环境检测常用设备质量保证</span><span class="en">Quality Assurance of Equipment Commonly Used in C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-24</td><td><span class="when">常用设备 QA 要求；2026 最新版——设备管理配套</span><br><span class="badge dom">化学/生物/环境</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">CE 001 / CE 002</span></td><td><span class="cn">土木工程检测特定要求 / 混凝土无损检测特定要求</span><span class="en">Specific Requirements for Civil Engineering Testing Laboratories / NDT for Concrete</span></td><td class="date">2021-05-01 / 2019-03-29</td><td><span class="when">土木工程检测的领域附加——土木/混凝土检测实验室适用</span><br><span class="badge dom">土木工程</span></td></tr>
+        <tr><td><span class="code">EL 001</span></td><td><span class="cn">电气检测实验室通用要求</span><span class="en">General Requirements for Electrical Testing Laboratories</span></td><td class="date">2022-08-01</td><td><span class="when">电气检测的领域附加要求（不确定度专项政策见第五部分 EL 002）——电气实验室适用</span><br><span class="badge dom">电气</span></td></tr>
+        <tr><td><span class="code">MECH 001</span></td><td><span class="cn">机械检测实验室特定要求</span><span class="en">Specific Requirements for Mechanical Testing Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">机械检测的领域附加——机械实验室适用</span><br><span class="badge dom">机械</span></td></tr>
+        <tr><td><span class="code">NDT 001</span></td><td><span class="cn">无损检测实验室认可特定要求</span><span class="en">Specific Requirements for Accreditation of NDT Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">无损检测的领域附加要求（人员资格认可见第六部分 NDT 002）——NDT 实验室适用</span><br><span class="badge dom">无损检测</span></td></tr>
+        <tr><td><span class="code">IT 001</span></td><td><span class="cn">IT 安全检测实验室认可通用要求</span><span class="en">General Requirements for the Accreditation of IT Security Testing Labs</span></td><td class="date">2026-08-08</td><td><span class="when">IT 安全检测的领域附加；2026 换版（替代 2018 版）——信息安全实验室适用</span><br><span class="badge dom">信息安全</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">FFT 01</span></td><td><span class="cn">食品健康相关性能检测通用准则</span><span class="en">General Criteria for Testing of Health-Related Properties of Foods</span></td><td class="date">2024-10-25</td><td><span class="when">功能性食品健康性能检测的通用准则——功能性食品检测适用</span><br><span class="badge dom">功能性食品</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 IT 002 游戏检测 IT 实验室通用要求（2020-11-20）按业务选用；NDT 003 设备质量保证、Guidance Note NDT 001 按需配套。</div>
+  </div>
+</section>
+
+<section class="block" id="req-med">
+  <div class="section-head"><div class="no">四</div><h2>医学领域专属要求（MED 系列）</h2><span class="tag">按亚学科选 MED 002</span></div>
+  <p class="section-desc">SINGLAS 医学实验室按 ISO 15189:2022 走独立流程，MED 001 通用准则之上按亚学科选 MED 002——8 个亚学科各有独立特定要求文件，2025 年全线更新。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 001</span></td><td><span class="cn">认可流程（ISO 15189:2022 医学检测版）</span><span class="en">Accreditation Process（ISO 15189:2022）</span></td><td class="date">2024-09-06</td><td><span class="when">医学实验室的认可流程文件（与 17025 版分开）——医学实验室核心流程</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">MED 001</span></td><td><span class="cn">医学检测通用准则</span><span class="en">MED 001 – General Criteria</span></td><td class="date">2025-06-30</td><td><span class="when">医学检测的通用附加准则；2025 最新版——医学实验室通用层</span><br><span class="badge core">必备</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">MED 002 系列</span></td><td><span class="cn">医学检测特定要求（8 个亚学科）</span><span class="en">Specific Requirements – Clinical Chemistry / Cytogenetics / Cytopathology / Haematology / Histopathology / Genetics &amp; Genomics / Microbiology / Molecular Pathology</span></td><td class="date">2025-11-03 全线更新</td><td><span class="when">按业务选亚学科对应文件——临床化学/细胞遗传/细胞病理/血液学/组织病理/遗传基因组/微生物/分子病理</span><br><span class="badge dom">医学亚学科</span><span class="badge new">2025 全线更新</span></td></tr>
+        <tr><td><span class="code">LAFM 03-MED</span></td><td><span class="cn">ISO 15189 评审核查表</span><span class="en">LAFM03-MED（ISO 15189 Checklist）</span></td><td class="date">2024-08-21</td><td><span class="when">医学评审的核对基准表——医学实验室评审前自查</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">Guidance Note MED 001</span></td><td><span class="cn">医学检测样品采集指引</span><span class="en">Sample Collection for Medical Testing</span></td><td class="date">2019-03-29</td><td><span class="when">样品采集的指引——医学实验室前处理环节参照</span><br><span class="badge opt">指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：医学不确定度按 Technical Guide 4（2025-11-03 最新版）执行；医学实验室不适用 17025 版领域系列。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">五</div><h2>测量不确定度与计量溯源</h2><span class="tag">Technical Guide 1–4</span></div>
+  <p class="section-desc">SINGLAS 不确定度要求「通用＋领域」双层落地：SAC-SINGLAS 006 定溯源口径，Technical Guide 1–4 按领域给评定方法，EL/NDT 另有专项政策与指南。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 006</span></td><td><span class="cn">测量溯源性</span><span class="en">Traceability of Measurement</span></td><td class="date">2021-05-01</td><td><span class="when">溯源链的执行要求——17025 6.5 的新加坡口径</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">Technical Guide 1</span></td><td><span class="cn">测量不确定度评定与表达指南</span><span class="en">Guidelines on the Evaluation and Expression of MU</span></td><td class="date">2026-03-18</td><td><span class="when">不确定度评定的通用方法指南；2026 最新版——全体实验室适用</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">Technical Guide 2</span></td><td><span class="cn">化学与微生物分析测量不确定度指南</span><span class="en">Guide on MU in Chemical &amp; Microbiological Analysis</span></td><td class="date">2023-06-27</td><td><span class="when">化学/微生物分析的不确定度指南——C&amp;B 实验室配套</span><br><span class="badge dom">化学/微生物</span></td></tr>
+        <tr><td><span class="code">Technical Guide 3</span></td><td><span class="cn">土木工程与机械检测实验室测量不确定度指南</span><span class="en">Guidance on MU for Civil Engrg and Mech Testing Laboratories</span></td><td class="date">2019-03-29</td><td><span class="when">土木/机械检测的不确定度指南——CE/MECH 实验室配套</span><br><span class="badge dom">土木/机械</span></td></tr>
+        <tr><td><span class="code">Technical Guide 4</span></td><td><span class="cn">医学检测测量不确定度指南</span><span class="en">A Guide on Measurement Uncertainty in Medical Testing</span></td><td class="date">2025-11-03</td><td><span class="when">医学检测的不确定度指南；2025 最新版——医学实验室配套</span><br><span class="badge dom">医学</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">EL 002</span></td><td><span class="cn">电气检测认可测量不确定度专项政策</span><span class="en">Specific Policy for Uncertainty of MU for Accreditation of Elc Testing</span></td><td class="date">2022-08-01</td><td><span class="when">电气检测不确定度的专项政策——电气实验室适用（配套 Guidance Note EL 001）</span><br><span class="badge dom">电气</span></td></tr>
+        <tr><td><span class="code">Guidance Note NDT 001</span></td><td><span class="cn">NDT 测量不确定度评定指南</span><span class="en">Guidance Document for Estimation of MU in NDT</span></td><td class="date">2019-03-29</td><td><span class="when">无损检测不确定度的评定指南——NDT 实验室配套</span><br><span class="badge dom">无损检测</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：不确定度评定方法以 GUM 为基准；领域指南按实验室业务配套选用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">六</div><h2>申请与评审环节的特殊要求</h2><span class="tag">LAFM 核查表 · 收费表</span></div>
+  <p class="section-desc">SINGLAS 的申请评审接口是 LAFM 评审核查表（按 17025/15189 分版）＋领域方法确认指南＋收费表——评审前按核查表逐条自查。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">LAFM 03</span></td><td><span class="cn">ISO/IEC 17025:2017 评审核查表</span><span class="en">ISO 17025:2017 Checklist</span></td><td class="date">2026-03-27</td><td><span class="when">17025 评审的核对基准表；2026 最新版——检测/校准实验室评审前自查</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">LAFM 03-MED</span></td><td><span class="cn">ISO 15189 评审核查表</span><span class="en">LAFM03-MED（ISO 15189 Checklist）</span></td><td class="date">2024-08-21</td><td><span class="when">医学评审的核对基准表——医学实验室评审前自查</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">SAC-SINGLAS 003</span></td><td><span class="cn">实验室收费表</span><span class="en">Laboratory Fee Schedule</span></td><td class="date">2024-12-01 生效</td><td><span class="when">认可相关收费项目与标准——费用预算依据</span><br><span class="badge opt">费用</span></td></tr>
+        <tr><td><span class="code">Guidance Note C&amp;B/ENV 001-003</span></td><td><span class="cn">化学方法确认要素 / 微生物方法确认 / 微生物鉴定与确认</span><span class="en">Elements of Method Validation for Chemical Testing / Method Validation of Microbiological Methods / Identification and Confirmation of Microorganisms</span></td><td class="date">2019 发布</td><td><span class="when">C&amp;B/ENV 领域方法确认与微生物鉴定的操作指引——对应领域方法验证依据</span><br><span class="badge dom">化学/微生物</span></td></tr>
+        <tr><td><span class="code">NDT 002</span></td><td><span class="cn">NDT 人员资格认证认可评审指南</span><span class="en">Guidelines for the Recognition of NDT Personnel Certification for Assessment</span></td><td class="date">2019-07-01</td><td><span class="when">NDT 人员资格证的认可评审——NDT 实验室人员能力适用</span><br><span class="badge dom">无损检测</span></td></tr>
+        <tr><td><span class="code">SACFM10</span></td><td><span class="cn">认可反馈表</span><span class="en">Accreditation Feedback Form</span></td><td class="date">2019-07-15</td><td><span class="when">对认可过程/评审组的反馈渠道——意见反馈用</span><br><span class="badge opt">反馈</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：申请材料与流程细节以 SAC-SINGLAS 001《认可流程》对应版本为准。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">七</div><h2>获证后维护与近期换版要点</h2><span class="tag">2025–2026 密集更新</span></div>
+  <p class="section-desc">SINGLAS 2025–2026 对通用规则、IT 准则、医学系列、C&amp;B-ENV 系列与不确定度指南密集更新——获证实验室应把各系列版本纳入年度跟踪。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC 01 / SAC 02</span></td><td><span class="cn">条款与条件 / 标志使用规则（换版）</span><span class="en">Terms &amp; Conditions / Rules for Marks</span></td><td class="date">2026-01-01</td><td><span class="when">通用规则 2026 换版——全体机构按新版合规</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">IT 001</span></td><td><span class="cn">IT 安全检测通用要求（换版）</span><span class="en">General Requirements for IT Security Testing Labs</span></td><td class="date">2026-08-08</td><td><span class="when">2026 换版，替代 2018-04-02 旧版——信息安全实验室立即切换</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">MED 001 / MED 002 系列</span></td><td><span class="cn">医学通用准则与亚学科特定要求（全线更新）</span><span class="en">MED 001 General Criteria / MED 002 Specific Requirements</span></td><td class="date">2025-06-30 / 2025-11-03</td><td><span class="when">医学系列 2025 全线更新——医学实验室按新亚学科文件执行</span><br><span class="badge new">2025 全线更新</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 001/002</span></td><td><span class="cn">化学生物环境特定要求与设备 QA（更新）</span><span class="en">Specific Requirements / Equipment QA</span></td><td class="date">2026-03</td><td><span class="when">C&amp;B/ENV 系列 2026-03 更新——化学/生物/环境实验室立即核对</span><br><span class="badge new">2026 更新</span></td></tr>
+        <tr><td><span class="code">Technical Guide 1</span></td><td><span class="cn">测量不确定度评定与表达指南（更新）</span><span class="en">Guidelines on the Evaluation and Expression of MU</span></td><td class="date">2026-03-18</td><td><span class="when">不确定度通用指南 2026 更新——全体实验室按新版评定</span><br><span class="badge new">2026 更新</span></td></tr>
+        <tr><td><span class="code">PROF 001</span></td><td><span class="cn">能力验证政策（更新）</span><span class="en">Policies on Proficiency Testing</span></td><td class="date">2026-04-16</td><td><span class="when">PT 政策 2026 更新——年度 PT 按新版要求排期</span><br><span class="badge new">2026 更新</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：医学亚学科文件（MED 002 八份）版本一致为 2025-11-03；各系列换版以 SAC-SINGLAS 官网出版物列表为准。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">八</div><h2>实操要点与常见坑</h2><span class="tag">5 条</span></div>
+  <p class="section-desc">SINGLAS 体系按领域系列划分清晰，最容易踩的坑在医学亚学科选文件与版本核对。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>医学按 MED 002 亚学科选文件</div><p>临床化学/细胞遗传/细胞病理/血液学/组织病理/遗传基因组/微生物/分子病理<b>8 个亚学科各有独立 MED 002</b>——按业务选对。<span class="why">选错亚学科＝文件体系用错</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>领域特定要求按系列选</div><p>校准 <b>MET</b>、化学生物环境 <b>C&amp;B-ENV</b>、土木 <b>CE</b>、电气 <b>EL</b>、机械 <b>MECH</b>、无损 <b>NDT</b>、信息安全 <b>IT</b>、功能性食品 <b>FFT</b>——先锁系列再读文件。<span class="why">17025 通用条款之外的全部附加都在领域系列里</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>不确定度四本指南＋领域专项</div><p><b>TG1 通用（2026-03-18）/ TG2 化学微生物 / TG3 土木机械 / TG4 医学（2025-11-03）</b>＋EL 002、Guidance Note NDT 001 领域专项。<span class="why">按实验室业务配对应指南</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>核查表 LAFM 03 分版使用</div><p><b>LAFM 03</b>（17025 版，2026-03-27 更新）与 <b>LAFM 03-MED</b>（15189 版）分开——评审前按对应版自查。<span class="why">医学实验室用错核查表会被打回</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2025–2026 更新密集，先核版本</div><p><b>SAC 01/02（2026-01）、IT 001（2026-08）、MED 系列（2025）、C&amp;B-ENV（2026-03）、TG1（2026-03）、PROF 001（2026-04）</b>均已换版——引用前核对日期。<span class="why">旧版文件应对评审是换版期高发错误</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《SINGLAS实验室认可文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与实施日期以 SAC/SINGLAS 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成新加坡认可理事会（SAC）或 SINGLAS 的官方意见；正式申请前请按官网现行版本核对（SAC：<a href="https://www.sac.gov.sg" target="_blank" rel="noopener">sac.gov.sg</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

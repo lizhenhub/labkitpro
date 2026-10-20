@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SINGLAS · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="SINGLAS_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">SINGLAS · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>SINGLAS · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>SINGLAS (the laboratory accreditation scheme of the Singapore Accreditation Council) is Singapore's national laboratory accreditation system, managed by SAC under the Enterprise Singapore framework. Mechanism: SAC-SINGLAS 001 Accreditation Process (issued separately for the 17025 and 15189 editions) + sector-specific requirements (MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT/MED) + four Technical Guides on measurement uncertainty + LAFM assessment checklists. In the medical field, documents are selected by MED 002 sub-discipline (8 in total).</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《SINGLAS实验室认可文件清单.html》（live crawl from the official website）</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="SINGLAS实验室认可文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">41</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">9</div><div class="lbl">Sector groups covered (+ 8 medical sub-disciplines)</div></div>
+            <div class="stat"><div class="num">20</div><div class="lbl">2025–2026 revisions / new documents</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">Core documents to have on hand (SAC 01/02 + SINGLAS 001/004/006 + PROF 001 + LAFM 03)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements (Testing/Calibration)</a>
+    <a href="#req-med">4. Medical Sector-Specific Requirements (MED series)</a>
+    <a href="#req-tech">5. Measurement Uncertainty &amp; Traceability</a>
+    <a href="#req-apply">6. Application &amp; Assessment</a>
+    <a href="#req-maintain">7. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">8. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>Of the <b>41</b> documents distilled across the system, the ones a SINGLAS laboratory must put in place first are the <b>7 core files</b>: <b>SAC 01</b> (Terms and Conditions), <b>SAC 02</b> (Rules for Use of Accreditation Marks and MRA Marks), <b>SAC-SINGLAS 001</b> (Accreditation Process), <b>SAC-SINGLAS 004</b> (Classification of Tests), <b>SAC-SINGLAS 006</b> (Traceability of Measurement), <b>PROF 001</b> (Policies on Proficiency Testing) and <b>LAFM 03</b> (the 17025 assessment checklist); sector series, Technical Guides and the MED series are then selected by your field of business.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">Accreditation Process + sector-specific requirements</span></div>
+  <p class="section-desc">SINGLAS implements ISO/IEC 17025:2017 through SAC-SINGLAS 001 (Accreditation Process). Testing/calibration laboratories additionally apply MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT sector-specific requirements, while medical laboratories follow the separate 15189 edition process and the MED series — sector documents are the core vehicle of SINGLAS's additional requirements.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · International baseline</span><span class="d">ISO/IEC 17025:2017 (testing/calibration), ISO 15189:2022 (medical); supported by the ISO-ILAC-IAF joint communiqué on 17025 management systems</span></div>
+      <div class="layer"><span class="t">Layer 2 · SAC general rules</span><span class="d">SAC 01 Terms and Conditions, SAC 02 Rules for Use of SAC Accreditation Marks and MRA Marks, SAC-SINGLAS 004 Classification of Tests, PROF 001 Policies on Proficiency Testing</span></div>
+      <div class="layer"><span class="t">Layer 3 · Accreditation process</span><span class="d">SAC-SINGLAS 001 Accreditation Process (ISO/IEC 17025:2017 edition 2026-03-09; ISO 15189:2022 edition 2024-09-06)</span></div>
+      <div class="layer"><span class="t">Layer 4 · Sector-specific requirements</span><span class="d">MET/CE/EL/MECH/NDT/C&amp;B-ENV/IT/FFT series + medical MED 001 General Criteria and the 8 MED 002 sub-discipline documents</span></div>
+      <div class="layer"><span class="t">Layer 5 · Technical guidance &amp; checklists</span><span class="d">Technical Guide 1–4 (uncertainty guides), LAFM 03 / 03-MED assessment checklists, Guidance Note series</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">SAC 01/02 · PROF 001</span></div>
+  <p class="section-desc">SINGLAS's general additional requirements sit at the SAC layer: terms and conditions, use of the SAC and MRA marks, classification of tests, and proficiency testing policy — all current 2026 editions.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC 01</span></td><td><span class="title">Terms and Conditions for Accreditation</span></td><td class="date">2026-01-01</td><td><span class="when">The prerequisite terms and conditions of accreditation; latest 2026 edition — the first document for every accredited body</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC 02</span></td><td><span class="title">Rules for Use of SAC Accreditation Marks and MRA Marks</span></td><td class="date">2026-01-01</td><td><span class="when">Rules for using the SAC mark and the combined MRA mark; latest 2026 edition — the basis for endorsing reports</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC-SINGLAS 004</span></td><td><span class="title">Classification of Tests</span></td><td class="date">2026-03-09</td><td><span class="when">The classification system for tests; latest 2026 edition — the categorization basis for scope filing</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">PROF 001</span></td><td><span class="title">Policies on Proficiency Testing</span></td><td class="date">2026-04-16</td><td><span class="when">PT participation requirements; latest 2026 edition — the basis for annual PT compliance</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">ILAC R7</span></td><td><span class="title">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">2015-05 (ILAC R7:05/2015)</td><td><span class="when">Rules for using the ILAC mutual-recognition mark — applies when making international MRA claims (as circulated by SAC)</span><br><span class="badge opt">MRA mark</span></td></tr>
+        <tr><td><span class="code">Joint Communique</span></td><td><span class="title">Joint ISO-ILAC-IAF Communique on the Management Systems Requirements of ISO/IEC 17025</span></td><td class="date">2017-04</td><td><span class="when">Application note on the management system clauses (8.2–8.9) — explanatory reference</span><br><span class="badge opt">Explanatory</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: SAC Guidance 01 (Guidance on Code of Ethics) and SAC-SINGLAS 003 Laboratory Fee Schedule (effective 2024-12-01) apply as needed.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements (Testing / Calibration)</h2><span class="tag">Pick the series for your sector</span></div>
+  <p class="section-desc">SINGLAS publishes its sector-specific requirements by series: calibration (MET), chemical/biological/environmental (C&amp;B-ENV), civil engineering (CE), electrical (EL), mechanical (MECH), NDT (NDT), IT security (IT) and functional foods (FFT) — lock in your sector series before applying.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 001</span></td><td><span class="title">Accreditation Process (ISO/IEC 17025:2017)</span></td><td class="date">2026-03-09</td><td><span class="when">The accreditation process document for 17025 laboratories; latest 2026 edition — the core process for testing/calibration labs</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">MET 001</span></td><td><span class="title">Specific Requirements for Calibration and Measurement Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">Sector-specific requirements for calibration/measurement laboratories — applies to calibration labs</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">MET 002</span></td><td><span class="title">Criteria for Documenting the Calibration and Measurement Capability</span></td><td class="date">2022-08-01</td><td><span class="when">Criteria for documenting and expressing the CMC — core for calibration scopes and reporting</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 001</span></td><td><span class="title">Specific Requirements for C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-16</td><td><span class="when">Sector-specific requirements for chemical/biological/environmental testing; latest 2026 edition — shared by C&amp;B/ENV labs</span><br><span class="badge dom">Chemical/Bio/Environmental</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 002</span></td><td><span class="title">Quality Assurance of Equipment Commonly Used in C&amp;B and ENV Testing Labs</span></td><td class="date">2026-03-24</td><td><span class="when">QA requirements for commonly used equipment; latest 2026 edition — companion for equipment management</span><br><span class="badge dom">Chemical/Bio/Environmental</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">CE 001 / CE 002</span></td><td><span class="title">Specific Requirements for Civil Engineering Testing Laboratories / NDT for Concrete</span></td><td class="date">2021-05-01 / 2019-03-29</td><td><span class="when">Sector-specific requirements for civil engineering testing — applies to civil/concrete testing labs</span><br><span class="badge dom">Civil engineering</span></td></tr>
+        <tr><td><span class="code">EL 001</span></td><td><span class="title">General Requirements for Electrical Testing Laboratories</span></td><td class="date">2022-08-01</td><td><span class="when">Sector-specific requirements for electrical testing (the dedicated uncertainty policy is EL 002, see Section 5) — applies to electrical labs</span><br><span class="badge dom">Electrical</span></td></tr>
+        <tr><td><span class="code">MECH 001</span></td><td><span class="title">Specific Requirements for Mechanical Testing Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">Sector-specific requirements for mechanical testing — applies to mechanical labs</span><br><span class="badge dom">Mechanical</span></td></tr>
+        <tr><td><span class="code">NDT 001</span></td><td><span class="title">Specific Requirements for Accreditation of NDT Laboratories</span></td><td class="date">2021-05-01</td><td><span class="when">Sector-specific requirements for NDT (recognition of NDT personnel certification is NDT 002, see Section 6) — applies to NDT labs</span><br><span class="badge dom">NDT</span></td></tr>
+        <tr><td><span class="code">IT 001</span></td><td><span class="title">General Requirements for the Accreditation of IT Security Testing Labs</span></td><td class="date">2026-08-08</td><td><span class="when">Sector-specific requirements for IT security testing; 2026 revision (superseding the 2018 edition) — applies to information-security labs</span><br><span class="badge dom">IT security</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">FFT 01</span></td><td><span class="title">General Criteria for Testing of Health-Related Properties of Foods</span></td><td class="date">2024-10-25</td><td><span class="when">General criteria for testing health-related properties of foods — applies to functional-foods testing</span><br><span class="badge dom">Functional foods</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: IT 002 (General Requirements for IT Labs for Game Testing, 2020-11-20) applies by business need; NDT 003 Equipment QA and Guidance Note NDT 001 are companion documents as needed.</div>
+  </div>
+</section>
+
+<section class="block" id="req-med">
+  <div class="section-head"><div class="no">4</div><h2>Medical Sector-Specific Requirements (MED series)</h2><span class="tag">Pick MED 002 by sub-discipline</span></div>
+  <p class="section-desc">SINGLAS medical laboratories follow the separate ISO 15189:2022 process. On top of MED 001 General Criteria, they select MED 002 by sub-discipline — 8 sub-disciplines each have their own specific-requirements document, all updated in 2025.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 001</span></td><td><span class="title">Accreditation Process (ISO 15189:2022)</span></td><td class="date">2024-09-06</td><td><span class="when">The accreditation process document for medical laboratories (separate from the 17025 edition) — the core process for medical labs</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">MED 001</span></td><td><span class="title">MED 001 – General Criteria</span></td><td class="date">2025-06-30</td><td><span class="when">General additional criteria for medical testing; latest 2025 edition — the general layer for medical labs</span><br><span class="badge core">Mandatory</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">MED 002</span></td><td><span class="title">Specific Requirements – Clinical Chemistry / Cytogenetics / Cytopathology / Haematology / Histopathology / Genetics &amp; Genomics / Microbiology / Molecular Pathology</span></td><td class="date">Full update 2025-11-03</td><td><span class="when">Select the document matching your sub-discipline — clinical chemistry / cytogenetics / cytopathology / haematology / histopathology / genetics &amp; genomics / microbiology / molecular pathology</span><br><span class="badge dom">Medical sub-disciplines</span><span class="badge new">2025 full update</span></td></tr>
+        <tr><td><span class="code">LAFM 03-MED</span></td><td><span class="title">LAFM03-MED (ISO 15189 Checklist)</span></td><td class="date">2024-08-21</td><td><span class="when">The baseline checklist for medical assessments — self-check before the medical assessment</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">Guidance Note MED 001</span></td><td><span class="title">Sample Collection for Medical Testing</span></td><td class="date">2019-03-29</td><td><span class="when">Guidance on sample collection — reference for pre-analytical steps in medical labs</span><br><span class="badge opt">Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: medical uncertainty is handled under Technical Guide 4 (latest 2025-11-03 edition); the 17025 sector series do not apply to medical laboratories.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">5</div><h2>Measurement Uncertainty &amp; Metrological Traceability</h2><span class="tag">Technical Guide 1–4</span></div>
+  <p class="section-desc">SINGLAS lands uncertainty requirements in two layers: SAC-SINGLAS 006 sets the traceability baseline, Technical Guide 1–4 give evaluation methods by sector, and EL/NDT have dedicated policies and guidance.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC-SINGLAS 006</span></td><td><span class="title">Traceability of Measurement</span></td><td class="date">2021-05-01</td><td><span class="when">Execution requirements for the traceability chain — the Singapore take on 17025 clause 6.5</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">Technical Guide 1</span></td><td><span class="title">Guidelines on the Evaluation and Expression of MU</span></td><td class="date">2026-03-18</td><td><span class="when">General guidance on evaluating uncertainty; latest 2026 edition — applies to all laboratories</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">Technical Guide 2</span></td><td><span class="title">Guide on MU in Chemical &amp; Microbiological Analysis</span></td><td class="date">2023-06-27</td><td><span class="when">Uncertainty guidance for chemical/microbiological analysis — companion for C&amp;B labs</span><br><span class="badge dom">Chemical/microbiological</span></td></tr>
+        <tr><td><span class="code">Technical Guide 3</span></td><td><span class="title">Guidance on MU for Civil Engrg and Mech Testing Laboratories</span></td><td class="date">2019-03-29</td><td><span class="when">Uncertainty guidance for civil/mechanical testing — companion for CE/MECH labs</span><br><span class="badge dom">Civil/mechanical</span></td></tr>
+        <tr><td><span class="code">Technical Guide 4</span></td><td><span class="title">A Guide on Measurement Uncertainty in Medical Testing</span></td><td class="date">2025-11-03</td><td><span class="when">Uncertainty guidance for medical testing; latest 2025 edition — companion for medical labs</span><br><span class="badge dom">Medical</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">EL 002</span></td><td><span class="title">Specific Policy for Uncertainty of MU for Accreditation of Elc Testing</span></td><td class="date">2022-08-01</td><td><span class="when">Dedicated policy on uncertainty for electrical testing — applies to electrical labs (companion: Guidance Note EL 001)</span><br><span class="badge dom">Electrical</span></td></tr>
+        <tr><td><span class="code">Guidance Note NDT 001</span></td><td><span class="title">Guidance Document for Estimation of MU in NDT</span></td><td class="date">2019-03-29</td><td><span class="when">Guidance for estimating uncertainty in NDT — companion for NDT labs</span><br><span class="badge dom">NDT</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: uncertainty evaluation is based on the GUM; sector guides are selected by the laboratory's business.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">6</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">LAFM checklists · Fee schedule</span></div>
+  <p class="section-desc">SINGLAS's application/assessment interface is the LAFM assessment checklists (separate 17025 / 15189 editions), plus sector method-validation guidance and the fee schedule — self-check item by item against the checklist before the assessment.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">LAFM 03</span></td><td><span class="title">ISO 17025:2017 Checklist</span></td><td class="date">2026-03-27</td><td><span class="when">The baseline checklist for 17025 assessments; latest 2026 edition — self-check before the assessment for testing/calibration labs</span><br><span class="badge core">Mandatory</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">LAFM 03-MED</span></td><td><span class="title">LAFM03-MED (ISO 15189 Checklist)</span></td><td class="date">2024-08-21</td><td><span class="when">The baseline checklist for medical assessments — self-check before the medical assessment</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">SAC-SINGLAS 003</span></td><td><span class="title">Laboratory Fee Schedule</span></td><td class="date">Effective 2024-12-01</td><td><span class="when">Accreditation-related fee items and rates — the basis for cost budgeting</span><br><span class="badge opt">Fees</span></td></tr>
+        <tr><td><span class="code">Guidance Note C&amp;B/ENV 001-003</span></td><td><span class="title">Elements of Method Validation for Chemical Testing / Method Validation of Microbiological Methods / Identification and Confirmation of Microorganisms</span></td><td class="date">Issued 2019</td><td><span class="when">Operational guidance for C&amp;B/ENV method validation and microbial identification — the basis for method verification in those fields</span><br><span class="badge dom">Chemical/microbiological</span></td></tr>
+        <tr><td><span class="code">NDT 002</span></td><td><span class="title">Guidelines for the Recognition of NDT Personnel Certification for Assessment</span></td><td class="date">2019-07-01</td><td><span class="when">Assessment guidance on recognising NDT personnel certification — applies to personnel competence in NDT labs</span><br><span class="badge dom">NDT</span></td></tr>
+        <tr><td><span class="code">SACFM10</span></td><td><span class="title">Accreditation Feedback Form</span></td><td class="date">2019-07-15</td><td><span class="when">Feedback channel on the accreditation process / assessment team — for submitting comments</span><br><span class="badge opt">Feedback</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: application materials and process details follow the corresponding edition of SAC-SINGLAS 001 (Accreditation Process).</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">7</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Dense 2025–2026 updates</span></div>
+  <p class="section-desc">SINGLAS issued a dense wave of updates across 2025–2026: general rules, IT criteria, the medical series, the C&amp;B-ENV series and uncertainty guides — accredited laboratories should add each series' version to their annual tracking.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC 01 / SAC 02</span></td><td><span class="title">Terms &amp; Conditions / Rules for Marks (revised)</span></td><td class="date">2026-01-01</td><td><span class="when">General rules revised in 2026 — every accredited body must comply with the new editions</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">IT 001</span></td><td><span class="title">General Requirements for IT Security Testing Labs (revised)</span></td><td class="date">2026-08-08</td><td><span class="when">2026 revision, superseding the 2018-04-02 edition — information-security labs switch over immediately</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">MED 001 / 002</span></td><td><span class="title">MED 001 General Criteria / MED 002 Specific Requirements (full update)</span></td><td class="date">2025-06-30 / 2025-11-03</td><td><span class="when">The medical series received a full 2025 update — medical labs follow the new sub-discipline documents</span><br><span class="badge new">2025 full update</span></td></tr>
+        <tr><td><span class="code">C&amp;B and ENV 001/002</span></td><td><span class="title">Specific Requirements / Equipment QA (updated)</span></td><td class="date">2026-03</td><td><span class="when">C&amp;B/ENV series updated 2026-03 — chemical/biological/environmental labs check immediately</span><br><span class="badge new">2026 update</span></td></tr>
+        <tr><td><span class="code">Technical Guide 1</span></td><td><span class="title">Guidelines on the Evaluation and Expression of MU (updated)</span></td><td class="date">2026-03-18</td><td><span class="when">The general uncertainty guide updated in 2026 — all laboratories evaluate against the new edition</span><br><span class="badge new">2026 update</span></td></tr>
+        <tr><td><span class="code">PROF 001</span></td><td><span class="title">Policies on Proficiency Testing (updated)</span></td><td class="date">2026-04-16</td><td><span class="when">PT policy updated in 2026 — schedule annual PT to the new requirements</span><br><span class="badge new">2026 update</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the eight MED 002 sub-discipline documents are uniformly at the 2025-11-03 edition; series revisions follow the publications list on the SAC-SINGLAS website.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">8</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">5 tips</span></div>
+  <p class="section-desc">The SINGLAS system is clearly divided by sector series; the most common pitfalls are selecting the wrong medical sub-discipline document and failing to check versions.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>For medicine, pick MED 002 by sub-discipline</div><p>Clinical chemistry / cytogenetics / cytopathology / haematology / histopathology / genetics &amp; genomics / microbiology / molecular pathology — <b>8 sub-disciplines each have their own MED 002</b>; choose the one matching your business.<span class="why">Picking the wrong sub-discipline means using the wrong document set</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>Select sector-specific requirements by series</div><p>Calibration <b>MET</b>, chemical/biological/environmental <b>C&amp;B-ENV</b>, civil <b>CE</b>, electrical <b>EL</b>, mechanical <b>MECH</b>, NDT <b>NDT</b>, IT security <b>IT</b>, functional foods <b>FFT</b> — lock the series first, then read the documents.<span class="why">Every addition beyond the 17025 general clauses lives in the sector series</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Four uncertainty guides plus sector specials</div><p><b>TG1 general (2026-03-18) / TG2 chemical &amp; microbiological / TG3 civil &amp; mechanical / TG4 medical (2025-11-03)</b>, plus the sector specials EL 002 and Guidance Note NDT 001.<span class="why">Match the guide to your laboratory's business</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Use the LAFM 03 checklists by edition</div><p><b>LAFM 03</b> (17025 edition, updated 2026-03-27) and <b>LAFM 03-MED</b> (15189 edition) are separate — self-check against the correct one before assessment.<span class="why">Medical labs using the wrong checklist get sent back</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>Dense 2025–2026 updates — verify the version first</div><p><b>SAC 01/02 (2026-01), IT 001 (2026-08), the MED series (2025), C&amp;B-ENV (2026-03), TG1 (2026-03), PROF 001 (2026-04)</b> have all been revised — check the date before citing.<span class="why">Bringing outdated documents to an assessment is the most common error during a revision wave</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《SINGLAS实验室认可文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and effective dates are subject to the current official versions on the SAC/SINGLAS websites.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of the Singapore Accreditation Council (SAC) or SINGLAS. Before any formal application, verify against the current official versions (SAC: <a href="https://www.sac.gov.sg" target="_blank" rel="noopener">sac.gov.sg</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

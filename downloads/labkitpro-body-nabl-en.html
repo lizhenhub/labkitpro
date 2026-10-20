@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NABL · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="NABL_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">NABL · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>NABL · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>NABL (National Accreditation Board for Testing and Calibration Laboratories), under the Quality Council of India (QCI), is India's national accreditation body. Its defining feature is the "three-piece set" that always goes together: for each laboratory type, one Specific Criteria (NABL 1xx) + one Application Form (NABL 15x) + one Assessment/Document Review Checklist (NABL 21x/22x), together with metrology technical policies (141–144/163/164) and QMS guidance (160/161).</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《NABL实验室认可文件清单.html》（live crawl from the official website）</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="NABL实验室认可文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">40</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">14</div><div class="lbl">Sectors covered (criteria types + dedicated schemes)</div></div>
+            <div class="stat"><div class="num">38</div><div class="lbl">2025–2026 revisions / new releases</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">Core documents to know (131/100B/133/142/163/forms/checklists)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements (Specific Criteria)</a>
+    <a href="#req-tech">4. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">5. Application &amp; Assessment (Forms + Checklists)</a>
+    <a href="#req-maintain">6. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">7. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>NABL runs on a "three-piece set" that always travels together. The first thing a laboratory must put in place is the <b>Specific Criteria for its body type (NABL 1xx)</b> + the matching <b>Application Form (NABL 15x)</b> + the <b>Assessment/Document Review Checklist (NABL 21x/22x)</b>, together with the overarching policies <b>NABL 131/100B/133</b> and the metrology policies <b>142/163</b>.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">Three-piece set · criteria by body type</span></div>
+  <p class="section-desc">On top of ISO/IEC 17025:2017, NABL issues a "Specific Criteria + Application Form + Checklist" trio for each laboratory type: the criteria define the sector-specific additional requirements, the application form sets the reporting basis, and the checklist is the assessment baseline — the three must be used together; none can stand alone.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · International baseline</span><span class="d">ISO/IEC 17025:2017 (testing/calibration), ISO 15189:2022 (medical), ISO/IEC 17043:2023 (PTP), ISO 17034:2016 (RMP), ISO 20387:2018 (biobanking)</span></div>
+      <div class="layer"><span class="t">Layer 2 · Overarching policies</span><span class="d">NABL 100B Process &amp; Procedure + 131 Terms &amp; Conditions + 133 Symbol &amp; claims + 132/134 complaints &amp; appeals</span></div>
+      <div class="layer"><span class="t">Layer 3 · Sector-specific criteria</span><span class="d">NABL 12x/11x/22x (calibration/site/medical/imaging/software IT/air quality/drinking water/soil/biobank, etc.)</span></div>
+      <div class="layer"><span class="t">Layer 4 · Metrology technical policies</span><span class="d">NABL 141 uncertainty, 142 traceability, 143 CMC, 163 proficiency testing, 164 alternative interlaboratory comparison, 144 remote assessment</span></div>
+      <div class="layer"><span class="t">Layer 5 · Application forms &amp; checklists</span><span class="d">NABL 15x application forms + 208–220 pre-assessment/assessment/document-review checklists (the application-assessment interface of the trio)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">Overarching policies · apply to all</span></div>
+  <p class="section-desc">NABL's general additional requirements govern "how accreditation is obtained, maintained and claimed": terms &amp; conditions, process &amp; procedure, symbol policy, complaints/appeals and adverse decisions — all the administrative and technical interfaces beyond 17025.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 131</span></td><td><span class="title">Terms &amp; Conditions for Obtaining and Maintaining NABL Accreditation</span></td><td class="date">Revised 2026-01-23</td><td><span class="when">The prerequisite terms of accreditation; revised 2026 — the first document for every body</span><br><span class="badge core">Essential</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 100B</span></td><td><span class="title">Accreditation Process &amp; Procedure</span></td><td class="date">Revised 2025-08-27</td><td><span class="when">End-to-end procedure for application → assessment → surveillance → renewal — the basis for procedural compliance</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 133</span></td><td><span class="title">Policy for Use of NABL Symbol and/or Claim of Accreditation (incl. ILAC MRA combined mark)</span></td><td class="date">Revised 2024-09-03</td><td><span class="when">Rules for symbol use and claims of accreditation status — applies to report endorsement and the international mutual-recognition mark</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 132/132A/134</span></td><td><span class="title">Complaints and Appeals Procedures</span></td><td class="date">Revised 2020–2025</td><td><span class="when">Reception path for complaints/appeals — the basis for dispute handling</span><br><span class="badge opt">Procedure</span></td></tr>
+        <tr><td><span class="code">NABL 216</span></td><td><span class="title">Procedures for Dealing with Adverse Decisions</span></td><td class="date">Revised 2021-06-01</td><td><span class="when">Handling path for adverse decisions (suspension/withdrawal, etc.) — applies when status is affected</span><br><span class="badge opt">Procedure</span></td></tr>
+        <tr><td><span class="code">NABL 100A</span></td><td><span class="title">General Information Brochure</span></td><td class="date">Revised 2026-08-31</td><td><span class="when">Overview of the NABL system; revised 2026 — introductory reference</span><br><span class="badge opt">Reference</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 015</span></td><td><span class="title">Duties and Responsibilities of NABL Staff</span></td><td class="date">2021-03-12</td><td><span class="when">Defines internal NABL responsibilities — for understanding who does what at the interface</span><br><span class="badge opt">Reference</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: versions follow the current issue/revision dates on the NABL website; when international mutual recognition applies, also read the ILAC MRA combined-mark clause of 133.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements (Specific Criteria)</h2><span class="tag">Criteria by body type</span></div>
+  <p class="section-desc">NABL hard-wires sector-specific additions into "Specific Criteria" — one per laboratory type, paired with the matching application form and checklist; regulated industries additionally have integrated assessment and regulatory-body extra requirements.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 129</span></td><td><span class="title">Specific Criteria for Accreditation of Calibration Laboratories (mechanical/flow/radiological/electrical/thermal)</span></td><td class="date">Revised 2021-11-01</td><td><span class="when">Sector additions for calibration laboratories — applies to calibration labs</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">NABL 130</span></td><td><span class="title">Specific Criteria for Site Testing and Site Calibration Laboratories</span></td><td class="date">2020-02-06</td><td><span class="when">Additional requirements for on-site/mobile testing and calibration — applies to site work</span><br><span class="badge dom">Site testing</span></td></tr>
+        <tr><td><span class="code">NABL 126</span></td><td><span class="title">Specific Criteria for Calibration of Medical Devices</span></td><td class="date">Revised 2021-06-01</td><td><span class="when">Sector additions for medical-device calibration — applies to medical-equipment calibration labs</span><br><span class="badge dom">Medical devices</span></td></tr>
+        <tr><td><span class="code">NABL 127</span></td><td><span class="title">Procedure for Integrated Assessment &amp; Additional Requirements of Regulatory Body(ies)</span></td><td class="date">Revised 2026-08-10</td><td><span class="when">Dedicated procedure for integrated assessment with regulators; revised 2026 — applies to regulated-industry labs</span><br><span class="badge dom">Regulated industries</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 137</span></td><td><span class="title">Specific Criteria for Software &amp; IT System Testing Laboratories</span></td><td class="date">Revised 2026-04-28</td><td><span class="when">Sector additions for software/IT testing labs; revised 2026 — applies to software-testing labs</span><br><span class="badge dom">Software / IT</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 135</span></td><td><span class="title">Specific Criteria for Accreditation of Medical Imaging – CABs</span></td><td class="date">Revised 2026-01-05</td><td><span class="when">Sector additions for medical-imaging bodies; revised 2026 — applies to imaging-service CABs</span><br><span class="badge dom">Medical imaging</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 136</span></td><td><span class="title">Specific Criteria for QA Testing Facilities for Diagnostic Radiology X-Ray Equipment</span></td><td class="date">Revised 2025-04-04</td><td><span class="when">Sector additions for diagnostic X-ray QA testing facilities — applies to radiological QA labs</span><br><span class="badge dom">Radiological QA</span></td></tr>
+        <tr><td><span class="code">NABL 138</span></td><td><span class="title">Specific Criteria for Air Quality Monitoring Equipment Calibration Laboratories</span></td><td class="date">Revised 2025-11-03</td><td><span class="when">Sector additions for air-quality monitoring-equipment calibration — applies to environmental metrology labs</span><br><span class="badge dom">Environmental metrology</span></td></tr>
+        <tr><td><span class="code">NABL 112A/112B</span></td><td><span class="title">Specific Criteria / Guidance for Medical Laboratories (ISO 15189:2022)</span></td><td class="date">2024-12-18 / 2025-11-04</td><td><span class="when">Sector criteria and guidance for medical laboratories — applies to medical labs (plus 111 for sample-collection centres)</span><br><span class="badge dom">Medical</span></td></tr>
+        <tr><td><span class="code">NABL 128</span></td><td><span class="title">NABL Medical (Entry Level) Testing Labs Recognition Program</span></td><td class="date">Revised 2025-08-20</td><td><span class="when">A lighter-weight recognition programme for entry-level medical labs — applies to grassroots testing points</span><br><span class="badge dom">Entry-level medical</span></td></tr>
+        <tr><td><span class="code">NABL 139/226/224</span></td><td><span class="title">Recognition Criteria for Government Drinking Water / Soil / Temporary Site Laboratories</span></td><td class="date">Issued 2021–2024</td><td><span class="when">Dedicated recognition schemes for government bodies — applies to state drinking-water, soil and construction-site labs</span><br><span class="badge dom">Government schemes</span></td></tr>
+        <tr><td><span class="code">NABL 229</span></td><td><span class="title">Specific Criteria for Accreditation of Biobank</span></td><td class="date">Revised 2025-04-04</td><td><span class="when">Sector additions for biobanks (ISO 20387) — applies to biobank organisations</span><br><span class="badge dom">Biobank</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: further dedicated schemes include 234 integrated defence-aviation assessment + DGAQA extra requirements, and 238 the NACO network recognition programme criteria (new 2026 project).</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">4</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">141–144 · 163/164</span></div>
+  <p class="section-desc">NABL's metrology technical policies form their own group: traceability (142), CMC (143), uncertainty (141/174), proficiency testing (163), and alternative interlaboratory comparison when no formal PT exists (164) — the five-piece technical set that assessors always check.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 142</span></td><td><span class="title">Policy on Metrological Traceability of Measurement Results</span></td><td class="date">2021-01-11</td><td><span class="when">NABL's execution policy for the traceability chain — the Indian position on 17025 clause 6.5</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 143</span></td><td><span class="title">Policy on CMC and Measurement Uncertainty in Calibration</span></td><td class="date">2021-03-26</td><td><span class="when">CMC and uncertainty policy for calibration laboratories — core for calibration reports and scope filing</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 141</span></td><td><span class="title">Guidelines for Estimation and Expression of Uncertainty in Measurement</span></td><td class="date">2020-02-10</td><td><span class="when">Method guidance for evaluating and expressing uncertainty — applies to all laboratories</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 174</span></td><td><span class="title">Sample Calculations for Measurement Uncertainty in Electrical Testing</span></td><td class="date">2020-02-10</td><td><span class="when">Worked examples of uncertainty in electrical testing — reference for electrical labs</span><br><span class="badge dom">Electrical</span></td></tr>
+        <tr><td><span class="code">NABL 163</span></td><td><span class="title">Policy for Participation in Proficiency Testing Activities</span></td><td class="date">Revised 2024-09-03</td><td><span class="when">Sector/frequency/record requirements for PT participation — the basis for annual PT compliance</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 164</span></td><td><span class="title">Guidelines for Interlaboratory Comparison for Calibration Laboratories where Formal PT Programs are not available</span></td><td class="date">Revised 2021-10-25</td><td><span class="when">Alternative comparison scheme when no formal PT programme exists — applies to calibration labs</span><br><span class="badge opt">Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: remote assessment follows the NABL 144 implementation guidance; the uncertainty/traceability positions align with APAC/ILAC policies.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">5</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">Application form + checklist</span></div>
+  <p class="section-desc">NABL's application and assessment is where the "three-piece set" closes: file the application form by body type (15x), undergo assessment against the assessment checklist (21x/22x), and clear the document review via the 220-series checklist — every category has its own dedicated forms.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 151/152/153</span></td><td><span class="title">Application Forms for Testing / Calibration / Medical Testing Laboratories</span></td><td class="date">Revised 2026-08-18</td><td><span class="when">Dedicated application forms; fully revised 2026 — download the latest edition before applying</span><br><span class="badge core">Application essential</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 154/233/237</span></td><td><span class="title">Application Forms for Integrated Assessment (testing / defence aviation + DGAQA / NACO network)</span></td><td class="date">2026-08-10 / 2026-10-15</td><td><span class="when">Dedicated forms for regulator integrated assessment; new in 2026 — applies to regulated-industry labs</span><br><span class="badge dom">Regulator integrated</span><span class="badge new">New 2026</span></td></tr>
+        <tr><td><span class="code">NABL 209/208A</span></td><td><span class="title">Pre-Assessment Guidelines and Forms (17025 / 15189)</span></td><td class="date">2021-12-09 / 2023-08-03</td><td><span class="when">Self-check and pre-assessment materials before assessment — the basis for self-evaluation at application</span><br><span class="badge core">Application essential</span></td></tr>
+        <tr><td><span class="code">NABL 219</span></td><td><span class="title">Assessment Forms and Checklist (Based on ISO/IEC 17025:2017)</span></td><td class="date">Revised 2025-09-01</td><td><span class="when">The baseline checklist for on-site 17025 assessment — self-check against it before assessment</span><br><span class="badge core">Essential</span></td></tr>
+        <tr><td><span class="code">NABL 220 series</span></td><td><span class="title">Document Review Checklists (220/220C/220D/220E/220F; 17025/17034/15189/17043/20387)</span></td><td class="date">Fully revised 2026-09-22</td><td><span class="when">Pick the document-review form by criteria type — the basis for the document-review stage</span><br><span class="badge core">Essential</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 218/218A</span></td><td><span class="title">Desktop Surveillance / Checklist for Annual Surveillance</span></td><td class="date">2026-01-07 / 2025-08-06</td><td><span class="when">Desktop-format surveillance and the annual checklist — applies to post-accreditation maintenance</span><br><span class="badge opt">Surveillance</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 144</span></td><td><span class="title">Guidance on conducting Remote Assessment</span></td><td class="date">2021-02-18</td><td><span class="when">Rules for running remote assessment — applies when a remote assessment is scheduled</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">NABL 160/160A/161</span></td><td><span class="title">Guide for Preparing QMS Document/Quality Manual; Guide for Internal Audit and Management Review</span></td><td class="date">Revised 2026-01</td><td><span class="when">Guidance on drafting QMS documents and on internal audit/management review; revised 2026 — applies to system build-out</span><br><span class="badge core">System build-out</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 210/213</span></td><td><span class="title">Assessor Guide / Operational Manual for Online Assessment</span></td><td class="date">2021 / 2019</td><td><span class="when">Assessor working rules and the online-assessment operations manual — reference for understanding the assessment process</span><br><span class="badge opt">Reference</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: PTP/RMP/biobank have their own dedicated application and checklists (180/190/227 application forms, 181A/191/229 criteria, 182A/192/232 pre-assessment, 183A/194/228 checklists).</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">6</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Full 2026 revision wave</span></div>
+  <p class="section-desc">In 2025–2026 NABL fully revised the application forms, checklists and terms &amp; conditions, and added new defence-aviation and NACO integrated-assessment schemes — accredited laboratories track versions of each part of the "three-piece set" separately.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 151/152/153/180/190/227</span></td><td><span class="title">Application Forms revision (testing/calibration/medical/PTP/RMP/biobank)</span></td><td class="date">2026-08-18</td><td><span class="when">Application forms fully revised in 2026 — use the latest edition for renewal/scope expansion</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 220 series</span></td><td><span class="title">Document Review Checklists (220/220C/220D/220F)</span></td><td class="date">2026-09-22</td><td><span class="when">Document-review forms fully revised in 2026 — self-check QMS documents against the new edition</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 127</span></td><td><span class="title">Integrated Assessment Procedure &amp; Regulatory Requirements (revision)</span></td><td class="date">2026-08-10</td><td><span class="when">Regulator integrated-assessment procedure revised 2026 — regulated industries keep tracking</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 137</span></td><td><span class="title">Specific Criteria for Software &amp; IT System Testing (revision)</span></td><td class="date">2026-04-28</td><td><span class="when">Software/IT criteria revised 2026 — software-testing labs check immediately</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 131</span></td><td><span class="title">Terms &amp; Conditions for Accreditation (revision)</span></td><td class="date">2026-01-23</td><td><span class="when">Status terms revised 2026 — updates the obligations for maintaining accreditation</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NABL 233/234, 237/238</span></td><td><span class="title">Defence Aviation (DGAQA) &amp; NACO Network Recognition Programs</span></td><td class="date">New 2026-08 / 2026-10</td><td><span class="when">New dedicated schemes added in 2026 — applies to defence-aviation and NACO network laboratories</span><br><span class="badge new">New 2026</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: surveillance follows the 218/218A desktop-surveillance and annual checklist; proficiency testing must be continuously met per 163; versions follow the issue/revision dates on the NABL website.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">7</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">5 tips</span></div>
+  <p class="section-desc">The NABL system runs on a matched "three-piece set"; the most common miss is that the application form/checklist are not updated in step with the criteria.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>The trio travels together: criteria + application form + checklist</div><p>Each laboratory type = <b>Specific Criteria (1xx) + Application Form (15x) + Assessment/Document Review Checklist (21x/22x)</b> — used as a set.<span class="why">Taking only the criteria without the forms means missing the reporting basis</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>Pick the criteria by body type</div><p>Calibration <b>129</b>, site <b>130</b>, medical <b>112A</b>, software/IT <b>137</b>, imaging <b>135</b>, biobank <b>229</b>, PTP <b>181A</b>, RMP <b>191</b> — lock the type first.<span class="why">Pick the wrong type and the whole file set is wrong</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Regulated industries go through integrated assessment</div><p>Regulated industries follow the <b>127</b> integrated-assessment procedure + regulatory extras, with the dedicated <b>154/233/237</b> application forms — defence aviation via DGAQA, HIV network via NACO.<span class="why">Ordinary application forms do not apply to integrated assessment</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>The five-piece metrology set</div><p><b>142 traceability / 143 CMC / 141 uncertainty / 163 proficiency testing / 164 alternative comparison</b> — calibration labs need all five; electrical testing refers to the 174 worked examples.<span class="why">Missing any one policy can draw a nonconformity</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2026 wave: download the latest forms before filing</div><p>Application forms (151–153/180/190/227) revised 2026-08-18, the <b>220-series document-review checklists</b> revised 2026-09-22, and the 131 terms revised 2026-01 — check the revision dates before filing.<span class="why">Filing on an old form version gets rejected</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《NABL实验室认可文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and issue/revision dates are subject to the current official versions on the NABL website.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of NABL or QCI. Before any formal application, verify against the current official versions (NABL: <a href="https://nabl-india.org" target="_blank" rel="noopener">nabl-india.org</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

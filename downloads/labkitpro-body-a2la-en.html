@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A2LA · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="A2LA_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">A2LA · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>A2LA · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>A2LA (American Association for Laboratory Accreditation) is the largest non-governmental laboratory accreditation body in the United States. How it works: it transposes ISO/IEC 17025:2017 via R101 "General Requirements", then overlays program-specific R2xx requirements, P-series policies (traceability / uncertainty / flexible scopes, etc.), G-series guidance and F-series scope selection lists — a four-piece set: "R101 transposition + sector R2xx + P/G policies &amp; guidance + F-series application interface".</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《A2LA实验室认可文件清单.html》（live crawl from the official website）</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="A2LA实验室认可文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">42</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">26</div><div class="lbl">Sectors covered (R2xx programs + F series)</div></div>
+            <div class="stat"><div class="num">43</div><div class="lbl">2025–2026 revisions / new releases</div></div>
+            <div class="stat"><div class="num">6</div><div class="lbl">Core documents to know (R101/R102/R103/R105/P102/P103)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements (R2xx)</a>
+    <a href="#req-tech">4. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">5. Application &amp; Assessment</a>
+    <a href="#req-maintain">6. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">7. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>Of the <b>42</b> files distilled across five areas, the core document combination a laboratory must put in place first is <b>R101</b> (transposition of 17025) + <b>R102</b> (Conditions for Accreditation) + <b>R103</b> (Proficiency Testing) + <b>R105</b> (Referencing Accredited Status) + <b>P102</b> (Metrological Traceability) + <b>P103</b> (Uncertainty in Testing, choose the a–e annex by sector); sector additions follow the <b>R2xx</b> of the program you apply for, and the application interface is the <b>F-series</b> scope selection lists.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">R101 transposition · sector R2xx</span></div>
+  <p class="section-desc">A2LA does not simply "identically adopt" 17025; instead it uses its own R101 general requirements to transpose the clauses of 17025:2017 into A2LA's accreditation language, then overlays program-specific R2xx requirements by sector. Traceability and uncertainty are additionally mandated by P102/P103 — this is the full shape of A2LA's additional requirements beyond 17025.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · International baseline</span><span class="d">ISO/IEC 17025:2017 (testing/calibration), ISO 15189:2022 (medical), ISO/IEC 17043, ISO 17034, ISO 20387 (biobanking)</span></div>
+      <div class="layer"><span class="t">Layer 2 · General requirements (R1xx)</span><span class="d">R101 transposes 17025 + R102 conditions for accreditation + R103 PT general requirements + R105 referencing accredited status</span></div>
+      <div class="layer"><span class="t">Layer 3 · Sector-specific requirements (R2xx)</span><span class="d">Construction materials / geotechnical / NDT / forensics / electrical / legal metrology / special inspection agencies / FedRAMP / medical (R602), etc.</span></div>
+      <div class="layer"><span class="t">Layer 4 · Policy documents (P series)</span><span class="d">P102 traceability, P103 uncertainty (+P103a–e sector annexes / P903 medical), flexible scopes, relocation, satellite laboratories, remote assessment</span></div>
+      <div class="layer"><span class="t">Layer 5 · Guidance &amp; forms (G/F series)</span><span class="d">G-series implementation guidance (uncertainty / scopes / decision rules) + F-series scope-of-accreditation selection lists (the application filing interface)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">R/P series · applies to all</span></div>
+  <p class="section-desc">A2LA's general additional requirements concentrate in R1xx and governance-type P documents: conditions for accreditation, referencing status, flexible scopes, relocation, satellite laboratories, transfer of accreditation — 17025 says nothing about "how accreditation is obtained and maintained"; A2LA sets all of these itself.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version &amp; Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R101</span></td><td><span class="title">General Requirements: Accreditation of Conformity Assessment Bodies</span></td><td class="date">Issued 2026-09-01</td><td><span class="when">The core vehicle by which A2LA transposes 17025 — the first document for every A2LA laboratory; latest 2026 edition</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R102</span></td><td><span class="title">Conditions for Accreditation</span></td><td class="date">Issued 2026-02-20</td><td><span class="when">Preconditions for maintaining accreditation (fees, assessment cooperation, reporting changes, etc.) — 2026 revision</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R105</span></td><td><span class="title">Requirements When Making Reference to A2LA Accredited Status</span></td><td class="date">Issued 2025-02-24</td><td><span class="when">Wording and conditions for externally claiming "A2LA accredited" — applies when referencing accreditation in promotion or reports</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">P112</span></td><td><span class="title">Policy on Flexible Scopes</span></td><td class="date">Issued 2026-03-06</td><td><span class="when">Policy on applying for and maintaining flexible scopes — applies when seeking a flexible scope</span><br><span class="badge opt">On demand</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">P105</span></td><td><span class="title">Policy on Organization Relocation</span></td><td class="date">Issued 2026-05-04</td><td><span class="when">Notification and assessment arrangements when a laboratory relocates — required reading for relocation</span><br><span class="badge opt">On demand</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">P120</span></td><td><span class="title">Policy on Satellite Laboratories</span></td><td class="date">Issued 2026-08-25</td><td><span class="when">Rules for bringing satellite laboratories into accreditation — applies to multi-site/satellite laboratories</span><br><span class="badge opt">On demand</span><span class="badge new">New 2026</span></td></tr>
+        <tr><td><span class="code">P107</span></td><td><span class="title">Policy on Transferring Accreditation</span></td><td class="date">Issued 2023-04-25</td><td><span class="when">Procedure for transferring accreditation between A2LA and another AB (or the reverse) — applies when changing accreditation bodies</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">P121</span></td><td><span class="title">Anti-Fraud Policy</span></td><td class="date">Issued 2026-08-21</td><td><span class="when">Definition and handling of accreditation-related fraud — new in 2026</span><br><span class="badge opt">On demand</span><span class="badge new">New 2026</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: P106 Policy on Branch Office Systems (2019-11-07), A132 Code of Ethical and Business Conduct (2025-09-15), etc., also apply as needed.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements (R2xx Programs)</h2><span class="tag">Choose R2xx by program</span></div>
+  <p class="section-desc">A2LA's sector additions are organized by "accreditation program": each program has its own R2xx specific requirements, translating the general clauses of 17025 into execution details for that field; advisory committee technical consensus decisions (P series) provide sector execution baselines.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version &amp; Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R208</span></td><td><span class="title">Specific Requirements - Construction Materials Testing Laboratory Accreditation Program</span></td><td class="date">Issued 2026-01-20</td><td><span class="when">Sector-specific requirements for the construction materials testing program; 2026 revision — applies to CMT laboratories</span><br><span class="badge dom">Construction materials</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R209</span></td><td><span class="title">Specific Requirements - Geotechnical Engineering Testing Laboratory Accreditation Program</span></td><td class="date">Issued 2026-01-20</td><td><span class="when">Sector-specific requirements for the geotechnical engineering testing program; 2026 revision — applies to geotechnical laboratories</span><br><span class="badge dom">Geotechnical</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R212</span></td><td><span class="title">Specific Requirements - Nondestructive Testing Laboratory Accreditation Program</span></td><td class="date">Issued 2025-09-10</td><td><span class="when">Sector-specific requirements for the NDT program (personnel qualification, methods, etc.) — applies to NDT laboratories</span><br><span class="badge dom">NDT</span></td></tr>
+        <tr><td><span class="code">R221</span></td><td><span class="title">Specific Requirements - Forensic Examination Accreditation Program</span></td><td class="date">Issued 2025-12-02</td><td><span class="when">Sector-specific requirements for the forensic examination program — applies to forensic laboratories (also R221a Maryland and R221b Texas annexes)</span><br><span class="badge dom">Forensics</span></td></tr>
+        <tr><td><span class="code">R255</span></td><td><span class="title">Specific Requirements - Electrical Testing Laboratory Accreditation Program</span></td><td class="date">Issued 2025-10-28</td><td><span class="when">Sector-specific requirements for the electrical testing program — applies to electrical laboratories</span><br><span class="badge dom">Electrical</span></td></tr>
+        <tr><td><span class="code">R262</span></td><td><span class="title">Specific Requirements - State Legal Metrology Recognition Program</span></td><td class="date">Issued 2025-10-28</td><td><span class="when">Program requirements for state legal metrology recognition — applies to state-level metrology enforcement bodies</span><br><span class="badge dom">Legal metrology</span></td></tr>
+        <tr><td><span class="code">R310</span></td><td><span class="title">Specific Requirements - Special Inspection Agencies Inspection Body Accreditation Program</span></td><td class="date">Issued 2026-07-30</td><td><span class="when">Requirements for the special inspection agencies program; latest 2026 edition — applies to inspection bodies (17020)</span><br><span class="badge dom">Inspection bodies</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R311</span></td><td><span class="title">Specific Requirements - Federal Risk and Authorization Management Program</span></td><td class="date">Template (undated)</td><td><span class="when">Dedicated requirements template for the FedRAMP program — applies to cloud-service security testing laboratories</span><br><span class="badge dom">FedRAMP</span></td></tr>
+        <tr><td><span class="code">R602/R603</span></td><td><span class="title">Conditions / PT General Requirements for Medical Testing Laboratories Meeting ISO 15189 and CLIA Requirements</span></td><td class="date">Issued 2025-10</td><td><span class="when">Medical laboratories follow the dual track of ISO 15189 + CLIA, separate from 17025 laboratories — applies to medical laboratories</span><br><span class="badge dom">Medical</span></td></tr>
+        <tr><td><span class="code">G123</span></td><td><span class="title">Guidance for Accreditation of Cannabis and Hemp Testing Laboratories</span></td><td class="date">Issued 2025-02-19</td><td><span class="when">Sector accreditation guidance for cannabis/hemp testing — applies to such laboratories</span><br><span class="badge dom">Cannabis testing</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: R213 (putting green materials) and other program-specific requirements also exist; advisory committee technical consensus decisions (P108 materials / P111 EMC / P115 forensics / P116 construction materials) set sector execution baselines and may be cited in assessment.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">4</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">P102/P103 mandatory · sector annexes</span></div>
+  <p class="section-desc">Beyond 17025, A2LA "policifies" traceability and uncertainty: P102 sets the traceability baseline, P103 sets the uncertainty baseline with sector-specific annexes, and R103 sets the PT requirements — this policy cluster is a mandatory assessment item at A2LA.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version &amp; Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">P102</span></td><td><span class="title">Policy on Metrological Traceability</span></td><td class="date">Issued 2024-10-31</td><td><span class="when">A2LA's execution policy for traceability chains (with G135 application guidance) — 17025 gives the principle, P102 gives the execution baseline</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">G135</span></td><td><span class="title">Guidance for Application of P102</span></td><td class="date">Issued 2025-10-09</td><td><span class="when">Hands-on implementation guidance for P102 — used together when designing traceability schemes</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">G149</span></td><td><span class="title">Guidance for Application of P102 In-House Calibrations</span></td><td class="date">Issued 2026-03-31</td><td><span class="when">Traceability compliance guidance for in-house calibrations; latest 2026 edition — applies when in-house calibrations exist</span><br><span class="badge opt">Guidance</span><span class="badge new">Latest 2026</span></td></tr>
+        <tr><td><span class="code">P103</span></td><td><span class="title">Policy on Estimating Measurement Uncertainty for Testing Laboratories (with P103a–e sector annexes)</span></td><td class="date">Issued 2025-08-01</td><td><span class="when">Mandatory policy for uncertainty estimation in testing laboratories; choose the annex by sector (a automotive materials / b life sciences / c EMC / d construction materials &amp; geotechnical / e forensics)</span><br><span class="badge core">Core requirement</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">P903</span></td><td><span class="title">Policy on Estimating Uncertainty of Measurement for ISO 15189 Testing Labs</span></td><td class="date">Issued 2024-12-13</td><td><span class="when">Uncertainty policy for medical laboratories — applies to 15189 laboratories (separate from P103)</span><br><span class="badge dom">Medical</span></td></tr>
+        <tr><td><span class="code">G104</span></td><td><span class="title">A2LA Guide for Estimation of Measurement Uncertainty in Testing</span></td><td class="date">Issued 2026-08-26</td><td><span class="when">General methodological guidance for uncertainty estimation in testing; latest 2026 edition — used with P103</span><br><span class="badge opt">Guidance</span><span class="badge new">Latest 2026</span></td></tr>
+        <tr><td><span class="code">G110</span></td><td><span class="title">Guidance on Uncertainty Budgets for Electrical Parameters</span></td><td class="date">Issued 2025-09-10</td><td><span class="when">Uncertainty budgets for electrical parameters — applies to electrical/calibration laboratories</span><br><span class="badge dom">Electrical</span></td></tr>
+        <tr><td><span class="code">G126</span></td><td><span class="title">Guidance on Uncertainty Budgets for Force Measuring Devices</span></td><td class="date">Issued 2026-08-26</td><td><span class="when">Uncertainty budgets for force equipment; latest 2026 edition — applies to mechanical calibration laboratories</span><br><span class="badge dom">Mechanical</span></td></tr>
+        <tr><td><span class="code">G136</span></td><td><span class="title">Guidance on Decision Rules in Calibration</span></td><td class="date">Issued 2022-10-10</td><td><span class="when">Application guidance for decision rules in calibration — applies when calibration reports carry conformity conclusions</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">R103</span></td><td><span class="title">General Requirements - Proficiency Testing for ISO/IEC 17025 Laboratories</span></td><td class="date">Issued 2026-04-01</td><td><span class="when">PT participation areas / frequency / record requirements; 2026 revision — the basis for PT compliance</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">G133</span></td><td><span class="title">A2LA Guide for Establishing Proficiency Testing Plans</span></td><td class="date">Issued 2025-06-18</td><td><span class="when">Guidance on designing and establishing PT plans — applies to PTP providers or self-developed interlaboratory comparison plans</span><br><span class="badge opt">Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: choose P103 sector annexes by your laboratory's business (P103a–e; P103b/d are the latest 2026 editions); G108 (microbial counting uncertainty), G127 (uncertainty reporting), etc., also apply as needed.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">5</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">F-series scope lists · form interface</span></div>
+  <p class="section-desc">A2LA's application interface is highly form-driven: use the F-series "Scope of Accreditation Selection Lists" to declare capabilities, the F117 technical staff matrix for personnel, F349 for subcontractor confirmation; for the preparation process, follow the I105 steps document.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version &amp; Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">I105</span></td><td><span class="title">Typical Steps in Preparing for the Accreditation Process</span></td><td class="date">Issued 2026-09-01</td><td><span class="when">Step-by-step guide through the whole application process; latest 2026 edition — the first document for newcomers</span><br><span class="badge core">Application essential</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">F series</span></td><td><span class="title">Scope of Accreditation Selection Lists (F201–F344, by sector)</span></td><td class="date">Template (undated)</td><td><span class="when">Selection lists by sector for declaring capability items (calibration F204 / chemical F205 / construction materials F208 / electrical F209 / NDT F215, etc. — 20+ sheets) — the only interface for filing a scope</span><br><span class="badge core">Application essential</span></td></tr>
+        <tr><td><span class="code">F117</span></td><td><span class="title">Technical Staff Matrix for Accreditation</span></td><td class="date">Template (undated)</td><td><span class="when">Matrix table of qualifications/experience of technical staff — evidence of personnel competence</span><br><span class="badge core">Application essential</span></td></tr>
+        <tr><td><span class="code">F349</span></td><td><span class="title">Subcontractor Competency Confirmation Form</span></td><td class="date">Template (undated)</td><td><span class="when">Confirmation form for subcontractor laboratory competence — applies when subcontracting exists</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">P119</span></td><td><span class="title">Policy on Remote Assessment</span></td><td class="date">Issued 2025-02-24</td><td><span class="when">Rules for when and how remote assessments are conducted — applies when a remote assessment is scheduled</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">G115/G106/G117/G118/G150</span></td><td><span class="title">Guidance on Scopes of Accreditation (electrical / telecom certification / CPSC / calibration / inspection bodies)</span></td><td class="date">Issued 2025–2026</td><td><span class="when">Sector guidance on scope wording — reference for filling out scope lists (G118 calibration, latest 2026-10-05)</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">P108/P111/P115/P116</span></td><td><span class="title">Technical Consensus Decisions from Advisory Committees (materials / EMC / forensics / construction materials)</span></td><td class="date">Issued 2021–2026</td><td><span class="when">Consensus decisions on sector technical baselines — execution benchmarks that may be cited during assessment</span><br><span class="badge opt">Sector baseline</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: F210a (Kentucky storage tanks), F229 (sustainable energy) and other selection lists require A2LA client login; F337/F338 are online forms.</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">6</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Dense 2025–2026 revisions</span></div>
+  <p class="section-desc">A2LA's revision density is high in 2025–2026 (the whole R1xx family, the P103 series, governance P documents, etc.); accredited laboratories should bring R/P-series version tracking into their annual management review.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version &amp; Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R101:2026</span></td><td><span class="title">General Requirements: Accreditation of CABs (latest 2026 edition)</span></td><td class="date">2026-09-01</td><td><span class="when">The core transposition document for 17025 has been revised — accredited laboratories must self-check against the new edition</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">R102/R103:2026</span></td><td><span class="title">Conditions for Accreditation / PT General Requirements</span></td><td class="date">Issued 2026</td><td><span class="when">Conditions and PT requirements revised in 2026 — the compliance baseline during maintenance is updated</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">P103d:2026</span></td><td><span class="title">Annex – Policy for Construction Materials &amp; Geotechnical Testing Labs</span></td><td class="date">2026-10-05</td><td><span class="when">Latest sector annex to the uncertainty policy — construction materials/geotechnical laboratories should check immediately</span><br><span class="badge new">Latest 2026</span></td></tr>
+        <tr><td><span class="code">P105/P120/P121:2026</span></td><td><span class="title">Relocation / Satellite Laboratories / Anti-Fraud Policies</span></td><td class="date">Issued 2026</td><td><span class="when">Governance policies revised/added in 2026 — applies to laboratories with relocations or satellite sites</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">A105:2026</span></td><td><span class="title">Bylaws of the A2LA Technical Advisory Committees</span></td><td class="date">2026-09-03</td><td><span class="when">Latest 2026 edition of the Technical Advisory Committees bylaws — the procedural basis for consensus decisions</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">G118:2026</span></td><td><span class="title">Guidance for Defining the Scope of Accreditation for Calibration Laboratories</span></td><td class="date">2026-10-05</td><td><span class="when">Latest guidance on defining calibration scopes — reference for calibration laboratories maintaining their scope</span><br><span class="badge new">Latest 2026</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: during maintenance, continuously meet R102 conditions; R105 referencing requirements and R103 PT frequency are checked at annual surveillance assessments; versions are subject to the A2LA website.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">7</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">6 tips</span></div>
+  <p class="section-desc">The A2LA four-piece set (R/P/G/F) each has its role; the most common pitfalls concentrate on "choosing the right documents by sector".</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>R101 is the "transposition vehicle"; assessments check R101 + R2xx together</div><p><b>R101</b> turns all 17025 clauses into A2LA requirements, with sector additions in <b>R2xx</b> — have both on hand when preparing for assessment.<span class="why">Reading only the 17025 original misses A2LA's reworded baseline</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>Choose the uncertainty annex by sector</div><p><b>P103</b> main policy + <b>P103a–e</b> sector annexes (automotive materials / life sciences / EMC / construction materials &amp; geotechnical / forensics) by business; medical follows <b>P903</b>.<span class="why">Choosing the wrong annex = a wrong uncertainty scheme</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Apply with the F-series scope selection lists</div><p>Choose the right <b>F201–F344</b> list by sector (calibration F204 / chemical F205 / construction materials F208 / electrical F209…), together with the <b>F117</b> staff matrix.<span class="why">The scope list is the only interface for declaring capability</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Consensus decisions are sector execution baselines</div><p><b>P108/P111/P115/P116</b> (advisory committee technical consensus decisions) may be cited in assessment — bring them into your system documents when the relevant sector applies.<span class="why">Consensus decisions are updated frequently — include them in version tracking</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>Dense revisions in 2025–2026 — check the version before executing</div><p><b>R101/R102/R103, the P103 series, P105/P112/P120/P121</b> have all been revised/added — verify issue dates on the website before use.<span class="why">Using outdated policies against an assessment is a common error during the revision period</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">6</span>Medical laboratories run a dual track — don't mix with 17025</div><p>Medical testing laboratories follow <b>R602/R603 (ISO 15189 + CLIA)</b> + P903 uncertainty, separate from the 17025 document system.<span class="why">Mixing the two tracks will be found non-compliant</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《A2LA实验室认可文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and issue dates are subject to the current official versions on the A2LA website.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of A2LA. Before any formal application, verify against the current versions on the official website (A2LA: <a href="https://a2la.org" target="_blank" rel="noopener">a2la.org</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

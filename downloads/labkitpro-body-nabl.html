@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NABL · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="NABL_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">NABL · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>NABL · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>NABL（National Accreditation Board for Testing and Calibration Laboratories，印度国家检测与校准实验室认可委员会，隶属印度质量委员会 QCI）是印度国家认可机构。机制特色：「准则＋申请表＋检查表」三件套配套——每类实验室一份特定准则（NABL 1xx）＋一份申请表（NABL 15x）＋一份评审/文件检查表（NABL 21x/22x），外加计量技术政策（141–144/163/164）与质量体系指南（160/161）。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《NABL实验室认可文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="NABL实验室认可文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">40</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">14</div><div class="lbl">覆盖领域数（准则类型＋专项方案）</div></div>
+            <div class="stat"><div class="num">38</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">必备核心文件数（131/100B/133/142/163/申请表/检查表）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求（特定准则）</a>
+    <a href="#req-tech">四、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">五、申请与评审（申请表＋检查表）</a>
+    <a href="#req-maintain">六、获证后维护与近期换版</a>
+    <a href="#tips">七、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>NABL 实行「准则＋申请表＋检查表」三件套配套，实验室最先要落实的是：按机构类型选定的<b>特定准则（NABL 1xx）</b>＋配套<b>申请表（NABL 15x）</b>＋<b>评审/文件检查表（NABL 21x/22x）</b>，并同步满足总体政策 <b>NABL 131/100B/133</b> 与计量技术政策 <b>142/163</b>。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">三件套配套 · 按类型选准则</span></div>
+  <p class="section-desc">NABL 在 ISO/IEC 17025:2017 之上，为每类实验室发布「特定准则＋申请表＋检查表」三件套：准则定义领域附加要求，申请表界定申报口径，检查表是评审核对基准——三者配套使用、缺一不可。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 国际基准</span><span class="d">ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）、ISO/IEC 17043:2023（PTP）、ISO 17034:2016（RMP）、ISO 20387:2018（生物样本库）</span></div>
+      <div class="layer"><span class="t">第 2 层 · 总体政策</span><span class="d">NABL 100B 流程与程序 ＋ 131 条款与条件 ＋ 133 标志与认可声明 ＋ 132/134 投诉申诉</span></div>
+      <div class="layer"><span class="t">第 3 层 · 领域特定准则</span><span class="d">NABL 12x/11x/22x（校准/现场/医学/影像/软件 IT/空气质量/饮用水/土壤/生物样本库等）</span></div>
+      <div class="layer"><span class="t">第 4 层 · 计量技术政策</span><span class="d">NABL 141 不确定度、142 溯源、143 CMC、163 能力验证、164 替代比对、144 远程评审</span></div>
+      <div class="layer"><span class="t">第 5 层 · 申请表与检查表</span><span class="d">NABL 15x 申请表 ＋ 208–220 预评审/评审/文件评审检查表（三件套的申请评审接口）</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">总体政策 · 全体适用</span></div>
+  <p class="section-desc">NABL 的通用附加要求管「认可怎么获得、怎么维持、怎么声明」：条款与条件、流程与程序、标志政策、投诉申诉与不利决定——17025 之外的行政与技术接口全部在此。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 131</span></td><td><span class="cn">获取与维持 NABL 认可的条款与条件</span><span class="en">Terms &amp; Conditions for Obtaining and Maintaining NABL Accreditation</span></td><td class="date">2026-01-23 修订</td><td><span class="when">认可资格的前提条款；2026 修订——全体机构第一文件</span><br><span class="badge core">必备</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 100B</span></td><td><span class="cn">认可流程与程序</span><span class="en">Accreditation Process &amp; Procedure</span></td><td class="date">2025-08-27 修订</td><td><span class="when">申请→评审→监督→续证全流程程序——程序合规依据</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 133</span></td><td><span class="cn">NABL 标志使用及认可声明政策（含 ILAC MRA 联合标志）</span><span class="en">Policy for Use of NABL Symbol and/or Claim of Accreditation（含 ILAC MRA 联合标志）</span></td><td class="date">2024-09-03 修订</td><td><span class="when">标志使用与认可声明的规则——报告背书与国际互认标志适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 132/132A/134</span></td><td><span class="cn">投诉处理程序 / 针对 NABL 的投诉 / 申诉处理程序</span><span class="en">Complaints and Appeals Procedures</span></td><td class="date">2020–2025 修订</td><td><span class="when">投诉/申诉的受理路径——争议处理依据</span><br><span class="badge opt">程序</span></td></tr>
+        <tr><td><span class="code">NABL 216</span></td><td><span class="cn">不利决定处理程序</span><span class="en">Procedures for Dealing with Adverse Decisions</span></td><td class="date">2021-06-01 修订</td><td><span class="when">不利决定（暂停/撤销等）的处理路径——资格受影响时适用</span><br><span class="badge opt">程序</span></td></tr>
+        <tr><td><span class="code">NABL 100A</span></td><td><span class="cn">NABL 概况介绍手册</span><span class="en">General Information Brochure</span></td><td class="date">2026-08-31 修订</td><td><span class="when">NABL 体系总览；2026 修订——入门参考</span><br><span class="badge opt">参考</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 015</span></td><td><span class="cn">NABL 工作人员职责</span><span class="en">Duties and Responsibilities of NABL Staff</span></td><td class="date">2021-03-12</td><td><span class="when">NABL 内部职责界定——了解接口人职责用</span><br><span class="badge opt">参考</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：版本以 NABL 官网现行发布/修订日期为准；适用国际互认时同时看 133 的 ILAC MRA 联合标志条款。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求（特定准则）</h2><span class="tag">按机构类型选准则</span></div>
+  <p class="section-desc">NABL 把领域附加要求固化为「特定准则」（Specific Criteria）——每类实验室一份，配套同类型申请表与检查表；监管行业另有联合评审与监管机构附加要求。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 129</span></td><td><span class="cn">校准实验室认可特定准则</span><span class="en">Specific Criteria for Accreditation of Calibration Laboratories（力学/流量/辐射/电工/热学）</span></td><td class="date">2021-11-01 修订</td><td><span class="when">校准实验室的领域附加要求——校准实验室适用</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">NABL 130</span></td><td><span class="cn">现场检测与现场校准实验室特定准则</span><span class="en">Specific Criteria for Site Testing and Site Calibration Laboratories</span></td><td class="date">2020-02-06</td><td><span class="when">现场/移动场所检测校准的附加要求——现场业务适用</span><br><span class="badge dom">现场检测</span></td></tr>
+        <tr><td><span class="code">NABL 126</span></td><td><span class="cn">医疗器械校准特定准则</span><span class="en">Specific Criteria for Calibration of Medical Devices</span></td><td class="date">2021-06-01 修订</td><td><span class="when">医疗器械校准的领域附加——医疗设备校准实验室适用</span><br><span class="badge dom">医疗器械</span></td></tr>
+        <tr><td><span class="code">NABL 127</span></td><td><span class="cn">检测实验室联合评审程序及监管机构附加要求</span><span class="en">Procedure for Integrated Assessment &amp; Additional Requirements of Regulatory Body(ies)</span></td><td class="date">2026-08-10 修订</td><td><span class="when">与监管机构联合评审的专项程序；2026 修订——受监管行业实验室适用</span><br><span class="badge dom">受监管行业</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 137</span></td><td><span class="cn">软件与 IT 系统检测实验室认可特定准则</span><span class="en">Specific Criteria for Software &amp; IT System Testing Laboratories</span></td><td class="date">2026-04-28 修订</td><td><span class="when">软件/IT 检测实验室的领域附加；2026 修订——软件测试实验室适用</span><br><span class="badge dom">软件 IT</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 135</span></td><td><span class="cn">医学影像合格评定机构认可特定准则</span><span class="en">Specific Criteria for Accreditation of Medical Imaging – CABs</span></td><td class="date">2026-01-05 修订</td><td><span class="when">医学影像机构的领域附加；2026 修订——影像服务 CAB 适用</span><br><span class="badge dom">医学影像</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 136</span></td><td><span class="cn">诊断 X 射线设备质量保证检测设施特定准则</span><span class="en">Specific Criteria for QA Testing Facilities for Diagnostic Radiology X-Ray Equipment</span></td><td class="date">2025-04-04 修订</td><td><span class="when">诊断 X 射线 QA 检测设施的领域附加——辐射 QA 实验室适用</span><br><span class="badge dom">辐射 QA</span></td></tr>
+        <tr><td><span class="code">NABL 138</span></td><td><span class="cn">空气质量监测设备校准实验室特定准则</span><span class="en">Specific Criteria for Air Quality Monitoring Equipment Calibration Laboratories</span></td><td class="date">2025-11-03 修订</td><td><span class="when">空气质量监测设备校准的领域附加——环境计量实验室适用</span><br><span class="badge dom">环境计量</span></td></tr>
+        <tr><td><span class="code">NABL 112A/112B</span></td><td><span class="cn">医学实验室认可特定准则＋指南文件</span><span class="en">Specific Criteria / Guidance for Medical Laboratories（ISO 15189:2022）</span></td><td class="date">2024-12-18 / 2025-11-04</td><td><span class="when">医学实验室的领域附加准则与指南——医学实验室适用（另有 111 样本采集中心程序）</span><br><span class="badge dom">医学</span></td></tr>
+        <tr><td><span class="code">NABL 128</span></td><td><span class="cn">医学初级检测实验室 M(EL)T 认可计划准则与程序</span><span class="en">NABL Medical (Entry Level) Testing Labs Recognition Program</span></td><td class="date">2025-08-20 修订</td><td><span class="when">初级医学实验室的轻量认可计划——基层医学检测点适用</span><br><span class="badge dom">医学初级</span></td></tr>
+        <tr><td><span class="code">NABL 139/226/224</span></td><td><span class="cn">政府饮用水 / 政府土壤 / 临时现场检测实验室认可准则</span><span class="en">Recognition Criteria for Government Drinking Water / Soil / Temporary Site Laboratories</span></td><td class="date">2021–2024 发布</td><td><span class="when">政府类实验室的专项认可计划——邦级饮用水、土壤、建筑现场实验室适用</span><br><span class="badge dom">政府项目</span></td></tr>
+        <tr><td><span class="code">NABL 229</span></td><td><span class="cn">生物样本库认可特定准则</span><span class="en">Specific Criteria for Accreditation of Biobank</span></td><td class="date">2025-04-04 修订</td><td><span class="when">生物样本库的领域附加（ISO 20387）——样本库机构适用</span><br><span class="badge dom">生物样本库</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 234 国防航空联合评审＋DGAQA 附加要求、238 NACO 网络认可计划准则（2026 新项目）等专项。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">四</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">141–144 · 163/164</span></div>
+  <p class="section-desc">NABL 的计量技术政策独立成组：溯源（142）、CMC（143）、不确定度（141/174）、能力验证（163）、无正式 PT 时的替代比对（164）——评审必查的技术政策五件套。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 142</span></td><td><span class="cn">测量结果计量溯源性政策</span><span class="en">Policy on Metrological Traceability of Measurement Results</span></td><td class="date">2021-01-11</td><td><span class="when">溯源链的 NABL 执行政策——17025 6.5 的印度口径</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 143</span></td><td><span class="cn">校准测量能力（CMC）与校准测量不确定度政策</span><span class="en">Policy on CMC and Measurement Uncertainty in Calibration</span></td><td class="date">2021-03-26</td><td><span class="when">校准实验室 CMC 与不确定度政策——校准报告与范围填报核心</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 141</span></td><td><span class="cn">测量不确定度评定与表示指南</span><span class="en">Guidelines for Estimation and Expression of Uncertainty in Measurement</span></td><td class="date">2020-02-10</td><td><span class="when">不确定度评定与表达的方法指南——全体实验室适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 174</span></td><td><span class="cn">电学检测测量不确定度计算示例</span><span class="en">Sample Calculations for Measurement Uncertainty in Electrical Testing</span></td><td class="date">2020-02-10</td><td><span class="when">电学检测不确定度的计算示例——电气实验室参照</span><br><span class="badge dom">电气</span></td></tr>
+        <tr><td><span class="code">NABL 163</span></td><td><span class="cn">能力验证活动参与政策</span><span class="en">Policy for Participation in Proficiency Testing Activities</span></td><td class="date">2024-09-03 修订</td><td><span class="when">PT 参与的领域/频次/记录要求——年度 PT 合规依据</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 164</span></td><td><span class="cn">无正式 PT 计划时校准实验室间比对指南</span><span class="en">Guidelines for Interlaboratory Comparison for Calibration Laboratories where Formal PT Programs are not available</span></td><td class="date">2021-10-25 修订</td><td><span class="when">无正式 PT 时的替代比对方案——校准实验室适用</span><br><span class="badge opt">指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：远程评审按 NABL 144 实施指南执行；不确定度/溯源口径与 APAC/ILAC 政策衔接。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">五</div><h2>申请与评审环节的特殊要求</h2><span class="tag">申请表 ＋ 检查表</span></div>
+  <p class="section-desc">NABL 的申请评审是「三件套」的收口：按机构类型填申请表（15x）、按评审检查表（21x/22x）接受评审、按文件评审检查表（220 系列）过文件关——每一类都有专用表格。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 151/152/153</span></td><td><span class="cn">检测 / 校准 / 医学实验室申请表</span><span class="en">Application Forms for Testing / Calibration / Medical Testing Laboratories</span></td><td class="date">2026-08-18 修订</td><td><span class="when">申请申报的专用表格；2026 全线修订——申请前下载最新版</span><br><span class="badge core">申请必备</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 154/233/237</span></td><td><span class="cn">联合评审申请表（检测 / 国防航空＋DGAQA / NACO 网络）</span><span class="en">Application Forms for Integrated Assessment</span></td><td class="date">2026-08-10 / 2026-10-15</td><td><span class="when">监管联合评审的专项申请表；2026 新增——受监管行业实验室适用</span><br><span class="badge dom">监管联合</span><span class="badge new">2026 新增</span></td></tr>
+        <tr><td><span class="code">NABL 209/208A</span></td><td><span class="cn">预评审指南与表格（17025 / 15189）</span><span class="en">Pre-Assessment Guidelines and Forms</span></td><td class="date">2021-12-09 / 2023-08-03</td><td><span class="when">评审前的自查与预评审材料——申请阶段自评依据</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">NABL 219</span></td><td><span class="cn">评审表格与检查表（ISO/IEC 17025:2017）</span><span class="en">Assessment Forms and Checklist (Based on ISO/IEC 17025:2017)</span></td><td class="date">2025-09-01 修订</td><td><span class="when">17025 现场评审的核对基准——评审前按此自查</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">NABL 220 系列</span></td><td><span class="cn">文件评审检查表（220/220C/220D/220E/220F）</span><span class="en">Document Review Checklists（17025/17034/15189/17043/20387）</span></td><td class="date">2026-09-22 全线修订</td><td><span class="when">按准则类型选文件评审表——文件关评审依据</span><br><span class="badge core">必备</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 218/218A</span></td><td><span class="cn">桌面监督评审 / 年度监督检查表</span><span class="en">Desktop Surveillance / Checklist for Annual Surveillance</span></td><td class="date">2026-01-07 / 2025-08-06</td><td><span class="when">监督评审的桌面化形式与年度检查表——获证后维护适用</span><br><span class="badge opt">监督</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 144</span></td><td><span class="cn">远程评审实施指南</span><span class="en">Guidance on conducting Remote Assessment</span></td><td class="date">2021-02-18</td><td><span class="when">远程评审的实施规则——被安排远程评审时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">NABL 160/160A/161</span></td><td><span class="cn">质量手册编制指南（通用/检测校准版）＋内审与管理评审指南</span><span class="en">Guide for Preparing QMS Document/Quality Manual；Guide for Internal Audit and Management Review</span></td><td class="date">2026-01 修订</td><td><span class="when">质量体系文件编制与内审/管理评审指南；2026 修订——体系建设适用</span><br><span class="badge core">体系建设</span><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 210/213</span></td><td><span class="cn">评审员指南 / 在线评审操作手册</span><span class="en">Assessor Guide / Operational Manual for Online Assessment</span></td><td class="date">2021/2019</td><td><span class="when">评审员工作规范与在线评审操作——理解评审过程参考</span><br><span class="badge opt">参考</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：PTP/RMP/生物样本库另有专项申请与检查表（180/190/227 申请表、181A/191/229 准则、182A/192/232 预评审、183A/194/228 检查表）。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">六</div><h2>获证后维护与近期换版要点</h2><span class="tag">2026 全线修订</span></div>
+  <p class="section-desc">NABL 2025–2026 对申请表、检查表、条款条件全线修订，并新增国防航空与 NACO 联合评审项目——获证实验室按「三件套」各自跟踪版本。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NABL 151/152/153/180/190/227</span></td><td><span class="cn">各类申请表全线修订</span><span class="en">Application Forms revision（检测/校准/医学/PTP/RMP/生物样本库）</span></td><td class="date">2026-08-18</td><td><span class="when">申请表 2026 全线修订——续证/扩项申报用最新版</span><br><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 220 系列</span></td><td><span class="cn">文件评审检查表全线修订</span><span class="en">Document Review Checklists（220/220C/220D/220F）</span></td><td class="date">2026-09-22</td><td><span class="when">文件评审表 2026 全线修订——体系文件对照新版自查</span><br><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 127</span></td><td><span class="cn">联合评审程序及监管机构附加要求（修订）</span><span class="en">Integrated Assessment Procedure &amp; Regulatory Requirements</span></td><td class="date">2026-08-10</td><td><span class="when">监管联合评审程序 2026 修订——受监管行业持续跟踪</span><br><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 137</span></td><td><span class="cn">软件与 IT 系统检测准则（修订）</span><span class="en">Specific Criteria for Software &amp; IT System Testing</span></td><td class="date">2026-04-28</td><td><span class="when">软件 IT 准则 2026 修订——软件测试实验室立即核对</span><br><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 131</span></td><td><span class="cn">条款与条件（修订）</span><span class="en">Terms &amp; Conditions for Accreditation</span></td><td class="date">2026-01-23</td><td><span class="when">资格条款 2026 修订——维持资格的义务更新</span><br><span class="badge new">2026 修订</span></td></tr>
+        <tr><td><span class="code">NABL 233/234、237/238</span></td><td><span class="cn">国防航空（DGAQA）与 NACO 网络认可新项目</span><span class="en">Defence Aviation &amp; NACO Network Recognition Programs</span></td><td class="date">2026-08/2026-10 新增</td><td><span class="when">2026 新增专项——国防航空与 NACO 网络实验室适用</span><br><span class="badge new">2026 新增</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：监督评审按 218/218A 桌面监督与年度检查表执行；能力验证按 163 持续满足；版本以 NABL 官网发布/修订日期为准。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">七</div><h2>实操要点与常见坑</h2><span class="tag">5 条</span></div>
+  <p class="section-desc">NABL 体系「三件套」配套，最容易漏的是申请表/检查表与准则不同步更新。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>三件套配套：准则＋申请表＋检查表</div><p>每类实验室 = <b>特定准则（1xx）＋申请表（15x）＋评审/文件检查表（21x/22x）</b>——三者配套使用。<span class="why">只拿准则不看表格会漏申报口径</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>按机构类型选准则</div><p>校准 <b>129</b>、现场 <b>130</b>、医学 <b>112A</b>、软件 IT <b>137</b>、影像 <b>135</b>、生物样本库 <b>229</b>、PTP <b>181A</b>、RMP <b>191</b>——先锁定类型。<span class="why">类型选错＝整套文件用错</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>监管行业走联合评审</div><p>受监管行业按 <b>127</b> 联合评审程序＋监管附加要求，配套 <b>154/233/237</b> 专项申请表——国防航空走 DGAQA、HIV 网络走 NACO。<span class="why">普通申请表不适用于联合评审</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>计量政策五件套</div><p><b>142 溯源 / 143 CMC / 141 不确定度 / 163 能力验证 / 164 替代比对</b>——校准实验室五件全配；电学检测参照 174 示例。<span class="why">缺任一政策都可能开不符合</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2026 表格与检查表全线修订，下载最新版再申报</div><p>申请表（151–153/180/190/227）2026-08-18 修订、<b>220 系列文件评审表</b>2026-09-22 修订、131 条款 2026-01 修订——申报前核对修订日期。<span class="why">用旧版表格申报会被退件</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《NABL实验室认可文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与发布/修订日期以 NABL 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 NABL 或 QCI 的官方意见；正式申请前请按官网现行版本核对（NABL：<a href="https://nabl-india.org" target="_blank" rel="noopener">nabl-india.org</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Laboratory Accreditation Requirements (ILAC · CNAS · A2LA · UKAS · NVLAP · NATA · SINGLAS · NABL)</title>
+<meta name="description" content="Accreditation requirements distilled body by body: ILAC, CNAS, A2LA, UKAS, NVLAP, NATA, SINGLAS, NABL. General obligations, core criteria, sector requirements, metrology & PT, application & assessment, maintenance.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a4a'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='%23f5a623' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --b900:#0a1f38;--b800:#0f2a4a;--b700:#143a63;--b500:#1e4d8b;--b300:#4a7bb5;--b100:#e7eef6;
+  --acc:#f5a623;--acc7:#c9851a;--surf:#f5f7fa;--ink:#14202e;--mut:#5b6b7d;--line:#dde5ee;--code:#1b6ea8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip;background:var(--surf);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;font-size:14.5px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+/* ===== Header (LabKitPro chrome) ===== */
+.site-header{position:sticky;top:0;z-index:50;background:var(--b800);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px}
+.logo{font-weight:800;font-size:19px;letter-spacing:.2px;color:#fff;white-space:nowrap}
+.logo span{color:var(--acc)}
+.nav{display:none;align-items:center;gap:18px}
+.nav a{color:#cdd9e6;font-size:14px;font-weight:500;white-space:nowrap;transition:color .15s}
+.nav a:hover{color:#fff}
+.nav .cta{background:var(--acc);color:#1a1205;font-weight:700;padding:7px 14px;border-radius:8px}
+.nav .cta:hover{background:var(--acc7);color:#fff}
+.lang-toggle{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.lang-toggle:hover{background:rgba(255,255,255,.22)}
+.nav-burger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer}
+.burger-ico{display:block;width:18px;height:14px;position:relative}
+.burger-ico i{position:absolute;left:0;width:18px;height:2px;border-radius:2px;background:#fff}
+.burger-ico i:nth-child(1){top:0}.burger-ico i:nth-child(2){top:6px}.burger-ico i:nth-child(3){top:12px}
+.burger-ico.open i:nth-child(1){top:6px;transform:rotate(45deg)}
+.burger-ico.open i:nth-child(2){opacity:0}
+.burger-ico.open i:nth-child(3){top:6px;transform:rotate(-45deg)}
+.m-nav{display:none;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--b800);border-top:1px solid rgba(255,255,255,.1);box-shadow:0 18px 36px rgba(0,0,0,.36);padding:6px 16px 14px;max-height:calc(100vh - 60px);overflow-y:auto}
+.m-nav.open{display:flex}
+.m-nav a{color:#dbe6f1;font-size:15px;font-weight:600;padding:12px 2px;border-bottom:1px solid rgba(255,255,255,.07)}
+.m-nav .m-cta{margin-top:12px;text-align:center;background:var(--acc);color:#1a1205;font-weight:800;border-radius:9px;padding:12px 16px;border-bottom:none}
+.m-nav .lang-toggle{margin-top:12px;align-self:flex-start}
+@media(min-width:861px){.nav{display:flex}.nav-burger{display:none}}
+/* ===== Hero ===== */
+.hero{background:linear-gradient(135deg,#0a1f38 0%,#143a63 60%,#1e4d8b 100%);color:#fff;padding:46px 0 44px}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--acc);border:1px solid rgba(245,166,35,.4);border-radius:999px;padding:5px 12px}
+.hero h1{font-size:clamp(25px,3.6vw,40px);line-height:1.15;margin:12px 0 14px;font-weight:800}
+.hero-sub{font-size:16px;color:#cdd9e6;max-width:780px;margin:0 0 22px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:20px}
+.verify{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:600;color:#fff}
+.verify b{color:var(--acc)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;border-radius:9px;font-weight:700;padding:12px 22px;font-size:15px;cursor:pointer;border:1px solid transparent;transition:all .15s;text-decoration:none}
+.btn-primary{background:var(--acc);color:#1a1205}
+.btn-primary:hover{background:var(--acc7);color:#fff}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.free-note{margin-top:12px;font-size:12.5px;color:#9fb4c9}
+/* ===== Section blocks ===== */
+.block{margin:34px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.sec-head .no{flex:0 0 auto;width:38px;height:38px;border-radius:999px;background:var(--b800);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.sec-head h2{font-size:21px;color:var(--b800)}
+.sec-desc{color:var(--mut);font-size:13.5px;margin:0 0 16px 50px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.step .sn{width:34px;height:34px;border-radius:999px;background:var(--b800);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px}
+.step h3{font-size:15px;color:var(--b800);margin-bottom:4px}
+.step p{font-size:13px;color:var(--mut);margin:0;line-height:1.6}
+/* ===== Jump nav ===== */
+.jump{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:26px 0}
+.jump .lab{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
+.pills{display:none;flex-wrap:wrap;gap:8px}
+.pills a{font-size:12.5px;font-weight:600;color:var(--b700);background:var(--b100);border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:background .15s,color .15s}
+.pills a:hover{background:var(--b800);color:#fff}
+.jump-sel{display:block;width:100%;font-family:inherit;font-size:14px;font-weight:600;color:var(--b700);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:44px}
+@media(min-width:861px){.pills{display:flex}.jump-sel{display:none}}
+section[id]{scroll-margin-top:74px}
+/* ===== Institution ===== */
+.inst{background:#fff;border:1px solid var(--line);border-radius:16px;margin:30px 0;overflow:hidden}
+.inst-head{padding:24px 26px 14px;border-bottom:1px solid var(--line);background:#fff}
+.inst-head .row1{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.inst-head .no{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--acc);color:#1a1205;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.inst-head h2{font-size:22px;color:var(--b800)}
+.inst-head .en{font-size:12.5px;color:var(--mut)}
+.inst-head .tag{font-size:12px;font-weight:700;color:var(--b700);background:var(--b100);border:1px solid var(--line);padding:3px 11px;border-radius:999px}
+.inst-head .loc{font-size:13.5px;color:var(--mut);margin-top:10px;max-width:980px;line-height:1.65}
+.inst-grid{display:grid;grid-template-columns:1fr;gap:14px;padding:18px 26px 8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{font-size:14px;font-weight:700;color:var(--b700);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card h3 .sn{flex:0 0 auto;width:21px;height:21px;border-radius:6px;background:var(--b800);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center}
+.card ul{list-style:none}
+.card li{font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line);color:var(--ink)}
+.card li:last-child{border-bottom:none}
+.card li code{display:inline-block;font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;color:var(--code);background:#eef4ff;border:1px solid #cfe0ff;border-radius:5px;padding:1px 7px;margin:2px 6px 2px 0;white-space:nowrap}
+.card li b{font-weight:700;color:var(--ink)}
+.card li .why{display:block;color:var(--mut);font-size:12.5px;margin-left:2px}
+.inst-tip{background:#fff8ec;border:1px solid #f0d9a8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:0 26px 14px}
+.inst-tip b{color:#a35b1a}
+.inst-more{text-align:right;padding:0 26px 20px}
+.inst-more a{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--b500);border:1px solid var(--b300);border-radius:9px;padding:9px 16px;transition:background .15s,color .15s}
+.inst-more a:hover{background:var(--b500);color:#fff}
+/* ===== Update log ===== */
+.update-log{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:26px 0}
+.update-log h3{font-size:14px;color:var(--b800);margin-bottom:8px}
+.update-log ul{list-style:none}
+.update-log li{font-size:12.5px;color:var(--mut);padding:3px 0;border-bottom:1px dashed var(--line)}
+.update-log li:last-child{border:none}
+.update-log code{font-family:ui-monospace,Consolas,monospace;color:var(--code);font-weight:700}
+/* ===== Footer ===== */
+.site-footer{background:var(--b900);color:#aebfd0;font-size:13px;padding:38px 0 26px;margin-top:56px}
+.site-footer .cols{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:22px}
+.site-footer h4{color:#fff;font-size:13.5px;margin:0 0 10px}
+.site-footer a{color:#cdd9e6}
+.site-footer a:hover{color:#fff}
+.site-footer .f-col a{display:block;margin-bottom:7px}
+.site-footer .bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;color:#7f93a8;font-size:12px;line-height:1.8}
+@media(min-width:720px){.site-footer .cols{grid-template-columns:repeat(4,1fr)}.inst-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.container{padding-left:16px;padding-right:16px}.hero{padding:36px 0 40px}.hero-sub{font-size:15px}.hero h1{font-size:24px}.inst-head{padding:20px 18px 12px}.inst-grid{padding:14px 18px 6px}.inst-tip{margin:0 18px 12px}.inst-more{padding:0 18px 16px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="https://labkitpro.com">LabKit<span>Pro</span></a>
+    <nav class="nav">
+      <a href="https://labkitpro.com">Home</a>
+      <a href="https://labkitpro.com/coverage">Coverage</a>
+      <a class="cta" href="https://labkitpro.com/diagnosis">Free Diagnosis</a>
+      <a class="lang-toggle" href="八家机构实验室认可要点速览-中文版.html">中</a>
+    </nav>
+    <button class="nav-burger" onclick="document.getElementById('mnav').classList.toggle('open');document.querySelector('.burger-ico').classList.toggle('open')" aria-label="Menu"><span class="burger-ico" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  </div>
+  <div class="m-nav" id="mnav">
+    <a href="https://labkitpro.com">Home</a>
+    <a href="https://labkitpro.com/coverage">Coverage</a>
+    <a class="m-cta" href="https://labkitpro.com/diagnosis">Free Diagnosis</a>
+    <a class="lang-toggle" href="八家机构实验室认可要点速览-中文版.html">中</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Laboratory Accreditation · Body by Body</span>
+    <h1>Accreditation Requirements, Distilled for Your Own Body</h1>
+    <p class="hero-sub">Only your own country's accreditation body matters for your lab. This page distills the must-have requirements of <b>ILAC · CNAS · A2LA · UKAS · NVLAP · NATA · SINGLAS · NABL</b> along one path per body: general obligations → core criteria → sector requirements → metrology &amp; proficiency testing → application &amp; assessment → post-accreditation maintenance. Find yours below and walk its path — ready for accreditation and maintenance.</p>
+    <div class="hero-meta">
+      <span class="verify">Last verified: <b>2026-10-19</b></span>
+      <span class="verify">Free</span>
+      <span class="verify">Resources compiled from official public documents</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#ilac">Start with your body →</a>
+    </div>
+    <p class="free-note">Everything on this page is free to read. No signup required.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="jump">
+    <div class="lab">Jump to your body</div>
+    <div class="pills">
+      <a href="#howto">How to read</a><a href="#ilac">ILAC</a><a href="#cnas">CNAS</a><a href="#a2la">A2LA</a><a href="#ukas">UKAS</a><a href="#nvlap">NVLAP</a><a href="#nata">NATA</a><a href="#singlas">SINGLAS</a><a href="#nabl">NABL</a>
+    </div>
+    <select class="jump-sel" onchange="if(this.value){location.hash=this.value}" aria-label="Jump to body">
+      <option value="">Jump to your body…</option>
+      <option value="howto">How to read</option>
+      <option value="ilac">ILAC</option>
+      <option value="cnas">CNAS</option>
+      <option value="a2la">A2LA</option>
+      <option value="ukas">UKAS</option>
+      <option value="nvlap">NVLAP</option>
+      <option value="nata">NATA</option>
+      <option value="singlas">SINGLAS</option>
+      <option value="nabl">NABL</option>
+    </select>
+  </div>
+
+  <section class="block" id="howto">
+    <div class="sec-head"><div class="no">0</div><h2>How to read this page</h2></div>
+    <p class="sec-desc">Each body has its own section, organized along the same path below — find your body and walk the path that applies to you.</p>
+    <div class="grid-auto">
+      <div class="step"><div class="sn">1</div><h3>General obligations</h3><p>Accreditation rules, terms &amp; conditions, symbol use, complaints &amp; appeals — hard gates that apply to every applicant.</p></div>
+      <div class="step"><div class="sn">2</div><h3>Core criteria</h3><p>ISO/IEC 17025, ISO 15189 and other base standards, plus the body's own conversion / application requirements.</p></div>
+      <div class="step"><div class="sn">3</div><h3>Sector requirements</h3><p>Application notes, project handbooks or specific criteria selected by field or by organization type.</p></div>
+      <div class="step"><div class="sn">4</div><h3>Metrology · uncertainty · PT</h3><p>Traceability policy, measurement uncertainty, proficiency testing participation — always checked at assessment.</p></div>
+      <div class="step"><div class="sn">5</div><h3>Application &amp; assessment</h3><p>Application forms, scope submission, assessment &amp; document-review checklists — pick the triplet for your type.</p></div>
+      <div class="step"><div class="sn">6</div><h3>Post-accreditation maintenance</h3><p>Surveillance, renewal, version tracking and recent document changes — the part that keeps your certificate alive.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== ILAC ===== -->
+  <section class="inst" id="ilac">
+    <div class="inst-head">
+      <div class="row1"><div class="no">1</div><h2>ILAC</h2><span class="en">International Laboratory Accreditation Cooperation</span><span class="tag">International mutual-recognition layer</span></div>
+      <p class="loc">ILAC is not an accreditation body — it is the global framework for mutual recognition of laboratory accreditation (ILAC MRA). Labs do not apply to ILAC; they are accredited by their national body, which holds ILAC MRA signatory status. On 2026-01-01 ILAC ceased operating and its functions moved to <b>Global ACI</b> (global-aci.org); document numbering is transitioning. The policies below bind labs through their national body.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>P8</code> Use of symbol &amp; claims of accreditation status <b>— mandatory before claiming ILAC MRA on export reports</b><span class="why">Kept effective by Global ACI 2025-29 decision; mapping to MRA-006</span></li>
+        <li><code>R7</code> Rules for the ILAC MRA mark<span class="why">Pairs with P8; governs the combined mark</span></li>
+        <li><code>P9</code> Proficiency testing policy<span class="why">The umbrella framework for PT participation; → TECH-1-008</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li>No standard of its own — base standards such as <b>ISO/IEC 17025:2017</b> (testing/calibration) and <b>ISO 15189:2022</b> (medical) are converted and enforced by each national AB<span class="why">ILAC's A-series peer evaluation keeps AB enforcement consistent</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>P15</code> Application of ISO/IEC 17020:2012 (inspection) <span class="why">→ TECH-2-001</span></li>
+        <li><code>G19</code> Forensic science · <code>G26</code> Medical accreditation · <code>G7/G29</code> Horse racing &amp; anti-doping<span class="why">Only if your field applies</span></li>
+        <li><code>G27/G28</code> Measurement in inspection, scope wording for inspection bodies</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>P10</code> Metrological traceability policy<span class="why">→ TECH-1-011 in draft; remains effective meanwhile</span></li>
+        <li><code>P14</code> MU in calibration · <code>G17</code> MU in testing<span class="why">Calibration vs testing labs respectively</span></li>
+        <li><code>G8</code> Decision rules &amp; statements of conformity · <code>G18</code> Scope description · <code>G24</code> Recalibration intervals<span class="why">Reporting judgments, scope filing, cal-cycle management</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li>No direct application channel — MRA eligibility runs through your national body's <code>IAF/ILAC A2</code> peer evaluation<span class="why">A2 decides your AB's signatory status; 2025-09 revision maps to MRA-005</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>ILAC→Global ACI transition: <b>P9→TECH-1-008, P14→TECH-1-009, P10→TECH-1-011 (draft)</b><span class="why">Watch the new numbers adopted by your AB</span></li>
+        <li>Archive at ilac.org for reference; live documents at global-aci.org</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> At the ILAC layer only three things matter for a lab — traceability (P10), proficiency testing (P9), and symbol &amp; claims (P8/R7). Confirm the current numbering your AB forwards before putting the MRA mark on export reports.</div>
+    <div class="inst-more"><a href="ILAC互认通用层文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== CNAS ===== -->
+  <section class="inst" id="cnas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">2</div><h2>CNAS</h2><span class="en">China National Accreditation Service for Conformity Assessment</span><span class="tag">Mainland China</span></div>
+      <p class="loc">The only accreditation body for mainland China, with the most complete file system: general rules (R/RL) + basic criteria (CL) + sector application notes (A) + guides (GL) + explanatory notes (EL) + technical reports (TRL). Step 1 is locking your sector; step 2 is picking the matching A-series.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>RL01:2025</code> Accreditation rules · <code>RL02:2023</code> Proficiency testing rules<span class="why">Annual PT per sector; non-compliance affects accreditation</span></li>
+        <li><code>R01</code> Symbol use &amp; claims · <code>R02</code> Impartiality &amp; confidentiality · <code>R03:2026</code> Appeals / complaints / disputes<span class="why">R03 revised 2026-09-22, replacing the 2019 edition</span></li>
+        <li><code>RL03:2025</code> Fees · <code>RL04</code> Acceptance of overseas labs</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li><code>CL01:2018</code> Accreditation criteria <b>(identical to ISO/IEC 17025:2017)</b></li>
+        <li><code>CL01-G001:2024</code> Application requirements <b>(mandatory)</b> · <code>G002</code> Traceability · <code>G003</code> Uncertainty · <code>G004</code> Internal calibration<span class="why">G001: 2nd revision with substantive changes in 2024</span></li>
+        <li><code>G005</code> Non-fixed-site testing activities<span class="why">Applies when field/temporary-site testing exists</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>CL01-A series</code> Application notes <b>(40 industry groups; pick by sector)</b><span class="why">High-frequency: A001 microbiology, A002 chemistry, A025 calibration, A008 EMC</span></li>
+        <li>Recent revisions: <b>A004 medical devices (eff. 2026-05-01), A018 construction (eff. 2027-01-01), A016 sensory (2025-01)</b></li>
+        <li>Special programs S01–S06 (Energy Star, Bluetooth, anti-doping, EPA, OIML…) by business</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>RL02</code> Annual PT requirements · <code>GL002/GL032</code> PT result statistics &amp; selection review</li>
+        <li><code>GL006</code> Chemistry uncertainty · <code>GL025:2023</code> CMC expression · <code>GL042</code> Intermediate checks · <code>GL054:2023</code> Calibration intervals<span class="why">Calibration labs focus</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li><code>EL-15</code> Acceptance requirements · <code>EL-03:2023</code> Scope wording · <code>EL-13</code> Reports/certificates · <code>EL-20</code> Remote assessment · <code>EL-28</code> English name/address filing</li>
+        <li><code>GL001</code> Accreditation guide · <code>GL008</code> NC grading · <code>GL011/GL012:2025</code> Internal audit &amp; management review guides (2025-12)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>Surveillance per <code>RL01</code>; PT per <code>RL02</code></li>
+        <li>2026 additions/revisions: <b>R03:2026, biobank RL10:2026 + EL-30:2026, coal TRL-026/027, advanced manufacturing TRL-024/025, lab animals CL06-A001:2026</b><span class="why">Technical-report list updated 2026-08-28</span></li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> Lock your CL01-A series (40 groups) first, then complete the G-series quartet (G001–G004). Schedule PT early per RL02 — it is the most common pre-assessment failure.</div>
+    <div class="inst-more"><a href="中国大陆全行业实验室CNAS认可规范文件-行业分类清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== A2LA ===== -->
+  <section class="inst" id="a2la">
+    <div class="inst-head">
+      <div class="row1"><div class="no">3</div><h2>A2LA</h2><span class="en">American Association for Laboratory Accreditation</span><span class="tag">USA (non-governmental)</span></div>
+      <p class="loc">US non-profit, non-governmental accreditation body (ISO/IEC 17011; ILAC/APAC recognition). Files fall into six families: A organization / I information / P policy / R requirements (mandatory) / G guides / F &amp; A308 forms. The R-series are hard requirements; the P-series are policies.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>R101</code> General accreditation requirements for CABs <b>(2026-09-01)</b><span class="why">Foundation for all CAB accreditation</span></li>
+        <li><code>R102</code> Conditions of accreditation (2026-02-20) · <code>R105</code> Referencing A2LA accreditation status<span class="why">Hard constraints when publicly claiming accreditation</span></li>
+        <li><code>R103</code> PT requirements for ISO/IEC 17025 labs <b>(2026-04-01)</b></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li>ISO/IEC 17025:2017 implemented via <code>R101</code></li>
+        <li>Medical labs: <code>R602</code> conditions + <code>R603</code> PT requirements <b>(ISO 15189 + CLIA)</b></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>R208</code> Construction materials · <code>R212</code> NDT · <code>R221</code> Forensic testing (MD/TX appendices) · <code>R255</code> Electrical · <code>R262</code> State legal metrology · <code>R310</code> Special inspection bodies · <code>R311</code> FedRAMP</li>
+        <li><code>P103a–e</code> Uncertainty annexes by sector: automotive / life sciences / EMC / construction &amp; geotech / forensics<span class="why">Pick the annex matching your testing field</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>P102</code> Traceability policy (2024-10-31) + <code>G135/G149</code> guides<span class="why">Includes internal calibration</span></li>
+        <li><code>P103</code> Testing MU policy (2025-08-01) · <code>G104</code> Testing MU guide (2026-08-26)</li>
+        <li><code>G133</code> PT program guide · <code>G136</code> Decision rules in calibration</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li><code>F-series</code> Scope selection lists <b>(by field: F204 cal / F205 chemistry / F209 electrical…)</b></li>
+        <li><code>F117</code> Technical personnel matrix · <code>F349</code> Subcontractor capability form · <code>I105</code> Typical application steps<span class="why">F210a/F229 need client/partner portal login</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>2026 dense revisions: <b>P120 satellite labs (2026-08), P121 anti-fraud (2026-08), P105 relocation (2026-05), P112 flexible scope (2026-03), G118 cal-scope definition (2026-10), G126/G149 uncertainty guides</b><span class="why">Always verify version dates before applying</span></li>
+        <li>Medical R602/R603 updated 2025-10</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> A2LA revises documents densely in 2026. Base your file set on R101 + your sector R2xx + P102/P103; file scope with the F-series lists; F117 is the official carrier of personnel qualification.</div>
+    <div class="inst-more"><a href="A2LA实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== UKAS ===== -->
+  <section class="inst" id="ukas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">4</div><h2>UKAS</h2><span class="en">United Kingdom Accreditation Service</span><span class="tag">United Kingdom</span></div>
+      <p class="loc">The UK national accreditation body (ISO/IEC 17011). UKAS labs must comply with <b>three layers simultaneously</b>: UKAS's own documents (GEN/LAB/TPS) + mandatory EA policies + Global ACI (formerly ILAC) policies. This stacked requirement is UKAS's signature.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li>Terms for use of the UK national accreditation symbol <b>(official gov.uk document)</b></li>
+        <li><code>GEN 1</code> General assessment principles (2025-03, Ed.4) · <code>GEN 4</code> Flexible scope policy (2024-11) · <code>GEN 6</code> Referencing accreditation status &amp; MRA signatories<span class="why">GEN 4 replaces LAB 39/TPS 59; GEN 6 replaces LAB 1</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li>ISO/IEC 17025:2017 / ISO 15189:2022; ISO 15195:2018 for reference-measurement labs</li>
+        <li><code>LAB 5</code> Calibration result reporting · <code>LAB 12</code> Testing uncertainty (2025-12) · <code>LAB 13</code> Opinions &amp; interpretations (2026-09) · <code>LAB 45</code> Calibration scope schedule · <code>LAB 48</code> Decision rules · <code>M3003</code> Uncertainty &amp; confidence</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>LAB 30</code> Asbestos · <code>LAB 33</code> Official food/feed &amp; national reference labs (2025-12) · <code>LAB 37</code> Drinking water DWTS · <code>LAB 32</code> National DNA database · <code>LAB 201</code> On-site forensics</li>
+        <li>2025 additions: <b>LAB 60 genomic medicine, LAB 61 networked / multi-site medical services</b><span class="why">Medical labs focus</span></li>
+        <li><code>LAB 11/14/15/25</code> Temperature, weights, volumetric glassware, hardness metrology guides</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>TPS 41</code> Traceability policy · <code>TPS 47</code> PT participation (Ed.6 under review) · <code>TPS 57</code> Reference material selection</li>
+        <li>Mandatory Global ACI: <b>TECH-1-008</b> (PT, replaces ILAC P9) · <b>TECH-1-009</b> (calibration MU, replaces P14) · <b>ILAC P10</b> (traceability)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li><code>TPS 53</code> Report/certificate claim wording · <code>TPS 63</code> Out-of-specification samples · <code>TPS 76</code> Temporary facilities (new 2024-11)</li>
+        <li>Mandatory EA: <b>EA-4/02</b> calibration MU · <b>EA-3/01</b> marks &amp; MLA reference · <b>EA-4/17</b> medical scope · <b>EA-2/15</b> flexible scope</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>Track three layers in parallel: UKAS + EA + Global ACI revisions</li>
+        <li><code>TPS 71</code> Medical diagnostic pathways (2026-05, Ed.3) · <code>LAB 24</code> Ed.3 in consultation · <code>TPS 47</code> Ed.6 under review</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> UKAS is about stacking — besides UKAS's own documents, EA and Global ACI policies are mandatory. Track three publication lists (UKAS M4 publications + EA library + Global ACI library).</div>
+    <div class="inst-more"><a href="UKAS实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== NVLAP ===== -->
+  <section class="inst" id="nvlap">
+    <div class="inst-head">
+      <div class="row1"><div class="no">5</div><h2>NVLAP</h2><span class="en">National Voluntary Laboratory Accreditation Program · NIST</span><span class="tag">USA (government program)</span></div>
+      <p class="loc">A US government program run by NIST under 15 CFR Part 285; criteria aligned to ISO/IEC 17025:2017. Unlike A2LA, NVLAP is a statutorily authorized government program organized by <b>LAP (Laboratory Accreditation Program)</b>. Current requirements = project handbook + inserted Lab Bulletins.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>NIST HB 150</code> Procedures &amp; general requirements <b>(2020 edition, Update 1 — applies to all programs)</b></li>
+        <li>Must insert two current bulletins: <b>LB-156-2024</b> (program checklists now via NIWS portal) · <b>LB-132-2020</b> (NIWS root-cause analysis for NCs)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li>ISO/IEC 17025:2017 aligned; transition bulletins <code>LB-116/117-2020</code> must be inserted</li>
+        <li><code>PG-17-2024</code> Policy guide: accreditation expiry = voluntary termination<span class="why">Matters for renewal management</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>HB 150-x</code> Project handbooks (20 current), pick by LAP: <b>150-2 calibration (2024), 150-3 bulk asbestos (2025), 150-5 construction materials, 150-8 acoustics, 150-11 EMC/telecom (FCC/ISED/ASCA), 150-17 crypto security, 150-18 fastener metal (2024), 150-31 health IT</b></li>
+        <li>Handbook + its Lab Bulletins = current requirements for that program</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li>PT per handbook &amp; bulletins: <b>LB-166-2026</b> asbestos renewal must submit PT records<span class="why">Key change for renewal applications</span></li>
+        <li>Other LAPs set their own PT frequency and records (see handbook)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li>On-site checklists (26) <b>distributed via the NIWS portal since 2024 — not public PDFs</b><span class="why">General criteria checklist (rev. 2026-09-10) available by request from NVLAP</span></li>
+        <li>Checklists with * work together with a Test Method Review Summary</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li><b>LB-163-2026</b> crypto (CST) pauses new applications · <b>LB-164-2026</b> OWM collaboration (calibration) · <b>LB-165-2026</b> HIT health data rules</li>
+        <li>Numbering gaps (150-7/9/12…) are terminated programs, no longer listed</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> NVLAP's classic trap is reading the handbook without the bulletins. Handbook + bulletins = current requirements; checklists come only through the NIWS portal — request your authorized account early.</div>
+    <div class="inst-more"><a href="NVLAP实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== NATA ===== -->
+  <section class="inst" id="nata">
+    <div class="inst-head">
+      <div class="row1"><div class="no">6</div><h2>NATA</h2><span class="en">National Association of Testing Authorities, Australia</span><span class="tag">Australia</span></div>
+      <p class="loc">Australia's government-endorsed national body with the broadest coverage: testing / calibration / inspection / medical / GLP / PTP / RMP / biobanking / imaging / sleep / respiratory. Its signature is the <b>Standards Application Document (SAD)</b> — Australia-specific requirements added on top of the international standards.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>NATA Rules</code> Accreditation rules <b>(2026-09-11 + Amendment Sheet)</b></li>
+        <li><code>NATA Procedures</code> (2026-08-25) · Accreditation Service Commitment (2025-10)</li>
+        <li><code>GAC</code> Use of the NATA mark, endorsements &amp; claims (2025-06)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li><code>SAD 17025</code> Application of ISO/IEC 17025:2017 <b>(testing/calibration core; NATA signature)</b></li>
+        <li><code>SAD 15189</code> Medical testing <b>(eff. 2026-02)</b> · <code>SAD 17020:2026</code> (eff. 2026-10) · <code>SAD 17043:2023</code> · <code>SAD 17034</code></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>SAC</code> Appendices (47): calibration (8), life sciences, infrastructure &amp; asset integrity (IAI), law-forensic, manufactured goods, materials</li>
+        <li><code>SoA</code> Schedule of Accreditation scope <b>(basis for scope submission — one per industry)</b></li>
+        <li><code>GAC</code> Multi-site organizations (2024-12) · New branch sites (2026-09)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>GAC</code> Metrological traceability (2020-12) · Equipment assurance, internal calibration &amp; verification (2019-05)</li>
+        <li><code>Policy</code> PT participation (2021-12) · Remote assessment (2022-12)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li><code>Worksheet</code> ISO/IEC 17025 assessment worksheet (2025-09) · ISO 15189 worksheet (for labs)</li>
+        <li><code>FDU</code> Facilities detail update · Scope change application · Notice of new on-site facility (2026-06) · NDT site consultation form (2026-10)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>Special schemes: OECD GLP, imaging (RANZCR), sleep (ASA), respiratory (TSANZ)</li>
+        <li>2026 dense revisions: <b>Rules / Procedures, SAD 17020:2026, SAD 15189 (eff. 2026-02)</b>; superseded documents merged into new criteria — do not use old editions</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> Read the SAD first — the Australia-specific layer sits on top of the international standard. Submit scope using the SoA schedule for your industry.</div>
+    <div class="inst-more"><a href="NATA实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== SINGLAS ===== -->
+  <section class="inst" id="singlas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">7</div><h2>SINGLAS</h2><span class="en">Singapore Laboratory Accreditation Scheme · SAC</span><span class="tag">Singapore</span></div>
+      <p class="loc">Singapore's laboratory accreditation scheme run by the Singapore Accreditation Council (SAC). Covers testing/calibration (ISO/IEC 17025:2017) and medical (ISO 15189:2022). Medical is finely divided — <b>MED 002 issues specific requirements per 8 sub-disciplines</b>, a Singapore signature.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>SAC 01</code> General terms &amp; conditions <b>(2026-01-01)</b> · <code>SAC 02</code> Marks &amp; MRA marks <b>(2026-01-01)</b></li>
+        <li><code>PROF 001</code> PT policy (2026-04-16) · <code>SAC-SINGLAS 004</code> Test item classification (2026-03-09) · <code>SAC-SINGLAS 003</code> Fee schedule (eff. 2024-12-01)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li><code>SAC-SINGLAS 001</code> Accreditation procedure <b>(17025 ver. 2026-03-09; medical 2024-09-06)</b></li>
+        <li><code>SAC-SINGLAS 006</code> Measurement traceability (2021-05) · <code>LAFM 03</code> ISO 17025 assessment checklist (2026-03-27) · <code>LAFM 03-MED</code> ISO 15189 checklist</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>MET 001/002</code> Calibration · <code>C&amp;B and ENV 001/002</code> Chemical/biological/environmental (shared) · <code>CE 001/002</code> Civil (incl. concrete NDT) · <code>EL 001/002</code> Electrical · <code>FFT 01</code> Functional food · <code>MECH 001</code> Mechanical · <code>NDT 001-003</code> NDT</li>
+        <li><code>IT 001</code> IT security testing <b>(2026-08-08, replaces 2018 edition)</b> · <code>IT 002</code> Gaming</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>Technical Guide 1</code> Uncertainty (2026-03-18) · <code>TG 2</code> Chemistry/microbiology · <code>TG 3</code> Civil/mechanical · <code>TG 4</code> Medical (2025-11-03)</li>
+        <li><code>MET 002</code> CMC recording criteria · <code>PROF 001</code> PT requirements</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li><code>LAFM 03 / LAFM 03-MED</code> assessment checklists (17025 / 15189)</li>
+        <li>Match your field to its Specific Requirements file (MET / C&amp;B / CE / EL / NDT…)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>Medical subdivision: <b>MED 001</b> general (2025-06-30) + <b>MED 002 series — 8 sub-disciplines</b> (clinical chemistry, cytogenetics, cytopathology, haematology, histopathology, genetics &amp; genomics, microbiology, molecular pathology) <b>unified revision 2025-11-03</b></li>
+        <li>~20 files revised/issued in 2025–2026 — verify versions before applying</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> Medical labs pick the MED 002 for their sub-discipline; non-medical labs follow the field-specific requirements. Version checking is the maintenance priority — SAC 01/02, PROF 001 and IT 001 all changed in 2026.</div>
+    <div class="inst-more"><a href="SINGLAS实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <!-- ===== NABL ===== -->
+  <section class="inst" id="nabl">
+    <div class="inst-head">
+      <div class="row1"><div class="no">8</div><h2>NABL</h2><span class="en">National Accreditation Board for Testing and Calibration Laboratories</span><span class="tag">India</span></div>
+      <p class="loc">India's national accreditation board, covering testing/calibration (17025), medical (15189), PTP (17043), RMP (17034) and biobanking (20387). 77 current documents: pick the <b>criteria + application form + assessment checklist</b> triplet by organization type.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>General obligations</h3><ul>
+        <li><code>NABL 100B</code> Accreditation procedure (2025-08-27) · <code>NABL 131</code> Terms &amp; conditions <b>(2026-01-23)</b></li>
+        <li><code>NABL 133</code> Marks + ILAC MRA joint mark (2024-09) · <code>NABL 134</code> Appeals (2025-09-30) · <code>NABL 132/132A</code> Complaints</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>Core criteria</h3><ul>
+        <li>Testing/calibration: ISO/IEC 17025:2017; medical: <code>NABL 112A</code> specific criteria (2024-12-18, per ISO 15189:2022)</li>
+        <li>PTP: <code>NABL 181A</code> (per 17043:2023) · RMP: <code>NABL 191</code> (per 17034:2016) · Biobank: <code>NABL 229</code> (per 20387)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>Sector requirements</h3><ul>
+        <li><code>NABL 129</code> Calibration (mechanical/flow/radiation/electrical/thermal) · <code>NABL 130</code> On-site testing/calibration · <code>NABL 135</code> Medical imaging (2026-01) · <code>NABL 137</code> Software/IT (2026-04) · <code>NABL 224</code> Temporary sites · <code>NABL 139</code> State-level drinking water · <code>NABL 226</code> Government soil · <code>NABL 127</code> Joint assessment (2026-08)</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>Metrology · uncertainty · PT</h3><ul>
+        <li><code>NABL 141</code> Uncertainty · <code>NABL 142</code> Traceability · <code>NABL 143</code> CMC policy</li>
+        <li><code>NABL 163</code> PT participation (2024-09) · <code>NABL 164</code> Inter-lab comparison when no formal PT</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>Application &amp; assessment</h3><ul>
+        <li>Triplet by type: <b>application form</b> (151 testing / 152 calibration / 153 medical / 180 PTP / 190 RMP / 227 biobank; consolidated revision 2026-08-18) + <b>assessment checklist</b> (NABL 219 per 17025:2017; 223 per 15189:2022) + <b>document review checklist</b> (NABL 220 series by standard, 220/220C-F)</li>
+        <li><code>NABL 209/208A</code> Pre-assessment · <code>NABL 210</code> Assessor guide</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>Maintenance &amp; recent changes</h3><ul>
+        <li>Annual surveillance <code>NABL 218A</code> + desktop surveillance <code>NABL 218</code> (rev. 2026-01)</li>
+        <li>2026 additions: <b>NABL 233/234 defence aviation DGAQA (2026-08-11), NABL 237/238 NACO network accreditation (2026-10-15)</b><span class="why">For labs in those sectors</span></li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>Key point:</b> NABL runs on triplet logic — criteria (112A/129/181A/191/229) + application form + assessment/document-review checklists. Desktop surveillance and the annual surveillance checklist are your two maintenance handles.</div>
+    <div class="inst-more"><a href="NABL实验室认可文件清单.html">View the full document list →</a></div>
+  </section>
+
+  <div class="update-log">
+    <h3>Update log</h3>
+    <ul>
+      <li><code>2026-10-19</code> Initial version — distilled from 9 official document lists (verified same day). Resources compiled from official public documents.</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div class="f-col"><h4>Product</h4><a href="https://labkitpro.com/diagnosis">Reality Diagnosis</a><a href="https://labkitpro.com/templates">Document Generation</a><a href="https://labkitpro.com/compliance-review">Compliance Review</a><a href="https://labkitpro.com/uncertainty">Uncertainty</a></div>
+      <div class="f-col"><h4>Coverage</h4><a href="https://labkitpro.com/coverage">Standards Coverage</a><a href="https://labkitpro.com/faq">FAQ</a></div>
+      <div class="f-col"><h4>Company</h4><a href="https://labkitpro.com/about">About</a><a href="https://labkitpro.com/contact">Contact</a><a href="https://labkitpro.com/compliance">Compliance</a></div>
+      <div class="f-col"><h4>Legal</h4><a href="https://labkitpro.com/privacy">Privacy</a><a href="https://labkitpro.com/terms">Terms</a><a href="https://labkitpro.com/refund">Refund Policy</a></div>
+    </div>
+    <div class="bottom">
+      <div>Resources compiled from official public documents. Document numbers, versions and effective dates are as published on each body's official website as of 2026-10-19; always verify the current edition before applying.</div>
+      <div>© 2026 LabKitPro. Documents and reports are generated as technical drafts for your internal preparation; they do not constitute accreditation-body decisions. ISO/IEC 17025 is a trademark of ISO/IEC. Reference materials cite standard numbers only.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

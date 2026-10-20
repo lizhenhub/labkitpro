@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ILAC · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="ILAC_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">ILAC · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>ILAC · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>ILAC (International Laboratory Accreditation Cooperation) is the global laboratory accreditation mutual recognition organisation (ILAC MRA). It is not itself an accreditation body: laboratories never apply to ILAC directly. Its policies take effect through the laboratory's national Accreditation Body (AB), which makes them binding on laboratories. Since 2026-01-01 ILAC has ceased operations and its functions are being consolidated into Global ACI (global-aci.org); document numbers are progressively transitioning to the TECH series.</p>
+      <div class="meta">
+                  <span>Last verified: <b>2026-10-19</b></span>
+                  <span>Basis list: <b>《ILAC互认通用层文件清单.html》（live crawl from the official website）</b></span>
+                  <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+                </div>
+      <div class="cta-row">
+                  <a class="btn btn-primary" href="ILAC互认通用层文件清单.html">View Full Document List →</a>
+                  <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+                </div>
+    </div>
+      <div class="stats">
+                  <div class="stat"><div class="num">29</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+                  <div class="stat"><div class="num">6</div><div class="lbl">Sectors covered</div></div>
+                  <div class="stat"><div class="num">3</div><div class="lbl">2025–2026 revisions / new releases (incl. transitional numbers)</div></div>
+                  <div class="stat"><div class="num">6</div><div class="lbl">Core mutual-recognition documents to know</div></div>
+                </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements</a>
+    <a href="#req-tech">4. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">5. Application &amp; Assessment</a>
+    <a href="#req-maintain">6. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">7. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>Of the <b>29</b> files distilled across five areas, the ones laboratories must act on first are <b>ILAC P10</b> (metrological traceability), <b>ILAC P9</b> (proficiency testing) and <b>ILAC P8 / R7</b> (symbols &amp; claims); the rest are supporting or sector-specific and should be selected by business need.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">MRA-layer policy · enforced via national AB</span></div>
+  <p class="section-desc">ILAC does not itself issue testing/calibration criteria: international standards such as ISO/IEC 17025:2017 (testing/calibration) and ISO 15189:2022 (medical) are transposed and implemented by member accreditation bodies (ABs). The P/G/R series documents at the ILAC layer are "additional mutual recognition requirements" addressed to ABs and, ultimately, to laboratories — they become binding on laboratories once circulated by their national AB.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · International standard baseline</span><span class="d">ISO/IEC 17025:2017, ISO 15189:2022, etc., transposed by the national AB (identical adoption)</span></div>
+      <div class="layer"><span class="t">Layer 2 · ILAC MRA-layer policies (P/R series)</span><span class="d">Traceability P10, proficiency testing P9, calibration uncertainty P14, symbols &amp; claims P8/R7 — additional hard requirements once circulated by the national AB</span></div>
+      <div class="layer"><span class="t">Layer 3 · Implementation guidance (G series)</span><span class="d">General guidance on uncertainty, decision rules, scopes of accreditation, recalibration intervals + sector guidance for forensics/medical/inspection/horseracing</span></div>
+      <div class="layer"><span class="t">Layer 4 · Peer-evaluation assurance (A series)</span><span class="d">IAF/ILAC A1/A2/A3 ensure consistent AB implementation and verifiable MRA eligibility</span></div>
+      <div class="layer"><span class="t">Layer 5 · Global ACI succession (from 2026)</span><span class="d">ILAC functions consolidated into Global ACI; P9/P14/P10 etc. migrating to TECH-series numbers, old and new running in parallel during the transition</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">All laboratories · via AB enforcement</span></div>
+  <p class="section-desc">Laboratories do not deal with ILAC directly, but the use of the ILAC MRA symbols, claims of accreditation status and the operating rules of the arrangement ultimately land on the external conduct of accredited laboratories. The following are the general additional requirements at the MRA layer "beyond 17025".</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P8</span></td><td><span class="title">Supplementary Requirements for the Use of Accreditation Symbols and for Claims of Accreditation Status by Accredited CABs</span></td><td class="date">Issued 11/2023</td><td><span class="when">Uniform requirements to satisfy when a certificate/report claims "ILAC MRA accreditation" — 17025 does not regulate symbol use; this is an MRA-layer addition</span><br><span class="badge core">Core requirement</span><span class="badge new">Kept in force by Global ACI Resolution 2025-29</span></td></tr>
+        <tr><td><span class="code">ILAC R7</span></td><td><span class="title">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">Issued 05/2015</td><td><span class="when">Sets the conditions and display rules for the combined ILAC MRA mark, complementary to P8; a report carrying the combined mark is a statement of international recognition</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">ILAC P4</span></td><td><span class="title">ILAC Mutual Recognition Arrangement: Policy and Management</span></td><td class="date">Issued 06/2022</td><td><span class="when">Overall framework for operating the arrangement — the MRA context behind why your report is accepted overseas</span><br><span class="badge opt">Background/Framework</span></td></tr>
+        <tr><td><span class="code">ILAC P5</span></td><td><span class="title">ILAC Mutual Recognition Arrangement: Scope and Obligations</span></td><td class="date">Issued 11/2023</td><td><span class="when">Defines the conformity-assessment scope covered by the arrangement and member AB obligations; decides which of a laboratory's accreditation statuses enter the MRA scope</span><br><span class="badge opt">Background/Framework</span></td></tr>
+        <tr><td><span class="code">ILAC R5</span></td><td><span class="title">ILAC Procedure for Handling Complaints</span></td><td class="date">Issued 04/2016</td><td><span class="when">Receipt and handling path for complaints at the MRA level — routine laboratory complaints still go through the national AB; this is a fallback procedure</span><br><span class="badge opt">Procedure</span></td></tr>
+        <tr><td><span class="code">ILAC R1</span></td><td><span class="title">Management of ILAC Documents</span></td><td class="date">Issued 12/2021</td><td><span class="when">Rules for document development/approval/maintenance — needed to track versions using the official ILAC numbering and status rules</span><br><span class="badge opt">Procedure</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: versions and dates are subject to the current official versions on the ILAC/Global ACI websites; P8 and R7 are the two general documents at the MRA layer most directly binding on laboratories.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements</h2><span class="tag">Inspection / Forensics / Medical / Horseracing / Anti-doping</span></div>
+  <p class="section-desc">ILAC does not run large sector application documents, but publishes dedicated guidance (G series) and application documents for specific fields; only laboratories in those fields need to comply.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P15</span></td><td><span class="title">Application of ISO/IEC 17020:2012 for the Accreditation of Inspection Bodies</span></td><td class="date">Issued 05/2020 / effective 2021-11</td><td><span class="when">Application guidance for accrediting inspection bodies (formerly part of IAF/ILAC A4:2004) — the MRA-layer companion for the 17020 system</span><br><span class="badge dom">Inspection bodies</span></td></tr>
+        <tr><td><span class="code">ILAC G19</span></td><td><span class="title">Modules in a Forensic Science Process</span></td><td class="date">Issued 06/2022</td><td><span class="when">Application guidance for 17025/17020 in forensic science — reference for assessing forensic laboratories and drafting scopes</span><br><span class="badge dom">Forensic science</span></td></tr>
+        <tr><td><span class="code">ILAC G26</span></td><td><span class="title">Guidance for the Implementation of a Medical Accreditation Scheme</span></td><td class="date">Issued 11/2018</td><td><span class="when">Establishing and implementing a medical laboratory (ISO 15189) accreditation scheme — MRA-layer reference for the medical field</span><br><span class="badge dom">Medical</span></td></tr>
+        <tr><td><span class="code">ILAC G7</span></td><td><span class="title">Accreditation Requirements and Operating Criteria for Horseracing Laboratories</span></td><td class="date">Issued 04/2021</td><td><span class="when">Dedicated accreditation requirements for horseracing/anti-doping testing — applies to horseracing laboratories</span><br><span class="badge dom">Horseracing / anti-doping</span></td></tr>
+        <tr><td><span class="code">ILAC G29</span></td><td><span class="title">Guidelines for harmonization of scopes of ISO/IEC 17025 accreditation of WADA anti-doping laboratories</span></td><td class="date">Issued 06/2020</td><td><span class="when">Guidance for drafting scopes for anti-doping laboratories, referenced by the WADA ISL — applies to WADA laboratories</span><br><span class="badge dom">Anti-doping</span></td></tr>
+        <tr><td><span class="code">ILAC G27</span></td><td><span class="title">Guidance on measurements performed as part of an inspection process</span></td><td class="date">Issued 07/2019</td><td><span class="when">Validity of measurement activities within an inspection process — used when assessing inspection bodies</span><br><span class="badge dom">Inspection bodies</span></td></tr>
+        <tr><td><span class="code">ILAC G28</span></td><td><span class="title">Guideline for the Formulation of Scopes of Accreditation for Inspection Bodies</span></td><td class="date">Issued 07/2018</td><td><span class="when">Consistent formulation of scopes for inspection bodies — reference when filing an inspection scope</span><br><span class="badge dom">Inspection bodies</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: sector documents apply on demand — a document outside the laboratory's business is not a general requirement; versions are subject to current official versions.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">4</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">Mandatory assessment items</span></div>
+  <p class="section-desc">ISO/IEC 17025:2017 states the principles for traceability, uncertainty and proficiency testing; the ILAC layer then harmonises "how to do it and to what extent" through policy documents — the part of the MRA layer most frequently circulated by ABs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P10</span></td><td><span class="title">ILAC Policy on Metrological Traceability of Measurement Results</span></td><td class="date">Issued 07/2020 / effective 2021-07</td><td><span class="when">Uniform implementation policy for metrological traceability (incl. calibration laboratory capability and traceability chains) — 17025 gives the principle, P10 gives the execution baseline</span><br><span class="badge core">Core requirement</span><span class="badge new">Corresponds to TECH-1-011 (drafting)</span></td></tr>
+        <tr><td><span class="code">ILAC P14</span></td><td><span class="title">ILAC Policy for Measurement Uncertainty in Calibration</span></td><td class="date">Issued 09/2020 / effective 2021-03</td><td><span class="when">Uniform requirements for uncertainty evaluation and expression in calibration (GUM-based) — core for calibration reports and CMC filings</span><br><span class="badge core">Core requirement</span><span class="badge new">Corresponds to TECH-1-009</span></td></tr>
+        <tr><td><span class="code">ILAC P9</span></td><td><span class="title">ILAC Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">Issued 01/2024</td><td><span class="when">Uniform policy for the use of PT activities in the accreditation process — the master document for PT participation and selection</span><br><span class="badge core">Core requirement</span><span class="badge new">Corresponds to TECH-1-008</span></td></tr>
+        <tr><td><span class="code">ILAC G17</span></td><td><span class="title">ILAC Guidelines for Measurement Uncertainty in Testing</span></td><td class="date">Issued 01/2021</td><td><span class="when">Guidance for evaluating and reporting uncertainty in testing — applies to testing laboratories (calibration uses P14)</span><br><span class="badge core">Frequently used</span></td></tr>
+        <tr><td><span class="code">ILAC G8</span></td><td><span class="title">Guidelines on Decision Rules and Statements of Conformity</span></td><td class="date">Issued 09/2019</td><td><span class="when">Decision rules when a testing laboratory issues statements of conformity — applies when a report carries a pass/fail conclusion</span><br><span class="badge core">Frequently used</span></td></tr>
+        <tr><td><span class="code">ILAC G24</span></td><td><span class="title">Guidelines for the determination of recalibration intervals of measuring equipment</span></td><td class="date">Issued 2022</td><td><span class="when">Determination and review of recalibration intervals — reference for equipment management and interim-check planning</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">ILAC G18</span></td><td><span class="title">Guideline for describing Scopes of Accreditation</span></td><td class="date">Issued 01/2024</td><td><span class="when">Uniform description of scopes of accreditation — reference for scope filing and capability statement wording</span><br><span class="badge core">Scope filing</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the Global ACI successor numbers for P10/P14/P9 — TECH-1-011 (drafting) / TECH-1-009 / TECH-1-008 — are coming into use; during the transition, follow the version circulated by your national AB.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">5</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">MRA eligibility · peer evaluation</span></div>
+  <p class="section-desc">Laboratories do not submit applications to ILAC; the "assessment-layer" requirements that concern them are that the national AB's MRA eligibility is assured by IAF/ILAC peer evaluation (A series), with assessor training and cross-frontier rules also sitting at this layer.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">IAF/ILAC A2</span></td><td><span class="title">Requirements for Evaluation of an Accreditation Body</span></td><td class="date">Issued 09/2025</td><td><span class="when">Decides whether a national AB may sign the multilateral recognition arrangement — the "international currency" of your laboratory's accreditation certificate comes from this evaluation; the former A2:06/2023 has been superseded</span><br><span class="badge core">MRA eligibility</span><span class="badge new">Latest 2025 edition</span></td></tr>
+        <tr><td><span class="code">IAF/ILAC A1</span></td><td><span class="title">Requirements and Procedures for Evaluation of a Regional Group</span></td><td class="date">Issued 06/2023</td><td><span class="when">Recognition and evaluation of regional accreditation organisations (APAC/EA, etc.) — regional-layer MRA assurance</span><br><span class="badge opt">Regional layer</span></td></tr>
+        <tr><td><span class="code">IAF/ILAC A3</span></td><td><span class="title">Template report for the peer evaluation of an Accreditation Body based on ISO/IEC 17011:2017</span></td><td class="date">Issued 06/2023</td><td><span class="when">Template tool for peer-evaluation reports — the official vehicle of the AB evaluation process</span><br><span class="badge opt">Tool</span></td></tr>
+        <tr><td><span class="code">ILAC G3</span></td><td><span class="title">Guidelines for Training Courses for Assessors Used by Accreditation Bodies</span></td><td class="date">Issued 08/2020</td><td><span class="when">Design of training courses for assessors and technical experts — affects the professionalism of on-site assessment</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">ILAC G21</span></td><td><span class="title">Cross Frontier Accreditation - Principles for Cooperation</span></td><td class="date">Issued 09/2012</td><td><span class="when">Principles for cross-frontier accreditation cooperation; the website marks it under revision and the revision may move into the P series — watch when setting up overseas or transferring accreditation</span><br><span class="badge opt">Under revision</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this layer mainly constrains accreditation bodies (ABs); laboratories only need to understand where their MRA eligibility comes from — the application channel is always the national AB.</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">6</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Global ACI transition</span></div>
+  <p class="section-desc">2026 is the critical year of the ILAC→Global ACI transition: old numbers remain valid but are being replaced by the TECH series, and the archive site is separated from the current library — track against the current source.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-008</span></td><td><span class="title">Global ACI policy on proficiency testing (formerly ILAC P9)</span></td><td class="date">Transitional number</td><td><span class="when">The migrated version of P9 — track PT requirements under the new number circulated by your national AB</span><br><span class="badge new">Transitional number</span></td></tr>
+        <tr><td><span class="code">TECH-1-009</span></td><td><span class="title">Global ACI policy (formerly ILAC P14)</span></td><td class="date">Transitional number</td><td><span class="when">The migrated version of P14 — calibration laboratories follow the new number</span><br><span class="badge new">Transitional number</span></td></tr>
+        <tr><td><span class="code">TECH-1-011</span></td><td><span class="title">Global ACI policy (formerly ILAC P10, drafting)</span></td><td class="date">Drafting</td><td><span class="when">The migrated version of P10 is still in preparation — P10:07/2020 remains in force during the transition</span><br><span class="badge new">Drafting</span></td></tr>
+        <tr><td><span class="code">ILAC G (proposed)</span></td><td><span class="title">Management of extraordinary events (Guidance on assessments impacted by natural disasters, disease outbreaks, security concerns)</span></td><td class="date">Drafting</td><td><span class="when">Guidance for managing assessments affected by natural disasters/pandemics/security incidents — the future basis for arranging assessments under extraordinary events</span><br><span class="badge opt">Drafting</span></td></tr>
+        <tr><td><span class="code">ILAC R3</span></td><td><span class="title">ILAC Strategic Plan 2015-2020 (extended December 2020)</span></td><td class="date">Issued 12/2014 / extended 2020-12</td><td><span class="when">The strategic plan period has ended and it remains listed on the archive site — treat as historical archive, not a current requirement</span><br><span class="badge opt">Historical archive</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the ilac.org archive site is for reference only; document activity and current versions are on global-aci.org — track against the current source.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">7</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">5 tips</span></div>
+  <p class="section-desc">For a laboratory, the core of the ILAC layer is really only three things: traceability (P10), proficiency testing (P9), and symbols &amp; claims (P8/R7). Everything else is supporting or sector-specific.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>Check the version before putting the MRA mark on export reports</div><p>A report/certificate claiming ILAC MRA accreditation must comply with <b>P8 + R7</b>; during the transition, first confirm the current number circulated by your national AB (it may already be the TECH series).<span class="why">Using an outdated symbol/claim format is the most common rework at the MRA layer</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>The application channel is always your national AB</div><p>ILAC does not accept direct applications; your laboratory certificate's <b>international MRA eligibility</b> depends on your national AB passing the <b>A2</b> peer evaluation.<span class="why">Don't look for an application portal at the ILAC layer</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Numbers are transitioning — old and new run in parallel</div><p><b>P9→TECH-1-008, P14→TECH-1-009, P10→TECH-1-011 (drafting)</b>; either number may appear during the transition — follow the version circulated by your national AB.<span class="why">Avoid locating migrated documents under the old number</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Sector documents apply on demand — don't treat them as general requirements</div><p>Forensics (<b>G19</b>), medical (<b>G26</b>), inspection (<b>P15/G27/G28</b>), horseracing/anti-doping (<b>G7/G29</b>) are all sector-specific — if unrelated to your business, they do not apply.<span class="why">Avoid misreading sector guidance as a hard requirement for everyone</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>The archive site ≠ the current library</div><p><b>ilac.org</b> is for historical reference only; document activity and current versions are on <b>global-aci.org</b> — verify the issue date before citing.<span class="why">Historical documents such as the R3 strategic plan still sit on the archive site and are easily mistaken for current ones</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《ILAC互认通用层文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and effective dates are subject to the current official versions on the ILAC/Global ACI websites.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of ILAC, Global ACI or any accreditation body. Before any formal application, verify against the current versions circulated by your national accreditation body (official archive: <a href="https://ilac.org" target="_blank" rel="noopener">ilac.org</a>; current document library: <a href="https://global-aci.org" target="_blank" rel="noopener">global-aci.org</a>).</p>
+    </div>
+    <div>
+      <h3>Global ACI Transition Notice</h3>
+      <p>Since 2026-01-01, the international laboratory accreditation mutual recognition system has been consolidated from ILAC/IAF into Global ACI (global-aci.org). Old and new document numbers run in parallel during the transition; ILAC-layer policy documents are being migrated to the TECH series — please follow the versions circulated by your national accreditation body.</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

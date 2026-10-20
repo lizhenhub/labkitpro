@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全球实验室认可要求速览（ILAC · CNAS · A2LA · UKAS · NVLAP · NATA · SINGLAS · NABL）</title>
+<meta name="description" content="八家实验室认可机构认可要求逐家提炼：ILAC、CNAS、A2LA、UKAS、NVLAP、NATA、SINGLAS、NABL。必备通用要求、核心准则、领域专属要求、计量溯源与能力验证、申请与评审、获证后维护。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a4a'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='%23f5a623' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --b900:#0a1f38;--b800:#0f2a4a;--b700:#143a63;--b500:#1e4d8b;--b300:#4a7bb5;--b100:#e7eef6;
+  --acc:#f5a623;--acc7:#c9851a;--surf:#f5f7fa;--ink:#14202e;--mut:#5b6b7d;--line:#dde5ee;--code:#1b6ea8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip;background:var(--surf);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;font-size:14.5px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+/* ===== 顶部导航（LabKitPro 官网视觉） ===== */
+.site-header{position:sticky;top:0;z-index:50;background:var(--b800);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px}
+.logo{font-weight:800;font-size:19px;letter-spacing:.2px;color:#fff;white-space:nowrap}
+.logo span{color:var(--acc)}
+.nav{display:none;align-items:center;gap:18px}
+.nav a{color:#cdd9e6;font-size:14px;font-weight:500;white-space:nowrap;transition:color .15s}
+.nav a:hover{color:#fff}
+.nav .cta{background:var(--acc);color:#1a1205;font-weight:700;padding:7px 14px;border-radius:8px}
+.nav .cta:hover{background:var(--acc7);color:#fff}
+.lang-toggle{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.lang-toggle:hover{background:rgba(255,255,255,.22)}
+.nav-burger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);cursor:pointer}
+.burger-ico{display:block;width:18px;height:14px;position:relative}
+.burger-ico i{position:absolute;left:0;width:18px;height:2px;border-radius:2px;background:#fff}
+.burger-ico i:nth-child(1){top:0}.burger-ico i:nth-child(2){top:6px}.burger-ico i:nth-child(3){top:12px}
+.burger-ico.open i:nth-child(1){top:6px;transform:rotate(45deg)}
+.burger-ico.open i:nth-child(2){opacity:0}
+.burger-ico.open i:nth-child(3){top:6px;transform:rotate(-45deg)}
+.m-nav{display:none;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--b800);border-top:1px solid rgba(255,255,255,.1);box-shadow:0 18px 36px rgba(0,0,0,.36);padding:6px 16px 14px;max-height:calc(100vh - 60px);overflow-y:auto}
+.m-nav.open{display:flex}
+.m-nav a{color:#dbe6f1;font-size:15px;font-weight:600;padding:12px 2px;border-bottom:1px solid rgba(255,255,255,.07)}
+.m-nav .m-cta{margin-top:12px;text-align:center;background:var(--acc);color:#1a1205;font-weight:800;border-radius:9px;padding:12px 16px;border-bottom:none}
+.m-nav .lang-toggle{margin-top:12px;align-self:flex-start}
+@media(min-width:861px){.nav{display:flex}.nav-burger{display:none}}
+/* ===== 首屏 ===== */
+.hero{background:linear-gradient(135deg,#0a1f38 0%,#143a63 60%,#1e4d8b 100%);color:#fff;padding:46px 0 44px}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--acc);border:1px solid rgba(245,166,35,.4);border-radius:999px;padding:5px 12px}
+.hero h1{font-size:clamp(25px,3.6vw,40px);line-height:1.18;margin:12px 0 14px;font-weight:800}
+.hero-sub{font-size:15.5px;color:#cdd9e6;max-width:800px;margin:0 0 22px;line-height:1.75}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:20px}
+.verify{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:600;color:#fff}
+.verify b{color:var(--acc)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;border-radius:9px;font-weight:700;padding:12px 22px;font-size:15px;cursor:pointer;border:1px solid transparent;transition:all .15s;text-decoration:none}
+.btn-primary{background:var(--acc);color:#1a1205}
+.btn-primary:hover{background:var(--acc7);color:#fff}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.free-note{margin-top:12px;font-size:12.5px;color:#9fb4c9}
+/* ===== 通用版块 ===== */
+.block{margin:34px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.sec-head .no{flex:0 0 auto;width:38px;height:38px;border-radius:999px;background:var(--b800);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.sec-head h2{font-size:21px;color:var(--b800)}
+.sec-desc{color:var(--mut);font-size:13.5px;margin:0 0 16px 50px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.step .sn{width:34px;height:34px;border-radius:999px;background:var(--b800);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px}
+.step h3{font-size:15px;color:var(--b800);margin-bottom:4px}
+.step p{font-size:13px;color:var(--mut);margin:0;line-height:1.65}
+/* ===== 锚点跳转（桌面药丸 / 移动端折叠为下拉） ===== */
+.jump{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:26px 0}
+.jump .lab{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
+.pills{display:none;flex-wrap:wrap;gap:8px}
+.pills a{font-size:12.5px;font-weight:600;color:var(--b700);background:var(--b100);border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:background .15s,color .15s}
+.pills a:hover{background:var(--b800);color:#fff}
+.jump-sel{display:block;width:100%;font-family:inherit;font-size:14px;font-weight:600;color:var(--b700);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:44px}
+@media(min-width:861px){.pills{display:flex}.jump-sel{display:none}}
+section[id]{scroll-margin-top:74px}
+/* ===== 机构版块 ===== */
+.inst{background:#fff;border:1px solid var(--line);border-radius:16px;margin:30px 0;overflow:hidden}
+.inst-head{padding:24px 26px 14px;border-bottom:1px solid var(--line);background:#fff}
+.inst-head .row1{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.inst-head .no{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--acc);color:#1a1205;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.inst-head h2{font-size:22px;color:var(--b800)}
+.inst-head .en{font-size:12.5px;color:var(--mut)}
+.inst-head .tag{font-size:12px;font-weight:700;color:var(--b700);background:var(--b100);border:1px solid var(--line);padding:3px 11px;border-radius:999px}
+.inst-head .loc{font-size:13.5px;color:var(--mut);margin-top:10px;max-width:980px;line-height:1.7}
+.inst-grid{display:grid;grid-template-columns:1fr;gap:14px;padding:18px 26px 8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{font-size:14px;font-weight:700;color:var(--b700);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card h3 .sn{flex:0 0 auto;width:21px;height:21px;border-radius:6px;background:var(--b800);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center}
+.card ul{list-style:none}
+.card li{font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line);color:var(--ink)}
+.card li:last-child{border-bottom:none}
+.card li code{display:inline-block;font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;color:var(--code);background:#eef4ff;border:1px solid #cfe0ff;border-radius:5px;padding:1px 7px;margin:2px 6px 2px 0;white-space:nowrap}
+.card li b{font-weight:700;color:var(--ink)}
+.card li .why{display:block;color:var(--mut);font-size:12.5px;margin-left:2px}
+.inst-tip{background:#fff8ec;border:1px solid #f0d9a8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:0 26px 14px}
+.inst-tip b{color:#a35b1a}
+.inst-more{text-align:right;padding:0 26px 20px}
+.inst-more a{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--b500);border:1px solid var(--b300);border-radius:9px;padding:9px 16px;transition:background .15s,color .15s}
+.inst-more a:hover{background:var(--b500);color:#fff}
+/* ===== 更新日志 ===== */
+.update-log{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:26px 0}
+.update-log h3{font-size:14px;color:var(--b800);margin-bottom:8px}
+.update-log ul{list-style:none}
+.update-log li{font-size:12.5px;color:var(--mut);padding:3px 0;border-bottom:1px dashed var(--line)}
+.update-log li:last-child{border:none}
+.update-log code{font-family:ui-monospace,Consolas,monospace;color:var(--code);font-weight:700}
+/* ===== 页脚 ===== */
+.site-footer{background:var(--b900);color:#aebfd0;font-size:13px;padding:38px 0 26px;margin-top:56px}
+.site-footer .cols{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:22px}
+.site-footer h4{color:#fff;font-size:13.5px;margin:0 0 10px}
+.site-footer a{color:#cdd9e6}
+.site-footer a:hover{color:#fff}
+.site-footer .f-col a{display:block;margin-bottom:7px}
+.site-footer .bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;color:#7f93a8;font-size:12px;line-height:1.8}
+@media(min-width:720px){.site-footer .cols{grid-template-columns:repeat(4,1fr)}.inst-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.container{padding-left:16px;padding-right:16px}.hero{padding:36px 0 40px}.hero-sub{font-size:15px}.hero h1{font-size:24px}.inst-head{padding:20px 18px 12px}.inst-grid{padding:14px 18px 6px}.inst-tip{margin:0 18px 12px}.inst-more{padding:0 18px 16px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="https://labkitpro.com">LabKit<span>Pro</span></a>
+    <nav class="nav">
+      <a href="https://labkitpro.com">首页</a>
+      <a href="https://labkitpro.com/coverage">覆盖范围</a>
+      <a class="cta" href="https://labkitpro.com/diagnosis">免费诊断</a>
+      <a class="lang-toggle" href="Global-Accreditation-Bodies-Requirements-EN.html">EN</a>
+    </nav>
+    <button class="nav-burger" onclick="document.getElementById('mnav').classList.toggle('open');document.querySelector('.burger-ico').classList.toggle('open')" aria-label="菜单"><span class="burger-ico" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  </div>
+  <div class="m-nav" id="mnav">
+    <a href="https://labkitpro.com">首页</a>
+    <a href="https://labkitpro.com/coverage">覆盖范围</a>
+    <a class="m-cta" href="https://labkitpro.com/diagnosis">免费诊断</a>
+    <a class="lang-toggle" href="Global-Accreditation-Bodies-Requirements-EN.html">EN</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">实验室认可 · 逐家提炼</span>
+    <h1>认可要求，只看你自己那家</h1>
+    <p class="hero-sub">你只关心你所在国家那家认可机构的要求。本页把 <b>ILAC · CNAS · A2LA · UKAS · NVLAP · NATA · SINGLAS · NABL</b> 八家机构各自「在通用准则之外必须做、必须交」的关键要求，按同一套通关路径逐家提炼——必备通用要求 → 核心准则 → 领域专属要求 → 计量溯源/不确定度/能力验证 → 申请与评审 → 获证后维护。找到你那家，照着准备，快速通过认可、做好认可维护。</p>
+    <div class="hero-meta">
+      <span class="verify">最后核对：<b>2026-10-19</b></span>
+      <span class="verify">免费</span>
+      <span class="verify">资源整理自各机构官方公开发布文件</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#ilac">从你关注的机构开始 →</a>
+    </div>
+    <p class="free-note">本页全部内容免费阅读，无需注册。</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="jump">
+    <div class="lab">跳转到你的机构</div>
+    <div class="pills">
+      <a href="#howto">怎么读</a><a href="#ilac">ILAC</a><a href="#cnas">CNAS</a><a href="#a2la">A2LA</a><a href="#ukas">UKAS</a><a href="#nvlap">NVLAP</a><a href="#nata">NATA</a><a href="#singlas">SINGLAS</a><a href="#nabl">NABL</a>
+    </div>
+    <select class="jump-sel" onchange="if(this.value){location.hash=this.value}" aria-label="跳转到机构">
+      <option value="">跳转到你的机构…</option>
+      <option value="howto">怎么读</option>
+      <option value="ilac">ILAC</option>
+      <option value="cnas">CNAS</option>
+      <option value="a2la">A2LA</option>
+      <option value="ukas">UKAS</option>
+      <option value="nvlap">NVLAP</option>
+      <option value="nata">NATA</option>
+      <option value="singlas">SINGLAS</option>
+      <option value="nabl">NABL</option>
+    </select>
+  </div>
+
+  <section class="block" id="howto">
+    <div class="sec-head"><div class="no">〇</div><h2>怎么读这份速览</h2></div>
+    <p class="sec-desc">八家机构各成一节，每家都按下面同一套通关路径组织——找到你所在国家那家，走你自己那一条即可。</p>
+    <div class="grid-auto">
+      <div class="step"><div class="sn">1</div><h3>必备通用要求</h3><p>认可规则、条款与条件、标志使用、投诉申诉——硬门槛，全部申请机构适用。</p></div>
+      <div class="step"><div class="sn">2</div><h3>核心准则</h3><p>ISO/IEC 17025、ISO 15189 等基准标准 + 机构自己的转换/应用要求。</p></div>
+      <div class="step"><div class="sn">3</div><h3>领域专属要求</h3><p>按检测/校准领域或机构类型选用的应用说明、项目手册、特定准则。</p></div>
+      <div class="step"><div class="sn">4</div><h3>计量溯源 · 不确定度 · 能力验证</h3><p>溯源政策、不确定度评定、PT 参加要求——评审必查项。</p></div>
+      <div class="step"><div class="sn">5</div><h3>申请与评审</h3><p>申请表、范围填报、评审/文件检查表——按机构类型选三件套。</p></div>
+      <div class="step"><div class="sn">6</div><h3>获证后维护</h3><p>年度监督、续证、文件版本跟踪、近期换版变化——让证书一直有效。</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 1 ILAC ===== -->
+  <section class="inst" id="ilac">
+    <div class="inst-head">
+      <div class="row1"><div class="no">1</div><h2>ILAC</h2><span class="en">International Laboratory Accreditation Cooperation</span><span class="tag">国际互认通用层</span></div>
+      <p class="loc">ILAC 不是认可机构，是全球实验室认可互认组织（ILAC MRA）。实验室不直接向 ILAC 申请，而是通过本国认可机构加入互认。2026-01-01 起 ILAC 停止运营、职能并入 <b>Global ACI</b>（global-aci.org），文件编号正在过渡。以下政策经本国认可机构落实，对实验室有约束力。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>P8</code> 认可标志使用与认可状态声明 <b>——出口证书若声明 ILAC MRA 认可必须符合</b><span class="why">Global ACI 2025-29 决议指定继续有效，对应 MRA-006</span></li>
+        <li><code>R7</code> ILAC MRA 标志使用规则<span class="why">与 P8 配套，规定联合标志的使用与展示</span></li>
+        <li><code>P9</code> 能力验证及实验室间比对政策<span class="why">PT 参加要求的总纲，对应 TECH-1-008</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li>无自有准则——以 <b>ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）</b>等国际标准为基准，由本国认可机构转换执行<span class="why">ILAC 通过 A 系列同行评审确保各 AB 执行一致</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>P15</code> ISO/IEC 17020:2012 检验机构应用<span class="why">对应 TECH-2-001</span></li>
+        <li><code>G19</code> 法庭科学过程模块 · <code>G26</code> 医学认可制度实施 · <code>G7/G29</code> 赛马与反兴奋剂<span class="why">仅相关领域适用</span></li>
+        <li><code>G27/G28</code> 检验过程测量、检验机构范围编制</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>P10</code> 测量结果计量溯源性政策<span class="why">对应 TECH-1-011 制定中，暂继续有效</span></li>
+        <li><code>P14</code> 校准中测量不确定度政策 · <code>G17</code> 检测不确定度指南<span class="why">校准/检测实验室分别使用</span></li>
+        <li><code>G8</code> 判定规则与符合性声明 · <code>G18</code> 认可能力范围描述 · <code>G24</code> 再校准间隔确定<span class="why">报告判定、范围填报、校准周期管理高频使用</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li>无直接申请通道；互认资格取决于本国认可机构通过 <code>IAF/ILAC A2</code> 同行评审<span class="why">A2 决定本国 AB 的互认签署资格，2025-09 新版对应 MRA-005</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>ILAC→Global ACI 过渡：<b>P9→TECH-1-008、P14→TECH-1-009、P10→TECH-1-011（制定中）</b><span class="why">留意本国 AB 采用的新编号</span></li>
+        <li>归档站点 ilac.org 仅供查阅；文件动态以 global-aci.org 为准</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>对实验室而言 ILAC 层核心就三件事——溯源（P10）、能力验证（P9）、标志与声明（P8/R7）。出口报告带 MRA 标志前，先确认本国 AB 转发的现行版本编号。</div>
+    <div class="inst-more"><a href="ILAC互认通用层文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 2 CNAS ===== -->
+  <section class="inst" id="cnas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">2</div><h2>CNAS</h2><span class="en">China National Accreditation Service for Conformity Assessment</span><span class="tag">中国大陆</span></div>
+      <p class="loc">中国大陆唯一实验室认可机构，文件体系最完整：通用规则（R/RL）+ 基本准则（CL）+ 领域应用说明（A）+ 指南（GL）+ 说明（EL）+ 技术报告（TRL）。申请第一步锁定行业，第二步按行业选 A 系列应用说明。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>RL01:2025</code> 实验室认可规则 · <code>RL02:2023</code> 能力验证规则<span class="why">每年须按领域参加能力验证，不满足即影响认可</span></li>
+        <li><code>R01</code> 认可标识使用与声明 · <code>R02</code> 公正性与保密 · <code>R03:2026</code> 申诉/投诉/争议<span class="why">R03 已于 2026-09-22 换版，替代 2019 版</span></li>
+        <li><code>RL03:2025</code> 收费管理 · <code>RL04</code> 境外实验室受理</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li><code>CL01:2018</code> 检测和校准实验室能力认可准则 <b>（等同 ISO/IEC 17025:2017）</b></li>
+        <li><code>CL01-G001:2024</code> 应用要求 <b>（必备）</b> · <code>G002</code> 计量溯源性 · <code>G003</code> 测量不确定度 · <code>G004</code> 内部校准<span class="why">G001 为 2024 年第二次换版+实质性修订</span></li>
+        <li><code>G005</code> 非固定场所检测活动应用说明</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>CL01-A 系列</code> 领域应用说明 <b>（按行业选，全行业 40 组）</b><span class="why">高频：A001 微生物、A002 化学、A025 校准、A008 电磁兼容</span></li>
+        <li>近期换版：<b>A004 医疗器械（2026-05-01 实施）、A018 建设工程（2027-01-01 实施）、A016 感官（2025-01）</b></li>
+        <li>专项方案 S01–S06（能源之星、蓝牙、反兴奋剂、EPA、OIML 等）按业务选用</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>RL02</code> 规定年度能力验证要求 · <code>GL002/GL032</code> 能力验证结果统计与选择核查</li>
+        <li><code>GL006</code> 化学分析不确定度 · <code>GL025:2023</code> CMC 表示 · <code>GL042</code> 期间核查 · <code>GL054:2023</code> 校准周期确定<span class="why">校准实验室重点</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li><code>EL-15</code> 受理要求 · <code>EL-03:2023</code> 能力范围表述 · <code>EL-13</code> 报告/证书要求 · <code>EL-20</code> 远程评审 · <code>EL-28</code> 英文名称地址申报</li>
+        <li><code>GL001</code> 实验室认可指南 · <code>GL008</code> 不符合项分级 · <code>GL011/GL012:2025</code> 内审与管理评审指南（2025-12 新版）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>监督评审按 <code>RL01</code>；能力验证持续满足 <code>RL02</code></li>
+        <li>2026 新增/换版：<b>R03:2026、生物样本库 RL10:2026+EL-30:2026、煤炭 TRL-026/027、先进制造 TRL-024/025、实验动物 CL06-A001:2026</b><span class="why">2026-08-28 技术报告清单更新</span></li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>先按行业锁定 CL01-A 系列（40 组），再配齐 G 系列四项通用要求（G001–G004）；能力验证按 RL02 提前排期，是评审前最易出问题的环节。</div>
+    <div class="inst-more"><a href="中国大陆全行业实验室CNAS认可规范文件-行业分类清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 3 A2LA ===== -->
+  <section class="inst" id="a2la">
+    <div class="inst-head">
+      <div class="row1"><div class="no">3</div><h2>A2LA</h2><span class="en">American Association for Laboratory Accreditation</span><span class="tag">美国（非政府）</span></div>
+      <p class="loc">美国非营利、非政府第三方认可机构（ISO/IEC 17011 + ILAC/APAC 互认）。文件分六大类：A 组织、I 信息、P 政策、R 认可要求（强制）、G 指南、F/A308 表格。R 系列是认可硬要求，P 系列是通用政策。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>R101</code> 合格评定机构认可通用要求 <b>（2026-09-01 新版）</b><span class="why">所有 CAB 认可的基础</span></li>
+        <li><code>R102</code> 认可条件（2026-02-20） · <code>R105</code> 引用 A2LA 认可状态要求<span class="why">对外声明认可资格时的硬约束</span></li>
+        <li><code>R103</code> ISO/IEC 17025 实验室能力验证通用要求 <b>（2026-04-01）</b></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li>ISO/IEC 17025:2017 经 <code>R101</code> 转换执行</li>
+        <li>医学实验室：<code>R602</code> 认可条件 + <code>R603</code> 能力验证要求 <b>（ISO 15189 + CLIA 双重要求）</b></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>R208</code> 建材 · <code>R212</code> 无损检测 · <code>R221</code> 法医检验（含马里兰/得州专项附录） · <code>R255</code> 电气 · <code>R262</code> 州法制计量 · <code>R310</code> 特殊检验机构 · <code>R311</code> FedRAMP</li>
+        <li><code>P103a–e</code> 分领域不确定度评定附录：汽车材料/生命科学/电磁/建材岩土/法医<span class="why">按检测领域选对应附录</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>P102</code> 计量溯源性政策（2024-10-31）+ <code>G135/G149</code> 应用指南<span class="why">含内部校准应用</span></li>
+        <li><code>P103</code> 检测实验室不确定度评定政策（2025-08-01） · <code>G104</code> 检测不确定度指南（2026-08-26）</li>
+        <li><code>G133</code> 能力验证计划建立指南 · <code>G136</code> 校准中决策规则</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li><code>F 系列</code> 认可范围选择表 <b>（按领域选，F204 校准 / F205 化学 / F209 电气…）</b></li>
+        <li><code>F117</code> 技术人员矩阵 · <code>F349</code> 分包方能力确认表 · <code>I105</code> 申请准备典型步骤<span class="why">F210a/F229 需登录客户/合作方门户</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>2026 密集换版：<b>P120 卫星实验室（2026-08）、P121 反舞弊（2026-08）、P105 迁址（2026-05）、P112 灵活范围（2026-03）、G118 校准范围界定（2026-10）、G126/G149 不确定度指南</b><span class="why">申请前务必核对版本日期</span></li>
+        <li>医学项目 <code>R602/R603</code> 2025-10 更新</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>A2LA 2026 年文件更新密集，以 R101 + 对应领域 R2xx + P102/P103 为准；范围填报用 F 系列选择表，技术人员矩阵 F117 是人员资质的官方载体。</div>
+    <div class="inst-more"><a href="A2LA实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 4 UKAS ===== -->
+  <section class="inst" id="ukas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">4</div><h2>UKAS</h2><span class="en">United Kingdom Accreditation Service</span><span class="tag">英国</span></div>
+      <p class="loc">英国国家认可机构（ISO/IEC 17011）。UKAS 实验室须同时遵守 <b>三层文件</b>：UKAS 自编（GEN/LAB/TPS）+ 强制采用的欧洲 EA 政策 + Global ACI（原 ILAC）政策。这种「叠加」是 UKAS 最显著的特点。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li>英国国家认可标志与符号使用条件 <b>（gov.uk 官方文件）</b></li>
+        <li><code>GEN 1</code> 评审一般原则（2025-03，Ed.4） · <code>GEN 4</code> 灵活范围政策（2024-11） · <code>GEN 6</code> 认可地位与互认签署方引用<span class="why">GEN 4 替代 LAB 39/TPS 59，GEN 6 替代 LAB 1</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li>ISO/IEC 17025:2017 / ISO 15189:2022 为准则，另参照 <b>ISO 15195:2018</b>（参考测量实验室）</li>
+        <li><code>LAB 5</code> 校准结果报告 · <code>LAB 12</code> 检测不确定度表达（2025-12） · <code>LAB 13</code> 意见和解释（2026-09） · <code>LAB 45</code> 校准范围清单 · <code>LAB 48</code> 决策规则 · <code>M3003</code> 不确定度与置信度表达</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>LAB 30</code> 石棉 · <code>LAB 33</code> 官方食品饲料与国家参比实验室（2025-12） · <code>LAB 37</code> 饮用水 DWTS · <code>LAB 32</code> 国家 DNA 数据库 · <code>LAB 201</code> 现场法医</li>
+        <li>2025 新增：<b>LAB 60 基因组医学、LAB 61 网络/多地点医学服务</b><span class="why">医学实验室重点</span></li>
+        <li><code>LAB 11/14/15/25</code> 温度、衡器、玻璃量器、硬度等计量溯源指南</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>TPS 41</code> 计量溯源性政策 · <code>TPS 47</code> 能力验证参与政策（Ed.6 评审中） · <code>TPS 57</code> 标准物质选择与使用</li>
+        <li>强制采用 Global ACI：<b>TECH-1-008</b>（PT，替代 ILAC P9） · <b>TECH-1-009</b>（校准不确定度，替代 P14） · <b>ILAC P10</b>（溯源）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li><code>TPS 53</code> 报告/证书声明用语 · <code>TPS 63</code> 偏离样品政策 · <code>TPS 76</code> 临时设施管理（2024-11 新增）</li>
+        <li>强制采用 EA：<b>EA-4/02</b> 校准不确定度 · <b>EA-3/01</b> 标志与 MLA 引用 · <b>EA-4/17</b> 医学范围描述 · <b>EA-2/15</b> 灵活范围</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>三层文件体系须同时跟踪：UKAS 自编 + EA + Global ACI 各自的换版</li>
+        <li><code>TPS 71</code> 医疗诊断路径（2026-05，Ed.3） · <code>LAB 24</code> Ed.3 征求意见中 · <code>TPS 47</code> Ed.6 评审中</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>UKAS 的特色是「叠加」：除 UKAS 自编文件外，EA 与 Global ACI 政策为强制采用。维护时三份清单（UKAS M4 出版物清单 + EA 库 + Global ACI 库）都要跟踪。</div>
+    <div class="inst-more"><a href="UKAS实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 5 NVLAP ===== -->
+  <section class="inst" id="nvlap">
+    <div class="inst-head">
+      <div class="row1"><div class="no">5</div><h2>NVLAP</h2><span class="en">National Voluntary Laboratory Accreditation Program · NIST</span><span class="tag">美国（政府计划）</span></div>
+      <p class="loc">美国国家标准与技术研究院（NIST）依据 15 CFR Part 285 管理的政府认可计划，准则等同采用 ISO/IEC 17025:2017。与 A2LA 不同：NVLAP 是法规授权的政府计划，按 <b>认可项目（LAP）</b>组织。现行要求 = 项目手册 + 插入式 Lab Bulletin 的组合。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>NIST HB 150</code> NVLAP 程序与通用要求 <b>（2020 版 Update 1，全部项目通用）</b></li>
+        <li>必须同时插入两则现行公告：<b>LB-156-2024</b>（项目检查表迁至 NIWS 门户） · <b>LB-132-2020</b>（NIWS 提交不符合项原因分析）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li>ISO/IEC 17025:2017 等同采用；转版公告 <code>LB-116/117-2020</code> 须插入对应手册</li>
+        <li><code>PG-17-2024</code> 政策指南：认可到期界定为「自愿终止认可」<span class="why">续证管理重要</span></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>HB 150-x</code> 项目手册 20 份现行，按 LAP 选用：<b>150-2 校准（2024）、150-3 散装石棉（2025）、150-5 建材、150-8 声学、150-11 EMC/通信（FCC/ISED/ASCA）、150-17 密码安全、150-18 紧固件金属（2024）、150-31 医疗 IT</b></li>
+        <li>项目手册 + 对应 Lab Bulletin 才是该项目的现行要求</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li>PT 要求以项目手册与公告为准：<b>LB-166-2026</b> 石棉续证须提交能力验证（PT）资料<span class="why">续证申请的关键变化</span></li>
+        <li>其他项目各自规定 PT 频次与记录要求（见项目手册）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li>现场评审检查表（26 份）<b>2024 年起经 NIWS 实验室/评审员门户分发，公开网不提供 PDF</b><span class="why">通用准则检查表（2026-09-10 修订）须联系 NVLAP 索取</span></li>
+        <li>带 * 项目须配合 Test Method Review Summary 使用</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li><b>LB-163-2026</b> 密码安全（CST）暂停接受新申请 · <b>LB-164-2026</b> OWM 认可协作（校准） · <b>LB-165-2026</b> HIT 健康数据规则</li>
+        <li>编号空档（150-7/9/12…）对应已终止项目，不再列示</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>NVLAP 用户最易踩的坑是「只看手册不看公告」。现行要求是手册+公告的组合；检查表唯一渠道是 NIWS 门户，需提前申请授权账户。</div>
+    <div class="inst-more"><a href="NVLAP实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 6 NATA ===== -->
+  <section class="inst" id="nata">
+    <div class="inst-head">
+      <div class="row1"><div class="no">6</div><h2>NATA</h2><span class="en">National Association of Testing Authorities, Australia</span><span class="tag">澳大利亚</span></div>
+      <p class="loc">澳大利亚政府背书的国家认可机构，覆盖面最广：检测/校准/检验/医学/GLP/PTP/RMP/生物样本库/医学影像/睡眠/呼吸功能。特色是 <b>标准应用文件（SAD）</b>——对 ISO/IEC 17025、17020、15189 等国际标准附加澳大利亚专属要求。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>NATA Rules</code> 认可规则 <b>（2026-09-11 新版 + Amendment Sheet）</b></li>
+        <li><code>NATA Procedures</code> 认可程序（2026-08-25 新版） · Accreditation Service Commitment（2025-10）</li>
+        <li><code>GAC</code> NATA 标志、背书及认可声明使用（2025-06）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li><code>SAD 17025</code> ISO/IEC 17025:2017 标准应用文件 <b>（检测/校准核心，NATA 特色）</b></li>
+        <li><code>SAD 15189</code> 医学检测补充要求 <b>（2026-02 生效）</b> · <code>SAD 17020:2026</code>（2026-10 生效） · <code>SAD 17043:2023</code> · <code>SAD 17034</code></li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>SAC</code> 附录 47 份：校准（8 类）、生命科学、基础设施与资产完整性（IAI）、法律-法医、制造品、材料</li>
+        <li><code>SoA</code> 认可范围服务描述表 <b>（范围填报的依据，各行业一份）</b></li>
+        <li><code>GAC</code> 多场所机构认可（2024-12） · 新分支机构场所（2026-09）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>GAC</code> 计量溯源性（2020-12） · 设备保证、内部校准与设备验证（2019-05）</li>
+        <li><code>Policy</code> 能力验证政策（2021-12） · 远程评审政策（2022-12）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li><code>Worksheet</code> ISO/IEC 17025 评审工作表（2025-09） · ISO 15189 评审工作表</li>
+        <li><code>FDU</code> 机构详情更新表 · 认可范围变更申请 · 现场场所设立通知（2026-06） · NDT 工地咨询表（2026-10）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>专项方案多：OECD GLP、医学影像（RANZCR）、睡眠障碍（ASA）、呼吸功能（TSANZ）</li>
+        <li>2026 密集换版：<b>Rules/Procedures、SAD 17020:2026、SAD 15189（2026-02 生效）</b>；废止文件已并入新准则，勿再用旧版</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>NATA 用户先看 SAD（标准应用文件）——国际标准之外的澳大利亚专属要求都写在这里；范围填报必须用对应行业的 SoA 服务描述表。</div>
+    <div class="inst-more"><a href="NATA实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 7 SINGLAS ===== -->
+  <section class="inst" id="singlas">
+    <div class="inst-head">
+      <div class="row1"><div class="no">7</div><h2>SINGLAS</h2><span class="en">Singapore Laboratory Accreditation Scheme · SAC</span><span class="tag">新加坡</span></div>
+      <p class="loc">新加坡认可理事会 SAC 管理的实验室认可计划，覆盖检测/校准（ISO/IEC 17025:2017）与医学（ISO 15189:2022）。医学领域高度细分：<b>MED 002 系列按 8 个亚学科分别出特定要求</b>，是新加坡的特色。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>SAC 01</code> 认可通用条款与条件 <b>（2026-01-01 新版）</b> · <code>SAC 02</code> 认可标志与 MRA 标志使用 <b>（2026-01-01 新版）</b></li>
+        <li><code>PROF 001</code> 能力验证政策（2026-04-16 新版） · <code>SAC-SINGLAS 004</code> 检测项目分类（2026-03-09） · <code>SAC-SINGLAS 003</code> 收费表（2024-12-01 生效）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li><code>SAC-SINGLAS 001</code> 认可流程 <b>（17025 版 2026-03-09；医学版 2024-09-06）</b></li>
+        <li><code>SAC-SINGLAS 006</code> 测量溯源性（2021-05） · <code>LAFM 03</code> ISO 17025 评审核查表（2026-03-27） · <code>LAFM 03-MED</code> ISO 15189 检查表</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>MET 001/002</code> 校准与测量 · <code>C&amp;B and ENV 001/002</code> 化学/生物/环境（共用一套） · <code>CE 001/002</code> 土木（含混凝土无损） · <code>EL 001/002</code> 电气 · <code>FFT 01</code> 功能性食品 · <code>MECH 001</code> 机械 · <code>NDT 001-003</code> 无损</li>
+        <li><code>IT 001</code> IT 安全检测通用要求 <b>（2026-08-08 新版，替代 2018 版）</b> · <code>IT 002</code> 游戏检测</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>Technical Guide 1</code> 不确定度评定与表达（2026-03-18） · <code>TG 2</code> 化学微生物 · <code>TG 3</code> 土木机械 · <code>TG 4</code> 医学（2025-11-03）</li>
+        <li><code>MET 002</code> 校准测量能力（CMC）记录准则 · <code>PROF 001</code> 规定 PT 参与要求</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li><code>LAFM 03 / LAFM 03-MED</code> 评审核查表（17025 / 15189 分别使用）</li>
+        <li>按认可领域核对对应「Specific Requirements」文件（MET/C&amp;B/CE/EL/NDT…）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>医学高度细分：<b>MED 001</b> 通用准则（2025-06-30）+ <b>MED 002 系列 8 亚学科</b>（临床化学、细胞遗传学、细胞病理学、血液学、组织病理学、遗传与基因组、微生物学、分子病理学）<b>2025-11-03 统一换版</b></li>
+        <li>2025–2026 约 20 份文件换版/新发，申请前核对版本</li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>医学实验室按申请的亚学科选对应 MED 002；非医学实验室按领域选 Specific Requirements。2026 年多文件换版（SAC 01/02、PROF 001、IT 001），版本核对是维护重点。</div>
+    <div class="inst-more"><a href="SINGLAS实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <!-- ===== 8 NABL ===== -->
+  <section class="inst" id="nabl">
+    <div class="inst-head">
+      <div class="row1"><div class="no">8</div><h2>NABL</h2><span class="en">National Accreditation Board for Testing and Calibration Laboratories</span><span class="tag">印度</span></div>
+      <p class="loc">印度国家检测与校准实验室认可委员会，覆盖检测/校准（17025）、医学（15189）、能力验证提供者（17043）、标准物质生产者（17034）、生物样本库（20387）。77 份现行文件：先按机构类型选 <b>「准则 + 申请表 + 评审检查表」三件套</b>。</p>
+    </div>
+    <div class="inst-grid">
+      <div class="card"><h3><span class="sn">1</span>必备通用要求</h3><ul>
+        <li><code>NABL 100B</code> 认可流程与程序（2025-08-27 修订） · <code>NABL 131</code> 获取与维持认可的条款与条件 <b>（2026-01-23 修订）</b></li>
+        <li><code>NABL 133</code> 标志使用 + ILAC MRA 联合标志（2024-09 修订） · <code>NABL 134</code> 申诉（2025-09-30） · <code>NABL 132/132A</code> 投诉</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">2</span>核心准则</h3><ul>
+        <li>检测/校准：ISO/IEC 17025:2017；医学：<code>NABL 112A</code> 特定准则（2024-12-18，按 ISO 15189:2022）</li>
+        <li>PTP：<code>NABL 181A</code>（按 17043:2023） · RMP：<code>NABL 191</code>（按 17034:2016） · 生物样本库：<code>NABL 229</code>（按 20387）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">3</span>领域专属</h3><ul>
+        <li><code>NABL 129</code> 校准（力学/流量/辐射/电工/热学） · <code>NABL 130</code> 现场检测与校准 · <code>NABL 135</code> 医学影像（2026-01） · <code>NABL 137</code> 软件/IT（2026-04） · <code>NABL 224</code> 临时现场 · <code>NABL 139</code> 邦级饮用水 · <code>NABL 226</code> 政府土壤 · <code>NABL 127</code> 联合评审（2026-08）</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">4</span>计量溯源 · 不确定度 · PT</h3><ul>
+        <li><code>NABL 141</code> 不确定度评定与表达 · <code>NABL 142</code> 计量溯源性政策 · <code>NABL 143</code> CMC 政策</li>
+        <li><code>NABL 163</code> 能力验证参与政策（2024-09 修订） · <code>NABL 164</code> 无正式 PT 时校准实验室间比对</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">5</span>申请与评审</h3><ul>
+        <li>按机构类型三件套：<b>申请表</b>（151 检测 / 152 校准 / 153 医学 / 180 PTP / 190 RMP / 227 生物样本库，2026-08-18 集中修订）+ <b>评审检查表</b>（NABL 219 按 17025:2017；223 按 15189:2022）+ <b>文件评审检查表</b>（NABL 220 系列按标准分类 220/220C-F）</li>
+        <li><code>NABL 209/208A</code> 预评审指南 · <code>NABL 210</code> 评审员指南</li>
+      </ul></div>
+      <div class="card"><h3><span class="sn">6</span>维护与近期变化</h3><ul>
+        <li>年度监督 <code>NABL 218A</code> + 桌面监督 <code>NABL 218</code>（2026-01 修订）</li>
+        <li>2026 新增：<b>NABL 233/234 国防航空 DGAQA（2026-08-11）、NABL 237/238 NACO 网络认可（2026-10-15）</b><span class="why">对应领域实验室关注</span></li>
+      </ul></div>
+    </div>
+    <div class="inst-tip"><b>关键提示：</b>NABL 是「三件套」逻辑——准则（112A/129/181A/191/229）+ 申请表 + 评审/文件检查表配套使用。桌面监督与年度监督检查表是获证后维护的两个抓手。</div>
+    <div class="inst-more"><a href="NABL实验室认可文件清单.html">查看全量清单 →</a></div>
+  </section>
+
+  <div class="update-log">
+    <h3>更新日志</h3>
+    <ul>
+      <li><code>2026-10-19</code> 初版发布——依据 9 份官方文件清单提炼（当日核对）。资源整理自各机构官方公开发布文件。</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div class="f-col"><h4>产品</h4><a href="https://labkitpro.com/diagnosis">现实诊断</a><a href="https://labkitpro.com/templates">文档生成</a><a href="https://labkitpro.com/compliance-review">合规审查</a><a href="https://labkitpro.com/uncertainty">不确定度</a></div>
+      <div class="f-col"><h4>覆盖</h4><a href="https://labkitpro.com/coverage">标准覆盖范围</a><a href="https://labkitpro.com/faq">FAQ</a></div>
+      <div class="f-col"><h4>公司</h4><a href="https://labkitpro.com/about">关于</a><a href="https://labkitpro.com/contact">联系</a><a href="https://labkitpro.com/compliance">合规</a></div>
+      <div class="f-col"><h4>法律</h4><a href="https://labkitpro.com/privacy">隐私政策</a><a href="https://labkitpro.com/terms">条款</a><a href="https://labkitpro.com/refund">退款政策</a></div>
+    </div>
+    <div class="bottom">
+      <div>资源整理自各机构官方公开发布文件。文件编号、版本与实施日期以各机构官网 2026-10-19 发布状态为准；正式申请前请核对现行版本。</div>
+      <div>© 2026 LabKitPro。文档与报告仅为内部准备的工程技术草稿，不构成认可机构的决定。ISO/IEC 17025 为 ISO/IEC 商标，本页仅引用标准编号。</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

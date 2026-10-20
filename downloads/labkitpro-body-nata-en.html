@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NATA · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="NATA_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">NATA · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>NATA · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>NATA (National Association of Testing Authorities, Australia) is Australia's national accreditation body. Its core mechanism: SAD 17025 (the ISO/IEC 17025:2017 Standard Application Document) transposes the international standard into NATA application requirements, then sector-specific SAC annexes (calibration / life sciences / animal health / infrastructure &amp; asset integrity / legal-forensic / manufactured goods / materials) layer on Australia-specific requirements — "SAD application documents + SAC sector annexes + GAC general criteria" are the complete form of NATA's requirements beyond 17025.</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《NATA实验室认可文件清单.html》（live crawl from the official website）</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="NATA实验室认可文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">46</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">16</div><div class="lbl">SAC sector annex groups + specialist schemes</div></div>
+            <div class="stat"><div class="num">48</div><div class="lbl">2025–2026 revised / newly issued documents</div></div>
+            <div class="stat"><div class="num">7</div><div class="lbl">Essential core documents (Rules / Procedures / SAD 17025 / PT / traceability / symbol / worksheet)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements (SAC Annexes)</a>
+    <a href="#req-scheme">4. Specialist Schemes (15189/17020/GLP/PTP/RMP)</a>
+    <a href="#req-tech">5. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">6. Application &amp; Assessment</a>
+    <a href="#req-maintain">7. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">8. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>Of the <b>46</b> documents distilled across five areas, the minimum core set laboratories must act on first is: <b>NATA Rules</b> (revised 2026-09-11) + <b>NATA Procedures</b> (2026-08-25) as the governing framework, the <b>SAD 17025</b> application document, the relevant sector <b>SAC annex</b>, together with the <b>GAC general criteria</b> on traceability/equipment/symbol use, the <b>PT Policy</b> and the <b>17025 Assessment Worksheet</b> — the 7 essential core documents; everything else is supporting or on-demand.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">SAD application documents · SAC sector annexes</span></div>
+  <p class="section-desc">NATA does not rewrite 17025 clause by clause. Instead it issues SADs (Standard Application Documents) stating Australia's additional application requirements, then publishes sector SAC annexes to refine implementation, while GAC general criteria govern cross-cutting topics such as multi-site, symbol use, equipment and traceability.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · International baselines</span><span class="d">ISO/IEC 17025:2017 (testing/calibration), ISO 15189:2022 (medical), ISO/IEC 17020:2026 (inspection), 17043/17034, ISO 20387 (biobanking)</span></div>
+      <div class="layer"><span class="t">Layer 2 · Body rules</span><span class="d">NATA Rules (revised 2026-09-11) + NATA Procedures for Accreditation (2026-08-25) — the master framework for accreditation management</span></div>
+      <div class="layer"><span class="t">Layer 3 · Standard Application Documents (SAD)</span><span class="d">SAD 17025 (core testing/calibration application document) + SAD 15189 / SAD 17020 / SAD GLP / SAD 17043 / SAD 17034</span></div>
+      <div class="layer"><span class="t">Layer 4 · Sector annexes (SAC) &amp; general criteria (GAC)</span><span class="d">Calibration / life sciences / animal health / IAI infrastructure / legal-forensic / manufactured goods / materials annexes + general criteria on multi-site, symbols, equipment, traceability</span></div>
+      <div class="layer"><span class="t">Layer 5 · Guidance / scope / worksheets (GAG/SAG/SoA)</span><span class="d">Technical guidance, Scope of Accreditation activity/service descriptors (SoA), assessment worksheets (the application-assessment interface)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">Rules / Procedures / GAC</span></div>
+  <p class="section-desc">NATA's general additional requirements cover accreditation management, multi-site operation, symbol use and authorised representatives — 17025 governs laboratory competence, while NATA's Rules/Procedures/GAC govern "how accreditation itself is done" in Australia.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NATA Rules</span></td><td><span class="title">NATA Rules / Rules Amendment Sheet</span></td><td class="date">Revised 2026-09-11</td><td><span class="when">The master rulebook for the whole accreditation lifecycle; 2026 revision — the first document every NATA laboratory needs</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NATA Procedures</span></td><td><span class="title">NATA Procedures for Accreditation</span></td><td class="date">Revised 2026-08-25</td><td><span class="when">Procedural requirements for application/assessment/surveillance/re-assessment; 2026 revision — the basis for procedural compliance</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Use of the NATA Emblem, NATA Endorsement and References to Accreditation</span></td><td class="date">2025-06-24</td><td><span class="when">Rules for using the NATA emblem and accreditation references — applies when endorsing reports or citing accreditation in promotion</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Accreditation of multi-site facilities</span></td><td class="date">2024-12-10</td><td><span class="when">General criteria for multi-site accreditation — applies to laboratories operating at multiple locations</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Accreditation of New Branch Sites</span></td><td class="date">Revised 2026-09-01</td><td><span class="when">Requirements for accrediting newly established branch sites; 2026 revision — applies when opening a new site</span><br><span class="badge opt">On demand</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Responsibilities of Authorised Representatives</span></td><td class="date">2024-09-23</td><td><span class="when">Defines the duties of authorised representatives (signatories) — applies to managing signatory authority</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">General</span></td><td><span class="title">Accreditation Service Commitment</span></td><td class="date">2025-10-10</td><td><span class="when">NATA's service commitment to accredited bodies and applicants — sets procedural expectations</span><br><span class="badge opt">Reference</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: reference documents such as NATA's privacy policy and "About NATA and accreditation" are available on demand.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements (SAC Sector Annexes)</h2><span class="tag">Pick the annex for your sector</span></div>
+  <p class="section-desc">NATA codifies sector-specific requirements as SAC (Specific Accreditation Criteria/Annex) annexes: each sector group has "an annex general section + sub-sector annexes", translating 17025's generic clauses into Australian implementation detail — lock down your sector annex before applying.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAC Calibration</span></td><td><span class="title">Calibration ISO/IEC 17025 Annex (general + sub-sector annexes: acoustics/ultrasound/vibration, dimensional, electrical, mass, optical, temperature, ionising radiation, etc.)</span></td><td class="date">General section revised 2026-06-18</td><td><span class="when">Additional calibration requirements (traceability chains / CMC / measurement methods); sub-sector annexes chosen by discipline — applies to calibration laboratories</span><br><span class="badge dom">Calibration</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC 07</span></td><td><span class="title">Life Sciences ISO/IEC 17025 Annex (general + sub-sector annexes, incl. 07.11 asbestos, 07.8 plant health, 07.9 seeds)</span></td><td class="date">General section 2026-02-17 (effective 2026-05)</td><td><span class="when">Additional life-sciences requirements — applies to food/pharma/environmental and other life-science laboratories</span><br><span class="badge dom">Life sciences</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC Animal Health</span></td><td><span class="title">Animal Health ISO/IEC 17025 Appendix</span></td><td class="date">2025-11-18 (effective 2026-02)</td><td><span class="when">Additional requirements for animal-health testing; 2025 revision — applies to veterinary / animal-health laboratories</span><br><span class="badge dom">Animal health</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">SAC IAI</span></td><td><span class="title">Infrastructure and Asset Integrity Annex (geotechnical / NDT / pressure testing / air control / lifting, etc.)</span></td><td class="date">Multiple editions 2025–2026</td><td><span class="when">Additional infrastructure requirements (geotechnical 2025-10, NDT 2026-05, pressure testing 2026-04, etc.) — applies to construction/inspection bodies</span><br><span class="badge dom">Infrastructure</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC Legal</span></td><td><span class="title">Legal – Forensic Science Annex (multi-site crime scene / parentage / on-site drug screening)</span></td><td class="date">General 2023-11-22; parentage 2025-07-17</td><td><span class="when">Additional forensic requirements (incl. AS/NZS 4308/4760 on-site drug screening) — applies to forensic laboratories</span><br><span class="badge dom">Legal-forensic</span></td></tr>
+        <tr><td><span class="code">SAC MG</span></td><td><span class="title">Manufactured Goods Annex (EMC / electrical / physical performance / software / rubber &amp; plastics / textiles / thermal / vehicle safety / paper, etc.)</span></td><td class="date">Dense revisions 2025–2026</td><td><span class="when">Additional requirements for manufactured-goods testing (EMC 2025-12, physical-performance general 2026-06, etc.) — applies to consumer/industrial product testing labs</span><br><span class="badge dom">Manufactured goods</span><span class="badge new">Dense 2026 revisions</span></td></tr>
+        <tr><td><span class="code">SAC Mat</span></td><td><span class="title">Materials Annex (cement / industrial materials characterisation / XRF / LIBS / AES / metallography)</span></td><td class="date">XRF 2025-06-18; metallography 2026-05-20</td><td><span class="when">Additional materials-testing requirements (new XRF/LIBS/AES annexes replace former SAGs) — applies to materials laboratories</span><br><span class="badge dom">Materials</span></td></tr>
+        <tr><td><span class="code">SAC</span></td><td><span class="title">ISO/IEC 17025 Annex – Testing in support of research and development</span></td><td class="date">2022-06-24</td><td><span class="when">Sector addition for R&D-supportive testing — applies to research-oriented laboratories</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Forensic Operations Module</span></td><td class="date">2025-03-25</td><td><span class="when">Operations-module requirements for forensic laboratories — applies to the forensic sector</span><br><span class="badge dom">Forensic</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">MRCC / Media Preparation and Quality Control</span></td><td class="date">2021-08-13</td><td><span class="when">Reference-culture collection and media QC requirements for life-sciences/food/pharma — applies to microbiology laboratories</span><br><span class="badge dom">Microbiology</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: SAC 07.11 asbestos sampling and testing is the new 2026-07 edition; the IAI lifting-equipment annex is a dual-standard annex under both 17020 and 17025; sub-sector annexes are used in combination by discipline.</div>
+  </div>
+</section>
+
+<section class="block" id="req-scheme">
+  <div class="section-head"><div class="no">4</div><h2>Specialist Accreditation Schemes (15189/17020/GLP/PTP/RMP)</h2><span class="tag">Pick the scheme by your business</span></div>
+  <p class="section-desc">For non-17025 body types, NATA issues specialist SADs: medical, inspection, GLP, proficiency testing providers, reference material producers, biobanking, medical imaging and sleep-disorder services — each a matching set of "SAD + checklist/worksheet + scope descriptor".</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">SAD 15189</span></td><td><span class="title">ISO 15189:2022 Application Document – Supplementary Requirements for Accreditation</span></td><td class="date">2025-12-17 (effective 2026-02)</td><td><span class="when">The NATA application document for medical laboratories accredited to 15189:2022; effective 2026-02, replacing the 2023-08/2012 editions — applies to medical laboratories</span><br><span class="badge dom">Medical</span><span class="badge new">Effective 2026</span></td></tr>
+        <tr><td><span class="code">GAC 12</span></td><td><span class="title">ISO/IEC 17020:2026 Standard Application Document – effective October 2026</span></td><td class="date">2026-08-26 (effective 2026-10)</td><td><span class="when">The NATA application document for inspection bodies accredited to 17020:2026, with transition policy/checklist/worksheet — applies to inspection bodies</span><br><span class="badge dom">Inspection</span><span class="badge new">Effective 2026</span></td></tr>
+        <tr><td><span class="code">SAD GLP</span></td><td><span class="title">OECD Principles of GLP Recognition Application Document</span></td><td class="date">2024-04-16</td><td><span class="when">Core application document for GLP programmes — applies to GLP study organisations</span><br><span class="badge dom">GLP</span></td></tr>
+        <tr><td><span class="code">SAD 17043</span></td><td><span class="title">ISO/IEC 17043:2023 PT Providers – Standard Application Document</span></td><td class="date">2023-12-06</td><td><span class="when">The NATA application document for PTP accreditation — applies to proficiency testing providers</span><br><span class="badge dom">PTP</span></td></tr>
+        <tr><td><span class="code">SAD 17034</span></td><td><span class="title">ISO 17034 Standard Application Document (RMP)</span></td><td class="date">2024-03-18</td><td><span class="when">The NATA application document for reference material producer accreditation — applies to RMP bodies (with a separate SAC annex for reference-gas producers)</span><br><span class="badge dom">RMP</span></td></tr>
+        <tr><td><span class="code">RANZCR/SDS/Respiratory</span></td><td><span class="title">RANZCR Clinical Radiology SAD / ASA-NATA SDS Program / Respiratory Function Laboratories</span></td><td class="date">Multiple editions 2021–2026</td><td><span class="when">Specialist medical accreditation schemes — applies to medical imaging, sleep and respiratory-function service providers</span><br><span class="badge dom">Medical specialist</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: every specialist scheme comes with its own checklist/assessment worksheet/SoA descriptors; biobanking follows the ISO 20387 assessment worksheet.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">5</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">GAC general criteria</span></div>
+  <p class="section-desc">NATA's traceability and equipment management run through GAC general criteria, while PT runs under a dedicated policy — both are cross-cutting items assessed in every on-site assessment.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Metrological Traceability</span></td><td class="date">2020-12-20</td><td><span class="when">NATA's general criterion on traceability chains — Australia's execution baseline for 17025 clause 6.5</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">GAC</span></td><td><span class="title">Equipment Assurance, in-house Calibration and Equipment Verification</span></td><td class="date">2019-05-02</td><td><span class="when">General criterion for equipment management, in-house calibration and verification — the basis for the equipment control plan</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="title">Proficiency Testing Policy</span></td><td class="date">2021-12-03</td><td><span class="when">Sector/frequency/record requirements for PT participation — the basis for annual PT compliance</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="title">Electronic Measuring Equipment as Reference Standards</span></td><td class="date">2018-06-07</td><td><span class="when">Criteria for using electronic measuring equipment as reference standards — reference for calibration/RMP fields</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="title">General Equipment Table</span></td><td class="date">2024-09-20</td><td><span class="when">General cross-reference table of equipment requirements — self-check reference for equipment management</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">GAG</span></td><td><span class="title">User Checks and Maintenance of Laboratory Balances</span></td><td class="date">2018-01-14</td><td><span class="when">Guidance on routine user checks and maintenance of balances — applies to weighing laboratories</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">SAC Calibration</span></td><td><span class="title">Calibration Annex – Temperature Metrology / Mass and Related Quantities</span></td><td class="date">2022-05-09 / 2024-08-23</td><td><span class="when">Sector traceability detail for temperature/mass calibration — applies to the corresponding specialist calibration laboratories</span><br><span class="badge dom">Calibration</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: for uncertainty evaluation, refer to the JCGM GUM and Eurachem/NordTest (NATA has withdrawn its own former uncertainty guidance — see Part 7).</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">6</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">Worksheets + SoA descriptors</span></div>
+  <p class="section-desc">NATA's application-assessment interface is "assessment worksheets + Scope of Accreditation activity/service descriptors (SoA) + change forms": self-assessment uses worksheets, scope filing uses SoA descriptors, and changes go through dedicated forms.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">Worksheet</span></td><td><span class="title">ISO/IEC 17025 Assessment Worksheet</span></td><td class="date">2025-09-09</td><td><span class="when">Clause-by-clause self-assessment/assessment worksheet for 17025 — self-assess against it before applying</span><br><span class="badge core">Essential for application</span></td></tr>
+        <tr><td><span class="code">Worksheet</span></td><td><span class="title">ISO/IEC 17025 Assessment Worksheet with GCLP overlay</span></td><td class="date">2024-04-16</td><td><span class="when">Worksheet for GCLP-overlaid programmes — applies when applying for GLP at the same time</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="title">Application for Scope Changes</span></td><td class="date">Revised 2026-09-07</td><td><span class="when">Application form for scope expansion/reduction — the channel for scope changes</span><br><span class="badge core">Essential for application</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="title">Facility Details Update Form</span></td><td class="date">Revised 2026-09-07</td><td><span class="when">Update form for facility information — applies when address/legal representative/contacts change</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="title">Notification of Establishment of an Annex Facility / Field Site</span></td><td class="date">2022-12-09 / 2026-06-18</td><td><span class="when">Notification requirements for new annex facilities / field sites (asbestos field sites use the new edition) — mandatory on site changes</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">Form</span></td><td><span class="title">NDT Work Site Advice Form</span></td><td class="date">Latest 2026-10-15</td><td><span class="when">Advice/notification form for NDT work sites — applies to on-site NDT testing</span><br><span class="badge dom">NDT</span></td></tr>
+        <tr><td><span class="code">SoA</span></td><td><span class="title">Scope of Accreditation – Activity and Service Descriptors (calibration / environmental / food / manufactured goods / materials / legal / IAI, etc.)</span></td><td class="date">Multiple editions 2022–2026</td><td><span class="when">The standard descriptor wording for scope filing — select the matching SoA by sector when filing your scope</span><br><span class="badge core">Essential for application</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="title">Remote Assessment Policy</span></td><td class="date">2022-12-04</td><td><span class="when">Rules on when remote assessment applies — applies when a remote assessment is scheduled for you</span><br><span class="badge opt">On demand</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: each specialist scheme has its own assessment worksheet (15189/17020/GLP/17043/17034/20387/imaging/SDS/respiratory) — select by business.</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">7</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Dense 2026 revisions · withdrawn list</span></div>
+  <p class="section-desc">NATA's 2026 revision density is very high (Rules/Procedures, SAD 15189, 17020:2026, the manufactured-goods series), and NATA maintains a "superseded publications" list in parallel — checking the withdrawn section before citing anything is maintenance discipline.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">NATA Rules</span></td><td><span class="title">NATA Rules (revised edition)</span></td><td class="date">2026-09-11</td><td><span class="when">Revision of the master rulebook — all laboratories must maintain against the new edition</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">NATA Procedures</span></td><td><span class="title">NATA Procedures for Accreditation (revised edition)</span></td><td class="date">2026-08-25</td><td><span class="when">Revision of procedural requirements — surveillance/re-assessment follows the new procedures</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAD 15189</span></td><td><span class="title">ISO 15189:2022 Application Document – Effective February 2026</span></td><td class="date">Effective 2026-02</td><td><span class="when">Old editions (2023-08 / 2012) withdrawn — medical laboratories must complete the switch by 2026-02</span><br><span class="badge new">Effective 2026</span></td></tr>
+        <tr><td><span class="code">GAC 12</span></td><td><span class="title">ISO/IEC 17020:2026 SAD – effective October 2026</span></td><td class="date">Effective 2026-10</td><td><span class="when">Replaces the 2021 SAD edition (old edition withdrawn) — inspection bodies transition to the new standard</span><br><span class="badge new">Effective 2026</span></td></tr>
+        <tr><td><span class="code">SAC 07.11</span></td><td><span class="title">Life Sciences Annex – Asbestos sampling and testing (new 2026-07 edition)</span></td><td class="date">2026-07-16</td><td><span class="when">Revision of the asbestos sector annex — asbestos laboratories verify immediately</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">SAC MG series</span></td><td><span class="title">Manufactured Goods Annex — dense revision wave (physical performance / rubber &amp; plastics / textiles / thermal / vehicle safety / paper, etc.)</span></td><td class="date">2026-05~06</td><td><span class="when">Manufactured-goods testing laboratories must check the effective date of each revised annex item by item</span><br><span class="badge new">Dense 2026 revisions</span></td></tr>
+        <tr><td><span class="code">Policy</span></td><td><span class="title">Transition policy for medico legal drug testing accreditation to AS/NZS 4308:2023</span></td><td class="date">2023-12-05</td><td><span class="when">Transition of forensic drug screening to the new standard — affected laboratories track the transition arrangements</span><br><span class="badge opt">Transition</span></td></tr>
+        <tr><td><span class="code">Withdrawn section</span></td><td><span class="title">Superseded publications warning (check withdrawn list before citing: fire testing / NDT uncertainty / geotechnical uncertainty / old 15189 SAD, etc.)</span></td><td class="date">Withdrawn 2025–2026</td><td><span class="when">Withdrawn guidance is superseded by new annexes/current criteria — check the withdrawn list before citing technical documents</span><br><span class="badge opt">Maintenance discipline</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the NATA website maintains a separate "superseded/withdrawn publications" section; surveillance assessments follow the current edition of Rules/Procedures, and PT must continuously satisfy the Proficiency Testing Policy.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">8</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">5 tips</span></div>
+  <p class="section-desc">The NATA system runs on three tracks — "SAD + SAC + specialist schemes"; what is most easily missed is the sector annex and the withdrawn list.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>SAD 17025 is the core application document</div><p><b>SAD 17025</b> is NATA's application document for 17025 (2024-10-15) — assessments check against the SAD plus the sector SAC annex, not just the ISO text.<span class="why">The SAD is where NATA's additional requirements actually live</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>Select your sector by the SAC annex</div><p>Calibration / life sciences / animal health / <b>IAI infrastructure</b> / legal-forensic / manufactured goods / materials each have "an annex general section + sub-sector annexes" — lock the sector group first, then pick the sub-sector.<span class="why">Pick the wrong annex = the wrong assessment baseline</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Match the specialist scheme to your business type</div><p>Medical follows <b>SAD 15189 (effective 2026-02)</b>, inspection follows the <b>17020:2026 SAD (effective 2026-10)</b>; GLP/PTP/RMP/biobanking/imaging/SDS/respiratory are separate tracks.<span class="why">Body type differs, so the SAD and the underlying standard differ</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Apply with the worksheet + SoA</div><p>Self-assess clause by clause with the <b>17025 Assessment Worksheet</b>, file your scope per the matching <b>SoA descriptors</b>; scope changes go through the Application for Scope Changes.<span class="why">Scope-table format follows the SoA wording</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>Dense 2026 revisions + withdrawn list — check before citing</div><p><b>Rules/Procedures, SAD 15189, 17020:2026 and the manufactured-goods series</b> are all revised in 2026; the website's "superseded" section is continuously updated — check it before citing any technical document.<span class="why">Arriving at assessment with withdrawn guidance is the most common maintenance-period error</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《NATA实验室认可文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and effective dates are subject to the current official versions on the NATA website.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of NATA. Before any formal application, verify against the current official versions on the NATA website (<a href="https://www.nata.com.au" target="_blank" rel="noopener">nata.com.au</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

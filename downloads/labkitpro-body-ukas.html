@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UKAS · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F7A3E'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="UKAS_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">UKAS · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>UKAS · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>UKAS（United Kingdom Accreditation Service，英国认可服务组织）是英国国家认可机构（ISO/IEC 17011）。最显著特点：UKAS 实验室须同时遵守三层文件——UKAS 自编（GEN/LAB/TPS/M3003）＋强制采用的欧洲 EA 政策＋强制采用的 Global ACI（原 ILAC）政策，ISO/IEC 17025:2017 是准则基准，附加要求全部来自这「三层叠加」。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《UKAS实验室认可文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="UKAS实验室认可文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">40</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">20</div><div class="lbl">覆盖领域数</div></div>
+            <div class="stat"><div class="num">21</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">12</div><div class="lbl">必备核心文件数（自编＋强制采用）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求</a>
+    <a href="#req-tech">四、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">五、申请与评审（强制采用层）</a>
+    <a href="#req-maintain">六、获证后维护与近期换版</a>
+    <a href="#tips">七、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>「三层叠加」的 UKAS 体系中，实验室最先要落实的核心组合是：溯源与不确定度（<b>TPS 41、M3003 / LAB 12、LAB 5</b>）、能力验证与报告声明（<b>TPS 47、TPS 53</b>）、评审原则（<b>GEN 1</b>），再叠加强制采用层的 <b>EA-4/02</b> 与 <b>TECH-1-008/009、ILAC P10</b>；其余为按需或领域文件，按业务选用。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">三层叠加 · 强制采用</span></div>
+  <p class="section-desc">UKAS 以 ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学，另参照 ISO 15195 参考测量实验室）为准则；在准则之上，UKAS 自编文件管「英国怎么做」，EA 政策管「欧洲互认怎么做」，Global ACI 政策管「国际互认怎么做」——三者全部强制，缺一不可。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · ISO 准则基准</span><span class="d">ISO/IEC 17025:2017、ISO 15189:2022、ISO 15195:2018（参考测量实验室）</span></div>
+      <div class="layer"><span class="t">第 2 层 · UKAS 自编（GEN/LAB/TPS/M3003）</span><span class="d">评审原则 GEN 1/4/6、校准报告 LAB 5、不确定度 LAB 12/M3003、范围 LAB 45、决策规则 LAB 48、溯源 TPS 41、PT TPS 47、标准物质 TPS 57</span></div>
+      <div class="layer"><span class="t">第 3 层 · 强制采用 EA（欧洲）</span><span class="d">EA-4/02 校准不确定度、EA-3/01 标志与 MLA 引用、EA-2/15 灵活范围、EA-4/17 医学范围描述</span></div>
+      <div class="layer"><span class="t">第 4 层 · 强制采用 Global ACI（原 ILAC）</span><span class="d">TECH-1-008（PT，替代 ILAC P9）、TECH-1-009（校准不确定度，替代 P14）、ILAC P10（溯源，将被 TECH-1-011 替代）</span></div>
+      <div class="layer"><span class="t">第 5 层 · 参考库（G/INF 系列）</span><span class="d">EA 指南与参考出版物、Global ACI 指南（TECH-1-001~006 等）——参照执行，非强制</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">UKAS 自编 · 全体适用</span></div>
+  <p class="section-desc">UKAS 自编的 GEN 系列与部分 TPS 是「认可这件事」的英国规则：标志使用、评审原则、灵活范围、认可地位引用、报告声明用语、偏离样品——17025 不涉及，全部为 UKAS 附加。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">（无编号）</span></td><td><span class="cn">英国国家认可标志与符号使用条件</span><span class="en">The National Accreditation Logo &amp; Symbols: Conditions for use by UKAS and UKAS accredited organisations</span></td><td class="date">2024-02</td><td><span class="when">英国国家认可标志的使用条件（gov.uk 官方文件）——报告/证书带英国标志的硬规则</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">GEN 1</span></td><td><span class="cn">UKAS 对合格评定机构评审的一般原则</span><span class="en">General Principles for the Assessment of Conformity Assessment Bodies</span></td><td class="date">Edition 4 · 2025-03</td><td><span class="when">评审全过程的一般原则；2025 新版替代 C1/E2/GEN 3 等旧版——评审前必读</span><br><span class="badge core">必备</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">GEN 4</span></td><td><span class="cn">灵活认可范围实施与管理政策和指南</span><span class="en">Policy and general guidance for flexible scopes of accreditation</span></td><td class="date">Edition 2 · 2024-11</td><td><span class="when">灵活范围的实施与管理政策（替代 LAB 39/TPS 59）——申请灵活范围时适用</span><br><span class="badge core">按需</span></td></tr>
+        <tr><td><span class="code">GEN 6</span></td><td><span class="cn">获认可机构对认可地位及多边互认签署方身份的引用</span><span class="en">Reference to accreditation and multilateral recognition signatory status</span></td><td class="date">Edition 2 · 2022-12</td><td><span class="when">对外引用认可地位与 MLA 签署方身份的规则（替代 LAB 1）——宣传与报告中引用认可时适用</span><br><span class="badge core">按需</span></td></tr>
+        <tr><td><span class="code">TPS 53</span></td><td><span class="cn">报告/证书声明用语</span><span class="en">Statements for use on test, examination, calibration and inspection reports/certificates</span></td><td class="date">Edition 3 · 2021-12</td><td><span class="when">17025/15189/17020 报告与证书上认可声明的标准用语——报告落款用语的唯一依据</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">TPS 63</span></td><td><span class="cn">偏离样品政策</span><span class="en">UKAS policy on deviating samples</span></td><td class="date">Edition 4 · 2024-03</td><td><span class="when">样品偏离（破损/条件不符等）时的处理政策——样品接收与处置适用</span><br><span class="badge core">必备</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：版本以 UKAS 官网现行 Edition 为准；GEN 系列替代关系（GEN 4 替代 LAB 39/TPS 59、GEN 6 替代 LAB 1）换版后不再追溯旧号。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求</h2><span class="tag">石棉 / 食品饲料 / 饮用水 / 法医 / 医学等</span></div>
+  <p class="section-desc">LAB 系列按领域给出 17025 的英国应用要求——从石棉到现场法医、从饮用水到医学基因组，相关领域实验室必须把对应 LAB 文件并入管理体系。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">LAB 30</span></td><td><span class="cn">石棉采样与检测的 ISO/IEC 17025 应用</span><span class="en">Application of ISO/IEC 17025 for Asbestos Sampling and Testing</span></td><td class="date">Edition 5 · 2022-07</td><td><span class="when">石棉采样/检测实验室的领域应用要求——石棉领域适用</span><br><span class="badge dom">石棉</span></td></tr>
+        <tr><td><span class="code">LAB 33</span></td><td><span class="cn">英国官方食品饲料实验室及国家参比实验室的评审与认可</span><span class="en">Assessment and Accreditation of UK Official Food and Feed Laboratories and National Reference Laboratories</span></td><td class="date">Edition 2 · 2025-12</td><td><span class="when">官方食品饲料与参比实验室的专项认可要求；2025 新版——食品/饲料监管检测适用</span><br><span class="badge dom">食品饲料</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">LAB 37</span></td><td><span class="cn">按饮用水检测规范（DWTS）采样与检测的认可要求</span><span class="en">Accreditation requirements for sampling and testing in accordance with the Drinking Water Testing Specification</span></td><td class="date">Edition 5 · 2023-11</td><td><span class="when">饮用水 DWTS 检测的专项要求——饮用水检测实验室适用</span><br><span class="badge dom">饮用水</span></td></tr>
+        <tr><td><span class="code">LAB 32</span></td><td><span class="cn">英国国家 DNA 数据库供应商认可</span><span class="en">Accreditation for suppliers to the UK National DNA Database</span></td><td class="date">Edition 6 · 2023-09</td><td><span class="when">国家 DNA 数据库供应商的专项要求——法医 DNA 实验室适用</span><br><span class="badge dom">法医 DNA</span></td></tr>
+        <tr><td><span class="code">LAB 201</span></td><td><span class="cn">现场法医检测机构认可</span><span class="en">Accreditation of bodies carrying out forensic testing on site</span></td><td class="date">Edition 2 · 2023-03</td><td><span class="when">现场法医检测（犯罪现场等）的认可要求——现场取证机构适用</span><br><span class="badge dom">现场法医</span></td></tr>
+        <tr><td><span class="code">LAB 60</span></td><td><span class="cn">开展基因组检测的医学实验室认可政策</span><span class="en">UKAS policy on accreditation of medical laboratories performing genomic tests</span></td><td class="date">Edition 1 · 2025-10</td><td><span class="when">2025 新增——基因组检测医学实验室的专项政策</span><br><span class="badge dom">医学基因组</span><span class="badge new">2025 新增</span></td></tr>
+        <tr><td><span class="code">LAB 61</span></td><td><span class="cn">网络型/多地点组织医学实验室服务指南</span><span class="en">Guidance for medical laboratory services provided as part of a network or multi-site organisation</span></td><td class="date">Edition 1 · 2025-05</td><td><span class="when">2025 新增（替代 MED 1201）——网络型/多地点医学实验室适用</span><br><span class="badge dom">医学网络化</span><span class="badge new">2025 新增</span></td></tr>
+        <tr><td><span class="code">TPS 71</span></td><td><span class="cn">多 UKAS 客户间提供的医疗诊断路径认可</span><span class="en">Accreditation of healthcare diagnostic pathways delivered between multiple UKAS customers</span></td><td class="date">Edition 3 · 2026-05</td><td><span class="when">跨机构医疗诊断路径的认可；2026 换版——医疗诊断服务适用</span><br><span class="badge dom">医疗诊断</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">IMA 1</span></td><td><span class="cn">BS 70000:2017 影像服务认可</span><span class="en">Accreditation to BS 70000:2017（medical physics, clinical engineering and imaging services）</span></td><td class="date">Edition 2 · 2025-10</td><td><span class="when">医疗影像服务的英国标准认可；2025 新版——影像/医学物理服务适用</span><br><span class="badge dom">影像服务</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">LAB 31</span></td><td><span class="cn">微生物检测中即用/部分配制培养基与诊断试剂盒的使用</span><span class="en">Use of culture media procured ready-to-use or partially completed and diagnostic test kits</span></td><td class="date">Edition 5 · 2026-04</td><td><span class="when">微生物培养基与试剂盒使用的领域要求；2026 新版——微生物实验室适用</span><br><span class="badge dom">微生物</span><span class="badge new">2026 换版</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 LAB 51 毒理、LAB 36 几何量、LAB 23 声学、LAB 26 放射性、TPS 25 道路、TPS 49 声级计、TPS 54 气体、EA-4/22 农药残留、EA-4/20 POCT、EA-4/24 NGS 等按领域选用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">四</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">评审必查项</span></div>
+  <p class="section-desc">UKAS 对溯源、不确定度、PT 的附加要求分两层：TPS 系列政策 + LAB 系列技术文件；再叠加强制采用的 EA 与 Global ACI 政策（见第五部分）。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TPS 41</span></td><td><span class="cn">计量溯源性政策</span><span class="en">UKAS Policy on Metrological Traceability</span></td><td class="date">Edition 6 · 2022-12</td><td><span class="when">溯源链与校准实验室选择的英国执行政策——17025 只给原则，TPS 41 给英国口径</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">TPS 47</span></td><td><span class="cn">能力验证参与政策</span><span class="en">UKAS policy on participation in proficiency testing</span></td><td class="date">Edition 5 · 2023-01</td><td><span class="when">PT 参与的领域/频次/记录要求——Ed.6 正在评审，实施前核对版本</span><br><span class="badge core">必备</span><span class="badge opt">Ed.6 评审中</span></td></tr>
+        <tr><td><span class="code">TPS 57</span></td><td><span class="cn">标准物质选择与使用指南和政策</span><span class="en">Guidance and policy on the selection and use of reference materials</span></td><td class="date">Edition 5 · 2023-12</td><td><span class="when">标准物质选择/使用/溯源的英国政策——CRM 与质控物质管理适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">M3003</span></td><td><span class="cn">测量中不确定度与置信度的表达</span><span class="en">The expression of uncertainty and confidence in measurement</span></td><td class="date">Edition 6 · 2024-03</td><td><span class="when">不确定度评定与置信度表达的基础文件（基于 GUM 的英国落地）——全实验室适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">LAB 5</span></td><td><span class="cn">校准结果报告</span><span class="en">Reporting calibration results</span></td><td class="date">Edition 5 · 2025-01</td><td><span class="when">校准证书的内容与格式规范；2025 新版——校准实验室报告依据</span><br><span class="badge dom">校准</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">LAB 12</span></td><td><span class="cn">检测中不确定度的表达</span><span class="en">The expression of uncertainty in testing</span></td><td class="date">Edition 5 · 2025-12</td><td><span class="when">检测实验室不确定度表达规范；2025 新版——检测报告不确定度标注依据</span><br><span class="badge core">必备</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">LAB 45</span></td><td><span class="cn">校准实验室认可范围清单（Schedules）</span><span class="en">Schedules of Accreditation for Calibration Laboratories</span></td><td class="date">Edition 5 · 2023-06</td><td><span class="when">校准范围清单的表述规范——校准范围填报依据</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">LAB 48</span></td><td><span class="cn">决策规则与符合性声明</span><span class="en">Decision rules and statements of conformity</span></td><td class="date">Edition 5 · 2024-07</td><td><span class="when">17025 7.1.3 判定规则的英国应用政策——报告带符合性结论时适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">LAB 13</span></td><td><span class="cn">ISO/IEC 17025「意见和解释」应用政策与指南</span><span class="en">Policy and guidance on expressions of opinions and interpretations</span></td><td class="date">Edition 5 · 2026-09</td><td><span class="when">意见和解释（O&amp;I）的英国应用政策；2026 最新版——报告含意见/解释时适用</span><br><span class="badge core">按需</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">LAB 11</span></td><td><span class="cn">温度测量溯源</span><span class="en">Traceability of temperature measurement</span></td><td class="date">Edition 5 · 2025-10</td><td><span class="when">铂电阻/热电偶/玻璃液体/辐射温度计的溯源要求；2025 新版——热学校准适用</span><br><span class="badge dom">热学</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">LAB 25</span></td><td><span class="cn">硬度测量溯源</span><span class="en">Traceability of hardness measurements</span></td><td class="date">Edition 4 · 2025-03</td><td><span class="when">硬度测量的溯源要求；2025 新版——硬度校准/检测适用</span><br><span class="badge dom">硬度</span><span class="badge new">2025 换版</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 LAB 14 衡器、LAB 15 玻璃量器、LAB 24 力学试验（Ed.3 征求意见中）等计量溯源指南按领域选用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">五</div><h2>申请与评审环节的特殊要求（强制采用层）</h2><span class="tag">EA ＋ Global ACI 强制文件</span></div>
+  <p class="section-desc">UKAS 的申请/评审环节不止英国文件：EA 政策（欧洲互认）与 Global ACI 政策（国际互认）标注「强制」的必须一并采用——这是 UKAS 区别于多数 AB 的独有结构。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-008 (M)</span></td><td><span class="cn">能力验证及能力验证以外实验室间比对政策</span><span class="en">Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">v1.01</td><td><span class="when">Global ACI 强制政策，等效替代 ILAC-P9:01/2024——PT 参与要求的现行执行版</span><br><span class="badge core">强制</span><span class="badge new">过渡新编号</span></td></tr>
+        <tr><td><span class="code">TECH-1-009 (M)</span></td><td><span class="cn">校准测量不确定度政策</span><span class="en">Global ACI Policy for Measurement Uncertainty in Calibration</span></td><td class="date">v1.01</td><td><span class="when">Global ACI 强制政策，等效替代 ILAC-P14:09/2020——校准不确定度的现行执行版</span><br><span class="badge core">强制</span><span class="badge new">过渡新编号</span></td></tr>
+        <tr><td><span class="code">ILAC-P10</span></td><td><span class="cn">测量结果溯源性政策</span><span class="en">ILAC Policy on Traceability of Measurement Results</span></td><td class="date">2020-07</td><td><span class="when">Global ACI 强制政策（仍用 ILAC 编号），将被 TECH-1-011 (M) 替代——溯源要求的现行执行版</span><br><span class="badge core">强制</span><span class="badge opt">将被替代</span></td></tr>
+        <tr><td><span class="code">EA-4/02 M</span></td><td><span class="cn">校准中测量不确定度的评定</span><span class="en">Evaluation of the Uncertainty of Measurement in Calibration</span></td><td class="date">2022 版</td><td><span class="when">EA 强制政策——欧洲互认框架下校准不确定度评定（EA MLA 评审必查）</span><br><span class="badge core">强制</span></td></tr>
+        <tr><td><span class="code">EA-3/01 M</span></td><td><span class="cn">认可标志、标识及其他认可声明、EA MLA 签署方身份引用的使用条件</span><span class="en">Conditions for the use of Accreditation Symbols, Logos and other claims of accreditation</span></td><td class="date">2025 版</td><td><span class="when">EA 强制政策——标志使用与 EA MLA 引用的欧洲条件（配套 S1/S2 补充 2 件）</span><br><span class="badge core">强制</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">EA-2/15 M</span></td><td><span class="cn">灵活范围认可要求</span><span class="en">EA Requirements for the Accreditation of Flexible Scopes</span></td><td class="date">2023 版</td><td><span class="when">EA 强制政策——灵活范围的欧洲要求（与 GEN 4 配套）</span><br><span class="badge core">强制</span></td></tr>
+        <tr><td><span class="code">EA-4/17 M</span></td><td><span class="cn">医学实验室认可范围描述立场文件</span><span class="en">EA position paper on the description of scopes of accreditation of medical laboratories</span></td><td class="date">2022 版</td><td><span class="when">EA 强制政策——医学实验室范围描述的欧洲口径，医学实验室适用</span><br><span class="badge core">强制</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：EA-2/13（跨境认可）、EA-3/01 S1/S2（EA MLA 标志补充）等按业务适用；EA G/INF 系列（EA-4/21 小型比对、EA-4/23 意见和解释等）为参考出版物。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">六</div><h2>获证后维护与近期换版要点</h2><span class="tag">三层同步跟踪 · 编号迁移</span></div>
+  <p class="section-desc">UKAS 获证实验室的维护负担在「三层文件同时跟踪」：UKAS 自编、EA 库、Global ACI 库各自的 Edition 更新都要跟进；2025–2026 为换版密集期。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-001~006 (G)</span></td><td><span class="cn">Global ACI 指南系列（等效替代 ILAC G 系列）</span><span class="en">TECH-1-001 horseracing / 002 decision rules / 003 MU in testing / 004 forensic modules / 006 medical scheme</span></td><td class="date">v1.0</td><td><span class="when">ILAC G7/G8/G17/G19/G26 迁移为 TECH 编号——引用旧 G 号前先换新号（另有 ILAC-G24 待迁移 TECH-1-005）</span><br><span class="badge new">编号迁移</span></td></tr>
+        <tr><td><span class="code">EA-4/21 INF</span></td><td><span class="cn">小型实验室间比对适当性评审指南</span><span class="en">Guidelines for the assessment of the appropriateness of small interlaboratory comparisons</span></td><td class="date">2026 版</td><td><span class="when">2026 现行版——无正式 PT 时的替代路径参考</span><br><span class="badge new">2026 现行</span></td></tr>
+        <tr><td><span class="code">EA-4/23 INF</span></td><td><span class="cn">采用 ISO/IEC 17025:2017 对「意见和解释」的评审与认可</span><span class="en">The Assessment and Accreditation of Opinions and Interpretations</span></td><td class="date">2026 版</td><td><span class="when">2026 现行版——O&amp;I 评审的欧洲参考（与 LAB 13 配套）</span><br><span class="badge new">2026 现行</span></td></tr>
+        <tr><td><span class="code">LAB 24</span></td><td><span class="cn">材料力学试验中的测量溯源与校准</span><span class="en">Measurement Traceability and Calibration in the Mechanical Testing of Materials</span></td><td class="date">Ed.2 · 2021-05</td><td><span class="when">Edition 3 正在征求意见——力学试验实验室关注新 Ed. 发布</span><br><span class="badge opt">征求意见中</span></td></tr>
+        <tr><td><span class="code">TPS 47</span></td><td><span class="cn">能力验证参与政策</span><span class="en">UKAS policy on participation in proficiency testing</span></td><td class="date">Ed.5 · 2023-01</td><td><span class="when">Edition 6 正在评审——换版前以 Ed.5 为准，发布后立即切换</span><br><span class="badge opt">评审中</span></td></tr>
+        <tr><td><span class="code">LAB 60/61</span></td><td><span class="cn">医学基因组 / 网络多地点医学实验室</span><span class="en">Genomic tests / network or multi-site medical laboratory services</span></td><td class="date">2025 新增</td><td><span class="when">2025 新政策——医学实验室获证后按新政策评估自身是否适用</span><br><span class="badge new">2025 新增</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：维护期建议按「UKAS 出版物清单（M4）＋ EA 文件库＋ Global ACI 文件库」三线跟踪；Edition 更新与替代关系以官网为准。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">七</div><h2>实操要点与常见坑</h2><span class="tag">4 条</span></div>
+  <p class="section-desc">UKAS 用户的维护负担在「三层叠加」，最容易漏的是强制采用层与参考层的区分。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>三层文件同时跟踪</div><p><b>UKAS 自编（GEN/LAB/TPS）＋ EA 库＋ Global ACI 库</b>三份清单都要跟进换版；只盯 UKAS 自编会漏掉 EA-4/02、EA-3/01、TECH-1-008/009 等强制文件。<span class="why">这是 UKAS 用户最典型的漏项</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>强制（M）与参考（G/INF）分清</div><p>标注 <b>M（强制）</b>的 EA-4/02、EA-3/01、EA-2/15、EA-4/17 与 TECH-1-008/009、ILAC P10 必须采用；G/INF 系列（EA-4/21、EA-4/23、TECH-1-001~006）是参考。<span class="why">把参考当强制或反之，评审口径都会错</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>编号正在迁移：先换新号再引用</div><p><b>ILAC P9→TECH-1-008、P14→TECH-1-009、P10→TECH-1-011（制定中）；G7/G8/G17/G19/G26→TECH-1-001/002/003/004/006</b>——文件归档时用新编号。<span class="why">防止新旧编号混用导致版本失控</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>2025–2026 换版密集，引用前核对 Edition</div><p><b>LAB 12/13、LAB 60/61、TPS 71、IMA 1、EA-3/01、EA-4/21/23</b> 均已换版/新增；TPS 47（Ed.6）、LAB 24（Ed.3）正在评审。<span class="why">用旧 Edition 应对评审是换版期高发错误</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《UKAS实验室认可文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、Edition 版本与实施日期以 UKAS 官网现行版本为准，强制采用的 EA 与 Global ACI 文件以其各自官网为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 UKAS、EA 或 Global ACI 的官方意见；正式申请前请按官网现行版本核对（UKAS：<a href="https://www.ukas.com" target="_blank" rel="noopener">ukas.com</a>；EA：<a href="https://european-accreditation.org" target="_blank" rel="noopener">european-accreditation.org</a>；Global ACI：<a href="https://global-aci.org" target="_blank" rel="noopener">global-aci.org</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

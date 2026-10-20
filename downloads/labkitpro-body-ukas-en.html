@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UKAS · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F7A3E'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="UKAS_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">UKAS · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>UKAS · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>UKAS (United Kingdom Accreditation Service) is the UK national accreditation body (ISO/IEC 17011). Its defining feature: a UKAS-accredited laboratory must simultaneously comply with three layers of documents — UKAS-issued documents (GEN/LAB/TPS/M3003) plus the mandatorily adopted European EA policies plus the mandatorily adopted Global ACI (formerly ILAC) policies. ISO/IEC 17025:2017 is the criterion baseline; every additional requirement comes from this "three-layer stack".</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《UKAS实验室认可文件清单.html》（live crawl from the official website）</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="UKAS实验室认可文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">40</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">20</div><div class="lbl">Sectors covered</div></div>
+            <div class="stat"><div class="num">21</div><div class="lbl">2025–2026 revisions / new releases</div></div>
+            <div class="stat"><div class="num">12</div><div class="lbl">Core mandatory documents (UKAS-issued + mandatorily adopted)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements</a>
+    <a href="#req-tech">4. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">5. Application &amp; Assessment (Mandatory Layer)</a>
+    <a href="#req-maintain">6. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">7. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>In UKAS's "three-layer stack", the core combination laboratories must implement first is: traceability &amp; uncertainty (<b>TPS 41, M3003 / LAB 12, LAB 5</b>), proficiency testing &amp; report statements (<b>TPS 47, TPS 53</b>), assessment principles (<b>GEN 1</b>), plus the mandatorily adopted <b>EA-4/02</b> and <b>TECH-1-008/009, ILAC P10</b>; the rest are on-demand or sector-specific documents selected by business need.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">Three-layer stack · mandatory adoption</span></div>
+  <p class="section-desc">UKAS uses ISO/IEC 17025:2017 (testing/calibration) and ISO 15189:2022 (medical; ISO 15195 for reference measurement laboratories) as its criteria. On top of the criteria, UKAS-issued documents govern "how it is done in the UK", EA policies govern "how European mutual recognition is done", and Global ACI policies govern "how international mutual recognition is done" — all three are mandatory, none can be dropped.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · ISO criterion baseline</span><span class="d">ISO/IEC 17025:2017, ISO 15189:2022, ISO 15195:2018 (reference measurement laboratories)</span></div>
+      <div class="layer"><span class="t">Layer 2 · UKAS-issued (GEN/LAB/TPS/M3003)</span><span class="d">Assessment principles GEN 1/4/6, calibration reports LAB 5, uncertainty LAB 12/M3003, scopes LAB 45, decision rules LAB 48, traceability TPS 41, PT TPS 47, reference materials TPS 57</span></div>
+      <div class="layer"><span class="t">Layer 3 · Mandatorily adopted EA (Europe)</span><span class="d">EA-4/02 calibration uncertainty, EA-3/01 symbols &amp; MLA references, EA-2/15 flexible scopes, EA-4/17 medical scope descriptions</span></div>
+      <div class="layer"><span class="t">Layer 4 · Mandatorily adopted Global ACI (formerly ILAC)</span><span class="d">TECH-1-008 (PT, replacing ILAC P9), TECH-1-009 (calibration uncertainty, replacing P14), ILAC P10 (traceability, to be replaced by TECH-1-011)</span></div>
+      <div class="layer"><span class="t">Layer 5 · Reference library (G/INF series)</span><span class="d">EA guidance and reference publications, Global ACI guidance (TECH-1-001~006, etc.) — for reference, not mandatory</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">UKAS-issued · all laboratories</span></div>
+  <p class="section-desc">UKAS-issued GEN series documents and selected TPS documents are the UK rules for "the act of accreditation itself": logo use, assessment principles, flexible scopes, references to accreditation status, report statement wording, and deviating samples — none of which 17025 addresses; all are UKAS additions.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">(No number)</span></td><td><span class="title">The National Accreditation Logo &amp; Symbols: Conditions for use by UKAS and UKAS accredited organisations</span></td><td class="date">2024-02</td><td><span class="when">Conditions for use of the UK national accreditation logo (official gov.uk document) — hard rules for carrying the UK mark on reports/certificates</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">GEN 1</span></td><td><span class="title">General Principles for the Assessment of Conformity Assessment Bodies</span></td><td class="date">Edition 4 · 2025-03</td><td><span class="when">General principles for the entire assessment process; the 2025 edition supersedes older versions C1/E2/GEN 3 — must-read before assessment</span><br><span class="badge core">Core requirement</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">GEN 4</span></td><td><span class="title">Policy and general guidance for flexible scopes of accreditation</span></td><td class="date">Edition 2 · 2024-11</td><td><span class="when">Policy for implementing and managing flexible scopes (supersedes LAB 39/TPS 59) — applies when applying for a flexible scope</span><br><span class="badge core">On demand</span></td></tr>
+        <tr><td><span class="code">GEN 6</span></td><td><span class="title">Reference to accreditation and multilateral recognition signatory status</span></td><td class="date">Edition 2 · 2022-12</td><td><span class="when">Rules for externally referencing accreditation status and MLA signatory identity (supersedes LAB 1) — applies when claiming accreditation in marketing and reports</span><br><span class="badge core">On demand</span></td></tr>
+        <tr><td><span class="code">TPS 53</span></td><td><span class="title">Statements for use on test, examination, calibration and inspection reports/certificates</span></td><td class="date">Edition 3 · 2021-12</td><td><span class="when">Standard wording for accreditation statements on 17025/15189/17020 reports and certificates — the sole basis for report endorsement wording</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">TPS 63</span></td><td><span class="title">UKAS policy on deviating samples</span></td><td class="date">Edition 4 · 2024-03</td><td><span class="when">Policy for handling deviating samples (damage, non-conforming condition, etc.) — applies to sample receipt and disposal</span><br><span class="badge core">Core requirement</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: versions are subject to the current Editions on the UKAS website; the GEN-series supersession relationships (GEN 4 replaces LAB 39/TPS 59, GEN 6 replaces LAB 1) are not back-traced to the old numbers after revision.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements</h2><span class="tag">Asbestos / food &amp; feed / drinking water / forensics / medical, etc.</span></div>
+  <p class="section-desc">The LAB series gives sector-specific UK application requirements for 17025 — from asbestos to on-site forensics, from drinking water to medical genomics. Laboratories in the relevant sectors must incorporate the corresponding LAB document into their management system.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">LAB 30</span></td><td><span class="title">Application of ISO/IEC 17025 for Asbestos Sampling and Testing</span></td><td class="date">Edition 5 · 2022-07</td><td><span class="when">Sector application requirements for asbestos sampling/testing laboratories — applies to the asbestos sector</span><br><span class="badge dom">Asbestos</span></td></tr>
+        <tr><td><span class="code">LAB 33</span></td><td><span class="title">Assessment and Accreditation of UK Official Food and Feed Laboratories and National Reference Laboratories</span></td><td class="date">Edition 2 · 2025-12</td><td><span class="when">Dedicated accreditation requirements for official food/feed and reference laboratories; 2025 new edition — applies to food/feed regulatory testing</span><br><span class="badge dom">Food &amp; feed</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">LAB 37</span></td><td><span class="title">Accreditation requirements for sampling and testing in accordance with the Drinking Water Testing Specification</span></td><td class="date">Edition 5 · 2023-11</td><td><span class="when">Dedicated requirements for DWTS drinking-water testing — applies to drinking-water testing laboratories</span><br><span class="badge dom">Drinking water</span></td></tr>
+        <tr><td><span class="code">LAB 32</span></td><td><span class="title">Accreditation for suppliers to the UK National DNA Database</span></td><td class="date">Edition 6 · 2023-09</td><td><span class="when">Dedicated requirements for suppliers to the UK National DNA Database — applies to forensic DNA laboratories</span><br><span class="badge dom">Forensic DNA</span></td></tr>
+        <tr><td><span class="code">LAB 201</span></td><td><span class="title">Accreditation of bodies carrying out forensic testing on site</span></td><td class="date">Edition 2 · 2023-03</td><td><span class="when">Accreditation requirements for on-site forensic testing (crime scenes, etc.) — applies to on-site evidence-collection bodies</span><br><span class="badge dom">On-site forensics</span></td></tr>
+        <tr><td><span class="code">LAB 60</span></td><td><span class="title">UKAS policy on accreditation of medical laboratories performing genomic tests</span></td><td class="date">Edition 1 · 2025-10</td><td><span class="when">New in 2025 — dedicated policy for medical laboratories performing genomic tests</span><br><span class="badge dom">Medical genomics</span><span class="badge new">New 2025</span></td></tr>
+        <tr><td><span class="code">LAB 61</span></td><td><span class="title">Guidance for medical laboratory services provided as part of a network or multi-site organisation</span></td><td class="date">Edition 1 · 2025-05</td><td><span class="when">New in 2025 (supersedes MED 1201) — applies to networked / multi-site medical laboratories</span><br><span class="badge dom">Networked medical labs</span><span class="badge new">New 2025</span></td></tr>
+        <tr><td><span class="code">TPS 71</span></td><td><span class="title">Accreditation of healthcare diagnostic pathways delivered between multiple UKAS customers</span></td><td class="date">Edition 3 · 2026-05</td><td><span class="when">Accreditation of cross-organisational healthcare diagnostic pathways; 2026 revision — applies to healthcare diagnostic services</span><br><span class="badge dom">Healthcare diagnostics</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">IMA 1</span></td><td><span class="title">Accreditation to BS 70000:2017 (medical physics, clinical engineering and imaging services)</span></td><td class="date">Edition 2 · 2025-10</td><td><span class="when">UK-standard accreditation for medical imaging services; 2025 new edition — applies to imaging/medical physics services</span><br><span class="badge dom">Imaging services</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">LAB 31</span></td><td><span class="title">Use of culture media procured ready-to-use or partially completed and diagnostic test kits</span></td><td class="date">Edition 5 · 2026-04</td><td><span class="when">Sector requirements for using microbiological culture media and test kits; 2026 new edition — applies to microbiology laboratories</span><br><span class="badge dom">Microbiology</span><span class="badge new">2026 revision</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: other sector documents selected by business include LAB 51 toxicology, LAB 36 dimensional metrology, LAB 23 acoustics, LAB 26 radioactivity, TPS 25 road vehicles, TPS 49 sound-level meters, TPS 54 gases, EA-4/22 pesticide residues, EA-4/20 POCT, EA-4/24 NGS, etc.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">4</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">Mandatory assessment items</span></div>
+  <p class="section-desc">UKAS's additional requirements for traceability, uncertainty and PT sit in two layers: TPS-series policies plus LAB-series technical documents; further stacked with the mandatorily adopted EA and Global ACI policies (see Part 5).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TPS 41</span></td><td><span class="title">UKAS Policy on Metrological Traceability</span></td><td class="date">Edition 6 · 2022-12</td><td><span class="when">UK implementation policy for traceability chains and selection of calibration laboratories — 17025 gives the principle, TPS 41 gives the UK baseline</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">TPS 47</span></td><td><span class="title">UKAS policy on participation in proficiency testing</span></td><td class="date">Edition 5 · 2023-01</td><td><span class="when">Sector/frequency/record requirements for PT participation — Ed.6 is under review; verify the edition before implementation</span><br><span class="badge core">Core requirement</span><span class="badge opt">Ed.6 under review</span></td></tr>
+        <tr><td><span class="code">TPS 57</span></td><td><span class="title">Guidance and policy on the selection and use of reference materials</span></td><td class="date">Edition 5 · 2023-12</td><td><span class="when">UK policy on selection/use/traceability of reference materials — applies to CRM and control-material management</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">M3003</span></td><td><span class="title">The expression of uncertainty and confidence in measurement</span></td><td class="date">Edition 6 · 2024-03</td><td><span class="when">The foundational document for uncertainty evaluation and confidence expression (GUM-based UK implementation) — applies to all laboratories</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">LAB 5</span></td><td><span class="title">Reporting calibration results</span></td><td class="date">Edition 5 · 2025-01</td><td><span class="when">Content and format rules for calibration certificates; 2025 new edition — the reporting basis for calibration laboratories</span><br><span class="badge dom">Calibration</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">LAB 12</span></td><td><span class="title">The expression of uncertainty in testing</span></td><td class="date">Edition 5 · 2025-12</td><td><span class="when">Rules for expressing uncertainty in testing laboratories; 2025 new edition — the basis for uncertainty statements on test reports</span><br><span class="badge core">Core requirement</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">LAB 45</span></td><td><span class="title">Schedules of Accreditation for Calibration Laboratories</span></td><td class="date">Edition 5 · 2023-06</td><td><span class="when">Rules for wording calibration schedules of accreditation — the basis for filing calibration scopes</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">LAB 48</span></td><td><span class="title">Decision rules and statements of conformity</span></td><td class="date">Edition 5 · 2024-07</td><td><span class="when">UK application policy for the 17025 7.1.3 decision rules — applies when a report carries a conformity conclusion</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">LAB 13</span></td><td><span class="title">Policy and guidance on expressions of opinions and interpretations</span></td><td class="date">Edition 5 · 2026-09</td><td><span class="when">UK application policy for opinions and interpretations (O&amp;I); latest 2026 edition — applies when a report contains opinions/interpretations</span><br><span class="badge core">On demand</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">LAB 11</span></td><td><span class="title">Traceability of temperature measurement</span></td><td class="date">Edition 5 · 2025-10</td><td><span class="when">Traceability requirements for platinum resistance / thermocouple / liquid-in-glass / radiation thermometers; 2025 new edition — applies to thermal calibration</span><br><span class="badge dom">Thermometry</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">LAB 25</span></td><td><span class="title">Traceability of hardness measurements</span></td><td class="date">Edition 4 · 2025-03</td><td><span class="when">Traceability requirements for hardness measurements; 2025 new edition — applies to hardness calibration/testing</span><br><span class="badge dom">Hardness</span><span class="badge new">2025 revision</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: other traceability guidance selected by business includes LAB 14 weighing instruments, LAB 15 volumetric glassware, LAB 24 mechanical testing (Ed.3 in public consultation), etc.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">5</div><h2>Application &amp; Assessment: Specific Requirements (Mandatory-Adoption Layer)</h2><span class="tag">EA + Global ACI mandatory documents</span></div>
+  <p class="section-desc">UKAS's application/assessment stage involves more than UK documents: EA policies (European mutual recognition) and Global ACI policies (international mutual recognition) marked "mandatory" must be adopted alongside — this is the unique structure that distinguishes UKAS from most ABs.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-008 (M)</span></td><td><span class="title">Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">v1.01</td><td><span class="when">Global ACI mandatory policy, equivalent replacement of ILAC-P9:01/2024 — the current execution version for PT participation requirements</span><br><span class="badge core">Mandatory</span><span class="badge new">Transitional number</span></td></tr>
+        <tr><td><span class="code">TECH-1-009 (M)</span></td><td><span class="title">Global ACI Policy for Measurement Uncertainty in Calibration</span></td><td class="date">v1.01</td><td><span class="when">Global ACI mandatory policy, equivalent replacement of ILAC-P14:09/2020 — the current execution version for calibration uncertainty</span><br><span class="badge core">Mandatory</span><span class="badge new">Transitional number</span></td></tr>
+        <tr><td><span class="code">ILAC-P10</span></td><td><span class="title">ILAC Policy on Traceability of Measurement Results</span></td><td class="date">2020-07</td><td><span class="when">Global ACI mandatory policy (still under the ILAC number), to be replaced by TECH-1-011 (M) — the current execution version for traceability requirements</span><br><span class="badge core">Mandatory</span><span class="badge opt">To be superseded</span></td></tr>
+        <tr><td><span class="code">EA-4/02 M</span></td><td><span class="title">Evaluation of the Uncertainty of Measurement in Calibration</span></td><td class="date">2022 edition</td><td><span class="when">EA mandatory policy — calibration uncertainty evaluation under the European mutual-recognition framework (a must-check in EA MLA assessments)</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">EA-3/01 M</span></td><td><span class="title">Conditions for the use of Accreditation Symbols, Logos and other claims of accreditation</span></td><td class="date">2025 edition</td><td><span class="when">EA mandatory policy — European conditions for symbol use and EA MLA references (with two companion S1/S2 supplements)</span><br><span class="badge core">Mandatory</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">EA-2/15 M</span></td><td><span class="title">EA Requirements for the Accreditation of Flexible Scopes</span></td><td class="date">2023 edition</td><td><span class="when">EA mandatory policy — European requirements for flexible scopes (complementary to GEN 4)</span><br><span class="badge core">Mandatory</span></td></tr>
+        <tr><td><span class="code">EA-4/17 M</span></td><td><span class="title">EA position paper on the description of scopes of accreditation of medical laboratories</span></td><td class="date">2022 edition</td><td><span class="when">EA mandatory policy — European baseline for describing medical-laboratory scopes; applies to medical laboratories</span><br><span class="badge core">Mandatory</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: EA-2/13 (cross-border accreditation) and EA-3/01 S1/S2 (EA MLA symbol supplements) apply by business need; the EA G/INF series (EA-4/21 small comparisons, EA-4/23 opinions and interpretations, etc.) are reference publications.</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">6</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Three-layer tracking · number migration</span></div>
+  <p class="section-desc">The maintenance burden for UKAS-accredited laboratories lies in "tracking three layers of documents simultaneously": Edition updates from UKAS-issued documents, the EA library, and the Global ACI library must all be followed; 2025–2026 is a dense revision period.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-001~006 (G)</span></td><td><span class="title">Global ACI guidance series (equivalent replacement of the ILAC G series): TECH-1-001 horseracing / 002 decision rules / 003 MU in testing / 004 forensic modules / 006 medical scheme</span></td><td class="date">v1.0</td><td><span class="when">ILAC G7/G8/G17/G19/G26 migrated to TECH numbers — switch to the new number before citing the old G number (ILAC-G24 is also pending migration to TECH-1-005)</span><br><span class="badge new">Number migration</span></td></tr>
+        <tr><td><span class="code">EA-4/21 INF</span></td><td><span class="title">Guidelines for the assessment of the appropriateness of small interlaboratory comparisons</span></td><td class="date">2026 edition</td><td><span class="when">Current 2026 edition — reference for an alternative path when no formal PT programme exists</span><br><span class="badge new">Current 2026</span></td></tr>
+        <tr><td><span class="code">EA-4/23 INF</span></td><td><span class="title">The Assessment and Accreditation of Opinions and Interpretations</span></td><td class="date">2026 edition</td><td><span class="when">Current 2026 edition — European reference for O&amp;I assessment (complementary to LAB 13)</span><br><span class="badge new">Current 2026</span></td></tr>
+        <tr><td><span class="code">LAB 24</span></td><td><span class="title">Measurement Traceability and Calibration in the Mechanical Testing of Materials</span></td><td class="date">Ed.2 · 2021-05</td><td><span class="when">Edition 3 is in public consultation — mechanical-testing laboratories watch for the new Edition release</span><br><span class="badge opt">Public consultation</span></td></tr>
+        <tr><td><span class="code">TPS 47</span></td><td><span class="title">UKAS policy on participation in proficiency testing</span></td><td class="date">Ed.5 · 2023-01</td><td><span class="when">Edition 6 is under review — follow Ed.5 until revision; switch immediately upon release</span><br><span class="badge opt">Under review</span></td></tr>
+        <tr><td><span class="code">LAB 60/61</span></td><td><span class="title">Genomic tests / network or multi-site medical laboratory services</span></td><td class="date">New in 2025</td><td><span class="when">2025 new policies — medical laboratories should assess post-accreditation whether the new policies apply to them</span><br><span class="badge new">New 2025</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: during maintenance, track three lines — the UKAS publications list (M4), the EA document library, and the Global ACI document library; Edition updates and supersession relationships are subject to the official websites.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">7</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">4 tips</span></div>
+  <p class="section-desc">The maintenance burden for UKAS users lies in the "three-layer stack"; the most commonly missed distinction is between the mandatory-adoption layer and the reference layer.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>Track all three layers at once</div><p><b>UKAS-issued (GEN/LAB/TPS) + the EA library + the Global ACI library</b> — all three lists must be followed for revisions; watching only UKAS-issued documents will cause you to miss mandatory files such as EA-4/02, EA-3/01 and TECH-1-008/009.<span class="why">This is the most typical omission for UKAS users</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>Distinguish mandatory (M) from reference (G/INF)</div><p>Documents marked <b>M (mandatory)</b> — EA-4/02, EA-3/01, EA-2/15, EA-4/17, plus TECH-1-008/009 and ILAC P10 — must be adopted; the G/INF series (EA-4/21, EA-4/23, TECH-1-001~006) is reference material.<span class="why">Treating reference as mandatory, or vice versa, will get your assessment baseline wrong</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Numbers are migrating — switch to the new number before citing</div><p><b>ILAC P9→TECH-1-008, P14→TECH-1-009, P10→TECH-1-011 (drafting); G7/G8/G17/G19/G26→TECH-1-001/002/003/004/006</b> — file documents under the new numbers.<span class="why">Prevents version loss caused by mixing old and new numbers</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Dense 2025–2026 revisions — verify the Edition before citing</div><p><b>LAB 12/13, LAB 60/61, TPS 71, IMA 1, EA-3/01, EA-4/21/23</b> have all been revised or newly issued; TPS 47 (Ed.6) and LAB 24 (Ed.3) are under review.<span class="why">Preparing an assessment against an old Edition is the most frequent error during revision periods</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《UKAS实验室认可文件清单.html》 (live-crawled and item-verified from the official website on 2026-10-19); document numbers, Editions and effective dates are subject to the current official versions on the UKAS website, and the mandatorily adopted EA and Global ACI documents are subject to their respective official websites.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of UKAS, EA or Global ACI. Before any formal application, verify against the current official versions (UKAS: <a href="https://www.ukas.com" target="_blank" rel="noopener">ukas.com</a>; EA: <a href="https://european-accreditation.org" target="_blank" rel="noopener">european-accreditation.org</a>; Global ACI: <a href="https://global-aci.org" target="_blank" rel="noopener">global-aci.org</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ILAC · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="ILAC_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">ILAC · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>ILAC · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>ILAC（International Laboratory Accreditation Cooperation，国际实验室认可合作组织）是全球实验室认可互认组织（ILAC MRA），本身不是认可机构；实验室不直接向 ILAC 申请，其政策经本国认可机构（Accreditation Body, AB）落实、对实验室有约束力。2026-01-01 起 ILAC 停止运营、职能并入 Global ACI（global-aci.org），文件编号正陆续过渡为 TECH 系列。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《ILAC互认通用层文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="ILAC互认通用层文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">29</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">6</div><div class="lbl">覆盖领域数</div></div>
+            <div class="stat"><div class="num">3</div><div class="lbl">2025–2026 换版/新增（含过渡编号）</div></div>
+            <div class="stat"><div class="num">6</div><div class="lbl">必备核心互认文件数</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求</a>
+    <a href="#req-tech">四、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">五、申请与评审</a>
+    <a href="#req-maintain">六、获证后维护与近期换版</a>
+    <a href="#tips">七、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>五区提炼的 <b>29 份</b>文件中，实验室最先要落实的是 <b>ILAC P10</b>（计量溯源）、<b>ILAC P9</b>（能力验证）与 <b>ILAC P8 / R7</b>（标志与声明）；其余为支撑或领域文件，按业务选用。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">互认层政策 · 经本国 AB 执行</span></div>
+  <p class="section-desc">ILAC 不自行发布检测/校准准则：ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）等国际标准由各成员认可机构（AB）转换执行。ILAC 层的 P/G/R 系列文件是对 AB 及最终实验室的「附加互认要求」，经本国 AB 转发后对实验室有约束力。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 国际标准基准</span><span class="d">ISO/IEC 17025:2017、ISO 15189:2022 等，由本国 AB 转换执行（等同采用）</span></div>
+      <div class="layer"><span class="t">第 2 层 · ILAC 互认层政策（P/R 系列）</span><span class="d">溯源 P10、能力验证 P9、校准不确定度 P14、标志与声明 P8/R7——经本国 AB 转发后为附加硬要求</span></div>
+      <div class="layer"><span class="t">第 3 层 · 实施指南（G 系列）</span><span class="d">不确定度、判定规则、能力范围、再校准间隔等通用指南 + 法医/医学/检验/赛马等领域指南</span></div>
+      <div class="layer"><span class="t">第 4 层 · 同行评审保障（A 系列）</span><span class="d">IAF/ILAC A1/A2/A3 确保各 AB 执行一致、互认资格可核查</span></div>
+      <div class="layer"><span class="t">第 5 层 · Global ACI 承接（2026 起）</span><span class="d">ILAC 职能并入 Global ACI，P9/P14/P10 等陆续迁移为 TECH 系列编号，过渡期新旧并行</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">全体实验室 · 经 AB 落实</span></div>
+  <p class="section-desc">实验室不直接面对 ILAC，但 ILAC MRA 的标志使用、认可状态声明与互认安排运行规则，最终都落到获认可实验室的对外行为上。以下为互认层「相对 17025 之外」的通用附加要求。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P8</span></td><td><span class="cn">认可标志使用与获认可机构认可状态声明的补充要求</span><span class="en">Supplementary Requirements for the Use of Accreditation Symbols and for Claims of Accreditation Status by Accredited CABs</span></td><td class="date">11/2023 发布</td><td><span class="when">证书/报告声明「获 ILAC MRA 认可」时须符合的统一要求——17025 未规定认可标志使用，此为互认层附加</span><br><span class="badge core">核心要求</span><span class="badge new">Global ACI 2025-29 决议指定继续有效</span></td></tr>
+        <tr><td><span class="code">ILAC R7</span></td><td><span class="cn">ILAC MRA 标志使用规则</span><span class="en">Rules for the Use of the ILAC MRA Mark</span></td><td class="date">05/2015 发布</td><td><span class="when">规定 ILAC MRA 联合标志的获准条件与展示方式，与 P8 配套；带联合标志的报告即声明国际互认</span><br><span class="badge core">核心要求</span></td></tr>
+        <tr><td><span class="code">ILAC P4</span></td><td><span class="cn">ILAC 互认安排：政策与管理</span><span class="en">ILAC Mutual Recognition Arrangement: Policy and Management</span></td><td class="date">06/2022 发布</td><td><span class="when">互认安排运行总框架——理解「你的报告为何能在境外被接受」的互认背景</span><br><span class="badge opt">背景/框架</span></td></tr>
+        <tr><td><span class="code">ILAC P5</span></td><td><span class="cn">ILAC 互认安排：范围与义务</span><span class="en">ILAC Mutual Recognition Arrangement: Scope and Obligations</span></td><td class="date">11/2023 发布</td><td><span class="when">界定互认覆盖的合格评定范围与成员 AB 义务；决定实验室哪种认可资格可进入互认范围</span><br><span class="badge opt">背景/框架</span></td></tr>
+        <tr><td><span class="code">ILAC R5</span></td><td><span class="cn">ILAC 投诉处理程序</span><span class="en">ILAC Procedure for Handling Complaints</span></td><td class="date">04/2016 发布</td><td><span class="when">对互认层面的投诉受理与处理路径——实验室常规投诉仍走本国 AB，此为兜底程序</span><br><span class="badge opt">程序</span></td></tr>
+        <tr><td><span class="code">ILAC R1</span></td><td><span class="cn">ILAC 文件管理</span><span class="en">Management of ILAC Documents</span></td><td class="date">12/2021 发布</td><td><span class="when">文件制定/批准/维护规则——跟踪版本时需知道 ILAC 文件的官方编号与状态规则</span><br><span class="badge opt">程序</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：版本与日期以 ILAC/Global ACI 官网现行版本为准；P8 与 R7 为互认层对实验室最有直接约束的两份通用文件。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求</h2><span class="tag">检验 / 法医 / 医学 / 赛马 / 反兴奋剂</span></div>
+  <p class="section-desc">ILAC 不设大规模领域应用说明，但对特定领域发布专用指南（G 系列）与应用文件，只有相关领域实验室才需要满足。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P15</span></td><td><span class="cn">检验机构认可中 ISO/IEC 17020:2012 的应用</span><span class="en">Application of ISO/IEC 17020:2012 for the Accreditation of Inspection Bodies</span></td><td class="date">05/2020 发布 / 2021-11 实施</td><td><span class="when">检验机构认可的应用指南（原 IAF/ILAC A4:2004 并入）——17020 体系的互认层配套</span><br><span class="badge dom">检验机构</span></td></tr>
+        <tr><td><span class="code">ILAC G19</span></td><td><span class="cn">法庭科学过程模块</span><span class="en">Modules in a Forensic Science Process</span></td><td class="date">06/2022 发布</td><td><span class="when">司法鉴定/法庭科学领域 17025 与 17020 应用指南——法医实验室评审与范围编制参照</span><br><span class="badge dom">法医/法庭科学</span></td></tr>
+        <tr><td><span class="code">ILAC G26</span></td><td><span class="cn">医学实验室认可制度实施指南</span><span class="en">Guidance for the Implementation of a Medical Accreditation Scheme</span></td><td class="date">11/2018 发布</td><td><span class="when">医学实验室（ISO 15189）认可制度建立与实施——医学领域互认层参考</span><br><span class="badge dom">医学</span></td></tr>
+        <tr><td><span class="code">ILAC G7</span></td><td><span class="cn">赛马实验室认可要求与运行准则</span><span class="en">Accreditation Requirements and Operating Criteria for Horseracing Laboratories</span></td><td class="date">04/2021 发布</td><td><span class="when">赛马/反兴奋剂检测领域专用认可要求——赛马实验室适用</span><br><span class="badge dom">赛马/反兴奋剂</span></td></tr>
+        <tr><td><span class="code">ILAC G29</span></td><td><span class="cn">WADA 反兴奋剂实验室 ISO/IEC 17025 认可范围协调指南</span><span class="en">Guidelines for harmonization of scopes of ISO/IEC 17025 accreditation of WADA anti-doping laboratories</span></td><td class="date">06/2020 发布</td><td><span class="when">反兴奋剂实验室认可范围编制指南，WADA ISL 引用——WADA 实验室适用</span><br><span class="badge dom">反兴奋剂</span></td></tr>
+        <tr><td><span class="code">ILAC G27</span></td><td><span class="cn">检验过程中测量活动指南</span><span class="en">Guidance on measurements performed as part of an inspection process</span></td><td class="date">07/2019 发布</td><td><span class="when">检验过程中测量活动的有效性——检验机构评审使用</span><br><span class="badge dom">检验机构</span></td></tr>
+        <tr><td><span class="code">ILAC G28</span></td><td><span class="cn">检验机构认可能力范围编制指南</span><span class="en">Guideline for the Formulation of Scopes of Accreditation for Inspection Bodies</span></td><td class="date">07/2018 发布</td><td><span class="when">检验机构认可范围一致性编制——检验机构范围填报参照</span><br><span class="badge dom">检验机构</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：领域文件按需选用——与实验室业务无关的领域文件不属于通用要求；版本以官网现行版本为准。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">四</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">评审必查项</span></div>
+  <p class="section-desc">17025:2017 对溯源、不确定度与能力验证给出原则性要求；ILAC 层再以政策文件统一「怎么做、做到什么程度」，是互认层最常被 AB 转发的部分。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">ILAC P10</span></td><td><span class="cn">测量结果计量溯源性政策</span><span class="en">ILAC Policy on Metrological Traceability of Measurement Results</span></td><td class="date">07/2020 发布 / 2021-07 实施</td><td><span class="when">计量溯源的统一执行政策（含校准实验室能力与溯源链要求）——17025 只给原则，P10 给执行口径</span><br><span class="badge core">核心要求</span><span class="badge new">对应 TECH-1-011（制定中）</span></td></tr>
+        <tr><td><span class="code">ILAC P14</span></td><td><span class="cn">校准中测量不确定度政策</span><span class="en">ILAC Policy for Measurement Uncertainty in Calibration</span></td><td class="date">09/2020 发布 / 2021-03 实施</td><td><span class="when">校准实验室不确定度评定与表述（基于 GUM）的统一要求——校准报告与 CMC 填报核心</span><br><span class="badge core">核心要求</span><span class="badge new">对应 TECH-1-009</span></td></tr>
+        <tr><td><span class="code">ILAC P9</span></td><td><span class="cn">能力验证及其他实验室间比对政策</span><span class="en">ILAC Policy for Proficiency Testing and/or Interlaboratory comparisons other than Proficiency Testing</span></td><td class="date">01/2024 发布</td><td><span class="when">认可过程中 PT 活动使用的统一政策——PT 参加与选择的总纲</span><br><span class="badge core">核心要求</span><span class="badge new">对应 TECH-1-008</span></td></tr>
+        <tr><td><span class="code">ILAC G17</span></td><td><span class="cn">检测中测量不确定度指南</span><span class="en">ILAC Guidelines for Measurement Uncertainty in Testing</span></td><td class="date">01/2021 发布</td><td><span class="when">检测领域不确定度评定与报告指南——检测实验室适用（校准用 P14）</span><br><span class="badge core">高频使用</span></td></tr>
+        <tr><td><span class="code">ILAC G8</span></td><td><span class="cn">判定规则与符合性声明指南</span><span class="en">Guidelines on Decision Rules and Statements of Conformity</span></td><td class="date">09/2019 发布</td><td><span class="when">检测实验室出具符合性声明时的判定规则——报告带合格/不合格结论时适用</span><br><span class="badge core">高频使用</span></td></tr>
+        <tr><td><span class="code">ILAC G24</span></td><td><span class="cn">测量设备再校准间隔确定指南</span><span class="en">Guidelines for the determination of recalibration intervals of measuring equipment</span></td><td class="date">2022 发布</td><td><span class="when">再校准间隔确定与评审方法——设备管理/期间核查计划制定参照</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">ILAC G18</span></td><td><span class="cn">认可能力范围描述指南</span><span class="en">Guideline for describing Scopes of Accreditation</span></td><td class="date">01/2024 发布</td><td><span class="when">认可范围（scope）统一描述——范围填报与能力表表述参照</span><br><span class="badge core">范围填报</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：P10/P14/P9 的 Global ACI 新编号 TECH-1-011（制定中）/TECH-1-009/TECH-1-008 正在启用，过渡期以本国 AB 转发版本为准。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">五</div><h2>申请与评审环节的特殊要求</h2><span class="tag">互认资格 · 同行评审</span></div>
+  <p class="section-desc">实验室不向 ILAC 提交申请；与实验室相关的「评审层」要求是：本国 AB 的互认资格由 IAF/ILAC 同行评审（A 系列）保障，评审员的培训与跨境认可规则也在这一层。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">IAF/ILAC A2</span></td><td><span class="cn">认可机构同行评审要求</span><span class="en">Requirements for Evaluation of an Accreditation Body</span></td><td class="date">09/2025 发布</td><td><span class="when">决定本国 AB 能否签署多边互认安排——你实验室认可证书的「国际含金量」来自这一评审；旧版 A2:06/2023 已被替代</span><br><span class="badge core">互认资格</span><span class="badge new">2025 最新版</span></td></tr>
+        <tr><td><span class="code">IAF/ILAC A1</span></td><td><span class="cn">区域组织同行评审要求与程序</span><span class="en">Requirements and Procedures for Evaluation of a Regional Group</span></td><td class="date">06/2023 发布</td><td><span class="when">区域认可组织（APAC/EA 等）的识别与评审——区域层互认保障</span><br><span class="badge opt">区域层</span></td></tr>
+        <tr><td><span class="code">IAF/ILAC A3</span></td><td><span class="cn">基于 ISO/IEC 17011:2017 的认可机构同行评审报告模板</span><span class="en">Template report for the peer evaluation of an Accreditation Body based on ISO/IEC 17011:2017</span></td><td class="date">06/2023 发布</td><td><span class="when">同行评审报告模板工具——AB 评审过程的官方载体</span><br><span class="badge opt">工具</span></td></tr>
+        <tr><td><span class="code">ILAC G3</span></td><td><span class="cn">认可机构评审员培训课程指南</span><span class="en">Guidelines for Training Courses for Assessors Used by Accreditation Bodies</span></td><td class="date">08/2020 发布</td><td><span class="when">评审员与技术专家培训课程设置——影响现场评审的专业性</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">ILAC G21</span></td><td><span class="cn">跨境认可——合作原则</span><span class="en">Cross Frontier Accreditation - Principles for Cooperation</span></td><td class="date">09/2012 发布</td><td><span class="when">跨境认可合作原则；官网标注 under revision，修订稿可能转入 P 系列——跨境设点/认可转移时关注</span><br><span class="badge opt">修订中</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：本层文件主要约束认可机构（AB），实验室理解互认资格来源即可；申请通道始终在本国 AB。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">六</div><h2>获证后维护与近期换版要点</h2><span class="tag">Global ACI 过渡期</span></div>
+  <p class="section-desc">2026 年是 ILAC→Global ACI 过渡关键期：旧编号继续有效但正被 TECH 系列替代，归档站与现行库分离，跟踪时须认准现行来源。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">TECH-1-008</span></td><td><span class="cn">能力验证政策（Global ACI 新编号）</span><span class="en">Global ACI policy on proficiency testing（原 ILAC P9）</span></td><td class="date">过渡期新编号</td><td><span class="when">P9 的迁移版本——按本国 AB 转发的新编号跟踪 PT 要求</span><br><span class="badge new">过渡新编号</span></td></tr>
+        <tr><td><span class="code">TECH-1-009</span></td><td><span class="cn">校准不确定度政策（Global ACI 新编号）</span><span class="en">Global ACI policy（原 ILAC P14）</span></td><td class="date">过渡期新编号</td><td><span class="when">P14 的迁移版本——校准实验室按新编号执行</span><br><span class="badge new">过渡新编号</span></td></tr>
+        <tr><td><span class="code">TECH-1-011</span></td><td><span class="cn">计量溯源性政策（制定中）</span><span class="en">Global ACI policy（原 ILAC P10，drafting）</span></td><td class="date">制定中</td><td><span class="when">P10 的迁移版本尚在制定——过渡期内 P10:07/2020 继续有效</span><br><span class="badge new">制定中</span></td></tr>
+        <tr><td><span class="code">ILAC G（拟议）</span></td><td><span class="cn">特殊事件管理指南（拟议）</span><span class="en">Management of extraordinary events（Guidance on assessments impacted by natural disasters, disease outbreaks, security concerns）</span></td><td class="date">制定中（Drafting）</td><td><span class="when">自然灾害/疫情/安全事件影响下的评审管理指南——异常事件评审安排的未来依据</span><br><span class="badge opt">制定中</span></td></tr>
+        <tr><td><span class="code">ILAC R3</span></td><td><span class="cn">ILAC 战略规划 2015–2020</span><span class="en">ILAC Strategic Plan 2015-2020（extended December 2020）</span></td><td class="date">12/2014 发布 / 2020-12 延期</td><td><span class="when">战略规划期已满、归档站仍列示——列为历史存档，勿当作现行要求</span><br><span class="badge opt">历史存档</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：ilac.org 归档站仅供查阅；文件动态与现行版本以 global-aci.org 为准，跟踪时认准现行来源。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">七</div><h2>实操要点与常见坑</h2><span class="tag">5 条</span></div>
+  <p class="section-desc">对实验室而言，ILAC 层的核心其实只有三件事：溯源（P10）、能力验证（P9）、标志与声明（P8/R7）。其余均为支撑或领域文件。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>出口报告带 MRA 标志前先核对版本</div><p>报告/证书声明 ILAC MRA 认可必须符合 <b>P8 + R7</b>；过渡期先确认本国 AB 转发的现行编号（可能已是 TECH 系列）。<span class="why">用错旧版标志/声明格式是互认层最常见的返工点</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>申请通道永远在本国 AB</div><p>ILAC 不接受直接申请；你实验室认可证书的<b>国际互认资格</b>取决于本国 AB 通过 <b>A2</b> 同行评审。<span class="why">别在 ILAC 层找申请入口</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>编号正在过渡，新旧并行</div><p><b>P9→TECH-1-008、P14→TECH-1-009、P10→TECH-1-011（制定中）</b>；过渡期内新旧编号都可能出现，跟踪时以本国 AB 转发版本为准。<span class="why">防止按旧编号找到已迁移文件</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>领域文件按需选用，别当通用要求</div><p>法医（<b>G19</b>）、医学（<b>G26</b>）、检验（<b>P15/G27/G28</b>）、赛马/反兴奋剂（<b>G7/G29</b>）都是领域专用——与业务无关就不适用。<span class="why">避免把领域指南误读为全员硬要求</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>归档站 ≠ 现行库</div><p><b>ilac.org</b> 仅供查阅历史；文件动态与现行版本以 <b>global-aci.org</b> 为准，引用前核对发布日期。<span class="why">R3 战略规划等历史文件仍在归档站，易被误当现行</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《ILAC互认通用层文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与实施日期以 ILAC/Global ACI 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 ILAC、Global ACI 或任何认可机构的官方意见；正式申请前请按本国认可机构转发的现行版本核对（官方归档站：<a href="https://ilac.org" target="_blank" rel="noopener">ilac.org</a>；现行文件库：<a href="https://global-aci.org" target="_blank" rel="noopener">global-aci.org</a>）。</p>
+    </div>
+    <div>
+      <h3>Global ACI 过渡提示</h3>
+      <p>国际实验室认可互认体系自 2026-01-01 起由 ILAC/IAF 合并为 Global ACI（global-aci.org），过渡期新旧文件编号并行；ILAC 层政策文件正陆续迁移为 TECH 系列编号，请留意本国认可机构转发版本。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

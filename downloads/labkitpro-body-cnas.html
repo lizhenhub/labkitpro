@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNAS · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="CNAS_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">CNAS · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>CNAS · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>CNAS（China National Accreditation Service for Conformity Assessment，中国合格评定国家认可委员会）是中国大陆唯一实验室认可机构。核心关系：CNAS-CL01:2018 等同采用 ISO/IEC 17025:2017；在其上叠加 CL01-G001 应用要求（必备）与 CL01-A 系列领域应用说明（26 个检测/校准领域），形成「通用规则（R/RL）＋基本准则（CL）＋应用要求（G）＋领域应用说明（A）＋指南（GL）＋说明（EL）＋技术报告（TRL）」的分层文件体系。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《中国大陆全行业实验室CNAS认可规范文件清单.html》＋《…-行业分类清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="中国大陆全行业实验室CNAS认可规范文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">45</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">26</div><div class="lbl">CL01-A 领域应用说明覆盖领域</div></div>
+            <div class="stat"><div class="num">22</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">10</div><div class="lbl">必备核心文件数（R/RL＋CL01＋G001-G004）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求</a>
+    <a href="#req-tech">四、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">五、申请与评审</a>
+    <a href="#req-maintain">六、获证后维护与近期换版</a>
+    <a href="#tips">七、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>五区提炼的 <b>45 份</b>文件中，CNAS 体系实验室最先要落实的核心组合是 <b>CNAS-RL01</b>（实验室认可规则）＋ <b>CNAS-CL01:2018</b>（等同采用 ISO/IEC 17025:2017）＋ <b>CL01-G001–G004</b>（应用要求「必配四件套」），再按行业锁定对应的 <b>CL01-A 系列</b>领域应用说明；其余为支撑指南或按业务按需选用。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">等同采用 · 应用要求叠加</span></div>
+  <p class="section-desc">CNAS 对 ISO/IEC 17025:2017 采取等同采用（CNAS-CL01:2018），但认可实施不止于准则本身：所有检测/校准实验室还须同时满足 G 系列应用要求与所属行业的 A 系列领域应用说明，这是 CNAS 相对 17025「附加要求」的核心形态。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 通用规则（R/RL）</span><span class="d">R01–R03 标识/公正性/申诉投诉 ＋ RL01–RL10 实验室认可、能力验证、收费、境外受理等规则</span></div>
+      <div class="layer"><span class="t">第 2 层 · 基本准则（CL01–CL10）</span><span class="d">CL01 等同 ISO/IEC 17025:2017；CL02 等同 ISO 15189:2022（医学）等按机构类型选用</span></div>
+      <div class="layer"><span class="t">第 3 层 · 应用要求（G 系列）</span><span class="d">G001 应用要求（必备）＋ G002 计量溯源 / G003 不确定度 / G004 内部校准</span></div>
+      <div class="layer"><span class="t">第 4 层 · 领域应用说明（A 系列）</span><span class="d">CL01-A 系列 26 个检测/校准领域 ＋ CL02–CL08 专用准则的 A 系列（医学/司法鉴定等）</span></div>
+      <div class="layer"><span class="t">第 5 层 · 指南/说明/方案/报告（GL/EL/S/TRL）</span><span class="d">实施指南、受理与范围表述说明、专项认可方案（能源之星/蓝牙/OIML 等）、技术报告</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">全体申请机构</span></div>
+  <p class="section-desc">R/RL 系列是 CNAS 认可全流程的硬规则：标志使用、公正性、申诉投诉、能力验证、收费、境外受理——17025 只管实验室能力，CNAS 用 R/RL 管「认可这件事本身」。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-R01</span></td><td><span class="cn">认可标识使用和认可状态声明规则</span><span class="en">Rule for the Use of Accreditation Mark and Statement of Accreditation Status</span></td><td class="date">2023 版 / 2023-5-31 实施</td><td><span class="when">CNAS 标识与认可状态声明的使用规则——17025 不涉及标志管理，此为认可条件级硬要求</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-R02</span></td><td><span class="cn">公正性和保密规则</span><span class="en">Rules for Impartiality and Confidentiality</span></td><td class="date">2023 版 / 2023-5-31 实施</td><td><span class="when">把 17025 的公正性/保密条款扩展为认可规则级义务，含违规处理</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-R03</span></td><td><span class="cn">申诉、投诉和争议处理规则</span><span class="en">Rules for Dealing with Appeals, Complaints and Disputes</span></td><td class="date">2026 版 / 2026-9-22 发布</td><td><span class="when">2026 换版（替代 2019 版）——实验室申诉/投诉路径的现行规则，先核版本再用</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-RL01</span></td><td><span class="cn">实验室认可规则</span><span class="en">Rules for Accreditation of Laboratories</span></td><td class="date">2025 版 / 2025-6-30 发布</td><td><span class="when">认可申请→评审→监督→续证全流程规则总纲；2025 换版+实质性修订</span><br><span class="badge core">必备</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-RL02</span></td><td><span class="cn">能力验证规则</span><span class="en">Rules for Proficiency Testing</span></td><td class="date">2023 版 / 2023-9-30 发布</td><td><span class="when">规定每年须按领域参加能力验证并满足频次要求——不满足直接危及认可资格</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-RL03</span></td><td><span class="cn">实验室和检验机构认可收费管理规则</span><span class="en">Rules for Management of Accreditation Fees</span></td><td class="date">2025 版 / 2025-7-30 实施</td><td><span class="when">认可收费的项目、标准与缴纳规则；2025 换版</span><br><span class="badge opt">2025 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-RL04</span></td><td><span class="cn">境外实验室和检验机构受理规则</span><span class="en">Rules for Acceptance of Overseas Laboratories and Inspection Bodies</span></td><td class="date">2022 版 / 2022-7-20 发布</td><td><span class="when">境外机构申请 CNAS 认可时的受理特别规则——境外实验室申请时适用</span><br><span class="badge opt">境外机构</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：版本与实施日期以 CNAS 官网现行版本为准；R03:2026、RL01:2025、RL03:2025 为近年换版，实施前务必核对。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求</h2><span class="tag">按行业选 A 系列 · 按业务选专项方案</span></div>
+  <p class="section-desc">CNAS 相对 17025 最鲜明的附加机制：CL01-A 系列按 26 个检测/校准领域逐领域发布应用说明，申请前必须按本行业锁定；另有医学、司法鉴定等专用准则（CL02/CL08 等同其他国际标准）与专项认可方案（S 系列）按业务选用。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CL01-A 系列</span></td><td><span class="cn">检测和校准实验室能力认可准则在××领域的应用说明（共 26 个领域）</span><span class="en">Application Notes of CNAS-CL01 for specific testing/calibration fields</span></td><td class="date">各领域独立版本</td><td><span class="when">把 17025 的通用条款落到具体领域的技术细节（人员/设备/方法/环境）——申请前先按行业锁定对应 A 文件</span><br><span class="badge core">领域选配核心</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A001</span></td><td><span class="cn">微生物检测领域应用说明</span><span class="en">Application Note in Microbiological Testing</span></td><td class="date">2022 版 / 2023-1-1 实施</td><td><span class="when">微生物检测实验室的领域附加要求（培养基、生物安全、方法确认等）</span><br><span class="badge dom">微生物</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A002</span></td><td><span class="cn">化学检测领域应用说明</span><span class="en">Application Note in Chemical Testing</span></td><td class="date">2020 版 / 2021-1-1 实施</td><td><span class="when">化学检测实验室的领域附加要求（试剂、标准物质、方法确认等）</span><br><span class="badge dom">化学</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A008</span></td><td><span class="cn">电磁兼容检测领域应用说明</span><span class="en">Application Note in EMC Testing</span></td><td class="date">2023 版 / 2023-4-10 实施</td><td><span class="when">EMC 实验室的领域附加要求（场地确认、设备核查等）</span><br><span class="badge dom">电磁兼容</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A025</span></td><td><span class="cn">校准领域应用说明</span><span class="en">Application Note in Calibration</span></td><td class="date">2022 版 / 2022-1-20 发布</td><td><span class="when">校准实验室的领域附加要求（测量能力、参考标准、校准方法等）</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A004</span></td><td><span class="cn">医疗器械检测领域应用说明</span><span class="en">Application Note in Medical Device Testing</span></td><td class="date">2026 版 / 2026-5-1 实施</td><td><span class="when">2026 换版；2018 版于 2026-10-31 废止——医疗器械检测实验室立即核对版本</span><br><span class="badge dom">医疗器械</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A016</span></td><td><span class="cn">感官检验领域应用说明</span><span class="en">Application Note in Sensory Testing</span></td><td class="date">2025 版 / 2025-1-31 实施</td><td><span class="when">2025 换版，实质性变化——感官检验实验室适用</span><br><span class="badge dom">感官</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A018</span></td><td><span class="cn">建设工程检测领域应用说明</span><span class="en">Application Note in Construction Testing</span></td><td class="date">2026 版 / 2027-1-1 实施</td><td><span class="when">2026 换版；过渡期内 2021 版沿用至 2027-1-1——建设工程检测实验室关注过渡安排</span><br><span class="badge dom">建设工程</span><span class="badge new">2026 换版</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：A 系列共 26 个领域（微生物/化学/电气/医疗器械/汽车摩托车/无损/通信/电磁兼容/玩具/纺织/金属材料/卫生检疫/动物检疫/植物检疫/珠宝玉石贵金属/感官/建设工程/软件/信息安全/光伏/建材/实验动物/基因扩增/校准/药物生物样本/竞技体育食源性兴奋剂），另有 A012/A013/A015 等按需；选型以行业分类清单为准。</div>
+  </div>
+  <div class="table-card" style="margin-top:14px;">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-CL02</span></td><td><span class="cn">医学实验室质量和能力认可准则</span><span class="en">Medical Laboratories — ISO 15189:2022（等同采用）</span></td><td class="date">2023 版 / 2023-12-1 实施</td><td><span class="when">医学实验室不按 17025 而按 15189:2022 认可——机构类型准则，配套 CL02-A001:2023 应用要求</span><br><span class="badge dom">医学</span></td></tr>
+        <tr><td><span class="code">CNAS-CL03</span></td><td><span class="cn">能力验证提供者认可准则</span><span class="en">Conformity Assessment — ISO/IEC 17043:2023</span></td><td class="date">2024 版 / 2024-9-1 实施</td><td><span class="when">能力验证提供者（PTP）按 17043:2023 认可——PTP 机构适用</span><br><span class="badge dom">PTP</span></td></tr>
+        <tr><td><span class="code">CNAS-CL08</span></td><td><span class="cn">司法鉴定/法庭科学机构能力认可准则</span><span class="en">Forensic Units — Competence</span></td><td class="date">2018 版 / 2018-9-1 实施</td><td><span class="when">司法鉴定机构准则，配套 CL08-A001~A008 按鉴定专业细分——法医/电子数据等适用</span><br><span class="badge dom">司法鉴定</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-S03</span></td><td><span class="cn">反兴奋剂实验室认可方案</span><span class="en">Accreditation Scheme for Anti-doping Laboratories</span></td><td class="date">2020 版 / 2020-8-8 发布</td><td><span class="when">反兴奋剂实验室的专项认可方案（配套 A027 竞技体育食源性兴奋剂应用说明）</span><br><span class="badge dom">反兴奋剂</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-S06</span></td><td><span class="cn">国际法制计量组织证书互认制度实验室认可方案</span><span class="en">Accreditation Scheme for OIML Certificate Mutual Acceptance Arrangement</span></td><td class="date">2024 版 / 2024-7-1 实施</td><td><span class="when">OIML 型式评价实验室的专项方案——计量器具出口业务适用（另有 S02 能源之星/S05 蓝牙/S04 EPA 按业务）</span><br><span class="badge dom">计量器具</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：医学（CL02）、司法鉴定（CL08）等专用准则的 A 系列与 CL01-A 系列分开选；专项方案 S01–S06 按具体业务选用，勿当通用要求。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">四</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">G 系列必备 · 评审必查</span></div>
+  <p class="section-desc">17025:2017 对溯源/不确定度/PT 给原则，CNAS 用 G 系列给执行要求——G001 为总应用要求（必备），G002/G003/G004 分别是溯源、不确定度、内部校准的专项要求，配套 GL 指南落地。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-CL01-G001</span></td><td><span class="cn">检测和校准实验室能力认可准则的应用要求</span><span class="en">Application Requirements for CNAS-CL01</span></td><td class="date">2024 版 / 2024-7-1 实施</td><td><span class="when">对 CL01 全条款逐条给出 CNAS 的附加应用要求——所有检测/校准实验室必备，2024 第二次换版+实质性修订</span><br><span class="badge core">必备</span><span class="badge new">2024 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G002</span></td><td><span class="cn">测量结果的计量溯源性要求</span><span class="en">Requirements for Metrological Traceability of Measurement Results</span></td><td class="date">2021 版 / 2021-7-31 发布</td><td><span class="when">计量溯源的执行要求（溯源链、校准实验室选择、内部校准边界）——G001 的溯源专项</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G003</span></td><td><span class="cn">测量不确定度的要求</span><span class="en">Requirements for Measurement Uncertainty</span></td><td class="date">2021 版 / 2023-1-1 第一次修订</td><td><span class="when">不确定度评定、表示与应用的强制要求——检测/校准实验室均适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G004</span></td><td><span class="cn">内部校准要求</span><span class="en">Requirements for Internal Calibration</span></td><td class="date">2023 版 / 2023-1-20 发布</td><td><span class="when">内部校准活动的管理与能力要求——存在内校活动时适用，2023 换版+实质性修订</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G005</span></td><td><span class="cn">非固定场所检测活动应用说明</span><span class="en">Application Note for Testing Activities Outside Permanent Premises</span></td><td class="date">2018 版 / 2018-9-1 实施</td><td><span class="when">现场/临时场所检测时的附加要求——存在外检/现场检测业务时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">CNAS-GL006</span></td><td><span class="cn">化学分析中不确定度的评估指南</span><span class="en">Guidance on Uncertainty Evaluation in Chemical Analysis</span></td><td class="date">2019 版</td><td><span class="when">化学检测不确定度评估的落地方法——化学实验室按 G003 要求配套使用</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">CNAS-GL025</span></td><td><span class="cn">校准和测量能力（CMC）表示指南</span><span class="en">Guidance on Presentation of CMC</span></td><td class="date">2023 版 / 2023-12-31 发布</td><td><span class="when">校准实验室 CMC 的表示规范——范围填报与校准能力表述核心参考</span><br><span class="badge dom">校准</span></td></tr>
+        <tr><td><span class="code">CNAS-GL054</span></td><td><span class="cn">测量设备校准周期的确定和调整方法指南</span><span class="en">Guidance on Determination and Adjustment of Calibration Intervals</span></td><td class="date">2023 版 / 2023-12-31 发布</td><td><span class="when">校准周期确定/调整的方法（替代 TRL-004:2017）——设备管理计划制定参照</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">CNAS-GL042</span></td><td><span class="cn">测量设备期间核查的方法指南</span><span class="en">Guidance on Intermediate Checks of Measuring Equipment</span></td><td class="date">2019 版 / 2019-12-1 发布</td><td><span class="when">期间核查的频次与统计方法——17025 6.4.10 的落地指南</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">CNAS-GL032</span></td><td><span class="cn">能力验证的选择核查与利用指南</span><span class="en">Guidance on Selection, Review and Use of PT</span></td><td class="date">2018 版</td><td><span class="when">PT 计划的选用与结果利用——与 RL02 年度能力验证要求保持一致</span><br><span class="badge opt">指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：G001–G004 为检测/校准实验室「必配四件套」，评审必查；GL 系列为实施指南，不构成独立强制要求。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">五</div><h2>申请与评审环节的特殊要求</h2><span class="tag">EL 系列 · 范围填报 · 受理条件</span></div>
+  <p class="section-desc">申请 CNAS 前必须读的「操作层」文件是 EL 系列（受理要求、范围表述、报告证书规范）与 GL001（认可指南）——17025 不涉及这些行政与技术接口，CNAS 全部落到 EL/GL。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-EL-15</span></td><td><span class="cn">检测和校准实验室认可受理要求的说明</span><span class="en">Explanation of Acceptance Requirements</span></td><td class="date">2020 版 / 2021-7-1 修订</td><td><span class="when">受理条件与申请材料要求——申请第一份要读的文件</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-03</span></td><td><span class="cn">检测和校准实验室认可能力范围表述说明</span><span class="en">Explanation on Expression of Scopes of Accreditation</span></td><td class="date">2023 版 / 2023-9-1 实施</td><td><span class="when">能力范围填报的规范口径（方法/标准/项目表述格式）——范围表填错即返工</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-13</span></td><td><span class="cn">检测报告和校准证书相关要求的认可说明</span><span class="en">Explanation on Testing Reports and Calibration Certificates</span></td><td class="date">2019 版 / 2019-12-25 发布</td><td><span class="when">报告/证书的内容与声明要求——带认可标识报告的格式依据</span><br><span class="badge core">报告规范</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-20</span></td><td><span class="cn">实验室和检验机构认可远程评审的应用说明</span><span class="en">Application Note on Remote Assessment</span></td><td class="date">2021 版 / 2021-6-1 发布</td><td><span class="when">远程评审的适用范围与实施要求——被安排远程评审时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-28</span></td><td><span class="cn">实验室、检验机构等英文名称与地址的申报说明</span><span class="en">Explanation on English Names and Addresses</span></td><td class="date">2024 版 / 2024-11-1 实施</td><td><span class="when">英文名称与地址申报规范——涉及国际互认标识使用与证书英文版</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">CNAS-GL001</span></td><td><span class="cn">实验室认可指南</span><span class="en">Guidance on Accreditation of Laboratories</span></td><td class="date">2018 版</td><td><span class="when">从准备申请到接受评审的全过程指南——申请方入门必读</span><br><span class="badge core">入门必读</span></td></tr>
+        <tr><td><span class="code">CNAS-GL008</span></td><td><span class="cn">实验室认可评审不符合项分级指南</span><span class="en">Guidance on Classification of Nonconformities</span></td><td class="date">2018 版 / 2018-9-1 实施</td><td><span class="when">不符合项分级（严重/一般）口径——评审后整改的优先级判断依据</span><br><span class="badge opt">指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：EL 系列另含 EL-04 大型综合实验室、EL-11 校准方法认可管理、EL-14 医学受理等按机构类型选用；行业范围表述用对应行业的 EL-xx 说明。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">六</div><h2>获证后维护与近期换版要点</h2><span class="tag">2025–2026 密集换版</span></div>
+  <p class="section-desc">CNAS 2025–2026 换版/新增密集（R03、RL10、A004、A018、TRL 系列等），获证实验室的维护重点是：按 RL01 接受监督评审、持续满足 RL02 能力验证、跟踪 A 系列与 G 系列版本。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-RL10:2026</span></td><td><span class="cn">生物样本库认可规则（＋EL-30:2026 受理说明）</span><span class="en">Rules for Accreditation of Biobanks</span></td><td class="date">2026 版 / 2026-1-1 发布</td><td><span class="when">2026 换版（替代 2020 版）＋配套受理说明——生物样本库机构适用</span><br><span class="badge new">2026 新增/换版</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A004:2026</span></td><td><span class="cn">医疗器械检测领域应用说明（废止节点）</span><span class="en">Application Note in Medical Device Testing</span></td><td class="date">2026-5-1 实施 / 2018 版 2026-10-31 废止</td><td><span class="when">新旧版本并行过渡，2018 版 2026-10-31 废止——医疗器械检测实验室须在废止前完成换版</span><br><span class="badge new">过渡节点</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A018:2026</span></td><td><span class="cn">建设工程检测领域应用说明（实施节点）</span><span class="en">Application Note in Construction Testing</span></td><td class="date">2026-9-23 发布 / 2027-1-1 实施</td><td><span class="when">过渡期内 2021 版沿用至 2027-1-1——建设工程检测实验室提前规划换版</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">CNAS-CL06-A001:2026</span></td><td><span class="cn">实验动物饲养和使用机构认可准则的应用说明</span><span class="en">Application Note for Laboratory Animal Institutions</span></td><td class="date">2026 版 / 2026-3-31 实施</td><td><span class="when">2026 首次发布——实验动物机构适用</span><br><span class="badge new">2026 新增</span></td></tr>
+        <tr><td><span class="code">CNAS-TRL-024/025:2026</span></td><td><span class="cn">激光加工/增材制造设备检测领域实验室认可技术指南</span><span class="en">Technical Reports for Advanced Manufacturing</span></td><td class="date">2026-2-4 发布</td><td><span class="when">2026 新增，先进制造检测领域重点参考</span><br><span class="badge new">2026 新增</span></td></tr>
+        <tr><td><span class="code">CNAS-TRL-026/027:2026</span></td><td><span class="cn">煤炭检测领域内部质量控制 / 计量溯源及核查指南</span><span class="en">Technical Reports for Coal Testing</span></td><td class="date">2026-8-28 发布</td><td><span class="when">2026 新增——煤炭检测实验室适用</span><br><span class="badge new">2026 新增</span></td></tr>
+        <tr><td><span class="code">CNAS-GL048/049/050:2025</span></td><td><span class="cn">医学实验室组织病理/细胞病理/分子诊断领域认可指南</span><span class="en">Guidance for Medical Pathology and Molecular Diagnostics</span></td><td class="date">2025-12-1 发布</td><td><span class="when">2025 新发——医学病理与分子诊断实验室适用</span><br><span class="badge new">2025 新增</span></td></tr>
+        <tr><td><span class="code">CNAS-GL011/GL012:2025</span></td><td><span class="cn">实验室和检验机构内部审核 / 管理评审指南</span><span class="en">Guidance on Internal Audit and Management Review</span></td><td class="date">2025-12-1 发布</td><td><span class="when">2025 换版+实质性修订——年度内审与管理评审的现行方法依据</span><br><span class="badge new">2025 换版</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：监督评审按 RL01:2025 执行，能力验证持续满足 RL02:2023；2026-08-28 技术报告清单更新后以官网现行版本为准。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">七</div><h2>实操要点与常见坑</h2><span class="tag">6 条</span></div>
+  <p class="section-desc">CNAS 文件体系最完整也最易迷失——下面 6 条是申请与维护中最常见的踩坑点。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>第一步：按行业锁定 CL01-A 系列</div><p>先查<b>行业分类清单</b>确定本行业对应的 A 系列应用说明（26 个领域），再按 A 文件补技术细节。<span class="why">A 系列选错/漏选是申请阶段最常见的退回原因</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>G001–G004 是「必配四件套」</div><p><b>G001 应用要求、G002 溯源、G003 不确定度、G004 内部校准</b>是检测/校准实验室必备；缺一项评审即开不符合。<span class="why">别只盯着 CL01 原文，CNAS 的附加口径全在 G 系列</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>能力验证按 RL02 提前排期</div><p>每年须按领域参加 PT 并满足频次；<b>年度能力验证满足情况</b>是评审前最易出问题的环节。<span class="why">PT 记录与结果不满意项的处理要留痕</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>申请材料两大件：EL-15 + EL-03</div><p>受理条件与材料看 <b>EL-15</b>，能力范围填报看 <b>EL-03</b>（2023 新版口径）；范围表格式填错即返工。<span class="why">报告/证书格式另按 EL-13</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2026 换版密集，先核版本再执行</div><p><b>R03:2026、A004:2026（2018 版 2026-10-31 废止）、A018:2026（2027-1-1 实施）、RL10:2026、TRL 系列 2026 新增</b>——执行前先上官网核对现行版本。<span class="why">用旧版 A 文件准备评审是换版期高发错误</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">6</span>专用准则的 A 系列与 CL01-A 系列分开选</div><p>医学（<b>CL02</b>）、司法鉴定（<b>CL08</b>）、PTP（<b>CL03</b>）等机构类型准则各有自己的 A 系列，别与 CL01-A 混用。<span class="why">机构类型不同，准则与 A 文件都不同</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《中国大陆全行业实验室CNAS认可规范文件清单.html》与《中国大陆全行业实验室CNAS认可规范文件-行业分类清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与实施日期以 CNAS 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 CNAS 的官方意见；正式申请前请按官网现行版本核对（官方门户：<a href="https://www.cnas.org.cn" target="_blank" rel="noopener">www.cnas.org.cn</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>

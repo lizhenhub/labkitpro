@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNAS · Specific Requirements Relative to ISO/IEC 17025:2017</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Document Generation</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+      <a class="lang-toggle" href="CNAS_相对ISO17025特殊要求-中文版.html">中文</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">CNAS · Specific Requirements Beyond ISO/IEC 17025:2017</span>
+      <h1>CNAS · Specific Requirements Relative to ISO/IEC 17025:2017 — Explained</h1>
+      <p>CNAS (China National Accreditation Service for Conformity Assessment) is the sole laboratory accreditation body in mainland China. The core relationship: CNAS-CL01:2018 is an identical adoption of ISO/IEC 17025:2017; on top of it sit the CL01-G001 application requirements (mandatory) and the CL01-A series of field-specific application notes (26 testing/calibration fields), forming a layered document system of General Rules (R/RL) + Basic Criteria (CL) + Application Requirements (G) + Field Application Notes (A) + Guidance (GL) + Explanatory Notes (EL) + Technical Reports (TRL).</p>
+      <div class="meta">
+            <span>Last verified: <b>2026-10-19</b></span>
+            <span>Basis list: <b>《中国大陆全行业实验室CNAS认可规范文件清单.html》 + industry-classification list (live crawl from the official website)</b></span>
+            <span>Source basis: <b>Resources compiled from official public documents; official current versions prevail</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="中国大陆全行业实验室CNAS认可规范文件清单.html">View Full Document List →</a>
+            <a class="btn btn-ghost" href="Global-Accreditation-Bodies-Requirements-EN.html">Back to Overview</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">45</div><div class="lbl">Special/additional requirement documents (distilled across five areas)</div></div>
+            <div class="stat"><div class="num">26</div><div class="lbl">Fields covered by the CL01-A application notes</div></div>
+            <div class="stat"><div class="num">22</div><div class="lbl">2025–2026 revisions / new releases</div></div>
+            <div class="stat"><div class="num">10</div><div class="lbl">Core mandatory documents (R/RL + CL01 + G001–G004)</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <div class="links">
+    <a href="#rel">1. Relationship to ISO/IEC 17025:2017</a>
+    <a href="#req-general">2. General Rules / Accreditation Conditions</a>
+    <a href="#req-domain">3. Sector-Specific Requirements</a>
+    <a href="#req-tech">4. Traceability · Uncertainty · Proficiency Testing</a>
+    <a href="#req-apply">5. Application &amp; Assessment</a>
+    <a href="#req-maintain">6. Post-Accreditation Maintenance &amp; Recent Revisions</a>
+    <a href="#tips">7. Practical Points &amp; Common Pitfalls</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>Key Points</div>
+  <p>Of the <b>45</b> files distilled across five areas, the core combination CNAS-system laboratories must put in place first is <b>CNAS-RL01</b> (Rules for Accreditation of Laboratories) + <b>CNAS-CL01:2018</b> (identical adoption of ISO/IEC 17025:2017) + <b>CL01-G001–G004</b> (the mandatory application-requirements "four-piece set"), then lock the <b>CL01-A</b> application note(s) matching their industry; the rest are supporting guidance or on-demand documents.</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">1</div><h2>Relationship to ISO/IEC 17025:2017</h2><span class="tag">Identical adoption · layered application requirements</span></div>
+  <p class="section-desc">CNAS adopts ISO/IEC 17025:2017 identically (CNAS-CL01:2018), but accreditation practice goes beyond the criteria itself: all testing/calibration laboratories must also meet the G-series application requirements and the A-series application notes for their industry — this is the core form of CNAS's "additional requirements" beyond 17025.</p>
+  <div class="rel-card">
+    <h3>Layered document system</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">Layer 1 · General rules (R/RL)</span><span class="d">R01–R03 (marks / impartiality / appeals &amp; complaints) + RL01–RL10 rules on laboratory accreditation, proficiency testing, fees, acceptance of overseas bodies, etc.</span></div>
+      <div class="layer"><span class="t">Layer 2 · Basic criteria (CL01–CL10)</span><span class="d">CL01 identical to ISO/IEC 17025:2017; CL02 identical to ISO 15189:2022 (medical), etc., selected by organization type</span></div>
+      <div class="layer"><span class="t">Layer 3 · Application requirements (G series)</span><span class="d">G001 application requirements (mandatory) + G002 metrological traceability / G003 uncertainty / G004 internal calibration</span></div>
+      <div class="layer"><span class="t">Layer 4 · Field application notes (A series)</span><span class="d">CL01-A series for 26 testing/calibration fields + the A series of CL02–CL08 dedicated criteria (medical / forensic, etc.)</span></div>
+      <div class="layer"><span class="t">Layer 5 · Guidance &amp; reports (GL/EL/S/TRL)</span><span class="d">Implementation guidance, acceptance and scope-expression notes, dedicated accreditation schemes (ENERGY STAR / Bluetooth / OIML, etc.), technical reports</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">2</div><h2>General Rules / Additional Accreditation Conditions</h2><span class="tag">All applicants</span></div>
+  <p class="section-desc">The R/RL series are the hard rules governing the whole CNAS accreditation process: mark use, impartiality, appeals and complaints, proficiency testing, fees, acceptance of overseas bodies — 17025 only governs laboratory competence; CNAS uses R/RL to govern "the act of accreditation itself".</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-R01</span></td><td><span class="title">Rule for the Use of Accreditation Mark and Statement of Accreditation Status</span></td><td class="date">2023 ed. · 2023-5-31</td><td><span class="when">Rules for using the CNAS mark and stating accreditation status — 17025 does not cover mark management; this is a hard accreditation-condition requirement</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-R02</span></td><td><span class="title">Rules for Impartiality and Confidentiality</span></td><td class="date">2023 ed. · 2023-5-31</td><td><span class="when">Extends 17025's impartiality/confidentiality clauses into accreditation-rule-level obligations, including handling of violations</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-R03</span></td><td><span class="title">Rules for Dealing with Appeals, Complaints and Disputes</span></td><td class="date">2026 ed. · 2026-9-22</td><td><span class="when">2026 revision (replacing the 2019 edition) — the current rule for laboratory appeal/complaint pathways; verify the version before use</span><br><span class="badge core">Core requirement</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-RL01</span></td><td><span class="title">Rules for Accreditation of Laboratories</span></td><td class="date">2025 ed. · 2025-6-30</td><td><span class="when">The master rules for the full cycle: application → assessment → surveillance → renewal; 2025 revision with substantive changes</span><br><span class="badge core">Core requirement</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-RL02</span></td><td><span class="title">Rules for Proficiency Testing</span></td><td class="date">2023 ed. · 2023-9-30</td><td><span class="when">Mandates annual PT participation by field and required frequency — non-compliance directly endangers accreditation status</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-RL03</span></td><td><span class="title">Rules for Management of Accreditation Fees</span></td><td class="date">2025 ed. · 2025-7-30</td><td><span class="when">Fee items, standards and payment rules for accreditation; 2025 revision</span><br><span class="badge opt">2025 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-RL04</span></td><td><span class="title">Rules for Acceptance of Overseas Laboratories and Inspection Bodies</span></td><td class="date">2022 ed. · 2022-7-20</td><td><span class="when">Special acceptance rules when overseas bodies apply for CNAS accreditation — applies when overseas laboratories apply</span><br><span class="badge opt">Overseas bodies</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: versions and effective dates are subject to the current official versions on the CNAS website; R03:2026, RL01:2025 and RL03:2025 are recent revisions — verify before implementation.</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">3</div><h2>Sector-Specific Requirements</h2><span class="tag">Choose the A series by industry · choose schemes by business</span></div>
+  <p class="section-desc">CNAS's most distinctive additional mechanism beyond 17025: the CL01-A series issues application notes field by field across 26 testing/calibration fields — you must lock your industry's note(s) before applying. In addition, dedicated criteria for medical and forensic institutions (CL02/CL08, identical adoptions of other international standards) and dedicated accreditation schemes (S series) are selected by business need.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CL01-A series</span></td><td><span class="title">Application Notes of CNAS-CL01 for specific testing/calibration fields (26 fields in total)</span></td><td class="date">Separate per field</td><td><span class="when">Translates the generic clauses of 17025 into field-specific technical details (personnel/equipment/methods/environment) — lock your industry's A document before applying</span><br><span class="badge core">Core scope-selection note</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A001</span></td><td><span class="title">Application Note in Microbiological Testing</span></td><td class="date">2022 ed. · 2023-1-1</td><td><span class="when">Field-specific requirements for microbiological testing (culture media, biosafety, method validation, etc.)</span><br><span class="badge dom">Microbiology</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A002</span></td><td><span class="title">Application Note in Chemical Testing</span></td><td class="date">2020 ed. · 2021-1-1</td><td><span class="when">Field-specific requirements for chemical testing (reagents, reference materials, method validation, etc.)</span><br><span class="badge dom">Chemistry</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A008</span></td><td><span class="title">Application Note in EMC Testing</span></td><td class="date">2023 ed. · 2023-4-10</td><td><span class="when">Field-specific requirements for EMC laboratories (site verification, equipment checks, etc.)</span><br><span class="badge dom">EMC</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A025</span></td><td><span class="title">Application Note in Calibration</span></td><td class="date">2022 ed. · 2022-1-20</td><td><span class="when">Field-specific requirements for calibration laboratories (measurement capability, reference standards, calibration methods, etc.)</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A004</span></td><td><span class="title">Application Note in Medical Device Testing</span></td><td class="date">2026 ed. · 2026-5-1</td><td><span class="when">2026 revision; the 2018 edition is withdrawn on 2026-10-31 — medical-device testing laboratories must check the version immediately</span><br><span class="badge dom">Medical devices</span><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A016</span></td><td><span class="title">Application Note in Sensory Testing</span></td><td class="date">2025 ed. · 2025-1-31</td><td><span class="when">2025 revision with substantive changes — applies to sensory testing laboratories</span><br><span class="badge dom">Sensory testing</span><span class="badge new">2025 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A018</span></td><td><span class="title">Application Note in Construction Testing</span></td><td class="date">2026 ed. · 2027-1-1</td><td><span class="when">2026 revision; during the transition the 2021 edition remains valid until 2027-1-1 — construction testing laboratories should watch the transition arrangement</span><br><span class="badge dom">Construction</span><span class="badge new">2026 revision</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the A series covers 26 fields (microbiology / chemistry / electrical / medical devices / automotive &amp; motorcycle / NDT / communications / EMC / toys / textiles / metals / health quarantine / animal quarantine / plant quarantine / jewellery &amp; precious metals / sensory / construction / software / information security / photovoltaic / building materials / laboratory animals / PCR / calibration / pharmaceutical &amp; biological samples / competitive-sports food-borne anti-doping); A012/A013/A015 etc. apply on demand — selection follows the industry classification list.</div>
+  </div>
+  <div class="table-card" style="margin-top:14px;">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-CL02</span></td><td><span class="title">Medical Laboratories — ISO 15189:2022 (identical adoption)</span></td><td class="date">2023 ed. · 2023-12-1</td><td><span class="when">Medical laboratories are accredited against 15189:2022, not 17025 — a type-specific criterion, with companion CL02-A001:2023 application requirements</span><br><span class="badge dom">Medical</span></td></tr>
+        <tr><td><span class="code">CNAS-CL03</span></td><td><span class="title">Conformity Assessment — ISO/IEC 17043:2023</span></td><td class="date">2024 ed. · 2024-9-1</td><td><span class="when">Proficiency testing providers (PTPs) are accredited against 17043:2023 — applies to PTP organizations</span><br><span class="badge dom">PTP</span></td></tr>
+        <tr><td><span class="code">CNAS-CL08</span></td><td><span class="title">Forensic Units — Competence</span></td><td class="date">2018 ed. · 2018-9-1</td><td><span class="when">Criterion for forensic / judicial authentication organizations, with companion CL08-A001~A008 by forensic specialty — applies to forensics / digital evidence, etc.</span><br><span class="badge dom">Forensic</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-S03</span></td><td><span class="title">Accreditation Scheme for Anti-doping Laboratories</span></td><td class="date">2020 ed. · 2020-8-8</td><td><span class="when">Dedicated accreditation scheme for anti-doping laboratories (with companion A027 application note on competitive-sports food-borne anti-doping)</span><br><span class="badge dom">Anti-doping</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-S06</span></td><td><span class="title">Accreditation Scheme for OIML Certificate Mutual Acceptance Arrangement</span></td><td class="date">2024 ed. · 2024-7-1</td><td><span class="when">Dedicated scheme for OIML type-evaluation laboratories — applies to measuring-instrument export business (other schemes: S02 ENERGY STAR / S05 Bluetooth / S04 EPA, by business)</span><br><span class="badge dom">Measuring instruments</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the A series of dedicated criteria such as medical (CL02) and forensic (CL08) are selected separately from the CL01-A series; dedicated schemes S01–S06 apply by specific business — do not treat them as general requirements.</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">4</div><h2>Additional Policies on Metrological Traceability · Measurement Uncertainty · Proficiency Testing</h2><span class="tag">G series mandatory · always checked in assessments</span></div>
+  <p class="section-desc">17025:2017 states the principles for traceability / uncertainty / PT; CNAS gives the execution requirements through the G series — G001 is the master application requirement (mandatory), and G002/G003/G004 are the dedicated requirements for traceability, uncertainty and internal calibration, implemented with GL guidance.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-CL01-G001</span></td><td><span class="title">Application Requirements for CNAS-CL01</span></td><td class="date">2024 ed. · 2024-7-1</td><td><span class="when">Clause-by-clause additional application requirements for CL01 — mandatory for every testing/calibration laboratory; 2024 second revision with substantive changes</span><br><span class="badge core">Core requirement</span><span class="badge new">2024 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G002</span></td><td><span class="title">Requirements for Metrological Traceability of Measurement Results</span></td><td class="date">2021 ed. · 2021-7-31</td><td><span class="when">Execution requirements for metrological traceability (traceability chains, selection of calibration laboratories, boundaries of internal calibration) — the traceability companion to G001</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G003</span></td><td><span class="title">Requirements for Measurement Uncertainty</span></td><td class="date">2021 ed. · rev. 2023-1-1</td><td><span class="when">Mandatory requirements for uncertainty evaluation, expression and application (first revision 2023-1-1) — applies to both testing and calibration laboratories</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G004</span></td><td><span class="title">Requirements for Internal Calibration</span></td><td class="date">2023 ed. · 2023-1-20</td><td><span class="when">Management and competence requirements for internal calibration activities — applies where internal calibration exists; 2023 revision with substantive changes</span><br><span class="badge core">Core requirement</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-G005</span></td><td><span class="title">Application Note for Testing Activities Outside Permanent Premises</span></td><td class="date">2018 ed. · 2018-9-1</td><td><span class="when">Additional requirements for on-site/temporary-site testing — applies where field testing business exists</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">CNAS-GL006</span></td><td><span class="title">Guidance on Uncertainty Evaluation in Chemical Analysis</span></td><td class="date">2019 ed.</td><td><span class="when">Practical method for uncertainty evaluation in chemical testing — used by chemistry laboratories to support G003</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">CNAS-GL025</span></td><td><span class="title">Guidance on Presentation of CMC</span></td><td class="date">2023 ed. · 2023-12-31</td><td><span class="when">Expression rules for calibration and measurement capabilities (CMC) — core reference for scope filing and calibration capability statements</span><br><span class="badge dom">Calibration</span></td></tr>
+        <tr><td><span class="code">CNAS-GL054</span></td><td><span class="title">Guidance on Determination and Adjustment of Calibration Intervals</span></td><td class="date">2023 ed. · 2023-12-31</td><td><span class="when">Methods for determining/adjusting calibration intervals (replaces TRL-004:2017) — reference for equipment management plans</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">CNAS-GL042</span></td><td><span class="title">Guidance on Intermediate Checks of Measuring Equipment</span></td><td class="date">2019 ed. · 2019-12-1</td><td><span class="when">Frequency and statistical methods for intermediate checks — implementation guidance for 17025 §6.4.10</span><br><span class="badge opt">Guidance</span></td></tr>
+        <tr><td><span class="code">CNAS-GL032</span></td><td><span class="title">Guidance on Selection, Review and Use of PT</span></td><td class="date">2018 ed.</td><td><span class="when">Selection of PT programs and use of results — consistent with the RL02 annual proficiency testing requirements</span><br><span class="badge opt">Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: G001–G004 are the mandatory "four-piece set" for testing/calibration laboratories and are always checked in assessments; the GL series are implementation guidance and do not constitute independent mandatory requirements.</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">5</div><h2>Application &amp; Assessment: Specific Requirements</h2><span class="tag">EL series · scope filing · acceptance conditions</span></div>
+  <p class="section-desc">The "operational-layer" documents you must read before applying to CNAS are the EL series (acceptance requirements, scope expression, report/certificate rules) and GL001 (accreditation guidance) — 17025 does not cover these administrative and technical interfaces; CNAS places them all in EL/GL.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-EL-15</span></td><td><span class="title">Explanation of Acceptance Requirements</span></td><td class="date">2020 ed. · rev. 2021-7-1</td><td><span class="when">Acceptance conditions and application-material requirements (revised 2021-7-1) — the first document to read when applying</span><br><span class="badge core">Application essential</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-03</span></td><td><span class="title">Explanation on Expression of Scopes of Accreditation</span></td><td class="date">2023 ed. · 2023-9-1</td><td><span class="when">Standard wording for filing the capability scope (method/standard/item expression format) — a wrong scope table means rework</span><br><span class="badge core">Application essential</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-13</span></td><td><span class="title">Explanation on Testing Reports and Calibration Certificates</span></td><td class="date">2019 ed. · 2019-12-25</td><td><span class="when">Content and statement requirements for reports/certificates — the format basis for reports carrying the accreditation mark</span><br><span class="badge core">Report format</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-20</span></td><td><span class="title">Application Note on Remote Assessment</span></td><td class="date">2021 ed. · 2021-6-1</td><td><span class="when">Applicability and implementation requirements for remote assessments — applies when a remote assessment is scheduled</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">CNAS-EL-28</span></td><td><span class="title">Explanation on English Names and Addresses</span></td><td class="date">2024 ed. · 2024-11-1</td><td><span class="when">Rules for declaring English names and addresses — relevant to international mutual-recognition mark use and English certificates</span><br><span class="badge opt">On demand</span></td></tr>
+        <tr><td><span class="code">CNAS-GL001</span></td><td><span class="title">Guidance on Accreditation of Laboratories</span></td><td class="date">2018 ed.</td><td><span class="when">End-to-end guidance from preparing an application to facing assessment — a must-read for applicants</span><br><span class="badge core">Must-read intro</span></td></tr>
+        <tr><td><span class="code">CNAS-GL008</span></td><td><span class="title">Guidance on Classification of Nonconformities</span></td><td class="date">2018 ed. · 2018-9-1</td><td><span class="when">Classification of nonconformities (major/minor) — the basis for prioritizing post-assessment corrective action</span><br><span class="badge opt">Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the EL series also includes EL-04 for large comprehensive laboratories, EL-11 for calibration method accreditation management, EL-14 for medical acceptance, etc., selected by organization type; industry-specific scope expression uses the corresponding industry EL-xx note.</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">6</div><h2>Post-Accreditation Maintenance &amp; Recent Revisions</h2><span class="tag">Dense 2025–2026 revisions</span></div>
+  <p class="section-desc">CNAS revisions/new releases are dense in 2025–2026 (R03, RL10, A004, A018, the TRL series, etc.). For accredited laboratories, the maintenance focus is: accept surveillance assessments per RL01, continuously satisfy RL02 proficiency testing, and track versions of the A and G series.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>Document No.</th><th>Title (official English)</th><th>Version / Date</th><th>What is specific beyond 17025 / When it applies</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">CNAS-RL10:2026</span></td><td><span class="title">Rules for Accreditation of Biobanks (+ EL-30:2026 acceptance note)</span></td><td class="date">2026 ed. · 2026-1-1</td><td><span class="when">2026 revision (replacing the 2020 edition) with a companion acceptance note — applies to biobank organizations</span><br><span class="badge new">2026 new/revised</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A004:2026</span></td><td><span class="title">Application Note in Medical Device Testing (withdrawal milestone)</span></td><td class="date">2026 ed. · 2026-5-1</td><td><span class="when">Old and new editions run in parallel during transition; the 2018 edition is withdrawn on 2026-10-31 — medical-device testing laboratories must complete the switch before withdrawal</span><br><span class="badge new">Transition milestone</span></td></tr>
+        <tr><td><span class="code">CNAS-CL01-A018:2026</span></td><td><span class="title">Application Note in Construction Testing (implementation milestone)</span></td><td class="date">2026-9-23 · 2027-1-1</td><td><span class="when">During the transition the 2021 edition remains valid until 2027-1-1 — construction testing laboratories should plan the switch ahead</span><br><span class="badge new">2026 revision</span></td></tr>
+        <tr><td><span class="code">CNAS-CL06-A001:2026</span></td><td><span class="title">Application Note for Laboratory Animal Institutions</span></td><td class="date">2026 ed. · 2026-3-31</td><td><span class="when">First release in 2026 — applies to laboratory animal institutions</span><br><span class="badge new">New in 2026</span></td></tr>
+        <tr><td><span class="code">CNAS-TRL-024/025:2026</span></td><td><span class="title">Technical Reports for Advanced Manufacturing (laser processing / additive manufacturing equipment testing)</span></td><td class="date">2026-2-4</td><td><span class="when">New in 2026 — key reference for advanced-manufacturing testing</span><br><span class="badge new">New in 2026</span></td></tr>
+        <tr><td><span class="code">CNAS-TRL-026/027:2026</span></td><td><span class="title">Technical Reports for Coal Testing (internal quality control / metrological traceability and checking)</span></td><td class="date">2026-8-28</td><td><span class="when">New in 2026 — applies to coal testing laboratories</span><br><span class="badge new">New in 2026</span></td></tr>
+        <tr><td><span class="code">CNAS-GL048/049/050:2025</span></td><td><span class="title">Guidance for Medical Pathology and Molecular Diagnostics (histopathology / cytopathology / molecular diagnostics)</span></td><td class="date">2025-12-1</td><td><span class="when">Newly issued in 2025 — applies to medical pathology and molecular diagnostics laboratories</span><br><span class="badge new">New in 2025</span></td></tr>
+        <tr><td><span class="code">CNAS-GL011/GL012:2025</span></td><td><span class="title">Guidance on Internal Audit and Management Review</span></td><td class="date">2025-12-1</td><td><span class="when">2025 revision with substantive changes — the current methodological basis for annual internal audit and management review</span><br><span class="badge new">2025 revision</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: surveillance assessments follow RL01:2025, and proficiency testing must continuously satisfy RL02:2023; after the 2026-08-28 update of the technical report list, versions are subject to current official versions.</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">7</div><h2>Practical Points &amp; Common Pitfalls</h2><span class="tag">6 tips</span></div>
+  <p class="section-desc">The CNAS document system is the most complete — and the easiest to get lost in. The 6 points below are the most common pitfalls in application and maintenance.</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>First step: lock the CL01-A series by industry</div><p>First check the <b>industry classification list</b> to determine the A-series application note(s) for your industry (26 fields), then fill in the technical details per the A document.<span class="why">Choosing wrong/missing A notes is the most common reason applications are sent back</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>G001–G004 is the mandatory "four-piece set"</div><p><b>G001 application requirements, G002 traceability, G003 uncertainty, G004 internal calibration</b> are mandatory for testing/calibration laboratories; missing any one draws a nonconformity in assessment.<span class="why">Don't stare only at the CL01 text — CNAS's additional positions all live in the G series</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>Schedule proficiency testing early per RL02</div><p>PT must be participated in annually by field and meet frequency requirements; <b>annual PT compliance</b> is the stage most likely to go wrong before assessment.<span class="why">Keep records of PT participation and of handling unsatisfactory results</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>Two core application documents: EL-15 + EL-03</div><p>Acceptance conditions and materials per <b>EL-15</b>; scope filing per <b>EL-03</b> (2023-edition wording); a wrong scope-table format means rework.<span class="why">Report/certificate format follows EL-13 separately</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>Dense 2026 revisions — check the version before acting</div><p><b>R03:2026, A004:2026 (2018 ed. withdrawn 2026-10-31), A018:2026 (effective 2027-1-1), RL10:2026, new TRL series of 2026</b> — verify the current version on the official website before implementing.<span class="why">Preparing an assessment with an outdated A document is a high-frequency error during revision periods</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">6</span>Select the A series of dedicated criteria separately from CL01-A</div><p>Medical (<b>CL02</b>), forensic (<b>CL08</b>), PTP (<b>CL03</b>) and other type-specific criteria each have their own A series — don't mix them with CL01-A.<span class="why">Different organization types mean different criteria and A documents</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data Sources</h3>
+      <p>Resources compiled from official public documents. This page is distilled from 《中国大陆全行业实验室CNAS认可规范文件清单.html》 and its industry-classification list (live-crawled and item-verified from the official website on 2026-10-19); document numbers, versions and effective dates are subject to the current official versions on the CNAS website.</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>This page is an independent compilation and interpretation; it is not an official opinion of CNAS. Before any formal application, verify against the current official versions (official portal: <a href="https://www.cnas.org.cn" target="_blank" rel="noopener">www.cnas.org.cn</a>).</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">Last verified 2026-10-19 · Official current versions prevail</div>
+</footer>
+
+</body>
+</html>

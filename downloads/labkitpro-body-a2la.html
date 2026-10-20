@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A2LA · 相对ISO/IEC 17025:2017特殊要求（中文版）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B3D91'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.7;font-size:14.5px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+.lang-toggle{
+  display:inline-flex;align-items:center;color:#fff;background:#ffffff1f;
+  border:1px solid #ffffff47;border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:700;text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.lang-toggle:hover{background:#ffffff38;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:54px 0 60px;position:relative;overflow:hidden;scroll-margin-top:60px;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:44px;align-items:center;}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.9vw,44px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:18px;color:#cdd9e6;max-width:640px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12.5px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.hero .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;
+  border-radius:9px;padding:12px 22px;text-decoration:none;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#1a1205;}
+.btn-primary:hover{background:var(--accent-700);color:#fff;}
+.btn-ghost{background:transparent;color:var(--brand-700);border-color:var(--brand-300);}
+.btn-ghost:hover{background:var(--brand-100);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 32px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:-8px 0 8px;color:#6b5320;
+}
+.callout .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--accent-700);margin-bottom:4px;}
+.callout .t .dot{width:18px;height:18px;border-radius:5px;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.callout p{font-size:13px;color:#6b5320;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.section-head .no{
+  flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13px;margin:0 0 14px 50px;}
+
+.rel-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+.rel-card h3{font-size:14.5px;color:var(--brand-800);margin-bottom:10px;}
+.rel-card p{font-size:13.5px;color:var(--ink);}
+.layer-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.layer{
+  display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);
+  border-left:4px solid var(--brand-500);border-radius:9px;background:#fff;padding:10px 14px;
+}
+.layer .t{font-size:13.5px;font-weight:700;color:var(--brand-700);white-space:nowrap;}
+.layer .d{font-size:12.5px;color:var(--muted);}
+
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:14%;}
+colgroup col.c-name{width:40%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-note{width:29%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{
+  padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;
+}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{
+  display:inline-block;background:var(--brand-500);color:#fff;font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+}
+td .title{display:block;font-size:13.5px;color:var(--ink);}
+td .cn{display:block;font-size:13.5px;color:var(--ink);}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:1px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:12.5px;}
+td .when{color:var(--ink);font-size:13px;}
+.badge{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  margin:0 4px 4px 0;white-space:nowrap;
+}
+.badge.core{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.badge.new{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.badge.opt{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.badge.dom{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.note-line{color:var(--muted);font-size:12.5px;padding:11px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+.tip-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+.tip{
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;
+}
+.tip .t{font-size:14px;font-weight:700;color:var(--brand-800);display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.tip .t .sn{
+  flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--brand-800);color:#fff;
+  font-size:12px;display:flex;align-items:center;justify-content:center;
+}
+.tip p{font-size:13px;color:var(--ink);}
+.tip p b{color:var(--brand-700);}
+.tip .why{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;}
+
+/* Practical-points section: local brand-100 underlay band (never full-page gray) */
+section#tips{
+  background:var(--brand-100);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 28px;
+}
+
+/* Inline content links (official brand-500); toc/footer links styled separately below */
+td .when a,.note-line a,.section-desc a,.callout a,.rel-card a,.tip a{color:var(--brand-500);text-decoration:none;}
+
+footer{background:var(--brand-900);color:#aebfd0;margin-top:64px;padding:40px 0 28px;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start;}
+footer h3{color:#fff;font-size:14px;margin-bottom:12px;}
+footer p{max-width:620px;line-height:1.8;color:#aebfd0;}
+footer .wrap a{color:#cdd9e6;}
+footer .wrap a:hover{color:#fff;}
+footer .ft-bottom{border-top:1px solid #ffffff1a;margin-top:28px;padding-top:16px;font-size:12.5px;color:#7f93a8;}
+
+@media (min-width:720px){
+  .tip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:28px;}
+}
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:40px 0 48px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:18px;}
+  .section-desc{margin-left:0;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .rel-card{padding:16px;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+  .layer{flex-direction:column;gap:2px;}
+  .layer .t{white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy/" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+      <a class="lang-toggle" href="A2LA_ISO17025-Specific-Requirements-EN.html">EN</a>
+    </div>
+  </div>
+</header>
+
+<header class="hero" id="overview">
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <span class="kicker">A2LA · 相对 ISO/IEC 17025:2017 特殊要求</span>
+      <h1>A2LA · 相对 ISO/IEC 17025:2017 的特殊要求解读</h1>
+      <p>A2LA（American Association for Laboratory Accreditation，美国实验室认可协会）是美国最大的非政府实验室认可机构。执行方式：以 R101《认可通用要求》转换执行 ISO/IEC 17025:2017，叠加领域专用要求 R2xx、政策 P 系列（溯源/不确定度/灵活范围等）、指南 G 系列与 F 系列范围选择表——「R101 转换＋领域 R2xx＋P/G 政策指南＋F 申请接口」四件套。</p>
+      <div class="meta">
+            <span>核对日期：<b>2026-10-19</b></span>
+            <span>依据清单：<b>《A2LA实验室认可文件清单.html》（官网实时抓取）</b></span>
+            <span>来源口径：<b>Resources compiled from official public documents / 以官网现行版本为准</b></span>
+          </div>
+      <div class="cta-row">
+            <a class="btn btn-primary" href="A2LA实验室认可文件清单.html">查看全量清单 →</a>
+            <a class="btn btn-ghost" href="八家机构实验室认可要点速览-中文版.html">返回速览</a>
+          </div>
+    </div>
+      <div class="stats">
+            <div class="stat"><div class="num">42</div><div class="lbl">特殊/附加要求文件数（五区提炼）</div></div>
+            <div class="stat"><div class="num">26</div><div class="lbl">覆盖领域数（R2xx 项目＋F 系列）</div></div>
+            <div class="stat"><div class="num">43</div><div class="lbl">2025–2026 换版/新增文件数</div></div>
+            <div class="stat"><div class="num">6</div><div class="lbl">必备核心文件数（R101/R102/R103/R105/P102/P103）</div></div>
+          </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+    <a href="#rel">一、与 17025 的关系定位</a>
+    <a href="#req-general">二、通用规则 / 认可条件</a>
+    <a href="#req-domain">三、领域专属要求（R2xx）</a>
+    <a href="#req-tech">四、计量溯源 · 不确定度 · 能力验证</a>
+    <a href="#req-apply">五、申请与评审</a>
+    <a href="#req-maintain">六、获证后维护与近期换版</a>
+    <a href="#tips">七、实操要点与常见坑</a>
+  </div>
+</nav>
+
+<div class="callout">
+  <div class="t"><span class="dot">!</span>关键提示</div>
+  <p>A2LA 体系的实验室最先要落实的核心文件组合是 <b>R101</b>（转换执行 17025）＋ <b>R102</b>（认可条件）＋ <b>R103</b>（能力验证）＋ <b>R105</b>（认可状态引用）＋ <b>P102</b>（计量溯源）＋ <b>P103</b>（检测不确定度，按领域选 a~e 附录）；领域附加要求按所申报项目选 <b>R2xx</b>，申请接口为 <b>F 系列</b>范围选择表。</p>
+</div>
+
+<section class="block" id="rel">
+  <div class="section-head"><div class="no">一</div><h2>与 ISO/IEC 17025:2017 的关系定位</h2><span class="tag">R101 转换 · 领域 R2xx</span></div>
+  <p class="section-desc">A2LA 不简单「等同采用」，而是用自编的 R101 通用要求把 17025:2017 的条款转化为 A2LA 的认可语言，再按领域用 R2xx 叠加项目专用要求；溯源与不确定度另有 P102/P103 政策强制——这是 A2LA 相对 17025 附加要求的全部形态。</p>
+  <div class="rel-card">
+    <h3>文件体系分层</h3>
+    <div class="layer-list">
+      <div class="layer"><span class="t">第 1 层 · 国际基准</span><span class="d">ISO/IEC 17025:2017（检测/校准）、ISO 15189:2022（医学）、ISO/IEC 17043、ISO 17034、ISO 20387（生物样本库）</span></div>
+      <div class="layer"><span class="t">第 2 层 · 通用要求（R1xx）</span><span class="d">R101 转换执行 17025 ＋ R102 认可条件 ＋ R103 能力验证通用要求 ＋ R105 认可状态引用</span></div>
+      <div class="layer"><span class="t">第 3 层 · 领域专用要求（R2xx）</span><span class="d">建材/岩土/无损/法医/电气/法制计量/特殊检验机构/FedRAMP/医学（R602）等</span></div>
+      <div class="layer"><span class="t">第 4 层 · 政策文件（P 系列）</span><span class="d">P102 溯源、P103 不确定度（＋P103a~e 领域附录/P903 医学）、灵活范围、迁址、卫星实验室、远程评审</span></div>
+      <div class="layer"><span class="t">第 5 层 · 指南与表格（G/F 系列）</span><span class="d">G 系列实施指南（不确定度/范围/决策规则）＋ F 系列认可范围选择表（申请申报接口）</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="req-general">
+  <div class="section-head"><div class="no">二</div><h2>通用规则 / 认可条件类附加要求</h2><span class="tag">R/P 系列 · 全体适用</span></div>
+  <p class="section-desc">A2LA 的通用附加要求集中在 R1xx 与组织治理类 P 文件：认可条件、状态引用、灵活范围、迁址、卫星实验室、资格转移——17025 不管「认可怎么获得、怎么维持」，这些全由 A2LA 自定。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R101</span></td><td><span class="cn">合格评定机构认可通用要求</span><span class="en">General Requirements: Accreditation of Conformity Assessment Bodies</span></td><td class="date">2026-09-01 发布</td><td><span class="when">A2LA 转换执行 17025 的核心载体——所有 A2LA 实验室的第一文件，2026 最新版</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R102</span></td><td><span class="cn">认可条件</span><span class="en">Conditions for Accreditation</span></td><td class="date">2026-02-20 发布</td><td><span class="when">保持认可资格的前提条件（费用/评审配合/信息变更报告等）——2026 换版</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R105</span></td><td><span class="cn">引用 A2LA 认可状态时的要求</span><span class="en">Requirements When Making Reference to A2LA Accredited Status</span></td><td class="date">2025-02-24 发布</td><td><span class="when">对外声明「获 A2LA 认可」的措辞与条件——宣传与报告中引用认可时适用</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">P112</span></td><td><span class="cn">灵活范围政策</span><span class="en">Policy on Flexible Scopes</span></td><td class="date">2026-03-06 发布</td><td><span class="when">灵活范围的申请与维护政策——申请灵活范围时适用</span><br><span class="badge opt">按需</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">P105</span></td><td><span class="cn">机构迁址政策</span><span class="en">Policy on Organization Relocation</span></td><td class="date">2026-05-04 发布</td><td><span class="when">实验室迁址时的通知与评审安排——迁址必读</span><br><span class="badge opt">按需</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">P120</span></td><td><span class="cn">卫星实验室政策</span><span class="en">Policy on Satellite Laboratories</span></td><td class="date">2026-08-25 发布</td><td><span class="when">卫星实验室纳入认可的规则——多场所/卫星实验室适用</span><br><span class="badge opt">按需</span><span class="badge new">2026 新增</span></td></tr>
+        <tr><td><span class="code">P107</span></td><td><span class="cn">认可资格转移政策</span><span class="en">Policy on Transferring Accreditation</span></td><td class="date">2023-04-25 发布</td><td><span class="when">认可资格从 A2LA 转移至其他 AB（或反向）的程序——换认可机构时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">P121</span></td><td><span class="cn">反舞弊政策</span><span class="en">Anti-Fraud Policy</span></td><td class="date">2026-08-21 发布</td><td><span class="when">认可相关舞弊行为的界定与处理——2026 新增</span><br><span class="badge opt">按需</span><span class="badge new">2026 新增</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 P106 分支机构体系政策（2019-11-07）、A132 行为与商业道德准则（2025-09-15）等按需适用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-domain">
+  <div class="section-head"><div class="no">三</div><h2>领域专属要求（R2xx 项目）</h2><span class="tag">按项目选 R2xx</span></div>
+  <p class="section-desc">A2LA 的领域附加要求以「认可项目」为单位：每个项目一份 R2xx 专用要求，把 17025 的通用条款落到该领域的执行细节；另有咨询委员会技术共识决议（P 系列）作为领域执行口径。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R208</span></td><td><span class="cn">建筑材料检测实验室认可项目专用要求</span><span class="en">Specific Requirements - Construction Materials Testing Laboratory Accreditation Program</span></td><td class="date">2026-01-20 发布</td><td><span class="when">建材检测项目的领域附加要求；2026 换版——建材实验室适用</span><br><span class="badge dom">建筑材料</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R209</span></td><td><span class="cn">岩土工程检测实验室认可项目专用要求</span><span class="en">Specific Requirements - Geotechnical Engineering Testing Laboratory Accreditation Program</span></td><td class="date">2026-01-20 发布</td><td><span class="when">岩土工程检测项目附加要求；2026 换版——岩土实验室适用</span><br><span class="badge dom">岩土工程</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R212</span></td><td><span class="cn">无损检测实验室认可项目专用要求</span><span class="en">Specific Requirements - Nondestructive Testing Laboratory Accreditation Program</span></td><td class="date">2025-09-10 发布</td><td><span class="when">无损检测项目的领域附加要求（人员资格/方法等）——NDT 实验室适用</span><br><span class="badge dom">无损检测</span></td></tr>
+        <tr><td><span class="code">R221</span></td><td><span class="cn">法医检验认可项目（检测与校准）专用要求</span><span class="en">Specific Requirements - Forensic Examination Accreditation Program</span></td><td class="date">2025-12-02 发布</td><td><span class="when">法医检验项目的领域附加要求——法医实验室适用（另有 R221a 马里兰、R221b 得州附录）</span><br><span class="badge dom">法医</span></td></tr>
+        <tr><td><span class="code">R255</span></td><td><span class="cn">电气检测实验室认可项目专用要求</span><span class="en">Specific Requirements - Electrical Testing Laboratory Accreditation Program</span></td><td class="date">2025-10-28 发布</td><td><span class="when">电气检测项目的领域附加要求——电气实验室适用</span><br><span class="badge dom">电气</span></td></tr>
+        <tr><td><span class="code">R262</span></td><td><span class="cn">州法制计量认可项目专用要求</span><span class="en">Specific Requirements - State Legal Metrology Recognition Program</span></td><td class="date">2025-10-28 发布</td><td><span class="when">州法制计量认可的项目要求——州级计量执法机构适用</span><br><span class="badge dom">法制计量</span></td></tr>
+        <tr><td><span class="code">R310</span></td><td><span class="cn">特殊检验机构（检验机构）认可项目专用要求</span><span class="en">Specific Requirements - Special Inspection Agencies Inspection Body Accreditation Program</span></td><td class="date">2026-07-30 发布</td><td><span class="when">特殊检验机构项目附加要求；2026 最新版——检验机构（17020）适用</span><br><span class="badge dom">检验机构</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R311</span></td><td><span class="cn">联邦风险与授权管理计划（FedRAMP）专用要求</span><span class="en">Specific Requirements - Federal Risk and Authorization Management Program</span></td><td class="date">模板（未标注版本）</td><td><span class="when">FedRAMP 项目的专用要求模板——涉云服务安全测试实验室适用</span><br><span class="badge dom">FedRAMP</span></td></tr>
+        <tr><td><span class="code">R602/R603</span></td><td><span class="cn">医学检测实验室认可条件 / 能力验证通用要求（ISO 15189＋CLIA）</span><span class="en">Conditions / PT General Requirements for Medical Testing Laboratories Meeting ISO 15189 and CLIA Requirements</span></td><td class="date">2025-10 发布</td><td><span class="when">医学实验室走 15189＋CLIA 双轨，与 17025 实验室分开——医学实验室适用</span><br><span class="badge dom">医学</span></td></tr>
+        <tr><td><span class="code">G123</span></td><td><span class="cn">大麻与工业用大麻检测实验室认可指南</span><span class="en">Guidance for Accreditation of Cannabis and Hemp Testing Laboratories</span></td><td class="date">2025-02-19 发布</td><td><span class="when">大麻/工业大麻检测的领域认可指南——该类实验室适用</span><br><span class="badge dom">大麻检测</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：另有 R213 果岭材料检测等项目专用要求；咨询委员会技术共识决议（P108 材料/P111 电磁/P115 法医/P116 建材）是领域执行口径，评审可能引用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-tech">
+  <div class="section-head"><div class="no">四</div><h2>计量溯源 · 测量不确定度 · 能力验证的附加政策</h2><span class="tag">P102/P103 强制 · 领域附录</span></div>
+  <p class="section-desc">A2LA 相对 17025 在溯源与不确定度上要求「政策化」：P102 定溯源口径、P103 定不确定度口径并细分领域附录、R103 定能力验证要求——这组政策是 A2LA 评审必查项。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">P102</span></td><td><span class="cn">计量溯源性政策</span><span class="en">Policy on Metrological Traceability</span></td><td class="date">2024-10-31 发布</td><td><span class="when">溯源链的 A2LA 执行政策（配套 G135 应用指南）——17025 只给原则，P102 给执行口径</span><br><span class="badge core">必备</span></td></tr>
+        <tr><td><span class="code">G135</span></td><td><span class="cn">P102 应用指南</span><span class="en">Guidance for Application of P102</span></td><td class="date">2025-10-09 发布</td><td><span class="when">P102 的落地操作指南——溯源方案设计时配套使用</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">G149</span></td><td><span class="cn">P102 在内部校准中的应用指南</span><span class="en">Guidance for Application of P102 In-House Calibrations</span></td><td class="date">2026-03-31 发布</td><td><span class="when">内校活动的溯源合规指南；2026 最新版——存在内校时适用</span><br><span class="badge opt">指南</span><span class="badge new">2026 最新版</span></td></tr>
+        <tr><td><span class="code">P103</span></td><td><span class="cn">检测实验室测量不确定度评定政策（＋P103a~e 领域附录）</span><span class="en">Policy on Estimating Measurement Uncertainty for Testing Laboratories</span></td><td class="date">2025-08-01 发布</td><td><span class="when">检测实验室不确定度评定强制政策；按领域选附录（a 汽车材料/b 生命科学/c 电磁/d 建材岩土/e 法医）</span><br><span class="badge core">必备</span><span class="badge new">2025 换版</span></td></tr>
+        <tr><td><span class="code">P903</span></td><td><span class="cn">ISO 15189 检测实验室测量不确定度评定政策</span><span class="en">Policy on Estimating Uncertainty of Measurement for ISO 15189 Testing Labs</span></td><td class="date">2024-12-13 发布</td><td><span class="when">医学实验室的不确定度评定政策——15189 实验室适用（与 P103 分开）</span><br><span class="badge dom">医学</span></td></tr>
+        <tr><td><span class="code">G104</span></td><td><span class="cn">检测中测量不确定度评定指南</span><span class="en">A2LA Guide for Estimation of Measurement Uncertainty in Testing</span></td><td class="date">2026-08-26 发布</td><td><span class="when">检测不确定度评定的通用方法指南；2026 最新版——配套 P103 使用</span><br><span class="badge opt">指南</span><span class="badge new">2026 最新版</span></td></tr>
+        <tr><td><span class="code">G110</span></td><td><span class="cn">电气参数不确定度预算指南</span><span class="en">Guidance on Uncertainty Budgets for Electrical Parameters</span></td><td class="date">2025-09-10 发布</td><td><span class="when">电气参数不确定度预算——电气/校准实验室适用</span><br><span class="badge dom">电气</span></td></tr>
+        <tr><td><span class="code">G126</span></td><td><span class="cn">力值测量设备不确定度预算指南</span><span class="en">Guidance on Uncertainty Budgets for Force Measuring Devices</span></td><td class="date">2026-08-26 发布</td><td><span class="when">力值设备不确定度预算；2026 最新版——力学校准实验室适用</span><br><span class="badge dom">力学</span></td></tr>
+        <tr><td><span class="code">G136</span></td><td><span class="cn">校准中决策规则指南</span><span class="en">Guidance on Decision Rules in Calibration</span></td><td class="date">2022-10-10 发布</td><td><span class="when">校准中判定规则的应用指南——校准报告带合格性结论时适用</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">R103</span></td><td><span class="cn">ISO/IEC 17025 实验室能力验证通用要求</span><span class="en">General Requirements - Proficiency Testing for ISO/IEC 17025 Laboratories</span></td><td class="date">2026-04-01 发布</td><td><span class="when">PT 参与领域/频次/记录要求；2026 换版——能力验证合规依据</span><br><span class="badge core">必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">G133</span></td><td><span class="cn">能力验证计划建立指南</span><span class="en">A2LA Guide for Establishing Proficiency Testing Plans</span></td><td class="date">2025-06-18 发布</td><td><span class="when">PT 计划设计与建立指南——PTP 机构或自建比对计划时适用</span><br><span class="badge opt">指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：P103 领域附录按实验室业务选（P103a~e、P103b/d 为 2026 最新版）；另有 G108 微生物计数不确定度、G127 不确定度报告等按需选用。</div>
+  </div>
+</section>
+
+<section class="block" id="req-apply">
+  <div class="section-head"><div class="no">五</div><h2>申请与评审环节的特殊要求</h2><span class="tag">F 系列范围表 · 表格接口</span></div>
+  <p class="section-desc">A2LA 的申请接口高度表格化：用 F 系列「认可范围选择表」申报能力、用 F117 技术人员矩阵报人员、F349 确认分包方；准备流程看 I105 步骤文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">I105</span></td><td><span class="cn">认可申请准备典型步骤</span><span class="en">Typical Steps in Preparing for the Accreditation Process</span></td><td class="date">2026-09-01 发布</td><td><span class="when">申请全流程的步骤指南；2026 最新版——申请入门第一文件</span><br><span class="badge core">申请必备</span><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">F 系列</span></td><td><span class="cn">认可范围选择表（F201–F344，按领域）</span><span class="en">Scope of Accreditation Selection Lists</span></td><td class="date">模板（未标注版本）</td><td><span class="when">按领域选择申报能力项的选择表（校准 F204/化学 F205/建材 F208/电气 F209/无损 F215 等 20+ 张）——申报范围的唯一接口</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">F117</span></td><td><span class="cn">认可技术人员矩阵</span><span class="en">Technical Staff Matrix for Accreditation</span></td><td class="date">模板（未标注版本）</td><td><span class="when">技术人员的资格/经验矩阵表——人员能力证明材料</span><br><span class="badge core">申请必备</span></td></tr>
+        <tr><td><span class="code">F349</span></td><td><span class="cn">分包方能力确认表</span><span class="en">Subcontractor Competency Confirmation Form</span></td><td class="date">模板（未标注版本）</td><td><span class="when">分包实验室能力确认表——存在分包时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">P119</span></td><td><span class="cn">远程评审政策</span><span class="en">Policy on Remote Assessment</span></td><td class="date">2025-02-24 发布</td><td><span class="when">远程评审的适用与实施规则——被安排远程评审时适用</span><br><span class="badge opt">按需</span></td></tr>
+        <tr><td><span class="code">G115/G106/G117/G118/G150</span></td><td><span class="cn">认可范围指南系列（电气/电信认证/CPSC/校准/检验机构）</span><span class="en">Guidance on Scopes of Accreditation</span></td><td class="date">2025–2026 发布</td><td><span class="when">各领域范围表述指南——范围表填写口径参照（G118 校准 2026-10-05 最新版）</span><br><span class="badge opt">指南</span></td></tr>
+        <tr><td><span class="code">P108/P111/P115/P116</span></td><td><span class="cn">咨询委员会技术共识决议（材料/电磁/法医/建材）</span><span class="en">Technical Consensus Decisions from Advisory Committees</span></td><td class="date">2021–2026 发布</td><td><span class="when">领域技术口径的共识决议——评审中可能被引用的执行基准</span><br><span class="badge opt">领域口径</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：F210a（肯塔基储罐）、F229（可持续能源）等选择表需 A2LA 客户登录后查看；F337/F338 为在线表单。</div>
+  </div>
+</section>
+
+<section class="block" id="req-maintain">
+  <div class="section-head"><div class="no">六</div><h2>获证后维护与近期换版要点</h2><span class="tag">2025–2026 密集换版</span></div>
+  <p class="section-desc">A2LA 2025–2026 换版密度高（R1xx 全线、P103 系列、治理类 P 文件等），获证实验室应把 R/P 系列的版本跟踪纳入年度管理评审。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-note"></colgroup>
+      <thead><tr><th>文件编号</th><th>名称（中文短译 / 英文原名）</th><th>版本 / 日期</th><th>相对 17025 特殊在哪 / 何时适用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">R101:2026</span></td><td><span class="cn">认可通用要求（2026 最新版）</span><span class="en">General Requirements: Accreditation of CABs</span></td><td class="date">2026-09-01</td><td><span class="when">转换执行 17025 的核心文件换版——获证实验室须按新版要求自查</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">R102/R103:2026</span></td><td><span class="cn">认可条件 / 能力验证通用要求</span><span class="en">Conditions for Accreditation / PT General Requirements</span></td><td class="date">2026 发布</td><td><span class="when">条件与 PT 要求 2026 换版——维护期合规基准更新</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">P103d:2026</span></td><td><span class="cn">建材岩土检测实验室不确定度评定政策附录</span><span class="en">Annex-Policy for Construction Materials &amp; Geotechnical Testing Labs</span></td><td class="date">2026-10-05</td><td><span class="when">不确定度政策最新领域附录——建材/岩土实验室立即核对</span><br><span class="badge new">2026 最新版</span></td></tr>
+        <tr><td><span class="code">P105/P120/P121:2026</span></td><td><span class="cn">迁址 / 卫星实验室 / 反舞弊政策</span><span class="en">Relocation / Satellite Laboratories / Anti-Fraud Policies</span></td><td class="date">2026 发布</td><td><span class="when">治理类政策 2026 换版/新增——涉迁址、卫星场所的实验室适用</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">A105:2026</span></td><td><span class="cn">技术咨询委员会章程</span><span class="en">Bylaws of the A2LA Technical Advisory Committees</span></td><td class="date">2026-09-03</td><td><span class="when">技术咨询委员会章程 2026 最新版——共识决议产生的程序依据</span><br><span class="badge new">2026 换版</span></td></tr>
+        <tr><td><span class="code">G118:2026</span></td><td><span class="cn">校准实验室认可范围界定指南</span><span class="en">Guidance for Defining the Scope of Accreditation for Calibration Laboratories</span></td><td class="date">2026-10-05</td><td><span class="when">校准范围界定最新指南——校准实验室范围维护参照</span><br><span class="badge new">2026 最新版</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">注：维护期按 R102 条件持续满足；R105 引用要求、R103 PT 频次在年度监督评审中核查，版本以 A2LA 官网为准。</div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="section-head"><div class="no">七</div><h2>实操要点与常见坑</h2><span class="tag">6 条</span></div>
+  <p class="section-desc">A2LA 体系四件套（R/P/G/F）各有分工，最容易踩的坑集中在「按领域选文件」。</p>
+  <div class="tip-grid">
+    <div class="tip"><div class="t"><span class="sn">1</span>R101 是「转换载体」，评审按 R101＋R2xx 组合核对</div><p><b>R101</b> 把 17025 全部条款转为 A2LA 要求，领域附加在 <b>R2xx</b>——准备评审时两份都要对照。<span class="why">只看 17025 原文会漏掉 A2LA 的改写口径</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">2</span>不确定度按领域选附录</div><p><b>P103</b> 主政策 ＋ <b>P103a~e</b> 领域附录（汽车材料/生命科学/电磁/建材岩土/法医）按业务选；医学走 <b>P903</b>。<span class="why">附录选错＝不确定度方案做错</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">3</span>申请用 F 系列范围选择表申报能力</div><p>按领域选对应 <b>F201–F344</b> 选择表（校准 F204/化学 F205/建材 F208/电气 F209…），配套 <b>F117</b> 人员矩阵。<span class="why">范围表是申报能力的唯一接口</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">4</span>共识决议是领域执行口径</div><p><b>P108/P111/P115/P116</b>（咨询委员会技术共识决议）评审可能被引用——涉及对应领域时纳入体系文件。<span class="why">共识决议更新频繁，纳入版本跟踪</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">5</span>2025–2026 换版密集，先核版本再执行</div><p><b>R101/R102/R103、P103 系列、P105/P112/P120/P121</b> 均已换版/新增——执行前上官网核对发布日期。<span class="why">用旧版政策应对评审是换版期高发错误</span></p></div>
+    <div class="tip"><div class="t"><span class="sn">6</span>医学实验室走双轨，别与 17025 混用</div><p>医学检测实验室按 <b>R602/R603（ISO 15189＋CLIA）</b>＋P903 不确定度，与 17025 实验室文件体系分开。<span class="why">双轨混用会被判不符合</span></p></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>Resources compiled from official public documents。本页依据《A2LA实验室认可文件清单.html》（2026-10-19 官网实时抓取、逐条核验）提炼；文件编号、版本与发布日期以 A2LA 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>免责声明</h3>
+      <p>本页为独立整理与解读，不构成 A2LA 的官方意见；正式申请前请按官网现行版本核对（A2LA：<a href="https://a2la.org" target="_blank" rel="noopener">a2la.org</a>）。</p>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">核对日期 2026-10-19 · 以官网现行版本为准</div>
+</footer>
+
+</body>
+</html>
