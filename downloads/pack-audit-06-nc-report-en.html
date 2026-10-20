@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR-24 Nonconformity Report | LabKitPro Internal Audit Pack</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a;--bad:#b23b3b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter","Segoe UI","Helvetica Neue",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:28px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:28px;font-weight:800;margin-bottom:10px}
+.sub{font-size:14.5px;color:#cfe0ec;max-width:820px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:20px;font-weight:800;color:var(--brand);margin:36px 0 8px;padding-top:8px;border-top:2px solid #e3ecf2}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:13px;table-layout:fixed}
+th{background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:8px;border:1px solid var(--line)}
+td{padding:8px;border:1px solid var(--line);vertical-align:top}
+.fill tbody td{background:#fff}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.bad{background:#fdeaea;border:1px solid #ecc8c8;border-radius:8px;padding:10px 14px;font-size:13px;color:#7a2830;margin:8px 0}
+.good{background:#e7f4f1;border:1px solid #bfe3da;border-radius:8px;padding:10px 14px;font-size:13px;color:#1d5a50;margin:8px 0}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+.ph{color:#98a8b6}
+@media(max-width:760px){h1{font-size:22px}table{font-size:12px;min-width:560px}th,td{padding:5px}.wrap{padding:0 14px 60px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · Level-D Record Form (FR) · Issue &amp; Correction</div>
+    <h1>Nonconformity Report</h1>
+    <div class="sub">Raised by the auditor at the audit site, facts confirmed with the auditee, graded for severity, and taken through to corrective action and verification. This is the single source of truth for every audit finding.</div>
+    <div class="badge-row">
+      <span class="badge">Form No. FR-24</span>
+      <span class="badge">Version V1.0</span>
+      <span class="badge">Supports LP-02 §5.5 / §8.7</span>
+      <span class="badge">Website library FR-24 (same source)</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<h2>1　Nonconformity Record</h2>
+<table class="fill">
+  <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+  <tr><th>NC No.</th><td>NC-<span class="ph">[YYYY]</span>-<span class="ph">[seq]</span></td></tr>
+  <tr><th>Audit batch</th><td><span class="ph">[20XX, Batch No. X]</span></td></tr>
+  <tr><th>Auditor / audited department</th><td><span class="ph">[Name] / [Department]</span></td></tr>
+  <tr><th>Clause nonconforming</th><td>ISO/IEC 17025:2017 §<span class="ph">[e.g. 7.8.2]</span> (or <span class="ph">[QM clause / procedure No.]</span>)</td></tr>
+  <tr><th>Severity grade</th><td>□ Major　□ Minor — grading basis: □ Major (absence/loss of a whole requirement, significant impact on result validity, recurring after correction)　□ Minor (single occurrence, partial nonconformity, no direct impact on result validity)</td></tr>
+  <tr><th>Facts of nonconformity (who, what, where, when, evidence)</th><td style="height:70px"><span class="ph">[Describe objectively with dates, locations, document/record numbers; no conclusions, no attributions to people]</span></td></tr>
+  <tr><th>Auditee's confirmation of facts</th><td>□ Facts confirmed — signature/date: <span class="ph">[ ]</span><br>□ Facts not fully confirmed — points of disagreement: <span class="ph">[ ]</span></td></tr>
+</table>
+
+<h2>2　Root-Cause Analysis (per §8.7 b))</h2>
+<p class="bad"><b>Poor examples (too shallow):</b> “carelessness” / “staff negligence” / “tight deadline” / “insufficient training”. These cannot generate an effective corrective action.</p>
+<p class="good"><b>Good examples (trace to the underlying cause):</b> “the two operators were never shown how to read the new-style calibration certificate, and there is no check step between certificate filing and equipment release” (a process gap, not a person problem).</p>
+<table class="fill">
+  <colgroup><col style="width:100%"></colgroup>
+  <tr><th style="height:60px">Root-cause analysis (person / method / equipment / material / environment, state the depth of analysis)</th></tr>
+  <tr><td style="height:60px"><span class="ph">[ ]</span></td></tr>
+</table>
+
+<h2>3　Correction and Corrective Action (per §8.7 a) and c))</h2>
+<table class="fill">
+  <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+  <tr><th>Immediate correction</th><td><span class="ph">[What was fixed on the spot, e.g. stop the affected activity, correct the record, withdraw the report]</span></td></tr>
+  <tr><th>Corrective action (root-cause targeted)</th><td><span class="ph">[e.g. revise the certificate-confirmation step in the equipment management procedure, add a sign-off]</span></td></tr>
+  <tr><th>Owner / completion date</th><td><span class="ph">[ ] / [YYYY-MM-DD]</span></td></tr>
+  <tr><th>Risk register update (§8.5)</th><td>□ Updated　□ Not applicable</td></tr>
+  <tr><th>Impact on issued results assessed (§7.10)</th><td>□ None　□ Assessment record No.: <span class="ph">[ ]</span></td></tr>
+</table>
+
+<h2>4　Verification and Closure (per §8.7 d))</h2>
+<table class="fill">
+  <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+  <tr><th>Effectiveness verification</th><td>□ Sample checked (N = <span class="ph">[ ]</span>, all conforming)　□ No recurrence in the following <span class="ph">[ ]</span> months　□ Root cause eliminated (basis: <span class="ph">[ ]</span>)</td></tr>
+  <tr><th>Verification conclusion</th><td>□ Effective — closed　□ Not effective — returned (attempt No. <span class="ph">[ ]</span>)</td></tr>
+  <tr><th>Verifier / date</th><td><span class="ph">[Name] / [YYYY-MM-DD]</span></td></tr>
+</table>
+
+<h2>5　Good / Poor Wording Reference</h2>
+<p class="bad"><b>Poor fact statement:</b> “Section 7.8 not conforming, report quality problems” — no facts, cannot be disputed, cannot be corrected.</p>
+<p class="good"><b>Good fact statement:</b> “Report No. TR-2026-031, issued 2026-02-18, does not state the sampling location required by clause 7.8.3; the sampling record shows the site was A001, and the template revision TR-2025-02 in use also omits this field.” — reproducible, citable, fixable.</p>
+
+<div class="note"><b>Handling rules:</b> ① facts confirmed with the auditee on site, disagreement recorded verbatim; ② major NCs additionally assess the impact on previously issued results immediately (§7.10); ③ correction evidence due within 15 working days; verification closes the loop and feeds IA-06; ④ retain under record control no less than 6 years.</div>
+
+<div class="foot">FR-24 Nonconformity Report · LabKitPro Internal Audit Complete Pack (English Version v1.0)<br>Prepared in accordance with ISO/IEC 17025:2017 · Paid template for internal use by the purchasing laboratory only</div>
+
+</div>
+</body>
+</html>

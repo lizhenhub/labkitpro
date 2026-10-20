@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA-04 Internal Audit Checklist (Full Element, Itemised §4.1–§8.9) | LabKitPro Internal Audit Pack</title>
+<style>
+:root{--ink:#10202e;--ink2:#38505f;--muted:#5d7180;--bg:#f6f8fa;--card:#fff;--line:#dde5eb;--brand:#0f2f4a;--accent:#0e8f7d;--accent2:#1b6ea8;--warn:#a35b1a;--bad:#b23b3b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter","Segoe UI","Helvetica Neue",-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+header.hero{background:linear-gradient(135deg,#0f2f4a 0%,#16456b 60%,#1b6ea8 100%);color:#fff;padding:44px 24px 34px;margin-bottom:26px}
+.hero-inner{max-width:1180px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:2px;color:#8fd8cb;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:27px;font-weight:800;margin-bottom:10px}
+.sub{font-size:14px;color:#cfe0ec;max-width:980px}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#e8f2fa}
+h2{font-size:19px;font-weight:800;color:var(--brand);margin:34px 0 6px;padding-top:8px;border-top:2px solid #e3ecf2;display:flex;align-items:baseline;gap:10px}
+h2 .no{color:var(--accent)}
+h2 .tt{font-size:13px;font-weight:600;color:var(--muted)}
+.lead{color:var(--muted);font-size:13.5px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:8px 0 6px;font-size:12.5px}
+th{background:#eef3f7;color:var(--ink2);font-weight:700;text-align:left;padding:7px 8px;border:1px solid var(--line)}
+td{padding:7px 8px;border:1px solid var(--line);vertical-align:top;background:#fff}
+tbody tr:nth-child(even) td{background:#fafcfd}
+.subno{font-family:Consolas,monospace;font-size:11.5px;color:var(--accent2);font-weight:700;white-space:nowrap;width:64px}
+.point{font-weight:600;color:var(--ink)}
+.method{color:var(--ink2)}
+.judge{color:#1d5a50}
+.judge .red{color:var(--bad);font-weight:600}
+.evi{width:13%}
+.ver{width:7%;text-align:center;font-weight:700;white-space:nowrap}
+.note{background:#fff8ec;border:1px solid #f0d9b8;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5320;margin:14px 0}
+.note b{color:#a35b1a}
+.tip{background:#e7f4f1;border:1px solid #bfe3da;border-radius:10px;padding:12px 16px;font-size:13px;color:#1d5a50;margin:14px 0}
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.legend b{color:var(--ink)}
+@media(max-width:900px){h1{font-size:21px}table{font-size:11.5px;min-width:760px}th,td{padding:5px}.wrap{padding:0 12px 60px}body{overflow-x:hidden}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">LabKitPro · Core On-Site Audit Tool · Itemised Working Version</div>
+    <h1>Internal Audit Checklist (Full Element, Itemised)</h1>
+    <div class="sub">Covers every clause of ISO/IEC 17025:2017 §4.1–§8.9, with each clause broken down into <b>executable audit items</b>: what to check / how to verify / conformity criteria (what good looks like &amp; red lines) / evidence record / judgement. Use together with IA-WI-01.</div>
+    <div class="badge-row">
+      <span class="badge">Form No. IA-04</span>
+      <span class="badge">Version V2.0 (itemised upgrade)</span>
+      <span class="badge">§4 General · §5 Structure · §6 Resources · §7 Process · §8 Management</span>
+      <span class="badge">Same source as website library FR-40</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="tip"><b>How to use:</b> ① Each audit activates only the clauses in scope — avoid “one sheet for every audit”; ② each audit item is a discrete on-site action: the auditor must actually carry out the check and record evidence and judgement — no whole-row ticking; ③ sample at least 3 records or 1 on-site observation per item; ④ Judgement: <b>√</b> = conforming, <b>×</b> = nonconforming (raise FR-24, stating the clause and facts), <b>○</b> = observation / opportunity for improvement; ⑤ the evidence column must record specific document numbers / record numbers / quantities so findings remain traceable — this column feeds FR-25.</div>
+
+<div class="legend"><span><b>√</b> Conforming</span><span><b>×</b> Nonconforming (raise FR-24)</span><span><b>○</b> Observation</span><span>Evidence examples: <b>Record FR-24-2026-003 / Calibration certificate No. AB-2207 / Interview with [Name]</b></span></div>
+
+<!-- ============ §4 ============ -->
+<h2><span class="no">§4</span>General Requirements<span class="tt">Impartiality · Confidentiality</span></h2>
+<div class="lead">This block examines whether the laboratory is genuinely independent of conflicts of interest and protects customer information boundaries. Focus on “demonstrable commitments” and “actions assigned to positions” — not slogans on the wall.</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>Item</th><th>Audit item (what to check)</th><th>Verification method (how to check)</th><th>Conformity criteria (good / red line)</th><th>Evidence record</th><th>Judgement</th></tr>
+
+  <tr><td class="subno">4.1.1-①</td><td class="point">Impartiality commitment signed</td><td class="method">Check that top management and key roles (technical/quality/business managers) have signed written impartiality commitments covering testing, calibration and opinions and interpretations</td><td class="judge">Good: signed and dated, covering all key roles including front-line staff.<span class="red">Red line: only management signed, front-line testers did not; commitment excludes opinions and interpretations</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.1-②</td><td class="point">Free from undue pressure</td><td class="method">Interview 2–3 staff to confirm awareness that commercial or financial pressures must not affect results; check for records of pressure from sales/customers to alter results</td><td class="judge">Good: staff can accurately state the independence requirement.<span class="red">Red line: staff say “we would accommodate a customer asking to change a result”</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.1-③</td><td class="point">Conflict-of-interest separation</td><td class="method">Check for organisational arrangements that both produce and test in the same field; if present, check the parent-body authorisation for business/testing separation and reporting lines</td><td class="judge">Good: the testing line reports independently to the Quality Manager, not under sales.<span class="red">Red line: testing performance is linked to sales commissions</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.2-①</td><td class="point">Policy as a demonstrable commitment</td><td class="method">Check the impartiality policy clause in the Quality Manual; check communication records (training sign-in / intranet notice) that the policy reached the positions</td><td class="judge">Good: policy documented + communication traceable.<span class="red">Red line: policy exists only on a computer, never communicated</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.2-②</td><td class="point">Organisational separation in practice</td><td class="method">Compare the organisation chart with appointment documents to confirm the Quality Manager does not also serve as business/marketing manager and has authority to stop activities affecting results</td><td class="judge">Good: duties separated; Quality Manager's authority is independent.<span class="red">Red line: Quality Manager also manages sales and is assessed on revenue</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.3-①</td><td class="point">Risk identification coverage</td><td class="method">Check the impartiality risk register covers four categories: the laboratory's own activities, relationships with parent body/shareholders, personnel relationships (family/second job/re-employment), and external service providers</td><td class="judge">Good: register is classified into four categories with sources stated.<span class="red">Red line: merely writes “no risks” without analysis</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.1.3-②</td><td class="point">Trigger-based identification</td><td class="method">Sample one new-partner onboarding and one new employee joining; check whether impartiality risk identification was re-triggered at those points</td><td class="judge">Good: trigger points and records exist.<span class="red">Red line: never updated; identified only once at the start of the year</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.4-①</td><td class="point">Risk measures implemented</td><td class="method">Against the risk register, verify one by one the measures to eliminate or minimise each risk and their implementation evidence (e.g. recusal, disclosure, segregation, monitoring)</td><td class="judge">Good: each risk has a corresponding measure + evidence.<span class="red">Red line: risks identified but no measures</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.1.5-①</td><td class="point">Periodic review records</td><td class="method">Check the two most recent annual impartiality reviews, confirming that risk changes and measure effectiveness were reviewed</td><td class="judge">Good: reviewed annually with conclusions.<span class="red">Red line: no review, or none in two years</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">4.2.1-①</td><td class="point">Confidentiality obligations signed</td><td class="method">Sample at least 2 each of customer contract confidentiality clauses, employee confidentiality agreements, and agreements with external personnel (calibration/maintenance) — confirm legal enforceability</td><td class="judge">Good: all three categories complete and in force.<span class="red">Red line: external personnel have no confidentiality undertaking</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.2-①</td><td class="point">Scope of information defined</td><td class="method">Check whether the confidentiality procedure defines the information to be protected; sample one statutory disclosure or customer-consented disclosure for decision and approval records</td><td class="judge">Good: scope defined + disclosures approved.<span class="red">Red line: disclosures made at will without records</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.3-①</td><td class="point">Notification in place</td><td class="method">Check evidence of how customers are informed (contract annex / training / website statement); interview one customer-facing contact to confirm awareness of confidentiality obligations</td><td class="judge">Good: contract clause + training as dual channels.<span class="red">Red line: staff do not know the confidentiality boundary</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">4.2.4-①</td><td class="point">Source anonymisation</td><td class="method">Sample 2 reports/registers covering subcontracted or client-sourced items; check whether the source's identity is anonymised or masked</td><td class="judge">Good: source information not disclosed to unrelated parties.<span class="red">Red line: report directly shows the upstream customer name of the client</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §5 ============ -->
+<h2><span class="no">§5</span>Structural Requirements<span class="tt">Legal entity · Responsibilities and authority · Management</span></h2>
+<div class="lead">Checks whether the laboratory is a legally responsible entity, management is clearly defined, responsibility interfaces are unambiguous, and key positions genuinely have authority matched by accountability.</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>Item</th><th>Audit item (what to check)</th><th>Verification method (how to check)</th><th>Conformity criteria (good / red line)</th><th>Evidence record</th><th>Judgement</th></tr>
+
+  <tr><td class="subno">5.1-①</td><td class="point">Legal entity responsibility</td><td class="method">Check business licence / legal-entity certificate / parent-body authorisation to confirm the laboratory can assume legal liability</td><td class="judge">Good: authorisation clear; responsible entity identified.<span class="red">Red line: a department issues reports externally without authorisation</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.2-①</td><td class="point">Management appointment</td><td class="method">Check management appointment documents; compare names/positions with reality; interview to confirm they actually discharge the duties, not merely hold the title</td><td class="judge">Good: appointment matches actual discharge.<span class="red">Red line: appointed person differs from the person actually in charge</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.3-①</td><td class="point">Scope of activities documented</td><td class="method">Check the scope-of-activities document; sample conformity statements in marketing material and reports for claims beyond scope</td><td class="judge">Good: scope clear; marketing not exaggerated.<span class="red">Red line: marketing claims parameters outside the accredited scope</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.4-①</td><td class="point">Multi-site consistency</td><td class="method">Check control documents and records for activities outside the fixed facility (on-site/mobile/customer facilities) confirming operation under the same criteria</td><td class="judge">Good: field work has controlled documents + records.<span class="red">Red line: on-site testing without controlled documents</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.5-①</td><td class="point">Clear responsibility interfaces</td><td class="method">Check organisation chart and position descriptions; sample 2–3 interface processes (sample flow / report sign-off) to verify no overlap and no gaps</td><td class="judge">Good: each interface has an accountable person.<span class="red">Red line: samples stall between steps with no owner</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.6-①</td><td class="point">Key position authority</td><td class="method">Check appointment and authorisation letters for quality/technical managers; interview on actual cases of “found a problem → had the authority to stop → did they stop → did they report”</td><td class="judge">Good: real stop-work cases exist and were reported.<span class="red">Red line: authorisation letter without real power; never stopped anything</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.7-①</td><td class="point">Communication of effectiveness</td><td class="method">Check communication records (meetings/briefings) confirming management communicates the importance of system effectiveness and meeting customer requirements</td><td class="judge">Good: regular communication evidence exists.<span class="red">Red line: no communication records</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">5.7-②</td><td class="point">Changes keep integrity</td><td class="method">Sample one recent organisational/process change; check it was planned and implemented while maintaining system integrity (review + transition + training)</td><td class="judge">Good: change reviewed with transition.<span class="red">Red line: abrupt change causing a gap in responsibilities</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §6 ============ -->
+<h2><span class="no">§6</span>Resource Requirements<span class="tt">Personnel · Facilities · Equipment · Traceability · Supplies</span></h2>
+<div class="lead">Resource clauses underpin the validity of results. Focus: is competence evidenced, is equipment controlled and traceable, is traceability unbroken.</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>Item</th><th>Audit item (what to check)</th><th>Verification method (how to check)</th><th>Conformity criteria (good / red line)</th><th>Evidence record</th><th>Judgement</th></tr>
+
+  <tr><td class="subno">6.1-①</td><td class="point">Adequacy of resources</td><td class="method">Against workload and accredited scope over the last 12 months, assess whether the quantity and competence of personnel/facilities/equipment/support services match</td><td class="judge">Good: resource-load comparison exists.<span class="red">Red line: equipment cannot be scheduled at peaks with no countermeasure</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-①</td><td class="point">Competence requirements documented</td><td class="method">Check competence requirement documents for positions; sample 3 personnel competence files against position requirements (education/qualification/training/experience)</td><td class="judge">Good: person-position match evidenced.<span class="red">Red line: no competence requirement documents</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-②</td><td class="point">Formal authorisation</td><td class="method">Check authorisation matrix for key activities: sampling, method operation, result evaluation and sign-off, opinions and interpretations; verify on-station operators match the authorised scope</td><td class="judge">Good: authorisation is to specific activities + persons.<span class="red">Red line: reports signed without authorisation</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-③</td><td class="point">Continuing competence monitoring</td><td class="method">Check competence monitoring plan (blind samples/intercomparison/supervision) and records; interview one new employee to verify grasp of operating requirements</td><td class="judge">Good: regular supervision + records.<span class="red">Red line: no re-assessment after authorisation</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.2-④</td><td class="point">External personnel control</td><td class="method">Check whether seconded/contract personnel are subject to competence confirmation and supervision rather than working directly</td><td class="judge">Good: external personnel managed equally.<span class="red">Red line: temporary staff operate without confirmation</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.3-①</td><td class="point">Environment controlled</td><td class="method">Check continuity and authenticity of temperature/humidity/cleanliness records; check segregation of incompatible activities (e.g. balance room vs vibration source)</td><td class="judge">Good: records continuous + segregation effective.<span class="red">Red line: records clearly backfilled or fabricated</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.3-②</td><td class="point">Out-of-control handling</td><td class="method">Sample one environmental excursion record; trace whether activities were stopped, prior results assessed and correction taken</td><td class="judge">Good: excursion closed with assessment.<span class="red">Red line: continued producing data when out of limits</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.4-①</td><td class="point">Complete equipment record chain</td><td class="method">Sample 3 key instruments across the full chain: register → calibration certificate → result confirmation → intermediate checks → usage records → status labelling</td><td class="judge">Good: full chain closed and traceable.<span class="red">Red line: missing calibration certificate or confirmation record</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-②</td><td class="point">Calibration result confirmation</td><td class="method">Check whether the calibration certificate is confirmed by the technical manager on return (range/accuracy meets the method) and the confirmation is signed</td><td class="judge">Good: confirmation signed with conclusions.<span class="red">Red line: certificate filed without confirmation, then equipment used</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-③</td><td class="point">Intermediate checks</td><td class="method">Check intermediate check plan (objects/method/frequency/criteria) and execution records; sample one instrument overdue for checks</td><td class="judge">Good: plan + execution + criteria.<span class="red">Red line: plan has no criteria, or checks missed</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.4-④</td><td class="point">Defective equipment traceability</td><td class="method">Check labelling and disposition of defective/withdrawn equipment; assess whether impact on prior results was traced</td><td class="judge">Good: withdrawal labelling + impact assessment.<span class="red">Red line: faulty equipment not isolated</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.5-①</td><td class="point">Unbroken traceability</td><td class="method">Sample 2 parameter traceability chains (equipment → calibration certificate → upstream standard) confirming unbroken chain to SI or a recognised standard</td><td class="judge">Good: chain complete with certificates.<span class="red">Red line: broken chain or expired certificate</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.5-②</td><td class="point">Non-SI traceability</td><td class="method">Check that parameters that cannot be traced to SI use technical means (reference materials/recognised methods) with evidence retained</td><td class="judge">Good: alternative evidence exists.<span class="red">Red line: claims traceability but no evidence</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.5-③</td><td class="point">Reference materials</td><td class="method">Sample 2 batches of reference materials: certificates, validity, acceptance and issue records</td><td class="judge">Good: in validity + accepted.<span class="red">Red line: expired reference materials still in use</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">6.6-①</td><td class="point">Supplier evaluation</td><td class="method">Check approved supplier list, selection criteria, evaluation and approval records; sample 2 suppliers' performance monitoring (calibration/consumables)</td><td class="judge">Good: list + periodic evaluation.<span class="red">Red line: used without evaluation</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">6.6-②</td><td class="point">Subcontracting control</td><td class="method">Sample one subcontracted project across the full chain: customer consent → subcontractor competence evidence → accountability for results</td><td class="judge">Good: consent + competence + clear responsibility.<span class="red">Red line: subcontracted without consent</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §7 ============ -->
+<h2><span class="no">§7</span>Process Requirements<span class="tt">Contracts · Methods · Sampling · Records · Reporting · Complaints · Nonconformity</span></h2>
+<div class="lead">Process clauses directly determine result quality. Focus: is every action supported by objective records, are deviations controlled, and can issued results be traced and recalled when problems emerge.</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>Item</th><th>Audit item (what to check)</th><th>Verification method (how to check)</th><th>Conformity criteria (good / red line)</th><th>Evidence record</th><th>Judgement</th></tr>
+
+  <tr><td class="subno">7.1-①</td><td class="point">Contract review</td><td class="method">Sample 3 contracts/work orders across the full review chain; focus on contracts with decision rules and deviations — reviewed before signing</td><td class="judge">Good: review signed + capability covered.<span class="red">Red line: verbal orders with no records</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.1-②</td><td class="point">Deviations and changes</td><td class="method">Check whether deviations from the contract are recorded in writing and the customer notified; whether post-start changes are re-reviewed</td><td class="judge">Good: deviations confirmed with the customer.<span class="red">Red line: changes made unilaterally without notice</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.2-①</td><td class="point">Standards current</td><td class="method">Check standard-currency review records against the method list; sample 2 methods confirming the versions in use are current</td><td class="judge">Good: review traceable + current.<span class="red">Red line: obsolete standard in use</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.2-②</td><td class="point">Method verification/validation</td><td class="method">Sample 2 methods for verification/validation records (objective/scope/procedure/results/conclusion); check one deviation's approval chain</td><td class="judge">Good: validation complete + deviation authorised.<span class="red">Red line: new method used before verification</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.3-①</td><td class="point">Sampling reproducible</td><td class="method">Sample 2 sampling records against the sampling plan; check method/date-time/sampler/environment/diagram are complete</td><td class="judge">Good: information complete + reproducible.<span class="red">Red line: sampling without plan or records</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.4-①</td><td class="point">Unique identification</td><td class="method">Sample 3 items across the full flow from receipt to report; verify the number stays consistent and unbroken; check on-site storage labelling</td><td class="judge">Good: same number across the chain + status clear.<span class="red">Red line: numbers confused or lost</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.4-②</td><td class="point">Anomalies and storage</td><td class="method">Check whether abnormal condition at receipt is recorded; whether storage conditions are controlled to avoid mix-up/damage; retained-sample management</td><td class="judge">Good: anomalies recorded + storage controlled.<span class="red">Red line: anomalies unrecorded, tested anyway</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.5-①</td><td class="point">Records reproducible</td><td class="method">Sample 5 original records against the “reproducible” standard (observations/data/calculations/person/equipment/environment/date), element by element</td><td class="judge">Good: enough information to reproduce.<span class="red">Red line: only results recorded, no process</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.5-②</td><td class="point">Amendment discipline</td><td class="method">Check whether amendments are struck through and legible with signature and date; sample one electronic record verifying permissions and amendment trail</td><td class="judge">Good: strike-through + trail.<span class="red">Red line: illegible erasure / overwriting</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.6-①</td><td class="point">Uncertainty evaluation</td><td class="method">Sample 2 parameters' uncertainty evaluation documents; sanity-check against recent PT results; check reference to uncertainty in reports where required</td><td class="judge">Good: key components covered + corroborated.<span class="red">Red line: not evaluated where required / contradicts PT</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.7-①</td><td class="point">QC coverage</td><td class="method">Check the QC plan and its coverage matrix against the accredited scope; confirm all items and personnel are covered</td><td class="judge">Good: matrix fully covers.<span class="red">Red line: some items without QC</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.7-②</td><td class="point">Out-of-control and PT</td><td class="method">Sample 3 QC records including one out-of-control handling chain; check that an unsatisfactory PT result was processed as nonconforming work</td><td class="judge">Good: excursion analysed and corrected.<span class="red">Red line: out-of-control not acted on</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.8-①</td><td class="point">Report elements</td><td class="method">Sample 5 reports element by element against the template (title/lab/customer/method/results/signature/date); check subcontracting is stated</td><td class="judge">Good: elements complete + subcontracting clear.<span class="red">Red line: missing elements / subcontracting not stated</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">7.8-②</td><td class="point">Opinions and amendments</td><td class="method">Check that reports with opinions/interpretations are authorised; sample one amended report for full version retention and amendment rules</td><td class="judge">Good: opinions authorised + versions retained.<span class="red">Red line: opinions added without authorisation / amendments without trail</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.9-①</td><td class="point">Complaint closure</td><td class="method">Sample 1–2 complaint cases end to end (receipt → evaluation → decision → response); check the register and annual analysis</td><td class="judge">Good: closed + fed back into improvement.<span class="red">Red line: complaints unanswered and unregistered</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.10-①</td><td class="point">Nonconforming work management</td><td class="method">Sample 2 nonconforming work cases end to end; check the four steps “identify → evaluate → dispose → verify” are complete and authorised</td><td class="judge">Good: four steps complete + impact on issued results assessed.<span class="red">Red line: corrected without impact assessment</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">7.11-①</td><td class="point">Data systems controlled</td><td class="method">Sample one system's validation/verification and change records; demonstrate permission levels live; check recent backup/restore drill</td><td class="judge">Good: validation + changes + backup.<span class="red">Red line: system used without validation</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<!-- ============ §8 ============ -->
+<h2><span class="no">§8</span>Management Requirements (Option A)<span class="tt">Documents · Records · Risk · Improvement · Internal audit · Management review</span></h2>
+<div class="lead">Management clauses focus on the system's self-driving capability. Focus: are documents current, do corrective actions hit root causes, do internal audit and management review genuinely close the loop.</div>
+<table>
+  <colgroup><col class="subno"><col style="width:30%"><col style="width:23%"><col style="width:24%"><col class="evi"><col class="ver"></colgroup>
+  <tr><th>Item</th><th>Audit item (what to check)</th><th>Verification method (how to check)</th><th>Conformity criteria (good / red line)</th><th>Evidence record</th><th>Judgement</th></tr>
+
+  <tr><td class="subno">8.2-①</td><td class="point">Policy and objectives measurable</td><td class="method">Check that the policy and objectives are documented and communicated; interview 2 positions on awareness; check objective data sources and statistics</td><td class="judge">Good: objectives measurable + statistics kept.<span class="red">Red line: slogan-style, non-measurable objectives</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.3-①</td><td class="point">Documents current</td><td class="method">Sample 3 documents' version chains; randomly check 2 on-site documents in use are current; check standard currency review</td><td class="judge">Good: versions clear + in-use documents current.<span class="red">Red line: old revision in use on-site</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">8.3-②</td><td class="point">Obsolete documents withdrawn</td><td class="method">Check whether obsolete documents are withdrawn or retained with a marker to prevent misuse</td><td class="judge">Good: obsolete marked/withdrawn.<span class="red">Red line: old revisions scattered on-site</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.4-①</td><td class="point">Record lifecycle</td><td class="method">Sample 2 record categories against identification/access/storage/backup/archive/retrieval/retention/disposition; check borrowing on-site</td><td class="judge">Good: retention defined + backups.<span class="red">Red line: no retention period defined</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.5-①</td><td class="point">Risk and opportunity integrated</td><td class="method">Check risk register update history; sample 2 measures' effectiveness evaluations; check customer feedback channel and its use in analysis</td><td class="judge">Good: risks integrated + evaluated.<span class="red">Red line: identified but never updated</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.6-①</td><td class="point">Improvement with results</td><td class="method">Check improvement register; sample 1 improvement case to verify actual results (not merely planned)</td><td class="judge">Good: case exists with results.<span class="red">Red line: plans only, nothing landed</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.7-①</td><td class="point">Corrective action six steps</td><td class="method">Sample 3 corrective actions against a) reaction, b) root cause, c) action, d) effectiveness, e) risk update, f) system change</td><td class="judge">Good: root-cause analysis + effectiveness.<span class="red">Red line: re-training only, no root cause</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.8-①</td><td class="point">Internal audit planned and executed</td><td class="method">Check year-round execution against LP-02 and IA-01; sample the most recent audit's full file (IA-01–IA-06); verify independence confirmation</td><td class="judge">Good: on plan + independent + closed.<span class="red">Red line: auditors audit their own departments</span></td><td>　</td><td class="ver">　</td></tr>
+
+  <tr><td class="subno">8.9-①</td><td class="point">Management review inputs complete</td><td class="method">Check the most recent management review records (MR series); verify evidence for all 15 inputs one by one</td><td class="judge">Good: all 15 inputs evidenced.<span class="red">Red line: hollow inputs without data</span></td><td>　</td><td class="ver">　</td></tr>
+  <tr><td class="subno">8.9-②</td><td class="point">Management review outputs implemented</td><td class="method">Check the 4 outputs (effectiveness/improvement/resources/changes) each have an owner + deadline and are tracked in MR-06</td><td class="judge">Good: decisions trackable.<span class="red">Red line: report written, nothing tracked</span></td><td>　</td><td class="ver">　</td></tr>
+</table>
+
+<div class="note"><b>Judgement &amp; statistics:</b> after completing this form, register all <b>×</b> nonconformities by item and clause into IA-05 (Nonconformity Distribution &amp; Trend Analysis) to identify system weak points; list <b>○</b> observations separately in the audit report (FR-25). File this form and its evidence column under record control per §8.4, retention no less than 6 years. V2.0 vs V1.0: each clause upgraded from “one-line point” to “multiple items + verification actions + conformity criteria (incl. red lines)”, executable on site.</div>
+
+<div class="foot">IA-04 Internal Audit Checklist (Full Element, Itemised V2.0) · LabKitPro Internal Audit Complete Pack (English Version)<br>Same source as website library FR-40 · Prepared in accordance with ISO/IEC 17025:2017 · Paid template for internal use by the purchasing laboratory only</div>
+
+</div>
+</body>
+</html>
