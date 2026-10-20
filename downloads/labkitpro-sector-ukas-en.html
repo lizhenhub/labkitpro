@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UKAS Accreditation Documents · By-Sector Classification (United Kingdom Accreditation Service) · LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a4a'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EUK%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.65;font-size:15px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:52px 0 58px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:15.5px;color:#cdd9e6;max-width:880px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 28px;font-size:13px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 30px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:0 0 22px;color:#6b5320;font-size:13.5px;
+}
+.callout b{color:#5a3d05;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;padding:2px;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13.5px;margin:0 0 16px 56px;}
+
+/* ===== Tables ===== */
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:18%;}
+colgroup col.c-name{width:50%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-series{width:15%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{font-weight:700;color:var(--brand-500);font-size:13.5px;}
+td .cn{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:13px;}
+.series-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:.5px;margin:2px 0;}
+.s-REQ{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.s-POL{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.s-GUIDE{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.s-FORM{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.s-CHK{background:#f3e8f7;color:#7a3f9e;border:1px solid #e0c8ee;}
+.s-GEN{background:var(--brand-100);color:var(--brand-700);border:1px solid #cdd9e6;}
+.badge-new{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-left:6px;
+  background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;
+}
+.note-line{color:var(--muted);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+/* ===== Footer (official brand-900) ===== */
+footer{background:var(--brand-900);color:#aebfd0;margin-top:50px;padding:30px 0 34px;font-size:13px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer .wrap>div{min-width:0;flex:1 1 280px;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;color:#aebfd0;overflow-wrap:break-word;word-break:break-all;}
+footer a{color:#cdd9e6;text-decoration:none;}
+footer a:hover{color:#fff;}
+
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:38px 0 48px;}
+  header.hero h1{font-size:22px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:17px;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/diagnosis" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/templates" target="_blank" rel="noopener">Templates</a>
+      <a href="https://labkitpro.com/compliance-review" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/uncertainty" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/pricing" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/faq" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+    </div>
+  </div>
+</header>
+
+
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">UKAS Laboratory Accreditation · By-Sector / Field Classification</span>
+    <h1>UKAS (United Kingdom Accreditation Service) Laboratory Accreditation Documents · By-Sector Classification</h1>
+    <p>This list groups the 69 current UKAS laboratory accreditation documents (matching the full-list volume “UKAS Accreditation Documents (Full List)” item by item) by testing field / industry. Group names come from fields actually identifiable in the official UKAS publications columns and document titles (calibration metrology disciplines, testing industries, forensic & toxicology, medical & health, uncertainty & traceability, PT & reference materials, reporting & decision rules, general management). Each document is assigned to one primary group; cross-cutting documents are noted in the group note-line.</p>
+    <div class="meta"><span>Source: UKAS Publications List (M4) 2026-10-06 + official columns verified 2026-10-19</span><span>Verified: 2026-10-19</span><span>Coverage: all 69 current documents in the full-list volume</span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">11</div><div class="lbl">Field groups</div></div>
+      <div class="stat"><div class="num">53</div><div class="lbl">Field / industry-specific documents</div></div>
+      <div class="stat"><div class="num">16</div><div class="lbl">General management & MRAs</div></div>
+      <div class="stat"><div class="num">69</div><div class="lbl">Current documents (both volumes match)</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="links">
+    <a href="#g1">General Management · Policy & Symbol Use</a>
+    <a href="#g2">Uncertainty & Metrological Traceability</a>
+    <a href="#g3">Calibration · Temperature / Mass / Mechanical / Hardness</a>
+    <a href="#g4">Calibration · Volumetric / Dimensional / Acoustics / Radiological</a>
+    <a href="#g5">Calibration Reports & Scope Statements</a>
+    <a href="#g6">Testing · Food / Drinking Water / Materials & Environment</a>
+    <a href="#g7">Road & Flue Gas Testing</a>
+    <a href="#g8">Forensic & Toxicology</a>
+    <a href="#g9">Medical & Health</a>
+    <a href="#g10">Proficiency Testing & Reference Materials</a>
+    <a href="#g11">Reporting & Decision Rules</a>
+  </div>
+</nav>
+
+<div class="callout">Type badges: s-GEN = UKAS general policy (GEN series), s-LAB = UKAS laboratory-specific (LAB/M3003/IMA), s-TPS = UKAS technical policy statement, s-EA = European co-operation for Accreditation (EA) document, s-ACI = Global ACI / ILAC document, s-GOV = government publication. Official links for each document are in the companion full-list volume.</div>
+
+
+<section class="block" id="g1">
+  <div class="section-head">
+    <div class="no">1</div>
+    <h2>General Management · Accreditation Policy & Symbol Use</h2>
+    <span class="tag">16 · all accredited laboratories</span>
+  </div>
+  <p class="section-desc">Cross-field general policies: assessment principles, flexible scope, symbol and MRA claim references, sample handling, temporary sites, plus UKAS TPSs for certification/verification bodies listed in M4 (for laboratory reference).</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">— (unnumbered)</td><td>The National Accreditation Logo &amp; Symbols: Conditions for use<span class="cn">英国国家认可标志与符号使用条件</span></td><td class="date">2024-02</td><td><span class="series-badge s-GOV">Government Publication</span></td></tr>
+        <tr><td class="code">GEN 1</td><td>General Principles for the Assessment of CABs by UKAS<span class="cn">UKAS 对合格评定机构评审的一般原则</span></td><td class="date">Ed.4 · 2025-03</td><td><span class="series-badge s-GEN">GEN Policy</span></td></tr>
+        <tr><td class="code">GEN 4</td><td>UKAS policy and guidance on flexible scopes of accreditation<span class="cn">灵活认可范围in effect与管理政策和指南</span></td><td class="date">Ed.2 · 2024-11</td><td><span class="series-badge s-GEN">GEN Policy</span></td></tr>
+        <tr><td class="code">GEN 6</td><td>Reference to accreditation and multilateral recognition signatory status<span class="cn">对认可地位及多边互认签署方身份的引用</span></td><td class="date">Ed.2 · 2022-12</td><td><span class="series-badge s-GEN">GEN Policy</span></td></tr>
+        <tr><td class="code">TPS 63</td><td>UKAS policy on deviating samples<span class="cn">偏离样品政策</span></td><td class="date">Ed.4 · 2024-03</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 68</td><td>Policy on Accreditation of Infrequently Performed Activities<span class="cn">低频次合格评定活动认可政策</span></td><td class="date">Ed.2 · 2020-06</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 76</td><td>Management of temporary facilities within an accredited scope<span class="cn">认可范围内临时设施管理</span></td><td class="date">Ed.1 · 2024-11</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 62</td><td>Management of extraordinary events affecting CB/V&B bodies<span class="cn">影响认证/验证机构的特别事件管理</span></td><td class="date">Ed.3 · 2023-05</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 65</td><td>Policy on issuance of accredited and non-accredited certificates<span class="cn">认证机构认可/非认可证书签发政策</span></td><td class="date">Ed.4 · 2025-04</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 66</td><td>Implementation of IAF MD 17: 2019 Witnessing Activities<span class="cn">IAF MD 17:2019（管理体系认证机构见证活动）in effect</span></td><td class="date">Ed.3 · 2020-11</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 74</td><td>Blended approach to auditing of management systems by CBs<span class="cn">管理体系认证机构混合审核方式指南</span></td><td class="date">Ed.2 · 2021-12</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">EA-2/13 M: 2019</td><td>EA Cross Border Accreditation Policy<span class="cn">EA 跨境认可政策与成员跨境合作程序</span></td><td class="date">2019 ed.</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+        <tr><td class="code">EA-2/15 M: 2023</td><td>EA Requirements for the Accreditation of Flexible Scopes<span class="cn">灵活范围认可要求</span></td><td class="date">2023 ed.</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+        <tr><td class="code">EA-3/01 M: 2025</td><td>EA Conditions for use of Accreditation Symbols, Logos and MLA reference<span class="cn">认可标志、标识及 EA MLA 签署方身份引用使用条件</span></td><td class="date">2025 ed.</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+        <tr><td class="code">EA-3/01 S1</td><td>Supplement 1 to EA-3/01 Rules on the use of EA MLA Mark<span class="cn">EA MLA 标志使用规则补充 1</span></td><td class="date">current version</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+        <tr><td class="code">EA-3/01 S2</td><td>Supplement 2 to EA-3/01 Rules on the use of EA MLA Mark in the UK<span class="cn">EA MLA 标志在英国境内使用规则补充 2</span></td><td class="date">current version</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: TPS 62/65/66/74 mainly address certification / verification bodies and are included in full for searchability per M4; laboratory cross-cutting sample/facility policies are primarily TPS 63 and TPS 76.</div>
+  </div>
+</section>
+
+
+<section class="block" id="g2">
+  <div class="section-head">
+    <div class="no">2</div>
+    <h2>Uncertainty & Metrological Traceability</h2>
+    <span class="tag">8 · mandatory / foundational for all</span>
+  </div>
+  <p class="section-desc">Measurement uncertainty estimation, metrological traceability policy and recalibration intervals — common foundational requirements for testing and calibration laboratories.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">M3003</td><td>The expression of uncertainty and confidence in measurement<span class="cn">测量中不确定度与置信度的表达</span></td><td class="date">Ed.6 · 2024-03</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 12</td><td>The expression of uncertainty in testing<span class="cn">检测中不确定度的表达</span></td><td class="date">Ed.5 · 2025-12</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 41</td><td>UKAS Policy on Metrological Traceability<span class="cn">计量溯源性政策</span></td><td class="date">Ed.6 · 2022-12</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">EA-4/02 M: 2022</td><td>Evaluation of the Uncertainty of Measurement in Calibration<span class="cn">校准中测量不确定度的评定</span></td><td class="date">2022 ed.</td><td><span class="series-badge s-EA">EA Mandatory</span></td></tr>
+        <tr><td class="code">TECH-1-009 (M)</td><td>Global ACI Policy for Measurement Uncertainty in Calibration<span class="cn">校准测量不确定度政策</span></td><td class="date">v1.01</td><td><span class="series-badge s-ACI">ACI Mandatory</span></td></tr>
+        <tr><td class="code">ILAC-P10:07/2020</td><td>ILAC Policy on Traceability of Measurement Results<span class="cn">测量结果溯源性政策</span></td><td class="date">2020-07</td><td><span class="series-badge s-ACI">ACI Mandatory</span></td></tr>
+        <tr><td class="code">TECH-1-003 (G)</td><td>Guidelines for Measurement Uncertainty in Testing<span class="cn">检测测量不确定度指南</span></td><td class="date">v1.0</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+        <tr><td class="code">ILAC-G24: 2022</td><td>Guidelines for the determination of recalibration intervals<span class="cn">测量设备再校准周期确定指南</span></td><td class="date">2022 ed.</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group also underpins each specialist calibration group; ILAC-P10 will be replaced by Global ACI-TECH-1-011 (M) and ILAC-G24 by TECH-1-005 (G).</div>
+  </div>
+</section>
+
+
+<section class="block" id="g3">
+  <div class="section-head">
+    <div class="no">3</div>
+    <h2>Calibration · Temperature / Mass / Mechanical / Hardness</h2>
+    <span class="tag">5 · thermal & mechanical metrology</span>
+  </div>
+  <p class="section-desc">Traceability for temperature measurement, temperature block calibrators, balances (mass), mechanical testing of materials and hardness measurement.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 11</td><td>Traceability of temperature measurement<span class="cn">温度测量溯源：铂电阻、热电偶、玻璃液体与辐射温度计</span></td><td class="date">Ed.5 · 2025-10</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 38</td><td>Implementation of EURAMET Calibration Guide No. 13 (temperature block calibrators)<span class="cn">EURAMET cg-13 温度块校准器校准指南in effect</span></td><td class="date">Ed.5 · 2019-10</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">LAB 14</td><td>Guidance on the calibration of weighing machines<span class="cn">检测/校准实验室衡器校准指南</span></td><td class="date">Ed.8 · 2025-12</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 24</td><td>Measurement Traceability and Calibration in the Mechanical Testing of Materials<span class="cn">材料力学试验中的测量溯源与校准</span></td><td class="date">Ed.2 · 2021-05</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 25</td><td>Traceability of hardness measurements<span class="cn">硬度测量溯源</span></td><td class="date">Ed.4 · 2025-03</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: LAB 24 Edition 3 is out for consultation; the current version is Ed. 2 (2021-05).</div>
+  </div>
+</section>
+
+
+<section class="block" id="g4">
+  <div class="section-head">
+    <div class="no">4</div>
+    <h2>Calibration · Volumetric / Dimensional / Acoustics / Radiological</h2>
+    <span class="tag">5 · other specialist metrology</span>
+  </div>
+  <p class="section-desc">Traceability and calibration for volumetric (glassware), dimensional (length/angle/form), acoustical equipment and sound level meters, and radiological source activity / photon emission rate / air kerma rate.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 15</td><td>Traceability: Volumetric apparatus<span class="cn">溯源：玻璃量器</span></td><td class="date">Ed.5 · 2023-12</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 36</td><td>Laboratory Accommodation and Environment in Length, Angle and Form measurement<span class="cn">长度、角度与形状测量的实验室设施与环境</span></td><td class="date">Ed.4 · 2019-10</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 23</td><td>Traceability for equipment used in acoustical testing<span class="cn">声学检测设备溯源</span></td><td class="date">Ed.3 · 2023-01</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 49</td><td>Interpretation of IEC 61672 in periodic testing of sound level meters<span class="cn">IEC 61672 声级计期间检测解释指南</span></td><td class="date">Ed.3 · 2022-12</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">LAB 26</td><td>Calibration of radionuclide sources<span class="cn">放射性源校准：活度、粒子/光子发射率、空气比释动能率</span></td><td class="date">Ed.4 · 2023-10</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="block" id="g5">
+  <div class="section-head">
+    <div class="no">5</div>
+    <h2>Calibration Reports & Scope Statements</h2>
+    <span class="tag">3 · calibration laboratories (general)</span>
+  </div>
+  <p class="section-desc">Calibration result report format, calibration laboratory scope-of-accreditation (Schedules) expression and report / certificate wording.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 5</td><td>Reporting calibration results<span class="cn">校准结果报告</span></td><td class="date">Ed.5 · 2025-01</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 45</td><td>Schedules of Accreditation for Calibration Laboratories<span class="cn">校准实验室认可范围清单（Schedules）</span></td><td class="date">Ed.5 · 2023-06</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 53</td><td>Statements for use on test, examination, calibration and inspection reports/certificates<span class="cn">实验室/检查机构报告证书声明用语</span></td><td class="date">Ed.3 · 2021-12</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="block" id="g6">
+  <div class="section-head">
+    <div class="no">6</div>
+    <h2>Testing · Food / Drinking Water / Materials & Environment</h2>
+    <span class="tag">6 · physical testing fields</span>
+  </div>
+  <p class="section-desc">Asbestos, microbiological testing, official food & feed and national reference laboratories, pesticide residues, drinking water (DWTS) and sensory testing — the field-specific documents identifiable in the UKAS laboratory columns.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 30</td><td>Application of ISO/IEC 17025 for Asbestos Sampling and Testing<span class="cn">石棉采样与检测的 ISO/IEC 17025 应用</span></td><td class="date">Ed.5 · 2022-07</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 31</td><td>Use of culture media and diagnostic test kits in microbiological testing<span class="cn">微生物检测中即用培养基与诊断试剂盒的使用</span></td><td class="date">Ed.5 · 2026-04</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 33</td><td>Assessment and Accreditation of UK Official Food and Feed Laboratories and NRLs<span class="cn">英国官方食品饲料实验室及国家参比实验室评审与认可</span></td><td class="date">Ed.2 · 2025-12</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 37</td><td>Accreditation requirements for sampling and testing per DWTS<span class="cn">按饮用水检测规范（DWTS）采样与检测的认可要求</span></td><td class="date">Ed.5 · 2023-11</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">EA-4/22 G: 2025</td><td>EA Guidance on Accreditation of Pesticide Residues Analysis in Food and Feed<span class="cn">食品与饲料中农药残留分析认可指南</span></td><td class="date">2025 ed.</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+        <tr><td class="code">EA-4/09 G: 2022</td><td>Accreditation For Sensory Testing Laboratories<span class="cn">感官检测实验室认可</span></td><td class="date">2022 ed.</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the food & feed group also applies LAB 31 (microbiology) and EA-4/22 (pesticide residues), each grouped under its primary field here.</div>
+  </div>
+</section>
+
+
+<section class="block" id="g7">
+  <div class="section-head">
+    <div class="no">7</div>
+    <h2>Road & Flue Gas Testing</h2>
+    <span class="tag">2 · engineering / environmental testing</span>
+  </div>
+  <p class="section-desc">Calibration of road-surface evenness devices and traceability of standard gases for flue-gas emission monitoring.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">TPS 25</td><td>Surface regularity of road pavement using the rolling straight edge<span class="cn">道路路面滚动直尺法平整度测量校准与功能检查要求</span></td><td class="date">Ed.6 · 2022-07</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TPS 54</td><td>Traceability of calibration gas standards used in stack emission monitoring<span class="cn">烟气排放监测用校准气体标准物质溯源政策</span></td><td class="date">Ed.5 · 2025-01</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="block" id="g8">
+  <div class="section-head">
+    <div class="no">8</div>
+    <h2>Forensic & Toxicology</h2>
+    <span class="tag">5 · forensic / judicial science laboratories</span>
+  </div>
+  <p class="section-desc">UK National DNA Database supplier, on-scene forensic testing, toxicology sample analysis, forensic process modules and racing laboratories (doping testing) accreditation requirements.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 32</td><td>Accreditation for suppliers to the UK National DNA Database<span class="cn">英国国家 DNA 数据库供应商认可</span></td><td class="date">Ed.6 · 2023-09</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 51</td><td>UKAS accreditation of laboratories performing analysis of toxicology samples<span class="cn">毒理学样品分析实验室认可</span></td><td class="date">Ed.2 · 2023-01</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 201</td><td>Accreditation of bodies carrying out forensic testing on site<span class="cn">现场法医检测机构认可</span></td><td class="date">Ed.2 · 2023-03</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TECH-1-004 (G)</td><td>Modules in a Forensic Science Process<span class="cn">法庭科学过程模块</span></td><td class="date">v1.0</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+        <tr><td class="code">TECH-1-001 (G)</td><td>Accreditation Requirements and Operating Criteria for Horseracing Laboratories<span class="cn">赛马实验室认可要求与操作准则</span></td><td class="date">v1.0</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: racing laboratories (TECH-1-001) fall under sport anti-doping / toxicology and are grouped here.</div>
+  </div>
+</section>
+
+
+<section class="block" id="g9">
+  <div class="section-head">
+    <div class="no">9</div>
+    <h2>Medical & Health</h2>
+    <span class="tag">8 · medical laboratories & healthcare services</span>
+  </div>
+  <p class="section-desc">Genomic testing medical laboratories, networked / multi-site medical services, cross-customer medical diagnostic pathways, imaging services (BS 70000), NGS genetic testing, POCT assessment guidance and medical accreditation system implementation.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 60</td><td>Policy on accreditation of medical laboratories performing genomic tests<span class="cn">开展基因组检测的医学实验室认可政策</span></td><td class="date">Ed.1 · 2025-10</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 61</td><td>Guidance for medical laboratory services as part of a network or multi-site organisation<span class="cn">网络型/多地点组织医学实验室服务指南</span></td><td class="date">Ed.1 · 2025-05</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 71</td><td>Accreditation of healthcare diagnostic pathways delivered between multiple UKAS customers<span class="cn">多 UKAS 客户间提供的医疗诊断路径认可</span></td><td class="date">Ed.3 · 2026-05</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">IMA 1</td><td>Accreditation to BS 70000:2017 imaging services<span class="cn">BS 70000:2017 影像服务认可</span></td><td class="date">Ed.2 · 2025-10</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">EA-4/24 G: 2025</td><td>Guideline for Accreditation of Laboratories carrying out Genetic Testing using NGS<span class="cn">采用 NGS 开展基因检测实验室认可指南</span></td><td class="date">2025-11</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+        <tr><td class="code">EA-4/20 G: 2026</td><td>Assessment of laboratories against EN ISO 15189:2022 Point-of-Care Testing<span class="cn">依据 EN ISO 15189:2022 床旁检测（POCT）评审指南</span></td><td class="date">2025-10</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+        <tr><td class="code">EA-4/17 M: 2022</td><td>EA position paper on description of scopes of medical laboratories<span class="cn">医学实验室认可范围描述立场文件</span></td><td class="date">2022 ed.</td><td><span class="series-badge s-EA">EA Policy</span></td></tr>
+        <tr><td class="code">TECH-1-006 (G)</td><td>Guidance on Implementation of a Medical Accreditation Scheme<span class="cn">医学认可体系in effect指南</span></td><td class="date">v1.0</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: the UKAS healthcare columns also list the IQIPS 2023 Standard and Statements Guidance for physiological services accreditation, which are not counted as laboratory documents.</div>
+  </div>
+</section>
+
+
+<section class="block" id="g10">
+  <div class="section-head">
+    <div class="no">10</div>
+    <h2>Proficiency Testing & Reference Materials</h2>
+    <span class="tag">6 · PT / RM general requirements</span>
+  </div>
+  <p class="section-desc">PT participation policy and frequency, appropriateness of small-scale interlaboratory comparisons, selection and use of reference materials.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">TPS 47</td><td>UKAS policy on participation in proficiency testing<span class="cn">能力验证参与政策</span></td><td class="date">Ed.5 · 2023-01</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">TECH-1-008 (M)</td><td>Policy for Proficiency Testing and/or Interlaboratory comparisons other than PT<span class="cn">能力验证及 PT 以外实验室间比对政策</span></td><td class="date">v1.01</td><td><span class="series-badge s-ACI">ACI Mandatory</span></td></tr>
+        <tr><td class="code">EA-4/18 G: 2021</td><td>Guidance on the level and frequency of PT participation<span class="cn">能力验证参与水平与频率指南</span></td><td class="date">2021 ed.</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+        <tr><td class="code">EA-4/21 INF: 2026</td><td>Assessment of appropriateness of small interlaboratory comparisons<span class="cn">小型实验室间比对适当性评审指南</span></td><td class="date">2026 ed.</td><td><span class="series-badge s-EA">EA Guidance</span></td></tr>
+        <tr><td class="code">TPS 57</td><td>Guidance and policy on the selection and use of reference materials<span class="cn">标准物质选择与使用指南和政策</span></td><td class="date">Ed.5 · 2023-12</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">EA-4/14 INF: 2003</td><td>Selection and use of reference materials<span class="cn">标准物质的选择与使用</span></td><td class="date">2003 ed.</td><td><span class="series-badge s-EA">EA Reference</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: TPS 47 Edition 6 is under review; the current version is Ed. 5 (2023-01).</div>
+  </div>
+</section>
+
+
+<section class="block" id="g11">
+  <div class="section-head">
+    <div class="no">11</div>
+    <h2>Reporting & Decision Rules</h2>
+    <span class="tag">5 · result reporting & conformity decisions</span>
+  </div>
+  <p class="section-desc">Opinions and interpretations, decision rules and statements of conformity, simplified reports — general rules for external expression of testing / calibration results.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">LAB 13</td><td>Policy and guidance on expressions of opinions and interpretations<span class="cn">ISO/IEC 17025 中"意见和解释"应用政策与指南</span></td><td class="date">Ed.5 · 2026-09</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">LAB 48</td><td>Decision rules and statements of conformity<span class="cn">决策规则与符合性声明</span></td><td class="date">Ed.5 · 2024-07</td><td><span class="series-badge s-LAB">LAB Specific</span></td></tr>
+        <tr><td class="code">TPS 37</td><td>Simplified test reports<span class="cn">简化检测报告</span></td><td class="date">Ed.6 · 2024-02</td><td><span class="series-badge s-TPS">TPS Policy</span></td></tr>
+        <tr><td class="code">EA-4/23 INF: 2026</td><td>Assessment and Accreditation of Opinions and Interpretations<span class="cn">采用 ISO/IEC 17025:2017 对"意见和解释"的评审与认可</span></td><td class="date">2026 ed.</td><td><span class="series-badge s-EA">EA Reference</span></td></tr>
+        <tr><td class="code">TECH-1-002 (G)</td><td>Guidelines on Decision Rules and Statements of Conformity<span class="cn">决策规则与符合性声明指南</span></td><td class="date">v1.0</td><td><span class="series-badge s-ACI">ACI Guidance</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data source & notes</h3>
+      <p>This list corresponds item by item to the full-list volume “UKAS Accreditation Documents (Full List)” — 69 current documents grouped by field. Official basis: UKAS Publications List (M4) 2026-10-06 (https://www.ukas.com/ukas-publications-list/); Resources → Publications → Laboratory accreditation (https://www.ukas.com/resources/publications/laboratory-accreditation/); All organisations; Healthcare accreditation; Certification Body accreditation (verified — no laboratory documents omitted). Official links for each document are in the companion full-list volume.</p>
+    </div>
+    <div>
+      <h3>Usage note</h3>
+      <p>Verified 2026-10-19. Group names come from fields actually identifiable in the official UKAS columns and document titles and are not invented; each document has one primary group. Withdrawn / superseded versions are not included in this list — see the note-lines in the full-list volume. Subject to the official current versions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

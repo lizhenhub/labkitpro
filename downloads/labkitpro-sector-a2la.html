@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2LA 美国实验室认可协会文件 · 行业分类清单 · LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a4a'/%3E%3Ctext x='16' y='22' font-size='13' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.65;font-size:15px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:52px 0 58px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:15.5px;color:#cdd9e6;max-width:880px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 28px;font-size:13px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 30px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:0 0 22px;color:#6b5320;font-size:13.5px;
+}
+.callout b{color:#5a3d05;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;padding:2px;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13.5px;margin:0 0 16px 56px;}
+
+/* ===== Tables ===== */
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:18%;}
+colgroup col.c-name{width:50%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-series{width:15%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{font-weight:700;color:var(--brand-500);font-size:13.5px;}
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:13px;}
+.series-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:.5px;margin:2px 0;}
+.s-REQ{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.s-POL{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.s-GUIDE{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.s-FORM{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.s-CHK{background:#f3e8f7;color:#7a3f9e;border:1px solid #e0c8ee;}
+.s-GEN{background:var(--brand-100);color:var(--brand-700);border:1px solid #cdd9e6;}
+.badge-new{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-left:6px;
+  background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;
+}
+.note-line{color:var(--muted);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+/* ===== Footer (official brand-900) ===== */
+footer{background:var(--brand-900);color:#aebfd0;margin-top:50px;padding:30px 0 34px;font-size:13px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer .wrap>div{min-width:0;flex:1 1 280px;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;color:#aebfd0;overflow-wrap:break-word;word-break:break-all;}
+footer a{color:#cdd9e6;text-decoration:none;}
+footer a:hover{color:#fff;}
+
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:38px 0 48px;}
+  header.hero h1{font-size:22px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:17px;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">首页</a>
+      <a href="https://labkitpro.com/diagnosis" target="_blank" rel="noopener">现实诊断</a>
+      <a href="https://labkitpro.com/templates" target="_blank" rel="noopener">文档生成</a>
+      <a href="https://labkitpro.com/compliance-review" target="_blank" rel="noopener">合规审查</a>
+      <a href="https://labkitpro.com/uncertainty" target="_blank" rel="noopener">不确定度</a>
+      <a href="https://labkitpro.com/academy" target="_blank" rel="noopener">学院</a>
+      <a href="https://labkitpro.com/pricing" target="_blank" rel="noopener">价格</a>
+      <a href="https://labkitpro.com/faq" target="_blank" rel="noopener">常见问题</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">免费诊断</a>
+    </div>
+  </div>
+</header>
+
+
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">A2LA 美国实验室认可协会 · 行业分类清单</span>
+    <h1>A2LA 实验室认可文件 · 行业分类清单</h1>
+    <p>A2LA 官方公开文件门户（portal.a2la.org/documents）按文件类型（Organization / Information / Policies / Requirements / Guidance / Forms）而非检测领域分区。本分类清单据此特点，将全量分册 99 份现行文件按「通用管理 + 校准实验室专项 + 各检测领域专项 + 特定法规项目」重新归组；分组名取自官网文件标题中真实存在的 A2LA 认可项目、咨询委员会与文件系列名称，未作臆造。每份文件只归入一个主组，跨领域文件在该组 note-line 注明。</p>
+    <div class="meta">
+      <span>清单依据：<b>A2LA 公开文件门户六栏目全量条目（2026-10-19 抓取）</b></span>
+      <span>核对日期：<b>2026-10-19</b></span>
+      <span>官方依据页：<b>https://portal.a2la.org/documents</b></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">99</div><div class="lbl">现行文件总数</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">归组数量</div></div>
+      <div class="stat"><div class="num">72</div><div class="lbl">领域 / 项目专属文件</div></div>
+      <div class="stat"><div class="num">27</div><div class="lbl">通用与跨领域文件</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>目录导航</h2>
+  <div class="links">
+<a href="#g1">01 通用认可体系与申请管理</a>
+<a href="#g2">02 计量溯源与不确定度通用</a>
+<a href="#g3">03 校准实验室专项</a>
+<a href="#g4">04 建筑材料/岩土工程/无损检测专项</a>
+<a href="#g5">05 电气与电磁检测专项</a>
+<a href="#g6">06 法医科学专项</a>
+<a href="#g7">07 医学/临床实验室专项</a>
+<a href="#g8">08 生命科学/环境/化学/大麻检测专项</a>
+<a href="#g9">09 力学/材料与其他检测领域专项</a>
+<a href="#g10">10 特定法规项目与其他合格评定机构专项</a>
+  </div>
+</nav>
+
+<div class="callout"><b>分类说明：</b>A2LA 官网无按检测领域细分的文件体系，文件以 R（要求）/P（政策）/G（指南）/F（表格）为纲。本清单类型列沿用此官方系列：<span class="series-badge s-GEN">GEN 治理/信息</span> <span class="series-badge s-REQ">REQ 要求 R</span> <span class="series-badge s-POL">POL 政策 P</span> <span class="series-badge s-GUIDE">GUIDE 指南 G</span> <span class="series-badge s-FORM">FORM 表格 F/A</span>。各文件官网链接见对应全量分册《A2LA实验室认可文件清单.html》。</div>
+
+<section class="block" id="g1">
+  <div class="section-head">
+    <div class="no">01</div>
+    <h2>通用认可体系与申请管理</h2>
+    <span class="tag">全部项目通用 · 20 份</span>
+  </div>
+  <p class="section-desc">A2LA 治理文件、申请入门、通用认可条件与跨领域管理政策，适用于所有认可项目。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">A101</span></td><td>美国实验室认可协会章程<span class="en">Bylaws of the American Association for Laboratory Accreditation</span></td><td class="date">2020-07-16</td><td><span class="series-badge s-GEN">GEN 治理</span></td></tr>
+<tr><td><span class="code">A105</span></td><td>A2LA 技术咨询委员会章程<span class="en">Bylaws of the A2LA Technical Advisory Committees</span></td><td class="date">2026-09-03</td><td><span class="series-badge s-GEN">GEN 治理</span></td></tr>
+<tr><td><span class="code">A132</span></td><td>A2LA 行为与商业道德准则<span class="en">A2LA Code of Conduct and Business Ethics</span></td><td class="date">2025-09-15</td><td><span class="series-badge s-GEN">GEN 治理</span></td></tr>
+<tr><td><span class="code">I105</span></td><td>认可申请准备典型步骤<span class="en">Typical Steps in Preparing for the Accreditation Process</span></td><td class="date">2026-09-01</td><td><span class="series-badge s-GEN">GEN 信息</span></td></tr>
+<tr><td><span class="code">I111</span></td><td>A2LA 客户权利清单<span class="en">A2LA Customer Bill of Rights</span></td><td class="date">2022-03-15</td><td><span class="series-badge s-GEN">GEN 信息</span></td></tr>
+<tr><td><span class="code">R101</span></td><td>合格评定机构认可通用要求<span class="en">General Requirements: Accreditation of Conformity Assessment Bodies</span></td><td class="date">2026-09-01</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R102</span></td><td>认可条件<span class="en">Conditions for Accreditation</span></td><td class="date">2026-02-20</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R105</span></td><td>引用 A2LA 认可状态时的要求<span class="en">Requirements When Making Reference to A2LA Accredited Status</span></td><td class="date">2025-02-24</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">P105</span></td><td>机构迁址政策<span class="en">Policy on Organization Relocation</span></td><td class="date">2026-05-04</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P106</span></td><td>分支机构体系政策<span class="en">Policy on Branch Systems</span></td><td class="date">2019-11-07</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P107</span></td><td>认可资格转移政策<span class="en">Policy on Transferring Accreditation</span></td><td class="date">2023-04-25</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P112</span></td><td>灵活范围政策<span class="en">Policy on Flexible Scopes</span></td><td class="date">2026-03-06</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P117</span></td><td>境外差旅政策<span class="en">Policy on Foreign Travel</span></td><td class="date">2023-09-25</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P119</span></td><td>远程评审政策<span class="en">Policy on Remote Assessment</span></td><td class="date">2025-02-24</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P120</span></td><td>卫星实验室政策<span class="en">Policy on Satellite Laboratories</span></td><td class="date">2026-08-25</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P121</span></td><td>反舞弊政策<span class="en">Anti-Fraud Policy</span></td><td class="date">2026-08-21</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">G125</span></td><td>A2LA 认可信息宣传规范<span class="en">A2LA Promotion of Accreditation Information</span></td><td class="date">未标注</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">A308</span></td><td>评审员申请与信息问卷<span class="en">Assessor Application and Information Questionnaire</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F117</span></td><td>认可技术人员矩阵<span class="en">Technical Staff Matrix for Accreditation</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F349</span></td><td>分包方能力确认表<span class="en">Subcontractor Competency Confirmation Form</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：本组文件适用于 A2LA 全部认可项目（检测/校准/检验/PT 提供者/RMP 等），不分领域。</div>
+  </div>
+</section>
+
+<section class="block" id="g2">
+  <div class="section-head">
+    <div class="no">02</div>
+    <h2>计量溯源与不确定度通用</h2>
+    <span class="tag">跨领域计量基础 · 7 份</span>
+  </div>
+  <p class="section-desc">计量溯源、测量不确定度评定与能力验证计划的跨领域通用政策与指南。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">P102</span></td><td>计量溯源性政策<span class="en">Policy on Metrological Traceability</span></td><td class="date">2024-10-31</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P103</span></td><td>检测实验室测量不确定度评定政策<span class="en">Policy on Estimating Measurement Uncertainty for Testing Laboratories</span></td><td class="date">2025-08-01</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">R103</span></td><td>ISO/IEC 17025 实验室能力验证通用要求<span class="en">General Requirements - Proficiency Testing for ISO-IEC 17025 Laboratories</span></td><td class="date">2026-04-01</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">G104</span></td><td>检测中测量不确定度评定指南<span class="en">A2LA Guide for Estimation of Measurement Uncertainty in Testing</span></td><td class="date">2026-08-26</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G135</span></td><td>P102 应用指南<span class="en">Guidance for Application of P102</span></td><td class="date">2025-10-09</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G129</span></td><td>测量不确定度预算模板<span class="en">Measurement Uncertainty Budget Template</span></td><td class="date">未标注</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G133</span></td><td>能力验证计划建立指南<span class="en">A2LA Guide for Establishing Proficiency Testing Plans</span></td><td class="date">2025-06-18</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：P103 的分领域附录（P103a–e、P903）分别归入对应领域组；G135 亦适用于校准（另见 G149 内部校准专项）。</div>
+  </div>
+</section>
+
+<section class="block" id="g3">
+  <div class="section-head">
+    <div class="no">03</div>
+    <h2>校准实验室专项</h2>
+    <span class="tag">Calibration · 15 份</span>
+  </div>
+  <p class="section-desc">校准手册、校准实验室范围界定、决策规则、内部校准与几何量/电学/力值等校准技术指南，及校准领域范围选择表。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">I112</span></td><td>校准手册<span class="en">Calibration Handbook</span></td><td class="date">未标注</td><td><span class="series-badge s-GEN">GEN 信息</span></td></tr>
+<tr><td><span class="code">G118</span></td><td>校准实验室认可范围界定指南<span class="en">Guidance for Defining the Scope of Accreditation for Calibration Laboratories</span></td><td class="date">2026-10-05</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G136</span></td><td>校准中决策规则指南<span class="en">Guidance on Decision Rules in Calibration</span></td><td class="date">2022-10-10</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G149</span></td><td>P102 在内部校准中的应用指南<span class="en">Guidance for Application of P102 In-House Calibrations</span></td><td class="date">2026-03-31</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G111</span></td><td>中径与单一中径指南<span class="en">Guidance on Pitch Diameter and Simple Pitch Diameter</span></td><td class="date">2019-09-24</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G112</span></td><td>5700A/5720A/3458A 实物标准器校准指南<span class="en">Guidance on 5700A-5720A-3458A Artifact Calibration</span></td><td class="date">2019-10-02</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G130</span></td><td>VNA 校准件低频 S 参数测量<span class="en">Low Frequency S-Parameter Measurement of VNA Calibration Kits</span></td><td class="date">2020-09-29</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G145</span></td><td>几何量计量中测量不确定度参考<span class="en">Measurement Uncertainty in Dimensional Metrology References</span></td><td class="date">未标注</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G148</span></td><td>质量转力指南<span class="en">Mass to Force Guidance</span></td><td class="date">2025-11-04</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G127</span></td><td>不确定度报告指南——Thunder Scientific<span class="en">Guidance for Reporting Uncertainty - Thunder Scientific</span></td><td class="date">2025-12-15</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G132</span></td><td>测量咨询委员会（MAC）技术指南<span class="en">Technical Guidance from the Measurement Advisory Committee (MAC)</span></td><td class="date">2020-04-14</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G126</span></td><td>力值测量设备不确定度预算指南<span class="en">Guidance on Uncertainty Budgets for Force Measuring Devices</span></td><td class="date">2026-08-26</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G110</span></td><td>电气参数不确定度预算指南<span class="en">Guidance on Uncertainty Budgets for Electrical Parameters</span></td><td class="date">2025-09-10</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G128</span></td><td>直流/交流电源范围表述指南<span class="en">Guidance for DC/AC Power Scope Presentation</span></td><td class="date">2023-05-16</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">F204</span></td><td>认可范围选择表——校准实验室<span class="en">Scope of Accreditation Selection List - Calibration Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：G110/G128 为电学参数校准技术指南，亦服务于电气校准实验室；电学检测实验室范围指南 G115 归入「电气与电磁检测专项」。</div>
+  </div>
+</section>
+
+<section class="block" id="g4">
+  <div class="section-head">
+    <div class="no">04</div>
+    <h2>建筑材料 / 岩土工程 / 无损检测专项</h2>
+    <span class="tag">Construction / Geotech / NDT · 11 份</span>
+  </div>
+  <p class="section-desc">A2LA 建筑材料、哈里斯县-休斯顿岩土工程、果岭材料、无损检测等认可项目的专用要求、咨询委员会共识、不确定度附录与范围选择表。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R208</span></td><td>建筑材料检测实验室认可项目专用要求<span class="en">Specific Requirements - Construction Materials Testing Laboratory Accreditation Program</span></td><td class="date">2026-01-20</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R209</span></td><td>哈里斯县-休斯顿市-港务局岩土工程检测实验室认可项目专用要求<span class="en">Specific Requirements - Harris County-City of Houston-Port Authority Geotechnical Engineering Testing Laboratory Accreditation Program</span></td><td class="date">2026-01-20</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R212</span></td><td>无损检测实验室认可项目专用要求<span class="en">Specific Requirements - Nondestructive Testing Laboratory Accreditation Program</span></td><td class="date">2025-09-10</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R213</span></td><td>果岭材料检测实验室认可项目专用要求<span class="en">Specific Requirements - Putting Green Materials Testing Laboratory Accreditation Program</span></td><td class="date">2025-09-10</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">P103d</span></td><td>附录：建筑材料与岩土工程检测实验室不确定度评定政策<span class="en">Annex-Policy on Estimating Measurement Uncertainty for Construction Materials &amp; Geotechnical Testings Labs</span></td><td class="date">2026-10-05</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P116</span></td><td>建筑材料咨询委员会共识决议<span class="en">Consensus Decisions from the Construction Materials Advisory Committee</span></td><td class="date">2025-09-10</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">F208</span></td><td>认可范围选择表——建筑材料检测实验室<span class="en">Scope of Accreditation Selection List - Construction Materials Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F211</span></td><td>认可范围选择表——岩土工程检测实验室<span class="en">Scope of Accreditation Selection List - Geotechnical Engineering Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F215</span></td><td>认可范围选择表——无损检测实验室<span class="en">Scope of Accreditation Selection List - Nondestructive Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F219</span></td><td>认可范围选择表——果岭材料检测实验室<span class="en">Scope of Accreditation Selection List - Putting Green Materials Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F262</span></td><td>认可范围选择表——A2LA 国防部高级地球物理分类<span class="en">Scope of Accreditation Selection List – A2LA DoD Advanced Geophysical Classification</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：P108（材料检测咨询委员会共识决议）归入「力学/材料与其他检测领域专项」组。</div>
+  </div>
+</section>
+
+<section class="block" id="g5">
+  <div class="section-head">
+    <div class="no">05</div>
+    <h2>电气与电磁检测专项</h2>
+    <span class="tag">Electrical / Electromagnetic · 5 份</span>
+  </div>
+  <p class="section-desc">电气检测实验室认可项目专用要求、电磁咨询委员会共识、电磁不确定度附录与电气检测范围指南。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R255</span></td><td>电气检测实验室认可项目专用要求<span class="en">Specific Requirements - Electrical Testing Laboratory Accreditation Program</span></td><td class="date">2025-10-28</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">P111</span></td><td>电磁咨询委员会技术共识决议<span class="en">Technical Consensus Decisions from the Electromagnetic Advisory Committee</span></td><td class="date">2023-03-28</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P103c</span></td><td>附录：电磁检测实验室不确定度评定政策<span class="en">Annex-Policy on Estimating Measurement Uncertainty for Electromagnetic Testing Labs</span></td><td class="date">2024-04-01</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">G115</span></td><td>电气检测实验室认可范围指南<span class="en">Guidance on Scopes of Accreditation for Electrical Testing Laboratories</span></td><td class="date">2025-02-19</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">F209</span></td><td>认可范围选择表——电气检测实验室<span class="en">Scope of Accreditation Selection List - Electrical Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：电学参数校准技术指南 G110、G128 归入「校准实验室专项」。</div>
+  </div>
+</section>
+
+<section class="block" id="g6">
+  <div class="section-head">
+    <div class="no">06</div>
+    <h2>法医科学专项</h2>
+    <span class="tag">Forensic Examination · 6 份</span>
+  </div>
+  <p class="section-desc">A2LA 法医检验认可项目（检测与校准）专用要求、马里兰州与得州附录、法医不确定度附录与范围选择表。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R221</span></td><td>法医检验认可项目（检测与校准）专用要求<span class="en">Specific Requirements - Forensic Examination Accreditation Program-Testing and Calibration</span></td><td class="date">2025-12-02</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R221a</span></td><td>附录 A：马里兰州持证法医设施专用要求<span class="en">Annex A – Specific Requirements for Forensic Facilities Licensed in Maryland</span></td><td class="date">2025-05-21</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R221b</span></td><td>附录 B：A2LA 得州法医科学委员会犯罪实验室认可项目专用要求<span class="en">Annex B - Specific Requirements - A2LA Texas Forensic Science Commission Crime Laboratory Accreditation Program</span></td><td class="date">2025-10-08</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">P103e</span></td><td>附录：法医合格评定机构不确定度评定政策<span class="en">Annex-Policy on Estimating Measurement Uncertainty for Forensic Conformity Assessment Bodies</span></td><td class="date">2020-11-12</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P115</span></td><td>法医检验咨询委员会技术共识决议<span class="en">Technical Consensus Decisions from the Forensic Examination Advisory Committee</span></td><td class="date">2021-02-01</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">F226</span></td><td>认可范围选择表——法医检测与校准实验室<span class="en">Scope of Accreditation Selection List - Forensic Testing and Calibration Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：R221 同时覆盖检测与校准活动；本组不含其他领域文件。</div>
+  </div>
+</section>
+
+<section class="block" id="g7">
+  <div class="section-head">
+    <div class="no">07</div>
+    <h2>医学 / 临床实验室专项（ISO 15189 / CLIA）</h2>
+    <span class="tag">Medical Testing · 4 份</span>
+  </div>
+  <p class="section-desc">满足 ISO 15189 与 CLIA 要求的医学检测实验室认可条件、能力验证要求、不确定度政策与关键人员矩阵。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R602</span></td><td>满足 ISO 15189 与 CLIA 要求的医学检测实验室认可条件<span class="en">Conditions for Accreditation for Medical Testing Laboratories Meeting ISO 15189 and CLIA Requirements</span></td><td class="date">2025-10-30</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R603</span></td><td>满足 ISO 15189 与 CLIA 要求的医学检测实验室能力验证通用要求<span class="en">General Requirements: Proficiency Testing for Medical Testing Laboratories Meeting the ISO 15189 and CLIA Requirements</span></td><td class="date">2025-10-24</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">P903</span></td><td>ISO 15189 检测实验室测量不确定度评定政策<span class="en">Policy on Estimating Uncertainty of Measurement for ISO 15189 Testing Labs</span></td><td class="date">2024-12-13</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">F918</span></td><td>ISO 15189 项目关键人员矩阵<span class="en">ISO 15189 Program Key Staff Matrix</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：本组为 A2LA R600 系列医学项目专用，与通用 R100 系列并行适用。</div>
+  </div>
+</section>
+
+<section class="block" id="g8">
+  <div class="section-head">
+    <div class="no">08</div>
+    <h2>生命科学 / 环境 / 化学 / 大麻检测专项</h2>
+    <span class="tag">Life Science / Env / Chem / Cannabis · 12 份</span>
+  </div>
+  <p class="section-desc">生命科学方法偏离与微生物不确定度指南、大麻/工业用大麻认可指南，及生物、化学、环境（含储罐/铅）、生物样本库等领域范围选择表。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">P103b</span></td><td>附录：生命科学检测实验室不确定度评定政策<span class="en">Annex-Policy on Estimating Measurement Uncertainty for Life Sciences Testing Labs</span></td><td class="date">2026-09-29</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">G122</span></td><td>生命科学检测实验室方法偏离指南<span class="en">Guidance on Method Modifications for Life Sciences Testing Laboratories</span></td><td class="date">2025-10-28</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G108</span></td><td>微生物计数方法不确定度评定指南<span class="en">Guidelines for Estimating Uncertainty for Microbiological Counting Methods</span></td><td class="date">2019-07-23</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G123</span></td><td>大麻与工业用大麻检测实验室认可指南<span class="en">Guidance for Accreditation of Cannabis and Hemp Testing Laboratories</span></td><td class="date">2025-02-19</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">F203</span></td><td>认可范围选择表——生物检测实验室<span class="en">Scope of Accreditation Selection List - Biological Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F205</span></td><td>认可范围选择表——化学检测实验室<span class="en">Scope of Accreditation Selection List - Chemistry Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F210</span></td><td>认可范围选择表——环境检测实验室<span class="en">Scope of Accreditation Selection List - Environmental Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F210a</span></td><td>认可范围选择表——肯塔基地下储罐检测实验室<span class="en">Scope of Accreditation Selection List - Kentucky Underground Storage Tank Testing Laboratories</span></td><td class="date">未公开（需登录）</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F210b</span></td><td>认可范围选择表——怀俄明储罐修复检测实验室<span class="en">Scope of Accreditation Selection List - Wyoming Storage Tank Remediation Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F213</span></td><td>认可范围选择表——环境铅检测实验室<span class="en">Scope of Accreditation Selection List - Environmental Lead Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F344</span></td><td>认可范围选择表——大麻与工业用大麻检测实验室<span class="en">Scope of Accreditation Selection List - Cannabis and Hemp Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F352</span></td><td>认可范围表——生物样本库（ISO 20387）<span class="en">Scope of Accreditation List - Biobank - ISO 20387</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：F210a 当前门户权限受限（需客户/合作方登录）；F352 生物样本库属 ISO 20387 特殊项目，按生物领域归入本组。</div>
+  </div>
+</section>
+
+<section class="block" id="g9">
+  <div class="section-head">
+    <div class="no">09</div>
+    <h2>力学 / 材料与其他检测领域专项</h2>
+    <span class="tag">Mechanical / Other Fields · 9 份</span>
+  </div>
+  <p class="section-desc">汽车与材料不确定度附录、材料检测咨询委员会共识，及声学振动、竞赛动物药物、热学、力学、可持续能源、现场抽样、ASTM D7036 等其余检测领域范围选择表。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">P103a</span></td><td>附录：汽车与材料检测实验室不确定度评定政策<span class="en">Annex Policy on Estimating Measurement Uncertainty for Automotive &amp; Materials Testing Labs</span></td><td class="date">2025-10-09</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">P108</span></td><td>材料检测咨询委员会技术共识决议<span class="en">Technical Consensus Decisions fromthe Materials Testing Advisory Committee</span></td><td class="date">2026-02-09</td><td><span class="series-badge s-POL">POL 政策</span></td></tr>
+<tr><td><span class="code">F201</span></td><td>认可范围选择表——声学/振动检测实验室<span class="en">Scope of Accreditation Selection List - Acoustics Vibration Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F202</span></td><td>认可范围选择表——竞赛动物药物检测实验室<span class="en">Scope of Accreditation Selection List - Competition Animal Drug Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F212</span></td><td>认可范围选择表——热学检测实验室<span class="en">Scope of Accreditation Selection List - Thermal Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F214</span></td><td>认可范围选择表——力学检测实验室<span class="en">Scope of Accreditation Selection List - Mechanical Testing Laboratories</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F229</span></td><td>认可范围选择表——可持续能源检测实验室<span class="en">Scope of Accreditation Selection List - Sustainable Energy Testing Laboratories</span></td><td class="date">未公开（需登录）</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F232</span></td><td>认可范围选择表——现场抽样与测量机构<span class="en">Scope of Accreditation Selection List - Field Sampling and Measurement Organizations</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F240</span></td><td>ASTM D7036 认可技术人员矩阵<span class="en">ASTM D7036 Technical Staff Matrix for Accreditation</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：F229 当前门户权限受限（需客户/合作方登录）；P103a 汽车与材料附录兼服务于力学/材料类检测实验室。</div>
+  </div>
+</section>
+
+<section class="block" id="g10">
+  <div class="section-head">
+    <div class="no">10</div>
+    <h2>特定法规项目与其他合格评定机构专项</h2>
+    <span class="tag">Regulatory Programs / Other CABs · 10 份</span>
+  </div>
+  <p class="section-desc">FedRAMP、州法制计量、特殊检验机构（ISO/IEC 17020）、电信认证机构、CPSC 注册实验室、能力验证提供者（ISO/IEC 17043）与标准物质生产者（ISO 17034）等专项项目文件。</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>文件编号</th><th>文件名称</th><th>版本 / 日期</th><th>类型</th></tr></thead>
+      <tbody>
+<tr><td><span class="code">R262</span></td><td>州法制计量认可项目专用要求<span class="en">Specific Requirements - State Legal Metrology Recognition Program</span></td><td class="date">2025-10-28</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R310</span></td><td>特殊检验机构（检验机构）认可项目专用要求<span class="en">Specific Requirements - Special Inspection Agencies Inspection Body Accreditation Program</span></td><td class="date">2026-07-30</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">R311</span></td><td>联邦风险与授权管理计划（FedRAMP）专用要求<span class="en">Specific Requirements - Federal Risk and Authorization Management Program</span></td><td class="date">未标注</td><td><span class="series-badge s-REQ">REQ 要求</span></td></tr>
+<tr><td><span class="code">G106</span></td><td>电信认证机构认可范围指南<span class="en">Guidance on Scopes of Accreditation for Telecommunication Certification Bodies</span></td><td class="date">2025-04-21</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G117</span></td><td>美国消费品安全委员会注册检测实验室认可范围指南<span class="en">Guidance on Scopes of Accreditation for Testing Laboratories Registered with the US Consumer Product Safety Commission</span></td><td class="date">2025-03-31</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">G150</span></td><td>检验机构认可范围指南<span class="en">Guidance on Scopes of Accreditation for Inspection Bodies</span></td><td class="date">未标注</td><td><span class="series-badge s-GUIDE">GUIDE 指南</span></td></tr>
+<tr><td><span class="code">F327</span></td><td>认可范围选择表——ISO/IEC 17043 能力验证提供者<span class="en">Scope of Accreditation Selection List - ISO-IEC 17043 Proficiency Testing Providers</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F336</span></td><td>认可范围选择表——ISO 17034 标准物质生产者<span class="en">Reference Material Producer Accreditation Program - ISO 17034 - Scope of Accreditation Selection List</span></td><td class="date">未标注</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F337</span></td><td>FedRAMP 事后报告表<span class="en">FedRAMP After Action Report Form</span></td><td class="date">在线表单</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+<tr><td><span class="code">F338</span></td><td>计划 CSP 评价表<span class="en">Program CSP Evaluation Form</span></td><td class="date">在线表单</td><td><span class="series-badge s-FORM">FORM 表格</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">跨领域说明：本组文件均对应 A2LA 官网真实存在的专项项目（FedRAMP / State Legal Metrology / Special Inspection Agencies / Telecommunication CB / CPSC / PT Providers / RMP），不属通用检测领域。</div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>数据来源</h3>
+      <p>本分类清单与全量分册《A2LA实验室认可文件清单.html》同源，依据 A2LA 官方公开文件门户（https://portal.a2la.org/documents/）于 2026-10-19 抓取整理；共覆盖 99 份现行公开文件，分组依据官网文件标题中真实存在的认可项目、咨询委员会与文件系列名称。各文件官网链接见对应全量分册。所有文件以 A2LA 官网现行版本为准。</p>
+    </div>
+    <div>
+      <h3>使用提示</h3>
+      <p>A2LA 官网按文件类型（Organization / Information / Policies / Requirements / Guidance / Forms）分区，无行业细分体系；本清单「通用 + 专项」归组为便于行业查阅的二次整理。已废止/被替代版本不列入；R261（EMLAP）等需索取得的受控文件不在公开清单之列。</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

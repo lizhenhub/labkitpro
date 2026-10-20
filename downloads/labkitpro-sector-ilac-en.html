@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILAC Mutual Recognition Documents · By-Sector Classification (International Laboratory Accreditation Cooperation) · LabKitPro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a4a'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EIL%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --brand-900:#0a1f38; --brand-800:#0f2a4a; --brand-700:#143a63;
+  --brand-500:#1e4d8b; --brand-300:#4a7bb5; --brand-100:#e7eef6;
+  --accent:#f5a623; --accent-700:#c9851a;
+  --surface:#f5f7fa; --ink:#14202e; --muted:#5b6b7d; --line:#dde5ee;
+  --ok:#1f9d6b; --warn:#d98a1f; --bad:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  background:var(--surface);color:var(--ink);line-height:1.65;font-size:15px;
+}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ===== LabKitPro top dark-blue nav bar (official: brand-800 / 60px / sticky) ===== */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--brand-800);
+  border-bottom:1px solid #ffffff14;
+}
+.site-nav .bar{
+  display:flex;align-items:center;gap:16px;height:60px;
+  max-width:1180px;margin:0 auto;padding:0 20px;
+}
+.logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:.2px;text-decoration:none;white-space:nowrap;}
+.logo span{color:var(--accent);}
+.menu{
+  display:flex;align-items:center;gap:22px;margin-left:auto;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-size:14.5px;color:#cdd9e6;font-weight:500;text-decoration:none;transition:color .15s;white-space:nowrap;}
+.menu a:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn-free{
+  display:inline-flex;align-items:center;background:var(--accent);color:#1a1205;
+  font-size:14px;font-weight:700;border-radius:8px;padding:8px 16px;
+  text-decoration:none;transition:.2s;white-space:nowrap;
+}
+.btn-free:hover{background:var(--accent-700);color:#fff;}
+
+/* ===== Gradient hero (official: brand-900 → brand-700 → brand-500) ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 60%,var(--brand-500) 100%);
+  color:#fff;padding:52px 0 58px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);}
+header.hero::before{content:"";position:absolute;right:90px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero .kicker{
+  display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent);
+  border:1px solid rgba(245,166,35,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.3;margin-bottom:12px;}
+.hero p{font-size:15.5px;color:#cdd9e6;max-width:880px;}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 28px;font-size:13px;color:#9fb4c9;}
+.hero .meta b{color:#fff;font-weight:600;}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{background:#fff;border-radius:14px;padding:18px 16px;box-shadow:0 14px 34px rgba(10,31,56,.22);min-width:0;}
+.stat .num{font-size:26px;font-weight:800;color:var(--brand-800);line-height:1.1;}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word;}
+
+/* ===== Table of contents (section anchor pills) ===== */
+nav.toc{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin:-28px auto 30px;padding:16px 20px;position:relative;z-index:5;
+  box-shadow:0 8px 22px rgba(10,31,56,.07);
+}
+nav.toc h2{font-size:13.5px;color:var(--brand-800);margin-bottom:10px;letter-spacing:1px;}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 6px;}
+nav.toc a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.2s;
+}
+nav.toc a:hover{color:#fff;background:var(--brand-500);border-color:var(--brand-500);}
+
+/* ===== Key-point callout (official warm-paper note: #fff8ec + accent edge) ===== */
+.callout{
+  background:#fff8ec;border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+  border-radius:10px;padding:14px 18px;margin:0 0 22px;color:#6b5320;font-size:13.5px;
+}
+.callout b{color:#5a3d05;}
+
+/* ===== Sections ===== */
+section.block{margin:34px 0;}
+section[id]{scroll-margin-top:72px;}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.section-head .no{
+  flex:0 0 auto;width:42px;height:42px;border-radius:9px;background:var(--brand-800);color:#fff;
+  font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;padding:2px;
+}
+.section-head h2{font-size:19px;color:var(--brand-800);}
+.section-head .tag{
+  font-size:12px;font-weight:600;color:var(--accent-700);background:#fdf1dc;
+  padding:3px 10px;border-radius:999px;border:1px solid #f0d9b8;
+}
+.section-desc{color:var(--muted);font-size:13.5px;margin:0 0 16px 56px;}
+
+/* ===== Tables ===== */
+td .en{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+.table-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(10,31,56,.05);
+}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+colgroup col.c-no{width:18%;}
+colgroup col.c-name{width:50%;}
+colgroup col.c-date{width:17%;}
+colgroup col.c-series{width:15%;}
+thead th{
+  background:var(--brand-100);color:var(--brand-700);font-size:13px;font-weight:600;
+  text-align:left;padding:11px 14px;border-bottom:2px solid var(--line);
+}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;}
+tbody tr:nth-child(even){background:#fafbfe;}
+tbody tr:hover{background:var(--brand-100);}
+td .code{font-weight:700;color:var(--brand-500);font-size:13.5px;}
+td .cn{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+td .date{white-space:nowrap;color:var(--muted);font-size:13px;}
+.series-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:.5px;margin:2px 0;}
+.s-REQ{background:#e6f4ec;color:var(--ok);border:1px solid #b9dfca;}
+.s-POL{background:var(--brand-100);color:var(--brand-500);border:1px solid #cdd9e6;}
+.s-GUIDE{background:#eef0f5;color:var(--muted);border:1px solid var(--line);}
+.s-FORM{background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;}
+.s-CHK{background:#f3e8f7;color:#7a3f9e;border:1px solid #e0c8ee;}
+.s-GEN{background:var(--brand-100);color:var(--brand-700);border:1px solid #cdd9e6;}
+.badge-new{
+  display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-left:6px;
+  background:#fdf1dc;color:var(--accent-700);border:1px solid #f0d9b8;
+}
+.note-line{color:var(--muted);font-size:12.8px;padding:12px 16px;background:#fbfcfe;border-top:1px solid var(--line);}
+
+/* ===== Footer (official brand-900) ===== */
+footer{background:var(--brand-900);color:#aebfd0;margin-top:50px;padding:30px 0 34px;font-size:13px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;}
+footer .wrap>div{min-width:0;flex:1 1 280px;}
+footer h3{color:#fff;font-size:15px;margin-bottom:8px;}
+footer p{max-width:640px;line-height:1.8;color:#aebfd0;overflow-wrap:break-word;word-break:break-all;}
+footer a{color:#cdd9e6;text-decoration:none;}
+footer a:hover{color:#fff;}
+
+@media (max-width:860px){
+  .menu{display:none;}
+  .site-nav .bar{justify-content:space-between;}
+  header.hero{padding:38px 0 48px;}
+  header.hero h1{font-size:22px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .section-head h2{font-size:17px;}
+  .section-head{flex-wrap:wrap;}
+  .section-head .tag{white-space:normal;line-height:1.6;}
+  .section-desc{margin-left:0;}
+  .table-card{overflow-x:auto;}
+  table{min-width:760px;}
+}
+</style>
+</head>
+<body>
+<header class="site-nav">
+  <div class="bar">
+    <a class="logo" href="https://labkitpro.com/">LabKit<span>Pro</span></a>
+    <nav class="menu">
+      <a href="https://labkitpro.com/" target="_blank" rel="noopener">Home</a>
+      <a href="https://labkitpro.com/diagnosis" target="_blank" rel="noopener">Diagnosis</a>
+      <a href="https://labkitpro.com/templates" target="_blank" rel="noopener">Templates</a>
+      <a href="https://labkitpro.com/compliance-review" target="_blank" rel="noopener">Compliance Review</a>
+      <a href="https://labkitpro.com/uncertainty" target="_blank" rel="noopener">Uncertainty</a>
+      <a href="https://labkitpro.com/academy" target="_blank" rel="noopener">Academy</a>
+      <a href="https://labkitpro.com/pricing" target="_blank" rel="noopener">Pricing</a>
+      <a href="https://labkitpro.com/faq" target="_blank" rel="noopener">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn-free" href="https://labkitpro.com/" target="_blank" rel="noopener">Free Diagnosis</a>
+    </div>
+  </div>
+</header>
+
+
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">ILAC · International Laboratory Accreditation Cooperation · By-Sector Classification</span>
+    <h1>ILAC Mutual Recognition Documents · By-Sector Classification</h1>
+    <p>This list groups the current ILAC public documents by “official document series + guidance theme + field-specific guidance”, corresponding item by item and identical in count to the full-list volume “ILAC Mutual Recognition Documents (Full List)”. Note: ILAC is the coordination organisation for international mutual recognition arrangements; its document system centres on MRA policies, accreditation rules and general guidance, and has no field-segmentation by testing industry (e.g. food, environment, construction). Only a small number of field-specific guides exist within the G series (racing / anti-doping, forensic science, medical, inspection bodies). Group names and assignments here map directly to the official series columns and document titles — no field categories are invented.</p>
+    <div class="meta"><span>Source: ilac.org official publication series columns and master list</span><span>Verified: 2026-10-19</span><span>Coverage: all 63 current entries in the full-list volume</span></div>
+    <div class="stats">
+      <div class="stat"><div class="num">7</div><div class="lbl">Groups</div></div>
+      <div class="stat"><div class="num">63</div><div class="lbl">Current entries (total)</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Field-specific guidance (G-series)</div></div>
+      <div class="stat"><div class="num">28</div><div class="lbl">Publicity & outreach (B-series)</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="links">
+    <a href="#sec-p">1 · MRA Arrangements & Policy (P series)</a>
+    <a href="#sec-r">2 · Organisational Rules & Governance (R series)</a>
+    <a href="#sec-a">3 · Peer-Assessment Joint Documents (A series)</a>
+    <a href="#sec-gg">4 · General Accreditation Guidance (G series · general themes)</a>
+    <a href="#sec-gs">5 · Field-Specific Guidance (G series · special)</a>
+    <a href="#sec-wip">6 · Documents in Development</a>
+    <a href="#sec-b">7 · Publicity & Outreach (B series)</a>
+  </div>
+</nav>
+
+<div class="callout">Grouping note: the ILAC official website organises documents only by the five series P (policy), G (guidance), R (rules), A (IAF/ILAC joint assessment) and B (publicity) — it does not segment by testing industry. This list follows that structure: P / R / A / B each form one group; the G series is split into “general themes” and “field-specific” — the field-specific group contains only G7 (racing laboratories), G19 (forensic science), G26 (medical laboratories), G27/G28 (inspection bodies) and G29 (anti-doping laboratories), six documents in total; the remaining G3/G8/G17/G18/G21/G24 are general guidance. Each current document is assigned to one primary group; official links for each document are in the companion full-list volume.</div>
+
+
+<section class="block" id="sec-p">
+  <div class="section-head">
+    <div class="no">1</div>
+    <h2>Mutual Recognition Arrangements & Policy (P series)</h2>
+    <span class="tag">Cross-industry · MRA core</span>
+  </div>
+  <p class="section-desc">ILAC MRA policy and procedural documents, applicable to all accreditation bodies that have signed the MRA and their accredited testing / calibration / inspection bodies, regardless of industry.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC P4:06/2022</td><td>ILAC Mutual Recognition Arrangement: Policy and Management<span class="cn">《ILAC 互认安排：政策与管理》</span></td><td class="date">2022-06</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P5:11/2023</td><td>ILAC Mutual Recognition Arrangement: Scope and Obligations<span class="cn">《ILAC 互认安排：范围与义务》</span></td><td class="date">2023-11</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P8:11/2023</td><td>Supplementary Requirements for the Use of Accreditation Symbols and for Claims of Accreditation Status by Accredited CABs<span class="cn">《认可标志使用与获认可机构认可状态声明的补充要求》</span></td><td class="date">2023-11</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P9:01/2024</td><td>ILAC Policy for Proficiency Testing and/or Interlaboratory Comparisons<span class="cn">《能力验证及其他实验室间比对政策》</span></td><td class="date">2024-01</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P10:07/2020</td><td>ILAC Policy on Metrological Traceability of Measurement Results<span class="cn">《测量结果计量溯源性政策》</span></td><td class="date">2020-07 / 2021-07 in effect</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P12:04/2009</td><td>Harmonisation of ILAC Work with the Regions<span class="cn">《ILAC 工作与各区域合作组织的协调》</span></td><td class="date">2009-04</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P14:09/2020</td><td>ILAC Policy for Measurement Uncertainty in Calibration<span class="cn">《校准中测量不确定度政策》</span></td><td class="date">2020-09 / 2021-03 in effect</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P15:05/2020</td><td>Application of ISO/IEC 17020:2012 for the Accreditation of Inspection Bodies<span class="cn">《检验机构认可中 ISO/IEC 17020:2012 的应用》</span></td><td class="date">2020-05 / 2021-11 in effect</td><td><span class="series-badge s-POL">P · Policy</span></td></tr>
+        <tr><td class="code">ILAC P15 Revision Note</td><td>ILAC P15 Revision Presentation<span class="cn">《ILAC P15 修订介绍（演示材料）》</span></td><td class="date">2020 companion</td><td><span class="series-badge s-GL">Supporting Material</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group contains all 9 entries of part 1 of the full-list volume. P15 also applies to inspection bodies (see G27/G28 in group 5).</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-r">
+  <div class="section-head">
+    <div class="no">2</div>
+    <h2>Organisational Rules & Governance (R series)</h2>
+    <span class="tag">Governance rules · for AB management</span>
+  </div>
+  <p class="section-desc">Articles of association, by-laws, symbol rules and operating procedures for ILAC as an association — organisational governance documents unrelated to any specific testing industry.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC R1:12/2021</td><td>Management of ILAC Documents<span class="cn">《ILAC 文件管理》</span></td><td class="date">2021-12</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R2A:11/2019</td><td>ILAC Rules: Articles of Association<span class="cn">《ILAC 规则：协会章程》</span></td><td class="date">2019-11</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R2B:11/2019</td><td>ILAC Rules: Bylaws<span class="cn">《ILAC 规则：内部细则》</span></td><td class="date">2019-11</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R3:12/2014</td><td>ILAC Strategic Plan 2015-2020<span class="cn">《ILAC 战略规划 2015–2020》</span></td><td class="date">2014-12 / 2020-12 extended</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">Supplement 1 to R3</td><td>Supplement 1 to ILAC R3:12/2014<span class="cn">《ILAC R3:12/2014 补充 1》</span></td><td class="date">companion to R3</td><td><span class="series-badge s-GL">Supporting Material</span></td></tr>
+        <tr><td class="code">ILAC R4:10/2016</td><td>Use of the ILAC Logo and Tagline<span class="cn">《ILAC 标志与口号使用规则》</span></td><td class="date">2016-10</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R5:04/2016</td><td>ILAC Procedure for Handling Complaints<span class="cn">《ILAC 投诉处理程序》</span></td><td class="date">2016-04</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R6:11/2023</td><td>Structure of the ILAC MRA and Procedure for Expansion of the Scope of the ILAC Arrangement<span class="cn">《ILAC 互认安排结构与安排范围扩展程序》</span></td><td class="date">2023-11</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+        <tr><td class="code">ILAC R7:05/2015</td><td>Rules for the Use of the ILAC MRA Mark<span class="cn">《ILAC MRA 标志使用规则》</span></td><td class="date">2015-05</td><td><span class="series-badge s-RULE">R · Rules</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group contains all 9 entries of part 3 of the full-list volume.</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-a">
+  <div class="section-head">
+    <div class="no">3</div>
+    <h2>Peer-Assessment Joint Documents (A series)</h2>
+    <span class="tag">IAF/ILAC joint · AB peer assessment</span>
+  </div>
+  <p class="section-desc">Joint IAF/ILAC peer-assessment requirements and report templates for the multilateral mutual recognition arrangements, applicable to peer assessment of accreditation bodies (ABs) and regional organisations; unrelated to testing industries.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">IAF/ILAC A1:06/2023</td><td>Requirements and Procedures for Evaluation of a Regional Group<span class="cn">《区域组织同行评审要求与程序》</span></td><td class="date">2023-06</td><td><span class="series-badge s-ASM">A · Joint Assessment</span></td></tr>
+        <tr><td class="code">IAF/ILAC A2:09/2025</td><td>Requirements for Evaluation of an Accreditation Body<span class="cn">《认可机构同行评审要求》</span></td><td class="date">2025-09</td><td><span class="series-badge s-ASM">A · Joint Assessment</span></td></tr>
+        <tr><td class="code">IAF/ILAC A3:06/2023</td><td>Template report for the peer evaluation of an Accreditation Body based on ISO/IEC 17011:2017<span class="cn">《基于 ISO/IEC 17011:2017 的认可机构同行评审报告模板》</span></td><td class="date">2023-06</td><td><span class="series-badge s-ASM">A · Joint Assessment</span></td></tr>
+        <tr><td class="code">IAF/ILAC Joint Statement</td><td>Statement: Replacement of Assessments During the COVID-19 Pandemic<span class="cn">《新冠疫情期间替代评审安排声明》</span></td><td class="date">2021-03</td><td><span class="series-badge s-WIP">Provisional Statement</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group contains all 4 entries of part 4 of the full-list volume.</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-gg">
+  <div class="section-head">
+    <div class="no">4</div>
+    <h2>General Accreditation Guidance (G series · general themes)</h2>
+    <span class="tag">Cross-industry · uncertainty / scope / assessor training etc.</span>
+  </div>
+  <p class="section-desc">G-series explanatory guidance applicable to all accreditation fields: assessor training, decision rules, testing uncertainty, scope-of-accreditation description, cross-border cooperation and recalibration intervals.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G3:08/2020</td><td>Guidelines for Training Courses for Assessors Used by Accreditation Bodies<span class="cn">《认可机构评审员培训课程指南》</span></td><td class="date">2020-08</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+        <tr><td class="code">ILAC G8:09/2019</td><td>Guidelines on Decision Rules and Statements of Conformity<span class="cn">《判定规则与符合性声明指南》</span></td><td class="date">2019-09</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+        <tr><td class="code">ILAC G17:01/2021</td><td>ILAC Guidelines for Measurement Uncertainty in Testing<span class="cn">《检测中测量不确定度指南》</span></td><td class="date">2021-01</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+        <tr><td class="code">ILAC G18:01/2024</td><td>Guideline for describing Scopes of Accreditation<span class="cn">《认可能力范围描述指南》</span></td><td class="date">2024-01</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+        <tr><td class="code">ILAC G21:09/2012</td><td>Cross Frontier Accreditation - Principles for Cooperation<span class="cn">《跨境认可——合作原则》</span></td><td class="date">2012-09(under revision)</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+        <tr><td class="code">ILAC G24:2022</td><td>Guidelines for the determination of recalibration intervals of measuring equipment<span class="cn">《测量设备再校准间隔确定指南》</span></td><td class="date">2022</td><td><span class="series-badge s-GUIDE">G · General</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group contains 6 general-theme G-series documents; use together with P9 (PT policy), P10 (traceability policy) and P14 (calibration uncertainty policy).</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-gs">
+  <div class="section-head">
+    <div class="no">5</div>
+    <h2>Field-Specific Guidance (G series · special)</h2>
+    <span class="tag">The only field-segmented documents in the ILAC system</span>
+  </div>
+  <p class="section-desc">G-series guidance for specific accreditation fields — 6 documents: racing laboratories, forensic science, medical laboratories, inspection bodies (2), anti-doping laboratories. ILAC has no other industry-segmented documents.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G7:04/2021</td><td>Accreditation Requirements and Operating Criteria for Horseracing Laboratories<span class="cn">《赛马实验室认可要求与运行准则》</span></td><td class="date">2021-04</td><td><span class="series-badge s-SPEC">G · Racing Laboratories</span></td></tr>
+        <tr><td class="code">ILAC G19:06/2022</td><td>Modules in a Forensic Science Process<span class="cn">《法庭科学过程模块》</span></td><td class="date">2022-06</td><td><span class="series-badge s-SPEC">G · Forensic Science</span></td></tr>
+        <tr><td class="code">ILAC G26:11/2018</td><td>Guidance for the Implementation of a Medical Accreditation Scheme<span class="cn">《医学实验室认可制度in effect指南》</span></td><td class="date">2018-11</td><td><span class="series-badge s-SPEC">G · Medical Laboratories</span></td></tr>
+        <tr><td class="code">ILAC G27:07/2019</td><td>Guidance on measurements performed as part of an inspection process<span class="cn">《检验过程中测量活动指南》</span></td><td class="date">2019-07</td><td><span class="series-badge s-SPEC">G · Inspection Bodies</span></td></tr>
+        <tr><td class="code">ILAC G28:07/2018</td><td>Guideline for the Formulation of Scopes of Accreditation for Inspection Bodies<span class="cn">《检验机构认可能力范围编制指南》</span></td><td class="date">2018-07</td><td><span class="series-badge s-SPEC">G · Inspection Bodies</span></td></tr>
+        <tr><td class="code">ILAC G29:06/2020</td><td>Guidelines for harmonization of scopes of ISO/IEC 17025 accreditation of WADA anti-doping laboratories<span class="cn">《WADA 反兴奋剂实验室 ISO/IEC 17025 认可范围协调指南》</span></td><td class="date">2020-06（2021-04 editorial revision）</td><td><span class="series-badge s-SPEC">G · Anti-Doping</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: these 6 are all the field-specific documents in the ILAC system; the inspection-body field also has the policy document ILAC P15 (see group 1).</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-wip">
+  <div class="section-head">
+    <div class="no">6</div>
+    <h2>Documents in Development</h2>
+    <span class="tag">Proposed documents · not yet published</span>
+  </div>
+  <p class="section-desc">In-development documents listed under the “Proposed Documents” column of the archive site; once published they move into the corresponding series.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC G（Proposed）</td><td>Management of extraordinary events<span class="cn">《特殊事件管理指南》</span></td><td class="date">In development</td><td><span class="series-badge s-WIP">G · In Development</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: as of 2026-10-19 the proposed-documents column contains only this one entry.</div>
+  </div>
+</section>
+
+
+<section class="block" id="sec-b">
+  <div class="section-head">
+    <div class="no">7</div>
+    <h2>Publicity & Outreach (B series)</h2>
+    <span class="tag">Non-normative · outreach for laboratories / inspection bodies / regulators</span>
+  </div>
+  <p class="section-desc">ILAC and joint IAF/ILAC brochures, fact sheets and MRA annual reports / infographics covering laboratory accreditation, inspection-body accreditation, medical laboratories, reference material producers, biobanks, PT and regulator communication — not accreditation criteria.</p>
+  <div class="table-card">
+    <table>
+      <colgroup><col class="c-no"><col class="c-name"><col class="c-date"><col class="c-series"></colgroup>
+      <thead><tr><th>File No.</th><th>Document Title</th><th>Version / Date</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="code">ILAC B1:10/2015</td><td>Why Use an Accredited Laboratory?<span class="cn">《为何使用获认可的实验室？》</span></td><td class="date">2015-10</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B3:10/2015</td><td>How Does Using an Accredited Laboratory Benefit Government &amp; Regulators?<span class="cn">《使用获认可实验室如何惠及政府与监管机构？》</span></td><td class="date">2015-10</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B4:11/2015</td><td>The Advantages of Being an Accredited Laboratory<span class="cn">《成为获认可实验室的优势》</span></td><td class="date">2015-11</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B5:01/2018</td><td>Securing testing, measurement or calibration services – The difference between accreditation and certification<span class="cn">《采购检测/测量/校准服务——认可与认证的区别》</span></td><td class="date">2018-01</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B6:06/2019</td><td>Benefits for Laboratories Participating in Proficiency Testing Programs<span class="cn">《参加能力验证计划对实验室的益处》</span></td><td class="date">2019-06</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B7:10/2015</td><td>The ILAC Mutual Recognition Arrangement<span class="cn">《ILAC 互认安排》</span></td><td class="date">2015-10</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B9:02/2017</td><td>ISO 15189 Medical Laboratory Accreditation<span class="cn">《ISO 15189 医学实验室认可》</span></td><td class="date">2017-02</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B10:11/2012</td><td>Why use an accredited inspection body<span class="cn">《为何使用获认可的检验机构？》</span></td><td class="date">2012-11</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B11:02/2017</td><td>Why become an accredited inspection body<span class="cn">《为何成为获认可的检验机构？》</span></td><td class="date">2017-02</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B12:02/2017</td><td>How does accredited inspection benefit Government and Regulators<span class="cn">《获认可检验机构如何惠及政府与监管机构》</span></td><td class="date">2017-02</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B13:03/2020</td><td>Why become an Accredited Reference Material Producer<span class="cn">《为何成为获认可的标准物质生产者？》</span></td><td class="date">2020-03</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B14:01/2021</td><td>Accreditation for Biobanking Facilities (ISO 20387)<span class="cn">《生物样本库设施认可（ISO 20387）》</span></td><td class="date">2021-01</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC B15:03/2021</td><td>Specifying Accreditation for COVID-19 Testing<span class="cn">《在新冠检测中明确认可要求》</span></td><td class="date">2021-03</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC Factsheet 05/2023</td><td>Specifying Accreditation in Regulation (Factsheet)<span class="cn">《在法规中明确认可要求（情况说明）》</span></td><td class="date">2023-05</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC MRA Annual Report</td><td>ILAC MRA Annual Report 2024<span class="cn">《ILAC MRA annual报告 2024》</span></td><td class="date">2024 annual</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">ILAC MRA Infographic</td><td>ILAC MRA 2024 Infographic<span class="cn">《ILAC MRA 2024 Infographic》</span></td><td class="date">2024</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B1:02/2019</td><td>The route to signing the IAF or ILAC Arrangement<span class="cn">《签署 IAF 或 ILAC 互认安排的路径》</span></td><td class="date">2019-02</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B2:09/2023</td><td>How do I gain confidence in an Inspection Body?<span class="cn">《如何信任检验机构：ISO 9001 认证还是 ISO/IEC 17020 认可？》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B3:09/2023</td><td>Accreditation: Supporting safe food and clean drinking water<span class="cn">《认可：支撑食品安全与清洁饮用水》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B4:01/2018</td><td>Recommended guide for engaging with Government &amp; Regulators<span class="cn">《与政府及监管机构沟通指南》</span></td><td class="date">2018-01</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B5:09/2023</td><td>Accreditation: Facilitating world trade<span class="cn">《认可：促进世界贸易》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B6:09/2023</td><td>Accreditation: Delivering confidence in the provision of energy<span class="cn">《认可：为能源供给提供信心》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B7:03/2020</td><td>Accreditation: Supporting the Delivery of Health and Social Care<span class="cn">《认可：支持健康与社会照护服务交付》</span></td><td class="date">2020-03</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B8:09/2023</td><td>Accreditation: Delivering confidence in construction and the built environment<span class="cn">《认可：为建筑与建成环境提供信心》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B9:09/2023</td><td>Accreditation: A global tool to support Public Policy<span class="cn">《认可：支持公共政策的全球工具》</span></td><td class="date">2023-09</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B10:03/2020</td><td>Accreditation: Delivering a safer world<span class="cn">《认可：交付更安全的世界》</span></td><td class="date">2020-03</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">IAF/ILAC B11:03/2020</td><td>Accreditation: Adding value to supply chains<span class="cn">《认可：为供应链增值》</span></td><td class="date">2020-03</td><td><span class="series-badge s-PROMO">B · Joint Publicity</span></td></tr>
+        <tr><td class="code">Publicity (master entry)</td><td>Accredited Conformity Assessment<span class="cn">《获认可的合格评定（宣传资料包）》</span></td><td class="date">Continuously updated</td><td><span class="series-badge s-PROMO">B · Publicity</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note-line">Note: this group contains all 28 entries of part 6 of the full-list volume; these are non-normative materials and do not constitute accreditation criteria.</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Data source & notes</h3>
+      <p>This list is compiled from the ILAC archive site (ilac.org) public columns (verified 2026-10-19): the Publications List master list and the P/G/R/A/B / proposed / withdrawn series pages. ILAC has no industry-segmented document system; grouping follows the official series and guidance themes. Official links for each document are in the companion full-list volume “ILAC Mutual Recognition Documents (Full List)”.</p>
+    </div>
+    <div>
+      <h3>Usage note</h3>
+      <p>This classification has 63 entries, corresponding one-to-one and identical in count to the full-list volume; only current documents are listed — withdrawn / superseded versions (G9, G11, P11, P13, A4, A5, A6, R2, and the A1/A2 remote-assessment annexes) are covered by the corresponding note-lines in the full-list volume. Subject to the official current versions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
