@@ -141,6 +141,16 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://labkitpro.com/guides/iso-for-laboratories/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://labkitpro.com/guides/for-consultants/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://labkitpro.com/blog/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
