@@ -96,6 +96,11 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://labkitpro.com/pricing/cn/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://labkitpro.com/privacy/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
@@ -117,6 +122,11 @@
 </url>
 <url>
 <loc>https://labkitpro.com/terms/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://labkitpro.com/tools/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
