@@ -186,6 +186,11 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://labkitpro.com/blog/global-aci-explained/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://labkitpro.com/diagnosis/iso9001/2015/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>

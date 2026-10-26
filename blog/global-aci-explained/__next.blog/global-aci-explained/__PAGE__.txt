@@ -1,0 +1,199 @@
+1:"$Sreact.fragment"
+2:I[49989,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js","/_next/static/chunks/27ll_r2jyyuxe.js"],"default"]
+3:T2bc8,
+<a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
+<div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <span style="font-weight:700;font-size:15px;">Check your lab against ISO/IEC 17025:2017 — free readiness check, no signup.</span>
+  <a href="https://labkitpro.com/diagnosis/" style="background:#fff;color:#0f9d58;padding:8px 14px;border-radius:7px;text-decoration:none;font-weight:700;white-space:nowrap;">Run the check</a>
+</div>
+
+<p style="color:#5b6675;font-size:13px;margin:0 0 4px;">Lab Journal · October 26, 2026 · 7 min read</p>
+<h1 style="font-size:27px;margin:6px 0 6px;">IAF and ILAC are gone. Meet Global ACI.</h1>
+<p style="color:#5b6675;font-size:16px;margin-top:0;"><em>The biggest governance change in laboratory accreditation in decades — and most of the internet hasn't noticed yet.</em></p>
+
+<p>Last month we debunked a <a href="https://labkitpro.com/blog/iso-17025-2025-truth/" style="color:#2563eb;">fake ISO 17025:2025 edition</a> — a "change" that didn't exist but content farms kept selling. This post is the opposite case: <strong>a change that is completely real, verified against primary sources, that the vast majority of lab-related content still hasn't caught up with.</strong></p>
+
+<p>Here is the fact: <strong>since 1 January 2026, the International Accreditation Forum (IAF) and the International Laboratory Accreditation Cooperation (ILAC) no longer operate. Their work has been taken over by a single organisation: the Global Accreditation Cooperation Incorporated — Global ACI.</strong></p>
+
+<h2 style="font-size:19px;margin-top:24px;">What happened, in plain terms</h2>
+<p>For decades the world ran on two international accreditation cooperations: IAF (mainly management-system certification bodies) and ILAC (mainly testing and calibration laboratories). If you've ever seen the ILAC MRA symbol on a calibration certificate, that was ILAC's mutual-recognition arrangement at work — the reason a calibration certificate from a CNAS-accredited lab in China is accepted by a regulator in Germany.</p>
+<p>That two-body era is over:</p>
+<ul>
+<li><strong>December 2024:</strong> Global Accreditation Cooperation Incorporated is registered in New Zealand as a not-for-profit incorporated society.</li>
+<li><strong>1 January 2026:</strong> Global ACI commences full operations and assumes all former activities of IAF and ILAC. IAF and ILAC become non-operational.</li>
+<li><strong>14 April 2026:</strong> Global ACI unveils its acronym, logo and official website (global-aci.org).</li>
+<li><strong>Now:</strong> regulators and tender authorities are progressively updating their references from "IAF MLA / ILAC MRA" to the "Global ACI MRA".</li>
+</ul>
+<p>China is not watching from the sidelines: CNAS (China National Accreditation Service) is among the first members of Global ACI, which now counts around 190 member organisations, and Chinese experts have already been elected to leadership positions within its committees.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">One organisation, one MRA</h2>
+<p>The single most important structural change: <strong>the former ILAC MRA and IAF MLA have been subsumed into one Global ACI Multilateral Recognition Arrangement (MRA).</strong> Its scope covers everything the two old arrangements covered — and that list is worth knowing, because it shows how central this is to laboratory work:</p>
+<ul>
+<li>ISO/IEC 17025 — testing and calibration laboratories</li>
+<li>ISO 15189 — medical laboratories</li>
+<li>ISO/IEC 17020 — inspection bodies</li>
+<li>ISO/IEC 17021 — management-system certification bodies</li>
+<li>ISO/IEC 17024 — personnel certification bodies</li>
+<li>ISO/IEC 17065 — product, process and service certification bodies</li>
+<li>ISO/IEC 17029 — validation and verification bodies</li>
+<li>ISO/IEC 17043 — proficiency-testing providers</li>
+<li>ISO 17034 — reference-material producers</li>
+<li>ISO 20387 — biobanks</li>
+</ul>
+<p>The regional machinery you already know — AFRAC, APAC, ARAC, EA, IAAC, SADCA — continues to operate, and peer evaluation against ISO/IEC 17011 continues as before. One organisation and one MRA sit on top; the plumbing below is unchanged.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">What does NOT change (read this if you read nothing else)</h2>
+<p>If you run a laboratory, here is the part that prevents panic:</p>
+<ul>
+<li><strong>Your accreditation body is unchanged.</strong> CNAS, A2LA, UKAS, NVLAP, NATA, SAC-SINGLAS, NABL — same assessors, same criteria, same certificates.</li>
+<li><strong>Your existing accredited status does not lapse.</strong> Recognition of existing accredited results continues without interruption under the Global ACI MRA.</li>
+<li><strong>The ILAC MRA and IAF MLA marks remain valid during the transition.</strong> Global ACI has published transition procedures (MRA-006 and related guidance), and the anticipated end date for continued use of the old marks is <strong>1 January 2029 — or later if necessary</strong>. Certificates and reports bearing the ILAC MRA symbol issued today are not suddenly invalid.</li>
+<li><strong>Regulations and tenders referencing IAF MLA / ILAC MRA remain in force</strong> while they are progressively updated.</li>
+</ul>
+<p>In short: nothing about your day-to-day laboratory operations needs to change today. This is a governance-layer change, not a technical-requirements change. ISO/IEC 17025:2017 remains the current edition — that hasn't moved.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Why most websites still say "IAF"</h2>
+<p>Search for accreditation topics today and the overwhelming majority of articles, consultancies and even some accreditation-body legacy pages still say IAF and ILAC. Three reasons, none of them sinister:</p>
+<ol>
+<li><strong>Content lag.</strong> The merger only took operational effect this year, and the recognizable "Global ACI" brand only exists since April 2026. The long tail of compliance content updates slowly.</li>
+<li><strong>Transition wording.</strong> Because the old marks remain valid until around 2029, plenty of correct-but-stale text is still technically accurate about marks while being outdated about governance.</li>
+<li><strong>AI content farms don't track governance changes at all</strong> — the same machine that invented "ISO 17025:2025" has no idea IAF dissolved.</li>
+</ol>
+<p>For you, this is an opportunity in both directions: content that still cites "IAF" as a current organisation is now a small credibility red flag; content that correctly explains Global ACI — what changed, what didn't, and until when the old marks are valid — is immediately a cut above.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">What labs and consultants should actually do</h2>
+<ol>
+<li><strong>Do nothing dramatic to your quality system.</strong> No document overhaul is required by the merger itself. Follow your accreditation body's own transition announcements — they will tell you exactly when and how their mark usage changes.</li>
+<li><strong>Update how you talk about recognition.</strong> When your quality manual, supplier-audit questionnaires or tender responses describe international recognition, prefer "signatory to the Global ACI Multilateral Recognition Arrangement (Global ACI MRA)" over the old IAF MLA / ILAC MRA wording. Global ACI itself has published a model clause for exactly this.</li>
+<li><strong>Be ready for tender and regulatory language shifts.</strong> Over the next couple of years, procurement and regulatory documents will start referencing the Global ACI MRA. Labs that already know the terminology answer assessors and customers without missing a beat.</li>
+<li><strong>Watch the marks calendar.</strong> The old ILAC MRA / IAF MLA marks are expected to remain usable until 1 January 2029 at the earliest. When your accreditation body announces the switch to the Global ACI mark, update your report templates and letterheads then — not before.</li>
+<li><strong>Distrust anyone selling a "Global ACI transition package".</strong> There is no lab-level transition project here — no new clause numbers, no new deadline to comply with. A consultancy packaging this as an urgent migration is selling fear, same pattern as the fake 17025 edition.</li>
+</ol>
+
+<h2 style="font-size:19px;margin-top:24px;">How we handled it</h2>
+<p>We updated every trace of it on this site: our coverage descriptions, diagnosis criteria and document templates now reference the <strong>Global ACI MRA framework (formerly ILAC)</strong> and the <strong>Global ACI TECH document series</strong> (which continues the former ILAC P/G-series, e.g. the calibration uncertainty policy formerly known as ILAC P14 is now Global ACI TECH-1-009). If you generate documents here, they already speak the new language — and they keep citing the old names in parentheses where your assessors still expect to see them.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Check your lab against the real standard — free</h2>
+<p>If you want to turn awareness into readiness: our <strong>free readiness checker</strong> maps your lab against ISO/IEC 17025:2017 clause by clause — with the Global ACI general layer built in, plus CNAS, A2LA, UKAS, NVLAP, NATA, SINGLAS and NABL specifics on top. No signup; everything runs in your browser.</p>
+<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">Run the free check</a></strong> — and if you need documents drafted or reviewed to the same alignment, <a href="https://labkitpro.com/docgen/" style="color:#2563eb;">the document generator</a> and <a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">conformity review</a> speak Global ACI natively.</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:13px;">
+  <em>Fact-check appendix (verified 2026-10-26 against primary sources): Global ACI press release "Global Accreditation Cooperation Incorporated Launch" (global-aci.org) — full operations commenced 1 January 2026, replacing IAF and ILAC, launch of its own MRA; Global ACI regulator communication (May 2026) — IAF and ILAC non-operational since 1 January 2026, marks anticipated to remain in use until 1 January 2029 or later, model clause and MRA-006 transition procedure referenced; CNAS official introduction of Global ACI (cnas.org.cn) — merged from IAF and ILAC, registered in New Zealand December 2024, ~190 members including 126 MRA signatories; BIPM liaison page (bipm.org) — Global ACI assumed the roles of IAF and ILAC on 1 January 2026. Acronym and logo unveiled 14 April 2026 (global-aci.org). ISO/IEC 17025:2017 remains the current edition of the standard (see iso.org, standard 66912).</em>
+</p>
+<p style="color:#5b6675;">
+  <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See all plans</a> · Aligned to ISO/IEC 17025:2017 across the Global ACI general layer, CNAS, A2LA, NABL, UKAS, NVLAP, NATA &amp; SINGLAS.</p>
+4:T2730,
+<a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
+<div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <span style="font-weight:700;font-size:15px;">对照 ISO/IEC 17025:2017 自查实验室就绪度——免费、零注册。</span>
+  <a href="https://labkitpro.com/diagnosis/" style="background:#fff;color:#0f9d58;padding:8px 14px;border-radius:7px;text-decoration:none;font-weight:700;white-space:nowrap;">开始自查</a>
+</div>
+
+<p style="color:#5b6675;font-size:13px;margin:0 0 4px;">实验室笔记 · 2026年10月26日 · 约 7 分钟读完</p>
+<h1 style="font-size:27px;margin:6px 0 6px;">IAF 和 ILAC 已成历史，接棒的是 Global ACI</h1>
+<p style="color:#5b6675;font-size:16px;margin-top:0;"><em>实验室认可体系几十年一遇的治理层巨变——而绝大多数内容还没反应过来。</em></p>
+
+<p>上个月我们刚辟过一次谣：<a href="https://labkitpro.com/blog/iso-17025-2025-truth/" style="color:#2563eb;">「ISO 17025:2025」根本不存在</a>——一个被内容农场反复售卖的「假变化」。这篇正好相反：<strong>一个完全真实、经原始信源核实、但绝大多数内容还没跟上的大变化。</strong></p>
+
+<p>事实只有一句话：<strong>自 2026 年 1 月 1 日起，国际认可论坛（IAF）与国际实验室认可合作组织（ILAC）已停止运作，其全部职能由单一组织承接——全球认可合作组织（Global Accreditation Cooperation Incorporated，简称 Global ACI）。</strong></p>
+
+<h2 style="font-size:19px;margin-top:24px;">发生了什么，用大白话讲</h2>
+<p>几十年来，全球认可体系靠两个国际合作组织运转：IAF（偏管理体系认证机构）和 ILAC（偏检测和校准实验室）。如果你在校准证书上见过 ILAC MRA 标志，那就是 ILAC 互认协议在起作用——它是中国 CNAS 认可实验室的校准证书能被德国监管机构接受的原因。</p>
+<p>这个「两驾马车」时代结束了：</p>
+<ul>
+<li><strong>2024 年 12 月：</strong>Global ACI 在新西兰注册为非营利社团法人。</li>
+<li><strong>2026 年 1 月 1 日：</strong>Global ACI 正式投入运行，承接 IAF 和 ILAC 的全部职能。IAF 与 ILAC 同日起停止运作。</li>
+<li><strong>2026 年 4 月 14 日：</strong>Global ACI 发布正式简称、新标识与官方网站（global-aci.org）。</li>
+<li><strong>现在：</strong>各国监管机构和招投标主管部门正陆续把文件引用从「IAF MLA / ILAC MRA」切换为「Global ACI MRA」。</li>
+</ul>
+<p>中国不是旁观者：CNAS（中国合格评定国家认可委员会）是 Global ACI 首批成员之一——该组织现有约 190 个成员——中国专家已在其委员会中当选领导职务（2026 年布拉格成员大会上，CNAS 专家就任发展支持委员会副主席）。</p>
+
+<h2 style="font-size:19px;margin-top:24px;">一个组织、一套互认协议</h2>
+<p>最重要的结构性变化只有一条：<strong>原来的 ILAC MRA 和 IAF MLA 已并入 Global ACI 的多边相互承认协议（Global ACI MRA）。</strong>它的覆盖范围等于两个旧协议之和——这份清单值得收藏，因为它直接关系实验室的日常工作：</p>
+<ul>
+<li>ISO/IEC 17025 — 检测和校准实验室</li>
+<li>ISO 15189 — 医学实验室</li>
+<li>ISO/IEC 17020 — 检验机构</li>
+<li>ISO/IEC 17021 — 管理体系认证机构</li>
+<li>ISO/IEC 17024 — 人员认证机构</li>
+<li>ISO/IEC 17065 — 产品、过程和服务认证机构</li>
+<li>ISO/IEC 17029 — 审定与核查机构</li>
+<li>ISO/IEC 17043 — 能力验证提供者</li>
+<li>ISO 17034 — 标准物质生产者</li>
+<li>ISO 20387 — 生物样本库</li>
+</ul>
+<p>你熟悉的区域机制照常运转——AFRAC、APAC、ARAC、EA、IAAC、SADCA 继续运作，基于 ISO/IEC 17011 的同行评审也一如既往。上面换成了一顶统一的帽子；下面的管道一根没动。</p>
+
+<h2 style="font-size:19px;margin-top:24px;">什么没变（只读一段的话就读这段）</h2>
+<p>如果你在经营或管理实验室，下面这些能让你不必慌：</p>
+<ul>
+<li><strong>你的认可机构没有变。</strong>CNAS、A2LA、UKAS、NVLAP、NATA、SAC-SINGLAS、NABL——评审员、准则、证书，全都照旧。</li>
+<li><strong>你的既有认可状态不会失效。</strong>既有认可结果的承认在 Global ACI MRA 下不间断延续。</li>
+<li><strong>ILAC MRA 和 IAF MLA 标志在过渡期内继续有效。</strong>Global ACI 已发布过渡程序（MRA-006 等），旧标志预计可继续使用至 <strong>2029 年 1 月 1 日——如有必要还可能延长</strong>。今天带 ILAC MRA 标志出具的证书和报告，不会突然作废。</li>
+<li><strong>引用 IAF MLA / ILAC MRA 的法规与标书继续有效</strong>，会在过渡期内逐步更新。</li>
+</ul>
+<p>一句话：实验室的日常运作今天不需要任何改变。这是治理层的变化，不是技术要求的变化。ISO/IEC 17025:2017 仍是现行版本——这一点纹丝未动。</p>
+
+<h2 style="font-size:19px;margin-top:24px;">为什么网上还在说「IAF」</h2>
+<p>今天去搜认可相关话题，绝大多数文章、咨询机构甚至一些认可机构的旧页面仍写着 IAF 和 ILAC。三个原因，都不算阴谋：</p>
+<ol>
+<li><strong>内容滞后。</strong>合并今年才正式生效，可识别的「Global ACI」品牌 2026 年 4 月才存在。合规内容的更新长尾一向很慢。</li>
+<li><strong>过渡期措辞。</strong>旧标志约 2029 年前仍有效，所以很多「正确但过时」的文字在标志问题上技术上没错，只是在治理结构上已经过时。</li>
+<li><strong>AI 内容农场根本不追踪治理层变化</strong>——能编出「ISO 17025:2025」的那套机器，根本不知道 IAF 已经解散。</li>
+</ol>
+<p>对你来说，这是双向的机会：还在把「IAF」当现行机构引用的内容，如今是一个小的专业度减分项；能正确讲清 Global ACI——什么变了、什么没变、旧标志用到何时——的内容，立刻高人一档。</p>
+
+<h2 style="font-size:19px;margin-top:24px;">实验室和咨询师现在该做什么</h2>
+<ol>
+<li><strong>质量体系不用大动。</strong>合并本身不要求任何文件大改。盯住你自己认可机构的过渡公告——它会在恰当时机告诉你标志和引用怎么切换。</li>
+<li><strong>更新你描述国际承认的说法。</strong>质量手册、供应商审核问卷、投标文件里描述国际承认时，优先写「Global ACI 多边相互承认协议（Global ACI MRA）签署方」，替代旧的 IAF MLA / ILAC MRA 措辞。Global ACI 官方已发布了可直接套用的示范条款。</li>
+<li><strong>预备招投标与监管措辞的切换。</strong>未来一两年，采购与监管文件会开始引用 Global ACI MRA。提前弄懂术语的实验室，面对评审员和客户提问时不慌。</li>
+<li><strong>盯紧标志切换时间表。</strong>旧 ILAC MRA / IAF MLA 标志预计最早用到 2029 年 1 月 1 日。等你的认可机构宣布切换 Global ACI 新标志时，再同步更新报告模板和抬头——不必抢跑。</li>
+<li><strong>警惕「Global ACI 转版包」。</strong>实验室层面不存在任何转版项目——没有新条款号，没有新的合规截止日。把这件事包装成紧急迁移来卖的咨询，和「17025 新版」骗局是同一个套路。</li>
+</ol>
+
+<h2 style="font-size:19px;margin-top:24px;">我们是怎么处理的</h2>
+<p>本站已全面完成口径切换：覆盖说明、诊断准则与文档模板均改为引用 <strong>Global ACI MRA 框架（原 ILAC）</strong>与 <strong>Global ACI TECH 文件系列</strong>（承接原 ILAC P/G 系列——例如原 ILAC P14 校准不确定度政策，现为 Global ACI TECH-1-009）。在这里生成的文件说的已经是新语言——同时在评审员仍习惯看到旧名称的地方，以括号保留旧称。</p>
+
+<h2 style="font-size:19px;margin-top:24px;">对照真实标准自查实验室——免费</h2>
+<p>想把「知道」变成「就绪」：我们的<strong>免费就绪度自查</strong>逐条款对照 ISO/IEC 17025:2017 评估你的实验室——内置 Global ACI 通用层，其上叠加 CNAS、A2LA、UKAS、NVLAP、NATA、SINGLAS、NABL 专项要求。零注册，全部在浏览器本地运行。</p>
+<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">开始免费自查</a></strong>——若需按同一口径起草或审查文件，<a href="https://labkitpro.com/docgen/" style="color:#2563eb;">文档生成器</a>与<a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">合规性审查</a>原生支持 Global ACI 口径。</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:13px;">
+  <em>核查附录（2026-10-26 对照原始信源核实）：Global ACI 官方新闻稿（global-aci.org）——2026-01-01 起全面运行、取代 IAF 与 ILAC、启用自有 MRA；Global ACI 致监管机构函（2026-05）——IAF 与 ILAC 自 2026-01-01 停止运作，旧标志预计可用至 2029-01-01 或更晚，附示范条款与 MRA-006 过渡程序；CNAS 官网 Global ACI 简介——由 IAF 与 ILAC 合并成立、2024 年 12 月新西兰注册、成员约 190 个（含互认协议签署机构 126 个）；BIPM 联络页（bipm.org）——Global ACI 于 2026-01-01 承接 IAF 与 ILAC 职能。简称与标识 2026-04-14 发布。ISO/IEC 17025:2017 仍为现行版本（见 iso.org，标准 66912）。</em>
+</p>
+<p style="color:#5b6675;">
+  <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">查看全部方案</a> · 对齐 ISO/IEC 17025:2017——Global ACI 通用层 + CNAS、A2LA、NABL、UKAS、NVLAP、NATA、SINGLAS。</p>
+8:X
+d:X
+d:C
+0:{"buildId":"_LGuVyNYPYPAInbhv3_G9","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"en":{"title":"IAF and ILAC are gone: Global ACI explained for laboratories | LabKitPro","desc":"Since 1 January 2026, IAF and ILAC have been replaced by Global ACI — one organisation, one MRA. What actually changed, what didn't, how long the ILAC MRA mark stays valid, and what labs should do now.","jsonld":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"IAF and ILAC are gone: Global ACI explained for laboratories\",\"description\":\"Since 1 January 2026, IAF and ILAC have been replaced by Global ACI — one organisation, one MRA. What changed, what didn't, how long the ILAC MRA mark stays valid, and what labs should do.\",\"datePublished\":\"2026-10-26\",\"author\":{\"@type\":\"Organization\",\"name\":\"LabKitPro\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"LabKitPro\"}}","bodyStyle":"font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;","bodyInner":"$3"},"zh":{"title":"IAF 和 ILAC 已成历史：一文读懂 Global ACI | LabKitPro","desc":"2026年1月1日起，IAF 与 ILAC 已被 Global ACI（全球认可合作组织）取代——一个组织、一套互认协议。什么变了、什么没变、ILAC MRA 标志还能用多久，实验室现在该做什么。","jsonld":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"IAF 和 ILAC 已成历史：一文读懂 Global ACI\",\"description\":\"2026年1月1日起，IAF 与 ILAC 已被 Global ACI 取代——一个组织、一套互认协议。什么变了、什么没变、旧标志还能用多久，实验室现在该做什么。\",\"datePublished\":\"2026-10-26\",\"author\":{\"@type\":\"Organization\",\"name\":\"LabKitPro\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"LabKitPro\"}}","bodyStyle":"font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;","bodyInner":"$4"}}],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":"$d"},{"rsc":"$Le","isPartial":"$@f","staleTime":"$8","varyParams":"$d"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+14:I[97367,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[97367,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"ViewportBoundary"]
+18:I[97367,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"MetadataBoundary"]
+19:I[27201,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"IconMark"]
+1a:I[39756,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"default"]
+1b:I[37457,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"default"]
+1c:I[7761,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"LangProvider"]
+1d:I[92510,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"LabContextProvider"]
+1e:I[32543,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"MsContextProvider"]
+1f:I[42364,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"default"]
+20:I[93807,["/_next/static/chunks/38bii83ljix1s.js","/_next/static/chunks/3gybmeu-xt_yz.js","/_next/static/chunks/2079v5bl59d05.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/13rj7d6m9c0g2.js"],"default"]
+:HL["/_next/static/chunks/17hxzla__mjj3.css","style"]
+5:["$","script","script-0",{"src":"/_next/static/chunks/27ll_r2jyyuxe.js","async":true}]
+6:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+9:["$","$1","h",{"children":[null,["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"IAF and ILAC are gone: Global ACI explained for laboratories | LabKitPro"}],["$","meta","1",{"name":"description","content":"Since 1 January 2026, IAF and ILAC have been replaced by Global ACI — one organisation, one MRA. What actually changed, what didn't, how long the ILAC MRA mark stays valid, and what labs should do now."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/blog/global-aci-explained/"}],["$","link","3",{"rel":"alternate","hrefLang":"en","href":"https://labkitpro.com/blog/global-aci-explained/"}],["$","link","4",{"rel":"alternate","hrefLang":"zh-CN","href":"https://labkitpro.com/blog/global-aci-explained/?lang=zh"}],["$","meta","5",{"property":"og:title","content":"LabKitPro"}],["$","meta","6",{"property":"og:description","content":"ISO/IEC 17025 documents for CNAS, UKAS, A2LA, NABL & NATA labs — diagnose gaps, draft docs, build uncertainty budgets. Free to start."}],["$","meta","7",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","8",{"property":"og:locale","content":"en_US"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary"}],["$","meta","11",{"name":"twitter:title","content":"LabKitPro"}],["$","meta","12",{"name":"twitter:description","content":"ISO/IEC 17025 documents for CNAS, UKAS, A2LA, NABL & NATA labs — diagnose gaps, draft docs, build uncertainty budgets. Free to start."}],["$","link","13",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","14",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L19","15",{}]]}]}]}],null]}]
+b:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+10:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/17hxzla__mjj3.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/38bii83ljix1s.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3gybmeu-xt_yz.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/2079v5bl59d05.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/3j9w__s_pmzpu.js","async":true}],["$","script","script-4",{"src":"/_next/static/chunks/13rj7d6m9c0g2.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=null;if(q==='zh'||q==='en'){l=q;}else{var s=localStorage.getItem('lkp_lang');if(s==='zh'||s==='en'){l=s;}}if(!l){var nav=(navigator.language||(navigator.languages&&navigator.languages[0])||'').toLowerCase();l=nav.indexOf('zh')===0?'zh':'en';}document.documentElement.dataset.lkpLang=l;document.documentElement.lang=l;}catch(e){}})();"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"LabKitPro\",\"url\":\"https://labkitpro.com\",\"logo\":\"https://labkitpro.com/file.svg\",\"description\":\"LabKitPro generates ISO/IEC 17025 documents — Quality Manual, procedures, uncertainty budgets — for CNAS, UKAS, A2LA, NABL, NATA and more, and runs a 60-second compliance diagnosis.\"}"}}],["$","$L1c",null,{"children":["$","$L1d",null,{"children":["$","$L1e",null,{"children":[["$","$L1f",null,{"children":["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L20",null,{}]]}]}]}]]}]}]]}]
+16:null
+13:true
+8:300
+8:C
+12:0
+a:"$undefined"
+c:"$undefined"
+f:"$undefined"
+11:"$undefined"
+7:"$undefined"
