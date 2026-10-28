@@ -1,4 +1,5 @@
 User-Agent: *
 Allow: /
+Disallow: /resources/_skeleton/
 
 Sitemap: https://labkitpro.com/sitemap.xml

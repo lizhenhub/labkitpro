@@ -1,0 +1,74 @@
+1:"$Sreact.fragment"
+2:T1848,<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ISO for Laboratories: Which Standard Applies to Your Lab? (17025 vs 9001 vs GLP)","description":"A plain comparison of ISO/IEC 17025, ISO 9001 and GLP for laboratories, and how to pick the right one.","author":{"@type":"Organization","name":"LabKitPro"},"publisher":{"@type":"Organization","name":"LabKitPro"}}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/templates/" style="text-decoration:none;color:#2563eb;font-weight:700;">&larr; LabKitPro</a>
+<div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <span style="font-weight:700;font-size:15px;">Find the right standard &mdash; and generate your first ISO/IEC 17025 document in 60 seconds. No card required.</span>
+  <a href="https://labkitpro.com/templates/" style="background:#fff;color:#0f9d58;padding:8px 14px;border-radius:7px;text-decoration:none;font-weight:700;white-space:nowrap;">Start free</a>
+</div>
+
+<h1 style="font-size:27px;margin:14px 0 6px;">ISO for Laboratories: Which Standard Do You Actually Need?</h1>
+<p style="color:#5b6675;">For most testing and calibration labs the short answer is <strong>ISO/IEC 17025:2017</strong> &mdash; but here is the nuance so you pick right the first time.</p>
+
+<h2 style="font-size:19px;margin-top:24px;">The three standards you will hear about</h2>
+<p>Search "ISO for laboratories" and you will keep running into three acronyms. They are not competitors &mdash; they cover different things.</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+  <tr style="background:#0f2a4a;color:#fff;"><th style="padding:8px;text-align:left;">Standard</th><th style="padding:8px;text-align:left;">What it covers</th><th style="padding:8px;text-align:left;">Who needs it</th></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid #e6e9ef;"><strong>ISO/IEC 17025:2017</strong></td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">Technical competence for testing &amp; calibration labs</td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">Labs issuing test/calibration results to customers</td></tr>
+  <tr style="background:#fafcfe;"><td style="padding:8px;border-bottom:1px solid #e6e9ef;"><strong>ISO 9001</strong></td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">General quality management system</td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">Any organization wanting a QMS certificate</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid #e6e9ef;"><strong>GLP</strong> (Good Laboratory Practice)</td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">Conduct of non-clinical safety studies</td><td style="padding:8px;border-bottom:1px solid #e6e9ef;">Pharma, agrochemical, environmental study labs</td></tr>
+</table>
+
+<h2 style="font-size:19px;margin-top:24px;">Which one is yours?</h2>
+<ul>
+  <li><strong>Testing or calibration lab serving external customers</strong> &rarr; you almost certainly need <strong>ISO/IEC 17025</strong>. It is the only ISO standard built for your technical competence, and it is recognized through the ILAC network in 100+ economies.</li>
+  <li><strong>You only need a general QMS certificate</strong> &rarr; <strong>ISO 9001</strong> may be enough &mdash; but note it does <em>not</em> cover technical competence, so laboratories are usually asked for 17025 on top.</li>
+  <li><strong>Non-clinical safety / efficacy studies</strong> (drug, crop, toxicology) &rarr; <strong>GLP</strong>, governed by the OECD Principles, not an accreditation like 17025.</li>
+  <li><strong>Internal manufacturing lab</strong> &rarr; 17025 if your results leave the company, otherwise 9001 often suffices.</li>
+</ul>
+
+<h2 style="font-size:19px;margin-top:24px;">Why ISO/IEC 17025 is the default</h2>
+<p>Unlike ISO 9001, 17025 was written specifically for labs: it adds technical requirements for method validation, measurement uncertainty, equipment calibration and traceability. That is exactly what your customers&rsquo; auditors and regulators look for. The current edition is <strong>ISO/IEC 17025:2017</strong> (third edition).</p>
+
+<h2 style="font-size:19px;margin-top:24px;">Accreditation bodies all assess the same 17025</h2>
+<p>"Accreditation" is what a national body grants against 17025. The standard is identical; the body and its region differ:</p>
+<ul>
+  <li><a href="https://labkitpro.com/guides/nabl-document-templates/" style="color:#2563eb;">NABL</a> (India)</li>
+  <li><a href="https://labkitpro.com/guides/cnas-document-templates/" style="color:#2563eb;">CNAS</a> (China)</li>
+  <li><a href="https://labkitpro.com/guides/ukas-document-templates/" style="color:#2563eb;">UKAS</a> (United Kingdom)</li>
+  <li><a href="https://labkitpro.com/guides/a2la-document-templates/" style="color:#2563eb;">A2LA</a> (United States)</li>
+  <li><a href="https://labkitpro.com/guides/nata-document-templates/" style="color:#2563eb;">NATA</a> (Australia &amp; New Zealand)</li>
+  <li><a href="https://labkitpro.com/guides/singlas-document-templates/" style="color:#2563eb;">SINGLAS</a> (Singapore)</li>
+</ul>
+
+<h2 style="font-size:19px;margin-top:24px;">Not sure where you stand?</h2>
+<p>Run a free 60-second diagnosis and get a gap heat-map mapped to your country and accreditation body &mdash; no sign-up, no card. <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">Open the free lab diagnosis</a>.</p>
+<p>
+  <a href="https://labkitpro.com/pricing/" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">See plans &amp; download</a>
+</p>
+
+<p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;">
+  <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See all plans</a> &middot; Aligned to ISO/IEC 17025:2017 across ILAC, CNAS, A2LA, NABL, UKAS, NVLAP, NATA &amp; SINGLAS.</p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"RSCw60T1mz-D0Jtd0SDwI","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/18f31e15t2nub.js","/_next/static/chunks/0-bvkq67e6qwv.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0xweiik3hre0-.js","/_next/static/chunks/0n8of5p9_2qx8.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ISO for Laboratories: Which Standard Applies to Your Lab? (17025 vs 9001 vs GLP)"}],["$","meta","1",{"name":"description","content":"Confused about ISO for laboratories? This plain guide explains ISO/IEC 17025 vs ISO 9001 vs GLP, who needs each, and how labs get accredited — plus a free 60-second lab diagnosis."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/iso-for-laboratories/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"
