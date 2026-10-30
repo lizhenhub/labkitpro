@@ -3,52 +3,69 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cpk Quality Tools</title>
+<title>LabKitPro Quality Tools</title>
 <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 <link rel="stylesheet" href="taskpane.css" />
 </head>
 <body>
   <header class="hdr">
     <img src="assets/icon-32.png" alt="" class="logo" />
-    <div>
-      <h1>LabKitPro <span>Quality Tools</span></h1>
-      <p class="sub">Process capability &middot; runs inside Excel, 100% local</p>
+    <div class="hdr-txt">
+      <h1>Cpk &middot; SPC &middot; MSA &middot; ISO Tools</h1>
+      <p class="sub">by LabKitPro &middot; offline &middot; data stays in Excel</p>
     </div>
+    <a class="cta" href="https://labkitpro.com/tools/" target="_blank">60s gap check &rarr;</a>
   </header>
 
+  <nav class="tabs">
+    <button class="tab active">Cpk</button>
+    <button class="tab disabled" title="Coming in v1.1">SPC</button>
+    <button class="tab disabled" title="Coming in v1.1">MSA</button>
+    <button class="tab disabled" title="Coming in v1.1">Cg/Cgk</button>
+    <button class="tab disabled" title="Coming in v1.1">Transition</button>
+  </nav>
+
   <main>
-    <section class="step">
-      <h2>1 &middot; Select your data</h2>
-      <p class="hint">In the worksheet, select the column of measurement values (a single column, or one column per subgroup for Cp/Cpk). Then enter spec limits:</p>
-    </section>
+    <div class="spec-row">
+      <label>LSL<input type="number" id="lsl" step="any" placeholder="9.80" /></label>
+      <label>USL<input type="number" id="usl" step="any" placeholder="10.20" /></label>
+      <label>Target<input type="number" id="target" step="any" placeholder="optional" /></label>
+    </div>
 
-    <section class="step">
-      <h2>2 &middot; Spec limits</h2>
-      <div class="row">
-        <label>LSL<input type="number" id="lsl" step="any" placeholder="9.80" /></label>
-        <label>USL<input type="number" id="usl" step="any" placeholder="10.20" /></label>
-      </div>
-      <div class="row">
-        <label>Target <em>(optional)</em><input type="number" id="target" step="any" placeholder="10.00" /></label>
-        <label>&nbsp;<button id="analyze" class="btn primary">Analyze selection</button></label>
-      </div>
-      <p class="hint">Leave LSL or USL blank for a one-sided spec. Sample data: <a href="#" id="loadSample">load example</a></p>
-    </section>
+    <p class="hint">
+      <b>Measurements</b> &mdash; select the value column in the sheet, then Analyze.
+      Select several columns &rarr; each column = one subgroup (enables Cp/Cpk);
+      single column &rarr; Pp/Ppk only.
+    </p>
 
-    <section id="result" class="result hidden">
-      <h2>3 &middot; Result</h2>
+    <div class="btn-row">
+      <button id="analyze" class="btn primary">Analyze selection</button>
+      <button id="loadSample" class="btn">Sample data</button>
+    </div>
+    <p class="hint dim">Leave LSL or USL blank for a one-sided spec.</p>
+
+    <section id="result" class="hidden">
       <div id="verdict" class="verdict"></div>
       <table id="metrics" class="metrics"></table>
-      <div class="actions">
+      <div class="btn-row">
+        <button id="insertReport" class="btn primary">Insert report</button>
         <button id="copyReport" class="btn">Copy report</button>
-        <button id="insertReport" class="btn">Insert report in sheet</button>
       </div>
-      <p class="foot">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00<br />
-      <a href="https://labkitpro.com/tools/" target="_blank">Full suite: SPC charts, MSA/Gage R&amp;R, Cg &rarr; labkitpro.com</a></p>
+      <p class="foot-note">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00</p>
     </section>
 
-    <div id="error" class="error hidden"></div>
+    <div id="error" class="msg hidden"></div>
   </main>
+
+  <footer class="ftr">
+    <a href="https://labkitpro.com/tools/" target="_blank">All 16 tools &amp; full versions &rarr;</a>
+    <span class="dot">&middot;</span>
+    <a href="https://labkitpro.com" target="_blank">labkitpro.com</a>
+    <span class="dot">&middot;</span>
+    <a href="https://labkitpro.com/legal/privacy-policy.html" target="_blank">Privacy</a>
+    <span class="dot">&middot;</span>
+    <a href="https://labkitpro.com/legal/terms-of-use.html" target="_blank">Terms</a>
+  </footer>
 
   <script src="calc.js"></script>
   <script src="app.js"></script>

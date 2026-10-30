@@ -45,18 +45,29 @@
           var matrix = asyncResult.value;
           if (!matrix || !matrix.length) return showError('Select a range of measurement values first.');
 
-          // flatten to numbers (headers / blanks / text are ignored)
-          var values = [];
+          // parse per column: each column = candidate subgroup (Excel-native flow)
+          var cols = [];
+          for (var c = 0; c < matrix[0].length; c++) cols.push([]);
+          var all = [];
           for (var r = 0; r < matrix.length; r++) {
             var row = matrix[r];
-            for (var c = 0; c < row.length; c++) {
-              var v = typeof row[c] === 'number' ? row[c] : parseFloat(String(row[c]).trim());
-              if (isFinite(v)) values.push(v);
+            for (var c2 = 0; c2 < row.length; c2++) {
+              var v = typeof row[c2] === 'number' ? row[c2] : parseFloat(String(row[c2]).trim());
+              if (isFinite(v)) { cols[c2].push(v); all.push(v); }
             }
+          }
+          var numericCols = cols.filter(function (col) { return col.length >= 2; });
+          var values, subgroups = null;
+          if (numericCols.length >= 2) {
+            // multi-column selection -> each column = one subgroup (enables Cp/Cpk)
+            values = [].concat.apply([], numericCols);
+            subgroups = numericCols;
+          } else {
+            values = all;
           }
           if (values.length < 2) return showError('No numeric values found in the selection. Select the cells that contain your measurements.');
 
-          var res = LKPCalc.capability(values, lsl, usl, target, null);
+          var res = LKPCalc.capability(values, lsl, usl, target, subgroups);
           if (res.error) return showError(res.error);
           render(res);
         });
@@ -141,8 +152,8 @@
 
     // ---------- helpers ----------
     function optNum(s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); }
-    function showError(m) { var e = $('error'); e.textContent = m; e.classList.remove('hidden'); }
+    function showError(m) { var e = $('error'); e.textContent = m; e.classList.remove('hidden'); e.classList.remove('ok'); }
     function hideError() { $('error').classList.add('hidden'); }
-    function flash(msg) { var e = $('error'); e.textContent = msg; e.classList.remove('hidden'); e.className = 'ok-msg'; setTimeout(function () { e.className = 'hidden'; }, 2500); }
+    function flash(msg) { var e = $('error'); e.textContent = msg; e.classList.remove('hidden'); e.classList.add('ok'); setTimeout(function () { e.classList.add('hidden'); }, 2500); }
   });
 })();
