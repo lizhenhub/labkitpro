@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cpk Quality Tools</title>
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <header class="hdr">
+    <img src="assets/icon-32.png" alt="" class="logo" />
+    <div>
+      <h1>LabKitPro <span>Quality Tools</span></h1>
+      <p class="sub">Process capability &middot; runs inside Excel, 100% local</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="step">
+      <h2>1 &middot; Select your data</h2>
+      <p class="hint">In the worksheet, select the column of measurement values (a single column, or one column per subgroup for Cp/Cpk). Then enter spec limits:</p>
+    </section>
+
+    <section class="step">
+      <h2>2 &middot; Spec limits</h2>
+      <div class="row">
+        <label>LSL<input type="number" id="lsl" step="any" placeholder="9.80" /></label>
+        <label>USL<input type="number" id="usl" step="any" placeholder="10.20" /></label>
+      </div>
+      <div class="row">
+        <label>Target <em>(optional)</em><input type="number" id="target" step="any" placeholder="10.00" /></label>
+        <label>&nbsp;<button id="analyze" class="btn primary">Analyze selection</button></label>
+      </div>
+      <p class="hint">Leave LSL or USL blank for a one-sided spec. Sample data: <a href="#" id="loadSample">load example</a></p>
+    </section>
+
+    <section id="result" class="result hidden">
+      <h2>3 &middot; Result</h2>
+      <div id="verdict" class="verdict"></div>
+      <table id="metrics" class="metrics"></table>
+      <div class="actions">
+        <button id="copyReport" class="btn">Copy report</button>
+        <button id="insertReport" class="btn">Insert report in sheet</button>
+      </div>
+      <p class="foot">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00<br />
+      <a href="https://labkitpro.com/tools/" target="_blank">Full suite: SPC charts, MSA/Gage R&amp;R, Cg &rarr; labkitpro.com</a></p>
+    </section>
+
+    <div id="error" class="error hidden"></div>
+  </main>
+
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
