@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in taskpane - v1.0.2 (visual parity with browser popup) */
+/* LabKitPro Excel add-in taskpane - v1.0.3 (responsive, honest tabs, brand title) */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: "Segoe UI", -apple-system, sans-serif;
@@ -7,37 +7,40 @@ body {
 }
 .hidden { display: none !important; }
 
-/* ---- header (matches browser steel-blue bar) ---- */
-.hdr {
-  display: flex; align-items: center; gap: 9px;
-  padding: 10px 12px; background: #2d5f8e; color: #fff;
+/* ---- header ---- */
+.hdr { background: #2d5f8e; color: #fff; }
+.hdr-in {
+  max-width: 680px; margin: 0 auto; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
 }
 .hdr .logo { width: 32px; height: 32px; border-radius: 6px; flex: none; }
 .hdr-txt { flex: 1; min-width: 0; }
 .hdr h1 { font-size: 14.5px; font-weight: 700; line-height: 1.25; white-space: nowrap; }
 .hdr .sub { font-size: 10.5px; color: #cfe3f5; margin-top: 2px; white-space: nowrap; }
-.cta {
-  flex: none; background: #f59e0b; color: #1e293b; font-weight: 700;
-  font-size: 11.5px; padding: 7px 10px; border-radius: 6px; text-decoration: none;
-  white-space: nowrap;
-}
-.cta:hover { background: #d97706; color: #fff; }
+.hdr a.cta { flex: none; }
 
-/* ---- tab bar (matches browser tab strip) ---- */
-.tabs {
-  display: flex; background: #eef2f7; border-bottom: 1px solid #d7dee8;
-  padding: 0 4px;
+/* ---- tab bar ---- */
+.tabs { background: #eef2f7; border-bottom: 1px solid #d7dee8; }
+.tabs-in {
+  max-width: 680px; margin: 0 auto; padding: 6px 10px;
+  display: flex; gap: 6px; flex-wrap: wrap;
 }
 .tab {
-  flex: 1; padding: 9px 2px; border: none; background: transparent;
-  font-size: 12.5px; color: #64748b; cursor: pointer;
-  border-bottom: 2.5px solid transparent; font-weight: 600;
+  padding: 7px 14px; border: 1px solid #d7dee8; border-radius: 6px;
+  background: #fff; font-size: 12.5px; color: #64748b; cursor: pointer;
+  font-weight: 600; white-space: nowrap;
 }
-.tab.active { background: #fff; color: #0f2f5c; border-bottom-color: #2d5f8e; }
-.tab.disabled { color: #b6c2d2; cursor: default; }
+.tab:hover { border-color: #2d5f8e; color: #2d5f8e; }
+.tab.active { background: #0f2f5c; border-color: #0f2f5c; color: #fff; }
+.tab .badge {
+  font-size: 9px; font-weight: 700; color: #b45309;
+  background: #fef3c7; border-radius: 4px; padding: 1px 4px; margin-left: 2px;
+  vertical-align: 1px;
+}
 
 /* ---- body ---- */
-main { flex: 1; padding: 12px 12px 16px; }
+main { flex: 1; padding: 14px 14px 18px; }
+.wrap { max-width: 680px; margin: 0 auto; }
 
 .spec-row { display: flex; gap: 8px; margin-bottom: 10px; }
 .spec-row label {
@@ -45,7 +48,7 @@ main { flex: 1; padding: 12px 12px 16px; }
   font-size: 11px; color: #475569; font-weight: 600;
 }
 .spec-row input {
-  padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 5px;
+  padding: 7px 9px; border: 1px solid #cbd5e1; border-radius: 5px;
   font-size: 13px; background: #fff; width: 100%; font-weight: 400;
 }
 .spec-row input:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
@@ -56,13 +59,14 @@ main { flex: 1; padding: 12px 12px 16px; }
 
 .btn-row { display: flex; gap: 8px; margin: 4px 0 8px; }
 .btn {
-  padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;
+  padding: 9px 14px; border: 1px solid #cbd5e1; border-radius: 6px;
   background: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer;
   white-space: nowrap; color: #1e293b;
 }
 .btn:hover { background: #f1f5f9; }
 .btn.primary {
-  background: #0f2f5c; border-color: #0f2f5c; color: #fff; flex: 1;
+  background: #0f2f5c; border-color: #0f2f5c; color: #fff;
+  flex: 1; min-width: 160px;
 }
 .btn.primary:hover { background: #16407e; }
 
@@ -85,15 +89,16 @@ main { flex: 1; padding: 12px 12px 16px; }
 
 /* ---- messages ---- */
 .msg {
-  margin-top: 8px; padding: 8px 10px; border-radius: 6px;
-  background: #fee2e2; color: #991b1b; font-size: 12px;
+  margin-top: 8px; padding: 9px 12px; border-radius: 6px;
+  background: #fee2e2; color: #991b1b; font-size: 12px; line-height: 1.5;
 }
-.msg.ok { background: #dcfce7; color: #166534; }
+.msg.ok { background: #e0f2fe; color: #075985; }
+.msg a { color: #0369a1; font-weight: 700; }
 
-/* ---- footer (matches browser link row) ---- */
+/* ---- footer ---- */
 .ftr {
-  padding: 8px 12px; background: #f5f7fa; border-top: 1px solid #e2e8f0;
-  font-size: 11px; text-align: center; white-space: nowrap; overflow: hidden;
+  padding: 9px 14px; background: #f5f7fa; border-top: 1px solid #e2e8f0;
+  font-size: 11px; text-align: center;
 }
 .ftr a { color: #2d5f8e; font-weight: 600; text-decoration: none; }
 .ftr a:hover { text-decoration: underline; }

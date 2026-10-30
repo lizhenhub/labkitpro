@@ -12,6 +12,18 @@
     $('copyReport').addEventListener('click', copyReport);
     $('insertReport').addEventListener('click', insertReport);
 
+    // v1.1 tabs respond honestly instead of doing nothing
+    Array.prototype.forEach.call(document.querySelectorAll('.tab.soon'), function (t) {
+      t.addEventListener('click', function () {
+        var name = t.textContent.replace('v1.1', '').trim();
+        var e = $('error');
+        e.innerHTML = '<b>' + name + '</b> ships in v1.1 &mdash; the engine is already live: '
+          + '<a href="https://labkitpro.com/tools/" target="_blank">try it on labkitpro.com</a>. '
+          + 'This Excel tab arrives with the next free update.';
+        e.classList.remove('hidden'); e.classList.add('ok');
+      });
+    });
+
     function fillSample() {
       $('lsl').value = '9.80';
       $('usl').value = '10.20';
