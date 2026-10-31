@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <!-- LabKitPro Quality Tools for Excel - manifest v1.3.2 -->
+  <Id>81b22247-26e2-4324-9f89-6343cfb3b9e1</Id>
+  <Version>1.3.2.0</Version>
+  <ProviderName>LabKitPro</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="LabKitPro Quality Tools" />
+  <Description DefaultValue="Quality tools for engineers: process capability (Cp/Cpk/Pp/Ppk), SPC control charts (Xbar-R, Xbar-S, I-MR, p, np, c, u), Gage R&amp;R (MSA), measurement capability (Cg/Cgk), and ISO 9001/14001/45001 transition countdowns. Select data in your worksheet and analyze instantly - all calculations run in Excel, your data never leaves your device. Paste external data (CSV/TSV) from any source to analyze instantly." />
+  <IconUrl DefaultValue="https://labkitpro.com/office/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://labkitpro.com/office/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://labkitpro.com/contact/" />
+  <PrivacyPolicyUrl DefaultValue="https://labkitpro.com/legal/privacy-policy.html" />
+
+  <AppDomains>
+    <AppDomain>https://labkitpro.com</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Workbook" />
+    </Sets>
+  </Requirements>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://labkitpro.com/office/taskpane.html" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GS.Title" />
+            <Description resid="GS.Desc" />
+            <LearnMoreUrl resid="GS.LearnMore" />
+          </GetStarted>
+          <FunctionFile resid="Res.FuncFile" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabData">
+              <Group id="LK.Group1">
+                <Label resid="LK.GroupLabel" />
+                <Icon>
+                  <bt:Image size="16" resid="Res.Icon16" />
+                  <bt:Image size="32" resid="Res.Icon32" />
+                  <bt:Image size="80" resid="Res.Icon80" />
+                </Icon>
+                <Control xsi:type="Button" id="LK.BtnCpk">
+                  <Label resid="LK.BtnCpkLabel" />
+                  <Supertip>
+                    <Title resid="LK.BtnCpkLabel" />
+                    <Description resid="LK.BtnCpkTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Res.Icon16" />
+                    <bt:Image size="32" resid="Res.Icon32" />
+                    <bt:Image size="80" resid="Res.Icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Res.Taskpane" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Res.Icon16" DefaultValue="https://labkitpro.com/office/assets/icon-16.png" />
+        <bt:Image id="Res.Icon32" DefaultValue="https://labkitpro.com/office/assets/icon-32.png" />
+        <bt:Image id="Res.Icon80" DefaultValue="https://labkitpro.com/office/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Res.FuncFile" DefaultValue="https://labkitpro.com/office/functions.html" />
+        <bt:Url id="Res.Taskpane" DefaultValue="https://labkitpro.com/office/taskpane.html" />
+        <bt:Url id="GS.LearnMore" DefaultValue="https://labkitpro.com/tools/" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GS.Title" DefaultValue="LabKitPro Quality Tools" />
+        <bt:String id="LK.GroupLabel" DefaultValue="LabKitPro" />
+        <bt:String id="LK.BtnCpkLabel" DefaultValue="Quality Tools" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GS.Desc" DefaultValue="Select measurement data in your worksheet, then open the Quality Tools pane to compute Cp/Cpk/Pp/Ppk instantly." />
+        <bt:String id="LK.BtnCpkTip" DefaultValue="Analyze process capability of the selected measurement column (AIAG thresholds, PPM, verdict)." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

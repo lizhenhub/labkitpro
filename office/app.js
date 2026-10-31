@@ -1,11 +1,13 @@
-/* LabKitPro Excel add-in - v1.3.1 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.3.2 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
    Data flow: worksheet selection (matrix) -> parse -> kernel -> render (+ chart) -> download report.
    v1.2.2: insert-report overwrite guard (confirm) + empty-selection error.
    v1.3:    browser-parity charts on every analysis + self-contained HTML report download.
-   v1.3.1:  Help tab (usage instructions); Sample-data writer guards selection size with a clear
-            instruction instead of the raw Excel "would overwrite or move data" error. */
+   v1.3.1:  Help tab; Sample-data writer guards selection size with a clear instruction.
+   v1.3.2:  Sample data is kept in memory so "Sample data -> Analyze" works without re-selecting the
+            sheet (Office.setSelectedDataAsync does not move the user's selection); Insert/Import write
+            failures surfaced as friendly messages instead of the raw Excel overwrite error. */
 (function () {
   'use strict';
 
@@ -18,6 +20,10 @@
     var cpkVals = null;       // raw measurement array (for capability charts)
     var msaShaped = null;     // [appraiser][trial][part] (for Gage R&R charts)
     var cgVals = null, cgRef = null;
+    // sample data kept in memory so "Sample data -> Analyze" works without re-selecting the sheet
+    // (Office.setSelectedDataAsync does NOT move the user's selection, so after a write the user's
+    // selection is still the original cell/range and a direct Analyze would read too little).
+    var sampleStore = { cpk: null, spc: null, cg: null, msa: null };
 
     // ---------- generic error/flash helpers (per-panel id) ----------
     function showError(elId, m, ok) {
@@ -35,37 +41,38 @@
     // Office.setSelectedDataAsync only writes inside the current selection; if the data
     // is larger than the selection it fails with "would overwrite or move data".
     // We pre-check the selection size and give a clear, human instruction instead.
-    function writeMatrixSafe(rows, errId, label) {
+    function writeMatrixSafe(rows, errId, label, onOk) {
       var needR = rows.length, needC = (rows[0] || []).length;
       Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
         { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
           if (ar.status === Office.AsyncResultStatus.Failed) {
             // no readable selection -> fall back to writing at the active cell
-            writeSample(rows, errId, needR, needC, label);
+            writeSample(rows, errId, needR, needC, label, onOk);
             return;
           }
           var sel = ar.value;
           var selR = Array.isArray(sel) ? sel.length : 0;
           var selC = (sel && sel[0] && Array.isArray(sel[0])) ? sel[0].length : 0;
           // a single selected cell behaves as "active cell" -> Excel expands from it
-          if (selR <= 1 && selC <= 1) { writeSample(rows, errId, needR, needC, label); return; }
+          if (selR <= 1 && selC <= 1) { writeSample(rows, errId, needR, needC, label, onOk); return; }
           if (selR < needR || selC < needC) {
             showError(errId, 'The ' + (label || 'sample') + ' needs ' + needR + ' rows × ' + needC +
               ' columns, but your selection is smaller. Click a single empty cell (or a larger range) and click ' +
               (label || 'Sample data') + ' again — Excel will fill the block automatically.');
             return;
           }
-          writeSample(rows, errId, needR, needC, label);
+          writeSample(rows, errId, needR, needC, label, onOk);
         });
     }
-    function writeSample(rows, errId, needR, needC, label) {
+    function writeSample(rows, errId, needR, needC, label, onOk) {
       Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix },
         function (ar) {
           if (ar.status === Office.AsyncResultStatus.Failed) {
             showError(errId, 'Could not write the ' + (label || 'sample') + ': ' + ar.error.message +
               '. Tip: click a single empty cell first, then try again.');
           } else {
-            flash(errId, (label || 'Sample') + ' loaded — now click Analyze.');
+            if (onOk) onOk();
+            flash(errId, (label || 'Sample') + ' loaded — click Analyze (no need to re-select).');
           }
         });
     }
@@ -100,14 +107,14 @@
                   9.96, 10.09, 10.00, 10.04, 9.98, 10.07, 10.02, 9.95, 10.10, 10.01,
                   10.05, 9.99, 10.03, 10.06, 9.97];
       var rows = data.map(function (v) { return [[v]]; });
-      writeMatrixSafe(rows, 'error', 'Cpk sample');
+      writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; });
     }
 
     function analyzeCpk() {
       hideError('error');
       var lsl = optNum($('lsl').value), usl = optNum($('usl').value);
       if (lsl === null && usl === null) return showError('error', 'Enter at least one spec limit (LSL or USL).');
-      getMatrix(runCpk, 'error');
+      getMatrixSafe(runCpk, 'error', function () { return sampleStore.cpk; });
     }
 
     function runCpk(matrix) {
@@ -212,12 +219,14 @@
         rows = [[10.02, 9.97, 10.11], [10.05, 9.94, 10.08], [10.01, 9.99, 10.06], [10.03, 9.96, 10.09],
                 [10.00, 10.04, 10.07], [10.02, 9.95, 10.10], [10.01, 9.99, 10.03], [10.06, 9.97, 10.05]];
       }
-      writeMatrixSafe(rows, 'spcError', 'SPC sample');
+      writeMatrixSafe(rows, 'spcError', 'SPC sample', function () { sampleStore.spc = { type: type, rows: rows }; });
     }
 
     function analyzeSpc() {
       hideError('spcError');
-      getMatrix(runSpc, 'spcError');
+      getMatrixSafe(runSpc, 'spcError', function () {
+        return (sampleStore.spc && sampleStore.spc.type === $('spcType').value) ? sampleStore.spc.rows : null;
+      });
     }
 
     function runSpc(matrix) {
@@ -316,7 +325,7 @@
         [0.10, 0.12, 0.09, 0.11, 0.10], [0.11, 0.13, 0.10, 0.12, 0.11], [0.10, 0.12, 0.09, 0.11, 0.10],
         [0.11, 0.12, 0.10, 0.12, 0.11], [0.12, 0.13, 0.11, 0.13, 0.12], [0.11, 0.12, 0.10, 0.12, 0.11]
       ];
-      writeMatrixSafe(rows, 'msaError', 'MSA sample');
+      writeMatrixSafe(rows, 'msaError', 'MSA sample', function () { sampleStore.msa = rows; });
     }
 
     function analyzeMsa() {
@@ -324,7 +333,7 @@
       var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
       if (app === null || trials === null || parts === null) return showError('msaError', 'Appraisers, Trials and Parts must be 1-3 / 2-3 / 3-10.');
       if (app < 1 || app > 3 || trials < 2 || trials > 3 || parts < 3 || parts > 10) return showError('msaError', 'Appraisers 1-3, Trials 2-3, Parts 3-10.');
-      getMatrix(runMsa, 'msaError');
+      getMatrixSafe(runMsa, 'msaError', function () { return sampleStore.msa; });
     }
 
     function runMsa(matrix) {
@@ -413,7 +422,7 @@
       $('cgRef').value = '10.000'; $('cgTol').value = '0.200';
       var data = [10.004, 9.998, 10.006, 10.002, 9.995, 10.008, 10.001, 9.997, 10.003, 10.000,
                   10.005, 9.999, 10.002, 10.006, 9.994, 10.001, 10.003, 9.996, 10.007, 10.000];
-      writeMatrixSafe(data.map(function (v) { return [[v]]; }), 'cgError', 'Cg sample');
+      writeMatrixSafe(data.map(function (v) { return [[v]]; }), 'cgError', 'Cg sample', function () { sampleStore.cg = data.map(function (v) { return [[v]]; }); });
     }
 
     function analyzeCg() {
@@ -421,7 +430,7 @@
       var ref = optNum($('cgRef').value), tol = optNum($('cgTol').value);
       if (ref === null) return showError('cgError', 'Enter the reference (true) value.');
       if (tol === null || tol <= 0) return showError('cgError', 'Enter a positive tolerance band (USL-LSL).');
-      getMatrix(runCg, 'cgError');
+      getMatrixSafe(runCg, 'cgError', function () { return sampleStore.cg; });
     }
 
     function runCg(matrix) {
@@ -671,7 +680,7 @@
       // write to the sheet for visibility (best effort; analysis runs on the pasted data regardless)
       Office.context.document.setSelectedDataAsync(toNumeric(m), { coercionType: Office.CoercionType.Matrix }, function (ar) {
         if (ar.status === Office.AsyncResultStatus.Failed)
-          showError('importError', 'Could not write to sheet: ' + ar.error.message + ' (results shown from pasted data anyway).');
+          showError('importError', 'Analyzed from the pasted data (not written to the sheet — select a larger range first if you want it written there).');
       });
       var fn = IMPORT_ROUTE[currentPanel];
       if (fn) fn(m);
@@ -683,14 +692,33 @@
     // ============================================================
     //  shared: read selection, copy / insert report
     // ============================================================
-    function getMatrix(cb, errId) {
+    // Count numeric cells in a matrix (used to decide whether the selection is big enough,
+    // or whether we should fall back to the in-memory sample).
+    function countNumeric(m) {
+      if (!m || !m.length) return 0;
+      var n = 0;
+      for (var r = 0; r < m.length; r++) for (var c = 0; c < m[r].length; c++) {
+        var v = m[r][c];
+        if (typeof v === 'number') n++;
+        else { var x = parseFloat(String(v).trim()); if (isFinite(x)) n++; }
+      }
+      return n;
+    }
+    // Read the selection; if it's empty/too small, fall back to the last loaded sample
+    // (so "Sample data -> Analyze" works without the user re-selecting the sheet).
+    function getMatrixSafe(cb, errId, fallback) {
       Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
         { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
           if (ar.status === Office.AsyncResultStatus.Failed) {
-            if (errId) showError(errId, 'Select a range of cells first, then click Analyze.');
-            return; // no selection / read failed -> surface a friendly message
+            if (fallback) { var f0 = fallback(); if (f0) { hideError(errId); return cb(f0); } }
+            return showError(errId, 'Select a range of cells first, then click Analyze.');
           }
-          cb(ar.value);
+          var sel = ar.value;
+          if (countNumeric(sel) < 2) {
+            if (fallback) { var f1 = fallback(); if (f1) { hideError(errId); return cb(f1); } }
+            return showError(errId, 'Select a range of measurement values first, then click Analyze.');
+          }
+          cb(sel);
         });
     }
 
@@ -714,6 +742,22 @@
       if (!confirm('The report will be written to the current selection and may overwrite existing data. Continue?'))
         return;
       var grid = textFn().split('\n').map(function (line) { return [[line]]; });
+      // If the current selection is a multi-cell range shorter than the report, writing would be
+      // rejected by Excel ("would overwrite or move data") — warn first instead of failing silently.
+      Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
+        { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
+          if (ar.status === Office.AsyncResultStatus.Failed) { writeReportGrid(grid, errId); return; }
+          var sel = ar.value;
+          var r = Array.isArray(sel) ? sel.length : 0;
+          if (r > 1 && r < grid.length) {
+            showError(errId, 'Your selection has ' + r + ' rows but the report needs ' + grid.length +
+              ' rows. Click a single empty cell (Excel will expand downward) and try Insert again.');
+            return;
+          }
+          writeReportGrid(grid, errId);
+        });
+    }
+    function writeReportGrid(grid, errId) {
       Office.context.document.setSelectedDataAsync(grid, { coercionType: Office.CoercionType.Matrix },
         function (ar) {
           if (ar.status === Office.AsyncResultStatus.Failed) showError(errId, 'Insert failed: ' + ar.error.message);
