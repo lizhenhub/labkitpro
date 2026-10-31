@@ -369,7 +369,7 @@
     return offscreenChart(300, (ctx, W, H) => {
       const items = [['%EV', r.pctEV], ['%AV', r.pctAV], ['%GRR', r.pctGRR], ['%PV', r.pctPV]].filter(([, v]) => v != null && isFinite(v));
       const hi = Math.max(...items.map(([, v]) => v), 30) * 1.15;
-      const f = frame(ctx, W, H, { x0: 0.5, x1: items.length + 0.5, y0: 0, y1: hi, yN: 5, xLabels: items.map(([k]) => k), xlabel: '', ylabel: '% of tolerance' });
+      const f = frame(ctx, W, H, { x0: 0.5, x1: items.length + 0.5, y0: 0, y1: hi, yN: 5, xLabels: items.map(([k]) => k), xlabel: '', ylabel: r.basis === 'tolerance' ? '% of tolerance' : '% of total variation' });
       const bwid = Math.min(90, (f.R - f.L) / items.length * 0.5);
       ctx.textAlign = 'center';
       items.forEach(([k, v], i) => {

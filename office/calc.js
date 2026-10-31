@@ -244,21 +244,35 @@
     const A2m = { 2: 1.880, 3: 1.023 };
     const rbarVal = mean(rangesByApp.flat());
     const xbarVal = mean(partMeans);
+    // NDC (AIAG): ndc = ⌊√2 · PV/GRR⌋ from UNROUNDED σ values; ndcExact is surfaced so the
+    // report can show the precision behind the floor (v1.4.3 review fix).
+    const ndcExact = (pv / grr) * Math.SQRT2;
+    const dominant = ev >= av ? 'repeatability (EV)' : 'reproducibility (AV)';
+    const focus = ev >= av ? 'the instrument / gage itself' : 'operator technique and training';
+    let conclusion = grrPct <= 10
+      ? 'Measurement system is acceptable. Dominant error source: ' + dominant + ' — focus on ' + focus + '.'
+      : grrPct <= 30
+        ? 'Conditional — improvement recommended. Dominant error source: ' + dominant + ' — focus on ' + focus + '.'
+        : 'Not acceptable — repair or replace the measurement system before use.';
+    if (Math.floor(ndcExact) < 5) conclusion += ' NDC < 5: the system cannot reliably distinguish parts.';
     return {
-      ev: round(ev), av: round(av), grr: round(grr), pv: round(pv), tv: round(tv),
+      study: { appraisers: appraisers, trials: nTrials, parts: nParts, tolerance: tolerance > 0 ? round(tolerance) : null },
+      basis: tolerance > 0 ? 'tolerance' : 'total variation',
+      ev: round(ev, 6), av: round(av, 6), grr: round(grr, 6), pv: round(pv, 6), tv: round(tv, 6),
       pctEV: pct(ev), pctAV: pct(av), pctGRR: pct(grr), pctPV: pct(pv),
-      ndc: Math.floor((pv / grr) * 1.41),
+      ndc: Math.floor(ndcExact), ndcExact: round(ndcExact, 2),
       verdict: grrPct <= 10 ? 'Acceptable (≤ 10%)' : grrPct <= 30 ? 'Conditional (10–30%)' : 'Not acceptable (> 30%)',
       ok: grrPct <= 10,
+      conclusion: conclusion,
       // chart detail: per-appraiser grand means, per-part means, within-part ranges, R̄̄ and its UCL
-      appMeans: appMeans.map(round),
-      partMeans: partMeans.map(round),
+      appMeans: appMeans.map(function (x) { return round(x, 5); }),
+      partMeans: partMeans.map(function (x) { return round(x, 5); }),
       rangesByApp,
-      rbar: round(rbarVal),
-      uclR: round(rbarVal * (nTrials === 2 ? 3.267 : 2.574)),
-      xbar: round(xbarVal),
-      uclX: round(xbarVal + A2m[nTrials] * rbarVal),
-      lclX: round(xbarVal - A2m[nTrials] * rbarVal),
+      rbar: round(rbarVal, 5),
+      uclR: round(rbarVal * (nTrials === 2 ? 3.267 : 2.574), 5),
+      xbar: round(xbarVal, 5),
+      uclX: round(xbarVal + A2m[nTrials] * rbarVal, 5),
+      lclX: round(xbarVal - A2m[nTrials] * rbarVal, 5),
     };
   }
 
