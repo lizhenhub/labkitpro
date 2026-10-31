@@ -1,6 +1,7 @@
-/* LabKitPro Excel add-in - v1.1 (Cpk + SPC + MSA + Cg/Cgk + Transition).
+/* LabKitPro Excel add-in - v1.2.2 (Cpk + SPC + MSA + Cg/Cgk + Transition + import).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, cgCgk, ...}
-   Data flow: worksheet selection (matrix) -> parse -> kernel -> render. */
+   Data flow: worksheet selection (matrix) -> parse -> kernel -> render.
+   v1.2.2: insert-report overwrite guard (confirm) + empty-selection error. */
 (function () {
   'use strict';
 
@@ -59,7 +60,7 @@
       hideError('error');
       var lsl = optNum($('lsl').value), usl = optNum($('usl').value);
       if (lsl === null && usl === null) return showError('error', 'Enter at least one spec limit (LSL or USL).');
-      getMatrix(runCpk);
+      getMatrix(runCpk, 'error');
     }
 
     function runCpk(matrix) {
@@ -164,7 +165,7 @@
 
     function analyzeSpc() {
       hideError('spcError');
-      getMatrix(runSpc);
+      getMatrix(runSpc, 'spcError');
     }
 
     function runSpc(matrix) {
@@ -267,7 +268,7 @@
       var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
       if (app === null || trials === null || parts === null) return showError('msaError', 'Appraisers, Trials and Parts must be 1-3 / 2-3 / 3-10.');
       if (app < 1 || app > 3 || trials < 2 || trials > 3 || parts < 3 || parts > 10) return showError('msaError', 'Appraisers 1-3, Trials 2-3, Parts 3-10.');
-      getMatrix(runMsa);
+      getMatrix(runMsa, 'msaError');
     }
 
     function runMsa(matrix) {
@@ -345,7 +346,7 @@
       var ref = optNum($('cgRef').value), tol = optNum($('cgTol').value);
       if (ref === null) return showError('cgError', 'Enter the reference (true) value.');
       if (tol === null || tol <= 0) return showError('cgError', 'Enter a positive tolerance band (USL-LSL).');
-      getMatrix(runCg);
+      getMatrix(runCg, 'cgError');
     }
 
     function runCg(matrix) {
@@ -466,10 +467,13 @@
     // ============================================================
     //  shared: read selection, copy / insert report
     // ============================================================
-    function getMatrix(cb) {
+    function getMatrix(cb, errId) {
       Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
         { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
-          if (ar.status === Office.AsyncResultStatus.Failed) return; // caller shows its own error
+          if (ar.status === Office.AsyncResultStatus.Failed) {
+            if (errId) showError(errId, 'Select a range of cells first, then click Analyze.');
+            return; // no selection / read failed -> surface a friendly message
+          }
           cb(ar.value);
         });
     }
@@ -491,6 +495,8 @@
     }
     function insertReport(last, textFn, errId) {
       if (!last) return;
+      if (!confirm('The report will be written to the current selection and may overwrite existing data. Continue?'))
+        return;
       var grid = textFn().split('\n').map(function (line) { return [[line]]; });
       Office.context.document.setSelectedDataAsync(grid, { coercionType: Office.CoercionType.Matrix },
         function (ar) {

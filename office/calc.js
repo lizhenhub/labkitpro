@@ -1,5 +1,5 @@
 /* LabKitPro Quality Tools — core calculation library (pure JS, offline).
-   Shared by Chrome extension v1 and (future) Excel add-in. No dependencies. */
+   Shared by the Chrome extension and the Excel add-in. No dependencies. */
 (function (root) {
   'use strict';
 
