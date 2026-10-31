@@ -1,13 +1,16 @@
-/* LabKitPro Excel add-in - v1.3.2 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download + Help).
-   Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, cgCgk, ...}
+/* LabKitPro Excel add-in - v1.3.3 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+   Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
+   stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
    Data flow: worksheet selection (matrix) -> parse -> kernel -> render (+ chart) -> download report.
    v1.2.2: insert-report overwrite guard (confirm) + empty-selection error.
    v1.3:    browser-parity charts on every analysis + self-contained HTML report download.
    v1.3.1:  Help tab; Sample-data writer guards selection size with a clear instruction.
-   v1.3.2:  Sample data is kept in memory so "Sample data -> Analyze" works without re-selecting the
-            sheet (Office.setSelectedDataAsync does not move the user's selection); Insert/Import write
-            failures surfaced as friendly messages instead of the raw Excel overwrite error. */
+   v1.3.2:  Sample data kept in memory so "Sample data -> Analyze" works without re-selecting the sheet.
+   v1.3.3:  Sample data can NEVER fail: written to a fixed block at A1 via the Excel API and selected
+            for the user; if the sheet write is not possible the data is kept in memory and Analyze
+            still runs on it. MSA expanded to the five AIAG studies (Gage R&R / Bias / Linearity /
+            Stability / Attribute agreement), mirroring the Chrome extension. */
 (function () {
   'use strict';
 
@@ -16,14 +19,13 @@
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
 
     // ---------- chart + report state (for on-screen injection + download) ----------
-    var reportCharts = { cpk: [], spc: [], msa: [], cg: [] };
+    var reportCharts = { cpk: [], spc: [], cg: [], msaGrr: [], msaBias: [], msaLin: [], msaStab: [], msaAttr: [] };
     var cpkVals = null;       // raw measurement array (for capability charts)
     var msaShaped = null;     // [appraiser][trial][part] (for Gage R&R charts)
     var cgVals = null, cgRef = null;
-    // sample data kept in memory so "Sample data -> Analyze" works without re-selecting the sheet
-    // (Office.setSelectedDataAsync does NOT move the user's selection, so after a write the user's
-    // selection is still the original cell/range and a direct Analyze would read too little).
-    var sampleStore = { cpk: null, spc: null, cg: null, msa: null };
+    // Sample data kept in memory so "Sample data -> Analyze" ALWAYS works: the sheet write is for
+    // visibility only; analysis falls back to the in-memory copy whenever the selection differs.
+    var sampleStore = { cpk: null, spc: null, cg: null, msaGrr: null, msaBias: null, msaLin: null, msaStab: null, msaAttr: null };
 
     // ---------- generic error/flash helpers (per-panel id) ----------
     function showError(elId, m, ok) {
@@ -37,44 +39,59 @@
       setTimeout(function () { e.classList.add('hidden'); }, 2500);
     }
 
-    // ---------- safe matrix writer (fixes "Sample data" overwrite error) ----------
-    // Office.setSelectedDataAsync only writes inside the current selection; if the data
-    // is larger than the selection it fails with "would overwrite or move data".
-    // We pre-check the selection size and give a clear, human instruction instead.
+    // ---------- safe matrix writer (Sample data can never fail) ----------
+    // Clicking "Sample data" must ALWAYS produce typical data the user can analyze, regardless of
+    // what is selected in the sheet. Strategy:
+    //   1. preferred: write the block to a fixed area at A1 via the Excel API and select it —
+    //      independent of the user's current selection, so nothing can "not fit";
+    //   2. fallback (no Excel API, e.g. write failed): try the selection, but only when it is a
+    //      single cell (Excel expands from it) or large enough — never overwrite existing blocks;
+    //   3. in every outcome the data is also kept in memory, so Analyze works immediately.
+    // The user never sees a raw Excel overwrite error again.
+    function colName(n) { // 1 -> A, 27 -> AA
+      var s = '';
+      while (n > 0) { var m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); }
+      return s;
+    }
     function writeMatrixSafe(rows, errId, label, onOk) {
       var needR = rows.length, needC = (rows[0] || []).length;
-      Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
-        { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
-          if (ar.status === Office.AsyncResultStatus.Failed) {
-            // no readable selection -> fall back to writing at the active cell
-            writeSample(rows, errId, needR, needC, label, onOk);
-            return;
-          }
-          var sel = ar.value;
-          var selR = Array.isArray(sel) ? sel.length : 0;
-          var selC = (sel && sel[0] && Array.isArray(sel[0])) ? sel[0].length : 0;
-          // a single selected cell behaves as "active cell" -> Excel expands from it
-          if (selR <= 1 && selC <= 1) { writeSample(rows, errId, needR, needC, label, onOk); return; }
-          if (selR < needR || selC < needC) {
-            showError(errId, 'The ' + (label || 'sample') + ' needs ' + needR + ' rows × ' + needC +
-              ' columns, but your selection is smaller. Click a single empty cell (or a larger range) and click ' +
-              (label || 'Sample data') + ' again — Excel will fill the block automatically.');
-            return;
-          }
-          writeSample(rows, errId, needR, needC, label, onOk);
-        });
-    }
-    function writeSample(rows, errId, needR, needC, label, onOk) {
-      Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix },
-        function (ar) {
-          if (ar.status === Office.AsyncResultStatus.Failed) {
-            showError(errId, 'Could not write the ' + (label || 'sample') + ': ' + ar.error.message +
-              '. Tip: click a single empty cell first, then try again.');
-          } else {
-            if (onOk) onOk();
-            flash(errId, (label || 'Sample') + ' loaded — click Analyze (no need to re-select).');
-          }
-        });
+      var succeed = function (where) {
+        if (onOk) onOk();
+        flash(errId, (label || 'Sample') + ' loaded' + (where ? ' ' + where : '') + ' — click Analyze.');
+      };
+      // 1. fixed block at A1 + select it (Excel API hosts)
+      if (typeof Excel !== 'undefined' && Excel && typeof Excel.run === 'function') {
+        try {
+          var addr = 'A1:' + colName(needC) + needR;
+          Excel.run(function (ctx) {
+            var sheet = ctx.workbook.worksheets.getActiveWorksheet();
+            var rng = sheet.getRange(addr);
+            rng.values = rows;
+            rng.select();
+            return ctx.sync();
+          }).then(function () { succeed('at cell A1'); })
+            .catch(function () { trySelectionWrite(); });
+          return;
+        } catch (e) { /* fall through to the selection write */ }
+      }
+      trySelectionWrite();
+      function trySelectionWrite() {
+        Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
+          { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
+            if (ar.status === Office.AsyncResultStatus.Failed) { succeed('in memory'); return; }
+            var sel = ar.value;
+            var selR = Array.isArray(sel) ? sel.length : 0;
+            var selC = (sel && sel[0] && Array.isArray(sel[0])) ? sel[0].length : 0;
+            // single cell -> Excel expands the block from it; larger-or-equal range -> exact fit.
+            // a multi-cell range SMALLER than the sample must not be touched (user data lives there).
+            if (selR > 1 && selC > 1 && (selR < needR || selC < needC)) { succeed('in memory'); return; }
+            Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix },
+              function (ar2) {
+                if (ar2.status === Office.AsyncResultStatus.Failed) succeed('in memory');
+                else succeed('');
+              });
+          });
+      }
     }
 
     // ---------- tab switching + active panel tracking ----------
@@ -311,13 +328,47 @@
     }
 
     // ============================================================
-    //  MSA (Gage R&R)
+    //  MSA — the five AIAG studies (mirrors the Chrome extension):
+    //  Gage R&R / Bias / Linearity / Stability / Attribute agreement
     // ============================================================
-    var msaLast = null;
+    var msaLast = { grr: null, bias: null, lin: null, stab: null, attr: null };
+    var currentMsa = 'grr';
+    Array.prototype.forEach.call(document.querySelectorAll('.subtab'), function (b) {
+      b.addEventListener('click', function () {
+        currentMsa = b.getAttribute('data-msa');
+        Array.prototype.forEach.call(document.querySelectorAll('.subtab'), function (x) { x.classList.remove('active'); });
+        Array.prototype.forEach.call(document.querySelectorAll('.msa-sub'), function (x) { x.classList.remove('active'); });
+        b.classList.add('active');
+        document.querySelector('.msa-sub[data-msa-panel="' + currentMsa + '"]').classList.add('active');
+      });
+    });
+
+    // shared helpers for the MSA studies
+    function rowNums(row) {
+      var out = [];
+      for (var c = 0; c < row.length; c++) {
+        var v = typeof row[c] === 'number' ? row[c] : parseFloat(String(row[c]).trim());
+        if (isFinite(v)) out.push(v);
+      }
+      return out;
+    }
+    function flatNums(matrix) {
+      var out = [];
+      for (var r = 0; r < matrix.length; r++) out.push.apply(out, rowNums(matrix[r]));
+      return out;
+    }
+    function normJudgement(s) {
+      var v = String(s).trim().toLowerCase();
+      if (/^(pass|p|ok|good|go|1|y|yes|true|g)$/.test(v)) return 'pass';
+      if (/^(fail|f|ng|nok|bad|no|0|n|false|reject|rej)$/.test(v)) return 'fail';
+      return v; // any consistent category labels work (A/B, red/green, ...)
+    }
+
+    // ---------- MSA 1: Gage R&R ----------
     $('msaAnalyze').addEventListener('click', analyzeMsa);
     $('msaSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaSample(); });
-    $('msaCopy').addEventListener('click', function () { copyReport(msaLast, msaReportText, 'msaError'); });
-    $('msaInsert').addEventListener('click', function () { insertReport(msaLast, msaReportText, 'msaError'); });
+    $('msaGrrCopy').addEventListener('click', function () { copyReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
+    $('msaGrrInsert').addEventListener('click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
 
     function fillMsaSample() {
       // 2 appraisers x 3 trials x 5 parts
@@ -325,24 +376,24 @@
         [0.10, 0.12, 0.09, 0.11, 0.10], [0.11, 0.13, 0.10, 0.12, 0.11], [0.10, 0.12, 0.09, 0.11, 0.10],
         [0.11, 0.12, 0.10, 0.12, 0.11], [0.12, 0.13, 0.11, 0.13, 0.12], [0.11, 0.12, 0.10, 0.12, 0.11]
       ];
-      writeMatrixSafe(rows, 'msaError', 'MSA sample', function () { sampleStore.msa = rows; });
+      writeMatrixSafe(rows, 'msaGrrError', 'Gage R&R sample', function () { sampleStore.msaGrr = rows; });
     }
 
     function analyzeMsa() {
-      hideError('msaError');
-      var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
-      if (app === null || trials === null || parts === null) return showError('msaError', 'Appraisers, Trials and Parts must be 1-3 / 2-3 / 3-10.');
-      if (app < 1 || app > 3 || trials < 2 || trials > 3 || parts < 3 || parts > 10) return showError('msaError', 'Appraisers 1-3, Trials 2-3, Parts 3-10.');
-      getMatrixSafe(runMsa, 'msaError', function () { return sampleStore.msa; });
+      hideError('msaGrrError');
+      var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value);
+      if (app === null || trials === null || parts === null) return showError('msaGrrError', 'Appraisers, Trials and Parts must be 1-3 / 2-3 / 3-10.');
+      if (app < 1 || app > 3 || trials < 2 || trials > 3 || parts < 3 || parts > 10) return showError('msaGrrError', 'Appraisers 1-3, Trials 2-3, Parts 3-10.');
+      getMatrixSafe(runMsa, 'msaGrrError', function () { return sampleStore.msaGrr; });
     }
 
     function runMsa(matrix) {
-      hideError('msaError');
+      hideError('msaGrrError');
       var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
-      if (!matrix || !matrix.length) return showError('msaError', 'Select the measurement table first.');
+      if (!matrix || !matrix.length) return showError('msaGrrError', 'Select the measurement table first.');
       var needRows = app * trials;
-      if (matrix.length !== needRows) return showError('msaError', 'Need exactly ' + needRows + ' rows (appraisers x trials); found ' + matrix.length + '.');
-      if (matrix[0].length !== parts) return showError('msaError', 'Need exactly ' + parts + ' columns (parts); found ' + matrix[0].length + '.');
+      if (matrix.length !== needRows) return showError('msaGrrError', 'Need exactly ' + needRows + ' rows (appraisers x trials); found ' + matrix.length + '.');
+      if (matrix[0].length !== parts) return showError('msaGrrError', 'Need exactly ' + parts + ' columns (parts); found ' + matrix[0].length + '.');
       var trials3 = [];
       for (var a = 0; a < app; a++) {
         var appTrials = [];
@@ -353,21 +404,21 @@
         trials3.push(appTrials);
       }
       var res = LKPCalc.gageRR(trials3, tol == null ? 0 : tol);
-      if (res.error) return showError('msaError', res.error);
-      msaShaped = trials3; msaLast = res; renderMsa(res);
+      if (res.error) return showError('msaGrrError', res.error);
+      msaShaped = trials3; msaLast.grr = res; renderMsa(res);
     }
 
     function renderMsa(res) {
       var ok = res.ok;
-      $('msaVerdict').textContent = res.verdict + '  (%GRR = ' + res.pctGRR + ')';
-      $('msaVerdict').className = 'verdict ' + (ok ? 'ok' : res.pctGRR <= 30 ? 'marginal' : 'bad');
+      $('msaGrrVerdict').textContent = res.verdict + '  (%GRR = ' + res.pctGRR + ')';
+      $('msaGrrVerdict').className = 'verdict ' + (ok ? 'ok' : res.pctGRR <= 30 ? 'marginal' : 'bad');
       var rows = [
         ['Repeatability (EV)', res.ev], ['Reproducibility (AV)', res.av], ['Gage R&R (GRR)', res.grr],
         ['Part Variation (PV)', res.pv], ['Total Variation (TV)', res.tv],
         ['%EV', res.pctEV], ['%AV', res.pctAV], ['%GRR', res.pctGRR], ['%PV', res.pctPV],
         ['NDC', res.ndc]
       ];
-      $('msaMetrics').innerHTML = rows.map(function (r) {
+      $('msaGrrMetrics').innerHTML = rows.map(function (r) {
         return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
       }).join('');
       // browser-parity charts (mirrors the Chrome pop-up): appraiser view when >1, else trial view
@@ -390,12 +441,12 @@
           { title: 'Variance components — %EV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
         ];
       }
-      renderCharts('msaCharts', 'msa', charts);
-      $('msaResult').classList.remove('hidden');
+      renderCharts('msaGrrCharts', 'msaGrr', charts);
+      $('msaGrrResult').classList.remove('hidden');
     }
 
-    function msaReportText() {
-      var r = msaLast; if (!r) return null;
+    function msaGrrReportText() {
+      var r = msaLast.grr; if (!r) return null;
       var L = [];
       L.push('LabKitPro - Gage R&R (ANOVA-less, AIAG) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
@@ -404,6 +455,299 @@
       L.push('%EV = ' + r.pctEV + '   %AV = ' + r.pctAV + '   %GRR = ' + r.pctGRR + '   %PV = ' + r.pctPV);
       L.push('NDC = ' + r.ndc);
       L.push('Verdict: ' + r.verdict);
+      L.push('');
+      L.push('Full suite: https://labkitpro.com/tools/');
+      return L.join('\n');
+    }
+
+    // ---------- MSA 2: Bias (exact t-test) ----------
+    $('msaBiasAnalyze').addEventListener('click', analyzeMsaBias);
+    $('msaBiasSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaBiasSample(); });
+    $('msaBiasCopy').addEventListener('click', function () { copyReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
+    $('msaBiasInsert').addEventListener('click', function () { insertReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
+
+    function fillMsaBiasSample() {
+      $('msaBiasRef').value = '10.00'; $('msaBiasTol').value = '0.40';
+      var vals = [9.984, 10.002, 10.031, 10.006, 10.057, 9.975, 10.032, 9.962, 10.017, 10.009,
+                  10.000, 10.042, 9.979, 10.005, 9.963];
+      var rows = vals.map(function (v) { return [[v]]; });
+      writeMatrixSafe(rows, 'msaBiasError', 'Bias sample', function () { sampleStore.msaBias = rows; });
+    }
+
+    function analyzeMsaBias() {
+      hideError('msaBiasError');
+      var ref = optNum($('msaBiasRef').value);
+      if (ref === null) return showError('msaBiasError', 'Enter the reference (true) value first.');
+      getMatrixSafe(runMsaBias, 'msaBiasError', function () { return sampleStore.msaBias; });
+    }
+
+    function runMsaBias(matrix) {
+      hideError('msaBiasError');
+      var ref = optNum($('msaBiasRef').value), tol = optNum($('msaBiasTol').value);
+      if (ref === null) return showError('msaBiasError', 'Enter the reference (true) value first.');
+      if (!matrix || !matrix.length) return showError('msaBiasError', 'Select the measurement column first.');
+      var vals = flatNums(matrix);
+      if (vals.length < 5) return showError('msaBiasError', 'Need at least 5 repeated measurements on the reference value; found ' + vals.length + '.');
+      var res = LKPCalc.bias(vals, ref, tol == null ? 0 : tol);
+      msaLast.bias = { res: res, n: vals.length, ref: ref }; renderMsaBias(res, vals, ref);
+    }
+
+    function renderMsaBias(res, vals, ref) {
+      $('msaBiasVerdict').textContent = res.sig ? 'Bias significant (t > t-crit)' : 'Bias not significant (t ≤ t-crit)';
+      $('msaBiasVerdict').className = 'verdict ' + (res.sig ? 'bad' : 'ok');
+      var rows = [
+        ['Reference', ref], ['n', vals.length], ['Mean', res.mean], ['Std dev', res.std],
+        ['Bias (mean − ref)', res.bias], ['t', res.t], ['t-crit (α = 0.05)', res.tc],
+      ];
+      if (isFinite(res.pctBias)) rows.push(['%Bias of tolerance', res.pctBias]);
+      $('msaBiasMetrics').innerHTML = rows.map(function (r) {
+        return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+      }).join('');
+      var charts = [
+        { title: 'Run chart — repeated measurements on the reference (orange band = x̄ ± 3s)', data: LKPCharts.runChart(vals, ref, res.mean, res.std) },
+        { title: 'Distribution of deviations from the reference (0 = no bias)', data: LKPCharts.devHist(vals, ref, res.bias) },
+      ];
+      renderCharts('msaBiasCharts', 'msaBias', charts);
+      $('msaBiasResult').classList.remove('hidden');
+    }
+
+    function msaBiasReportText() {
+      var L0 = msaLast.bias; if (!L0) return null;
+      var r = L0.res;
+      var L = [];
+      L.push('LabKitPro - Bias study (AIAG MSA ch. III) report');
+      L.push('Date: ' + new Date().toISOString().slice(0, 10));
+      L.push('Reference = ' + L0.ref + '   n = ' + L0.n);
+      L.push('Mean = ' + r.mean + '   Std = ' + r.std + '   Bias = ' + r.bias);
+      L.push('t = ' + r.t + '   t-crit (α = 0.05) = ' + r.tc + (isFinite(r.pctBias) ? '   %Bias = ' + r.pctBias : ''));
+      L.push('Verdict: ' + (r.sig ? 'Bias significant — recalibrate or apply a correction' : 'Bias not significant'));
+      L.push('');
+      L.push('Full suite: https://labkitpro.com/tools/');
+      return L.join('\n');
+    }
+
+    // ---------- MSA 3: Linearity (bias vs reference regression) ----------
+    $('msaLinAnalyze').addEventListener('click', analyzeMsaLin);
+    $('msaLinSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaLinSample(); });
+    $('msaLinCopy').addEventListener('click', function () { copyReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
+    $('msaLinInsert').addEventListener('click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
+
+    function fillMsaLinSample() {
+      $('msaLinTol').value = '0.40';
+      var rows = [[2.00, 2.02], [4.00, 4.05], [6.00, 6.01], [8.00, 8.06], [10.00, 9.98], [12.00, 12.03]];
+      writeMatrixSafe(rows, 'msaLinError', 'Linearity sample', function () { sampleStore.msaLin = rows; });
+    }
+
+    function analyzeMsaLin() {
+      hideError('msaLinError');
+      getMatrixSafe(runMsaLin, 'msaLinError', function () { return sampleStore.msaLin; });
+    }
+
+    function runMsaLin(matrix) {
+      hideError('msaLinError');
+      var tol = optNum($('msaLinTol').value);
+      if (!matrix || !matrix.length) return showError('msaLinError', 'Select the reference/measured table first.');
+      var pts = [];
+      for (var r = 0; r < matrix.length; r++) {
+        var row = matrix[r];
+        if (row.length < 2) continue;
+        var ref = typeof row[0] === 'number' ? row[0] : parseFloat(String(row[0]).trim());
+        var meas = typeof row[1] === 'number' ? row[1] : parseFloat(String(row[1]).trim());
+        if (isFinite(ref) && isFinite(meas)) pts.push({ ref: ref, meas: meas });
+      }
+      if (pts.length < 4) return showError('msaLinError', 'Need at least 4 rows of pairs: column 1 = reference, column 2 = measured.');
+      var res = LKPCalc.linearity(pts, tol == null ? 0 : tol);
+      if (res.error) return showError('msaLinError', res.error);
+      msaLast.lin = { res: res, n: pts.length, tol: tol }; renderMsaLin(res, pts);
+    }
+
+    function renderMsaLin(res, pts) {
+      var v = res.verdict;
+      $('msaLinVerdict').textContent = v || ('Linearity index = ' + res.linearity + ' — enter a tolerance to judge');
+      $('msaLinVerdict').className = 'verdict ' + (!v ? '' : v.indexOf('ok') === 0 ? 'ok' : v.indexOf('Conditional') === 0 ? 'marginal' : 'bad');
+      var rows = [
+        ['Levels', pts.length], ['Slope', res.slope], ['Intercept', res.intercept], ['R²', res.r2],
+        ['Linearity (|slope| × span)', res.linearity],
+      ];
+      if (isFinite(res.pctLin)) rows.push(['%Linearity of tolerance', res.pctLin]);
+      rows.push(['Per-level bias', res.perRef.map(function (p) { return p.ref + ': ' + (p.bias > 0 ? '+' : '') + p.bias; }).join(' · ')]);
+      $('msaLinMetrics').innerHTML = rows.map(function (r) {
+        return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+      }).join('');
+      var biasPts = pts.map(function (p) { return { ref: p.ref, bias: +(p.meas - p.ref).toFixed(4) }; });
+      var charts = [
+        { title: 'Bias vs reference with fitted trend (slope ≈ 0 expected)', data: LKPCharts.fitChart(biasPts, res.slope, res.intercept, res.r2) },
+      ];
+      renderCharts('msaLinCharts', 'msaLin', charts);
+      $('msaLinResult').classList.remove('hidden');
+    }
+
+    function msaLinReportText() {
+      var L0 = msaLast.lin; if (!L0) return null;
+      var r = L0.res;
+      var L = [];
+      L.push('LabKitPro - Linearity study (AIAG MSA ch. III) report');
+      L.push('Date: ' + new Date().toISOString().slice(0, 10));
+      L.push('Levels = ' + L0.n + (L0.tol != null ? '   Tolerance = ' + L0.tol : ''));
+      L.push('Slope = ' + r.slope + '   Intercept = ' + r.intercept + '   R² = ' + r.r2);
+      L.push('Linearity = ' + r.linearity + (isFinite(r.pctLin) ? '   %Linearity = ' + r.pctLin + '%' : ''));
+      L.push('Per-level bias: ' + r.perRef.map(function (p) { return p.ref + ': ' + (p.bias > 0 ? '+' : '') + p.bias; }).join(' · '));
+      L.push('Verdict: ' + (r.verdict || 'enter a tolerance to judge'));
+      L.push('');
+      L.push('Full suite: https://labkitpro.com/tools/');
+      return L.join('\n');
+    }
+
+    // ---------- MSA 4: Stability (drift over time) ----------
+    $('msaStabAnalyze').addEventListener('click', analyzeMsaStab);
+    $('msaStabSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaStabSample(); });
+    $('msaStabCopy').addEventListener('click', function () { copyReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
+    $('msaStabInsert').addEventListener('click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
+
+    function fillMsaStabSample() {
+      $('msaStabRef').value = '10.00';
+      var rows = [
+        [10.002, 9.998, 10.004, 10.000, 9.996],
+        [10.005, 10.001, 9.998, 10.003, 10.001],
+        [9.999, 10.003, 10.006, 10.000, 9.997],
+        [10.004, 10.008, 10.001, 10.005, 9.999],
+        [10.010, 10.004, 10.007, 10.002, 10.006],
+        [10.015, 10.009, 10.012, 10.006, 10.010],
+      ];
+      writeMatrixSafe(rows, 'msaStabError', 'Stability sample', function () { sampleStore.msaStab = rows; });
+    }
+
+    function analyzeMsaStab() {
+      hideError('msaStabError');
+      var ref = optNum($('msaStabRef').value);
+      if (ref === null) return showError('msaStabError', 'Enter the reference (true) value first.');
+      getMatrixSafe(runMsaStab, 'msaStabError', function () { return sampleStore.msaStab; });
+    }
+
+    function runMsaStab(matrix) {
+      hideError('msaStabError');
+      var ref = optNum($('msaStabRef').value);
+      if (ref === null) return showError('msaStabError', 'Enter the reference (true) value first.');
+      if (!matrix || !matrix.length) return showError('msaStabError', 'Select the stability table first.');
+      var groups = [];
+      for (var r = 0; r < matrix.length; r++) {
+        var nums = rowNums(matrix[r]);
+        if (nums.length) groups.push({ label: 't' + (r + 1), measurements: nums, ref: ref });
+      }
+      if (groups.length < 2) return showError('msaStabError', 'Need at least 2 time points (one row of readings per time point).');
+      var res = LKPCalc.stability(groups);
+      if (res.error) return showError('msaStabError', res.error);
+      msaLast.stab = { res: res, ref: ref, k: groups.length, size: groups[0].measurements.length };
+      renderMsaStab(res, ref);
+    }
+
+    function renderMsaStab(res, ref) {
+      var nViol = (res.violations || []).length;
+      var maxBias = Math.max.apply(null, res.rows.map(function (x) { return Math.abs(x.bias); }));
+      var hasLim = res.ucl != null;
+      $('msaStabVerdict').textContent = hasLim
+        ? (nViol === 0 ? 'Stable — no drift signals' : 'Drift detected — ' + nViol + ' signal' + (nViol > 1 ? 's' : ''))
+        : ('Max |bias| = ' + maxBias);
+      $('msaStabVerdict').className = 'verdict ' + (hasLim && nViol > 0 ? 'bad' : 'ok');
+      var rows = [['Reference', ref], ['Time points', res.rows.length]];
+      res.rows.forEach(function (x) { rows.push([x.label + ' mean / bias', x.mean + ' / ' + x.bias]); });
+      if (hasLim) rows.push(['CL', res.cl], ['UCL', res.ucl], ['LCL', res.lcl], ['Signals', nViol], ['Max |bias|', maxBias]);
+      $('msaStabMetrics').innerHTML = rows.map(function (r) {
+        return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+      }).join('');
+      var charts = [
+        { title: hasLim ? 'X̄ chart of time-group means with ±A₂R̄ limits (drift check)' : 'Bias over time (drift check)', data: LKPCharts.biasTrendChart(res, ref) },
+      ];
+      renderCharts('msaStabCharts', 'msaStab', charts);
+      $('msaStabResult').classList.remove('hidden');
+    }
+
+    function msaStabReportText() {
+      var L0 = msaLast.stab; if (!L0) return null;
+      var r = L0.res;
+      var L = [];
+      L.push('LabKitPro - Stability study (AIAG MSA ch. III) report');
+      L.push('Date: ' + new Date().toISOString().slice(0, 10));
+      L.push('Reference = ' + L0.ref + '   Time points = ' + L0.k + ' × ' + L0.size + ' readings');
+      r.rows.forEach(function (x) { L.push(x.label + ': mean = ' + x.mean + '   bias = ' + x.bias); });
+      if (r.ucl != null) {
+        L.push('CL = ' + r.cl + '   UCL = ' + r.ucl + '   LCL = ' + r.lcl + '   Signals = ' + (r.violations || []).length);
+      }
+      L.push('Verdict: ' + (r.ucl != null ? ((r.violations || []).length === 0 ? 'Stable — no drift signals' : 'Drift detected') : 'compare each bias against the tolerance'));
+      L.push('');
+      L.push('Full suite: https://labkitpro.com/tools/');
+      return L.join('\n');
+    }
+
+    // ---------- MSA 5: Attribute agreement (Kappa) ----------
+    $('msaAttrAnalyze').addEventListener('click', analyzeMsaAttr);
+    $('msaAttrSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaAttrSample(); });
+    $('msaAttrCopy').addEventListener('click', function () { copyReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
+    $('msaAttrInsert').addEventListener('click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
+
+    function fillMsaAttrSample() {
+      var data = [
+        ['A', 'pass', 'pass'], ['A', 'pass', 'pass'], ['A', 'fail', 'fail'], ['A', 'pass', 'pass'],
+        ['A', 'fail', 'fail'], ['A', 'pass', 'pass'], ['A', 'fail', 'pass'], ['A', 'pass', 'pass'],
+        ['A', 'pass', 'pass'], ['A', 'pass', 'pass'],
+        ['B', 'pass', 'pass'], ['B', 'pass', 'pass'], ['B', 'pass', 'fail'], ['B', 'pass', 'pass'],
+        ['B', 'fail', 'fail'], ['B', 'pass', 'pass'], ['B', 'pass', 'pass'], ['B', 'pass', 'pass'],
+        ['B', 'fail', 'fail'], ['B', 'fail', 'fail'],
+        ['C', 'pass', 'pass'], ['C', 'pass', 'pass'], ['C', 'fail', 'fail'], ['C', 'pass', 'pass'],
+        ['C', 'pass', 'fail'], ['C', 'pass', 'pass'], ['C', 'pass', 'pass'], ['C', 'fail', 'fail'],
+        ['C', 'fail', 'fail'], ['C', 'pass', 'fail'],
+      ];
+      writeMatrixSafe(data, 'msaAttrError', 'Attribute sample', function () { sampleStore.msaAttr = data; });
+    }
+
+    function analyzeMsaAttr() {
+      hideError('msaAttrError');
+      getMatrixSafe(runMsaAttr, 'msaAttrError', function () { return sampleStore.msaAttr; }, function (m) { return countFilled(m) >= 5; });
+    }
+
+    function runMsaAttr(matrix) {
+      hideError('msaAttrError');
+      if (!matrix || !matrix.length) return showError('msaAttrError', 'Select the judgement table first.');
+      var rows = [];
+      for (var r = 0; r < matrix.length; r++) {
+        var row = matrix[r];
+        if (row.length < 3) continue;
+        var app = String(row[0] == null ? '' : row[0]).trim();
+        if (app === '') continue;
+        rows.push({ app: app, actual: normJudgement(row[1]), ref: normJudgement(row[2]) });
+      }
+      if (rows.length < 5) return showError('msaAttrError', 'Need at least 5 rows of 3 columns: appraiser, actual judgement, reference judgement.');
+      var res = LKPCalc.attributeAgreement(rows);
+      msaLast.attr = { res: res, n: rows.length }; renderMsaAttr(res);
+    }
+
+    function renderMsaAttr(res) {
+      $('msaAttrVerdict').textContent = res.verdict === 'ok' ? 'Kappa ≥ 0.75 — acceptable'
+        : res.verdict === 'conditional' ? 'Kappa 0.40–0.75 — marginal' : 'Kappa < 0.40 — not acceptable';
+      $('msaAttrVerdict').className = 'verdict ' + (res.verdict === 'ok' ? 'ok' : res.verdict === 'conditional' ? 'marginal' : 'bad');
+      var rows = [['Judgments', res.n != null ? res.n : ''], ['Overall agreement', res.overall + '%']];
+      res.perApp.forEach(function (a) { rows.push(['Appraiser ' + a.app, a.pct + '% · κ = ' + a.kappa]); });
+      rows.push(['Worst Kappa', res.worstKappa]);
+      $('msaAttrMetrics').innerHTML = rows.map(function (r) {
+        return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+      }).join('');
+      var charts = [
+        { title: 'Agreement with reference by appraiser (90% target line)', data: LKPCharts.agreeBars(res.perApp) },
+      ];
+      renderCharts('msaAttrCharts', 'msaAttr', charts);
+      $('msaAttrResult').classList.remove('hidden');
+    }
+
+    function msaAttrReportText() {
+      var L0 = msaLast.attr; if (!L0) return null;
+      var r = L0.res;
+      var L = [];
+      L.push('LabKitPro - Attribute agreement study (AIAG MSA ch. IV) report');
+      L.push('Date: ' + new Date().toISOString().slice(0, 10));
+      L.push('Judgments = ' + L0.n + '   Overall agreement = ' + r.overall + '%');
+      r.perApp.forEach(function (a) { L.push('Appraiser ' + a.app + ': agreement ' + a.pct + '% · Kappa = ' + a.kappa); });
+      L.push('Worst Kappa = ' + r.worstKappa);
+      L.push('Verdict: ' + (r.verdict === 'ok' ? 'acceptable (Kappa ≥ 0.75)' : r.verdict === 'conditional' ? 'marginal (Kappa 0.40-0.75) — refine standards and retrain' : 'not acceptable (Kappa < 0.40)'));
       L.push('');
       L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
@@ -501,8 +845,16 @@
         method: 'Capability is assessed on the AIAG dual basis: within-subgroup Cpk (R̄/d₂) when explicit subgroup structure is present, otherwise long-term Ppk. Expected PPM uses the normal integral of the tails. Thresholds: capable ≥ 1.33, marginal 1.00–1.33, not capable < 1.00.' },
       spc: { title: 'Statistical Process Control', verdictId: 'spcVerdict', tableId: 'spcMetrics', extraId: 'spcViol',
         method: 'Control limits at ±3σ (Shewhart constants for subgroup sizes 2–10) with Western-Electric / Nelson signals: ① beyond limits ② 2-of-3 beyond 2σ ③ 4-of-5 beyond 1σ ④ 8 consecutive one side ⑤ 6 trending — per AIAG SPC manual.' },
-      msa: { title: 'Gage R&R (Measurement Systems Analysis)', verdictId: 'msaVerdict', tableId: 'msaMetrics', extraId: null,
+      msaGrr: { title: 'Gage R&R (Measurement Systems Analysis)', verdictId: 'msaGrrVerdict', tableId: 'msaGrrMetrics', extraId: null,
         method: 'Variable Gage R&R by the X̄-R method (AIAG): EV (repeatability), AV (reproducibility), GRR, PV and TV; %GRR vs tolerance or total variation. Thresholds: %GRR ≤ 10% acceptable, 10–30% conditional, > 30% not acceptable; NDC ≥ 5 required.' },
+      msaBias: { title: 'Bias Study (AIAG MSA ch. III)', verdictId: 'msaBiasVerdict', tableId: 'msaBiasMetrics', extraId: null,
+        method: 'Bias = mean of repeated measurements on a reference value minus the reference. Judged with an exact t-test against the t-critical value (df = n−1, α = 0.05) per AIAG MSA ch. III; %Bias expresses |bias| as a share of the tolerance when given.' },
+      msaLin: { title: 'Linearity Study (AIAG MSA ch. III)', verdictId: 'msaLinVerdict', tableId: 'msaLinMetrics', extraId: null,
+        method: 'Linearity regresses bias (measured − reference) on the reference value. Good linearity: slope ≈ 0 with high R², and the linearity index |slope| × span within 5% of the tolerance (AIAG MSA ch. III).' },
+      msaStab: { title: 'Stability Study (AIAG MSA ch. III)', verdictId: 'msaStabVerdict', tableId: 'msaStabMetrics', extraId: null,
+        method: 'Stability compares the gage against the same reference over time: an X̄ chart on time-group means with ±A₂R̄ limits; Western-Electric signals indicate drift. A directional trend here can hide behind a single bias check.' },
+      msaAttr: { title: 'Attribute Agreement Study (AIAG MSA ch. IV)', verdictId: 'msaAttrVerdict', tableId: 'msaAttrMetrics', extraId: null,
+        method: 'Attribute agreement measures decision consistency against the reference: percent agreement plus Cohen\'s Kappa per appraiser (κ corrects for chance agreement). Targets: agreement ≥ 90%, κ ≥ 0.75 acceptable (AIAG MSA ch. IV).' },
       cg: { title: 'Measurement Capability (Cg / Cgk, VDA 5)', verdictId: 'cgVerdict', tableId: 'cgMetrics', extraId: null,
         method: 'Cg uses the 20%-tolerance rule (0.2·Tol / 6σ) and Cgk the 10%-tolerance deviation rule (0.1·Tol − |mean−ref|) / 3σ. VDA 5 thresholds: Cg ≥ 1.33 and Cgk ≥ 1.33 = accept.' },
     };
@@ -571,7 +923,11 @@
 
     $('cpkDownload').addEventListener('click', function () { if (cpkLast) downloadReport('cpk'); });
     $('spcDownload').addEventListener('click', function () { if (spcLast) downloadReport('spc'); });
-    $('msaDownload').addEventListener('click', function () { if (msaLast) downloadReport('msa'); });
+    $('msaGrrDownload').addEventListener('click', function () { if (msaLast.grr) downloadReport('msaGrr'); });
+    $('msaBiasDownload').addEventListener('click', function () { if (msaLast.bias) downloadReport('msaBias'); });
+    $('msaLinDownload').addEventListener('click', function () { if (msaLast.lin) downloadReport('msaLin'); });
+    $('msaStabDownload').addEventListener('click', function () { if (msaLast.stab) downloadReport('msaStab'); });
+    $('msaAttrDownload').addEventListener('click', function () { if (msaLast.attr) downloadReport('msaAttr'); });
     $('cgDownload').addEventListener('click', function () { if (cgLast) downloadReport('cg'); });
 
     // ============================================================
@@ -647,7 +1003,15 @@
     // ============================================================
     //  Import external data (shared bar) - paste CSV/TSV -> analyze
     // ============================================================
-    var IMPORT_ROUTE = { cpk: runCpk, spc: runSpc, msa: runMsa, cg: runCg };
+    // Import routes to the analysis of the current tab; inside MSA it routes to the active study.
+    function runMsaImport(m) {
+      if (currentMsa === 'bias') runMsaBias(m);
+      else if (currentMsa === 'lin') runMsaLin(m);
+      else if (currentMsa === 'stab') runMsaStab(m);
+      else if (currentMsa === 'attr') runMsaAttr(m);
+      else runMsa(m);
+    }
+    var IMPORT_ROUTE = { cpk: runCpk, spc: runSpc, msa: runMsaImport, cg: runCg };
     function parseMatrix(text) {
       var lines = String(text).replace(/\r/g, '').split('\n');
       var out = [];
@@ -704,20 +1068,31 @@
       }
       return n;
     }
+    // Count non-empty cells in a matrix (any type — used by text-based studies like attribute agreement).
+    function countFilled(m) {
+      if (!m || !m.length) return 0;
+      var n = 0;
+      for (var r = 0; r < m.length; r++) for (var c = 0; c < m[r].length; c++) {
+        var v = m[r][c];
+        if (v != null && String(v).trim() !== '') n++;
+      }
+      return n;
+    }
     // Read the selection; if it's empty/too small, fall back to the last loaded sample
     // (so "Sample data -> Analyze" works without the user re-selecting the sheet).
-    function getMatrixSafe(cb, errId, fallback) {
+    // okFn: optional predicate matrix -> boolean deciding whether the selection is usable
+    // (default: at least 2 numeric cells — right for the measurement-based tools).
+    function getMatrixSafe(cb, errId, fallback, okFn) {
       Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
         { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
-          if (ar.status === Office.AsyncResultStatus.Failed) {
-            if (fallback) { var f0 = fallback(); if (f0) { hideError(errId); return cb(f0); } }
-            return showError(errId, 'Select a range of cells first, then click Analyze.');
-          }
-          var sel = ar.value;
-          if (countNumeric(sel) < 2) {
-            if (fallback) { var f1 = fallback(); if (f1) { hideError(errId); return cb(f1); } }
+          function useFallback() {
+            if (fallback) { var f = fallback(); if (f) { hideError(errId); return cb(f); } }
             return showError(errId, 'Select a range of measurement values first, then click Analyze.');
           }
+          if (ar.status === Office.AsyncResultStatus.Failed) return useFallback();
+          var sel = ar.value;
+          var good = okFn ? okFn(sel) : (countNumeric(sel) >= 2);
+          if (!good) return useFallback();
           cb(sel);
         });
     }

@@ -124,39 +124,153 @@
         <div id="spcError" class="msg hidden"></div>
       </section>
 
-      <!-- ============ MSA ============ -->
+      <!-- ============ MSA (5 studies, mirrors the Chrome extension) ============ -->
       <section class="panel" data-panel="msa">
-        <div class="spec-row">
-          <label>Appraisers<input type="number" id="msaApp" min="1" max="3" step="1" value="2" /></label>
-          <label>Trials<input type="number" id="msaTrials" min="2" max="3" step="1" value="3" /></label>
-          <label>Parts<input type="number" id="msaParts" min="3" max="10" step="1" value="5" /></label>
-          <label>Tol<input type="number" id="msaTol" step="any" placeholder="optional" /></label>
+        <div class="subtabs">
+          <button type="button" class="subtab active" data-msa="grr">Gage R&amp;R</button>
+          <button type="button" class="subtab" data-msa="bias">Bias</button>
+          <button type="button" class="subtab" data-msa="lin">Linearity</button>
+          <button type="button" class="subtab" data-msa="stab">Stability</button>
+          <button type="button" class="subtab" data-msa="attr">Attribute</button>
         </div>
 
-        <p class="hint">
-          <b>Gage R&amp;R</b> &mdash; select the measurement table: rows = appraiser &times; trial
-          (appraiser 1 trial 1&hellip;n, then appraiser 2&hellip;), columns = parts.
-          Leave Tolerance blank to report %GRR against total variation.
-        </p>
-
-        <div class="btn-row">
-          <button id="msaAnalyze" class="btn primary">Run Gage R&amp;R</button>
-          <button id="msaSample" class="btn">Sample data</button>
-        </div>
-
-        <section id="msaResult" class="hidden">
-          <div id="msaVerdict" class="verdict"></div>
-          <table id="msaMetrics" class="metrics"></table>
-          <div class="charts" id="msaCharts"></div>
-          <div class="btn-row">
-            <button id="msaInsert" class="btn primary">Insert report</button>
-            <button id="msaCopy" class="btn">Copy report</button>
-            <button id="msaDownload" class="btn dl">Download report</button>
+        <!-- MSA 1: Gage R&R -->
+        <div class="msa-sub active" data-msa-panel="grr">
+          <div class="spec-row">
+            <label>Appraisers<input type="number" id="msaApp" min="1" max="3" step="1" value="2" /></label>
+            <label>Trials<input type="number" id="msaTrials" min="2" max="3" step="1" value="3" /></label>
+            <label>Parts<input type="number" id="msaParts" min="3" max="10" step="1" value="5" /></label>
+            <label>Tol<input type="number" id="msaTol" step="any" placeholder="optional" /></label>
           </div>
-          <p class="foot-note">AIAG MSA: %GRR &le; 10% acceptable &middot; 10&ndash;30% conditional &middot; &gt; 30% not acceptable. NDC &ge; 5 required.</p>
-        </section>
+          <p class="hint">
+            <b>Gage R&amp;R</b> (AIAG, X&#772;-R) &mdash; select the measurement table: rows = appraiser &times; trial
+            (appraiser 1 trial 1&hellip;n, then appraiser 2&hellip;), columns = parts.
+            Leave Tolerance blank to report %GRR against total variation.
+          </p>
+          <div class="btn-row">
+            <button id="msaAnalyze" class="btn primary">Run Gage R&amp;R</button>
+            <button id="msaSample" class="btn">Sample data</button>
+          </div>
+          <section id="msaGrrResult" class="hidden">
+            <div id="msaGrrVerdict" class="verdict"></div>
+            <table id="msaGrrMetrics" class="metrics"></table>
+            <div class="charts" id="msaGrrCharts"></div>
+            <div class="btn-row">
+              <button id="msaGrrInsert" class="btn primary">Insert report</button>
+              <button id="msaGrrCopy" class="btn">Copy report</button>
+              <button id="msaGrrDownload" class="btn dl">Download report</button>
+            </div>
+            <p class="foot-note">AIAG MSA: %GRR &le; 10% acceptable &middot; 10&ndash;30% conditional &middot; &gt; 30% not acceptable. NDC &ge; 5 required.</p>
+          </section>
+          <div id="msaGrrError" class="msg hidden"></div>
+        </div>
 
-        <div id="msaError" class="msg hidden"></div>
+        <!-- MSA 2: Bias -->
+        <div class="msa-sub" data-msa-panel="bias">
+          <div class="spec-row">
+            <label>Reference<input type="number" id="msaBiasRef" step="any" placeholder="true value" /></label>
+            <label>Tolerance<input type="number" id="msaBiasTol" step="any" placeholder="optional" /></label>
+          </div>
+          <p class="hint">
+            <b>Bias</b> (AIAG ch. III, exact t-test) &mdash; select a single column of repeated
+            measurements taken on the same reference (true) value. &ge; 5 readings.
+          </p>
+          <div class="btn-row">
+            <button id="msaBiasAnalyze" class="btn primary">Run bias study</button>
+            <button id="msaBiasSample" class="btn">Sample data</button>
+          </div>
+          <section id="msaBiasResult" class="hidden">
+            <div id="msaBiasVerdict" class="verdict"></div>
+            <table id="msaBiasMetrics" class="metrics"></table>
+            <div class="charts" id="msaBiasCharts"></div>
+            <div class="btn-row">
+              <button id="msaBiasInsert" class="btn primary">Insert report</button>
+              <button id="msaBiasCopy" class="btn">Copy report</button>
+              <button id="msaBiasDownload" class="btn dl">Download report</button>
+            </div>
+            <p class="foot-note">Exact t-test vs t-critical (df = n&minus;1, &alpha; = 0.05) per AIAG MSA ch. III.</p>
+          </section>
+          <div id="msaBiasError" class="msg hidden"></div>
+        </div>
+
+        <!-- MSA 3: Linearity -->
+        <div class="msa-sub" data-msa-panel="lin">
+          <div class="spec-row">
+            <label>Tolerance<input type="number" id="msaLinTol" step="any" placeholder="optional" /></label>
+          </div>
+          <p class="hint">
+            <b>Linearity</b> (AIAG ch. III, regression) &mdash; select a 2-column range:
+            column 1 = reference value, column 2 = measured value. One row per reference level, &ge; 4 levels.
+          </p>
+          <div class="btn-row">
+            <button id="msaLinAnalyze" class="btn primary">Run linearity</button>
+            <button id="msaLinSample" class="btn">Sample data</button>
+          </div>
+          <section id="msaLinResult" class="hidden">
+            <div id="msaLinVerdict" class="verdict"></div>
+            <table id="msaLinMetrics" class="metrics"></table>
+            <div class="charts" id="msaLinCharts"></div>
+            <div class="btn-row">
+              <button id="msaLinInsert" class="btn primary">Insert report</button>
+              <button id="msaLinCopy" class="btn">Copy report</button>
+              <button id="msaLinDownload" class="btn dl">Download report</button>
+            </div>
+            <p class="foot-note">Linearity = |slope| &times; span &middot; &le; 5% of tolerance acceptable (AIAG MSA ch. III).</p>
+          </section>
+          <div id="msaLinError" class="msg hidden"></div>
+        </div>
+
+        <!-- MSA 4: Stability -->
+        <div class="msa-sub" data-msa-panel="stab">
+          <div class="spec-row">
+            <label>Reference<input type="number" id="msaStabRef" step="any" placeholder="true value" /></label>
+          </div>
+          <p class="hint">
+            <b>Stability</b> (drift over time) &mdash; select the table where <b>each row = one time point</b>'s
+            repeated measurements on the same reference (equal count per row, &ge; 2 rows).
+          </p>
+          <div class="btn-row">
+            <button id="msaStabAnalyze" class="btn primary">Run stability</button>
+            <button id="msaStabSample" class="btn">Sample data</button>
+          </div>
+          <section id="msaStabResult" class="hidden">
+            <div id="msaStabVerdict" class="verdict"></div>
+            <table id="msaStabMetrics" class="metrics"></table>
+            <div class="charts" id="msaStabCharts"></div>
+            <div class="btn-row">
+              <button id="msaStabInsert" class="btn primary">Insert report</button>
+              <button id="msaStabCopy" class="btn">Copy report</button>
+              <button id="msaStabDownload" class="btn dl">Download report</button>
+            </div>
+            <p class="foot-note">X&#772;-R limits across time-group means (AIAG MSA ch. III).</p>
+          </section>
+          <div id="msaStabError" class="msg hidden"></div>
+        </div>
+
+        <!-- MSA 5: Attribute agreement -->
+        <div class="msa-sub" data-msa-panel="attr">
+          <p class="hint">
+            <b>Attribute agreement</b> (AIAG ch. IV, Kappa) &mdash; select a 3-column range:
+            column 1 = appraiser (text, e.g. A / B / C), column 2 = actual judgement (pass/fail),
+            column 3 = reference judgement. &ge; 5 rows.
+          </p>
+          <div class="btn-row">
+            <button id="msaAttrAnalyze" class="btn primary">Run attribute study</button>
+            <button id="msaAttrSample" class="btn">Sample data</button>
+          </div>
+          <section id="msaAttrResult" class="hidden">
+            <div id="msaAttrVerdict" class="verdict"></div>
+            <table id="msaAttrMetrics" class="metrics"></table>
+            <div class="charts" id="msaAttrCharts"></div>
+            <div class="btn-row">
+              <button id="msaAttrInsert" class="btn primary">Insert report</button>
+              <button id="msaAttrCopy" class="btn">Copy report</button>
+              <button id="msaAttrDownload" class="btn dl">Download report</button>
+            </div>
+            <p class="foot-note">Agreement + Cohen's Kappa vs reference (AIAG MSA ch. IV).</p>
+          </section>
+          <div id="msaAttrError" class="msg hidden"></div>
+        </div>
       </section>
 
       <!-- ============ Cg / Cgk ============ -->
@@ -241,11 +355,13 @@
             </ul>
           </div>
           <div class="help-card">
-            <h3>MSA · Gage R&amp;R</h3>
+            <h3>MSA &middot; 5 studies (AIAG)</h3>
             <ul>
-              <li>Set Appraisers / Trials / Parts, then select the measurement table.</li>
-              <li>Rows = appraiser &times; trial (appraiser 1 trial 1&hellip;n, then appraiser 2&hellip;); columns = parts.</li>
-              <li>Tolerance is optional — if blank, %GRR is reported against total variation.</li>
+              <li><b>Gage R&amp;R</b> — set Appraisers / Trials / Parts, select the table (rows = appraiser &times; trial, columns = parts).</li>
+              <li><b>Bias</b> — one column of repeated readings on a reference value + t-test.</li>
+              <li><b>Linearity</b> — 2 columns: reference, measured (one row per level, &ge; 4).</li>
+              <li><b>Stability</b> — each row = one time point's readings on the reference (drift check).</li>
+              <li><b>Attribute</b> — 3 columns: appraiser, actual, reference (pass/fail) &rarr; agreement + Kappa.</li>
             </ul>
           </div>
           <div class="help-card">
@@ -263,7 +379,7 @@
             <li><b>Insert report</b> &mdash; writes the text report into the current selection (you're asked to confirm first).</li>
             <li><b>Copy report</b> &mdash; copies a plain-text report to your clipboard.</li>
             <li><b>Download report</b> &mdash; saves a self-contained HTML file (charts + metrics + method) you can open or email.</li>
-            <li><b>Sample data</b> &mdash; fills a demo dataset into the sheet. <b>Click a single empty cell first</b> (or a range at least as big as the sample); otherwise Excel can't fit the block and will reject the write. After loading, just click <b>Analyze</b> &mdash; you don't need to re-select the data (it's remembered).</li>
+            <li><b>Sample data</b> &mdash; works from anywhere, any time: click it and a typical demo dataset is placed at the top of the sheet (cell A1) and selected for you. If that spot is busy, the data is simply kept in memory &mdash; either way <b>Analyze</b> runs on it immediately, no selection needed.</li>
             <li><b>Import external data</b> (top bar) &mdash; paste values from a CSV / another sheet / text file; columns split by tab, comma or space. Analysis runs on the pasted data regardless of the write.</li>
           </ul>
         </div>
