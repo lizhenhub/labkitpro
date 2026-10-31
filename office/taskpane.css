@@ -1,32 +1,42 @@
-/* LabKitPro Excel add-in taskpane - v1.0.3 (responsive, honest tabs, brand title) */
+/* LabKitPro Excel add-in taskpane - v1.2 (responsive, import, instant sample).
+   Designed for the Excel taskpane viewport (typically 320-720px wide).
+   Everything reflows on zoom / splitter resize - no fixed widths that overflow. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { width: 100%; }
 body {
-  font-family: "Segoe UI", -apple-system, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   font-size: 13px; color: #1e293b; background: #fff;
   display: flex; flex-direction: column; min-height: 100vh;
+  overflow-x: hidden;            /* safety net: never show an ugly horizontal scrollbar */
+  -webkit-text-size-adjust: 100%;
 }
+
 .hidden { display: none !important; }
 
 /* ---- header ---- */
-.hdr { background: #2d5f8e; color: #fff; }
+.hdr { background: linear-gradient(135deg, #2d5f8e, #1f4a73); color: #fff; }
 .hdr-in {
-  max-width: 680px; margin: 0 auto; padding: 10px 14px;
-  display: flex; align-items: center; gap: 10px;
+  max-width: 760px; margin: 0 auto; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;   /* wrap so title never overflows */
 }
-.hdr .logo { width: 32px; height: 32px; border-radius: 6px; flex: none; }
-.hdr-txt { flex: 1; min-width: 0; }
-.hdr h1 { font-size: 14.5px; font-weight: 700; line-height: 1.25; white-space: nowrap; }
-.hdr .sub { font-size: 10.5px; color: #cfe3f5; margin-top: 2px; white-space: nowrap; }
-.hdr a.cta { flex: none; }
+.hdr .logo { width: 32px; height: 32px; border-radius: 7px; flex: none; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.hdr-txt { flex: 1 1 140px; min-width: 0; }
+.hdr h1 {
+  font-size: 14px; font-weight: 700; line-height: 1.2;
+  overflow-wrap: anywhere; word-break: break-word;   /* key fix: title wraps instead of overflowing on zoom */
+}
+.hdr .sub { font-size: 10.5px; color: #cfe3f5; margin-top: 2px; line-height: 1.3; overflow-wrap: anywhere; }
+.hdr a.cta { flex: none; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
 
 /* ---- tab bar ---- */
 .tabs { background: #eef2f7; border-bottom: 1px solid #d7dee8; }
 .tabs-in {
-  max-width: 680px; margin: 0 auto; padding: 6px 10px;
+  max-width: 760px; margin: 0 auto; padding: 6px 10px;
   display: flex; gap: 6px; flex-wrap: wrap;
 }
 .tab {
-  padding: 7px 14px; border: 1px solid #d7dee8; border-radius: 6px;
+  padding: 7px 12px; border: 1px solid #d7dee8; border-radius: 7px;
   background: #fff; font-size: 12.5px; color: #64748b; cursor: pointer;
   font-weight: 600; white-space: nowrap;
 }
@@ -40,47 +50,50 @@ body {
 
 /* ---- body ---- */
 main { flex: 1; padding: 14px 14px 18px; }
-.wrap { max-width: 680px; margin: 0 auto; }
+.wrap { max-width: 760px; margin: 0 auto; }
 
-.spec-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.spec-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }   /* wrap so inputs stack when narrow */
 .spec-row label {
-  flex: 1; display: flex; flex-direction: column; gap: 3px;
-  font-size: 11px; color: #475569; font-weight: 600;
+  flex: 1 1 90px; display: flex; flex-direction: column; gap: 3px;
+  font-size: 11px; color: #475569; font-weight: 600; min-width: 0;
 }
-.spec-row input {
-  padding: 7px 9px; border: 1px solid #cbd5e1; border-radius: 5px;
-  font-size: 13px; background: #fff; width: 100%; font-weight: 400;
+.spec-row input, .spec-row select {
+  padding: 8px 9px; border: 1px solid #cbd5e1; border-radius: 6px;
+  font-size: 13px; background: #fff; width: 100%; font-weight: 400; color: #1e293b;
 }
-.spec-row input:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
+.spec-row input:focus, .spec-row select:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
 
-.hint { color: #475569; font-size: 11.5px; line-height: 1.55; margin-bottom: 8px; }
+.hint { color: #475569; font-size: 11.5px; line-height: 1.55; margin-bottom: 8px; overflow-wrap: anywhere; }
 .hint b { color: #1e293b; }
 .hint.dim { color: #94a3b8; margin-top: -2px; }
 
-.btn-row { display: flex; gap: 8px; margin: 4px 0 8px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 8px; }   /* wrap so buttons never overflow */
 .btn {
-  padding: 9px 14px; border: 1px solid #cbd5e1; border-radius: 6px;
+  flex: 1 1 auto; min-width: 0;
+  padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 7px;
   background: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer;
-  white-space: nowrap; color: #1e293b;
+  white-space: nowrap; color: #1e293b; min-height: 40px;
+  transition: background .12s, border-color .12s;
 }
-.btn:hover { background: #f1f5f9; }
+.btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+.btn:active { transform: translateY(1px); }
 .btn.primary {
   background: #0f2f5c; border-color: #0f2f5c; color: #fff;
-  flex: 1; min-width: 160px;
+  flex: 2 1 160px;
 }
-.btn.primary:hover { background: #16407e; }
+.btn.primary:hover { background: #16407e; border-color: #16407e; }
 
 /* ---- result ---- */
 .verdict {
-  padding: 9px 12px; border-radius: 6px; font-weight: 700; font-size: 13px;
-  margin: 4px 0 8px; background: #e2e8f0; color: #334155;
+  padding: 10px 12px; border-radius: 7px; font-weight: 700; font-size: 13px;
+  margin: 4px 0 8px; background: #e2e8f0; color: #334155; line-height: 1.3;
 }
 .verdict.ok { background: #dcfce7; color: #166534; }
 .verdict.marginal { background: #fef3c7; color: #92400e; }
 .verdict.bad { background: #fee2e2; color: #991b1b; }
 
 .metrics { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
-.metrics td { padding: 5px 4px; border-bottom: 1px solid #e8edf3; }
+.metrics td { padding: 6px 4px; border-bottom: 1px solid #e8edf3; }
 .metrics td:first-child { color: #64748b; }
 .metrics td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
 .metrics tr.dim td { color: #b6c2d2; font-weight: 400; }
@@ -89,7 +102,7 @@ main { flex: 1; padding: 14px 14px 18px; }
 
 /* ---- messages ---- */
 .msg {
-  margin-top: 8px; padding: 9px 12px; border-radius: 6px;
+  margin-top: 8px; padding: 10px 12px; border-radius: 7px;
   background: #fee2e2; color: #991b1b; font-size: 12px; line-height: 1.5;
 }
 .msg.ok { background: #e0f2fe; color: #075985; }
@@ -108,12 +121,6 @@ main { flex: 1; padding: 14px 14px 18px; }
 .panel { display: none; }
 .panel.active { display: block; }
 
-.spec-row select {
-  padding: 7px 9px; border: 1px solid #cbd5e1; border-radius: 5px;
-  font-size: 13px; background: #fff; width: 100%; font-weight: 400; color: #1e293b;
-}
-.spec-row select:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
-
 /* ---- SPC signals ---- */
 .viol { font-size: 11.5px; line-height: 1.6; margin-bottom: 8px; }
 .viol ul { margin: 4px 0 0 16px; }
@@ -123,7 +130,7 @@ main { flex: 1; padding: 14px 14px 18px; }
 /* ---- Transition countdown ---- */
 .tr-grid { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 10px; }
 .tr-card {
-  flex: 1; min-width: 150px; border: 1px solid #d7dee8; border-radius: 8px;
+  flex: 1 1 150px; border: 1px solid #d7dee8; border-radius: 9px;
   padding: 12px; background: #f8fafc;
 }
 .tr-std { font-weight: 700; font-size: 13.5px; color: #0f2f5c; margin-bottom: 6px; }
@@ -134,3 +141,33 @@ main { flex: 1; padding: 14px 14px 18px; }
 .tr-days.tbc { color: #b45309; font-size: 16px; }
 .tr-sub { font-size: 11px; color: #64748b; margin-top: 2px; }
 .tr-note { font-size: 11px; color: #475569; margin-top: 8px; line-height: 1.5; }
+
+/* ---- Import external data bar ---- */
+.import-bar { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+.import-toggle {
+  width: 100%; text-align: left; padding: 9px 14px; background: transparent;
+  border: none; font-size: 12.5px; font-weight: 700; color: #0f2f5c; cursor: pointer;
+}
+.import-toggle:hover { background: #eef2f7; }
+.import-toggle::before { content: "\25BC"; font-size: 9px; margin-right: 6px; color: #94a3b8; }
+.import-panel { padding: 2px 14px 12px; }
+.import-area {
+  width: 100%; min-height: 92px; resize: vertical; padding: 9px;
+  border: 1px solid #cbd5e1; border-radius: 7px;
+  font-family: Consolas, "Courier New", monospace; font-size: 12px; line-height: 1.45; color: #1e293b;
+}
+.import-area:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
+
+/* ---- responsive: narrow taskpane (zoom in / small dock) ---- */
+@media (max-width: 380px) {
+  .spec-row { flex-direction: column; }
+  .spec-row label { flex: 1 1 auto; }
+  .btn-row { flex-direction: column; }
+  .btn, .btn.primary { flex: 1 1 auto; width: 100%; }
+  .hdr h1 { font-size: 13px; }
+  .tr-card { flex: 1 1 100%; }
+}
+/* ---- responsive: comfortably wide taskpane ---- */
+@media (min-width: 560px) {
+  .spec-row label { flex: 1 1 110px; }
+}

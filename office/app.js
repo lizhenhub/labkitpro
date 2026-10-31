@@ -20,15 +20,17 @@
       setTimeout(function () { e.classList.add('hidden'); }, 2500);
     }
 
-    // ---------- tab switching ----------
-    var panelTimers = {};
+    // ---------- tab switching + active panel tracking ----------
+    var currentPanel = 'cpk';
     Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) {
       t.addEventListener('click', function () {
         var name = t.getAttribute('data-tab');
+        currentPanel = name;
         Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (x) { x.classList.remove('active'); });
         Array.prototype.forEach.call(document.querySelectorAll('.panel'), function (x) { x.classList.remove('active'); });
         t.classList.add('active');
         document.querySelector('.panel[data-panel="' + name + '"]').classList.add('active');
+        $('importBar').classList.toggle('hidden', name === 'tr');   // import only applies to data tools
         if (name === 'tr') renderTransition();
       });
     });
@@ -55,25 +57,30 @@
 
     function analyzeCpk() {
       hideError('error');
+      var lsl = optNum($('lsl').value), usl = optNum($('usl').value);
+      if (lsl === null && usl === null) return showError('error', 'Enter at least one spec limit (LSL or USL).');
+      getMatrix(runCpk);
+    }
+
+    function runCpk(matrix) {
+      hideError('error');
       var lsl = optNum($('lsl').value), usl = optNum($('usl').value), target = optNum($('target').value);
       if (lsl === null && usl === null) return showError('error', 'Enter at least one spec limit (LSL or USL).');
-      getMatrix(function (matrix) {
-        if (!matrix || !matrix.length) return showError('error', 'Select a range of measurement values first.');
-        var cols = [], all = [];
-        for (var c = 0; c < matrix[0].length; c++) cols.push([]);
-        for (var r = 0; r < matrix.length; r++) for (var c2 = 0; c2 < matrix[r].length; c2++) {
-          var v = typeof matrix[r][c2] === 'number' ? matrix[r][c2] : parseFloat(String(matrix[r][c2]).trim());
-          if (isFinite(v)) { cols[c2].push(v); all.push(v); }
-        }
-        var numericCols = cols.filter(function (col) { return col.length >= 2; });
-        var values, subgroups = null;
-        if (numericCols.length >= 2) { values = [].concat.apply([], numericCols); subgroups = numericCols; }
-        else values = all;
-        if (values.length < 2) return showError('error', 'No numeric values found in the selection. Select the cells that contain your measurements.');
-        var res = LKPCalc.capability(values, lsl, usl, target, subgroups);
-        if (res.error) return showError('error', res.error);
-        cpkLast = res; renderCpk(res);
-      });
+      if (!matrix || !matrix.length) return showError('error', 'Select a range of measurement values first.');
+      var cols = [], all = [];
+      for (var c = 0; c < matrix[0].length; c++) cols.push([]);
+      for (var r = 0; r < matrix.length; r++) for (var c2 = 0; c2 < matrix[r].length; c2++) {
+        var v = typeof matrix[r][c2] === 'number' ? matrix[r][c2] : parseFloat(String(matrix[r][c2]).trim());
+        if (isFinite(v)) { cols[c2].push(v); all.push(v); }
+      }
+      var numericCols = cols.filter(function (col) { return col.length >= 2; });
+      var values, subgroups = null;
+      if (numericCols.length >= 2) { values = [].concat.apply([], numericCols); subgroups = numericCols; }
+      else values = all;
+      if (values.length < 2) return showError('error', 'No numeric values found. Select the cells that contain your measurements.');
+      var res = LKPCalc.capability(values, lsl, usl, target, subgroups);
+      if (res.error) return showError('error', res.error);
+      cpkLast = res; renderCpk(res);
     }
 
     function renderCpk(res) {
@@ -157,35 +164,38 @@
 
     function analyzeSpc() {
       hideError('spcError');
+      getMatrix(runSpc);
+    }
+
+    function runSpc(matrix) {
+      hideError('spcError');
       var type = $('spcType').value;
-      getMatrix(function (matrix) {
-        if (!matrix || !matrix.length) return showError('spcError', 'Select the data range first.');
-        var groups;
-        if (SPC_ATTR[type]) {
-          groups = matrix.map(function (row) {
-            var n = optNum(row[0]), d = optNum(row[1]);
-            if (n === null || d === null) return null;
-            return { n: n, d: d };
-          }).filter(Boolean);
-          if (groups.length < 4) return showError('spcError', 'Need at least 4 subgroups (rows) of n/d pairs.');
-        } else {
-          var cols = [];
-          for (var c = 0; c < matrix[0].length; c++) cols.push([]);
-          for (var r = 0; r < matrix.length; r++) for (var c2 = 0; c2 < matrix[r].length; c2++) {
-            var v = typeof matrix[r][c2] === 'number' ? matrix[r][c2] : parseFloat(String(matrix[r][c2]).trim());
-            if (isFinite(v)) cols[c2].push(v);
-          }
-          if (type === 'i-mr') {
-            groups = [].concat.apply([], cols).map(function (x) { return [x]; });
-          } else {
-            groups = cols.filter(function (col) { return col.length >= 2; });
-            if (groups.length < 2) return showError('spcError', 'Select at least 2 subgroup columns (each column = one subgroup, size 2-10).');
-          }
+      if (!matrix || !matrix.length) return showError('spcError', 'Select the data range first.');
+      var groups;
+      if (SPC_ATTR[type]) {
+        groups = matrix.map(function (row) {
+          var n = optNum(row[0]), d = optNum(row[1]);
+          if (n === null || d === null) return null;
+          return { n: n, d: d };
+        }).filter(Boolean);
+        if (groups.length < 4) return showError('spcError', 'Need at least 4 subgroups (rows) of n/d pairs.');
+      } else {
+        var cols = [];
+        for (var c = 0; c < matrix[0].length; c++) cols.push([]);
+        for (var r = 0; r < matrix.length; r++) for (var c2 = 0; c2 < matrix[r].length; c2++) {
+          var v = typeof matrix[r][c2] === 'number' ? matrix[r][c2] : parseFloat(String(matrix[r][c2]).trim());
+          if (isFinite(v)) cols[c2].push(v);
         }
-        var res = LKPCalc.spcLimits(type, groups);
-        if (res.error) return showError('spcError', res.error);
-        spcLast = res; renderSpc(res, type);
-      });
+        if (type === 'i-mr') {
+          groups = [].concat.apply([], cols).map(function (x) { return [x]; });
+        } else {
+          groups = cols.filter(function (col) { return col.length >= 2; });
+          if (groups.length < 2) return showError('spcError', 'Select at least 2 subgroup columns (each column = one subgroup, size 2-10).');
+        }
+      }
+      var res = LKPCalc.spcLimits(type, groups);
+      if (res.error) return showError('spcError', res.error);
+      spcLast = res; renderSpc(res, type);
     }
 
     function renderSpc(res, type) {
@@ -257,24 +267,28 @@
       var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
       if (app === null || trials === null || parts === null) return showError('msaError', 'Appraisers, Trials and Parts must be 1-3 / 2-3 / 3-10.');
       if (app < 1 || app > 3 || trials < 2 || trials > 3 || parts < 3 || parts > 10) return showError('msaError', 'Appraisers 1-3, Trials 2-3, Parts 3-10.');
-      getMatrix(function (matrix) {
-        if (!matrix || !matrix.length) return showError('msaError', 'Select the measurement table first.');
-        var needRows = app * trials;
-        if (matrix.length !== needRows) return showError('msaError', 'Need exactly ' + needRows + ' rows (appraisers x trials); found ' + matrix.length + '.');
-        if (matrix[0].length !== parts) return showError('msaError', 'Need exactly ' + parts + ' columns (parts); found ' + matrix[0].length + '.');
-        var trials3 = [];
-        for (var a = 0; a < app; a++) {
-          var appTrials = [];
-          for (var t = 0; t < trials; t++) {
-            var row = matrix[a * trials + t];
-            appTrials.push(row.map(function (x) { return typeof x === 'number' ? x : parseFloat(String(x).trim()); }));
-          }
-          trials3.push(appTrials);
+      getMatrix(runMsa);
+    }
+
+    function runMsa(matrix) {
+      hideError('msaError');
+      var app = optNum($('msaApp').value), trials = optNum($('msaTrials').value), parts = optNum($('msaParts').value), tol = optNum($('msaTol').value);
+      if (!matrix || !matrix.length) return showError('msaError', 'Select the measurement table first.');
+      var needRows = app * trials;
+      if (matrix.length !== needRows) return showError('msaError', 'Need exactly ' + needRows + ' rows (appraisers x trials); found ' + matrix.length + '.');
+      if (matrix[0].length !== parts) return showError('msaError', 'Need exactly ' + parts + ' columns (parts); found ' + matrix[0].length + '.');
+      var trials3 = [];
+      for (var a = 0; a < app; a++) {
+        var appTrials = [];
+        for (var t = 0; t < trials; t++) {
+          var row = matrix[a * trials + t];
+          appTrials.push(row.map(function (x) { return typeof x === 'number' ? x : parseFloat(String(x).trim()); }));
         }
-        var res = LKPCalc.gageRR(trials3, tol == null ? 0 : tol);
-        if (res.error) return showError('msaError', res.error);
-        msaLast = res; renderMsa(res);
-      });
+        trials3.push(appTrials);
+      }
+      var res = LKPCalc.gageRR(trials3, tol == null ? 0 : tol);
+      if (res.error) return showError('msaError', res.error);
+      msaLast = res; renderMsa(res);
     }
 
     function renderMsa(res) {
@@ -331,18 +345,24 @@
       var ref = optNum($('cgRef').value), tol = optNum($('cgTol').value);
       if (ref === null) return showError('cgError', 'Enter the reference (true) value.');
       if (tol === null || tol <= 0) return showError('cgError', 'Enter a positive tolerance band (USL-LSL).');
-      getMatrix(function (matrix) {
-        if (!matrix || !matrix.length) return showError('cgError', 'Select the measurement column first.');
-        var vals = [];
-        for (var r = 0; r < matrix.length; r++) for (var c = 0; c < matrix[r].length; c++) {
-          var v = typeof matrix[r][c] === 'number' ? matrix[r][c] : parseFloat(String(matrix[r][c]).trim());
-          if (isFinite(v)) vals.push(v);
-        }
-        if (vals.length < 2) return showError('cgError', 'No numeric values found in the selection.');
-        var res = LKPCalc.cgCgk(vals, ref, tol);
-        if (res.error) return showError('cgError', res.error);
-        cgLast = res; renderCg(res);
-      });
+      getMatrix(runCg);
+    }
+
+    function runCg(matrix) {
+      hideError('cgError');
+      var ref = optNum($('cgRef').value), tol = optNum($('cgTol').value);
+      if (ref === null) return showError('cgError', 'Enter the reference (true) value.');
+      if (tol === null || tol <= 0) return showError('cgError', 'Enter a positive tolerance band (USL-LSL).');
+      if (!matrix || !matrix.length) return showError('cgError', 'Select the measurement column first.');
+      var vals = [];
+      for (var r = 0; r < matrix.length; r++) for (var c = 0; c < matrix[r].length; c++) {
+        var v = typeof matrix[r][c] === 'number' ? matrix[r][c] : parseFloat(String(matrix[r][c]).trim());
+        if (isFinite(v)) vals.push(v);
+      }
+      if (vals.length < 2) return showError('cgError', 'No numeric values found in the selection.');
+      var res = LKPCalc.cgCgk(vals, ref, tol);
+      if (res.error) return showError('cgError', res.error);
+      cgLast = res; renderCg(res);
     }
 
     function renderCg(res) {
@@ -397,6 +417,51 @@
         return html;
       }).join('');
     }
+
+    // ============================================================
+    //  Import external data (shared bar) - paste CSV/TSV -> analyze
+    // ============================================================
+    var IMPORT_ROUTE = { cpk: runCpk, spc: runSpc, msa: runMsa, cg: runCg };
+    function parseMatrix(text) {
+      var lines = String(text).replace(/\r/g, '').split('\n');
+      var out = [];
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line === '') continue;
+        var parts;
+        if (line.indexOf('\t') >= 0) parts = line.split('\t');
+        else if (line.indexOf(',') >= 0) parts = line.split(',');
+        else parts = line.split(/\s+/);
+        var row = parts.map(function (p) { return p.trim(); }).filter(function (p) { return p !== ''; });
+        if (row.length) out.push(row);
+      }
+      return out.length ? out : null;
+    }
+    function toNumeric(matrix) {
+      return matrix.map(function (row) {
+        return row.map(function (c) {
+          if (c === '' || c == null) return '';
+          var n = Number(c);
+          return isFinite(n) ? n : c;
+        });
+      });
+    }
+    function doImport() {
+      var txt = $('importText').value;
+      var m = parseMatrix(txt);
+      if (!m) return showError('importError', 'Paste some numeric data first (one value per cell, rows on separate lines).');
+      hideError('importError');
+      // write to the sheet for visibility (best effort; analysis runs on the pasted data regardless)
+      Office.context.document.setSelectedDataAsync(toNumeric(m), { coercionType: Office.CoercionType.Matrix }, function (ar) {
+        if (ar.status === Office.AsyncResultStatus.Failed)
+          showError('importError', 'Could not write to sheet: ' + ar.error.message + ' (results shown from pasted data anyway).');
+      });
+      var fn = IMPORT_ROUTE[currentPanel];
+      if (fn) fn(m);
+    }
+    $('importToggle').addEventListener('click', function () { $('importPanel').classList.toggle('hidden'); });
+    $('importRun').addEventListener('click', doImport);
+    $('importClear').addEventListener('click', function () { $('importText').value = ''; hideError('importError'); });
 
     // ============================================================
     //  shared: read selection, copy / insert report

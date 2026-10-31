@@ -30,6 +30,19 @@
     </div>
   </nav>
 
+  <section id="importBar" class="import-bar">
+    <button id="importToggle" class="import-toggle" type="button">Import external data</button>
+    <div id="importPanel" class="import-panel hidden">
+      <p class="hint">Paste values copied from a CSV, another sheet, or any text file. One row per line; columns split by tab, comma or spaces. Set the spec limits / parameters for the current tool first, then Import &amp; analyze.</p>
+      <textarea id="importText" class="import-area" placeholder="10.02 9.97 10.11&#10;10.05 9.94&#10;..." spellcheck="false"></textarea>
+      <div class="btn-row">
+        <button id="importRun" class="btn primary" type="button">Import &amp; analyze</button>
+        <button id="importClear" class="btn" type="button">Clear</button>
+      </div>
+      <div id="importError" class="msg hidden"></div>
+    </div>
+  </section>
+
   <main>
     <div class="wrap">
 
