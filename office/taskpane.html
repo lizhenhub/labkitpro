@@ -12,7 +12,7 @@
     <div class="hdr-in">
       <img src="assets/icon-32.png" alt="" class="logo" />
       <div class="hdr-txt">
-        <h1>Cpk &middot; SPC &middot; MSA &middot; ISO Tools</h1>
+        <h1>Cpk &middot; SPC &middot; MSA &middot; Cg &middot; ISO Tools</h1>
         <p class="sub">by LabKitPro &middot; offline &middot; data stays in Excel</p>
       </div>
       <a class="cta" href="https://labkitpro.com/tools/" target="_blank"
@@ -23,44 +23,163 @@
   <nav class="tabs">
     <div class="tabs-in">
       <button class="tab active" data-tab="cpk">Cpk</button>
-      <button class="tab soon" data-tab="spc">SPC <span class="badge">v1.1</span></button>
-      <button class="tab soon" data-tab="msa">MSA <span class="badge">v1.1</span></button>
-      <button class="tab soon" data-tab="cg">Cg/Cgk <span class="badge">v1.1</span></button>
-      <button class="tab soon" data-tab="tr">Transition <span class="badge">v1.1</span></button>
+      <button class="tab" data-tab="spc">SPC</button>
+      <button class="tab" data-tab="msa">MSA</button>
+      <button class="tab" data-tab="cg">Cg/Cgk</button>
+      <button class="tab" data-tab="tr">Transition</button>
     </div>
   </nav>
 
   <main>
     <div class="wrap">
-      <div class="spec-row">
-        <label>LSL<input type="number" id="lsl" step="any" placeholder="9.80" /></label>
-        <label>USL<input type="number" id="usl" step="any" placeholder="10.20" /></label>
-        <label>Target<input type="number" id="target" step="any" placeholder="optional" /></label>
-      </div>
 
-      <p class="hint">
-        <b>Measurements</b> &mdash; select the value column in the sheet, then Analyze.
-        Select several columns &rarr; each column = one subgroup (enables Cp/Cpk);
-        single column &rarr; Pp/Ppk only.
-      </p>
-
-      <div class="btn-row">
-        <button id="analyze" class="btn primary">Analyze selection</button>
-        <button id="loadSample" class="btn">Sample data</button>
-      </div>
-      <p class="hint dim">Leave LSL or USL blank for a one-sided spec.</p>
-
-      <section id="result" class="hidden">
-        <div id="verdict" class="verdict"></div>
-        <table id="metrics" class="metrics"></table>
-        <div class="btn-row">
-          <button id="insertReport" class="btn primary">Insert report</button>
-          <button id="copyReport" class="btn">Copy report</button>
+      <!-- ============ Cpk ============ -->
+      <section class="panel active" data-panel="cpk">
+        <div class="spec-row">
+          <label>LSL<input type="number" id="lsl" step="any" placeholder="9.80" /></label>
+          <label>USL<input type="number" id="usl" step="any" placeholder="10.20" /></label>
+          <label>Target<input type="number" id="target" step="any" placeholder="optional" /></label>
         </div>
-        <p class="foot-note">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00</p>
+
+        <p class="hint">
+          <b>Measurements</b> &mdash; select the value column in the sheet, then Analyze.
+          Select several columns &rarr; each column = one subgroup (enables Cp/Cpk);
+          single column &rarr; Pp/Ppk only.
+        </p>
+
+        <div class="btn-row">
+          <button id="analyze" class="btn primary">Analyze selection</button>
+          <button id="loadSample" class="btn">Sample data</button>
+        </div>
+        <p class="hint dim">Leave LSL or USL blank for a one-sided spec.</p>
+
+        <section id="result" class="hidden">
+          <div id="verdict" class="verdict"></div>
+          <table id="metrics" class="metrics"></table>
+          <div class="btn-row">
+            <button id="insertReport" class="btn primary">Insert report</button>
+            <button id="copyReport" class="btn">Copy report</button>
+          </div>
+          <p class="foot-note">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00</p>
+        </section>
+
+        <div id="error" class="msg hidden"></div>
       </section>
 
-      <div id="error" class="msg hidden"></div>
+      <!-- ============ SPC ============ -->
+      <section class="panel" data-panel="spc">
+        <div class="spec-row">
+          <label style="flex:2">Chart type
+            <select id="spcType">
+              <option value="xbar-r">X&#772;-R (subgroups)</option>
+              <option value="xbar-s">X&#772;-S (subgroups)</option>
+              <option value="xbar-r-median">X&#772;-R Median</option>
+              <option value="i-mr">I-MR (individuals)</option>
+              <option value="p">p (defectives)</option>
+              <option value="np">np (defectives, const n)</option>
+              <option value="c">c (defects)</option>
+              <option value="u">u (defects / unit)</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="hint" id="spcHint"></p>
+
+        <div class="btn-row">
+          <button id="spcAnalyze" class="btn primary">Analyze selection</button>
+          <button id="spcSample" class="btn">Sample data</button>
+        </div>
+
+        <section id="spcResult" class="hidden">
+          <div id="spcVerdict" class="verdict"></div>
+          <table id="spcMetrics" class="metrics"></table>
+          <div id="spcViol" class="viol"></div>
+          <div class="btn-row">
+            <button id="spcInsert" class="btn primary">Insert report</button>
+            <button id="spcCopy" class="btn">Copy report</button>
+          </div>
+          <p class="foot-note">Western Electric / Nelson rules: ① beyond limits ② 2-of-3 beyond 2&sigma; ③ 4-of-5 beyond 1&sigma; ④ 8 same side ⑤ 6 trending</p>
+        </section>
+
+        <div id="spcError" class="msg hidden"></div>
+      </section>
+
+      <!-- ============ MSA ============ -->
+      <section class="panel" data-panel="msa">
+        <div class="spec-row">
+          <label>Appraisers<input type="number" id="msaApp" min="1" max="3" step="1" value="2" /></label>
+          <label>Trials<input type="number" id="msaTrials" min="2" max="3" step="1" value="3" /></label>
+          <label>Parts<input type="number" id="msaParts" min="3" max="10" step="1" value="5" /></label>
+          <label>Tol<input type="number" id="msaTol" step="any" placeholder="optional" /></label>
+        </div>
+
+        <p class="hint">
+          <b>Gage R&amp;R</b> &mdash; select the measurement table: rows = appraiser &times; trial
+          (appraiser 1 trial 1&hellip;n, then appraiser 2&hellip;), columns = parts.
+          Leave Tolerance blank to report %GRR against total variation.
+        </p>
+
+        <div class="btn-row">
+          <button id="msaAnalyze" class="btn primary">Run Gage R&amp;R</button>
+          <button id="msaSample" class="btn">Sample data</button>
+        </div>
+
+        <section id="msaResult" class="hidden">
+          <div id="msaVerdict" class="verdict"></div>
+          <table id="msaMetrics" class="metrics"></table>
+          <div class="btn-row">
+            <button id="msaInsert" class="btn primary">Insert report</button>
+            <button id="msaCopy" class="btn">Copy report</button>
+          </div>
+          <p class="foot-note">AIAG MSA: %GRR &le; 10% acceptable &middot; 10&ndash;30% conditional &middot; &gt; 30% not acceptable. NDC &ge; 5 required.</p>
+        </section>
+
+        <div id="msaError" class="msg hidden"></div>
+      </section>
+
+      <!-- ============ Cg / Cgk ============ -->
+      <section class="panel" data-panel="cg">
+        <div class="spec-row">
+          <label>Reference<input type="number" id="cgRef" step="any" placeholder="true value" /></label>
+          <label>Tolerance<input type="number" id="cgTol" step="any" placeholder="USL&minus;LSL" /></label>
+        </div>
+
+        <p class="hint">
+          <b>Measurement capability</b> (VDA 5) &mdash; select the measurement column in the sheet,
+          then enter the reference (true) value and the tolerance band (USL&minus;LSL).
+        </p>
+
+        <div class="btn-row">
+          <button id="cgAnalyze" class="btn primary">Analyze</button>
+          <button id="cgSample" class="btn">Sample data</button>
+        </div>
+
+        <section id="cgResult" class="hidden">
+          <div id="cgVerdict" class="verdict"></div>
+          <table id="cgMetrics" class="metrics"></table>
+          <div class="btn-row">
+            <button id="cgInsert" class="btn primary">Insert report</button>
+            <button id="cgCopy" class="btn">Copy report</button>
+          </div>
+          <p class="foot-note">VDA 5: Cg &ge; 1.33 and Cgk &ge; 1.33 = accept (20% tolerance / 10% tolerance rule).</p>
+        </section>
+
+        <div id="cgError" class="msg hidden"></div>
+      </section>
+
+      <!-- ============ Transition ============ -->
+      <section class="panel" data-panel="tr">
+        <p class="hint">
+          ISO 9001:2026 and 14001:2026 were published in 2026; the three-system transition
+          window is open <b>now</b>. 45001:2027 is expected (dates TBC). Countdowns below.
+        </p>
+        <div class="tr-grid" id="trGrid"></div>
+        <p class="hint dim">Full transition toolkits, difference analyses and document packs:
+          <a href="https://labkitpro.com/iso-9001-2026/" target="_blank">9001:2026</a> &middot;
+          <a href="https://labkitpro.com/iso-14001-2026" target="_blank">14001:2026</a> &middot;
+          <a href="https://labkitpro.com/iso-45001-2027" target="_blank">45001:2027</a></p>
+      </section>
+
     </div>
   </main>
 

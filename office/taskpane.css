@@ -103,3 +103,34 @@ main { flex: 1; padding: 14px 14px 18px; }
 .ftr a { color: #2d5f8e; font-weight: 600; text-decoration: none; }
 .ftr a:hover { text-decoration: underline; }
 .ftr .dot { color: #b6c2d2; margin: 0 4px; }
+
+/* ---- panel switching ---- */
+.panel { display: none; }
+.panel.active { display: block; }
+
+.spec-row select {
+  padding: 7px 9px; border: 1px solid #cbd5e1; border-radius: 5px;
+  font-size: 13px; background: #fff; width: 100%; font-weight: 400; color: #1e293b;
+}
+.spec-row select:focus { outline: 2px solid #2d5f8e; border-color: transparent; }
+
+/* ---- SPC signals ---- */
+.viol { font-size: 11.5px; line-height: 1.6; margin-bottom: 8px; }
+.viol ul { margin: 4px 0 0 16px; }
+.viol li { color: #991b1b; }
+.viol .ok-note { color: #166534; font-weight: 600; }
+
+/* ---- Transition countdown ---- */
+.tr-grid { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 10px; }
+.tr-card {
+  flex: 1; min-width: 150px; border: 1px solid #d7dee8; border-radius: 8px;
+  padding: 12px; background: #f8fafc;
+}
+.tr-std { font-weight: 700; font-size: 13.5px; color: #0f2f5c; margin-bottom: 6px; }
+.tr-days { font-size: 22px; font-weight: 800; line-height: 1.1; }
+.tr-days.hot { color: #dc2626; }
+.tr-days.ok { color: #16a34a; }
+.tr-days.past { color: #94a3b8; }
+.tr-days.tbc { color: #b45309; font-size: 16px; }
+.tr-sub { font-size: 11px; color: #64748b; margin-top: 2px; }
+.tr-note { font-size: 11px; color: #475569; margin-top: 8px; line-height: 1.5; }
