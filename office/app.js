@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.3.3 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.0 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -10,13 +10,36 @@
    v1.3.3:  Sample data can NEVER fail: written to a fixed block at A1 via the Excel API and selected
             for the user; if the sheet write is not possible the data is kept in memory and Analyze
             still runs on it. MSA expanded to the five AIAG studies (Gage R&R / Bias / Linearity /
-            Stability / Attribute agreement), mirroring the Chrome extension. */
+            Stability / Attribute agreement), mirroring the Chrome extension.
+   v1.4.0:  DEFENSIVE INIT (root-cause fix for "MSA/Cgk/Transition all dead"): every binding goes
+            through bind(), which never throws on a missing element — a stale-cached HTML mixed with
+            a newer JS can no longer kill half the tool set at init. Sub-resources are loaded with
+            ?v= cache busters. MSA study picker switched from sub-tabs to a dropdown (parity with the
+            SPC chart-type dropdown). A version badge in the header shows what is actually loaded. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
+    var APP_VERSION = '1.4.0';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
+
+    // ---------- defensive binding (v1.4.0) ----------
+    // One missing element must NEVER kill the rest of the tool set: a cached old taskpane.html
+    // mixed with a newer app.js used to throw at the first renamed id and silently disable
+    // every tool bound after it. bind() records the mismatch and shows one clear banner instead.
+    var missingEls = [];
+    function bind(id, evt, fn) {
+      var el = $(id);
+      if (!el) { missingEls.push(id); return; }
+      el.addEventListener(evt, fn);
+    }
+    function reportMissingEls() {
+      if (!missingEls.length) return;
+      try { console && console.warn && console.warn('[LabKitPro] UI/JS version mismatch, missing:', missingEls.join(', ')); } catch (e) {}
+      var b = $('versionBanner');
+      if (b) { b.classList.remove('hidden'); b.textContent = 'The add-in was updated — please close and reopen this pane (or reload the workbook) to load the new version.'; }
+    }
 
     // ---------- chart + report state (for on-screen injection + download) ----------
     var reportCharts = { cpk: [], spc: [], cg: [], msaGrr: [], msaBias: [], msaLin: [], msaStab: [], msaAttr: [] };
@@ -27,15 +50,15 @@
     // visibility only; analysis falls back to the in-memory copy whenever the selection differs.
     var sampleStore = { cpk: null, spc: null, cg: null, msaGrr: null, msaBias: null, msaLin: null, msaStab: null, msaAttr: null };
 
-    // ---------- generic error/flash helpers (per-panel id) ----------
+    // ---------- generic error/flash helpers (per-panel id; null-safe) ----------
     function showError(elId, m, ok) {
-      var e = $(elId);
+      var e = $(elId); if (!e) return;
       e.textContent = m; e.classList.remove('hidden');
       if (ok) e.classList.add('ok'); else e.classList.remove('ok');
     }
-    function hideError(elId) { $(elId).classList.add('hidden'); }
+    function hideError(elId) { var e = $(elId); if (e) e.classList.add('hidden'); }
     function flash(elId, msg) {
-      var e = $(elId); e.textContent = msg; e.classList.remove('hidden'); e.classList.add('ok');
+      var e = $(elId); if (!e) return; e.textContent = msg; e.classList.remove('hidden'); e.classList.add('ok');
       setTimeout(function () { e.classList.add('hidden'); }, 2500);
     }
 
@@ -105,18 +128,17 @@
         t.classList.add('active');
         document.querySelector('.panel[data-panel="' + name + '"]').classList.add('active');
         $('importBar').classList.toggle('hidden', name === 'tr' || name === 'help');   // import only applies to data tools
-        if (name === 'tr') renderTransition();
-      });
+        if (name === 'tr') renderTransition();      });
     });
 
     // ============================================================
     //  Cpk (preserved from v1.0)
     // ============================================================
     var cpkLast = null;
-    $('analyze').addEventListener('click', analyzeCpk);
-    $('loadSample').addEventListener('click', function (e) { e.preventDefault(); fillCpkSample(); });
-    $('copyReport').addEventListener('click', function () { copyReport(cpkLast, cpkReportText, 'error'); });
-    $('insertReport').addEventListener('click', function () { insertReport(cpkLast, cpkReportText, 'error'); });
+    bind('analyze', 'click', analyzeCpk);
+    bind('loadSample', 'click', function (e) { e.preventDefault(); fillCpkSample(); });
+    bind('copyReport', 'click', function () { copyReport(cpkLast, cpkReportText, 'error'); });
+    bind('insertReport', 'click', function () { insertReport(cpkLast, cpkReportText, 'error'); });
 
     function fillCpkSample() {
       $('lsl').value = '9.80'; $('usl').value = '10.20'; $('target').value = '10.00';
@@ -218,12 +240,12 @@
         h.innerHTML = '<b>Subgroups</b> &mdash; select the data with <b>each column = one subgroup</b> (constant size 2&ndash;10). Need at least 2 subgroups.';
       }
     }
-    $('spcType').addEventListener('change', updateSpcHint);
+    bind('spcType', 'change', updateSpcHint);
     updateSpcHint();
-    $('spcAnalyze').addEventListener('click', analyzeSpc);
-    $('spcSample').addEventListener('click', function (e) { e.preventDefault(); fillSpcSample(); });
-    $('spcCopy').addEventListener('click', function () { copyReport(spcLast, spcReportText, 'spcError'); });
-    $('spcInsert').addEventListener('click', function () { insertReport(spcLast, spcReportText, 'spcError'); });
+    bind('spcAnalyze', 'click', analyzeSpc);
+    bind('spcSample', 'click', function (e) { e.preventDefault(); fillSpcSample(); });
+    bind('spcCopy', 'click', function () { copyReport(spcLast, spcReportText, 'spcError'); });
+    bind('spcInsert', 'click', function () { insertReport(spcLast, spcReportText, 'spcError'); });
 
     function fillSpcSample() {
       var type = $('spcType').value;
@@ -332,16 +354,28 @@
     //  Gage R&R / Bias / Linearity / Stability / Attribute agreement
     // ============================================================
     var msaLast = { grr: null, bias: null, lin: null, stab: null, attr: null };
+    // ---------- MSA study picker: dropdown (parity with the SPC chart-type dropdown) ----------
     var currentMsa = 'grr';
-    Array.prototype.forEach.call(document.querySelectorAll('.subtab'), function (b) {
-      b.addEventListener('click', function () {
-        currentMsa = b.getAttribute('data-msa');
-        Array.prototype.forEach.call(document.querySelectorAll('.subtab'), function (x) { x.classList.remove('active'); });
-        Array.prototype.forEach.call(document.querySelectorAll('.msa-sub'), function (x) { x.classList.remove('active'); });
-        b.classList.add('active');
-        document.querySelector('.msa-sub[data-msa-panel="' + currentMsa + '"]').classList.add('active');
-      });
+    var MSA_HINTS = {
+      grr: '<b>Gage R&amp;R</b> (AIAG, X&#772;-R) &mdash; set Appraisers / Trials / Parts, then select the measurement table: rows = appraiser &times; trial, columns = parts. Tolerance optional.',
+      bias: '<b>Bias</b> (exact t-test) &mdash; enter the Reference (true) value, then select one column of repeated readings on it. &ge; 5 readings. Tolerance optional.',
+      lin: '<b>Linearity</b> (regression) &mdash; select a 2-column range: column 1 = reference value, column 2 = measured value, one row per level (&ge; 4). Tolerance optional.',
+      stab: '<b>Stability</b> (drift) &mdash; enter the Reference value, then select the table where each row = one time point\'s readings on it (equal count per row, &ge; 2 rows).',
+      attr: '<b>Attribute agreement</b> (Kappa) &mdash; select a 3-column range: appraiser (A/B/C), actual judgement, reference judgement (pass/fail). &ge; 5 rows.',
+    };
+    function updateMsaHint() {
+      var type = $('msaType') ? $('msaType').value : 'grr';
+      var h = $('msaHint');
+      if (h && MSA_HINTS[type]) h.innerHTML = MSA_HINTS[type];
+    }
+    bind('msaType', 'change', function () {
+      currentMsa = $('msaType').value;
+      Array.prototype.forEach.call(document.querySelectorAll('.msa-sub'), function (x) { x.classList.remove('active'); });
+      var panel = document.querySelector('.msa-sub[data-msa-panel="' + currentMsa + '"]');
+      if (panel) panel.classList.add('active');
+      updateMsaHint();
     });
+    updateMsaHint();
 
     // shared helpers for the MSA studies
     function rowNums(row) {
@@ -365,10 +399,10 @@
     }
 
     // ---------- MSA 1: Gage R&R ----------
-    $('msaAnalyze').addEventListener('click', analyzeMsa);
-    $('msaSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaSample(); });
-    $('msaGrrCopy').addEventListener('click', function () { copyReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
-    $('msaGrrInsert').addEventListener('click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
+    bind('msaAnalyze', 'click', analyzeMsa);
+    bind('msaSample', 'click', function (e) { e.preventDefault(); fillMsaSample(); });
+    bind('msaGrrCopy', 'click', function () { copyReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
+    bind('msaGrrInsert', 'click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
 
     function fillMsaSample() {
       // 2 appraisers x 3 trials x 5 parts
@@ -461,10 +495,10 @@
     }
 
     // ---------- MSA 2: Bias (exact t-test) ----------
-    $('msaBiasAnalyze').addEventListener('click', analyzeMsaBias);
-    $('msaBiasSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaBiasSample(); });
-    $('msaBiasCopy').addEventListener('click', function () { copyReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
-    $('msaBiasInsert').addEventListener('click', function () { insertReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
+    bind('msaBiasAnalyze', 'click', analyzeMsaBias);
+    bind('msaBiasSample', 'click', function (e) { e.preventDefault(); fillMsaBiasSample(); });
+    bind('msaBiasCopy', 'click', function () { copyReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
+    bind('msaBiasInsert', 'click', function () { insertReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
 
     function fillMsaBiasSample() {
       $('msaBiasRef').value = '10.00'; $('msaBiasTol').value = '0.40';
@@ -527,10 +561,10 @@
     }
 
     // ---------- MSA 3: Linearity (bias vs reference regression) ----------
-    $('msaLinAnalyze').addEventListener('click', analyzeMsaLin);
-    $('msaLinSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaLinSample(); });
-    $('msaLinCopy').addEventListener('click', function () { copyReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
-    $('msaLinInsert').addEventListener('click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
+    bind('msaLinAnalyze', 'click', analyzeMsaLin);
+    bind('msaLinSample', 'click', function (e) { e.preventDefault(); fillMsaLinSample(); });
+    bind('msaLinCopy', 'click', function () { copyReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
+    bind('msaLinInsert', 'click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
 
     function fillMsaLinSample() {
       $('msaLinTol').value = '0.40';
@@ -599,10 +633,10 @@
     }
 
     // ---------- MSA 4: Stability (drift over time) ----------
-    $('msaStabAnalyze').addEventListener('click', analyzeMsaStab);
-    $('msaStabSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaStabSample(); });
-    $('msaStabCopy').addEventListener('click', function () { copyReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
-    $('msaStabInsert').addEventListener('click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
+    bind('msaStabAnalyze', 'click', analyzeMsaStab);
+    bind('msaStabSample', 'click', function (e) { e.preventDefault(); fillMsaStabSample(); });
+    bind('msaStabCopy', 'click', function () { copyReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
+    bind('msaStabInsert', 'click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
 
     function fillMsaStabSample() {
       $('msaStabRef').value = '10.00';
@@ -680,10 +714,10 @@
     }
 
     // ---------- MSA 5: Attribute agreement (Kappa) ----------
-    $('msaAttrAnalyze').addEventListener('click', analyzeMsaAttr);
-    $('msaAttrSample').addEventListener('click', function (e) { e.preventDefault(); fillMsaAttrSample(); });
-    $('msaAttrCopy').addEventListener('click', function () { copyReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
-    $('msaAttrInsert').addEventListener('click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
+    bind('msaAttrAnalyze', 'click', analyzeMsaAttr);
+    bind('msaAttrSample', 'click', function (e) { e.preventDefault(); fillMsaAttrSample(); });
+    bind('msaAttrCopy', 'click', function () { copyReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
+    bind('msaAttrInsert', 'click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
 
     function fillMsaAttrSample() {
       var data = [
@@ -757,10 +791,10 @@
     //  Cg / Cgk
     // ============================================================
     var cgLast = null;
-    $('cgAnalyze').addEventListener('click', analyzeCg);
-    $('cgSample').addEventListener('click', function (e) { e.preventDefault(); fillCgSample(); });
-    $('cgCopy').addEventListener('click', function () { copyReport(cgLast, cgReportText, 'cgError'); });
-    $('cgInsert').addEventListener('click', function () { insertReport(cgLast, cgReportText, 'cgError'); });
+    bind('cgAnalyze', 'click', analyzeCg);
+    bind('cgSample', 'click', function (e) { e.preventDefault(); fillCgSample(); });
+    bind('cgCopy', 'click', function () { copyReport(cgLast, cgReportText, 'cgError'); });
+    bind('cgInsert', 'click', function () { insertReport(cgLast, cgReportText, 'cgError'); });
 
     function fillCgSample() {
       $('cgRef').value = '10.000'; $('cgTol').value = '0.200';
@@ -921,14 +955,14 @@
       setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
     }
 
-    $('cpkDownload').addEventListener('click', function () { if (cpkLast) downloadReport('cpk'); });
-    $('spcDownload').addEventListener('click', function () { if (spcLast) downloadReport('spc'); });
-    $('msaGrrDownload').addEventListener('click', function () { if (msaLast.grr) downloadReport('msaGrr'); });
-    $('msaBiasDownload').addEventListener('click', function () { if (msaLast.bias) downloadReport('msaBias'); });
-    $('msaLinDownload').addEventListener('click', function () { if (msaLast.lin) downloadReport('msaLin'); });
-    $('msaStabDownload').addEventListener('click', function () { if (msaLast.stab) downloadReport('msaStab'); });
-    $('msaAttrDownload').addEventListener('click', function () { if (msaLast.attr) downloadReport('msaAttr'); });
-    $('cgDownload').addEventListener('click', function () { if (cgLast) downloadReport('cg'); });
+    bind('cpkDownload', 'click', function () { if (cpkLast) downloadReport('cpk'); });
+    bind('spcDownload', 'click', function () { if (spcLast) downloadReport('spc'); });
+    bind('msaGrrDownload', 'click', function () { if (msaLast.grr) downloadReport('msaGrr'); });
+    bind('msaBiasDownload', 'click', function () { if (msaLast.bias) downloadReport('msaBias'); });
+    bind('msaLinDownload', 'click', function () { if (msaLast.lin) downloadReport('msaLin'); });
+    bind('msaStabDownload', 'click', function () { if (msaLast.stab) downloadReport('msaStab'); });
+    bind('msaAttrDownload', 'click', function () { if (msaLast.attr) downloadReport('msaAttr'); });
+    bind('cgDownload', 'click', function () { if (cgLast) downloadReport('cg'); });
 
     // ============================================================
     //  Transition countdown (rich, mirrors the browser hub)
@@ -945,7 +979,7 @@
         milestones: [['2026-10-31', 'Accreditation bodies ready'], ['2027-01-31', 'CBs declare transition arrangements'],
                      ['2027-10-31', 'New certificates issued to new version only'], ['2029-04-30', 'All existing certificates expire']],
         url: 'https://labkitpro.com/iso-14001-2026/' },
-      { id: 'iso45001-2027', std: 'ISO 45001:2027', status: 'DIS 40.60 — expected 2027', hard: false,
+      { id: 'iso45001-2027', std: 'ISO 45001:2027', status: 'DIS 40.60 — publication expected 2027', hard: false,
         deadline: '2030-06-30', deadlineLabel: 'Expected deadline (TBC)',
         milestones: [['2027-06-30', 'Publication expected (H1 2027)'], ['2030-06-30', 'Transition period expected ~3 years (estimate)']],
         url: 'https://labkitpro.com/iso-45001-2027/' },
@@ -1049,9 +1083,9 @@
       var fn = IMPORT_ROUTE[currentPanel];
       if (fn) fn(m);
     }
-    $('importToggle').addEventListener('click', function () { $('importPanel').classList.toggle('hidden'); });
-    $('importRun').addEventListener('click', doImport);
-    $('importClear').addEventListener('click', function () { $('importText').value = ''; hideError('importError'); });
+    bind('importToggle', 'click', function () { $('importPanel').classList.toggle('hidden'); });
+    bind('importRun', 'click', doImport);
+    bind('importClear', 'click', function () { $('importText').value = ''; hideError('importError'); });
 
     // ============================================================
     //  shared: read selection, copy / insert report
@@ -1139,5 +1173,11 @@
           else flash(errId, 'Report inserted into the sheet.');
         });
     }
+
+    // ---------- init tail: version badge, pre-render transition, version-mismatch report ----------
+    renderTransition(); // pre-render so the Transition tab is never blank (it re-renders on each open)
+    var vBadge = $('appVersion');
+    if (vBadge) vBadge.textContent = 'v' + APP_VERSION;
+    reportMissingEls();
   });
 })();

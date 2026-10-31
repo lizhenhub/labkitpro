@@ -7,15 +7,16 @@
 <link rel="dns-prefetch" href="https://labkitpro.com" />
 <title>LabKitPro Quality Tools</title>
 <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-<link rel="stylesheet" href="taskpane.css" />
+<link rel="stylesheet" href="taskpane.css?v=1.4.0" />
 </head>
 <body>
+  <div id="versionBanner" class="msg hidden" style="margin:8px 12px 0;font-weight:700;"></div>
   <header class="hdr">
     <div class="hdr-in">
       <img src="assets/icon-32.png" alt="" class="logo" />
       <div class="hdr-txt">
         <h1>Cpk &middot; SPC &middot; MSA &middot; Cg &middot; ISO Tools</h1>
-        <p class="sub">by LabKitPro &middot; offline &middot; data stays in Excel</p>
+        <p class="sub">by LabKitPro &middot; offline &middot; data stays in Excel &middot; <span id="appVersion"></span></p>
       </div>
       <a class="cta" href="https://labkitpro.com/diagnosis/?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank"
          style="background:#f59e0b;color:#111827;font-weight:800;font-size:12px;padding:8px 12px;border-radius:6px;text-decoration:none;white-space:nowrap;">60s gap check &rarr;</a>
@@ -126,14 +127,19 @@
 
       <!-- ============ MSA (5 studies, mirrors the Chrome extension) ============ -->
       <section class="panel" data-panel="msa">
-        <div class="subtabs">
-          <button type="button" class="subtab active" data-msa="grr">Gage R&amp;R</button>
-          <button type="button" class="subtab" data-msa="bias">Bias</button>
-          <button type="button" class="subtab" data-msa="lin">Linearity</button>
-          <button type="button" class="subtab" data-msa="stab">Stability</button>
-          <button type="button" class="subtab" data-msa="attr">Attribute</button>
+        <div class="spec-row">
+          <label style="flex:2">Study type
+            <select id="msaType">
+              <option value="grr">Gage R&amp;R (%GRR)</option>
+              <option value="bias">Bias (t-test)</option>
+              <option value="lin">Linearity (regression)</option>
+              <option value="stab">Stability (drift)</option>
+              <option value="attr">Attribute agreement (Kappa)</option>
+            </select>
+          </label>
         </div>
 
+        <p class="hint" id="msaHint"></p>
         <!-- MSA 1: Gage R&R -->
         <div class="msa-sub active" data-msa-panel="grr">
           <div class="spec-row">
@@ -400,8 +406,8 @@
     <a href="mailto:support@labkitpro.com">support@labkitpro.com</a>
   </footer>
 
-  <script src="calc.js"></script>
-  <script src="charts.js"></script>
-  <script src="app.js"></script>
+  <script src="calc.js?v=1.4.0"></script>
+  <script src="charts.js?v=1.4.0"></script>
+  <script src="app.js?v=1.4.0"></script>
 </body>
 </html>
