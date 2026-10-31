@@ -7,7 +7,7 @@
 <link rel="dns-prefetch" href="https://labkitpro.com" />
 <title>LabKitPro Quality Tools</title>
 <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-<link rel="stylesheet" href="taskpane.css?v=1.4.0" />
+<link rel="stylesheet" href="taskpane.css?v=1.4.1" />
 </head>
 <body>
   <div id="versionBanner" class="msg hidden" style="margin:8px 12px 0;font-weight:700;"></div>
@@ -143,9 +143,9 @@
         <!-- MSA 1: Gage R&R -->
         <div class="msa-sub active" data-msa-panel="grr">
           <div class="spec-row">
-            <label>Appraisers<input type="number" id="msaApp" min="1" max="3" step="1" value="2" /></label>
+            <label>Appraisers<input type="number" id="msaApp" min="1" max="3" step="1" value="3" /></label>
             <label>Trials<input type="number" id="msaTrials" min="2" max="3" step="1" value="3" /></label>
-            <label>Parts<input type="number" id="msaParts" min="3" max="10" step="1" value="5" /></label>
+            <label>Parts<input type="number" id="msaParts" min="3" max="10" step="1" value="10" /></label>
             <label>Tol<input type="number" id="msaTol" step="any" placeholder="optional" /></label>
           </div>
           <p class="hint">
@@ -352,22 +352,25 @@
             </ul>
           </div>
           <div class="help-card">
-            <h3>SPC · Control charts</h3>
+            <h3>SPC &middot; Control charts (8 types)</h3>
             <ul>
-              <li>Pick a chart type from the dropdown — the hint updates to tell you the layout.</li>
-              <li><b>Subgroup</b> charts (X&#772;-R / X&#772;-S / Median): each column = one subgroup (2&ndash;10 rows).</li>
+              <li><b>X&#772;-R</b> / <b>X&#772;-S</b> / <b>X&#772;-R Median</b>: 2+ columns, each column = one subgroup (2&ndash;10 rows); X&#772; chart + R / S chart below.</li>
               <li><b>I-MR</b>: one column of individual readings (time-ordered).</li>
-              <li><b>Attribute</b> (p / np / c / u): 2 columns &mdash; sample size <b>n</b> and defect count / defects.</li>
+              <li><b>p</b>: 2 columns &mdash; subgroup size <b>n</b> and number of defectives <b>d</b> (n may vary).</li>
+              <li><b>np</b>: same as p, but subgroup size <b>n</b> must be constant.</li>
+              <li><b>c</b>: 2 columns &mdash; subgroup size <b>n</b> and defect count <b>c</b> (n may vary).</li>
+              <li><b>u</b>: same as c, but reported per unit (defects / unit, varying n allowed).</li>
+              <li><b>Sample data</b> loads the classic 25-subgroup study for the selected chart type.</li>
             </ul>
           </div>
           <div class="help-card">
             <h3>MSA &middot; 5 studies (AIAG)</h3>
             <ul>
-              <li><b>Gage R&amp;R</b> — set Appraisers / Trials / Parts, select the table (rows = appraiser &times; trial, columns = parts).</li>
+              <li><b>Gage R&amp;R</b> — AIAG standard study: <b>3 appraisers &times; 10 parts &times; 3 trials = 90 measurements</b> (the Sample data button loads exactly this). Rows = appraiser &times; trial, columns = parts.</li>
               <li><b>Bias</b> — one column of repeated readings on a reference value + t-test.</li>
-              <li><b>Linearity</b> — 2 columns: reference, measured (one row per level, &ge; 4).</li>
-              <li><b>Stability</b> — each row = one time point's readings on the reference (drift check).</li>
-              <li><b>Attribute</b> — 3 columns: appraiser, actual, reference (pass/fail) &rarr; agreement + Kappa.</li>
+              <li><b>Linearity</b> — 2 columns: reference, measured &mdash; one row per measurement (AIAG: 5 levels &times; 12 repeats; the sample loads this).</li>
+              <li><b>Stability</b> — each row = one time point's readings on the reference (drift check; the sample loads 12 time points &times; 5).</li>
+              <li><b>Attribute</b> — 3 columns: appraiser, actual, reference (pass/fail) &rarr; agreement + Kappa. AIAG standard: 50 parts &times; 3 appraisers &times; 2 trials (the sample loads this).</li>
             </ul>
           </div>
           <div class="help-card">
@@ -406,8 +409,8 @@
     <a href="mailto:support@labkitpro.com">support@labkitpro.com</a>
   </footer>
 
-  <script src="calc.js?v=1.4.0"></script>
-  <script src="charts.js?v=1.4.0"></script>
-  <script src="app.js?v=1.4.0"></script>
+  <script src="calc.js?v=1.4.1"></script>
+  <script src="charts.js?v=1.4.1"></script>
+  <script src="app.js?v=1.4.1"></script>
 </body>
 </html>

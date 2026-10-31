@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.4.0 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.1 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -15,12 +15,18 @@
             through bind(), which never throws on a missing element — a stale-cached HTML mixed with
             a newer JS can no longer kill half the tool set at init. Sub-resources are loaded with
             ?v= cache busters. MSA study picker switched from sub-tabs to a dropdown (parity with the
-            SPC chart-type dropdown). A version badge in the header shows what is actually loaded. */
+            SPC chart-type dropdown). A version badge in the header shows what is actually loaded.
+   v1.4.1:  every Sample data button loads the CLASSIC reference study at realistic size:
+            Cpk/SPC-subgroup 25 subgroups x 5 (AIAG), I-MR 30 readings, attribute 25 subgroups,
+            Gage R&R 3 x 10 x 3 = 90 measurements (AIAG standard, runs "Acceptable"), Linearity
+            5 levels x 12 repeats (60), Stability 12 time points x 5, Attribute agreement
+            50 parts x 3 appraisers x 2 trials (300), Cg 25 measurements (VDA 5).
+            Help now lists all 8 SPC chart types. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.0';
+    var APP_VERSION = '1.4.1';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
 
@@ -140,12 +146,30 @@
     bind('copyReport', 'click', function () { copyReport(cpkLast, cpkReportText, 'error'); });
     bind('insertReport', 'click', function () { insertReport(cpkLast, cpkReportText, 'error'); });
 
+    // Classic AIAG study: 25 subgroups of size 5 (125 readings). Layout: each COLUMN = one subgroup.
+    function classicSubgroupRows() {
+      var sm = [0.00, 0.02, -0.02, 0.01, -0.01, 0.03, -0.03, 0.02, 0.00, -0.02,
+                0.01, -0.01, 0.00, 0.02, -0.02, 0.03, -0.01, -0.03, 0.01, 0.00,
+                -0.02, 0.02, -0.01, 0.03, -0.03];
+      var ep = [
+        [-0.06, 0.03, 0.02, -0.05, 0.06],
+        [0.05, -0.03, -0.06, 0.03, 0.02],
+        [-0.02, 0.06, 0.03, -0.03, -0.05],
+        [0.03, -0.05, 0.05, 0.02, -0.05],
+        [-0.03, 0.02, -0.03, 0.06, -0.02],
+      ];
+      var rows = [];
+      for (var r = 0; r < 5; r++) {
+        var row = [];
+        for (var c = 0; c < 25; c++) row.push(+(10 + sm[c] + ep[r][c % 5]).toFixed(2));
+        rows.push(row);
+      }
+      return rows;
+    }
+
     function fillCpkSample() {
       $('lsl').value = '9.80'; $('usl').value = '10.20'; $('target').value = '10.00';
-      var data = [10.02, 9.97, 10.11, 10.05, 9.94, 10.08, 10.01, 9.99, 10.06, 10.03,
-                  9.96, 10.09, 10.00, 10.04, 9.98, 10.07, 10.02, 9.95, 10.10, 10.01,
-                  10.05, 9.99, 10.03, 10.06, 9.97];
-      var rows = data.map(function (v) { return [[v]]; });
+      var rows = classicSubgroupRows();
       writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; });
     }
 
@@ -251,12 +275,18 @@
       var type = $('spcType').value;
       var rows;
       if (SPC_ATTR[type]) {
-        rows = [[50, 2], [50, 1], [50, 3], [50, 0], [50, 2], [50, 4], [50, 1], [50, 2], [50, 0], [50, 3], [50, 2], [50, 1]];
+        // classic attribute study: 25 subgroups of n = 50, in control around p-bar = 0.036
+        var d = [2, 1, 3, 0, 2, 4, 1, 2, 0, 3, 2, 1, 2, 3, 1, 0, 2, 5, 1, 2, 0, 3, 2, 1, 2];
+        rows = d.map(function (x) { return [50, x]; });
       } else if (type === 'i-mr') {
-        rows = [[10.1], [10.3], [9.9], [10.2], [10.0], [10.4], [9.8], [10.1], [10.3], [9.7], [10.2], [10.0], [10.5], [9.9], [10.1]];
+        // 30 individual readings (textbook minimum for a stable I-MR study), in control
+        var p = [0.10, -0.05, 0.15, -0.10, 0.02, 0.08, -0.12, 0.10, -0.05, 0.06,
+                 0.12, -0.08, -0.15, 0.05, -0.02, 0.10, -0.05, 0.15, -0.10, 0.02,
+                 0.08, -0.12, 0.10, -0.05, 0.06, 0.12, -0.08, -0.15, 0.05, -0.02];
+        rows = p.map(function (x) { return [+(10 + x).toFixed(2)]; });
       } else {
-        rows = [[10.02, 9.97, 10.11], [10.05, 9.94, 10.08], [10.01, 9.99, 10.06], [10.03, 9.96, 10.09],
-                [10.00, 10.04, 10.07], [10.02, 9.95, 10.10], [10.01, 9.99, 10.03], [10.06, 9.97, 10.05]];
+        // classic subgroup study: 25 subgroups of size 5, in control
+        rows = classicSubgroupRows();
       }
       writeMatrixSafe(rows, 'spcError', 'SPC sample', function () { sampleStore.spc = { type: type, rows: rows }; });
     }
@@ -405,11 +435,21 @@
     bind('msaGrrInsert', 'click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
 
     function fillMsaSample() {
-      // 2 appraisers x 3 trials x 5 parts
-      var rows = [
-        [0.10, 0.12, 0.09, 0.11, 0.10], [0.11, 0.13, 0.10, 0.12, 0.11], [0.10, 0.12, 0.09, 0.11, 0.10],
-        [0.11, 0.12, 0.10, 0.12, 0.11], [0.12, 0.13, 0.11, 0.13, 0.12], [0.11, 0.12, 0.10, 0.12, 0.11]
-      ];
+      // AIAG standard Gage R&R study: 3 appraisers x 10 parts x 3 trials = 90 measurements.
+      // Layout: 9 rows (appraiser-major, then trial), 10 columns (parts). Deterministic data
+      // with dominant part-to-part variation -> runs "Acceptable" (%GRR well under 10%, NDC >= 5).
+      $('msaTol').value = '0.60';
+      var partBase = [9.90, 9.95, 10.00, 10.05, 10.10, 10.15, 10.20, 10.25, 10.30, 10.35];
+      var appOff = [0.000, 0.004, -0.003]; // small appraiser offsets A / B / C
+      var rows = [];
+      for (var a = 0; a < 3; a++) for (var t = 0; t < 3; t++) {
+        var row = [];
+        for (var p = 0; p < 10; p++) {
+          var err = (((a * 3 + t * 2 + p * 5) % 7) - 3) * 0.002; // deterministic, ±0.006
+          row.push(+(partBase[p] + appOff[a] + err).toFixed(3));
+        }
+        rows.push(row);
+      }
       writeMatrixSafe(rows, 'msaGrrError', 'Gage R&R sample', function () { sampleStore.msaGrr = rows; });
     }
 
@@ -567,8 +607,16 @@
     bind('msaLinInsert', 'click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
 
     function fillMsaLinSample() {
+      // AIAG linearity study: 5 reference levels x 12 repeats = 60 measurements.
+      // Small bias sloping from +0.015 to -0.015 -> %linearity ~ 7.5% of tolerance = acceptable.
       $('msaLinTol').value = '0.40';
-      var rows = [[2.00, 2.02], [4.00, 4.05], [6.00, 6.01], [8.00, 8.06], [10.00, 9.98], [12.00, 12.03]];
+      var refs = [2, 4, 6, 8, 10];
+      var bias = [0.015, 0.008, 0.000, -0.008, -0.015];
+      var rows = [];
+      for (var r = 0; r < refs.length; r++) for (var i = 0; i < 12; i++) {
+        var n = (((i * 3 + r * 5) % 5) - 2) * 0.002; // deterministic, ±0.004
+        rows.push([refs[r], +(refs[r] + bias[r] + n).toFixed(3)]);
+      }
       writeMatrixSafe(rows, 'msaLinError', 'Linearity sample', function () { sampleStore.msaLin = rows; });
     }
 
@@ -639,15 +687,20 @@
     bind('msaStabInsert', 'click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
 
     function fillMsaStabSample() {
+      // AIAG stability study: 12 time points x 5 readings on the reference, no drift signals.
       $('msaStabRef').value = '10.00';
-      var rows = [
-        [10.002, 9.998, 10.004, 10.000, 9.996],
-        [10.005, 10.001, 9.998, 10.003, 10.001],
-        [9.999, 10.003, 10.006, 10.000, 9.997],
-        [10.004, 10.008, 10.001, 10.005, 9.999],
-        [10.010, 10.004, 10.007, 10.002, 10.006],
-        [10.015, 10.009, 10.012, 10.006, 10.010],
+      var m = [10.000, 10.001, 9.999, 10.002, 10.000, 10.001, 9.998, 10.002, 10.000, 10.001, 9.999, 10.000];
+      var ep = [
+        [-0.006, 0.002, 0.004, -0.002, 0.002], [0.002, -0.004, 0.006, -0.002, -0.002],
+        [-0.002, 0.004, -0.006, 0.004, 0.000], [0.004, -0.002, 0.000, 0.006, -0.004],
+        [-0.004, 0.006, -0.002, -0.004, 0.004], [0.006, -0.006, 0.002, 0.000, -0.002],
       ];
+      var rows = [];
+      for (var r = 0; r < 12; r++) {
+        var row = [];
+        for (var c = 0; c < 5; c++) row.push(+(m[r] + ep[r % 6][c]).toFixed(3));
+        rows.push(row);
+      }
       writeMatrixSafe(rows, 'msaStabError', 'Stability sample', function () { sampleStore.msaStab = rows; });
     }
 
@@ -720,18 +773,20 @@
     bind('msaAttrInsert', 'click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
 
     function fillMsaAttrSample() {
-      var data = [
-        ['A', 'pass', 'pass'], ['A', 'pass', 'pass'], ['A', 'fail', 'fail'], ['A', 'pass', 'pass'],
-        ['A', 'fail', 'fail'], ['A', 'pass', 'pass'], ['A', 'fail', 'pass'], ['A', 'pass', 'pass'],
-        ['A', 'pass', 'pass'], ['A', 'pass', 'pass'],
-        ['B', 'pass', 'pass'], ['B', 'pass', 'pass'], ['B', 'pass', 'fail'], ['B', 'pass', 'pass'],
-        ['B', 'fail', 'fail'], ['B', 'pass', 'pass'], ['B', 'pass', 'pass'], ['B', 'pass', 'pass'],
-        ['B', 'fail', 'fail'], ['B', 'fail', 'fail'],
-        ['C', 'pass', 'pass'], ['C', 'pass', 'pass'], ['C', 'fail', 'fail'], ['C', 'pass', 'pass'],
-        ['C', 'pass', 'fail'], ['C', 'pass', 'pass'], ['C', 'pass', 'pass'], ['C', 'fail', 'fail'],
-        ['C', 'fail', 'fail'], ['C', 'pass', 'fail'],
-      ];
-      writeMatrixSafe(data, 'msaAttrError', 'Attribute sample', function () { sampleStore.msaAttr = data; });
+      // AIAG attribute agreement study: 50 parts x 3 appraisers x 2 trials = 300 judgements.
+      // ~10% fail parts, 6 deliberate mismatches -> overall agreement ~98%, Kappa well above 0.75.
+      var apps = ['A', 'B', 'C'];
+      var misses = { '7-A-1': 1, '23-B-0': 1, '31-C-1': 1, '44-A-0': 1, '15-C-0': 1, '38-B-1': 1 };
+      var rows = [];
+      for (var p = 1; p <= 50; p++) {
+        var ref = (p % 5 === 0) ? 'fail' : 'pass';
+        for (var ai = 0; ai < 3; ai++) for (var t = 0; t < 2; t++) {
+          var act = ref;
+          if (misses[p + '-' + apps[ai] + '-' + t]) act = (ref === 'pass') ? 'fail' : 'pass';
+          rows.push([apps[ai], act, ref]);
+        }
+      }
+      writeMatrixSafe(rows, 'msaAttrError', 'Attribute sample', function () { sampleStore.msaAttr = rows; });
     }
 
     function analyzeMsaAttr() {
@@ -797,10 +852,13 @@
     bind('cgInsert', 'click', function () { insertReport(cgLast, cgReportText, 'cgError'); });
 
     function fillCgSample() {
+      // VDA 5 standard sequence: 25 measurements on the reference standard.
       $('cgRef').value = '10.000'; $('cgTol').value = '0.200';
       var data = [10.004, 9.998, 10.006, 10.002, 9.995, 10.008, 10.001, 9.997, 10.003, 10.000,
-                  10.005, 9.999, 10.002, 10.006, 9.994, 10.001, 10.003, 9.996, 10.007, 10.000];
-      writeMatrixSafe(data.map(function (v) { return [[v]]; }), 'cgError', 'Cg sample', function () { sampleStore.cg = data.map(function (v) { return [[v]]; }); });
+                  10.005, 9.999, 10.002, 10.006, 9.994, 10.001, 10.003, 9.996, 10.007, 10.000,
+                  10.002, 9.998, 10.004, 10.000, 10.001];
+      var rows = data.map(function (v) { return [[v]]; });
+      writeMatrixSafe(rows, 'cgError', 'Cg sample', function () { sampleStore.cg = rows; });
     }
 
     function analyzeCg() {

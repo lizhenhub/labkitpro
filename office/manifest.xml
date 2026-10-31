@@ -5,9 +5,9 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
 
-  <!-- LabKitPro Quality Tools for Excel - manifest v1.4.0 -->
+  <!-- LabKitPro Quality Tools for Excel - manifest v1.4.1 -->
   <Id>81b22247-26e2-4324-9f89-6343cfb3b9e1</Id>
-  <Version>1.4.0.0</Version>
+  <Version>1.4.1.0</Version>
   <ProviderName>LabKitPro</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="LabKitPro Quality Tools" />
