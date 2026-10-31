@@ -127,20 +127,71 @@ main { flex: 1; padding: 14px 14px 18px; }
 .viol li { color: #991b1b; }
 .viol .ok-note { color: #166534; font-weight: 600; }
 
-/* ---- Transition countdown ---- */
-.tr-grid { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 10px; }
+/* ---- Transition countdown (rich, mirrors browser hub) ---- */
+.tr-grid { display: flex; flex-direction: column; gap: 12px; margin: 6px 0 12px; }
 .tr-card {
-  flex: 1 1 150px; border: 1px solid #d7dee8; border-radius: 9px;
-  padding: 12px; background: #f8fafc;
+  border: 1px solid #d7dee8; border-radius: 11px; padding: 14px;
+  background: #fff; box-shadow: 0 1px 3px rgba(15,47,92,.06);
 }
-.tr-std { font-weight: 700; font-size: 13.5px; color: #0f2f5c; margin-bottom: 6px; }
-.tr-days { font-size: 22px; font-weight: 800; line-height: 1.1; }
-.tr-days.hot { color: #dc2626; }
-.tr-days.ok { color: #16a34a; }
-.tr-days.past { color: #94a3b8; }
-.tr-days.tbc { color: #b45309; font-size: 16px; }
-.tr-sub { font-size: 11px; color: #64748b; margin-top: 2px; }
-.tr-note { font-size: 11px; color: #475569; margin-top: 8px; line-height: 1.5; }
+.tr-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.tr-std { font-weight: 800; font-size: 15px; color: #0f2f5c; line-height: 1.2; }
+.tr-status {
+  font-size: 10px; font-weight: 700; white-space: nowrap; padding: 3px 7px; border-radius: 20px;
+  background: #e2e8f0; color: #475569; flex: none;
+}
+.tr-status.hard { background: #dbeafe; color: #1e40af; }
+.tr-status.soft { background: #fef3c7; color: #92400e; }
+.tr-count { display: flex; align-items: baseline; gap: 6px; margin: 10px 0 2px; }
+.tr-num { font-size: 30px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.tr-num.hot { color: #dc2626; }
+.tr-num.ok { color: #16a34a; }
+.tr-num.past { color: #94a3b8; }
+.tr-num.tbc { color: #b45309; font-size: 20px; }
+.tr-unit { font-size: 12px; color: #64748b; font-weight: 600; }
+.tr-deadline { font-size: 11px; color: #475569; }
+.tr-deadline b { color: #1e293b; }
+.tr-banner {
+  margin: 10px 0 8px; padding: 9px 11px; border-radius: 8px;
+  background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; font-size: 11.5px; line-height: 1.5;
+}
+.tr-banner.hot { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.tr-banner.ok { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.tr-banner .lbl { font-weight: 700; display: block; margin-bottom: 2px; }
+.tr-banner .in { font-weight: 800; }
+.tr-timeline { list-style: none; margin: 4px 0 0; border-left: 2px solid #e2e8f0; padding-left: 12px; }
+.tr-timeline li { position: relative; font-size: 11px; color: #475569; padding: 4px 0; line-height: 1.4; overflow-wrap: anywhere; }
+.tr-timeline li::before {
+  content: ""; position: absolute; left: -18px; top: 8px; width: 9px; height: 9px;
+  border-radius: 50%; background: #cbd5e1; border: 2px solid #fff; box-shadow: 0 0 0 1px #cbd5e1;
+}
+.tr-timeline li.done::before { background: #16a34a; box-shadow: 0 0 0 1px #16a34a; }
+.tr-timeline li.next::before { background: #f59e0b; box-shadow: 0 0 0 2px #fde68a; }
+.tr-timeline li .d { color: #0f2f5c; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tr-timeline li.done .d { color: #16a34a; }
+.tr-timeline li.next .d { color: #b45309; }
+.tr-guide {
+  display: inline-block; margin: 10px 0 2px; padding: 9px 14px; border-radius: 8px;
+  background: #f59e0b; color: #111827; font-size: 12.5px; font-weight: 800; text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+.tr-guide:hover { background: #fbbf24; }
+.tr-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.tr-pill {
+  padding: 7px 12px; border: 1px solid #d7dee8; border-radius: 20px; background: #f8fafc;
+  font-size: 11.5px; font-weight: 600; color: #0f2f5c; text-decoration: none;
+}
+.tr-pill:hover { background: #eef2f7; border-color: #2d5f8e; }
+.disclaim { font-size: 10px; color: #9aa6b6; line-height: 1.55; margin-top: 10px; border-top: 1px dashed #e2e8f0; padding-top: 8px; }
+
+/* ---- result charts (canvas -> PNG dataURL) ---- */
+.charts { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 4px; }
+.charts .chart-block { background: #fff; border: 1px solid #e8edf3; border-radius: 8px; padding: 6px; }
+.charts .chart-cap { font-size: 10.5px; color: #64748b; text-align: center; margin-top: 3px; line-height: 1.4; }
+.charts img.chart { width: 100%; height: auto; border-radius: 5px; display: block; }
+
+/* download button accent */
+.btn.dl { background: #fff; border-color: #2d5f8e; color: #0f2f5c; flex: 1 1 120px; }
+.btn.dl:hover { background: #eef5fb; }
 
 /* ---- Import external data bar ---- */
 .import-bar { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }

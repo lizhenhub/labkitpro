@@ -1,13 +1,21 @@
-/* LabKitPro Excel add-in - v1.2.2 (Cpk + SPC + MSA + Cg/Cgk + Transition + import).
+/* LabKitPro Excel add-in - v1.3 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, cgCgk, ...}
-   Data flow: worksheet selection (matrix) -> parse -> kernel -> render.
-   v1.2.2: insert-report overwrite guard (confirm) + empty-selection error. */
+   Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
+   Data flow: worksheet selection (matrix) -> parse -> kernel -> render (+ chart) -> download report.
+   v1.2.2: insert-report overwrite guard (confirm) + empty-selection error.
+   v1.3:    browser-parity charts on every analysis + self-contained HTML report download. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
+
+    // ---------- chart + report state (for on-screen injection + download) ----------
+    var reportCharts = { cpk: [], spc: [], msa: [], cg: [] };
+    var cpkVals = null;       // raw measurement array (for capability charts)
+    var msaShaped = null;     // [appraiser][trial][part] (for Gage R&R charts)
+    var cgVals = null, cgRef = null;
 
     // ---------- generic error/flash helpers (per-panel id) ----------
     function showError(elId, m, ok) {
@@ -81,7 +89,7 @@
       if (values.length < 2) return showError('error', 'No numeric values found. Select the cells that contain your measurements.');
       var res = LKPCalc.capability(values, lsl, usl, target, subgroups);
       if (res.error) return showError('error', res.error);
-      cpkLast = res; renderCpk(res);
+      cpkVals = values; cpkLast = res; renderCpk(res);
     }
 
     function renderCpk(res) {
@@ -98,6 +106,13 @@
         var dim = (r[1] === null || r[1] === undefined) ? ' class="dim"' : '';
         return '<tr' + dim + '><td>' + r[0] + '</td><td>' + (r[1] == null ? 'n/a' : r[1]) + '</td></tr>';
       }).join('');
+      // browser-parity charts
+      var lsl = optNum($('lsl').value), usl = optNum($('usl').value);
+      var charts = [
+        { title: 'Capability histogram — fitted normal curve with LSL / USL / mean', data: LKPCharts.capabilityChart(cpkVals, lsl, usl, res.mean, res.std) },
+        { title: 'Run chart — individual values in data order vs spec limits', data: LKPCharts.capabilityRun(cpkVals, lsl, usl, res.mean) },
+      ];
+      renderCharts('cpkCharts', 'cpk', charts);
       $('result').classList.remove('hidden');
     }
 
@@ -223,6 +238,12 @@
       $('spcViol').innerHTML = v.length
         ? '<b>Signals:</b><ul>' + v.map(function (x) { return '<li>Pt ' + (x.i + 1) + ' &mdash; rule ' + x.rule + ': ' + x.txt + '</li>'; }).join('') + '</ul>'
         : '<span class="ok-note">No Western Electric / Nelson signals detected.</span>';
+      // browser-parity charts: main chart + variation (R/S/MR) chart when present
+      var charts = [{ title: type.toUpperCase() + ' control chart — values vs CL/UCL/LCL (red = rule signal)', data: LKPCharts.spcChart(res.points, res.cl, res.ucl, res.lcl, res.violations, 360) }];
+      if (res.extra && res.extra.points.length > 1) {
+        charts.push({ title: res.extra.chart + ' chart (variation) — values vs CL/UCL/LCL', data: LKPCharts.spcChart(res.extra.points, res.extra.cl, res.extra.ucl, res.extra.lcl, [], 300) });
+      }
+      renderCharts('spcCharts', 'spc', charts);
       $('spcResult').classList.remove('hidden');
     }
 
@@ -289,7 +310,7 @@
       }
       var res = LKPCalc.gageRR(trials3, tol == null ? 0 : tol);
       if (res.error) return showError('msaError', res.error);
-      msaLast = res; renderMsa(res);
+      msaShaped = trials3; msaLast = res; renderMsa(res);
     }
 
     function renderMsa(res) {
@@ -305,6 +326,27 @@
       $('msaMetrics').innerHTML = rows.map(function (r) {
         return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
       }).join('');
+      // browser-parity charts (mirrors the Chrome pop-up): appraiser view when >1, else trial view
+      var nApp = msaShaped.length;
+      var appData = msaShaped.map(function (tr, i) {
+        return { name: String.fromCharCode(65 + i), trials: tr, ranges: res.rangesByApp[i] };
+      });
+      var charts;
+      if (nApp > 1) {
+        charts = [
+          { title: 'All measurements by part — colored by appraiser, line = appraiser mean (repeatability + reproducibility)', data: LKPCharts.grrAppChart(appData) },
+          { title: 'Range within part by appraiser vs R̄̄ and UCL = D4·R̄̄ (repeatability check)', data: LKPCharts.grrRangeMulti(appData, res.rbar, res.uclR) },
+          { title: 'Variance components — %EV / %AV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
+        ];
+      } else {
+        var byPart = appData[0].trials.map(function (_, p) { return appData[0].trials.map(function (t) { return t[p]; }); });
+        charts = [
+          { title: 'Measurements by part — one line per trial (repeatability view)', data: LKPCharts.grrChart(byPart) },
+          { title: 'Range within part vs R̄ and UCL = D4·R̄ (trial-to-trial spread check)', data: LKPCharts.grrRangeChart(byPart) },
+          { title: 'Variance components — %EV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
+        ];
+      }
+      renderCharts('msaCharts', 'msa', charts);
       $('msaResult').classList.remove('hidden');
     }
 
@@ -363,7 +405,7 @@
       if (vals.length < 2) return showError('cgError', 'No numeric values found in the selection.');
       var res = LKPCalc.cgCgk(vals, ref, tol);
       if (res.error) return showError('cgError', res.error);
-      cgLast = res; renderCg(res);
+      cgVals = vals; cgRef = ref; cgLast = res; renderCg(res);
     }
 
     function renderCg(res) {
@@ -373,6 +415,13 @@
       $('cgMetrics').innerHTML = rows.map(function (r) {
         return '<tr><td>' + r[0] + '</td><td>' + (r[1] === '' ? '-' : r[1]) + '</td></tr>';
       }).join('');
+      // browser-parity charts: run chart + deviation-from-reference histogram
+      var bias = res.mean - cgRef;
+      var charts = [
+        { title: 'Run chart — repeated measurements vs reference (orange band = x̄ ± 3s)', data: LKPCharts.runChart(cgVals, cgRef, res.mean, res.std) },
+        { title: 'Deviation from reference (measured − ref) — bias marker vs zero', data: LKPCharts.devHist(cgVals, cgRef, bias) },
+      ];
+      renderCharts('cgCharts', 'cg', charts);
       $('cgResult').classList.remove('hidden');
     }
 
@@ -391,30 +440,164 @@
     }
 
     // ============================================================
-    //  Transition countdown
+    //  Charts (browser-parity) + self-contained HTML report download
     // ============================================================
+    // inject a list of {title, data(PNG dataURL)} into a result container, and remember them for the report
+    function renderCharts(containerId, tool, charts) {
+      reportCharts[tool] = charts || [];
+      var box = $(containerId);
+      if (!box) return;
+      if (!reportCharts[tool].length) { box.innerHTML = ''; return; }
+      box.innerHTML = reportCharts[tool].map(function (c) {
+        return '<div class="chart-block"><img class="chart" src="' + c.data + '" alt="' + (c.title || '') + '" />' +
+          (c.title ? '<div class="chart-cap">' + c.title + '</div>' : '') + '</div>';
+      }).join('');
+    }
+
+    var REPORT_META = {
+      cpk: { title: 'Process Capability (Cpk / Ppk)', verdictId: 'verdict', tableId: 'metrics', extraId: null,
+        method: 'Capability is assessed on the AIAG dual basis: within-subgroup Cpk (R̄/d₂) when explicit subgroup structure is present, otherwise long-term Ppk. Expected PPM uses the normal integral of the tails. Thresholds: capable ≥ 1.33, marginal 1.00–1.33, not capable < 1.00.' },
+      spc: { title: 'Statistical Process Control', verdictId: 'spcVerdict', tableId: 'spcMetrics', extraId: 'spcViol',
+        method: 'Control limits at ±3σ (Shewhart constants for subgroup sizes 2–10) with Western-Electric / Nelson signals: ① beyond limits ② 2-of-3 beyond 2σ ③ 4-of-5 beyond 1σ ④ 8 consecutive one side ⑤ 6 trending — per AIAG SPC manual.' },
+      msa: { title: 'Gage R&R (Measurement Systems Analysis)', verdictId: 'msaVerdict', tableId: 'msaMetrics', extraId: null,
+        method: 'Variable Gage R&R by the X̄-R method (AIAG): EV (repeatability), AV (reproducibility), GRR, PV and TV; %GRR vs tolerance or total variation. Thresholds: %GRR ≤ 10% acceptable, 10–30% conditional, > 30% not acceptable; NDC ≥ 5 required.' },
+      cg: { title: 'Measurement Capability (Cg / Cgk, VDA 5)', verdictId: 'cgVerdict', tableId: 'cgMetrics', extraId: null,
+        method: 'Cg uses the 20%-tolerance rule (0.2·Tol / 6σ) and Cgk the 10%-tolerance deviation rule (0.1·Tol − |mean−ref|) / 3σ. VDA 5 thresholds: Cg ≥ 1.33 and Cgk ≥ 1.33 = accept.' },
+    };
+
+    function buildReportHtml(tool) {
+      var m = REPORT_META[tool];
+      if (!m) return null;
+      var vEl = $(m.verdictId);
+      var verdictText = vEl ? vEl.textContent : '';
+      var vClass = vEl ? (vEl.className || '').replace('verdict', '').trim() : '';
+      var tableHtml = $(m.tableId) ? $(m.tableId).innerHTML : '';
+      var extraHtml = '';
+      if (m.extraId && $(m.extraId) && $(m.extraId).innerHTML.trim()) {
+        extraHtml = '<h2>Signals</h2>' + $(m.extraId).innerHTML;
+      }
+      var title = m.title;
+      if (tool === 'spc') title = 'Statistical Process Control (' + ($('spcType').value || '').toUpperCase() + ')';
+      var charts = reportCharts[tool] || [];
+      var chartHtml = '';
+      if (charts.length) {
+        chartHtml = '<h2>Charts</h2>' + charts.map(function (c) {
+          return '<figure class="fig"><img src="' + c.data + '" alt="' + (c.title || '') + '" /><figcaption>' + (c.title || '') + '</figcaption></figure>';
+        }).join('');
+      }
+      var date = new Date().toISOString().slice(0, 10);
+      var safe = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+      return '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/>' +
+        '<meta name="viewport" content="width=device-width,initial-scale=1"/>' +
+        '<title>LabKitPro — ' + safe(title) + ' report</title><style>' +
+        'body{font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1e293b;max-width:820px;margin:24px auto;padding:0 18px;line-height:1.55;}' +
+        'h1{font-size:22px;color:#0f2f5c;margin:0 0 4px;}h2{font-size:15px;color:#0f2f5c;margin:22px 0 8px;border-bottom:1px solid #e2e8f0;padding-bottom:4px;}' +
+        '.meta{color:#64748b;font-size:12px;margin:0 0 14px;}' +
+        '.verdict{padding:11px 13px;border-radius:8px;font-weight:700;font-size:14px;margin:0 0 14px;}' +
+        '.verdict.ok{background:#dcfce7;color:#166534;}.verdict.marginal{background:#fef3c7;color:#92400e;}.verdict.bad{background:#fee2e2;color:#991b1b;}' +
+        'table.metrics{width:100%;border-collapse:collapse;margin:0 0 12px;}table.metrics td{padding:7px 6px;border-bottom:1px solid #e8edf3;}' +
+        'table.metrics td:first-child{color:#64748b;}table.metrics td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;}' +
+        '.fig{margin:0 0 16px;text-align:center;}figure.img{} .fig img{max-width:100%;height:auto;border:1px solid #e8edf3;border-radius:8px;background:#fff;}' +
+        '.fig figcaption{font-size:12px;color:#64748b;margin-top:5px;}' +
+        '.method{font-size:13px;color:#334155;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px;}' +
+        '.foot{margin-top:26px;padding-top:12px;border-top:1px dashed #cbd5e1;font-size:12px;color:#64748b;}' +
+        '.foot a{color:#0f2f5c;font-weight:600;text-decoration:none;}' +
+        '</style></head><body>' +
+        '<h1>LabKitPro — ' + safe(title) + '</h1>' +
+        '<p class="meta">Generated ' + date + ' · offline analysis · data stayed in Excel</p>' +
+        '<div class="verdict ' + vClass + '">' + safe(verdictText) + '</div>' +
+        '<table class="metrics">' + tableHtml + '</table>' +
+        extraHtml +
+        chartHtml +
+        '<h2>Methodology</h2><p class="method">' + safe(m.method) + '</p>' +
+        '<div class="foot">Full suite &amp; paid exports: <a href="https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1" target="_blank">labkitpro.com/tools</a> · ' +
+        'Questions: <a href="mailto:support@labkitpro.com">support@labkitpro.com</a></div>' +
+        '</body></html>';
+    }
+
+    function downloadReport(tool) {
+      var html = buildReportHtml(tool);
+      if (!html) return;
+      var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'labkitpro-' + tool + '-' + new Date().toISOString().slice(0, 10) + '.html';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    }
+
+    $('cpkDownload').addEventListener('click', function () { if (cpkLast) downloadReport('cpk'); });
+    $('spcDownload').addEventListener('click', function () { if (spcLast) downloadReport('spc'); });
+    $('msaDownload').addEventListener('click', function () { if (msaLast) downloadReport('msa'); });
+    $('cgDownload').addEventListener('click', function () { if (cgLast) downloadReport('cg'); });
+
+    // ============================================================
+    //  Transition countdown (rich, mirrors the browser hub)
+    // ============================================================
+    var UTM = '?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1';
     var TRANSITION = [
-      { std: 'ISO 9001:2026', pub: '2026-09-16', deadline: '2029-09-30', note: 'QMS — new version published 2026-09-16' },
-      { std: 'ISO 14001:2026', pub: '2026-04', deadline: '2029-04-30', note: 'EMS — transition window open now (peak)' },
-      { std: 'ISO 45001:2027', pub: 'expected 2027', deadline: null, note: 'OH&S — expected, dates TBC' }
+      { id: 'iso9001-2026', std: 'ISO 9001:2026', status: 'Published 2026-09-16', hard: true,
+        deadline: '2029-09-30', deadlineLabel: 'Transition deadline',
+        milestones: [['2027-03-31', 'Accreditation bodies ready'], ['2027-06-30', 'CBs declare transition arrangements'],
+                     ['2028-03-31', 'New certificates issued to new version only'], ['2029-09-30', 'All existing certificates expire']],
+        url: 'https://labkitpro.com/iso-9001-2026/' },
+      { id: 'iso14001-2026', std: 'ISO 14001:2026', status: 'Published 2026-04-15', hard: true,
+        deadline: '2029-04-30', deadlineLabel: 'Transition deadline',
+        milestones: [['2026-10-31', 'Accreditation bodies ready'], ['2027-01-31', 'CBs declare transition arrangements'],
+                     ['2027-10-31', 'New certificates issued to new version only'], ['2029-04-30', 'All existing certificates expire']],
+        url: 'https://labkitpro.com/iso-14001-2026/' },
+      { id: 'iso45001-2027', std: 'ISO 45001:2027', status: 'DIS 40.60 — expected 2027', hard: false,
+        deadline: '2030-06-30', deadlineLabel: 'Expected deadline (TBC)',
+        milestones: [['2027-06-30', 'Publication expected (H1 2027)'], ['2030-06-30', 'Transition period expected ~3 years (estimate)']],
+        url: 'https://labkitpro.com/iso-45001-2027/' },
     ];
+
+    function fmtDays(d) { return d.toLocaleString('en-US'); }
 
     function renderTransition() {
       var grid = $('trGrid');
       if (!grid) return;
       var now = new Date();
       grid.innerHTML = TRANSITION.map(function (t) {
-        var html = '<div class="tr-card"><div class="tr-std">' + t.std + '</div>';
-        if (t.deadline) {
-          var dl = new Date(t.deadline + 'T00:00:00');
-          var days = Math.ceil((dl - now) / 86400000);
-          var cls = days < 0 ? 'past' : days < 365 ? 'hot' : 'ok';
-          html += '<div class="tr-days ' + cls + '">' + (days < 0 ? 'closed' : days + ' days') + '</div>';
-          html += '<div class="tr-sub">to ' + t.deadline + '</div>';
+        var html = '<div class="tr-card">';
+        html += '<div class="tr-top"><div class="tr-std">' + t.std + '</div>' +
+          '<span class="tr-status ' + (t.hard ? 'hard' : 'soft') + '">' + t.status + '</span></div>';
+        // countdown
+        var dl = new Date(t.deadline + 'T00:00:00');
+        var days = Math.ceil((dl - now) / 86400000);
+        var cls = days < 0 ? 'past' : days < 365 ? 'hot' : 'ok';
+        html += '<div class="tr-count"><span class="tr-num ' + cls + '">' + (days < 0 ? 'closed' : fmtDays(days)) + '</span>' +
+          (days >= 0 ? '<span class="tr-unit">days</span>' : '') + '</div>';
+        html += '<div class="tr-deadline">' + t.deadlineLabel + ': <b>' + t.deadline + '</b></div>';
+        // next milestone banner
+        var next = null, allDone = true;
+        t.milestones.forEach(function (m) {
+          var md = new Date(m[0] + 'T00:00:00');
+          if (md.getTime() >= now.getTime()) { if (!next) next = { date: m[0], label: m[1], days: Math.ceil((md - now) / 86400000) }; }
+          else allDone = false;
+        });
+        var bannerCls = cls;
+        if (next) {
+          var inTxt = next.days <= 0 ? 'today' : (next.days === 1 ? 'in 1 day' : 'in ' + fmtDays(next.days) + ' days');
+          html += '<div class="tr-banner ' + bannerCls + '"><span class="lbl">Next milestone · ' + inTxt + '</span>' +
+            next.label + ' &mdash; ' + next.date + '</div>';
         } else {
-          html += '<div class="tr-days tbc">TBC</div><div class="tr-sub">date pending</div>';
+          html += '<div class="tr-banner ok"><span class="lbl">Milestones</span>' +
+            (allDone ? 'All listed milestones reached &mdash; see certificate expiry above.' : 'No further scheduled milestones.') + '</div>';
         }
-        html += '<div class="tr-note">' + t.note + '</div></div>';
+        // timeline
+        html += '<ul class="tr-timeline">';
+        t.milestones.forEach(function (m) {
+          var md = new Date(m[0] + 'T00:00:00');
+          var state = md.getTime() < now.getTime() ? 'done' : (next && m[0] === next.date ? 'next' : '');
+          var tag = state === 'done' ? ' ✓' : '';
+          html += '<li class="' + state + '"><span class="d">' + m[0] + '</span> &mdash; ' + m[1] + tag + '</li>';
+        });
+        html += '</ul>';
+        // guide button
+        html += '<a class="tr-guide" href="' + t.url + UTM + '" target="_blank">Transition guide &amp; checklist &#8599;</a>';
+        html += '</div>';
         return html;
       }).join('');
     }

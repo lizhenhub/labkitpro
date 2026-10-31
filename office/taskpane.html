@@ -71,9 +71,11 @@
         <section id="result" class="hidden">
           <div id="verdict" class="verdict"></div>
           <table id="metrics" class="metrics"></table>
+          <div class="charts" id="cpkCharts"></div>
           <div class="btn-row">
             <button id="insertReport" class="btn primary">Insert report</button>
             <button id="copyReport" class="btn">Copy report</button>
+            <button id="cpkDownload" class="btn dl">Download report</button>
           </div>
           <p class="foot-note">Thresholds per AIAG SPC: capable &ge; 1.33 &middot; marginal 1.00&ndash;1.33 &middot; not capable &lt; 1.00</p>
         </section>
@@ -109,9 +111,11 @@
           <div id="spcVerdict" class="verdict"></div>
           <table id="spcMetrics" class="metrics"></table>
           <div id="spcViol" class="viol"></div>
+          <div class="charts" id="spcCharts"></div>
           <div class="btn-row">
             <button id="spcInsert" class="btn primary">Insert report</button>
             <button id="spcCopy" class="btn">Copy report</button>
+            <button id="spcDownload" class="btn dl">Download report</button>
           </div>
           <p class="foot-note">Western Electric / Nelson rules: ① beyond limits ② 2-of-3 beyond 2&sigma; ③ 4-of-5 beyond 1&sigma; ④ 8 same side ⑤ 6 trending</p>
         </section>
@@ -142,9 +146,11 @@
         <section id="msaResult" class="hidden">
           <div id="msaVerdict" class="verdict"></div>
           <table id="msaMetrics" class="metrics"></table>
+          <div class="charts" id="msaCharts"></div>
           <div class="btn-row">
             <button id="msaInsert" class="btn primary">Insert report</button>
             <button id="msaCopy" class="btn">Copy report</button>
+            <button id="msaDownload" class="btn dl">Download report</button>
           </div>
           <p class="foot-note">AIAG MSA: %GRR &le; 10% acceptable &middot; 10&ndash;30% conditional &middot; &gt; 30% not acceptable. NDC &ge; 5 required.</p>
         </section>
@@ -172,9 +178,11 @@
         <section id="cgResult" class="hidden">
           <div id="cgVerdict" class="verdict"></div>
           <table id="cgMetrics" class="metrics"></table>
+          <div class="charts" id="cgCharts"></div>
           <div class="btn-row">
             <button id="cgInsert" class="btn primary">Insert report</button>
             <button id="cgCopy" class="btn">Copy report</button>
+            <button id="cgDownload" class="btn dl">Download report</button>
           </div>
           <p class="foot-note">VDA 5: Cg &ge; 1.33 and Cgk &ge; 1.33 = accept (20% tolerance / 10% tolerance rule).</p>
         </section>
@@ -185,14 +193,20 @@
       <!-- ============ Transition ============ -->
       <section class="panel" data-panel="tr">
         <p class="hint">
-          ISO 9001:2026 and 14001:2026 were published in 2026; the three-system transition
-          window is open <b>now</b>. 45001:2027 is expected (dates TBC). Countdowns below.
+          ISO 9001:2026 and 14001:2026 are published; the three-system transition window is
+          open <b>now</b> (peak period). 45001:2027 is in DIS &mdash; expected 2027, dates TBC.
+          Live countdowns and milestones below.
         </p>
         <div class="tr-grid" id="trGrid"></div>
+        <div class="tr-links">
+          <a class="tr-pill" href="https://labkitpro.com/iso-9001-2026/?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">All transition hubs &#8599;</a>
+          <a class="tr-pill" href="https://labkitpro.com/diagnosis/?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">Free gap diagnosis &#8599;</a>
+        </div>
         <p class="hint dim">Full transition toolkits, difference analyses and document packs:
           <a href="https://labkitpro.com/iso-9001-2026/?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">9001:2026</a> &middot;
           <a href="https://labkitpro.com/iso-14001-2026?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">14001:2026</a> &middot;
           <a href="https://labkitpro.com/iso-45001-2027?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">45001:2027</a></p>
+        <p class="disclaim">LabKitPro transition dates are compiled from ISO / IAF / accredited-body publications for planning only and are not legal or certification advice. Always confirm current deadlines with your accreditation body / certification body.</p>
       </section>
 
     </div>
@@ -211,6 +225,7 @@
   </footer>
 
   <script src="calc.js"></script>
+  <script src="charts.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
