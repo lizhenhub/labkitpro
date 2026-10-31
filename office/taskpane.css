@@ -183,6 +183,20 @@ main { flex: 1; padding: 14px 14px 18px; }
 .tr-pill:hover { background: #eef2f7; border-color: #2d5f8e; }
 .disclaim { font-size: 10px; color: #9aa6b6; line-height: 1.55; margin-top: 10px; border-top: 1px dashed #e2e8f0; padding-top: 8px; }
 
+/* ---- Help tab ---- */
+.help-intro { background: #f1f6fb; border: 1px solid #d7e3f0; border-radius: 9px; padding: 12px 14px; margin-bottom: 12px; }
+.help-intro b { color: #0f2f5c; }
+.help-steps { margin: 8px 0 8px 18px; }
+.help-steps li { margin: 3px 0; line-height: 1.5; }
+.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.help-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 11px 12px; }
+.help-card.wide { grid-column: 1 / -1; margin-top: 10px; }
+.help-card h3 { font-size: 12.5px; color: #0f2f5c; margin-bottom: 6px; }
+.help-card ul { list-style: none; padding: 0; }
+.help-card li { font-size: 12px; line-height: 1.5; color: #334155; padding: 3px 0 3px 14px; position: relative; }
+.help-card li::before { content: "\2022"; color: #2d5f8e; position: absolute; left: 0; font-weight: 700; }
+@media (max-width: 460px) { .help-grid { grid-template-columns: 1fr; } }
+
 /* ---- result charts (canvas -> PNG dataURL) ---- */
 .charts { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 4px; }
 .charts .chart-block { background: #fff; border: 1px solid #e8edf3; border-radius: 8px; padding: 6px; }

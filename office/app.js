@@ -1,9 +1,11 @@
-/* LabKitPro Excel add-in - v1.3 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download).
+/* LabKitPro Excel add-in - v1.3.1 (Cpk + SPC + MSA + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
    Data flow: worksheet selection (matrix) -> parse -> kernel -> render (+ chart) -> download report.
    v1.2.2: insert-report overwrite guard (confirm) + empty-selection error.
-   v1.3:    browser-parity charts on every analysis + self-contained HTML report download. */
+   v1.3:    browser-parity charts on every analysis + self-contained HTML report download.
+   v1.3.1:  Help tab (usage instructions); Sample-data writer guards selection size with a clear
+            instruction instead of the raw Excel "would overwrite or move data" error. */
 (function () {
   'use strict';
 
@@ -29,6 +31,45 @@
       setTimeout(function () { e.classList.add('hidden'); }, 2500);
     }
 
+    // ---------- safe matrix writer (fixes "Sample data" overwrite error) ----------
+    // Office.setSelectedDataAsync only writes inside the current selection; if the data
+    // is larger than the selection it fails with "would overwrite or move data".
+    // We pre-check the selection size and give a clear, human instruction instead.
+    function writeMatrixSafe(rows, errId, label) {
+      var needR = rows.length, needC = (rows[0] || []).length;
+      Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
+        { valueFormat: Office.ValueFormat.Unformatted }, function (ar) {
+          if (ar.status === Office.AsyncResultStatus.Failed) {
+            // no readable selection -> fall back to writing at the active cell
+            writeSample(rows, errId, needR, needC, label);
+            return;
+          }
+          var sel = ar.value;
+          var selR = Array.isArray(sel) ? sel.length : 0;
+          var selC = (sel && sel[0] && Array.isArray(sel[0])) ? sel[0].length : 0;
+          // a single selected cell behaves as "active cell" -> Excel expands from it
+          if (selR <= 1 && selC <= 1) { writeSample(rows, errId, needR, needC, label); return; }
+          if (selR < needR || selC < needC) {
+            showError(errId, 'The ' + (label || 'sample') + ' needs ' + needR + ' rows × ' + needC +
+              ' columns, but your selection is smaller. Click a single empty cell (or a larger range) and click ' +
+              (label || 'Sample data') + ' again — Excel will fill the block automatically.');
+            return;
+          }
+          writeSample(rows, errId, needR, needC, label);
+        });
+    }
+    function writeSample(rows, errId, needR, needC, label) {
+      Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix },
+        function (ar) {
+          if (ar.status === Office.AsyncResultStatus.Failed) {
+            showError(errId, 'Could not write the ' + (label || 'sample') + ': ' + ar.error.message +
+              '. Tip: click a single empty cell first, then try again.');
+          } else {
+            flash(errId, (label || 'Sample') + ' loaded — now click Analyze.');
+          }
+        });
+    }
+
     // ---------- tab switching + active panel tracking ----------
     var currentPanel = 'cpk';
     Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) {
@@ -39,7 +80,7 @@
         Array.prototype.forEach.call(document.querySelectorAll('.panel'), function (x) { x.classList.remove('active'); });
         t.classList.add('active');
         document.querySelector('.panel[data-panel="' + name + '"]').classList.add('active');
-        $('importBar').classList.toggle('hidden', name === 'tr');   // import only applies to data tools
+        $('importBar').classList.toggle('hidden', name === 'tr' || name === 'help');   // import only applies to data tools
         if (name === 'tr') renderTransition();
       });
     });
@@ -59,9 +100,7 @@
                   9.96, 10.09, 10.00, 10.04, 9.98, 10.07, 10.02, 9.95, 10.10, 10.01,
                   10.05, 9.99, 10.03, 10.06, 9.97];
       var rows = data.map(function (v) { return [[v]]; });
-      Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix }, function (ar) {
-        if (ar.status === Office.AsyncResultStatus.Failed) showError('error', 'Could not write sample data: ' + ar.error.message);
-      });
+      writeMatrixSafe(rows, 'error', 'Cpk sample');
     }
 
     function analyzeCpk() {
@@ -173,9 +212,7 @@
         rows = [[10.02, 9.97, 10.11], [10.05, 9.94, 10.08], [10.01, 9.99, 10.06], [10.03, 9.96, 10.09],
                 [10.00, 10.04, 10.07], [10.02, 9.95, 10.10], [10.01, 9.99, 10.03], [10.06, 9.97, 10.05]];
       }
-      Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix }, function (ar) {
-        if (ar.status === Office.AsyncResultStatus.Failed) showError('spcError', 'Could not write sample data: ' + ar.error.message);
-      });
+      writeMatrixSafe(rows, 'spcError', 'SPC sample');
     }
 
     function analyzeSpc() {
@@ -279,9 +316,7 @@
         [0.10, 0.12, 0.09, 0.11, 0.10], [0.11, 0.13, 0.10, 0.12, 0.11], [0.10, 0.12, 0.09, 0.11, 0.10],
         [0.11, 0.12, 0.10, 0.12, 0.11], [0.12, 0.13, 0.11, 0.13, 0.12], [0.11, 0.12, 0.10, 0.12, 0.11]
       ];
-      Office.context.document.setSelectedDataAsync(rows, { coercionType: Office.CoercionType.Matrix }, function (ar) {
-        if (ar.status === Office.AsyncResultStatus.Failed) showError('msaError', 'Could not write sample data: ' + ar.error.message);
-      });
+      writeMatrixSafe(rows, 'msaError', 'MSA sample');
     }
 
     function analyzeMsa() {
@@ -378,9 +413,7 @@
       $('cgRef').value = '10.000'; $('cgTol').value = '0.200';
       var data = [10.004, 9.998, 10.006, 10.002, 9.995, 10.008, 10.001, 9.997, 10.003, 10.000,
                   10.005, 9.999, 10.002, 10.006, 9.994, 10.001, 10.003, 9.996, 10.007, 10.000];
-      Office.context.document.setSelectedDataAsync(data.map(function (v) { return [[v]]; }), { coercionType: Office.CoercionType.Matrix }, function (ar) {
-        if (ar.status === Office.AsyncResultStatus.Failed) showError('cgError', 'Could not write sample data: ' + ar.error.message);
-      });
+      writeMatrixSafe(data.map(function (v) { return [[v]]; }), 'cgError', 'Cg sample');
     }
 
     function analyzeCg() {

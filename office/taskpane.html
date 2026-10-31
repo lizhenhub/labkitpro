@@ -29,6 +29,7 @@
       <button class="tab" data-tab="msa">MSA</button>
       <button class="tab" data-tab="cg">Cg/Cgk</button>
       <button class="tab" data-tab="tr">Transition</button>
+      <button class="tab" data-tab="help">Help</button>
     </div>
   </nav>
 
@@ -207,6 +208,65 @@
           <a href="https://labkitpro.com/iso-14001-2026?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">14001:2026</a> &middot;
           <a href="https://labkitpro.com/iso-45001-2027?utm_source=excel-addin&amp;utm_medium=addin&amp;utm_campaign=v1" target="_blank">45001:2027</a></p>
         <p class="disclaim">LabKitPro transition dates are compiled from ISO / IAF / accredited-body publications for planning only and are not legal or certification advice. Always confirm current deadlines with your accreditation body / certification body.</p>
+      </section>
+
+      <!-- ============ Help ============ -->
+      <section class="panel" data-panel="help">
+        <div class="help-intro">
+          <b>Every tool follows the same 3 steps:</b>
+          <ol class="help-steps">
+            <li>Select a range of cells in your sheet (the data to analyze).</li>
+            <li>Set the parameters shown on the tab (spec limits, chart type, etc.).</li>
+            <li>Click <b>Analyze</b> (or <b>Run Gage R&amp;R</b>). Results + charts appear here.</li>
+          </ol>
+          <p class="hint dim">Everything runs offline — your data never leaves Excel. <b>New here?</b> Click <b>Sample data</b> on any tab to auto-fill a demo dataset, then Analyze it.</p>
+        </div>
+
+        <div class="help-grid">
+          <div class="help-card">
+            <h3>Cpk · Process capability</h3>
+            <ul>
+              <li>Select <b>one column</b> of measurements &rarr; enter LSL / USL (Target optional) &rarr; Analyze.</li>
+              <li>Select <b>2+ columns</b> &rarr; each column is one subgroup (enables Cp / Cpk).</li>
+              <li>Leave one spec limit blank for a <b>one-sided</b> spec.</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <h3>SPC · Control charts</h3>
+            <ul>
+              <li>Pick a chart type from the dropdown — the hint updates to tell you the layout.</li>
+              <li><b>Subgroup</b> charts (X&#772;-R / X&#772;-S / Median): each column = one subgroup (2&ndash;10 rows).</li>
+              <li><b>I-MR</b>: one column of individual readings (time-ordered).</li>
+              <li><b>Attribute</b> (p / np / c / u): 2 columns &mdash; sample size <b>n</b> and defect count / defects.</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <h3>MSA · Gage R&amp;R</h3>
+            <ul>
+              <li>Set Appraisers / Trials / Parts, then select the measurement table.</li>
+              <li>Rows = appraiser &times; trial (appraiser 1 trial 1&hellip;n, then appraiser 2&hellip;); columns = parts.</li>
+              <li>Tolerance is optional — if blank, %GRR is reported against total variation.</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <h3>Cg / Cgk · Measurement capability</h3>
+            <ul>
+              <li>Select the measurement column, then enter the <b>Reference</b> (true value) and <b>Tolerance</b> (USL &minus; LSL).</li>
+              <li>VDA 5 rule: Cg &ge; 1.33 and Cgk &ge; 1.33 = accept.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="help-card wide">
+          <h3>Reports &amp; Sample data</h3>
+          <ul>
+            <li><b>Insert report</b> &mdash; writes the text report into the current selection (you're asked to confirm first).</li>
+            <li><b>Copy report</b> &mdash; copies a plain-text report to your clipboard.</li>
+            <li><b>Download report</b> &mdash; saves a self-contained HTML file (charts + metrics + method) you can open or email.</li>
+            <li><b>Sample data</b> &mdash; fills a demo dataset into the sheet. <b>Click a single empty cell first</b> (or a range at least as big as the sample); otherwise Excel can't fit the block and will reject the write.</li>
+            <li><b>Import external data</b> (top bar) &mdash; paste values from a CSV / another sheet / text file; columns split by tab, comma or space. Analysis runs on the pasted data regardless of the write.</li>
+          </ul>
+        </div>
       </section>
 
     </div>
