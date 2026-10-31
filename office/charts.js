@@ -8,7 +8,7 @@
    no external libs, no network, WebView2-safe.
 
    Exposes window.LKPCharts = { capabilityChart, capabilityRun, spcChart,
-     grrChart, grrRangeChart, grrAppChart, grrRangeMulti, varianceChart,
+     grrChart, grrRangeChart, grrAppChart, grrRangeMulti, grrMeansChart, varianceChart,
      runChart, devHist, fitChart, biasTrendChart, agreeBars, offscreenChart }. */
 (function (root) {
   'use strict';
@@ -339,6 +339,31 @@
       });
     });
   }
+  // AIAG X̄-by-appraiser means chart: per-appraiser part means vs X̄̄ ± A2·R̄̄ limits.
+  // Unlike an R chart, points OUTSIDE these limits are GOOD — the system resolves parts.
+  function grrMeansChart(appData, xbar, ucl, lcl) {
+    return offscreenChart(340, (ctx, W, H) => {
+      const nP = appData[0].trials[0].length;
+      const partMeans = appData.map((a) => a.trials[0].map((_, p) => a.trials.reduce((s, t) => s + t[p], 0) / a.trials.length));
+      const all = partMeans.flat();
+      const lo = Math.min(...all, lcl), hi = Math.max(...all, ucl);
+      const pad = (hi - lo) * 0.12 || 1;
+      const f = frame(ctx, W, H, { x0: 0.5, x1: nP + 0.5, y0: lo - pad, y1: hi + pad, xLabels: Array.from({ length: nP }, (_, i) => 'P' + (i + 1)), xlabel: 'Part', ylabel: 'Part mean by appraiser' });
+      hline(ctx, f, ucl, '#b03a2e', [5, 3], 'UCL = X̄̄+A₂R̄̄');
+      hline(ctx, f, xbar, '#1d7a45', [], 'X̄̄');
+      if (lcl > lo - pad) hline(ctx, f, lcl, '#b03a2e', [5, 3], 'LCL');
+      partMeans.forEach((ms, ai) => {
+        const col = APP_COLORS[ai % 3];
+        ptsLine(ctx, f, ms.map((_, i) => i + 1), ms, col);
+        drawPts(ctx, f, ms.map((_, i) => i + 1), ms, col, 3.6);
+      });
+      ctx.font = 'bold 14px sans-serif';
+      appData.forEach((a, ai) => {
+        ctx.fillStyle = APP_COLORS[ai % 3];
+        ctx.fillText('Appraiser ' + a.name, f.L + 8 + ai * 92, f.T + 12);
+      });
+    });
+  }
   // variance components: %EV / %AV / %GRR / %PV with 10% and 30% reference lines
   function varianceChart(r) {
     return offscreenChart(300, (ctx, W, H) => {
@@ -432,7 +457,7 @@
 
   root.LKPCharts = {
     capabilityChart, capabilityRun, spcChart,
-    grrChart, grrRangeChart, grrAppChart, grrRangeMulti, varianceChart,
+    grrChart, grrRangeChart, grrAppChart, grrRangeMulti, grrMeansChart, varianceChart,
     runChart, devHist, fitChart, biasTrendChart, agreeBars, offscreenChart, paintSpc,
   };
 })(typeof self !== 'undefined' ? self : this);

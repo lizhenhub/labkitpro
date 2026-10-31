@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.4.1 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.2 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -21,12 +21,16 @@
             Gage R&R 3 x 10 x 3 = 90 measurements (AIAG standard, runs "Acceptable"), Linearity
             5 levels x 12 repeats (60), Stability 12 time points x 5, Attribute agreement
             50 parts x 3 appraisers x 2 trials (300), Cg 25 measurements (VDA 5).
-            Help now lists all 8 SPC chart types. */
+            Help now lists all 8 SPC chart types.
+   v1.4.2:  report style audit vs AIAG MSA: all PERCENTAGES shown as whole numbers (GRR %EV/%AV/
+            %GRR/%PV, %Bias, %Linearity — verdicts still computed unrounded). Added the AIAG
+            X̄-by-appraiser means chart (part means vs X̄̄ ± A₂·R̄̄ limits) to GRR — both the
+            multi-appraiser and single-appraiser layouts. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.1';
+    var APP_VERSION = '1.4.2';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
 
@@ -505,6 +509,7 @@
         charts = [
           { title: 'All measurements by part — colored by appraiser, line = appraiser mean (repeatability + reproducibility)', data: LKPCharts.grrAppChart(appData) },
           { title: 'Range within part by appraiser vs R̄̄ and UCL = D4·R̄̄ (repeatability check)', data: LKPCharts.grrRangeMulti(appData, res.rbar, res.uclR) },
+          { title: 'Part means by appraiser vs X̄̄ ± A₂·R̄̄ limits — points outside the limits = system resolves parts (AIAG)', data: LKPCharts.grrMeansChart(appData, res.xbar, res.uclX, res.lclX) },
           { title: 'Variance components — %EV / %AV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
         ];
       } else {
@@ -512,6 +517,7 @@
         charts = [
           { title: 'Measurements by part — one line per trial (repeatability view)', data: LKPCharts.grrChart(byPart) },
           { title: 'Range within part vs R̄ and UCL = D4·R̄ (trial-to-trial spread check)', data: LKPCharts.grrRangeChart(byPart) },
+          { title: 'Part means vs X̄ ± A₂·R̄ limits — points outside the limits = system resolves parts (AIAG)', data: LKPCharts.grrMeansChart(appData, res.xbar, res.uclX, res.lclX) },
           { title: 'Variance components — %EV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
         ];
       }
