@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — AI Video Summarizer</title>
+<style>
+  :root { --fg:#1a1a2e; --muted:#5b5b73; --accent:#4f46e5; --bg:#fff; --soft:#f6f7fb; --line:#e6e8f0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color:var(--fg); background:var(--bg); line-height:1.65; font-size:16px; }
+  .wrap { max-width:780px; margin:0 auto; padding:48px 24px 80px; }
+  header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:8px; }
+  h1 { font-size:28px; margin:0 0 6px; letter-spacing:-.02em; }
+  .meta { color:var(--muted); font-size:14px; }
+  h2 { font-size:20px; margin:36px 0 10px; letter-spacing:-.01em; }
+  h3 { font-size:16px; margin:22px 0 6px; }
+  p, li { color:#2b2b40; }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  code { background:var(--soft); padding:2px 6px; border-radius:5px; font-size:14px; }
+  .callout { background:var(--soft); border:1px solid var(--line); border-left:4px solid var(--accent);
+             border-radius:8px; padding:14px 16px; margin:20px 0; font-size:15px; }
+  .tbl { width:100%; border-collapse:collapse; margin:14px 0; font-size:15px; }
+  .tbl th, .tbl td { text-align:left; padding:10px 12px; border:1px solid var(--line); vertical-align:top; }
+  .tbl th { background:var(--soft); font-weight:600; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  footer { margin-top:48px; border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:14px; }
+  .tag { display:inline-block; background:#eef2ff; color:var(--accent); font-size:12px; font-weight:600;
+         padding:3px 10px; border-radius:999px; margin-bottom:12px; letter-spacing:.02em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="tag">AI Video Summarizer · Chrome Extension</div>
+    <h1>Privacy Policy</h1>
+    <div class="meta">Effective date: October 31, 2026 · Last updated: October 31, 2026</div>
+  </header>
+
+  <div class="callout">
+    <strong>TL;DR.</strong> This extension reads only the YouTube video ID of the page you are watching.
+    It does <u>not</u> read page content, your watch history, open tabs, or any other browsing data.
+    Your video's transcript is fetched on our server and sent to an AI model to generate a summary;
+    the transcript is processed in memory and is <u>never stored</u>. We do not sell or share your data for advertising.
+  </div>
+
+  <h2>1. Who we are (Data Controller)</h2>
+  <p>
+    This Privacy Policy applies to the <strong>AI Video Summarizer</strong> Chrome extension
+    (the "Extension") published by <strong>YU JINXIN</strong>, an individual developer
+    ("we", "us", "our"). The Extension is an independent product and is operated separately from
+    any other website or service.
+  </p>
+  <p>For any privacy request, contact: <strong>support@labkitpro.com</strong></p>
+
+  <h2>2. What data we collect</h2>
+  <p>The Extension is designed to collect the minimum data needed to function. Specifically:</p>
+  <table class="tbl">
+    <thead><tr><th>Data</th><th>How it is obtained</th><th>Required?</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Device ID</strong> (a random anonymous UUID)</td>
+        <td>Generated locally in your browser and stored in <code>chrome.storage.local</code>. Used only to enforce the free daily quota.</td>
+        <td>Yes (anonymous, not tied to you personally)</td>
+      </tr>
+      <tr>
+        <td><strong>YouTube Video ID</strong></td>
+        <td>Read from the <code>v=</code> parameter of the YouTube page URL you are viewing. This is the <em>only</em> information the Extension reads from the page.</td>
+        <td>Yes (needed to summarize that video)</td>
+      </tr>
+      <tr>
+        <td><strong>Summary style preference</strong></td>
+        <td>Your selected summary mode (TL;DR / Bullets / Detailed / Key Data).</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Email address</strong></td>
+        <td>Only if you purchase Pro: the payment processor shares the email used at checkout so we can deliver your receipt/welcome email. Also only if you voluntarily verify an email to activate a referral reward (a one-time 6-digit code is sent to that address). We never require an email to use the free tier.</td>
+        <td>No (only for paid plans or voluntary referral verification)</td>
+      </tr>
+      <tr>
+        <td><strong>Referral data</strong></td>
+        <td>Only if you use the invite feature: your invite code, which code you applied (or who applied yours), your email-verification status, and reward records such as bonus expiry dates. Stored pseudonymously against your Device ID.</td>
+        <td>No (only if you participate in the referral program)</td>
+      </tr>
+      <tr>
+        <td><strong>Authentication token</strong></td>
+        <td>Issued by our server and stored locally to authenticate API requests.</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    We do <strong>not</strong> collect: your name, postal address, phone number, payment card details,
+    browsing history, search history, opened tabs, page content/text, cookies from other sites,
+    or any health/financial/sensitive information.
+  </p>
+
+  <h2>3. How we use your data</h2>
+  <ul>
+    <li><strong>Device ID + daily counter:</strong> to enforce the free plan limit (3 summaries/day) and unlock Pro features.</li>
+    <li><strong>Video ID + transcript + style:</strong> to generate your requested summary for the video you are watching.</li>
+    <li><strong>Email (if provided):</strong> to associate your Pro subscription with your device and send receipts.</li>
+    <li><strong>Referral data (if you participate):</strong> to operate the invite program — bind referrals, prevent duplicate/fraudulent rewards, and grant bonus Pro time to the referrer.</li>
+  </ul>
+
+  <h2>4. Server-side processing &amp; third parties</h2>
+  <p>When you request a summary, the following happens on our infrastructure:</p>
+  <ol>
+    <li>Your browser reads the <strong>public captions (transcript)</strong> of the YouTube video you are watching and sends the transcript text, the Video ID, and your chosen style to our API at <code>api.labkitpro.com</code>. If the captions cannot be read in your browser, our server attempts to fetch the same public transcript from YouTube's servers instead.</li>
+    <li>The transcript text is sent to <strong>Cloudflare Workers AI</strong> (Meta Llama 3.1 Instruct) to generate the summary. <strong>DeepSeek</strong> is configured as a backup AI provider for failover only.</li>
+    <li>The summary is returned to your browser. The transcript is processed <strong>in memory and is not persisted</strong> by us.</li>
+  </ol>
+  <p>We share data with these processors strictly to provide the service:</p>
+  <table class="tbl">
+    <thead><tr><th>Processor</th><th>Purpose</th><th>Data shared</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cloudflare</strong></td><td>Hosting the API and storing quota/subscription state (KV)</td><td>Video ID, Device ID, subscription status</td></tr>
+      <tr><td><strong>Cloudflare Workers AI</strong></td><td>AI summarization of the transcript</td><td>The video transcript text (processed in memory; not used for model training)</td></tr>
+      <tr><td><strong>DeepSeek</strong> (backup only)</td><td>Backup AI provider if the primary is unavailable</td><td>The video transcript text (same handling as above)</td></tr>
+      <tr><td><strong>Dodo Payments</strong></td><td>Processing Pro subscription payments</td><td>Email and billing details — handled entirely by the payment processor; we never receive or store your card number</td></tr>
+    </tbody>
+  </table>
+  <p>We do <strong>not</strong> sell, rent, or share your data with advertisers or data brokers. We do not use analytics or advertising SDKs in the Extension.</p>
+
+  <h2>5. Data storage &amp; retention</h2>
+  <ul>
+    <li><strong>Local (your browser):</strong> Device ID, auth token, and optional email are stored in <code>chrome.storage.local</code>. These are cleared automatically when you uninstall the Extension.</li>
+    <li><strong>Server (Cloudflare KV):</strong> your Device ID, daily quota counter (reset every 24h), and subscription status. If you provided an email, it is stored to link your Pro plan.</li>
+    <li><strong>Transcript:</strong> fetched and sent to the AI model on demand; <strong>never written to disk or any database</strong> by us.</li>
+    <li><strong>Payment data:</strong> never stored by us — handled by the payment processor.</li>
+  </ul>
+
+  <h2>6. Your rights (GDPR / CCPA)</h2>
+  <p>
+    If you are in the EU/EEA (GDPR) or California (CCPA), you have the right to access, correct,
+    and delete your personal data, and to object to its processing. To exercise these rights:
+  </p>
+  <ul>
+    <li><strong>Local data:</strong> uninstall the Extension — Chrome removes all locally stored data automatically.</li>
+    <li><strong>Server data:</strong> email <strong>support@labkitpro.com</strong> with your Device ID (or the email used for Pro). We will delete the associated record within 30 days. A self-service deletion option will also be added in-product.</li>
+    <li><strong>Opt out of sale/sharing:</strong> we do not sell or share your data, so no opt-out is required.</li>
+  </ul>
+
+  <h2>7. Children</h2>
+  <p>The Extension is not directed to children under 13 (or the equivalent minimum age in your jurisdiction) and we do not knowingly collect data from them.</p>
+
+  <h2>8. Security</h2>
+  <p>
+    API communication is encrypted over HTTPS. Authentication uses short-lived signed tokens.
+    Secrets (API keys, signing keys) are stored as server-side environment secrets and are never
+    included in the Extension package. We follow least-privilege access on our infrastructure.
+  </p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>We may update this policy as the product evolves. Material changes will be reflected by the "Last updated" date above, and where required, notified via the Extension or email.</p>
+
+  <h2>10. Contact</h2>
+  <p>
+    Questions or requests: <strong>support@labkitpro.com</strong><br />
+    Support: <strong>support@labkitpro.com</strong>
+  </p>
+
+  <footer>
+    AI Video Summarizer is an independent product. This policy is specific to the Extension and its
+    supporting API, and does not govern any unrelated website or service.
+    See also: <a href="/terms.html">Terms of Service</a> &middot; <a href="/refund.html">Refund Policy</a>.
+  </footer>
+</div>
+</body>
+</html>
