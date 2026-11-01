@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Video Summarizer — Get the gist of any YouTube video in seconds</title>
+<style>
+  :root { --fg:#0f172a; --muted:#64748b; --accent:#4f46e5; --accent2:#7c3aed; --bg:#fff; --soft:#f6f7fb; --line:#e6e8f0; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--fg); background:var(--bg); line-height:1.6; }
+  .nav { display:flex; align-items:center; justify-content:space-between; max-width:980px; margin:0 auto; padding:20px 24px; }
+  .brand { font-weight:700; letter-spacing:-.02em; font-size:18px; }
+  .nav a { color:var(--muted); text-decoration:none; font-size:14px; margin-left:18px; }
+  .hero { max-width:820px; margin:40px auto 0; padding:0 24px; text-align:center; }
+  .pill { display:inline-block; background:#eef2ff; color:var(--accent); font-size:13px; font-weight:600; padding:5px 14px; border-radius:999px; margin-bottom:18px; }
+  h1 { font-size:44px; line-height:1.1; letter-spacing:-.03em; margin:0 0 16px; }
+  .lead { font-size:19px; color:var(--muted); max-width:600px; margin:0 auto 28px; }
+  .cta { display:inline-block; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:600; padding:14px 28px; border-radius:12px; text-decoration:none; font-size:16px; box-shadow:0 8px 24px rgba(79,70,229,.25); }
+  .cta.sub { background:#fff; color:var(--accent); border:1px solid var(--line); box-shadow:none; margin-left:10px; }
+  .feat { max-width:980px; margin:64px auto; padding:0 24px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .card { background:var(--soft); border:1px solid var(--line); border-radius:16px; padding:22px; }
+  .card h3 { margin:0 0 8px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:15px; }
+  .pricing { max-width:760px; margin:0 auto 80px; padding:0 24px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .plan { border:1px solid var(--line); border-radius:18px; padding:28px; }
+  .plan.pro { border-color:var(--accent); box-shadow:0 12px 30px rgba(79,70,229,.12); }
+  .plan h3 { margin:0 0 4px; font-size:20px; }
+  .price { font-size:34px; font-weight:700; letter-spacing:-.02em; margin:12px 0 2px; }
+  .price small { font-size:15px; color:var(--muted); font-weight:500; }
+  .plan ul { list-style:none; padding:0; margin:16px 0 0; }
+  .plan li { padding:7px 0; color:#334155; font-size:15px; border-top:1px solid var(--line); }
+  footer { border-top:1px solid var(--line); padding:28px 24px; text-align:center; color:var(--muted); font-size:14px; }
+  footer a { color:var(--accent); text-decoration:none; margin:0 8px; }
+  @media (max-width:720px){ .feat,.pricing{grid-template-columns:1fr;} h1{font-size:32px;} }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <div class="brand">AI Video Summarizer</div>
+    <div>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/refund.html">Refunds</a>
+      <a href="mailto:support@labkitpro.com">Support</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="pill">Chrome Extension · YouTube</div>
+    <h1>Get the gist of any YouTube video in seconds.</h1>
+    <p class="lead">One click. AI-generated summary with clickable timestamps that jump straight to the moment. Free 3 summaries a day — no account needed.</p>
+    <a class="cta" href="https://chrome.google.com/webstore/category/extensions">Add to Chrome</a>
+    <a class="cta sub" href="/privacy.html">Read our privacy policy</a>
+  </section>
+
+  <section class="feat">
+    <div class="card">
+      <h3>⚡ One-click summary</h3>
+      <p>A button appears right on the YouTube page. Click and get a clean summary — no copy-pasting links.</p>
+    </div>
+    <div class="card">
+      <h3>🕒 Clickable timestamps</h3>
+      <p>Every point links to the exact moment in the video. Jump to what matters, skip the filler.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Copy &amp; export</h3>
+      <p>Copy as text or Markdown and drop it straight into Notion, Obsidian, or your notes.</p>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="plan">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <div style="color:var(--muted);font-size:14px;">forever</div>
+      <ul>
+        <li>3 summaries per day</li>
+        <li>All 4 summary styles</li>
+        <li>Clickable timestamps</li>
+        <li>Copy / export</li>
+      </ul>
+    </div>
+    <div class="plan pro">
+      <h3>Pro</h3>
+      <div class="price">&euro;3.49 <small>/ month</small></div>
+      <div style="color:var(--muted);font-size:14px;">or &euro;25.92 / year (save ~38%)</div>
+      <ul>
+        <li>Unlimited summaries</li>
+        <li>Everything in Free</li>
+        <li>All 4 summary styles, always</li>
+        <li>Priority email support</li>
+      </ul>
+    </div>
+  </section>
+
+  <p style="max-width:760px;margin:0 auto 24px;padding:0 24px;color:var(--muted);font-size:13px;text-align:center;">
+    Pro is a subscription that renews automatically (&euro;3.49/month or &euro;25.92/year).
+    Cancel anytime by emailing support@labkitpro.com &mdash; see our
+    <a href="/refund.html" style="color:var(--accent)">Refund Policy</a> and
+    <a href="/terms.html" style="color:var(--accent)">Terms of Service</a>.
+  </p>
+
+  <footer>
+    AI Video Summarizer is an independent product.
+    <a href="/privacy.html">Privacy Policy</a> ·
+    <a href="/terms.html">Terms of Service</a> ·
+    <a href="/refund.html">Refund Policy</a> ·
+    <a href="mailto:support@labkitpro.com">Support</a>
+  </footer>
+</body>
+</html>
