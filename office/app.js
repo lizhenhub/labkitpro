@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.4.4 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.5 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -38,12 +38,16 @@
             (3-step explanation + "Try the 60-second demo" button, dismissed forever via
             localStorage). The demo runs the full Cpk flow end-to-end: sample data written to A1,
             selected, then Analyze fires automatically on completion (fillCpkSample now accepts a
-            done-callback chained into writeMatrixSafe's onOk). */
+            done-callback chained into writeMatrixSafe's onOk).
+   v1.4.5:  TRAFFIC ATTRIBUTION (add-in is a free funnel to labkitpro.com): report-text
+            "Full suite" links (8 tools) and the 3 transition-hub resource URLs now carry
+            UTM (source=excel-addin, medium=report/addin, campaign=v1). Office WebView
+            referer is blind, so without UTM all outbound traffic is unattributable. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.4';
+    var APP_VERSION = '1.4.5';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
@@ -287,7 +291,7 @@
       L.push('Expected PPM = ' + r.ppm);
       L.push('Verdict: ' + r.verdict + ' (AIAG basis, capable >= 1.33)');
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -420,7 +424,7 @@
       v.forEach(function (x) { L.push('  Pt ' + (x.i + 1) + ' rule ' + x.rule + ': ' + x.txt); });
       L.push('Verdict: ' + (v.length ? 'Out of control' : 'In control'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -585,7 +589,7 @@
       L.push('Verdict: ' + r.verdict);
       L.push('Conclusion: ' + r.conclusion);
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -653,7 +657,7 @@
       L.push('t = ' + r.t + '   t-crit (α = 0.05) = ' + r.tc + (isFinite(r.pctBias) ? '   %Bias = ' + r.pctBias : ''));
       L.push('Verdict: ' + (r.sig ? 'Bias significant — recalibrate or apply a correction' : 'Bias not significant'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -734,7 +738,7 @@
       L.push('Per-level bias: ' + r.perRef.map(function (p) { return p.ref + ': ' + (p.bias > 0 ? '+' : '') + p.bias; }).join(' · '));
       L.push('Verdict: ' + (r.verdict || 'enter a tolerance to judge'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -820,7 +824,7 @@
       }
       L.push('Verdict: ' + (r.ucl != null ? ((r.violations || []).length === 0 ? 'Stable — no drift signals' : 'Drift detected') : 'compare each bias against the tolerance'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -896,7 +900,7 @@
       L.push('Worst Kappa = ' + r.worstKappa);
       L.push('Verdict: ' + (r.verdict === 'ok' ? 'acceptable (Kappa ≥ 0.75)' : r.verdict === 'conditional' ? 'marginal (Kappa 0.40-0.75) — refine standards and retrain' : 'not acceptable (Kappa < 0.40)'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -972,7 +976,7 @@
       L.push('Cg = ' + r.cg + '   Cgk = ' + r.cgk);
       L.push('Verdict: ' + r.verdict);
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/');
+      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
       return L.join('\n');
     }
 
@@ -1090,16 +1094,16 @@
         deadline: '2029-09-30', deadlineLabel: 'Transition deadline',
         milestones: [['2027-03-31', 'Accreditation bodies ready'], ['2027-06-30', 'CBs declare transition arrangements'],
                      ['2028-03-31', 'New certificates issued to new version only'], ['2029-09-30', 'All existing certificates expire']],
-        url: 'https://labkitpro.com/iso-9001-2026/' },
+        url: 'https://labkitpro.com/iso-9001-2026/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
       { id: 'iso14001-2026', std: 'ISO 14001:2026', status: 'Published 2026-04-15', hard: true,
         deadline: '2029-04-30', deadlineLabel: 'Transition deadline',
         milestones: [['2026-10-31', 'Accreditation bodies ready'], ['2027-01-31', 'CBs declare transition arrangements'],
                      ['2027-10-31', 'New certificates issued to new version only'], ['2029-04-30', 'All existing certificates expire']],
-        url: 'https://labkitpro.com/iso-14001-2026/' },
+        url: 'https://labkitpro.com/iso-14001-2026/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
       { id: 'iso45001-2027', std: 'ISO 45001:2027', status: 'DIS 40.60 — publication expected 2027', hard: false,
         deadline: '2030-06-30', deadlineLabel: 'Expected deadline (TBC)',
         milestones: [['2027-06-30', 'Publication expected (H1 2027)'], ['2030-06-30', 'Transition period expected ~3 years (estimate)']],
-        url: 'https://labkitpro.com/iso-45001-2027/' },
+        url: 'https://labkitpro.com/iso-45001-2027/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
     ];
 
     function fmtDays(d) { return d.toLocaleString('en-US'); }
