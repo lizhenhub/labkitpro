@@ -7,10 +7,21 @@
 <link rel="dns-prefetch" href="https://labkitpro.com" />
 <title>LabKitPro Quality Tools</title>
 <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-<link rel="stylesheet" href="taskpane.css?v=1.4.3" />
+<link rel="stylesheet" href="taskpane.css?v=1.4.4" />
 </head>
 <body>
   <div id="versionBanner" class="msg hidden" style="margin:8px 12px 0;font-weight:700;"></div>
+
+  <!-- v1.4.4 first-run onboarding: 3 steps + one-click demo (dismissed forever after) -->
+  <div id="onboard" class="onboard hidden">
+    <div class="onboard-txt">
+      <b>New here?</b> Every tool works the same 3 steps: <b>1</b>&nbsp;set the parameters &middot;
+      <b>2</b>&nbsp;click <b>Sample data</b> (a demo dataset loads at cell A1 and is selected for you) &middot;
+      <b>3</b>&nbsp;click <b>Analyze</b>. Or see a full analysis in one click:
+    </div>
+    <button id="onboardDemo" class="btn primary" type="button">Try the 60-second demo</button>
+    <button id="onboardClose" class="onboard-x" type="button" title="Dismiss" aria-label="Dismiss onboarding">&#215;</button>
+  </div>
   <header class="hdr">
     <div class="hdr-in">
       <img src="assets/icon-32.png" alt="" class="logo" />
@@ -409,8 +420,8 @@
     <a href="mailto:support@labkitpro.com">support@labkitpro.com</a>
   </footer>
 
-  <script src="calc.js?v=1.4.3"></script>
-  <script src="charts.js?v=1.4.3"></script>
-  <script src="app.js?v=1.4.3"></script>
+  <script src="calc.js?v=1.4.4"></script>
+  <script src="charts.js?v=1.4.4"></script>
+  <script src="app.js?v=1.4.4"></script>
 </body>
 </html>

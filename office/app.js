@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.4.3 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.4 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -33,12 +33,17 @@
             fmtM; kernel σ values kept to 6 decimals), auto conclusion line (dominant error
             source EV vs AV + focus + NDC<5 warning). Sibling tools: Bias table/report gains
             Tolerance, Linearity levels vs points fixed, Attribute report gains appraiser
-            count, Cg N was blank -> now filled. */
+            count, Cg N was blank -> now filled.
+   v1.4.4:  NEW-USER FAST START (usability audit): first-run onboarding strip above the header
+            (3-step explanation + "Try the 60-second demo" button, dismissed forever via
+            localStorage). The demo runs the full Cpk flow end-to-end: sample data written to A1,
+            selected, then Analyze fires automatically on completion (fillCpkSample now accepts a
+            done-callback chained into writeMatrixSafe's onOk). */
 (function () {
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.3';
+    var APP_VERSION = '1.4.4';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
@@ -144,6 +149,25 @@
       }
     }
 
+    // ---------- first-run onboarding (v1.4.4): 3 steps + one-click demo ----------
+    // Shown once per user (localStorage flag), dismissible; the demo button runs the full
+    // Cpk flow end-to-end (sample -> analyze) so a brand-new user sees a complete result
+    // with charts and a verdict within 60 seconds of opening the pane.
+    var ONBOARD_KEY = 'lkp_onboard_seen';
+    var ob = $('onboard');
+    var obSeen = false;
+    try { obSeen = (typeof localStorage !== 'undefined') && localStorage.getItem(ONBOARD_KEY) === '1'; } catch (e9) { obSeen = true; }
+    if (ob && !obSeen) ob.classList.remove('hidden');
+    function dismissOnboard() {
+      if (ob) ob.classList.add('hidden');
+      try { localStorage.setItem(ONBOARD_KEY, '1'); } catch (e10) {}
+    }
+    bind('onboardClose', 'click', dismissOnboard);
+    bind('onboardDemo', 'click', function () {
+      dismissOnboard();
+      fillCpkSample(function () { analyzeCpk(); });
+    });
+
     // ---------- tab switching + active panel tracking ----------
     var currentPanel = 'cpk';
     Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) {
@@ -188,10 +212,10 @@
       return rows;
     }
 
-    function fillCpkSample() {
+    function fillCpkSample(done) {
       $('lsl').value = '9.80'; $('usl').value = '10.20'; $('target').value = '10.00';
       var rows = classicSubgroupRows();
-      writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; });
+      writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; if (done) done(); });
     }
 
     function analyzeCpk() {
