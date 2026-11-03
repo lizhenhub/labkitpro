@@ -50,14 +50,14 @@
   <header>
     <div class="tag">AI Video Summarizer · Chrome Extension</div>
     <h1>Privacy Policy</h1>
-    <div class="meta">Effective date: October 31, 2026 · Last updated: October 31, 2026</div>
+    <div class="meta">Effective date: October 31, 2026 · Last updated: November 3, 2026</div>
   </header>
 
   <div class="callout">
-    <strong>TL;DR.</strong> This extension reads only the YouTube video ID of the page you are watching.
-    It does <u>not</u> read page content, your watch history, open tabs, or any other browsing data.
-    Your video's transcript is fetched on our server and sent to an AI model to generate a summary;
-    the transcript is processed in memory and is <u>never stored</u>. We do not sell or share your data for advertising.
+    <strong>TL;DR.</strong> This extension reads only the YouTube video ID and the video's public captions (transcript) of the page you are watching.
+    It does <u>not</u> read your watch history, open tabs, or any other browsing data.
+    Your transcript is sent to our AI model (Cloudflare Workers AI) to generate the summary;
+    it is processed in memory and is <u>never stored</u>. We do not sell or share your data for advertising.
   </div>
 
   <h2>1. Who we are (Data Controller)</h2>
@@ -124,7 +124,7 @@
   <p>When you request a summary, the following happens on our infrastructure:</p>
   <ol>
     <li>Your browser reads the <strong>public captions (transcript)</strong> of the YouTube video you are watching and sends the transcript text, the Video ID, and your chosen style to our API at <code>api.labkitpro.com</code>. If the captions cannot be read in your browser, our server attempts to fetch the same public transcript from YouTube's servers instead.</li>
-    <li>The transcript text is sent to <strong>Cloudflare Workers AI</strong> (Meta Llama 3.1 Instruct) to generate the summary. <strong>DeepSeek</strong> is configured as a backup AI provider for failover only.</li>
+    <li>The transcript text is sent to <strong>Cloudflare Workers AI</strong> (Meta Llama 3.1 Instruct) to generate the summary. This is the only AI provider we use.</li>
     <li>The summary is returned to your browser. The transcript is processed <strong>in memory and is not persisted</strong> by us.</li>
   </ol>
   <p>We share data with these processors strictly to provide the service:</p>
@@ -133,7 +133,6 @@
     <tbody>
       <tr><td><strong>Cloudflare</strong></td><td>Hosting the API and storing quota/subscription state (KV)</td><td>Video ID, Device ID, subscription status</td></tr>
       <tr><td><strong>Cloudflare Workers AI</strong></td><td>AI summarization of the transcript</td><td>The video transcript text (processed in memory; not used for model training)</td></tr>
-      <tr><td><strong>DeepSeek</strong> (backup only)</td><td>Backup AI provider if the primary is unavailable</td><td>The video transcript text (same handling as above)</td></tr>
       <tr><td><strong>Dodo Payments</strong></td><td>Processing Pro subscription payments</td><td>Email and billing details — handled entirely by the payment processor; we never receive or store your card number</td></tr>
     </tbody>
   </table>
