@@ -1,4 +1,4 @@
-/* LabKitPro Excel add-in - v1.4.5 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
+/* LabKitPro Excel add-in - v1.4.1 (Cpk + SPC + MSA 5 studies + Cg/Cgk + Transition + import + charts + download + Help).
    Shared offline kernel: calc.js -> window.LKPCalc.{capability, spcLimits, gageRR, bias, linearity,
    stability, attributeAgreement, cgCgk, ...}
    Chart engine: charts.js -> window.LKPCharts.* (canvas -> PNG dataURL, injected as <img>).
@@ -21,44 +21,14 @@
             Gage R&R 3 x 10 x 3 = 90 measurements (AIAG standard, runs "Acceptable"), Linearity
             5 levels x 12 repeats (60), Stability 12 time points x 5, Attribute agreement
             50 parts x 3 appraisers x 2 trials (300), Cg 25 measurements (VDA 5).
-            Help now lists all 8 SPC chart types.
-   v1.4.2:  report style audit vs AIAG MSA: all PERCENTAGES shown as whole numbers (GRR %EV/%AV/
-            %GRR/%PV, %Bias, %Linearity — verdicts still computed unrounded). Added the AIAG
-            X̄-by-appraiser means chart (part means vs X̄̄ ± A₂·R̄̄ limits) to GRR — both the
-            multi-appraiser and single-appraiser layouts.
-   v1.4.3:  professional-report audit (user review): GRR study header (parts × appraisers ×
-            trials + tolerance), %GRR basis explicitly labeled (of tolerance / of total
-            variation, also on the variance chart), NDC computed with √2 precision and shown
-            with its exact value, PV/TV no longer collide after rounding (adaptive-precision
-            fmtM; kernel σ values kept to 6 decimals), auto conclusion line (dominant error
-            source EV vs AV + focus + NDC<5 warning). Sibling tools: Bias table/report gains
-            Tolerance, Linearity levels vs points fixed, Attribute report gains appraiser
-            count, Cg N was blank -> now filled.
-   v1.4.4:  NEW-USER FAST START (usability audit): first-run onboarding strip above the header
-            (3-step explanation + "Try the 60-second demo" button, dismissed forever via
-            localStorage). The demo runs the full Cpk flow end-to-end: sample data written to A1,
-            selected, then Analyze fires automatically on completion (fillCpkSample now accepts a
-            done-callback chained into writeMatrixSafe's onOk).
-   v1.4.5:  TRAFFIC ATTRIBUTION (add-in is a free funnel to labkitpro.com): report-text
-            "Full suite" links (8 tools) and the 3 transition-hub resource URLs now carry
-            UTM (source=excel-addin, medium=report/addin, campaign=v1). Office WebView
-            referer is blind, so without UTM all outbound traffic is unattributable. */
+            Help now lists all 8 SPC chart types. */
 (function () {
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.5';
+    var APP_VERSION = '1.4.1';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
-    // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
-    // values must NOT collide after rounding (e.g. PV 0.1421 vs TV 0.1424 both printing 0.142).
-    var fmtM = function (v) {
-      if (v == null || !isFinite(v)) return '—';
-      var a = Math.abs(v), d = a >= 100 ? 2 : a >= 1 ? 4 : 6;
-      var s = v.toFixed(d);
-      if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
-      return s;
-    };
 
     // ---------- defensive binding (v1.4.0) ----------
     // One missing element must NEVER kill the rest of the tool set: a cached old taskpane.html
@@ -153,25 +123,6 @@
       }
     }
 
-    // ---------- first-run onboarding (v1.4.4): 3 steps + one-click demo ----------
-    // Shown once per user (localStorage flag), dismissible; the demo button runs the full
-    // Cpk flow end-to-end (sample -> analyze) so a brand-new user sees a complete result
-    // with charts and a verdict within 60 seconds of opening the pane.
-    var ONBOARD_KEY = 'lkp_onboard_seen';
-    var ob = $('onboard');
-    var obSeen = false;
-    try { obSeen = (typeof localStorage !== 'undefined') && localStorage.getItem(ONBOARD_KEY) === '1'; } catch (e9) { obSeen = true; }
-    if (ob && !obSeen) ob.classList.remove('hidden');
-    function dismissOnboard() {
-      if (ob) ob.classList.add('hidden');
-      try { localStorage.setItem(ONBOARD_KEY, '1'); } catch (e10) {}
-    }
-    bind('onboardClose', 'click', dismissOnboard);
-    bind('onboardDemo', 'click', function () {
-      dismissOnboard();
-      fillCpkSample(function () { analyzeCpk(); });
-    });
-
     // ---------- tab switching + active panel tracking ----------
     var currentPanel = 'cpk';
     Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) {
@@ -216,10 +167,10 @@
       return rows;
     }
 
-    function fillCpkSample(done) {
+    function fillCpkSample() {
       $('lsl').value = '9.80'; $('usl').value = '10.20'; $('target').value = '10.00';
       var rows = classicSubgroupRows();
-      writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; if (done) done(); });
+      writeMatrixSafe(rows, 'error', 'Cpk sample', function () { sampleStore.cpk = rows; });
     }
 
     function analyzeCpk() {
@@ -291,7 +242,7 @@
       L.push('Expected PPM = ' + r.ppm);
       L.push('Verdict: ' + r.verdict + ' (AIAG basis, capable >= 1.33)');
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -424,7 +375,7 @@
       v.forEach(function (x) { L.push('  Pt ' + (x.i + 1) + ' rule ' + x.rule + ': ' + x.txt); });
       L.push('Verdict: ' + (v.length ? 'Out of control' : 'In control'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -533,19 +484,13 @@
 
     function renderMsa(res) {
       var ok = res.ok;
-      var basisLbl = res.basis === 'tolerance' ? 'of tolerance' : 'of total variation';
-      $('msaGrrVerdict').textContent = res.verdict + '  (%GRR = ' + res.pctGRR + ' of ' + res.basis + ')';
+      $('msaGrrVerdict').textContent = res.verdict + '  (%GRR = ' + res.pctGRR + ')';
       $('msaGrrVerdict').className = 'verdict ' + (ok ? 'ok' : res.pctGRR <= 30 ? 'marginal' : 'bad');
-      var st = res.study;
       var rows = [
-        ['Study', st.parts + ' parts × ' + st.appraisers + ' appraisers × ' + st.trials + ' trials'],
-        ['Tolerance', st.tolerance == null ? '— (percentages vs total variation)' : st.tolerance],
-        ['Repeatability (EV)', fmtM(res.ev)], ['Reproducibility (AV)', fmtM(res.av)], ['Gage R&R (GRR)', fmtM(res.grr)],
-        ['Part Variation (PV)', fmtM(res.pv)], ['Total Variation (TV)', fmtM(res.tv)],
-        ['%EV (' + basisLbl + ')', res.pctEV], ['%AV (' + basisLbl + ')', res.pctAV],
-        ['%GRR (' + basisLbl + ')', res.pctGRR], ['%PV (' + basisLbl + ')', res.pctPV],
-        ['NDC', res.ndc + '  (exact ' + res.ndcExact + ')'],
-        ['Conclusion', res.conclusion]
+        ['Repeatability (EV)', res.ev], ['Reproducibility (AV)', res.av], ['Gage R&R (GRR)', res.grr],
+        ['Part Variation (PV)', res.pv], ['Total Variation (TV)', res.tv],
+        ['%EV', res.pctEV], ['%AV', res.pctAV], ['%GRR', res.pctGRR], ['%PV', res.pctPV],
+        ['NDC', res.ndc]
       ];
       $('msaGrrMetrics').innerHTML = rows.map(function (r) {
         return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
@@ -560,7 +505,6 @@
         charts = [
           { title: 'All measurements by part — colored by appraiser, line = appraiser mean (repeatability + reproducibility)', data: LKPCharts.grrAppChart(appData) },
           { title: 'Range within part by appraiser vs R̄̄ and UCL = D4·R̄̄ (repeatability check)', data: LKPCharts.grrRangeMulti(appData, res.rbar, res.uclR) },
-          { title: 'Part means by appraiser vs X̄̄ ± A₂·R̄̄ limits — points outside the limits = system resolves parts (AIAG)', data: LKPCharts.grrMeansChart(appData, res.xbar, res.uclX, res.lclX) },
           { title: 'Variance components — %EV / %AV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
         ];
       } else {
@@ -568,7 +512,6 @@
         charts = [
           { title: 'Measurements by part — one line per trial (repeatability view)', data: LKPCharts.grrChart(byPart) },
           { title: 'Range within part vs R̄ and UCL = D4·R̄ (trial-to-trial spread check)', data: LKPCharts.grrRangeChart(byPart) },
-          { title: 'Part means vs X̄ ± A₂·R̄ limits — points outside the limits = system resolves parts (AIAG)', data: LKPCharts.grrMeansChart(appData, res.xbar, res.uclX, res.lclX) },
           { title: 'Variance components — %EV / %GRR / %PV vs 10% / 30% thresholds', data: LKPCharts.varianceChart(res) },
         ];
       }
@@ -581,15 +524,13 @@
       var L = [];
       L.push('LabKitPro - Gage R&R (ANOVA-less, AIAG) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
-      L.push('Study: ' + r.study.parts + ' parts × ' + r.study.appraisers + ' appraisers × ' + r.study.trials + ' trials   Tolerance: ' + (r.study.tolerance == null ? '—' : r.study.tolerance));
-      L.push('EV = ' + fmtM(r.ev) + '   AV = ' + fmtM(r.av) + '   GRR = ' + fmtM(r.grr));
-      L.push('PV = ' + fmtM(r.pv) + '   TV = ' + fmtM(r.tv));
-      L.push('%EV = ' + r.pctEV + '   %AV = ' + r.pctAV + '   %GRR = ' + r.pctGRR + '   %PV = ' + r.pctPV + '   (basis: ' + r.basis + ')');
-      L.push('NDC = ' + r.ndc + ' (exact ' + r.ndcExact + ')');
+      L.push('EV = ' + r.ev + '   AV = ' + r.av + '   GRR = ' + r.grr);
+      L.push('PV = ' + r.pv + '   TV = ' + r.tv);
+      L.push('%EV = ' + r.pctEV + '   %AV = ' + r.pctAV + '   %GRR = ' + r.pctGRR + '   %PV = ' + r.pctPV);
+      L.push('NDC = ' + r.ndc);
       L.push('Verdict: ' + r.verdict);
-      L.push('Conclusion: ' + r.conclusion);
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -622,18 +563,16 @@
       var vals = flatNums(matrix);
       if (vals.length < 5) return showError('msaBiasError', 'Need at least 5 repeated measurements on the reference value; found ' + vals.length + '.');
       var res = LKPCalc.bias(vals, ref, tol == null ? 0 : tol);
-      msaLast.bias = { res: res, n: vals.length, ref: ref, tol: tol }; renderMsaBias(res, vals, ref, tol);
+      msaLast.bias = { res: res, n: vals.length, ref: ref }; renderMsaBias(res, vals, ref);
     }
 
-    function renderMsaBias(res, vals, ref, tol) {
+    function renderMsaBias(res, vals, ref) {
       $('msaBiasVerdict').textContent = res.sig ? 'Bias significant (t > t-crit)' : 'Bias not significant (t ≤ t-crit)';
       $('msaBiasVerdict').className = 'verdict ' + (res.sig ? 'bad' : 'ok');
       var rows = [
-        ['Reference', ref], ['n', vals.length],
-        ['Mean', res.mean], ['Std dev', res.std],
+        ['Reference', ref], ['n', vals.length], ['Mean', res.mean], ['Std dev', res.std],
         ['Bias (mean − ref)', res.bias], ['t', res.t], ['t-crit (α = 0.05)', res.tc],
       ];
-      if (tol != null) rows.splice(2, 0, ['Tolerance', tol]);
       if (isFinite(res.pctBias)) rows.push(['%Bias of tolerance', res.pctBias]);
       $('msaBiasMetrics').innerHTML = rows.map(function (r) {
         return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
@@ -652,12 +591,12 @@
       var L = [];
       L.push('LabKitPro - Bias study (AIAG MSA ch. III) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
-      L.push('Reference = ' + L0.ref + '   n = ' + L0.n + (L0.tol != null ? '   Tolerance = ' + L0.tol : ''));
+      L.push('Reference = ' + L0.ref + '   n = ' + L0.n);
       L.push('Mean = ' + r.mean + '   Std = ' + r.std + '   Bias = ' + r.bias);
       L.push('t = ' + r.t + '   t-crit (α = 0.05) = ' + r.tc + (isFinite(r.pctBias) ? '   %Bias = ' + r.pctBias : ''));
       L.push('Verdict: ' + (r.sig ? 'Bias significant — recalibrate or apply a correction' : 'Bias not significant'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -709,8 +648,7 @@
       $('msaLinVerdict').textContent = v || ('Linearity index = ' + res.linearity + ' — enter a tolerance to judge');
       $('msaLinVerdict').className = 'verdict ' + (!v ? '' : v.indexOf('ok') === 0 ? 'ok' : v.indexOf('Conditional') === 0 ? 'marginal' : 'bad');
       var rows = [
-        ['Reference levels', res.perRef.length], ['Points', pts.length],
-        ['Slope', res.slope], ['Intercept', res.intercept], ['R²', res.r2],
+        ['Levels', pts.length], ['Slope', res.slope], ['Intercept', res.intercept], ['R²', res.r2],
         ['Linearity (|slope| × span)', res.linearity],
       ];
       if (isFinite(res.pctLin)) rows.push(['%Linearity of tolerance', res.pctLin]);
@@ -732,13 +670,13 @@
       var L = [];
       L.push('LabKitPro - Linearity study (AIAG MSA ch. III) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
-      L.push('Reference levels = ' + r.perRef.length + '   Points = ' + L0.n + (L0.tol != null ? '   Tolerance = ' + L0.tol : ''));
+      L.push('Levels = ' + L0.n + (L0.tol != null ? '   Tolerance = ' + L0.tol : ''));
       L.push('Slope = ' + r.slope + '   Intercept = ' + r.intercept + '   R² = ' + r.r2);
       L.push('Linearity = ' + r.linearity + (isFinite(r.pctLin) ? '   %Linearity = ' + r.pctLin + '%' : ''));
       L.push('Per-level bias: ' + r.perRef.map(function (p) { return p.ref + ': ' + (p.bias > 0 ? '+' : '') + p.bias; }).join(' · '));
       L.push('Verdict: ' + (r.verdict || 'enter a tolerance to judge'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -824,7 +762,7 @@
       }
       L.push('Verdict: ' + (r.ucl != null ? ((r.violations || []).length === 0 ? 'Stable — no drift signals' : 'Drift detected') : 'compare each bias against the tolerance'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -895,12 +833,12 @@
       var L = [];
       L.push('LabKitPro - Attribute agreement study (AIAG MSA ch. IV) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
-      L.push('Appraisers = ' + r.perApp.length + '   Judgments = ' + L0.n + '   Overall agreement = ' + r.overall + '%');
+      L.push('Judgments = ' + L0.n + '   Overall agreement = ' + r.overall + '%');
       r.perApp.forEach(function (a) { L.push('Appraiser ' + a.app + ': agreement ' + a.pct + '% · Kappa = ' + a.kappa); });
       L.push('Worst Kappa = ' + r.worstKappa);
       L.push('Verdict: ' + (r.verdict === 'ok' ? 'acceptable (Kappa ≥ 0.75)' : r.verdict === 'conditional' ? 'marginal (Kappa 0.40-0.75) — refine standards and retrain' : 'not acceptable (Kappa < 0.40)'));
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -945,7 +883,6 @@
       if (vals.length < 2) return showError('cgError', 'No numeric values found in the selection.');
       var res = LKPCalc.cgCgk(vals, ref, tol);
       if (res.error) return showError('cgError', res.error);
-      res.n = vals.length; // v1.4.3: N was blank in the Cg table / report
       cgVals = vals; cgRef = ref; cgLast = res; renderCg(res);
     }
 
@@ -971,12 +908,12 @@
       var L = [];
       L.push('LabKitPro - Measurement capability (Cg / Cgk, VDA 5) report');
       L.push('Date: ' + new Date().toISOString().slice(0, 10));
-      L.push('Reference = ' + $('cgRef').value + '   Tolerance = ' + $('cgTol').value + '   Measurements (n) = ' + (r.n || '-'));
+      L.push('Reference = ' + $('cgRef').value + '   Tolerance = ' + $('cgTol').value);
       L.push('Mean = ' + r.mean + '   Std dev = ' + r.std);
       L.push('Cg = ' + r.cg + '   Cgk = ' + r.cgk);
       L.push('Verdict: ' + r.verdict);
       L.push('');
-      L.push('Full suite: https://labkitpro.com/tools/?utm_source=excel-addin&utm_medium=report&utm_campaign=v1');
+      L.push('Full suite: https://labkitpro.com/tools/');
       return L.join('\n');
     }
 
@@ -1094,16 +1031,16 @@
         deadline: '2029-09-30', deadlineLabel: 'Transition deadline',
         milestones: [['2027-03-31', 'Accreditation bodies ready'], ['2027-06-30', 'CBs declare transition arrangements'],
                      ['2028-03-31', 'New certificates issued to new version only'], ['2029-09-30', 'All existing certificates expire']],
-        url: 'https://labkitpro.com/iso-9001-2026/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
+        url: 'https://labkitpro.com/iso-9001-2026/' },
       { id: 'iso14001-2026', std: 'ISO 14001:2026', status: 'Published 2026-04-15', hard: true,
         deadline: '2029-04-30', deadlineLabel: 'Transition deadline',
         milestones: [['2026-10-31', 'Accreditation bodies ready'], ['2027-01-31', 'CBs declare transition arrangements'],
                      ['2027-10-31', 'New certificates issued to new version only'], ['2029-04-30', 'All existing certificates expire']],
-        url: 'https://labkitpro.com/iso-14001-2026/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
+        url: 'https://labkitpro.com/iso-14001-2026/' },
       { id: 'iso45001-2027', std: 'ISO 45001:2027', status: 'DIS 40.60 — publication expected 2027', hard: false,
         deadline: '2030-06-30', deadlineLabel: 'Expected deadline (TBC)',
         milestones: [['2027-06-30', 'Publication expected (H1 2027)'], ['2030-06-30', 'Transition period expected ~3 years (estimate)']],
-        url: 'https://labkitpro.com/iso-45001-2027/?utm_source=excel-addin&utm_medium=addin&utm_campaign=v1' },
+        url: 'https://labkitpro.com/iso-45001-2027/' },
     ];
 
     function fmtDays(d) { return d.toLocaleString('en-US'); }
