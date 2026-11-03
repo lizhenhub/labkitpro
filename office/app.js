@@ -47,7 +47,7 @@
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.5';
+    var APP_VERSION = '1.4.6';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system

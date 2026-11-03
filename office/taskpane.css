@@ -253,22 +253,30 @@ main { flex: 1; padding: 14px 14px 18px; }
 .onboard {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 8px 12px 0;
-  padding: 10px 12px;
+  padding: 8px 10px;
   background: #fffbeb;
   border: 1px solid #fcd34d;
   border-radius: 8px;
 }
-.onboard .onboard-txt { flex: 1; font-size: 12px; line-height: 1.55; color: #374151; }
+.onboard .onboard-txt { flex: 0 0 auto; font-size: 12px; font-weight: 600; color: #92400e; }
 .onboard .onboard-txt b { color: #111827; }
+.onboard .onboard-demo {
+  flex: 1 1 auto; min-width: 0;
+  padding: 7px 12px; border: none; border-radius: 6px;
+  background: #1d4ed8; color: #fff;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  white-space: nowrap; min-height: 30px;
+  transition: background .12s;
+}
+.onboard .onboard-demo:hover { background: #1e40af; }
 .onboard .onboard-x {
   flex: 0 0 auto;
-  width: 26px; height: 26px;
+  width: 24px; height: 24px;
   border: none; border-radius: 6px;
   background: transparent;
-  font-size: 16px; line-height: 1;
+  font-size: 15px; line-height: 1;
   color: #92400e; cursor: pointer;
 }
 .onboard .onboard-x:hover { background: #fde68a; }
-.onboard .btn { flex: 0 0 auto; white-space: nowrap; }
