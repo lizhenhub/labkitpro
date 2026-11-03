@@ -248,3 +248,27 @@ main { flex: 1; padding: 14px 14px 18px; }
 .subtab.active { background: #0f2f5c; border-color: #0f2f5c; color: #fff; }
 .msa-sub { display: none; }
 .msa-sub.active { display: block; }
+
+/* ---- v1.4.4 first-run onboarding (new-user fast start) ---- */
+.onboard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 12px 0;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+}
+.onboard .onboard-txt { flex: 1; font-size: 12px; line-height: 1.55; color: #374151; }
+.onboard .onboard-txt b { color: #111827; }
+.onboard .onboard-x {
+  flex: 0 0 auto;
+  width: 26px; height: 26px;
+  border: none; border-radius: 6px;
+  background: transparent;
+  font-size: 16px; line-height: 1;
+  color: #92400e; cursor: pointer;
+}
+.onboard .onboard-x:hover { background: #fde68a; }
+.onboard .btn { flex: 0 0 auto; white-space: nowrap; }

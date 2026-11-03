@@ -234,21 +234,45 @@
     // %GRR basis: vs tolerance per AIAG uses the 6σ spread (6·σ/Tol × 100);
     // vs total variation the σ basis cancels, so the ratio is unchanged.
     const base = tolerance > 0 ? tolerance : tv;
-    const pct = (x) => (base > 0 ? round((tolerance > 0 ? 600 * x : 100 * x) / base, 1) : NaN);
+    // v1.4.2: percentages are displayed as whole numbers (no decimals) per report style;
+    // the verdict below still uses the unrounded grrPct.
+    const pct = (x) => (base > 0 ? Math.round((tolerance > 0 ? 600 * x : 100 * x) / base) : NaN);
     // verdict on the same basis as the displayed %GRR (10% / 30% AIAG thresholds)
     const grrPct = tolerance > 0 ? (600 * grr) / tolerance : (100 * grr) / tv;
+    // X̄-by-appraiser means chart limits (AIAG): X̄̄ ± A2·R̄̄ — points OUTSIDE the limits
+    // mean the system can resolve part-to-part variation (opposite of an R chart).
+    const A2m = { 2: 1.880, 3: 1.023 };
+    const rbarVal = mean(rangesByApp.flat());
+    const xbarVal = mean(partMeans);
+    // NDC (AIAG): ndc = ⌊√2 · PV/GRR⌋ from UNROUNDED σ values; ndcExact is surfaced so the
+    // report can show the precision behind the floor (v1.4.3 review fix).
+    const ndcExact = (pv / grr) * Math.SQRT2;
+    const dominant = ev >= av ? 'repeatability (EV)' : 'reproducibility (AV)';
+    const focus = ev >= av ? 'the instrument / gage itself' : 'operator technique and training';
+    let conclusion = grrPct <= 10
+      ? 'Measurement system is acceptable. Dominant error source: ' + dominant + ' — focus on ' + focus + '.'
+      : grrPct <= 30
+        ? 'Conditional — improvement recommended. Dominant error source: ' + dominant + ' — focus on ' + focus + '.'
+        : 'Not acceptable — repair or replace the measurement system before use.';
+    if (Math.floor(ndcExact) < 5) conclusion += ' NDC < 5: the system cannot reliably distinguish parts.';
     return {
-      ev: round(ev), av: round(av), grr: round(grr), pv: round(pv), tv: round(tv),
+      study: { appraisers: appraisers, trials: nTrials, parts: nParts, tolerance: tolerance > 0 ? round(tolerance) : null },
+      basis: tolerance > 0 ? 'tolerance' : 'total variation',
+      ev: round(ev, 6), av: round(av, 6), grr: round(grr, 6), pv: round(pv, 6), tv: round(tv, 6),
       pctEV: pct(ev), pctAV: pct(av), pctGRR: pct(grr), pctPV: pct(pv),
-      ndc: Math.floor((pv / grr) * 1.41),
+      ndc: Math.floor(ndcExact), ndcExact: round(ndcExact, 2),
       verdict: grrPct <= 10 ? 'Acceptable (≤ 10%)' : grrPct <= 30 ? 'Conditional (10–30%)' : 'Not acceptable (> 30%)',
       ok: grrPct <= 10,
+      conclusion: conclusion,
       // chart detail: per-appraiser grand means, per-part means, within-part ranges, R̄̄ and its UCL
-      appMeans: appMeans.map(round),
-      partMeans: partMeans.map(round),
+      appMeans: appMeans.map(function (x) { return round(x, 5); }),
+      partMeans: partMeans.map(function (x) { return round(x, 5); }),
       rangesByApp,
-      rbar: round(mean(rangesByApp.flat())),
-      uclR: round(mean(rangesByApp.flat()) * (nTrials === 2 ? 3.267 : 2.574)),
+      rbar: round(rbarVal, 5),
+      uclR: round(rbarVal * (nTrials === 2 ? 3.267 : 2.574), 5),
+      xbar: round(xbarVal, 5),
+      uclX: round(xbarVal + A2m[nTrials] * rbarVal, 5),
+      lclX: round(xbarVal - A2m[nTrials] * rbarVal, 5),
     };
   }
 
@@ -262,7 +286,7 @@
     const t = se > 0 ? Math.abs(b) / se : 0;
     const tc = n - 1 >= 1 ? (n - 1 <= 30 ? T_CRIT[n - 2] : 1.96) : NaN;
     const sig = isFinite(tc) ? t > tc : null;
-    const pctBias = tolerance > 0 ? round((100 * Math.abs(b)) / tolerance, 2) : NaN;
+    const pctBias = tolerance > 0 ? Math.round((100 * Math.abs(b)) / tolerance) : NaN;
     return { bias: round(b), mean: round(m), std: round(s), t: round(t, 2), tc, sig, pctBias, note: sig ? 't > t-crit → significant bias' : 't ≤ t-crit → bias not significant' };
   }
 
@@ -288,11 +312,12 @@
     });
     const span = Math.max(...xs) - Math.min(...xs);
     const linIdx = Math.abs(slope) * span;
-    const pctLin = tolerance > 0 ? round((100 * linIdx) / tolerance, 1) : NaN;
+    const pctLinRaw = tolerance > 0 ? (100 * linIdx) / tolerance : NaN; // verdict on unrounded value
+    const pctLin = tolerance > 0 ? Math.round(pctLinRaw) : NaN; // v1.4.2: whole-number display
     return {
       slope: round(slope, 4), intercept: round(intercept, 4), r2: round(r2, 3),
       span: round(span, 4), linearity: round(linIdx, 4), pctLin, perRef,
-      verdict: !isFinite(pctLin) ? null : pctLin <= 5 ? 'ok (≤ 5% of tol)' : pctLin <= 10 ? 'Conditional (5–10%)' : 'Not acceptable (> 10%)',
+      verdict: !isFinite(pctLinRaw) ? null : pctLinRaw <= 5 ? 'ok (≤ 5% of tol)' : pctLinRaw <= 10 ? 'Conditional (5–10%)' : 'Not acceptable (> 10%)',
       note: 'Good linearity: slope ≈ 0, R² high, linearity ≤ 5% of tolerance',
     };
   }
