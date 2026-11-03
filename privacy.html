@@ -29,9 +29,23 @@
   footer { margin-top:48px; border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:14px; }
   .tag { display:inline-block; background:#eef2ff; color:var(--accent); font-size:12px; font-weight:600;
          padding:3px 10px; border-radius:999px; margin-bottom:12px; letter-spacing:.02em; }
+  .topnav { max-width:780px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+  .topnav .brand { font-weight:700; font-size:16px; color:var(--fg); text-decoration:none; }
+  .topnav .links a { color:var(--muted); text-decoration:none; font-size:14px; margin-left:16px; }
+  .topnav .links a:hover { color:var(--accent); }
+  .topnav .home { color:var(--accent); font-weight:600; }
 </style>
 </head>
 <body>
+<div class="topnav">
+  <a class="brand" href="/index.html">AI Video Summarizer</a>
+  <div class="links">
+    <a class="home" href="/index.html">← Home</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/refund.html">Refund</a>
+  </div>
+</div>
 <div class="wrap">
   <header>
     <div class="tag">AI Video Summarizer · Chrome Extension</div>
@@ -166,7 +180,7 @@
   <footer>
     AI Video Summarizer is an independent product. This policy is specific to the Extension and its
     supporting API, and does not govern any unrelated website or service.
-    See also: <a href="/terms.html">Terms of Service</a> &middot; <a href="/refund.html">Refund Policy</a>.
+    See also: <a href="/terms.html">Terms of Service</a> &middot; <a href="/refund.html">Refund Policy</a> &middot; <a href="/index.html">Home</a>.
   </footer>
 </div>
 </body>

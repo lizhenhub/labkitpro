@@ -26,9 +26,23 @@
   .contact { background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:20px; margin:24px 0; }
   a { color:var(--accent); text-decoration:none; }
   footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:14px; }
+  .topnav { max-width:780px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+  .topnav .brand { font-weight:700; font-size:16px; color:var(--fg); text-decoration:none; }
+  .topnav .links a { color:var(--muted); text-decoration:none; font-size:14px; margin-left:16px; }
+  .topnav .links a:hover { color:var(--accent); }
+  .topnav .home { color:var(--accent); font-weight:600; }
 </style>
 </head>
 <body>
+<div class="topnav">
+  <a class="brand" href="/index.html">AI Video Summarizer</a>
+  <div class="links">
+    <a class="home" href="/index.html">← Home</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/refund.html">Refund</a>
+  </div>
+</div>
 <div class="wrap">
   <header>
     <h1>Refund Policy</h1>
@@ -111,7 +125,7 @@
 
   <footer>
     AI Video Summarizer &middot; Refund Policy &middot; Last updated November 1, 2026 &middot;
-    See also: <a href="/terms.html">Terms of Service</a> &middot; <a href="/privacy.html">Privacy Policy</a>
+    See also: <a href="/terms.html">Terms of Service</a> &middot; <a href="/privacy.html">Privacy Policy</a> &middot; <a href="/index.html">Home</a>
   </footer>
 </div>
 </body>
