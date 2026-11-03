@@ -47,7 +47,7 @@
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.7';
+    var APP_VERSION = '1.4.8';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
@@ -1252,8 +1252,11 @@
         });
     }
 
+    // v1.4.8: Copy must survive the Office iframe sandbox. navigator.clipboard is commonly
+    // blocked there (permission policy), and execCommand('copy') can return false — the old
+    // code flashed "copied" even then. Now: real result checked, explicit failure guidance.
     function copyReport(last, textFn, errId) {
-      if (!last) return;
+      if (!last) { showError(errId, 'Nothing to copy yet — run Analyze first.'); return; }
       var t = textFn();
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(t).then(function () { flash(errId, 'Report copied to clipboard.'); },
@@ -1262,16 +1265,44 @@
     }
     function fallbackCopy(t, errId) {
       var ta = document.createElement('textarea');
-      ta.value = t; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); flash(errId, 'Report copied to clipboard.'); }
-      catch (e) { showError(errId, 'Copy failed - clipboard is blocked.'); }
+      ta.value = t; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
       document.body.removeChild(ta);
+      if (ok) flash(errId, 'Report copied to clipboard.');
+      else showError(errId, 'Copy is blocked in this Office view. Use Insert report (writes into the sheet) or Download report (HTML file) instead.');
     }
     // v1.4.7: native confirm() is blocked in cross-origin iframes (the Office taskpane runs
     // inside office.com) — the dialog never shows and confirm() returns false, so Insert died
     // silently. Replaced with a two-step button: first click arms it ("Confirm: write report
     // here?", red, reverts after 5s), second click writes. Also: Insert before Analyze now
     // explains itself instead of returning silently.
+    // v1.4.8: Insert writes a label/value TABLE, not a text wall. "Cp = 1.41   Cpk = 1.407"
+    // becomes two rows [Cp | 1.41], [Cpk | 1.407] — values that parse as numbers are written
+    // as real numbers, so the QE can reference (=B7), format and compute with them. A QE's
+    // sheet stays computable; the old one-cell-per-line blob was useless in Excel.
+    function pushPair(rows, label, value) {
+      var v = String(value).trim();
+      var num = /^-?\d+(\.\d+)?$/.test(v) ? parseFloat(v) : null;
+      rows.push([label.trim(), num == null ? v : num]);
+    }
+    function textToGrid(t) {
+      var rows = [];
+      t.split('\n').forEach(function (line) {
+        if (!line.trim()) { rows.push(['']); return; }
+        line.trim().split(/\s{2,}/).forEach(function (cell) {
+          var m = cell.indexOf(' = ') > -1 ? cell.split(/\s+=\s+/)
+                : (/:\s+/.test(cell) ? cell.split(/:\s+/) : null);
+          if (m && m.length === 2 && m[0].trim() && m[1].trim()) pushPair(rows, m[0], m[1]);
+          else rows.push([cell.trim()]);
+        });
+      });
+      // Excel Matrix needs a rectangular grid: pad every row to the widest row
+      var w = rows.reduce(function (mx, r) { return Math.max(mx, r.length); }, 1);
+      return rows.map(function (r) { while (r.length < w) r.push(''); return r; });
+    }
     function insertReport(last, textFn, errId, btn) {
       if (!last) { showError(errId, 'Nothing to insert yet — run Analyze first.'); return; }
       if (!btn) return;
@@ -1284,7 +1315,7 @@
         return;
       }
       disarmInsert(btn);
-      var grid = textFn().split('\n').map(function (line) { return [[line]]; });
+      var grid = textToGrid(textFn());
       // If the current selection is a multi-cell range shorter than the report, writing would be
       // rejected by Excel ("would overwrite or move data") — warn first instead of failing silently.
       Office.context.document.getSelectedDataAsync(Office.CoercionType.Matrix,
