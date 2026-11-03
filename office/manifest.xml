@@ -5,13 +5,13 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
 
-  <!-- LabKitPro Quality Tools for Excel - manifest v1.4.5 -->
+  <!-- LabKitPro Quality Tools for Excel - manifest v1.4.9 -->
   <Id>81b22247-26e2-4324-9f89-6343cfb3b9e1</Id>
   <Version>1.4.9.0</Version>
   <ProviderName>LabKitPro</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="LabKitPro Quality Tools" />
-  <Description DefaultValue="Quality tools for engineers: process capability (Cp/Cpk/Pp/Ppk), SPC control charts (Xbar-R, Xbar-S, I-MR, p, np, c, u), Gage R&amp;R (MSA), measurement capability (Cg/Cgk), and ISO 9001/14001/45001 transition countdowns. Select data in your worksheet and analyze instantly - all calculations run in Excel, your data never leaves your device. Paste external data (CSV/TSV) from any source to analyze instantly." />
+  <Description DefaultValue="Process capability (Cp/Cpk/Pp/Ppk), SPC control charts (Xbar-R, I-MR, p, np, c, u), Gage R&amp;R (MSA), Cg/Cgk and ISO 9001/14001/45001 transition countdowns. Select data and analyze instantly - all offline, your data never leaves your device." />
   <IconUrl DefaultValue="https://labkitpro.com/office/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://labkitpro.com/office/assets/icon-80.png" />
   <SupportUrl DefaultValue="https://labkitpro.com/contact/" />
