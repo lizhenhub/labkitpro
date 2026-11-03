@@ -47,7 +47,7 @@
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.8';
+    var APP_VERSION = '1.4.9';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
@@ -1309,7 +1309,11 @@
       if (btn.dataset.arm !== '1') {
         btn.dataset.arm = '1';
         btn.dataset.label = btn.textContent;
-        btn.textContent = 'Confirm: write report here?';
+        btn.dataset.title = btn.title;
+        // short label: the armed button sits in a 3-button row on a narrow pane —
+        // a long sentence gets clipped and the user can't tell what to do next
+        btn.textContent = 'Confirm?';
+        btn.title = 'Click again to write the report here (5s to cancel)';
         btn.classList.add('arm');
         setTimeout(function () { disarmInsert(btn); }, 5000);
         return;
@@ -1334,6 +1338,7 @@
     function disarmInsert(btn) {
       btn.dataset.arm = '';
       if (btn.dataset.label) btn.textContent = btn.dataset.label;
+      btn.title = btn.dataset.title || btn.title;
       btn.classList.remove('arm');
     }
     function writeReportGrid(grid, errId) {
