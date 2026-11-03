@@ -82,6 +82,10 @@ main { flex: 1; padding: 14px 14px 18px; }
   flex: 2 1 160px;
 }
 .btn.primary:hover { background: #16407e; border-color: #16407e; }
+/* v1.4.7 armed insert button (two-step confirm replaces native confirm(), which is
+   blocked in cross-origin iframes inside Office) */
+.btn.arm { background: #b91c1c; border-color: #b91c1c; color: #fff; }
+.btn.arm:hover { background: #991b1b; border-color: #991b1b; }
 
 /* ---- result ---- */
 .verdict {

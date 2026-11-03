@@ -47,7 +47,7 @@
   'use strict';
 
   Office.onReady(function () {
-    var APP_VERSION = '1.4.6';
+    var APP_VERSION = '1.4.7';
     var $ = function (id) { return document.getElementById(id); };
     var optNum = function (s) { s = String(s).trim(); return s === '' ? null : (isFinite(+s) ? +s : null); };
     // v1.4.3 report-style fix: adaptive-precision number formatting. Small measurement-system
@@ -193,7 +193,7 @@
     bind('analyze', 'click', analyzeCpk);
     bind('loadSample', 'click', function (e) { e.preventDefault(); fillCpkSample(); });
     bind('copyReport', 'click', function () { copyReport(cpkLast, cpkReportText, 'error'); });
-    bind('insertReport', 'click', function () { insertReport(cpkLast, cpkReportText, 'error'); });
+    bind('insertReport', 'click', function () { insertReport(cpkLast, cpkReportText, 'error', this); });
 
     // Classic AIAG study: 25 subgroups of size 5 (125 readings). Layout: each COLUMN = one subgroup.
     function classicSubgroupRows() {
@@ -318,7 +318,7 @@
     bind('spcAnalyze', 'click', analyzeSpc);
     bind('spcSample', 'click', function (e) { e.preventDefault(); fillSpcSample(); });
     bind('spcCopy', 'click', function () { copyReport(spcLast, spcReportText, 'spcError'); });
-    bind('spcInsert', 'click', function () { insertReport(spcLast, spcReportText, 'spcError'); });
+    bind('spcInsert', 'click', function () { insertReport(spcLast, spcReportText, 'spcError', this); });
 
     function fillSpcSample() {
       var type = $('spcType').value;
@@ -481,7 +481,7 @@
     bind('msaAnalyze', 'click', analyzeMsa);
     bind('msaSample', 'click', function (e) { e.preventDefault(); fillMsaSample(); });
     bind('msaGrrCopy', 'click', function () { copyReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
-    bind('msaGrrInsert', 'click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError'); });
+    bind('msaGrrInsert', 'click', function () { insertReport(msaLast.grr, msaGrrReportText, 'msaGrrError', this); });
 
     function fillMsaSample() {
       // AIAG standard Gage R&R study: 3 appraisers x 10 parts x 3 trials = 90 measurements.
@@ -597,7 +597,7 @@
     bind('msaBiasAnalyze', 'click', analyzeMsaBias);
     bind('msaBiasSample', 'click', function (e) { e.preventDefault(); fillMsaBiasSample(); });
     bind('msaBiasCopy', 'click', function () { copyReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
-    bind('msaBiasInsert', 'click', function () { insertReport(msaLast.bias, msaBiasReportText, 'msaBiasError'); });
+    bind('msaBiasInsert', 'click', function () { insertReport(msaLast.bias, msaBiasReportText, 'msaBiasError', this); });
 
     function fillMsaBiasSample() {
       $('msaBiasRef').value = '10.00'; $('msaBiasTol').value = '0.40';
@@ -665,7 +665,7 @@
     bind('msaLinAnalyze', 'click', analyzeMsaLin);
     bind('msaLinSample', 'click', function (e) { e.preventDefault(); fillMsaLinSample(); });
     bind('msaLinCopy', 'click', function () { copyReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
-    bind('msaLinInsert', 'click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError'); });
+    bind('msaLinInsert', 'click', function () { insertReport(msaLast.lin, msaLinReportText, 'msaLinError', this); });
 
     function fillMsaLinSample() {
       // AIAG linearity study: 5 reference levels x 12 repeats = 60 measurements.
@@ -746,7 +746,7 @@
     bind('msaStabAnalyze', 'click', analyzeMsaStab);
     bind('msaStabSample', 'click', function (e) { e.preventDefault(); fillMsaStabSample(); });
     bind('msaStabCopy', 'click', function () { copyReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
-    bind('msaStabInsert', 'click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError'); });
+    bind('msaStabInsert', 'click', function () { insertReport(msaLast.stab, msaStabReportText, 'msaStabError', this); });
 
     function fillMsaStabSample() {
       // AIAG stability study: 12 time points x 5 readings on the reference, no drift signals.
@@ -832,7 +832,7 @@
     bind('msaAttrAnalyze', 'click', analyzeMsaAttr);
     bind('msaAttrSample', 'click', function (e) { e.preventDefault(); fillMsaAttrSample(); });
     bind('msaAttrCopy', 'click', function () { copyReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
-    bind('msaAttrInsert', 'click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError'); });
+    bind('msaAttrInsert', 'click', function () { insertReport(msaLast.attr, msaAttrReportText, 'msaAttrError', this); });
 
     function fillMsaAttrSample() {
       // AIAG attribute agreement study: 50 parts x 3 appraisers x 2 trials = 300 judgements.
@@ -911,7 +911,7 @@
     bind('cgAnalyze', 'click', analyzeCg);
     bind('cgSample', 'click', function (e) { e.preventDefault(); fillCgSample(); });
     bind('cgCopy', 'click', function () { copyReport(cgLast, cgReportText, 'cgError'); });
-    bind('cgInsert', 'click', function () { insertReport(cgLast, cgReportText, 'cgError'); });
+    bind('cgInsert', 'click', function () { insertReport(cgLast, cgReportText, 'cgError', this); });
 
     function fillCgSample() {
       // VDA 5 standard sequence: 25 measurements on the reference standard.
@@ -1267,10 +1267,23 @@
       catch (e) { showError(errId, 'Copy failed - clipboard is blocked.'); }
       document.body.removeChild(ta);
     }
-    function insertReport(last, textFn, errId) {
-      if (!last) return;
-      if (!confirm('The report will be written to the current selection and may overwrite existing data. Continue?'))
+    // v1.4.7: native confirm() is blocked in cross-origin iframes (the Office taskpane runs
+    // inside office.com) — the dialog never shows and confirm() returns false, so Insert died
+    // silently. Replaced with a two-step button: first click arms it ("Confirm: write report
+    // here?", red, reverts after 5s), second click writes. Also: Insert before Analyze now
+    // explains itself instead of returning silently.
+    function insertReport(last, textFn, errId, btn) {
+      if (!last) { showError(errId, 'Nothing to insert yet — run Analyze first.'); return; }
+      if (!btn) return;
+      if (btn.dataset.arm !== '1') {
+        btn.dataset.arm = '1';
+        btn.dataset.label = btn.textContent;
+        btn.textContent = 'Confirm: write report here?';
+        btn.classList.add('arm');
+        setTimeout(function () { disarmInsert(btn); }, 5000);
         return;
+      }
+      disarmInsert(btn);
       var grid = textFn().split('\n').map(function (line) { return [[line]]; });
       // If the current selection is a multi-cell range shorter than the report, writing would be
       // rejected by Excel ("would overwrite or move data") — warn first instead of failing silently.
@@ -1286,6 +1299,11 @@
           }
           writeReportGrid(grid, errId);
         });
+    }
+    function disarmInsert(btn) {
+      btn.dataset.arm = '';
+      if (btn.dataset.label) btn.textContent = btn.dataset.label;
+      btn.classList.remove('arm');
     }
     function writeReportGrid(grid, errId) {
       Office.context.document.setSelectedDataAsync(grid, { coercionType: Office.CoercionType.Matrix },
