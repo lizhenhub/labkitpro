@@ -1,0 +1,145 @@
+1:"$Sreact.fragment"
+2:T411d,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/measurement-uncertainty-budget-steps/#article",
+   "headline": "How to build a measurement uncertainty budget in eight steps",
+   "description": "Build a GUM measurement uncertainty budget in eight steps: define the measurand and model, list sources, quantify Type A / Type B components, handle correlations, combine with sensitivity coefficients, compute effective degrees of freedom, choose k and report U — with a worked example and ISO/IEC 17025:2017 clause references.",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/measurement-uncertainty-budget-steps/"
+   },
+   "articleSection": "Laboratory accreditation"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/measurement-uncertainty-budget-steps/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Which ISO/IEC 17025 clause requires measurement uncertainty?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Clause 7.6 requires the laboratory to evaluate measurement uncertainty for testing and calibration, including identifying contributions and using appropriate methods of estimation. Clause 7.8.6 covers statements of conformity and decision rules; 6.5 covers metrological traceability. The current edition is ISO/IEC 17025:2017 — there is no 2025 edition."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I always need k = 2?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. k = 2 is conventional for approximately 95% coverage when the effective degrees of freedom are large. Where Type A estimates are based on few observations, effective degrees of freedom (Welch–Satterthwaite) may justify a larger k from the t-distribution. Whatever you choose, state it and state the coverage level."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is the GUM approach the only accepted method?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The GUM uncertainty framework is the most common; Monte Carlo propagation (JCGM 101) is appropriate for non-linear models or non-normal input distributions. Some sectors use validated top-down approaches based on method performance and internal QC. Whichever you use, document the model and justify the inputs."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I use a calibration certificate's uncertainty as my whole budget?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only if you can justify that no other significant contribution exists — which is rarely true for a testing lab. Sample preparation, matrix effects, repeatability, environmental conditions and method bias usually contribute. The certificate gives one standard uncertainty component, not the budget."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Academy",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practical guides",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "How to build a measurement uncertainty budget in eight steps",
+     "item": "https://labkitpro.com/guides/measurement-uncertainty-budget-steps/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com Academy</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">Practical guides</a> › Laboratory accreditation</p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">How to build a measurement uncertainty budget in eight steps</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">A GUM-style budget, with the arithmetic that assessors actually check.</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">Updated 13 November 2026 · 9 min read · Written for working labs and quality teams</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">Short answer</p><p style="margin:0;font-size:15px;">An uncertainty budget is a documented model of where the doubt in a result comes from: define the measurand and the measurement model y = f(x₁ … xₙ), list and quantify every significant source as a <b>standard</b> uncertainty, combine them with sensitivity coefficients (root sum of squares, with covariances where needed), then multiply by a coverage factor k (usually 2) to report the expanded uncertainty U with its units, k and coverage level. Under ISO/IEC 17025:2017 (7.6) it must be evaluated for the methods you report, and any pass/fail statement needs a documented decision rule (7.8.6).</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">On this page</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">The eight steps</a></li><li><a href="#s2" style="color:#2563eb;">A small worked example</a></li><li><a href="#s3" style="color:#2563eb;">Uncertainty is not the same as a decision rule</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">Where this goes wrong in practice</a></li><li><a href="#faq" style="color:#2563eb;">Frequently asked</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">The eight steps</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;"><b>1. Define the measurand and the model.</b> Write down exactly what quantity is being reported, in which unit, over which range and matrix, then write the equation that produces it. A budget without a model is a list of numbers with no way to check completeness.</li><li style="margin-bottom:9px;"><b>2. List the sources.</b> Calibration of the instrument, resolution, repeatability, environmental conditions, sample preparation, operator, reference-material purity, method bias, rounding, and any correction applied. A fishbone or a simple table with "source → how quantified → value" is enough.</li><li style="margin-bottom:9px;"><b>3. Quantify each as a standard uncertainty u(xᵢ).</b> <b>Type A</b> comes from statistics (e.g. s/√n from repeated measurements); <b>Type B</b> comes from certificates, specifications, resolution or experience. For a calibration certificate giving expanded uncertainty U with k = 2, the standard uncertainty is U / 2 — entering U directly doubles that component.</li><li style="margin-bottom:9px;"><b>4. Choose the distribution and divisor.</b> A rectangular (uniform) distribution with half-width a gives u = a/√3; triangular gives a/√6; a normal distribution quoted at a stated coverage level gives u = U/k. Digital resolution δ is commonly treated as ±δ/2 with a rectangular distribution, i.e. u = δ/(2√3). State the divisor you used — an assessor will ask.</li><li style="margin-bottom:9px;"><b>5. Handle correlations.</b> If two components share a reference (e.g. the same calibrator used for both the sample and the blank), they are not independent; add covariance terms or restructure the model. Silently treating correlated inputs as independent is a common source of understated uncertainty.</li><li style="margin-bottom:9px;"><b>6. Combine.</b> u_c(y) = √[ Σ (∂f/∂xᵢ)² u²(xᵢ) + 2 Σ covariance terms ]. The ∂f/∂xᵢ are sensitivity coefficients. For a simple additive model they are 1; for a ratio, a power or a logarithmic model, they change the result materially.</li><li style="margin-bottom:9px;"><b>7. Degrees of freedom and k.</b> If Type A components have limited data, compute the effective degrees of freedom ν_eff with the Welch–Satterthwaite formula and take k from the t-distribution for the desired coverage probability; otherwise k = 2 is the conventional choice for approximately 95%.</li><li style="margin-bottom:9px;"><b>8. Report it properly.</b> State the result, U, the unit, k, the coverage level and how U was obtained — e.g. "12.43 mm ± 0.20 mm, k = 2 (approximately 95%), evaluated per the GUM". If a conformity statement is made, name the decision rule applied and confirm it was agreed with the customer at contract review (7.1.3).</li></ol>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">A small worked example</h2>
+<p style="margin:0 0 12px;">A length measurement uses a calibrated micrometer. The calibration certificate states U = 0.20 mm with k = 2, so u₁ = 0.20/2 = <b>0.100 mm</b>. The instrument resolution is 0.01 mm, so u₂ = 0.01/(2√3) ≈ <b>0.0029 mm</b>. Ten repeat readings give s = 0.09 mm, and the reported result is the mean of 3 readings, so u₃ = 0.09/√3 ≈ <b>0.052 mm</b>.</p>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;">u_c = √(0.100² + 0.0029² + 0.052²) ≈ <b>0.113 mm</b>.</li><li style="margin-bottom:7px;">U = k × u_c = 2 × 0.113 ≈ <b>0.23 mm</b>, reported with k = 2 and the coverage level.</li><li style="margin-bottom:7px;">Notice the calibration term dominates. Spending effort on more repeat readings will not improve the reported uncertainty much — a better calibration or a correction for the known bias would.</li><li style="margin-bottom:7px;">If the 0.09 mm repeatability already includes the resolution effect (it usually does when readings are taken on the same instrument), do not add u₂ as well — that is double counting.</li></ul>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> The most common assessor finding is not a wrong square root. It is a budget that ignores sample preparation, environmental effects and method bias entirely, then is copied unchanged across every measurand in the scope. A budget belongs to a measurement model, not to a document template.</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Uncertainty is not the same as a decision rule</h2>
+<p style="margin:0 0 12px;">Uncertainty describes the doubt in the measured value; a decision rule describes how that doubt is used when declaring conformity to a limit. A result of 99 ± 2 against a limit of 100 can be a pass under a shared-risk (simple acceptance) rule and a fail under a guard-banded, stringent-acceptance rule. Clause 7.8.6 requires the rule to be documented and communicated; 7.1.3 puts the agreement with the customer at contract review. A report that says "pass" with no stated rule, or states a rule that nobody agreed to, is a finding even when the number is right.</p>
+<p style="margin:0 0 12px;">Also keep the metrological traceability chain (6.5) in view: the uncertainty of the calibrator flows into your budget, so a certificate whose stated uncertainty is larger than your claimed measurement capability is a contradiction an assessor will spot immediately.</p>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Where this goes wrong in practice</h2>
+<p style="margin:0 0 11px;">Entering a certificate's expanded uncertainty U (k = 2) as a standard uncertainty without dividing by k.</p>
+<p style="margin:0 0 11px;">Counting resolution twice — once explicitly and again inside a repeatability standard deviation taken on the same instrument.</p>
+<p style="margin:0 0 11px;">Reporting "± 0.05" without stating k, the coverage level, the unit or how it was derived.</p>
+<p style="margin:0 0 11px;">Copying one budget across all methods, matrices and concentration ranges, or ignoring sample preparation and method bias as "negligible" with no justification.</p>
+<p style="margin:0 0 11px;">Making a pass/fail statement with no documented decision rule, or applying a guard band the customer never agreed to.</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Frequently asked</h2>
+<p style="margin:0 0 10px;"><b>Which ISO/IEC 17025 clause requires measurement uncertainty?</b><br>Clause 7.6 requires the laboratory to evaluate measurement uncertainty for testing and calibration, including identifying contributions and using appropriate methods of estimation. Clause 7.8.6 covers statements of conformity and decision rules; 6.5 covers metrological traceability. The current edition is ISO/IEC 17025:2017 — there is no 2025 edition.</p>
+<p style="margin:0 0 10px;"><b>Do I always need k = 2?</b><br>No. k = 2 is conventional for approximately 95% coverage when the effective degrees of freedom are large. Where Type A estimates are based on few observations, effective degrees of freedom (Welch–Satterthwaite) may justify a larger k from the t-distribution. Whatever you choose, state it and state the coverage level.</p>
+<p style="margin:0 0 10px;"><b>Is the GUM approach the only accepted method?</b><br>No. The GUM uncertainty framework is the most common; Monte Carlo propagation (JCGM 101) is appropriate for non-linear models or non-normal input distributions. Some sectors use validated top-down approaches based on method performance and internal QC. Whichever you use, document the model and justify the inputs.</p>
+<p style="margin:0 0 10px;"><b>Can I use a calibration certificate's uncertainty as my whole budget?</b><br>Only if you can justify that no other significant contribution exists — which is rarely true for a testing lab. Sample preparation, matrix effects, repeatability, environmental conditions and method bias usually contribute. The certificate gives one standard uncertainty component, not the budget.</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">From budget to report</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">Build the uncertainty budget with GUM components and effective degrees of freedom</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">Enter Type A and Type B components with their distributions and sensitivity coefficients; the tool combines them, computes the effective degrees of freedom and produces the expanded uncertainty U with the coverage factor stated.</p><a href="https://labkitpro.com/tools/uncertainty/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">Open the uncertainty calculator →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">Runs free in your browser. Exporting the formatted uncertainty report is $4.9 per delivery — the one paid report among the browser tools.</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">LabKitPro guides are written from published standards and accreditation-body documents — references, clause numbers and paraphrased intent only, never verbatim standard text. They are for preparation and study, not a certification or accreditation decision, and not legal advice. ISO standards are trademarks of ISO; IATF 16949 is published by the International Automotive Task Force and is not an ISO standard. The current laboratory standard is ISO/IEC 17025:2017; there is no 2025 edition. Global ACI replaced IAF and ILAC on 1 January 2026.</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy by standard</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">All practical guides</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">Free browser tools</a></p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Measurement Uncertainty Budget: 8 Steps (GUM, Worked Example) | LabKitPro"}],["$","meta","1",{"name":"description","content":"Build a GUM measurement uncertainty budget in eight steps: define the measurand and model, list sources, quantify Type A / Type B components, handle correlations, combine with sensitivity coefficients, compute effective degrees of freedom, choose k and report U — with a worked example and ISO/IEC 17025:2017 clause references."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/measurement-uncertainty-budget-steps/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"

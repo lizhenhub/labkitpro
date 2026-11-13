@@ -1,0 +1,144 @@
+1:"$Sreact.fragment"
+2:T3e75,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria/#article",
+   "headline": "Gage R&R: what the 10% / 30% thresholds really mean (and what they don't)",
+   "description": "How to read a Gage R&R study: the below-10% / 10-30% / over-30% AIAG convention, ndc of at least 5, %GRR vs %Tolerance, repeatability vs reproducibility, the 10x3x3 design, and the study-design mistakes that produce a false pass.",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria/"
+   },
+   "articleSection": "Quality tools"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Are the 10% / 30% thresholds in ISO 9001 or IATF 16949?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. They come from the AIAG MSA reference manual (and equivalent customer references) and are applied through customer-specific requirements, PPAP submissions and control plans. The standards require suitable measurement resources and valid results; the numeric bands are conventional."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is ndc and why does it matter?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Number of distinct categories (also called number of distinct data classes) estimates how many separate groups the measurement system can reliably distinguish within the observed variation. A value below 2 means the system cannot tell products apart; ≥ 5 is the commonly expected minimum for a usable process-control gage."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I average multiple readings instead of improving the gage?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sometimes — averaging repeated measurements reduces the repeatability component, but it must be defined in the measurement method, applied consistently, and reflected in the control plan. It does not fix a reproducibility problem or poor resolution."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How often should a Gage R&R study be repeated?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There is no universal interval. Re-run it when the gage, fixture, method, operator population or characteristic changes, when a customer requires it, and at the frequency your control plan or customer-specific requirements define."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Academy",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practical guides",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Gage R&R: what the 10% / 30% thresholds really mean (and what they don't)",
+     "item": "https://labkitpro.com/guides/gage-rr-acceptance-criteria/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com Academy</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">Practical guides</a> › Quality tools</p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">Gage R&amp;R: what the 10% / 30% thresholds really mean (and what they don't)</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">%GRR, ndc, %Tolerance, ANOVA vs X̄-R — and why a study that passed can still be useless.</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">Updated 13 November 2026 · 7 min read · Written for working labs and quality teams</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">Short answer</p><p style="margin:0;font-size:15px;">%GRR is the share of observed variation attributable to the measurement system. The AIAG MSA reference manual's conventional bands are <b>under 10% acceptable</b>, <b>10–30% potentially acceptable</b> depending on the application, cost and customer, and <b>over 30% needing improvement</b>. These are industry conventions, not ISO clauses. Read them together with ndc (number of distinct categories, commonly ≥ 5), %Tolerance, and whether the parts in the study actually spanned the process variation.</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">On this page</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">The numbers you get from a study</a></li><li><a href="#s2" style="color:#2563eb;">A result is not a verdict on its own</a></li><li><a href="#s3" style="color:#2563eb;">What to do when the result is marginal</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">Where this goes wrong in practice</a></li><li><a href="#faq" style="color:#2563eb;">Frequently asked</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">The numbers you get from a study</h2>
+<p style="margin:0 0 12px;">The classic design is <b>10 parts × 3 operators × 3 trials</b>, randomised, with parts selected to span the normal process range. ANOVA is preferred over the older X̄-R (range) method because it estimates the operator-by-part interaction instead of folding it into the residual.</p>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">Metric</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">What it measures</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">Common convention</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">%GRR (vs total variation)</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Measurement system share of observed spread</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">under 10% acceptable · 10–30% conditional · over 30% improve</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">%Tolerance</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Measurement spread as a share of the spec width</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Often judged against 10% / 30% too — but it is a different denominator</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">ndc / distinct categories</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">How many groups the system can reliably tell apart</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">≥ 5 commonly expected; < 2 means the system cannot discriminate</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Repeatability (EV)</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Same operator, same part, same gage</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Equipment / within-system variation</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Reproducibility (AV)</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Different operators measuring the same parts</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Often operator-method or fixture issues, and operator × part interaction</td></tr></tbody></table></div>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">A result is not a verdict on its own</h2>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>A study can pass with the wrong parts.</b> If the ten parts are all from one tight batch, process variation is understated and %GRR looks worse; if they are hand-picked across a far wider range than production, %GRR looks better than reality. Select parts to represent the process, not to make the number move.</li><li style="margin-bottom:7px;"><b>%GRR and %Tolerance answer different questions.</b> A wide tolerance can give a comfortable %Tolerance while %GRR against process variation is poor — that matters when the chart is used to detect small shifts.</li><li style="margin-bottom:7px;"><b>Repeatability vs reproducibility tells you where to work.</b> High EV points at the gage, fixturing or resolution; high AV points at operator technique, training or a poorly defined measurement method; a significant operator × part interaction usually means the method is being applied differently depending on the part.</li><li style="margin-bottom:7px;"><b>GR&amp;R is one study, not the whole MSA.</b> Bias, linearity, stability and (for attribute gages) agreement studies are separate. A destructive test, a chemical assay or a vision system needs a different design altogether.</li></ul>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> Resolution still matters: a gage that reads in 0.1 mm increments cannot convincingly support a study on a 0.05 mm spread. The old "10:1 rule of thumb" has been replaced by more nuanced guidance in current MSA references — check the resolution and the number of distinct categories actually obtained rather than quoting a ratio from memory.</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">What to do when the result is marginal</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;">Check the study design first: part selection, randomisation, blind measurement, and whether operators followed the same defined method.</li><li style="margin-bottom:9px;">Look at the ANOVA table to see whether the problem is equipment or operator — the fix is completely different.</li><li style="margin-bottom:9px;">If 10–30% is genuinely conditional, document the justification: characteristic criticality, customer agreement, cost of improvement, and what additional controls (e.g. averaging repeat readings) are used.</li><li style="margin-bottom:9px;">After any change to the gage, fixture or method, re-run the study. A MSA result belongs to a specific system, not to the part number forever.</li></ol>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Where this goes wrong in practice</h2>
+<p style="margin:0 0 11px;">Treating 10% and 30% as pass/fail requirements in a standard. They are widely used AIAG MSA conventions; customer-specific requirements may set different thresholds.</p>
+<p style="margin:0 0 11px;">Selecting ten near-identical parts, which inflates %GRR and triggers an unnecessary gage replacement project.</p>
+<p style="margin:0 0 11px;">Reporting %Tolerance when the customer asked for %GRR against total variation (or the reverse) without saying which denominator was used.</p>
+<p style="margin:0 0 11px;">Letting operators watch each other's readings, or measuring in part order instead of randomised order — both quietly destroy the study's independence.</p>
+<p style="margin:0 0 11px;">Running one study and never repeating it after a fixture change, a new operator group or a gage repair.</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Frequently asked</h2>
+<p style="margin:0 0 10px;"><b>Are the 10% / 30% thresholds in ISO 9001 or IATF 16949?</b><br>No. They come from the AIAG MSA reference manual (and equivalent customer references) and are applied through customer-specific requirements, PPAP submissions and control plans. The standards require suitable measurement resources and valid results; the numeric bands are conventional.</p>
+<p style="margin:0 0 10px;"><b>What is ndc and why does it matter?</b><br>Number of distinct categories (also called number of distinct data classes) estimates how many separate groups the measurement system can reliably distinguish within the observed variation. A value below 2 means the system cannot tell products apart; ≥ 5 is the commonly expected minimum for a usable process-control gage.</p>
+<p style="margin:0 0 10px;"><b>Can I average multiple readings instead of improving the gage?</b><br>Sometimes — averaging repeated measurements reduces the repeatability component, but it must be defined in the measurement method, applied consistently, and reflected in the control plan. It does not fix a reproducibility problem or poor resolution.</p>
+<p style="margin:0 0 10px;"><b>How often should a Gage R&amp;R study be repeated?</b><br>There is no universal interval. Re-run it when the gage, fixture, method, operator population or characteristic changes, when a customer requires it, and at the frequency your control plan or customer-specific requirements define.</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">Read the ANOVA, not just the headline</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">Run a Gage R&amp;R study and see EV, AV, %GRR and ndc</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">Enter the standard 10 × 3 × 3 readings and get the ANOVA breakdown, repeatability vs reproducibility, %GRR, %Tolerance and the distinct-category count in your browser.</p><a href="https://labkitpro.com/tools/msa/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">Open the free MSA / Gage R&amp;R tool →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">Runs in your browser. Export the report free. No sign-up needed.</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">LabKitPro guides are written from published standards and accreditation-body documents — references, clause numbers and paraphrased intent only, never verbatim standard text. They are for preparation and study, not a certification or accreditation decision, and not legal advice. ISO standards are trademarks of ISO; IATF 16949 is published by the International Automotive Task Force and is not an ISO standard. The current laboratory standard is ISO/IEC 17025:2017; there is no 2025 edition. Global ACI replaced IAF and ILAC on 1 January 2026.</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy by standard</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">All practical guides</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">Free browser tools</a></p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Gage R&amp;R: What the 10% / 30% Thresholds Actually Mean | LabKitPro"}],["$","meta","1",{"name":"description","content":"How to read a Gage R&amp;R study: the below-10% / 10-30% / over-30% AIAG convention, ndc of at least 5, %GRR vs %Tolerance, repeatability vs reproducibility, the 10x3x3 design, and the study-design mistakes that produce a false pass."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/gage-rr-acceptance-criteria/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"

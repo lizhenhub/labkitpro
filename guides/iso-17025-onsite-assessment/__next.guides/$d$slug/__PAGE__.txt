@@ -1,0 +1,150 @@
+1:"$Sreact.fragment"
+2:T4e96,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/iso-17025-onsite-assessment/#article",
+   "headline": "How to pass an ISO/IEC 17025 on-site assessment: what the assessor actually traces",
+   "description": "A practical run-through of an ISO/IEC 17025:2017 on-site assessment: the six things that must be true before the visit, the vertical trace an assessor performs, the clauses that generate most findings, and how to close nonconformities properly.",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/iso-17025-onsite-assessment/"
+   },
+   "articleSection": "Laboratory accreditation"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/iso-17025-onsite-assessment/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is a quality manual required for ISO/IEC 17025:2017?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The 2017 edition sets out requirements for the management system under option A (or option B if you operate a management system per ISO 9001), but it does not mandate a document called a quality manual. Many labs keep one because customers or legacy contracts ask for it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is a decision rule and when do I need one?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A decision rule describes how measurement uncertainty is taken into account when stating conformity to a specification (clause 7.8.6, defined in 3.7). If your report says pass/fail, in-tolerance, or compliant, the rule must be documented, agreed with the customer (7.1.3) and communicated. If you only report a value and its uncertainty, no conformity statement is being made."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How long does an on-site assessment take?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It depends on the scope, number of methods, sites and technical assessors — from a day for a narrow scope to a week or more for a multi-discipline lab. What matters is that each method on the scope can be witnessed or traced; ask your accreditation body for the assessment plan in advance."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can remote or hybrid assessment be used?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Many accreditation bodies permit some document review or interview activity off-site under their own rules and the current Global ACI transition documents, but witnessing technical activities normally requires an on-site presence. Confirm the arrangement in writing with your accreditation body."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Academy",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practical guides",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "How to pass an ISO/IEC 17025 on-site assessment: what the assessor actually traces",
+     "item": "https://labkitpro.com/guides/iso-17025-onsite-assessment/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com Academy</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">Practical guides</a> › Laboratory accreditation</p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">How to pass an ISO/IEC 17025 on-site assessment: what the assessor actually traces</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">Assessors do not read your manual from cover to cover. They pick one issued report and walk the evidence chain backwards and forwards.</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">Updated 13 November 2026 · 9 min read · Written for working labs and quality teams</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">Short answer</p><p style="margin:0;font-size:15px;">You pass a 17025 assessment by being able to reconstruct one issued report end to end: the contract review, the method and its version, the raw data, the analyst's authorisation for that exact scope, the equipment's calibration status, the uncertainty budget behind the reported value, and the documented decision rule behind any pass/fail statement. Assessors work by vertical trace and witness testing, not by admiring a set of procedures.</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">On this page</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">Six things that must already be true before the visit</a></li><li><a href="#s2" style="color:#2563eb;">What actually happens on the day</a></li><li><a href="#s3" style="color:#2563eb;">The vertical trace, step by step</a></li><li><a href="#s4" style="color:#2563eb;">Which clause numbers generate the most findings</a></li><li><a href="#s5" style="color:#2563eb;">After the closing meeting</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">Where this goes wrong in practice</a></li><li><a href="#faq" style="color:#2563eb;">Frequently asked</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Six things that must already be true before the visit</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;"><b>One complete self-check cycle is closed.</b> An internal audit covering the full clause set (8.8) and a management review (8.9) with defined inputs and evidence behind each input — not minutes that just list topics.</li><li style="margin-bottom:9px;"><b>The scope is frozen and honest.</b> Every method/matrix/measurand on the accredited scope has validation or verification evidence behind it (7.2), and the scope on the application matches what the lab actually reports.</li><li style="margin-bottom:9px;"><b>Methods are confirmed for your lab.</b> A published standard method still needs verification that your people, your instruments and your matrix can achieve its performance (7.2.1.3). Non-standard, modified or lab-developed methods need validation with parameters appropriate to the intended use (7.2.2).</li><li style="margin-bottom:9px;"><b>Uncertainty budgets exist per measurand, and the decision rule is documented.</b> Clause 7.6 requires evaluation of measurement uncertainty; 7.8.6 requires a documented decision rule whenever a statement of conformity is reported, agreed with the customer at contract review (7.1.3).</li><li style="margin-bottom:9px;"><b>The traceability chain is actually checked.</b> It is not enough to hold an accredited supplier's calibration certificate (6.4 / 6.5). Someone must verify the chain to SI, the stated CMC, and that the certificate's validity covers the measurement date.</li><li style="margin-bottom:9px;"><b>Competence is authorised at scope level, and PT outliers are acted on.</b> The signatory on a report must be authorised for that exact method and matrix (6.2), with ongoing monitoring. An unsatisfactory proficiency-testing or interlaboratory-comparison result with no documented investigation is one of the most frequent findings under 7.7.</li></ol>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">What actually happens on the day</h2>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">Assessor activity</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">What is really being tested</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Opening meeting &amp; scope confirmation</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">That the agreed scope, locations and signatories match reality</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Document and record review</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Version control, and whether records prove the procedure was followed</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Laboratory walk-through</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Equipment status labels, environmental control, sample integrity, housekeeping that affects results</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Witness testing / demonstration</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">That the analyst can actually run the method, and that raw data are created as the procedure says</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Vertical trace from one issued report</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">The whole evidence chain, backwards and forwards (see below)</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Staff interviews</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Competence, impartiality and understanding of the decision rule</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Closing meeting</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Findings stated against a clause, with the evidence that supports each one</td></tr></tbody></table></div>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> The witness test is where a polished document set collapses. If the technician reaches for a sticky note with the "real" procedure on it, the documented method is not the method — that is a finding regardless of how good the file looks.</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">The vertical trace, step by step</h2>
+<p style="margin:0 0 12px;">Ask one of your own people to do this drill before the assessment. Hand them a report issued last month and have them produce, within ten minutes:</p>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;">The request / contract review that agreed the method and any decision rule with the customer (7.1).</li><li style="margin-bottom:9px;">Sample receipt, condition and identification records (7.3 / 7.4).</li><li style="margin-bottom:9px;">The exact method version in force on that date, plus its verification/validation file (7.2).</li><li style="margin-bottom:9px;">The technical record with original observations, corrections and the person who made them (7.5).</li><li style="margin-bottom:9px;">Calibration status and traceability evidence for every instrument used (6.4 / 6.5).</li><li style="margin-bottom:9px;">The uncertainty budget that produced the reported uncertainty (7.6) — including where each component came from.</li><li style="margin-bottom:9px;">The documented decision rule if a conformity statement appears (7.8.6).</li><li style="margin-bottom:9px;">The authorisation record of the person who released the report, for that method and matrix (6.2).</li><li style="margin-bottom:9px;">The QC / PT evidence showing the result was valid on that day (7.7).</li></ol>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> If any link takes twenty minutes to find, the assessor will notice. The usual failures are not missing documents — they are documents that do not connect: a signatory authorised before a method revision, an uncertainty budget that does not match the report template, a calibration certificate that was never confirmed on receipt.</p>
+<h2 id="s4" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Which clause numbers generate the most findings</h2>
+<p style="margin:0 0 12px;">Two housekeeping facts worth keeping straight: the current standard is <b>ISO/IEC 17025:2017</b> — there is no 2025 edition, whatever a reseller's headline says. And on 1 January 2026 <b>Global ACI</b> replaced IAF and ILAC as the single international accreditation organisation; legacy documents are being republished under Global ACI numbering. Check the current document list of your own accreditation body rather than quoting an old ILAC-Gx reference from memory.</p>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>6.2 / 6.4 / 6.5</b> — competence and authorisation at scope level; equipment fitness; an unexamined calibration chain.</li><li style="margin-bottom:7px;"><b>7.2</b> — a validation file that proves the technique works, but not for the matrix and concentration range the lab reports against.</li><li style="margin-bottom:7px;"><b>7.6 / 7.8.6</b> — an uncertainty budget copied from the calibration certificate; a pass/fail statement with no documented decision rule; a report showing "±" without stating k or the coverage level.</li><li style="margin-bottom:7px;"><b>7.7 / 8.8 / 8.9</b> — a single unsatisfactory PT result with no investigation; internal audits scheduled by calendar rather than risk; management review inputs without evidence.</li><li style="margin-bottom:7px;"><b>8.5 / 8.7</b> — a static risk register that is never re-evaluated after a corrective action, and corrective actions closed with "staff retrained" and no effectiveness check.</li></ul>
+<h2 id="s5" style="font-size:20px;margin-top:30px;margin-bottom:8px;">After the closing meeting</h2>
+<p style="margin:0 0 12px;">Findings are raised against a clause with objective evidence. For each one: contain the immediate effect, establish the root cause (including whether other reports or scopes are affected), correct the specific case, then verify effectiveness — with a defined review date. Your accreditation body sets the response window, often 30–90 days depending on severity. "We fixed the typo" closes a typo, not a system weakness; an assessor will re-open a finding whose root cause would let the same error happen again on a different report.</p>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Where this goes wrong in practice</h2>
+<p style="margin:0 0 11px;">Rewriting the quality manual the week before the visit. The manual is not what gets assessed; the evidence chain is.</p>
+<p style="margin:0 0 11px;">Treating "we use a standard method" as an exemption from verification. 7.2.1.3 still asks you to confirm you can achieve the method's performance in your own lab.</p>
+<p style="margin:0 0 11px;">Letting the authorisation matrix be current at role level but stale at scope level — a signatory authorised before a method revision, or whose ongoing monitoring has lapsed.</p>
+<p style="margin:0 0 11px;">Quoting the calibration certificate's expanded uncertainty U as if it were the whole uncertainty budget, or using it as a standard uncertainty without dividing by the stated k.</p>
+<p style="margin:0 0 11px;">Filing an unsatisfactory PT result with a one-line "investigated, no impact" note and no root-cause or trend analysis.</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Frequently asked</h2>
+<p style="margin:0 0 10px;"><b>Is a quality manual required for ISO/IEC 17025:2017?</b><br>No. The 2017 edition sets out requirements for the management system under option A (or option B if you operate a management system per ISO 9001), but it does not mandate a document called a quality manual. Many labs keep one because customers or legacy contracts ask for it.</p>
+<p style="margin:0 0 10px;"><b>What is a decision rule and when do I need one?</b><br>A decision rule describes how measurement uncertainty is taken into account when stating conformity to a specification (clause 7.8.6, defined in 3.7). If your report says pass/fail, in-tolerance, or compliant, the rule must be documented, agreed with the customer (7.1.3) and communicated. If you only report a value and its uncertainty, no conformity statement is being made.</p>
+<p style="margin:0 0 10px;"><b>How long does an on-site assessment take?</b><br>It depends on the scope, number of methods, sites and technical assessors — from a day for a narrow scope to a week or more for a multi-discipline lab. What matters is that each method on the scope can be witnessed or traced; ask your accreditation body for the assessment plan in advance.</p>
+<p style="margin:0 0 10px;"><b>Can remote or hybrid assessment be used?</b><br>Many accreditation bodies permit some document review or interview activity off-site under their own rules and the current Global ACI transition documents, but witnessing technical activities normally requires an on-site presence. Confirm the arrangement in writing with your accreditation body.</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">Before the assessor picks a report</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">Find your own gaps with the free 60-second readiness diagnosis</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">Answer a short set of questions about your lab and get a clause-level gap heat-map plus the full Word gap report — the same evidence chain an assessor traces, laid out before they arrive.</p><a href="https://labkitpro.com/diagnosis/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">Run the free diagnosis →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">The readiness diagnosis and its full Word gap report are free forever, with no sign-up.</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">LabKitPro guides are written from published standards and accreditation-body documents — references, clause numbers and paraphrased intent only, never verbatim standard text. They are for preparation and study, not a certification or accreditation decision, and not legal advice. ISO standards are trademarks of ISO; IATF 16949 is published by the International Automotive Task Force and is not an ISO standard. The current laboratory standard is ISO/IEC 17025:2017; there is no 2025 edition. Global ACI replaced IAF and ILAC on 1 January 2026.</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy by standard</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">All practical guides</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">Free browser tools</a></p>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"How to Pass an ISO/IEC 17025 On-Site Assessment | LabKitPro"}],["$","meta","1",{"name":"description","content":"A practical run-through of an ISO/IEC 17025:2017 on-site assessment: the six things that must be true before the visit, the vertical trace an assessor performs, the clauses that generate most findings, and how to close nonconformities properly."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/iso-17025-onsite-assessment/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"

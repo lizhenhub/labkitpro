@@ -1,0 +1,151 @@
+1:"$Sreact.fragment"
+9:I[68027,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default",1]
+:HL["/_next/static/chunks/2f9n152o64mqb.css","style"]
+2:T699,(function(){try{var p=new URLSearchParams(location.search);if(p.get('norum')==='on'){localStorage.setItem('lkp_norum','1');p.delete('norum');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p.toString():'')+location.hash);location.reload();return;}if(p.get('norum')==='off'){localStorage.removeItem('lkp_norum');p.delete('norum');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p.toString():'')+location.hash);location.reload();return;}if(localStorage.getItem('lkp_norum')!=='1')return;var bd=document.createElement('div');bd.textContent='\uD83D\uDEE1 norum \u81EA\u68C0\u5C4F\u853D\u4E2D';bd.style.cssText='position:fixed;right:8px;bottom:8px;z-index:2147483647;background:#1f6feb;color:#fff;font:12px/1.6 system-ui,sans-serif;padding:2px 8px;border-radius:4px;opacity:.8;pointer-events:none';(document.body||document.documentElement).appendChild(bd);var B='cloudflareinsights.com',R='/cdn-cgi/rum';function blk(u){return typeof u==='string'&&(u.indexOf(B)>=0||u.indexOf(R)>=0);}if(navigator.sendBeacon){var _sb=navigator.sendBeacon.bind(navigator);navigator.sendBeacon=function(u){if(blk(u))return true;return _sb.apply(navigator,arguments);};}if(window.fetch){var _f=window.fetch.bind(window);window.fetch=function(u,o){var s=typeof u==='string'?u:(u&&u.url||'');if(blk(s))return Promise.resolve(new Response(null,{status:204}));return _f.apply(window,arguments);};}var _xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){this.__u=u;return _xo.apply(this,arguments);};var _xs=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.send=function(b){if(blk(this.__u||''))return;return _xs.apply(this,arguments);};}catch(e){}})();7:X
+0:{"P":null,"c":["","guides","cpk-vs-ppk",""],"q":"","i":false,"f":[[["",{"children":["guides",{"children":[["slug","cpk-vs-ppk","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2f9n152o64mqb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/44akv4s2pjyhg.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/3lomafkwojbhj.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/3j9w__s_pmzpu.js","async":true,"nonce":"$undefined"}],["$","script","script-4",{"src":"/_next/static/chunks/0at8juk_chkd2.js","async":true,"nonce":"$undefined"}],["$","script","script-5",{"src":"/_next/static/chunks/1z8e6pqr_dqbc.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=null;if(q==='zh'||q==='en'){l=q;}else{var s=localStorage.getItem('lkp_lang');if(s==='zh'||s==='en'){l=s;}}if(!l){var nav=(navigator.language||navigator.userLanguage||'').toLowerCase();l=(nav.indexOf('zh')===0)?'zh':'en';}document.documentElement.dataset.lkpLang=l;document.documentElement.lang=l;}catch(e){}})();"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"LabKitPro\",\"url\":\"https://labkitpro.com\",\"logo\":\"https://labkitpro.com/file.svg\",\"description\":\"LabKitPro is a software workbench for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — gap diagnosis, document drafting, compliance review and audit-grade calculators. It does not certify, audit or consult.\"}"}}],"$L3"]}]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"IG7xXgZZ9VknXI63mWwHB"}
+b:I[7761,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"LangProvider"]
+c:I[92510,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"LabContextProvider"]
+d:I[32543,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MsContextProvider"]
+e:I[42364,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+f:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+10:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+11:I[93807,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+18:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+3:["$","$Lb",null,{"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$Le",null,{"children":["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L11",null,{}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":["$L12",null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],null]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2f9n152o64mqb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+7:C
+1a:T3ebd,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/cpk-vs-ppk/#article",
+   "headline": "Cpk vs Ppk: the only real difference is which standard deviation you use",
+   "description": "Cpk uses within-subgroup variation; Ppk uses overall variation. Learn the formulas, a worked example, when PPAP asks for Ppk, and why a big Cpk–Ppk gap is evidence of drift — with a free Cpk/Ppk calculator.",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/cpk-vs-ppk/"
+   },
+   "articleSection": "Quality tools"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/cpk-vs-ppk/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is Cpk always higher than Ppk?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Usually, because overall variation includes within-subgroup variation plus any between-subgroup movement. But it is not a mathematical guarantee: with unusual subgroup patterns the overall estimate can be smaller than the within estimate. Treat the gap as a diagnostic, not a rule."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is a good Cpk value?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It depends on the contract and the risk. 1.33 is the most common series-production target and 1.67 is often requested for initial or safety-related characteristics; neither appears as a number in ISO 9001 or IATF 16949. For safety or regulated characteristics, the customer-specific requirements govern."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can Cpk be negative?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. If the process mean has moved outside a specification limit, the distance to that limit is negative, so the minimum becomes negative. It means the process is producing out-of-spec material at the centre of its distribution, not merely in a tail."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need both Cpk and Ppk for a submission?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Most automotive customers ask for the initial-process performance index (Ppk) from the submission run and capability (Cpk) once the process is stable. Check the submission level and customer-specific requirements — the required index and minimum are contractual, not universal."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Academy",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practical guides",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Cpk vs Ppk: the only real difference is which standard deviation you use",
+     "item": "https://labkitpro.com/guides/cpk-vs-ppk/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com Academy</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">Practical guides</a> › Quality tools</p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">Cpk vs Ppk: the only real difference is which standard deviation you use</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">Same mean, same specification limits, different sigma. Here is what that gap is telling you about your process.</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">Updated 13 November 2026 · 7 min read · Written for working labs and quality teams</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">Short answer</p><p style="margin:0;font-size:15px;">Cpk and Ppk use the same limits and the same mean — the difference is the standard deviation. <b>Cpk</b> uses within-subgroup variation (estimated from R̄/d2 or s̄/c4), i.e. short-term, common-cause noise. <b>Ppk</b> uses the overall sample standard deviation of all the data, which also contains between-subgroup drift. When a process is stable the two numbers are close; a large gap is not a calculation error, it is a signal that the process moved while you were collecting data.</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">On this page</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">The two formulas side by side</a></li><li><a href="#s2" style="color:#2563eb;">A worked example with real numbers</a></li><li><a href="#s3" style="color:#2563eb;">When to report which one</a></li><li><a href="#s4" style="color:#2563eb;">Four checks before you calculate anything</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">Where this goes wrong in practice</a></li><li><a href="#faq" style="color:#2563eb;">Frequently asked</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">The two formulas side by side</h2>
+<p style="margin:0 0 12px;">Both indices compare the distance from the process mean to the nearest specification limit against three sigmas. The only thing that changes is the sigma:</p>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">Index</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">Sigma used</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">What it answers</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Cp = (USL − LSL) / 6σ<sub>within</sub></td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Within-subgroup</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Could this process fit, if centred?</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Cpk = min[(USL − μ), (μ − LSL)] / 3σ<sub>within</sub></td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Within-subgroup</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Could it fit, as it is actually centred?</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Pp = (USL − LSL) / 6s<sub>overall</sub></td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Overall sample s</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Did the whole run fit?</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Ppk = min[(USL − μ), (μ − LSL)] / 3s<sub>overall</sub></td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Overall sample s</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">Did the whole run fit, as centred?</td></tr></tbody></table></div>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> Cp and Pp ignore centering entirely — a process sitting right on the upper limit can still show a beautiful Cp. Always read the index together with the mean and the histogram, never as a standalone pass mark.</p>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">A worked example with real numbers</h2>
+<p style="margin:0 0 12px;">A turned shaft is specified at 10.00 ± 0.20 mm, so LSL = 9.80 and USL = 10.20. You collect 25 subgroups of 5. The grand mean μ = 10.02, the within-subgroup sigma from R̄/d2 is 0.030, and the overall standard deviation of all 125 values is 0.055.</p>
+<p style="margin:0 0 12px;"><b>Cpk</b> = min[(10.20 − 10.02) / (3 × 0.030), (10.02 − 9.80) / (3 × 0.030)] = min[2.00, 2.44] = <b>2.00</b>.</p>
+<p style="margin:0 0 12px;"><b>Ppk</b> = min[(10.20 − 10.02) / (3 × 0.055), (10.02 − 9.80) / (3 × 0.055)] = min[1.09, 1.33] = <b>1.09</b>.</p>
+<p style="margin:0 0 12px;">Nothing is wrong with the arithmetic. The process is capable in the short term (2.00) but the overall performance is only 1.09, because subgroup means wandered — tool wear, a shift change, a warm-up drift, or two batches of material. Reporting only the 2.00 would be the mistake.</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">When to report which one</h2>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>Initial submission / PPAP:</b> customers commonly ask for Ppk ≥ 1.67 from the initial run, because it reflects everything that actually happened. This is a customer or AIAG PPAP convention, not an ISO 9001 or IATF 16949 clause requirement.</li><li style="margin-bottom:7px;"><b>Series production monitoring:</b> Cpk ≥ 1.33 is the most common contractual target, again a customer requirement rather than a line in the standard.</li><li style="margin-bottom:7px;"><b>Both together:</b> the gap itself is the diagnostic. If Cpk ≈ Ppk, common-cause variation dominates and the process is behaving predictably. If Cpk is much larger, hunt for special causes between subgroups before quoting any capability number.</li><li style="margin-bottom:7px;"><b>Neither:</b> if the process is not stable, or the data are strongly non-normal, a capability index is a number without a model behind it. Stabilise first, or use a transformation / non-normal method and say which one you used.</li></ul>
+<h2 id="s4" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Four checks before you calculate anything</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;"><b>Measurement system first.</b> If the gage R&amp;R is poor relative to the tolerance, the spread you are measuring belongs partly to the gage, not the process.</li><li style="margin-bottom:9px;"><b>Rational subgroups.</b> Put parts made under the same conditions in one subgroup; otherwise within-subgroup sigma is contaminated by exactly the drift you are trying to detect.</li><li style="margin-bottom:9px;"><b>Enough data.</b> A Cpk from 8 values is a point estimate with a very wide confidence interval. The commonly used floor is roughly 25 subgroups / 100 values, and the estimate should be reported with its uncertainty if a decision hinges on it.</li><li style="margin-bottom:9px;"><b>Right chart, right limits.</b> Control limits come from process data; specification limits come from the customer. Drawing a spec line on an X̄ chart as if it were a control limit is the single most common shop-floor error.</li></ol>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Where this goes wrong in practice</h2>
+<p style="margin:0 0 11px;">Computing Cpk with the overall sample standard deviation. You get Ppk twice and lose the only signal that separates short-term capability from long-term drift.</p>
+<p style="margin:0 0 11px;">Quoting Cpk on an unstable process. An index assumes a stable, predictable distribution; an out-of-control chart invalidates the premise, not just the number.</p>
+<p style="margin:0 0 11px;">Treating 1.33 as law. It is a widespread customer target. Check the contract, the control plan and the customer-specific requirements before you set an acceptance threshold.</p>
+<p style="margin:0 0 11px;">Averaging Cpk values across shifts or cavities instead of looking at each stream separately — two healthy streams straddling the mean can hide a bimodal mess.</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Frequently asked</h2>
+<p style="margin:0 0 10px;"><b>Is Cpk always higher than Ppk?</b><br>Usually, because overall variation includes within-subgroup variation plus any between-subgroup movement. But it is not a mathematical guarantee: with unusual subgroup patterns the overall estimate can be smaller than the within estimate. Treat the gap as a diagnostic, not a rule.</p>
+<p style="margin:0 0 10px;"><b>What is a good Cpk value?</b><br>It depends on the contract and the risk. 1.33 is the most common series-production target and 1.67 is often requested for initial or safety-related characteristics; neither appears as a number in ISO 9001 or IATF 16949. For safety or regulated characteristics, the customer-specific requirements govern.</p>
+<p style="margin:0 0 10px;"><b>Can Cpk be negative?</b><br>Yes. If the process mean has moved outside a specification limit, the distance to that limit is negative, so the minimum becomes negative. It means the process is producing out-of-spec material at the centre of its distribution, not merely in a tail.</p>
+<p style="margin:0 0 10px;"><b>Do I need both Cpk and Ppk for a submission?</b><br>Most automotive customers ask for the initial-process performance index (Ppk) from the submission run and capability (Cpk) once the process is stable. Check the submission level and customer-specific requirements — the required index and minimum are contractual, not universal.</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">Put the numbers in</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">Compute Cpk and Ppk from one measurement sample</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">Paste your measurements and the two specification limits. The calculator returns Cpk, Ppk, Cp, Pp and the distribution at a glance, so you can see the capability gap instead of arguing about it.</p><a href="https://labkitpro.com/tools/cpk/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">Open the free Cpk / Ppk calculator →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">Runs in your browser. Export the report free. No sign-up needed.</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">LabKitPro guides are written from published standards and accreditation-body documents — references, clause numbers and paraphrased intent only, never verbatim standard text. They are for preparation and study, not a certification or accreditation decision, and not legal advice. ISO standards are trademarks of ISO; IATF 16949 is published by the International Automotive Task Force and is not an ISO standard. The current laboratory standard is ISO/IEC 17025:2017; there is no 2025 edition. Global ACI replaced IAF and ILAC on 1 January 2026.</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy by standard</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">All practical guides</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">Free browser tools</a></p>
+</div>12:["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$1a"}}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1b:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:null
+19:[["$","title","0",{"children":"Cpk vs Ppk — What Actually Differs (and Which to Report) | LabKitPro"}],["$","meta","1",{"name":"description","content":"Cpk uses within-subgroup variation; Ppk uses overall variation. Learn the formulas, a worked example, when PPAP asks for Ppk, and why a big Cpk–Ppk gap is evidence of drift — with a free Cpk/Ppk calculator."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/cpk-vs-ppk/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L1b","13",{}]]

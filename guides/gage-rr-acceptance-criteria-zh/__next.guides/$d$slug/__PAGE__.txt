@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:T3a9e,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria-zh/#article",
+   "headline": "GR&R：10% / 30% 阈值真正意味着什么（以及不意味着什么）",
+   "description": "怎么读一份量具研究报告：低于 10%／10–30%／高于 30% 的 AIAG 惯例、可区分类别数不少于 5、%GRR 与公差占比的区别、重复性与再现性、10×3×3 设计，以及会造成假合格的试验设计错误。",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "zh-CN",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria-zh/"
+   },
+   "articleSection": "质量工具"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/gage-rr-acceptance-criteria-zh/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "10% / 30% 写在 ISO 9001 或 IATF 16949 里吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "没有。它们出自 AIAG MSA 参考手册（及等效的客户参考资料），通过顾客特殊要求、PPAP 提交和控制计划落地。标准要求的是适宜的测量资源和有效的结果，数字分档属于惯例。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "ndc 是什么，为什么重要？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "可区分类别数（也称可区分数据类数）估计测量系统在观测变差范围内能可靠区分多少个组。小于 2 表示系统分不清产品；用于过程控制的量具通常期望 ≥ 5。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "可以不改量具，改成多次读数取平均吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "有时可以——重复测量取平均会减小重复性分量，但必须写进测量方法、始终一致地执行，并反映在控制计划里。它解决不了再现性问题，也解决不了分辨率不足。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "GR&R 多久重做一次？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "没有统一周期。量具、夹具、方法、操作员群体或特性发生变化时，客户要求时，以及控制计划／顾客特殊要求规定的频次，都应重做。"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "学院",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "实战指南",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "GR&R：10% / 30% 阈值真正意味着什么（以及不意味着什么）",
+     "item": "https://labkitpro.com/guides/gage-rr-acceptance-criteria-zh/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<div lang="zh-CN">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com 学院</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">学院</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">实战指南</a> › 质量工具</p>
+<p style="margin:0 0 14px;font-size:12.5px;color:#5b6675;">本文为中文正文　·　<a href="https://labkitpro.com/guides/gage-rr-acceptance-criteria/" style="color:#2563eb;">English version →</a></p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">GR&amp;R：10% / 30% 阈值真正意味着什么（以及不意味着什么）</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">%GRR、可区分类别数、公差占比、ANOVA 与 X̄-R 方法——以及为什么一份「合格」的研究也可能毫无用处。</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">更新于 2026 年 11 月 13 日 · 约 7 分钟 · 写给一线实验室与质量团队</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">短答案</p><p style="margin:0;font-size:15px;">%GRR 是观测到的总变差中归属于测量系统的那一份。AIAG MSA 参考手册的惯用分档是：<b>低于 10% 可接受</b>、<b>10–30% 视用途／成本／客户有条件接受</b>、<b>高于 30% 需要改进</b>。这是行业惯例，不是 ISO 条款。要和可区分类别数 ndc（通常要求 ≥ 5）、公差占比，以及研究所用零件是否真的覆盖了过程变差一起读。</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">本页目录</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">一份研究能给出哪些数</a></li><li><a href="#s2" style="color:#2563eb;">单个结果本身不是结论</a></li><li><a href="#s3" style="color:#2563eb;">结果落在边缘时怎么办</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">现场最容易踩的坑</a></li><li><a href="#faq" style="color:#2563eb;">常见问题</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">一份研究能给出哪些数</h2>
+<p style="margin:0 0 12px;">经典设计是 <b>10 个零件 × 3 名操作员 × 3 次重复</b>，随机化测量，零件选取要覆盖正常过程范围。ANOVA 方法优于较老的 X̄-R（极差）法，因为它能估计操作员与零件的交互作用，而不是把它折进残差里。</p>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">指标</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">衡量什么</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">常用惯例</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">%GRR（对总变差）</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">测量系统占观测散布的份额</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">低于 10% 可接受 · 10–30% 有条件 · 高于 30% 需改进</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">公差占比 %Tolerance</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">测量散布占规格宽度的份额</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">常也按 10%／30% 判断——但分母完全不同</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">ndc／可区分类别数</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">系统能可靠区分多少组</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">通常期望 ≥ 5；小于 2 表示系统不具备分辨能力</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">重复性 EV</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">同一操作员、同一零件、同一量具</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">设备／系统内变差</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">再现性 AV</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">不同操作员测同样零件</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">常指向操作方法或夹具问题，以及操作员×零件交互</td></tr></tbody></table></div>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">单个结果本身不是结论</h2>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>零件选错，研究照样能「合格」。</b>十个零件若全来自同一个紧密批次，过程变差被低估，%GRR 会显得更差；若刻意挑了比生产范围宽得多的零件，%GRR 又会好于现实。零件要代表过程，不是用来把数字做好看。</li><li style="margin-bottom:7px;"><b>%GRR 和公差占比回答的是不同问题。</b>公差很宽时，公差占比可以很舒服，而对过程变差的 %GRR 却很差——当这张图被用来发现小偏移时，这一点就要命。</li><li style="margin-bottom:7px;"><b>重复性与再现性告诉你该往哪儿使劲。</b>EV 高指向量具、装夹或分辨率；AV 高指向操作手法、培训或测量方法定义不清；显著的操作员×零件交互，通常说明方法在不同零件上被用成了不同做法。</li><li style="margin-bottom:7px;"><b>GR&amp;R 只是一项研究，不是整个 MSA。</b>偏倚、线性、稳定性，以及计数型量具的一致性研究是另外几项。破坏性试验、化学分析或视觉检测系统需要完全不同的设计。</li></ul>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>实务提示。</b> 分辨率仍然重要：一台只能读到 0.1 mm 的量具，无法令人信服地支撑一场针对 0.05 mm 散布的研究。现行 MSA 参考资料已用更细致的指导取代了旧的「10:1 经验法则」——请查实际分辨率和得到的可区分类别数，不要凭记忆背一个比值。</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">结果落在边缘时怎么办</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;">先查试验设计：零件选取、随机化、盲测，以及操作员是否都按同一份定义好的方法操作。</li><li style="margin-bottom:9px;">看 ANOVA 表，判断问题在设备还是在人——两种改法完全不同。</li><li style="margin-bottom:9px;">如果 10–30% 确实属于有条件接受，把理由写清楚：特性关键度、客户同意、改进成本，以及采取了哪些附加控制（例如重复读数取平均）。</li><li style="margin-bottom:9px;">量具、夹具或方法一旦改过，重做研究。MSA 结果属于某个具体系统，不是永久挂在零件号上的。</li></ol>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">现场最容易踩的坑</h2>
+<p style="margin:0 0 11px;">把 10% 和 30% 当成标准里的合格／不合格要求。它们是广泛使用的 AIAG MSA 惯例，顾客特殊要求可能另定阈值。</p>
+<p style="margin:0 0 11px;">挑十个几乎一样的零件，把 %GRR 抬高，然后启动一个本不需要的换量具项目。</p>
+<p style="margin:0 0 11px;">客户要的是对总变差的 %GRR，你报了公差占比（或反过来），还不说明用的是哪个分母。</p>
+<p style="margin:0 0 11px;">让操作员互相看着读数，或按零件顺序而不是随机顺序测量——两者都会悄悄毁掉研究的独立性。</p>
+<p style="margin:0 0 11px;">做完一次就再也不重做，哪怕换了夹具、换了一批操作员或修过量具。</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">常见问题</h2>
+<p style="margin:0 0 10px;"><b>10% / 30% 写在 ISO 9001 或 IATF 16949 里吗？</b><br>没有。它们出自 AIAG MSA 参考手册（及等效的客户参考资料），通过顾客特殊要求、PPAP 提交和控制计划落地。标准要求的是适宜的测量资源和有效的结果，数字分档属于惯例。</p>
+<p style="margin:0 0 10px;"><b>ndc 是什么，为什么重要？</b><br>可区分类别数（也称可区分数据类数）估计测量系统在观测变差范围内能可靠区分多少个组。小于 2 表示系统分不清产品；用于过程控制的量具通常期望 ≥ 5。</p>
+<p style="margin:0 0 10px;"><b>可以不改量具，改成多次读数取平均吗？</b><br>有时可以——重复测量取平均会减小重复性分量，但必须写进测量方法、始终一致地执行，并反映在控制计划里。它解决不了再现性问题，也解决不了分辨率不足。</p>
+<p style="margin:0 0 10px;"><b>GR&amp;R 多久重做一次？</b><br>没有统一周期。量具、夹具、方法、操作员群体或特性发生变化时，客户要求时，以及控制计划／顾客特殊要求规定的频次，都应重做。</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">别只看标题那个数</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">跑一次 GR&amp;R，看清 EV、AV、%GRR 与 ndc</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">输入标准 10 × 3 × 3 读数，浏览器里给出 ANOVA 分解、重复性与再现性、%GRR、公差占比和可区分类别数。</p><a href="https://labkitpro.com/tools/msa/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">打开免费的 MSA / GR&amp;R 工具 →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">浏览器内运行，报告导出免费，无需注册。</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">本指南依据公开发布的标准与认可机构文件编写，仅引用编号、标题与意译要点，不复制标准原文，供内部准备与学习参考，不构成认证或认可决定，也不构成法律意见。ISO 标准为 ISO 的商标；IATF 16949 由国际汽车工作组发布，并非 ISO 标准。现行实验室标准为 ISO/IEC 17025:2017，不存在 2025 版。Global ACI 已于 2026 年 1 月 1 日取代 IAF 与 ILAC。</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">按标准进入学院</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">全部实战指南</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">免费浏览器工具</a></p>
+</div>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"GR&amp;R：10% / 30% 阈值到底在说什么 | LabKitPro"}],["$","meta","1",{"name":"description","content":"怎么读一份量具研究报告：低于 10%／10–30%／高于 30% 的 AIAG 惯例、可区分类别数不少于 5、%GRR 与公差占比的区别、重复性与再现性、10×3×3 设计，以及会造成假合格的试验设计错误。"}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/gage-rr-acceptance-criteria-zh/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"

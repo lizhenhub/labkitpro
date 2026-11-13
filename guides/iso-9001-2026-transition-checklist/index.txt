@@ -1,0 +1,162 @@
+1:"$Sreact.fragment"
+9:I[68027,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default",1]
+:HL["/_next/static/chunks/2f9n152o64mqb.css","style"]
+2:T699,(function(){try{var p=new URLSearchParams(location.search);if(p.get('norum')==='on'){localStorage.setItem('lkp_norum','1');p.delete('norum');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p.toString():'')+location.hash);location.reload();return;}if(p.get('norum')==='off'){localStorage.removeItem('lkp_norum');p.delete('norum');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p.toString():'')+location.hash);location.reload();return;}if(localStorage.getItem('lkp_norum')!=='1')return;var bd=document.createElement('div');bd.textContent='\uD83D\uDEE1 norum \u81EA\u68C0\u5C4F\u853D\u4E2D';bd.style.cssText='position:fixed;right:8px;bottom:8px;z-index:2147483647;background:#1f6feb;color:#fff;font:12px/1.6 system-ui,sans-serif;padding:2px 8px;border-radius:4px;opacity:.8;pointer-events:none';(document.body||document.documentElement).appendChild(bd);var B='cloudflareinsights.com',R='/cdn-cgi/rum';function blk(u){return typeof u==='string'&&(u.indexOf(B)>=0||u.indexOf(R)>=0);}if(navigator.sendBeacon){var _sb=navigator.sendBeacon.bind(navigator);navigator.sendBeacon=function(u){if(blk(u))return true;return _sb.apply(navigator,arguments);};}if(window.fetch){var _f=window.fetch.bind(window);window.fetch=function(u,o){var s=typeof u==='string'?u:(u&&u.url||'');if(blk(s))return Promise.resolve(new Response(null,{status:204}));return _f.apply(window,arguments);};}var _xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){this.__u=u;return _xo.apply(this,arguments);};var _xs=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.send=function(b){if(blk(this.__u||''))return;return _xs.apply(this,arguments);};}catch(e){}})();7:X
+0:{"P":null,"c":["","guides","iso-9001-2026-transition-checklist",""],"q":"","i":false,"f":[[["",{"children":["guides",{"children":[["slug","iso-9001-2026-transition-checklist","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2f9n152o64mqb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/44akv4s2pjyhg.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/3lomafkwojbhj.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/3j9w__s_pmzpu.js","async":true,"nonce":"$undefined"}],["$","script","script-4",{"src":"/_next/static/chunks/0at8juk_chkd2.js","async":true,"nonce":"$undefined"}],["$","script","script-5",{"src":"/_next/static/chunks/1z8e6pqr_dqbc.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=null;if(q==='zh'||q==='en'){l=q;}else{var s=localStorage.getItem('lkp_lang');if(s==='zh'||s==='en'){l=s;}}if(!l){var nav=(navigator.language||navigator.userLanguage||'').toLowerCase();l=(nav.indexOf('zh')===0)?'zh':'en';}document.documentElement.dataset.lkpLang=l;document.documentElement.lang=l;}catch(e){}})();"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"LabKitPro\",\"url\":\"https://labkitpro.com\",\"logo\":\"https://labkitpro.com/file.svg\",\"description\":\"LabKitPro is a software workbench for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — gap diagnosis, document drafting, compliance review and audit-grade calculators. It does not certify, audit or consult.\"}"}}],"$L3"]}]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"IG7xXgZZ9VknXI63mWwHB"}
+b:I[7761,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"LangProvider"]
+c:I[92510,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"LabContextProvider"]
+d:I[32543,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MsContextProvider"]
+e:I[42364,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+f:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+10:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+11:I[93807,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+18:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+3:["$","$Lb",null,{"children":["$","$Lc",null,{"children":["$","$Ld",null,{"children":[["$","$Le",null,{"children":["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L11",null,{}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$Lf",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":["$L12",null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],null]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2f9n152o64mqb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+7:C
+1a:T4f0e,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/iso-9001-2026-transition-checklist/#article",
+   "headline": "ISO 9001:2026 transition: a 9-step checklist that starts with the gap, not the rewrite",
+   "description": "A working 9-step ISO 9001:2026 transition checklist with the official milestone dates, the clause-level changes that actually need work (5.1, 5.2, 6.1, 6.3, 7.1.6, 7.3, 8.2, 9.2, 9.3), and the mistakes that waste a transition budget.",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/iso-9001-2026-transition-checklist/"
+   },
+   "articleSection": "Management systems"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/iso-9001-2026-transition-checklist/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Do I have to rewrite my quality manual for ISO 9001:2026?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. ISO 9001:2015 removed the mandatory quality manual and the 2026 edition did not reinstate it. The standard requires documented information to support the operation of processes and to retain evidence of results. Keep a manual if customers or contracts ask for one, but it is not a transition requirement."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can the transition audit be combined with a surveillance audit?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In most certification-body transition arrangements, yes — transition activities can be combined with surveillance or recertification audits, which is usually the least disruptive option. Confirm the scope, extra time and evidence requirements with your CB in writing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is the deadline 15 or 30 September 2029?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Global ACI's transition documents set the cutoff at 30 September 2029; some national bodies describe the three-year window from publication as mid-September. Follow the written transition arrangement from your accreditation/certification body and plan to finish well before either date."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens if I miss the cutoff?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "2015-edition accredited certificates lapse at the transition cutoff, even if the certificate's printed expiry date is later. You would be looking at a fresh initial certification to the 2026 edition rather than a transition, with the associated cost and audit time."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Academy",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practical guides",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "ISO 9001:2026 transition: a 9-step checklist that starts with the gap, not the rewrite",
+     "item": "https://labkitpro.com/guides/iso-9001-2026-transition-checklist/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com Academy</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">Practical guides</a> › Management systems</p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">ISO 9001:2026 transition: a 9-step checklist that starts with the gap, not the rewrite</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">Published 16 September 2026. New-edition-only certificates from 31 March 2028; transition closes 30 September 2029.</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">Updated 13 November 2026 · 10 min read · Written for working labs and quality teams</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">Short answer</p><p style="margin:0;font-size:15px;">ISO 9001:2026 was published on 16 September 2026 and replaces the 2015 edition. Accredited 2015-edition certificates must transition by <b>30 September 2029</b>; from <b>31 March 2028</b> new initial certificates are issued to the 2026 edition only. Start with a clause-by-clause gap assessment, not with rewriting the quality manual — the 2015 edition already removed the mandatory manual, and the 2026 edition did not bring it back.</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">On this page</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">Step 1 — Confirm your certificate and your certification body's readiness</a></li><li><a href="#s2" style="color:#2563eb;">Step 2 — Work from the official text, not a summary</a></li><li><a href="#s3" style="color:#2563eb;">Step 3 — Run the gap assessment clause by clause</a></li><li><a href="#s4" style="color:#2563eb;">Step 4 — Update context, interested parties and climate</a></li><li><a href="#s5" style="color:#2563eb;">Step 5 — Split the registers, and make culture measurable</a></li><li><a href="#s6" style="color:#2563eb;">Step 6 — Revise only the documents the gap list names</a></li><li><a href="#s7" style="color:#2563eb;">Step 7 — Train leadership, auditors and the people who create the records</a></li><li><a href="#s8" style="color:#2563eb;">Step 8 — Run one full internal audit and management review under the new edition</a></li><li><a href="#s9" style="color:#2563eb;">Step 9 — Book the transition audit, then update everything that mentions the certificate</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">Where this goes wrong in practice</a></li><li><a href="#faq" style="color:#2563eb;">Frequently asked</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 1 — Confirm your certificate and your certification body's readiness</h2>
+<p style="margin:0 0 12px;">Write down your current certificate's edition, expiry, surveillance dates and recertification date. Then check the accreditation-side milestones that determine when your certification body (CB) can actually issue a 2026-edition certificate: accreditation bodies publish their transition arrangements by 31 March 2027, CBs submit their transition declarations by 30 June 2027, and the accreditation bodies complete their transition decisions on CBs by 30 September 2027. Only after that may a CB issue certificates to the new edition.</p>
+<p style="margin:0 0 12px;">From 31 March 2028, new initial certification is to the 2026 edition only; the transition cutoff is 30 September 2029, when 2015-edition certificates lapse. Some national sources phrase the cutoff as mid-September 2029 because of the three-year window — follow the written transition arrangement from your own accreditation/certification body, and do not plan against the last possible week.</p>
+<p style="margin:0 0 12px;"><b>Practical consequence:</b> do not book a "transition audit" until your CB has passed its accreditation-body transition decision, otherwise the certificate you receive is not a 2026-edition one.</p>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 2 — Work from the official text, not a summary</h2>
+<p style="margin:0 0 12px;">Buy the published standard and read ISO's own "what's changed" material alongside a reputable clause-by-clause comparison. The 2026 edition adds an informative <b>Annex A</b> (roughly eleven pages of clarification on structure, terminology and intent) and removes the old Annex B. Annex A is informative — it is not a set of extra requirements — but it is the best single training reference for getting everyone to use the same language. Second-hand blog summaries are where invented "new requirements" come from.</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 3 — Run the gap assessment clause by clause</h2>
+<p style="margin:0 0 12px;">Map clauses 3–10 against the documented information, records and actual practice you have today. Mark each item: already covered / needs wording review / needs a new process or record. The result is a gap list with owners and dates — this list is the transition project plan, and everything else follows from it.</p>
+<p style="margin:0 0 12px;">The confirmed change areas to score are: 5.1 leadership, quality culture and ethical behaviour; 5.2 policy linked to context and strategy; 6.1 risks and opportunities treated separately (and, beyond determining them, analysed and evaluated); 6.3 change management with its seven factors a)–g); 7.1.6 organisational knowledge retained, applied and shared; 7.3 awareness of quality culture and ethical behaviour; 8.2 customer communication including disruptions; 9.2 an objective defined for every internal audit; 9.3 management review including changes in interested-party needs and expectations; and 4.1/4.2 climate-change considerations now carried into the main text from the 2024 amendment.</p>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>Practical note.</b> Clause 8.3–8.5 mostly read close to the 2015 wording (design outputs, external providers delivering directly to the customer, availability <em>and use</em> of documented information). Treat those as review-and-confirm points, not new gaps to rebuild. Teams that skip this distinction spend weeks rewriting procedures that needed a clause reference update.</p>
+<h2 id="s4" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 4 — Update context, interested parties and climate</h2>
+<p style="margin:0 0 12px;">The 2026 edition asks you to determine which interested-party requirements will be addressed through the QMS, and carries the 2024 climate-change amendment into the main text. Practically: refresh the interested-party analysis, state explicitly which requirements the QMS covers, and record a conclusion on climate relevance. If you conclude it is not relevant, the assessment process and its rationale still have to be recorded — a blank line is a finding.</p>
+<h2 id="s5" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 5 — Split the registers, and make culture measurable</h2>
+<p style="margin:0 0 12px;">Keep separate risk and opportunity registers (6.1). Every opportunity should carry an improvement project, an owner and a due date, otherwise it is a wish list. For quality culture and ethical behaviour (5.1), define three to five observable behaviours and two to three measurable indicators — first-pass yield, rework / cost of poor quality, awareness survey results — and keep evidence of leadership involvement, because an auditor will look for behaviour, not a poster.</p>
+<h2 id="s6" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 6 — Revise only the documents the gap list names</h2>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>Change control procedure:</b> write all seven 6.3 factors into the checklist, especially f) how effectiveness will be monitored and evaluated, and g) how results will be reviewed. Legacy procedures usually stop at "implemented and closed".</li><li style="margin-bottom:7px;"><b>Knowledge management:</b> add a sharing mechanism (mentoring, case library, rotation debrief, offboarding handover) on top of the knowledge list, with records of the sharing activity.</li><li style="margin-bottom:7px;"><b>Internal audit programme:</b> add a mandatory "objective of this audit" column to the plan — a schedule of dates and departments is no longer sufficient.</li><li style="margin-bottom:7px;"><b>Management review inputs:</b> add "changes in the needs and expectations of interested parties" as a standing row with an owner and supporting analysis.</li><li style="margin-bottom:7px;"><b>Customer communication:</b> add the line for notifying customers about disruptions to product or service provision (8.2.1 e)).</li><li style="margin-bottom:7px;"><b>Terminology sweep:</b> clause 3 now lists 20 core terms directly; review controlled documents for leadership, culture and risk vocabulary before an integrated three-system transition.</li></ul>
+<h2 id="s7" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 7 — Train leadership, auditors and the people who create the records</h2>
+<p style="margin:0 0 12px;">Leadership needs the culture and ethics changes; internal auditors need the new clause intent and Annex A; process owners need the specific record changes. Keep sign-in sheets, case-based quiz results and communication records — 7.3 now explicitly asks that people understand quality culture and ethical behaviour, not merely know the procedure exists.</p>
+<h2 id="s8" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 8 — Run one full internal audit and management review under the new edition</h2>
+<p style="margin:0 0 12px;">Do a complete internal-audit cycle against the 2026 edition — with an objective defined for each audit — and a management review using the new input list, before the CB arrives. This is where most gap-list items either close or turn back into work. It also generates the evidence an auditor will ask for first.</p>
+<h2 id="s9" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Step 9 — Book the transition audit, then update everything that mentions the certificate</h2>
+<p style="margin:0 0 12px;">A transition audit can often be combined with a surveillance or recertification audit — ask your CB, it is the cheapest route. Afterwards confirm the new certificate actually says 2026, then update customer portals, supplier questionnaires, tender documents, website claims and marketing material. Certificate claims must match the scope and edition on the certificate; for accreditation-mark use, follow the current written rules of your own accreditation and certification bodies rather than assuming a transitional arrangement.</p>
+<p style="margin:0 0 12px;">If you run an integrated management system, do the same exercise for ISO 14001:2026 (cutoff 30 April 2029 — earlier than 9001) and keep ISO 45001:2027 as expected-only: it is still at DIS stage and its transition arrangements have not been published. Our <a href="https://labkitpro.com/iso-9001-2026/" style="color:#2563eb;">ISO 9001:2026 hub</a> and <a href="https://labkitpro.com/transition/" style="color:#2563eb;">transition centre</a> hold the timelines and the clause-by-clause diff.</p>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Where this goes wrong in practice</h2>
+<p style="margin:0 0 11px;">Starting by rewriting the quality manual. Neither the 2015 nor the 2026 edition mandates one; the work is in records, behaviours and decisions.</p>
+<p style="margin:0 0 11px;">Treating the 2029 cutoff as a start date. CB readiness, an internal-audit cycle and a management review all have to happen before the transition audit, and audit slots get tight in the final year.</p>
+<p style="margin:0 0 11px;">Assuming your CB can issue 2026-edition certificates as soon as the standard is published. Check the accreditation-body transition decision first.</p>
+<p style="margin:0 0 11px;">Writing "climate change not applicable" with no recorded assessment. The conclusion is acceptable; an undocumented conclusion is not.</p>
+<p style="margin:0 0 11px;">Closing an opportunity register with no owner, no project and no due date, or leaving risks and opportunities in one combined log.</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">Frequently asked</h2>
+<p style="margin:0 0 10px;"><b>Do I have to rewrite my quality manual for ISO 9001:2026?</b><br>No. ISO 9001:2015 removed the mandatory quality manual and the 2026 edition did not reinstate it. The standard requires documented information to support the operation of processes and to retain evidence of results. Keep a manual if customers or contracts ask for one, but it is not a transition requirement.</p>
+<p style="margin:0 0 10px;"><b>Can the transition audit be combined with a surveillance audit?</b><br>In most certification-body transition arrangements, yes — transition activities can be combined with surveillance or recertification audits, which is usually the least disruptive option. Confirm the scope, extra time and evidence requirements with your CB in writing.</p>
+<p style="margin:0 0 10px;"><b>Is the deadline 15 or 30 September 2029?</b><br>Global ACI's transition documents set the cutoff at 30 September 2029; some national bodies describe the three-year window from publication as mid-September. Follow the written transition arrangement from your accreditation/certification body and plan to finish well before either date.</p>
+<p style="margin:0 0 10px;"><b>What happens if I miss the cutoff?</b><br>2015-edition accredited certificates lapse at the transition cutoff, even if the certificate's printed expiry date is later. You would be looking at a fresh initial certification to the 2026 edition rather than a transition, with the associated cost and audit time.</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">Step 3, without the spreadsheet</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">Start the transition from a clause-level gap list</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">Run the reality diagnosis for your current edition, get the gap heat-map and the full Word gap report, then decide which documents actually need revising. Both the diagnosis and the report are free.</p><a href="https://labkitpro.com/diagnosis/iso9001/2015/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">Run the free ISO 9001 diagnosis →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">The readiness diagnosis and its full Word gap report are free forever, with no sign-up.</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">LabKitPro guides are written from published standards and accreditation-body documents — references, clause numbers and paraphrased intent only, never verbatim standard text. They are for preparation and study, not a certification or accreditation decision, and not legal advice. ISO standards are trademarks of ISO; IATF 16949 is published by the International Automotive Task Force and is not an ISO standard. The current laboratory standard is ISO/IEC 17025:2017; there is no 2025 edition. Global ACI replaced IAF and ILAC on 1 January 2026.</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">Academy by standard</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">All practical guides</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">Free browser tools</a></p>
+</div>1b:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+12:["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$1a"}}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:null
+19:[["$","title","0",{"children":"ISO 9001:2026 Transition: A 9-Step Checklist (with Dates) | LabKitPro"}],["$","meta","1",{"name":"description","content":"A working 9-step ISO 9001:2026 transition checklist with the official milestone dates, the clause-level changes that actually need work (5.1, 5.2, 6.1, 6.3, 7.1.6, 7.3, 8.2, 9.2, 9.3), and the mistakes that waste a transition budget."}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/iso-9001-2026-transition-checklist/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L1b","13",{}]]

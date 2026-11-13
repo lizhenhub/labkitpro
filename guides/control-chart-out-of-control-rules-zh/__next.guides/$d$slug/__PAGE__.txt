@@ -1,0 +1,150 @@
+1:"$Sreact.fragment"
+2:T4005,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/control-chart-out-of-control-rules-zh/#article",
+   "headline": "控制图八条判异准则——以及八条全开为什么是错的",
+   "description": "八条常用控制图判异准则：模式对照表、每种信号在现场意味着什么、怎么选规则集，以及规格限为什么不是控制限——附免费的 SPC 控制图工具。",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "zh-CN",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/control-chart-out-of-control-rules-zh/"
+   },
+   "articleSection": "质量工具"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/control-chart-out-of-control-rules-zh/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "这些规则是 ISO 9001 或 IATF 16949 要求的吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "不是。标准要求监视、控制过程并对特殊原因作出反应；具体采用哪套链规则，通常由客户、AIAG SPC 参考手册或你自己的控制计划定义。把所选规则集写成文件即可。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "控制限和规格限有什么区别？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "控制限描述过程实际在做什么（由过程数据算出），规格限描述客户要求什么。过程可以稳定却没能力，也可以平均有能力却不稳——两个答案来自两类不同的图。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "控制限可信需要多少个点？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "常见做法是第一阶段基线取约 20–25 个子组（约 100 个单值），并在冻结控制限之前把已知特殊原因调查、剔除。少于这个量，估计会又宽又不稳。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "单值 I-MR 图能用链规则吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "可以，多数软件把第 1–4、6 条用于单值图；但涉及子组均值的规则表现不同，连续过程数据的自相关也会产生假信号。用之前先查软件里的规则定义。"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "学院",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "实战指南",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "控制图八条判异准则——以及八条全开为什么是错的",
+     "item": "https://labkitpro.com/guides/control-chart-out-of-control-rules-zh/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<div lang="zh-CN">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com 学院</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">学院</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">实战指南</a> › 质量工具</p>
+<p style="margin:0 0 14px;font-size:12.5px;color:#5b6675;">本文为中文正文　·　<a href="https://labkitpro.com/guides/control-chart-out-of-control-rules/" style="color:#2563eb;">English version →</a></p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">控制图八条判异准则——以及八条全开为什么是错的</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">Nelson／Western Electric 各种模式分别抓什么、误报代价有多大，以及很少有人提的那一面。</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">更新于 2026 年 11 月 13 日 · 约 7 分钟 · 写给一线实验室与质量团队</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">短答案</p><p style="margin:0;font-size:15px;">除「单点超出 3σ」之外，常用的八条链规则还会标记非随机模式：1 点超出 3σ；连续 9 点在同一侧；连续 6 点递增或递减；连续 14 点上下交替；连续 3 点中有 2 点超出 2σ；连续 5 点中有 4 点超出 1σ；连续 15 点落在中心线 ±1σ 内；连续 8 点无一落在 ±1σ 内。每条对应不同的可归属原因——但在每张图上把八条全开，误报会显著上升，应按过程选规则集并写进文件。</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">本页目录</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">规则集一览</a></li><li><a href="#s2" style="color:#2563eb;">第 7、8 条要反着读</a></li><li><a href="#s3" style="color:#2563eb;">该启用哪几条</a></li><li><a href="#s4" style="color:#2563eb;">打第一个点之前的四件事</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">现场最容易踩的坑</a></li><li><a href="#faq" style="color:#2563eb;">常见问题</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">规则集一览</h2>
+<p style="margin:0 0 12px;">这些是广泛使用的 Nelson 规则，源自 Western Electric 手册。不同软件、AIAG／SPC 参考资料的编号和点数略有差异——把实际采用的规则集写进控制计划或程序文件，并保持各班组一致。真正重要的是模式逻辑，不是编号。</p>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">规则</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">模式（除注明外均指中心线同一侧）</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">常见可归属原因</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">1</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">1 点超出 3σ</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">突发特殊原因，或录入错误</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">2</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 9 点在同一侧</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">均值发生持续偏移</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">3</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 6 点持续递增或递减</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">刀具磨损、漂移、预热、耗材耗尽</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">4</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 14 点上下交替</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">系统性过度调整／两个来源交替出现</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">5</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 3 点中 2 点超出 2σ（同侧）</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">中等幅度偏移刚开始</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">6</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 5 点中 4 点超出 1σ（同侧）</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">更小幅度偏移刚开始</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">7</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 15 点落在中心线 ±1σ 内</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">分层：数据修约过粗，或多条流程被合并</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">8</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">连续 8 点无一落在 ±1σ 内（两侧合计）</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">混合：两台设备、两个模腔或两家供方被合在一张图上</td></tr></tbody></table></div>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">第 7、8 条要反着读</h2>
+<p style="margin:0 0 12px;">这两条最反直觉，也最能看出经验。第 7 条看起来像「控制得极好」，但连续十五点紧贴中心线，通常意味着数据修约过粗、量具分辨率不足，或者有人把多条流程先平均再打点。第 8 条看起来像「波动失控」，其实常常是两条各自都很稳定的流程——两个模腔、两根主轴、两家供方——被画在同一张图上。按流程拆图就解决了，把过程收紧反而没用。</p>
+<p style="margin:0 0 12px;">第 4 条（上下交替）是操作人员过度调整的典型指纹：图一动，就去拧一下设定值。正确的做法是停止对普通原因噪声做调整，而不是收窄控制限。</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">该启用哪几条</h2>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>只用第 1 条</b>时，稳定的正态过程每点误报概率约 0.27%。加上第 2、5、6 条会提高对小偏移的敏感度，同时抬高总体误报率。敏感度不是免费的。</li><li style="margin-bottom:7px;"><b>大批量、后果轻微的过程：</b>第 1 条加第 2 条往往够用；漏掉小偏移代价很高时再加 5／6。</li><li style="margin-bottom:7px;"><b>安全或受监管特性：</b>启用客户要求的、已成文的规则集，并确认反应计划对每一种信号都写了该做什么。</li><li style="margin-bottom:7px;"><b>每条规则都要配反应计划。</b>没有定义响应（围堵、查最后一个合格点、调查、记录）的信号，只是屏幕上一个红点。</li></ul>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>实务提示。</b> 控制限由过程数据算出，规格限来自客户、描述产品必须满足什么。绝不要把规格线当控制限画在 X̄ 图上，也绝不要用一段你已知道含特殊原因的数据重算控制限。</p>
+<h2 id="s4" style="font-size:20px;margin-top:30px;margin-bottom:8px;">打第一个点之前的四件事</h2>
+<ol style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:9px;"><b>合理分组。</b>抽样要让组内变差只代表普通原因噪声。同一调机状态下连取 5 件是一个子组；跨一个班次取 5 件不是。</li><li style="margin-bottom:9px;"><b>检查测量系统。</b>量具 R&amp;R 差会把控制限撑大、掩盖真实信号，或者造出假信号。</li><li style="margin-bottom:9px;"><b>区分第一阶段与第二阶段。</b>先用一轮基线数据在剔除已知特殊原因后估计控制限，然后把限冻结下来用于监控。每周悄悄重拟合，图就再也抓不住漂移了。</li><li style="margin-bottom:9px;"><b>图型要配数据类型。</b>分组计量数据用 X̄-R／X̄-s，单值用 I-MR，合格／不合格比例用 p／np，计数用 c／u。能力分析排在稳定性之后，不是之前。</li></ol>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">现场最容易踩的坑</h2>
+<p style="margin:0 0 11px;">每张图八条全开，然后无视报警。报警疲劳比一张灵敏度略低的图更糟。</p>
+<p style="margin:0 0 11px;">把规格限当控制限，结果一个没能力的过程看起来「受控」，反之亦然。</p>
+<p style="margin:0 0 11px;">把两台设备或两个模腔合并到一张图，再把第 8 条当成不稳定去调查。</p>
+<p style="margin:0 0 11px;">每批之后重算控制限，慢慢把漂移烘进基线里。</p>
+<p style="margin:0 0 11px;">调查第 1 条报警时，不先核对这个数有没有抄错——相当一部分「特殊原因」其实是转录错误。</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">常见问题</h2>
+<p style="margin:0 0 10px;"><b>这些规则是 ISO 9001 或 IATF 16949 要求的吗？</b><br>不是。标准要求监视、控制过程并对特殊原因作出反应；具体采用哪套链规则，通常由客户、AIAG SPC 参考手册或你自己的控制计划定义。把所选规则集写成文件即可。</p>
+<p style="margin:0 0 10px;"><b>控制限和规格限有什么区别？</b><br>控制限描述过程实际在做什么（由过程数据算出），规格限描述客户要求什么。过程可以稳定却没能力，也可以平均有能力却不稳——两个答案来自两类不同的图。</p>
+<p style="margin:0 0 10px;"><b>控制限可信需要多少个点？</b><br>常见做法是第一阶段基线取约 20–25 个子组（约 100 个单值），并在冻结控制限之前把已知特殊原因调查、剔除。少于这个量，估计会又宽又不稳。</p>
+<p style="margin:0 0 10px;"><b>单值 I-MR 图能用链规则吗？</b><br>可以，多数软件把第 1–4、6 条用于单值图；但涉及子组均值的规则表现不同，连续过程数据的自相关也会产生假信号。用之前先查软件里的规则定义。</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">画出来，别靠猜</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">生成 X̄-R、I-MR、p 图并实时标出判异信号</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">粘贴样本数据，选择图型和规则集，输入数值的同时就能看到信号被标出——包括是哪一条规则触发，方便对着它写反应计划。</p><a href="https://labkitpro.com/tools/spc/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">打开免费的 SPC 控制图工具 →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">浏览器内运行，报告导出免费，无需注册。</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">本指南依据公开发布的标准与认可机构文件编写，仅引用编号、标题与意译要点，不复制标准原文，供内部准备与学习参考，不构成认证或认可决定，也不构成法律意见。ISO 标准为 ISO 的商标；IATF 16949 由国际汽车工作组发布，并非 ISO 标准。现行实验室标准为 ISO/IEC 17025:2017，不存在 2025 版。Global ACI 已于 2026 年 1 月 1 日取代 IAF 与 ILAC。</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">按标准进入学院</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">全部实战指南</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">免费浏览器工具</a></p>
+</div>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"控制图八条判异准则详解（含实例）| LabKitPro"}],["$","meta","1",{"name":"description","content":"八条常用控制图判异准则：模式对照表、每种信号在现场意味着什么、怎么选规则集，以及规格限为什么不是控制限——附免费的 SPC 控制图工具。"}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/control-chart-out-of-control-rules-zh/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"

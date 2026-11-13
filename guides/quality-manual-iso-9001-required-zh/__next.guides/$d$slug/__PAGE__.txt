@@ -1,0 +1,146 @@
+1:"$Sreact.fragment"
+2:T3776,<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://labkitpro.com/guides/quality-manual-iso-9001-required-zh/#article",
+   "headline": "ISO 9001 现在还要求质量手册吗",
+   "description": "ISO 9001:2015 取消了强制质量手册，ISO 9001:2026 未恢复。了解实际要求的成文信息、客户或历史合同仍要手册时怎么应对，以及 ISO/IEC 17025:2017 方案 A／B 的区别。",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "inLanguage": "zh-CN",
+   "author": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LabKitPro",
+    "url": "https://labkitpro.com/"
+   },
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://labkitpro.com/guides/quality-manual-iso-9001-required-zh/"
+   },
+   "articleSection": "管理体系"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://labkitpro.com/guides/quality-manual-iso-9001-required-zh/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "没有质量手册，审核员会开不符合项吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "按 ISO 9001:2015 或 ISO 9001:2026 不会——两版都不要求手册。你确实需要标准规定的成文信息（范围、方针、目标、过程运行所需信息、结果记录）并对其进行控制。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "能保留现有质量手册吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "可以，没有任何条款禁止。只要确保它受控、现行、反映 2026 版术语且真的被使用——一本与实际做法矛盾、已经过时的手册是负债，不是防线。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "ISO/IEC 17025 认可要求质量手册吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "不要求。ISO/IEC 17025:2017 用方案 A 或方案 B 处理管理体系，没有按名称强制手册。有些认可机构的申请清单仍要求一份等效概览文件；以本机构现行要求为准。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "客户坚持要手册，该给什么？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "一份简短的体系概览（范围、过程图、职责、文件／记录索引），再把对方问卷的每一节交叉引用到覆盖它的受控文件。既满足了要求，也不必凭空造一份标准并不需要的文件。"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "学院",
+     "item": "https://labkitpro.com/academy/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "实战指南",
+     "item": "https://labkitpro.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "ISO 9001 现在还要求质量手册吗",
+     "item": "https://labkitpro.com/guides/quality-manual-iso-9001-required-zh/"
+    }
+   ]
+  }
+ ]
+}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
+<div lang="zh-CN">
+<a href="https://labkitpro.com/academy/" style="text-decoration:none;color:#2563eb;font-weight:700;">← labkitpro.com 学院</a>
+<p style="font-size:12px;color:#5b6675;margin:12px 0 0;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">学院</a> › <a href="https://labkitpro.com/guides/" style="color:#2563eb;">实战指南</a> › 管理体系</p>
+<p style="margin:0 0 14px;font-size:12.5px;color:#5b6675;">本文为中文正文　·　<a href="https://labkitpro.com/guides/quality-manual-iso-9001-required/" style="color:#2563eb;">English version →</a></p>
+<h1 style="font-size:29px;line-height:1.25;margin:14px 0 6px;">ISO 9001 现在还要求质量手册吗</h1>
+<p style="color:#5b6675;font-size:15px;margin:0 0 6px;">短答案：不要求，2026 版也没有把它加回来。真正该保留的是什么，这里说清。</p>
+<p style="color:#8a94a3;font-size:12px;margin:0 0 16px;">更新于 2026 年 11 月 13 日 · 约 5 分钟 · 写给一线实验室与质量团队</p>
+<div style="background:#eef4ff;border-left:4px solid #1e4d8b;border-radius:8px;padding:14px 18px;margin:0 0 22px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#1e4d8b;text-transform:uppercase;">短答案</p><p style="margin:0;font-size:15px;"><b>不要求。</b>ISO 9001:2015 取消了对质量手册的明确要求，ISO 9001:2026（2026 年 9 月 16 日发布）也没有把它加回来。标准要求的是<b>成文信息</b>：过程运行所需的文件，以及用于确信过程按策划实施的记录（条款 7.5）。客户、招标或组织自己想要一本，你可以保留——但它不是审核要求。</p></div>
+<div style="border:1px solid #e6e9ef;border-radius:8px;padding:12px 16px;margin:0 0 24px;"><p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#5b6675;">本页目录</p><ol style="margin:0;padding-left:20px;font-size:13.5px;"><li><a href="#s1" style="color:#2563eb;">标准实际要的是什么</a></li><li><a href="#s2" style="color:#2563eb;">那为什么还有人要手册</a></li><li><a href="#s3" style="color:#2563eb;">ISO/IEC 17025:2017 呢</a></li><li><a href="#where-it-goes-wrong" style="color:#2563eb;">现场最容易踩的坑</a></li><li><a href="#faq" style="color:#2563eb;">常见问题</a></li></ol></div>
+<h2 id="s1" style="font-size:20px;margin-top:30px;margin-bottom:8px;">标准实际要的是什么</h2>
+<p style="margin:0 0 12px;">实务上，很多组织用一页简短的<b>体系地图</b>取代手册：范围与不适用说明、过程顺序及相互作用、每个过程归谁管、由哪些文件和记录支撑、到哪里去找。这一页对审核员的帮助，往往大于一本从模板抄来的六十页手册。</p>
+<ul style="margin:0 0 14px;padding-left:22px;"><li style="margin-bottom:7px;"><b>需保持的成文信息（7.5.2 / 7.5.3）：</b>质量方针（5.2）、质量目标（6.2），以及组织确定为过程运行所需、为确信过程按策划实施所需的信息——范围、过程相互作用、控制准则、职责。</li><li style="margin-bottom:7px;"><b>需保留的成文信息（记录）：</b>结果的证据——监视与测量、能力、合同评审、设计与开发、外部供方评价、不符合、内审结果、管理评审输出和纠正措施。</li><li style="margin-bottom:7px;"><b>对它的控制（7.5.3）：</b>在需要的地点和时间可获得且适用、防护、版本／变更控制、保存期限与处置。2026 版更强调信息要<em>可获得并被使用</em>，而不只是被留存。</li><li style="margin-bottom:7px;"><b>质量方针仍是明确要求的文件（5.2）</b>，质量管理体系范围也必须以成文信息提供（4.3）。两者都不需要一本装订成册的手册。</li></ul>
+<h2 id="s2" style="font-size:20px;margin-top:30px;margin-bottom:8px;">那为什么还有人要手册</h2>
+<div style="overflow-x:auto;margin:0 0 16px;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;"><thead><tr><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">谁在要</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">为什么</th><th style="border:1px solid #e6e9ef;padding:8px 10px;text-align:left;background:#f3f6fb;">怎么做</th></tr></thead><tbody><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">客户或招标门户</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">供方调查表里还留着 2008 版时代的「质量手册」条目</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">提供体系地图，附一页对照说明，把他们要的章节映射到你的现有文件</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">认证审核员</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">想快速弄清范围、过程和相互作用</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">准备好范围、过程图和文件索引；没有任何条款要求手册</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">内部历史程序</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">文件控制清单里仍写着 QM-001</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">作废或改标为体系概览——别留一份已经死掉的强制文件</td></tr><tr><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">多场所或整合体系</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">需要一个地方说清 9001／14001／45001 怎么拼在一起</td><td style="border:1px solid #e6e9ef;padding:8px 10px;vertical-align:top;">整合体系概览确实有用，只是别把它说成标准的强制要求</td></tr></tbody></table></div>
+<p style="background:#fff8e8;border:1px solid #f0d9a0;border-radius:8px;padding:11px 15px;margin:0 0 16px;font-size:14px;"><b>实务提示。</b> 转版 ISO 9001:2026 不是重写手册的理由。从逐条差距清单开始（5.1、5.2、6.1、6.3、7.1.6、7.3、8.2、9.2、9.3），只改真正发生变化的文件和记录。</p>
+<h2 id="s3" style="font-size:20px;margin-top:30px;margin-bottom:8px;">ISO/IEC 17025:2017 呢</h2>
+<p style="margin:0 0 12px;">ISO/IEC 17025:2017 同样不强制一份叫「质量手册」的文件。它给出两条路：<b>方案 A</b>，实验室直接满足第 8.2–8.9 章的管理体系要求；<b>方案 B</b>，已按 ISO 9001 运行管理体系的实验室可沿用该体系，前提是一并满足第 4–7 章的技术能力要求。不少认可机构自己的文件仍非正式地使用「质量手册」一词——以本机构现行文件清单为准，并注意 Global ACI 已于 2026 年 1 月 1 日取代 IAF 与 ILAC，正按新编号重新发布指南。</p>
+<h2 id="where-it-goes-wrong" style="font-size:20px;margin-top:30px;margin-bottom:8px;">现场最容易踩的坑</h2>
+<p style="margin:0 0 11px;">把买一本通用质量手册模板当成 2026 转版第一步——它只是增加了要受控的文件，不改变任何行为。</p>
+<p style="margin:0 0 11px;">因为「不再要求手册」就删掉所有概览文件，结果讲不清范围、过程相互作用，也说不出记录放在哪。</p>
+<p style="margin:0 0 11px;">客户问卷上答一句「不适用，标准没要求」，而不是把对方要的章节映射到自己确实有的那份文件。</p>
+<p style="margin:0 0 11px;">把质量<em>方针</em>（强制，5.2）和质量<em>手册</em>（不强制）搞混。</p>
+<h2 id="faq" style="font-size:20px;margin-top:30px;margin-bottom:8px;">常见问题</h2>
+<p style="margin:0 0 10px;"><b>没有质量手册，审核员会开不符合项吗？</b><br>按 ISO 9001:2015 或 ISO 9001:2026 不会——两版都不要求手册。你确实需要标准规定的成文信息（范围、方针、目标、过程运行所需信息、结果记录）并对其进行控制。</p>
+<p style="margin:0 0 10px;"><b>能保留现有质量手册吗？</b><br>可以，没有任何条款禁止。只要确保它受控、现行、反映 2026 版术语且真的被使用——一本与实际做法矛盾、已经过时的手册是负债，不是防线。</p>
+<p style="margin:0 0 10px;"><b>ISO/IEC 17025 认可要求质量手册吗？</b><br>不要求。ISO/IEC 17025:2017 用方案 A 或方案 B 处理管理体系，没有按名称强制手册。有些认可机构的申请清单仍要求一份等效概览文件；以本机构现行要求为准。</p>
+<p style="margin:0 0 10px;"><b>客户坚持要手册，该给什么？</b><br>一份简短的体系概览（范围、过程图、职责、文件／记录索引），再把对方问卷的每一节交叉引用到覆盖它的受控文件。既满足了要求，也不必凭空造一份标准并不需要的文件。</p>
+<div style="background:#0f2a4a;color:#fff;border-radius:12px;padding:20px 22px;margin:30px 0 18px;"><p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9dc0ef;text-transform:uppercase;">建你真正需要的那些文件</p><p style="margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.4;">按标准、层级和条款浏览文档库</p><p style="margin:0 0 14px;font-size:14px;color:#d7e3f4;">看清一套跑得起来的体系需要哪些文件和记录，缺的可以带着你的范围、过程和术语直接生成。</p><a href="https://labkitpro.com/templates/" style="display:inline-block;background:#fff;color:#0f2a4a;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700;">打开文档库 →</a><p style="margin:12px 0 0;font-size:12px;color:#a9c1e0;">表单与记录永久免费、无水印；按你的范围生成的成文文档按次 $1.9（质量手册 $9.9）。</p></div>
+<p style="margin-top:28px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:12px;">本指南依据公开发布的标准与认可机构文件编写，仅引用编号、标题与意译要点，不复制标准原文，供内部准备与学习参考，不构成认证或认可决定，也不构成法律意见。ISO 标准为 ISO 的商标；IATF 16949 由国际汽车工作组发布，并非 ISO 标准。现行实验室标准为 ISO/IEC 17025:2017，不存在 2025 版。Global ACI 已于 2026 年 1 月 1 日取代 IAF 与 ILAC。</p>
+<p style="color:#5b6675;font-size:12px;"><a href="https://labkitpro.com/academy/" style="color:#2563eb;">按标准进入学院</a> · <a href="https://labkitpro.com/guides/" style="color:#2563eb;">全部实战指南</a> · <a href="https://labkitpro.com/tools/" style="color:#2563eb;">免费浏览器工具</a></p>
+</div>
+</div>5:X
+a:X
+a:C
+0:{"buildId":"IG7xXgZZ9VknXI63mWwHB","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"ViewportBoundary"]
+13:I[97367,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"MetadataBoundary"]
+14:I[27201,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"IconMark"]
+15:I[39756,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+16:I[37457,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/44akv4s2pjyhg.js","/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0at8juk_chkd2.js","/_next/static/chunks/1z8e6pqr_dqbc.js"],"default"]
+3:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+6:["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L13",null,{"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ISO 9001 还要求质量手册吗（2015、2026、17025）| LabKitPro"}],["$","meta","1",{"name":"description","content":"ISO 9001:2015 取消了强制质量手册，ISO 9001:2026 未恢复。了解实际要求的成文信息、客户或历史合同仍要手册时怎么应对，以及 ISO/IEC 17025:2017 方案 A／B 的区别。"}],["$","link","2",{"rel":"canonical","href":"https://labkitpro.com/guides/quality-manual-iso-9001-required-zh/"}],["$","meta","3",{"property":"og:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","4",{"property":"og:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","meta","5",{"property":"og:site_name","content":"LabKitPro"}],["$","meta","6",{"property":"og:locale","content":"en_US"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"LabKitPro — five standards, one workspace"}],["$","meta","10",{"name":"twitter:description","content":"One workspace for ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025 and IATF 16949 — diagnose gaps, draft documents, screen compliance, run audit-grade calculators. Free to start."}],["$","link","11",{"rel":"icon","href":"/favicon.ico?favicon.0k47nb0iizce_.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","12",{"rel":"icon","href":"/icon.png?icon.3ysqfwchs9lft.png","sizes":"512x512","type":"image/png"}],["$","$L14","13",{}]]}]}]}],null]}]
+8:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+b:["$","$1","c",{"children":[null,["$","$L15",null,{"parallelRouterKey":"children","template":["$","$L16",null,{}]}]]}]
+e:true
+11:null
+5:300
+5:C
+d:0
+7:"$undefined"
+9:"$undefined"
+c:"$undefined"
+4:"$undefined"
