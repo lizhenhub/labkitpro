@@ -16,6 +16,11 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://labkitpro.com/agent/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://labkitpro.com/academy/iatf16949/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
