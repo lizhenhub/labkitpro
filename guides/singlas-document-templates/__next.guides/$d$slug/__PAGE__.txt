@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-2:T14d6,<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+2:T1543,<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
  {"@type":"Question","name":"What is the relationship between SINGLAS and ISO/IEC 17025?","acceptedAnswer":{"@type":"Answer","text":"SINGLAS (Singapore Laboratory Accreditation Scheme) is operated under the Singapore Accreditation Council (SAC), administered by Enterprise Singapore. It accredits testing and calibration laboratories to ISO/IEC 17025:2017 together with SAC-SINGLAS specific criteria and technical guides, so an accredited lab complies with the 2017 edition plus the SAC-SINGLAS additions."}},
  {"@type":"Question","name":"Can I generate SINGLAS-ready documents without a consultant?","acceptedAnswer":{"@type":"Answer","text":"Yes. Set your context to Country: Singapore and Accreditation body: SINGLAS, run a free 60-second diagnosis, and generate drafts in minutes. Forms and records are free forever; full downloads are priced per delivery."}}
 ]}</script><div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2733;line-height:1.7;max-width:820px;margin:0 auto;padding:28px 20px;">
@@ -21,7 +21,7 @@
   <li><strong>Report &amp; Mark Control Procedure</strong> — SAC-SINGLAS mark conditions, endorsed results, and decision-rule statements on reports.</li>
   <li><strong>Subcontracting Procedure</strong> — provider qualification, accreditation checks, and retained responsibility for subcontracted work.</li>
   <li><strong>Proficiency Testing Plan</strong> — participation mapped to ILAC P9 frequencies and SAC policy.</li>
-  <li><strong>Uncertainty of Measurement</strong> — a GUM or Monte Carlo budget per measurand.</li>
+  <li><strong>Uncertainty of Measurement</strong> — a GUM or Monte Carlo budget per measurand. <a href="https://labkitpro.com/uncertainty/" style="color:#2563eb;">Build one free in the browser &rarr;</a></li>
 </ul>
 
 <h2 style="font-size:19px;margin-top:24px;">How LabKitPro helps</h2>
@@ -41,7 +41,7 @@
 </div>5:X
 a:X
 a:C
-0:{"buildId":"xZxNc0ksCU8yhWOqIzqHx","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+0:{"buildId":"labkitpro-2026-11","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],null,"$L3"]}],"isPartial":"$@4","staleTime":"$5","varyParams":null},{"rsc":"$L6","isPartial":"$@7","staleTime":"$5","varyParams":null},{"rsc":"$L8","isPartial":"$@9","staleTime":"$5","varyParams":"$a"},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$5","varyParams":"$a"}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
 f:I[97367,["/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/1sedie5pp7um_.js","/_next/static/chunks/3sm_advm-1u_q.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0qjnhzlatcye-.js"],"OutletBoundary"]
 10:"$Sreact.suspense"
 12:I[97367,["/_next/static/chunks/3lomafkwojbhj.js","/_next/static/chunks/1sedie5pp7um_.js","/_next/static/chunks/3sm_advm-1u_q.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/0qjnhzlatcye-.js"],"ViewportBoundary"]
