@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/3mq0lu_5mfiy-.css","style"]
+:HL["/_next/static/chunks/1rske-syvc7zq.css","style"]
 0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"resources","param":null,"prefetchHints":4160,"slots":{"children":{"name":"std","param":{"type":"d","key":"iso14001","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"topic","param":{"type":"d","key":"procedures","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"labkitpro-2026-11"}

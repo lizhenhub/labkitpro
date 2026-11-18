@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
 2:I[49989,["/_next/static/chunks/2y1yrflhbny3i.js","/_next/static/chunks/44ag8jd27-rlh.js","/_next/static/chunks/4095f61vbu09e.js","/_next/static/chunks/3j9w__s_pmzpu.js","/_next/static/chunks/2f-aba256ef4b.js","/_next/static/chunks/43r3i7ytpzpoa.js","/_next/static/chunks/27ll_r2jyyuxe.js"],"default"]
-3:T2ee2,
+3:T2e99,
 <a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
 <div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
   <span style="font-weight:700;font-size:15px;">Check your lab against ISO/IEC 17025:2017 — free readiness check, no sign-up.</span>
@@ -77,7 +77,7 @@
 
 <h2 style="font-size:19px;margin-top:24px;">Check your lab against the real standard — free</h2>
 <p>If you want to turn awareness into readiness: our <strong>free readiness checker</strong> maps your lab against ISO/IEC 17025:2017 clause by clause — with the Global ACI general layer built in, plus CNAS, A2LA, UKAS, NVLAP, NATA, SINGLAS and NABL specifics on top. No sign-up; everything runs in your browser.</p>
-<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">Run the free check</a></strong> — and if you need documents drafted or reviewed to the same alignment, <a href="https://labkitpro.com/docgen/" style="color:#2563eb;">the document generator</a> and <a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">conformity review</a> speak Global ACI natively.</p>
+<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">Run the free check</a></strong> — and if you need documents drafted or reviewed to the same alignment, <a href="https://labkitpro.com/docgen/iso9001/2015/" style="color:#2563eb;">the document generator</a> and <a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">conformity review</a> speak Global ACI natively.</p>
 
 <p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:13px;">
   <em>Fact-check appendix (verified 2026-10-26 against primary sources): Global ACI press release "Global Accreditation Cooperation Incorporated Launch" (global-aci.org) — full operations commenced 1 January 2026, replacing IAF and ILAC, launch of its own MRA; Global ACI regulator communication (May 2026) — IAF and ILAC non-operational since 1 January 2026, marks anticipated to remain in use until 1 January 2029 or later, model clause and MRA-006 transition procedure referenced; CNAS official introduction of Global ACI (cnas.org.cn) — merged from IAF and ILAC, registered in New Zealand December 2024, ~190 members including 126 MRA signatories; BIPM liaison page (bipm.org) — Global ACI assumed the roles of IAF and ILAC on 1 January 2026. Acronym and logo unveiled 14 April 2026 (global-aci.org). ISO/IEC 17025:2017 remains the current edition of the standard (see iso.org, standard 66912).</em>
@@ -86,7 +86,7 @@
   <a href="https://labkitpro.com/pricing/" style="color:#2563eb;">See all plans</a> · Aligned to ISO/IEC 17025:2017 across the Global ACI general layer, CNAS, A2LA, NABL, UKAS, NVLAP, NATA &amp; SINGLAS.</p>
 <p style="color:#5b6675;margin-top:10px;">
   Prefer these calculations in your own browser toolbar? Our <a href="https://labkitpro.com/tools/" style="color:#2563eb;">free Chrome &amp; Edge extension</a> runs the same Cpk, SPC and MSA engines offline — no data leaves your machine.</p>
-4:T2a33,
+4:T29ea,
 <a href="https://labkitpro.com/" style="text-decoration:none;color:#2563eb;font-weight:700;">← LabKitPro</a>
 <div style="background:#0f9d58;color:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
   <span style="font-weight:700;font-size:15px;">对照 ISO/IEC 17025:2017 自查实验室就绪度——免费、零注册。</span>
@@ -163,7 +163,7 @@
 
 <h2 style="font-size:19px;margin-top:24px;">对照真实标准自查实验室——免费</h2>
 <p>想把「知道」变成「就绪」：我们的<strong>免费就绪度自查</strong>逐条款对照 ISO/IEC 17025:2017 评估你的实验室——内置 Global ACI 通用层，其上叠加 CNAS、A2LA、UKAS、NVLAP、NATA、SINGLAS、NABL 专项要求。零注册，全部在浏览器本地运行。</p>
-<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">开始免费自查</a></strong>——若需按同一口径起草或审查文件，<a href="https://labkitpro.com/docgen/" style="color:#2563eb;">文档生成器</a>与<a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">合规性审查</a>原生支持 Global ACI 口径。</p>
+<p><strong>→ <a href="https://labkitpro.com/diagnosis/" style="color:#2563eb;">开始免费自查</a></strong>——若需按同一口径起草或审查文件，<a href="https://labkitpro.com/docgen/iso9001/2015/" style="color:#2563eb;">文档生成器</a>与<a href="https://labkitpro.com/compliance-review/" style="color:#2563eb;">合规性审查</a>原生支持 Global ACI 口径。</p>
 
 <p style="margin-top:26px;border-top:1px solid #e6e9ef;padding-top:14px;color:#5b6675;font-size:13px;">
   <em>核查附录（2026-10-26 对照原始信源核实）：Global ACI 官方新闻稿（global-aci.org）——2026-01-01 起全面运行、取代 IAF 与 ILAC、启用自有 MRA；Global ACI 致监管机构函（2026-05）——IAF 与 ILAC 自 2026-01-01 停止运作，旧标志预计可用至 2029-01-01 或更晚，附示范条款与 MRA-006 过渡程序；CNAS 官网 Global ACI 简介——由 IAF 与 ILAC 合并成立、2024 年 12 月新西兰注册、成员约 190 个（含互认协议签署机构 126 个）；BIPM 联络页（bipm.org）——Global ACI 于 2026-01-01 承接 IAF 与 ILAC 职能。简称与标识 2026-04-14 发布。ISO/IEC 17025:2017 仍为现行版本（见 iso.org，标准 66912）。</em>
